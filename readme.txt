@@ -19,7 +19,7 @@ You can use these automations for automating sales, marketing, administrative ta
 
 = Use automations to connect your plugins =
 
-Anyone can create automations with just a few clicks. No coding required!
+Anyone can create automations with just a few clicks.
 
 Here are some automations samples to give you a quick idea of the possible combinations:
 
@@ -64,7 +64,7 @@ AutomatorWP is extremely flexible with plenty of hooks to add custom features an
 
 = Built for novices =
 
-AutomatorWP includes a simple, powerful editor that anyone can learn to use in no time!
+AutomatorWP includes a powerful editor that anyone can learn to use in no time!
 
 [See it in action!](https://wordpress.org/plugins/automatorwp/#screenshots)
 
