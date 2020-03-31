@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, trigger, action, hook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -26,7 +26,7 @@ Here are some automations samples to give you a quick idea of the possible combi
 When user purchases a **WooCommerce product**.
 Add a **WP Fusion tag** to the user.
 
-When user completes a **BuddyPress group**.
+When user joins a **BuddyPress group**.
 Enroll user in a **LearnDash course**.
 
 Not only you can create one-to-one connections, also you can create automations with all the triggers and actions you want, such as the following one:
@@ -155,6 +155,11 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.0.1 =
+
+* **Improvements**
+* Prevent perform calls to database tables on installation.
 
 = 1.0.0 =
 

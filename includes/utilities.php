@@ -292,22 +292,6 @@ function automatorwp_utilities_condition_option() {
 }
 
 /**
- * Generates the required HTML with the dashicon provided
- *
- * @since 1.0.0
- *
- * @param string $dashicon      Dashicon class
- * @param string $tag           Optional, tag used (recommended i or span)
- *
- * @return string
- */
-function automatorwp_dashicon( $dashicon = 'automatorwp', $tag = 'i' ) {
-
-    return '<' . $tag . ' class="dashicons dashicons-' . $dashicon . '"></' . $tag . '>';
-
-}
-
-/**
  * Check if post ID matches with the required post ID
  *
  * @since 1.0.0

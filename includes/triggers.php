@@ -242,6 +242,11 @@ function automatorwp_get_triggers_in_use() {
 
     $ct_table = ct_setup_table( 'automatorwp_triggers' );
 
+    // Check if table exists, just to avoid issues on first install
+    if( ! automatorwp_database_table_exists( $ct_table->db->table_name ) ) {
+        return array();
+    }
+
     $results = $wpdb->get_results( "SELECT t.type FROM {$ct_table->db->table_name} AS t GROUP BY t.type" );
 
     ct_reset_setup_table();
