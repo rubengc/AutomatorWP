@@ -1,0 +1,115 @@
+.cmb2-switch .cmb-td {
+    position: relative;
+    min-height: 14px;
+}
+
+.cmb2-switch input {
+    position: absolute;
+    top: -2px;
+    left: -1px;
+    width: 48px;
+    height: 26px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 60px;
+}
+
+.cmb2-switch input:before,
+.cmb2-switch input:after {
+    display: block;
+    position: absolute;
+    content: "" !important;
+    left: 0;
+    top: 0;
+}
+
+.cmb2-switch input:before {
+    border: 2px solid #6c7781;
+    border-radius: 100%;
+    width: 4px;
+    height: 4px;
+    margin-top: 9px;
+    margin-left: 32px;
+}
+
+.cmb2-switch input:checked:before {
+    border-color: transparent;
+}
+
+.cmb2-switch input:before {
+    background: transparent;
+}
+
+.cmb2-switch input:checked:after {
+    background: #fff;
+    width: 2px;
+    height: 8px;
+    margin-top: 9px;
+    margin-left: 12px;
+}
+
+.cmb2-switch label .cmb2-metabox-description {
+    margin-left: 53px;
+}
+
+.cmb2-switch input + label:before,
+.cmb2-switch input + label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1px;
+    content: "";
+    width: 40px;
+    height: 18px;
+}
+
+.cmb2-switch input + label:before {
+    right: 1px;
+    background-color: transparent;
+    border: 2px solid #6c7781;
+    border-radius: 60px;
+    transition: all 0.2s ease;
+}
+
+.cmb2-switch input + label:after {
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    margin-top: 4px;
+    background-color: #6c7781;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+}
+.cmb2-switch input:checked + label:before {
+    background-color: #11a0d2;
+    border-color: transparent;
+}
+
+.cmb2-switch input:checked + label:after {
+    margin-left: 26px;
+    background-color: #fff;
+}
+
+/* Multicheck */
+.cmb2-switch .cmb2-list li {
+    position: relative;
+}
+
+.cmb2-switch .cmb2-list li label {
+    display: inline-block;
+    margin-left: 53px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+/* Block */
+.cmb2-switch-block label .cmb2-metabox-description {
+    display: inline-block;
+    margin-left: 0;
+    margin-top: 28px;
+}
