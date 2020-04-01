@@ -19,8 +19,6 @@ You can use these automations for automating sales, marketing, administrative ta
 
 = Use automations to connect your plugins =
 
-Anyone can create automations with just a few clicks.
-
 Here are some automations samples to give you a quick idea of the possible combinations:
 
 When user purchases a **WooCommerce product**.
@@ -62,9 +60,9 @@ Tags let's you pass trigger information to actions.
 **Developer-friendly:**
 AutomatorWP is extremely flexible with plenty of hooks to add custom features and functionalities.
 
-= Built for novices =
+= Create automations easily =
 
-AutomatorWP includes a powerful editor that anyone can learn to use in no time!
+AutomatorWP includes an easy-to-use editor that you will quickly familiarize yourself with!
 
 [See it in action!](https://wordpress.org/plugins/automatorwp/#screenshots)
 
