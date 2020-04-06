@@ -98,6 +98,7 @@ function automatorwp_enqueue_admin_functions_script() {
         // Selector placeholders
         'selector_placeholder'      => __( 'Select an option', 'automatorwp' ),
         'post_selector_placeholder' => __( 'Select a post', 'automatorwp' ),
+        'term_selector_placeholder' => __( 'Select a term', 'automatorwp' ),
         'user_selector_placeholder' => __( 'Select a user', 'automatorwp' ),
         'object_selector_placeholder' => __( 'Select an item', 'automatorwp' ),
     ) );

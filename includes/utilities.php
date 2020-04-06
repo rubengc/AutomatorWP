@@ -115,6 +115,80 @@ function automatorwp_utilities_post_field( $args = array() ) {
 }
 
 /**
+ * Utility function to get the term option parameter
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_term_option( $args = array() ) {
+
+    $args = wp_parse_args( $args, array(
+        'name'              => __( 'Category:', 'automatorwp' ),
+        'option_default'    => '',
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => __( 'any category', 'automatorwp' ),
+        'taxonomy'          => 'category',
+        'default'           => 'any'
+    ) );
+
+    return array(
+        'from' => 'term',
+        'default' => $args['option_default'],
+        'fields' => array(
+            'term' => automatorwp_utilities_term_field( $args )
+        )
+    );
+
+}
+
+/**
+ * Utility function to get a term field parameters
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_term_field( $args = array() ) {
+
+    $args = wp_parse_args( $args, array(
+        'name'              => __( 'Category:', 'automatorwp' ),
+        'option_default'    => '',
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => __( 'any category', 'automatorwp' ),
+        'taxonomy'          => 'category',
+        'placeholder'       => __( 'Select a category', 'automatorwp' ),
+        'default'           => 'any'
+    ) );
+
+    return array(
+        'name' => $args['name'],
+        'type' => 'select',
+        'classes' => 'automatorwp-term-selector',
+        'option_none' => $args['option_none'],
+        'option_none_value' => $args['option_none_value'],
+        'option_none_label' => $args['option_none_label'],
+        'taxonomy' => $args['taxonomy'],
+        'attributes' => array(
+            'data-option-none' => $args['option_none'],
+            'data-option-none-value' => $args['option_none_value'],
+            'data-option-none-label' => $args['option_none_label'],
+            'data-placeholder' => $args['placeholder'],
+            'data-taxonomy' => $args['taxonomy'],
+        ),
+        'options_cb' => 'automatorwp_options_cb_terms',
+        'default' => $args['default']
+    );
+
+}
+
+/**
  * Utility function to get ajax selector option parameter
  *
  * @since 1.0.0
@@ -197,7 +271,11 @@ function automatorwp_utilities_times_tag( $only_args = false ) {
  *
  * @return array
  */
-function automatorwp_utilities_post_tags() {
+function automatorwp_utilities_post_tags( $post_label = '' ) {
+
+    if( empty( $post_label ) ) {
+        $post_label = __( 'Post', 'automatorwp' );
+    }
 
     /**
      * Filter to setup custom post tags
@@ -210,52 +288,62 @@ function automatorwp_utilities_post_tags() {
      */
     return apply_filters( 'automatorwp_utilities_post_tags', array(
         'post_id' => array(
-            'label'     => __( 'Post ID' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s ID', 'automatorwp' ), $post_label ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'post_title' => array(
-            'label'     => __( 'Post Title' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Title', 'automatorwp' ), $post_label ),
             'type'      => 'text',
-            'preview'   => __( 'The post Title', 'automatorwp' ),
+            'preview'   => __( 'The Title', 'automatorwp' ),
         ),
         'post_type'  => array(
-            'label' => __( 'Post Type' ),
-            'type'  => 'text',
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Type', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
             'preview'   => __( 'post', 'automatorwp' ),
         ),
         'post_author'  => array(
-            'label'     => __( 'Post Author ID' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Author ID', 'automatorwp' ), $post_label ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'post_author_email'  => array(
-            'label'     => __( 'Post Author Email' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Author Email', 'automatorwp' ), $post_label ),
             'type'      => 'email',
             'preview'   => 'contact@automatorwp.com',
         ),
         'post_content'  => array(
-            'label' => __( 'Post Content' ),
-            'type'  => 'text',
-            'preview'   => __( 'The post content', 'automatorwp' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Content', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => __( 'The content', 'automatorwp' ),
         ),
         'post_excerpt'  => array(
-            'label' => __( 'Post Excerpt' ),
-            'type'  => 'text',
-            'preview'   => __( 'The post excerpt', 'automatorwp' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Excerpt', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => __( 'The excerpt', 'automatorwp' ),
         ),
         'post_status'  => array(
-            'label' => __( 'Post Status' ),
-            'type'  => 'text',
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Status', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
             'preview'   => __( 'publish', 'automatorwp' ),
         ),
         'post_parent' => array(
-            'label'     => __( 'Post Parent ID' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Parent ID', 'automatorwp' ), $post_label ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'menu_order' => array(
-            'label'     => __( 'Post Menu Order' ),
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Menu Order', 'automatorwp' ), $post_label ),
             'type'      => 'integer',
             'preview'   => '1',
         ),
@@ -323,6 +411,42 @@ function automatorwp_posts_matches( $post_id, $required_post_id ) {
 }
 
 /**
+ * Check if term ID matches with the required term ID
+ *
+ * @since 1.0.0
+ *
+ * @param array|int $term_id          The term ID
+ * @param int       $required_term_id The required term ID
+ *
+ * @return bool
+ */
+function automatorwp_terms_matches( $term_id, $required_term_id ) {
+
+    $required_term_id = absint( $required_term_id );
+
+    // Only parse this check if required term ID is provided
+    if( $required_term_id !== 0 ) {
+
+        if( is_array( $term_id ) && ! in_array( $required_term_id, $term_id ) ) {
+
+            // If received an array of terms, bail if required term ID isn't in the array
+            return false;
+
+        } else if( absint( $term_id ) !== $required_term_id ) {
+
+            // If received a single term ID, bail if required term ID doesn't match
+            return false;
+
+        }
+
+
+    }
+
+    return true;
+
+}
+
+/**
  * Utility function to get the condition option parameter
  *
  * @since 1.0.0
@@ -365,4 +489,22 @@ function automatorwp_number_condition_matches( $to_match, $to_compare, $conditio
     }
 
     return $matches;
+}
+
+/**
+ * Retrieves post term ids for a taxonomy.
+ *
+ * @since  1.0.0
+ *
+ * @param  int    $post_id  Post ID.
+ * @param  string $taxonomy Taxonomy slug.
+ *
+ * @return array
+ */
+function automatorwp_get_term_ids( $post_id, $taxonomy ) {
+
+    $terms = get_the_terms( $post_id, $taxonomy );
+
+    return ( empty( $terms ) || is_wp_error( $terms ) ) ? array() : wp_list_pluck( $terms, 'term_id' );
+
 }

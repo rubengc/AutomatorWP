@@ -72,6 +72,52 @@ function automatorwp_post_selector( $this ) {
 }
 
 /**
+ * Helper function to initialize select2 term selector on fields
+ *
+ * @since 1.0.0
+ *
+ * @param {Object} $this
+ */
+function automatorwp_term_selector( $this ) {
+
+    // Prevent load select2 on widgets lists
+    if( $this.closest('#available-widgets').length ) {
+        return;
+    }
+
+    var select2_args = {
+        ajax: {
+            url: ajaxurl,
+            dataType: 'json',
+            delay: 250,
+            type: 'POST',
+            data: function( params ) {
+                return {
+                    q: params.term,
+                    page: params.page || 1,
+                    action: 'automatorwp_get_terms',
+                    nonce: automatorwp_admin_functions.nonce,
+                    taxonomy: $this.data('taxonomy'),
+                    option_none: $this.data('option-none'),
+                    option_none_value: $this.data('option-none-value'),
+                    option_none_label: $this.data('option-none-label'),
+                };
+            },
+            processResults: automatorwp_select2_terms_process_results
+        },
+        escapeMarkup: function ( markup ) { return markup; },
+        templateResult: automatorwp_select2_terms_template_result,
+        theme: 'default automatorwp-select2',
+        placeholder: ( $this.data('placeholder') ? $this.data('placeholder') : automatorwp_admin_functions.term_selector_placeholder ),
+        allowClear: true,
+        multiple: ( $this[0].hasAttribute('multiple') )
+    };
+
+    $this.automatorwp_select2( select2_args );
+
+}
+
+/**
  * Helper function to initialize select2 user selector on fields
  *
  * @since 1.0.0
@@ -255,6 +301,25 @@ function automatorwp_select2_post_types_template_result( item ) {
 }
 
 /**
+ * Custom formatting for terms on select2
+ *
+ * @since 1.0.0
+ *
+ * @param {Object} item
+ *
+ * @return {string}
+ */
+function automatorwp_select2_terms_template_result( item ) {
+
+    if( item.name !== undefined ) {
+        return item.name + ( ! isNaN( item.term_id ) ? '<span class="result-description align-right">ID: ' + item.term_id + '</span>': '' );
+    }
+
+    return item.text + ( ! isNaN( item.id ) ? '<span class="result-description align-right">ID: ' + item.id + '</span>': '' );
+
+}
+
+/**
  * Custom results processing for posts on select2
  *
  * @since 1.0.0
@@ -282,6 +347,47 @@ function automatorwp_select2_posts_process_results( response, params ) {
             id: item.ID,
             //text: item.post_title + ' (ID: ' + item.ID + ')',
             text: item.post_title,
+        }, item ) );
+
+    } );
+
+    return {
+        results: formatted_results,
+        pagination: {
+            more: ( response.data.more_results !== undefined ? response.data.more_results : false )
+        }
+    };
+
+}
+
+/**
+ * Custom results processing for terms on select2
+ *
+ * @since 1.0.0
+ *
+ * @param {Object} response
+ * @param {Object} params
+ *
+ * @return {string}
+ */
+function automatorwp_select2_terms_process_results( response, params ) {
+
+    if( response === null ) {
+        return { results: [] };
+    }
+
+    var formatted_results = [];
+
+    // Paginated responses will come with results and more_results keys
+    var results = ( response.data.results !== undefined ? response.data.results : response.data );
+
+    results.forEach( function( item ) {
+
+        // Extend select2 keys (id and text) with given keys (ID, post_title and optionally post_type, site_id and site_name)
+        formatted_results.push( jQuery.extend({
+            id: item.term_id,
+            //text: item.post_title + ' (ID: ' + item.ID + ')',
+            text: item.name,
         }, item ) );
 
     } );

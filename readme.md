@@ -31,6 +31,12 @@ and **email user** with instructions about how to access to the course.
 
 As you can see, the number of combinations and possibilities are unlimited!
 
+## Create automations easily ##
+
+AutomatorWP includes an easy-to-use editor that you will quickly familiarize yourself with! See it in action:
+
+![Powerful editor that anyone can learn to use in no time.](https://ps.w.org/automatorwp/assets/screenshot-1.gif "Powerful editor that anyone can learn to use in no time.")
+
 ## Features ##
 
 AutomatorWP is extremely powerful and infinitely extensible. Check out some of the built in features:
@@ -52,12 +58,6 @@ Tags let's you pass trigger information to actions.
 
 **Developer-friendly:**
 AutomatorWP is extremely flexible with plenty of hooks to add custom features and functionalities.
-
-## Create automations easily ##
-
-AutomatorWP includes an easy-to-use editor that you will quickly familiarize yourself with! See it in action:
-
-![Powerful editor that anyone can learn to use in no time.](https://ps.w.org/automatorwp/assets/screenshot-1.gif "Powerful editor that anyone can learn to use in no time.")
 
 ## Integrated with your favorites WordPress plugins ##
 
@@ -155,6 +155,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.0.2 ###
+
+* **New Features**
+* New trigger: User daily visits the site.
+* New trigger: User views a post of any/specific category.
+* New trigger: User views a post of any/specific tag.
+* New trigger: User comments on a post of any/specific category.
+* New trigger: User comments on a post of any/specific tag.
+* **Improvements**
+* Make post tags labels more flexible to allow pass the post type label.
+* Improvements on multiples translatable strings.
 
 ### 1.0.1 ###
 

@@ -1,18 +1,18 @@
 <?php
 /**
- * View Page
+ * Comment Post Category
  *
- * @package     AutomatorWP\Integrations\WordPress\Triggers\View_Page
+ * @package     AutomatorWP\Integrations\WordPress\Triggers\Comment_Post_Category
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_WordPress_View_Page extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_WordPress_Comment_Post_Category extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'wordpress';
-    public $trigger = 'wordpress_view_page';
+    public $trigger = 'wordpress_comment_post_category';
 
     /**
      * Register the trigger
@@ -23,26 +23,22 @@ class AutomatorWP_WordPress_View_Page extends AutomatorWP_Integration_Trigger {
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'User views a page', 'automatorwp' ),
-            'select_option'     => __( 'User views <strong>a page</strong>', 'automatorwp' ),
-            /* translators: %1$s: Post title. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User views %1$s %2$s time(s)', 'automatorwp' ), '{post}', '{times}' ),
-            /* translators: %1$s: Post title. */
-            'log_label'         => sprintf( __( 'User views %1$s', 'automatorwp' ), '{post}' ),
-            'action'            => 'template_redirect',
+            'label'             => __( 'User comments on a post of a category', 'automatorwp' ),
+            'select_option'     => __( 'User comments on a post of <strong>a category</strong>', 'automatorwp' ),
+            /* translators: %1$s: Term title. %2$s: Number of times. */
+            'edit_label'        => sprintf( __( 'User comments on a post of %1$s %2$s time(s)', 'automatorwp' ), '{term}', '{times}' ),
+            /* translators: %1$s: Term title. */
+            'log_label'         => sprintf( __( 'User comments on a post of %1$s', 'automatorwp' ), '{term}' ),
+            'action'            => 'comment_post',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 1,
+            'accepted_args'     => 3,
             'options'           => array(
-                'post' => automatorwp_utilities_post_option( array(
-                    'name' => __( 'Page:', 'automatorwp' ),
-                    'option_none_label' => __( 'any page', 'automatorwp' ),
-                    'post_type' => 'page'
-                ) ),
+                'term' => automatorwp_utilities_term_option(),
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
-                automatorwp_utilities_post_tags( __( 'Page', 'automatorwp' ) ),
+                automatorwp_utilities_post_tags(),
                 automatorwp_utilities_times_tag()
             )
         ) );
@@ -53,27 +49,38 @@ class AutomatorWP_WordPress_View_Page extends AutomatorWP_Integration_Trigger {
      * Trigger listener
      *
      * @since 1.0.0
+     *
+     * @param int        $comment_ID        The comment ID.
+     * @param int|string $comment_approved  1 if the comment is approved, 0 if not, 'spam' if spam.
+     * @param array      $comment           Comment data.
      */
-    public function listener() {
+    public function listener( $comment_ID, $comment_approved, $comment ) {
 
-        global $post;
-
-        // Bail if in admin area
-        if( is_admin() ) {
+        // Bail if comments is not approved
+        if( $comment_approved !== 1 ) {
             return;
         }
+
+        $post = get_post( $comment[ 'comment_post_ID' ] );
 
         // Bail if not post instanced
         if( ! $post instanceof WP_Post ) {
             return;
         }
 
-        // Bail if post type is not a page
-        if( $post->post_type !== 'page' ) {
+        // Bail if post type is not a post
+        if( $post->post_type !== 'post' ) {
             return;
         }
 
-        $user_id = get_current_user_id();
+        $terms_ids = automatorwp_get_term_ids( $post->ID, 'category' );
+
+        // Bail if post isn't assigned to any category
+        if( empty( $terms_ids ) ) {
+            return;
+        }
+
+        $user_id = (int) $comment['user_id'];
 
         automatorwp_trigger_event( array(
             'trigger' => $this->trigger,
@@ -115,4 +122,4 @@ class AutomatorWP_WordPress_View_Page extends AutomatorWP_Integration_Trigger {
 
 }
 
-new AutomatorWP_WordPress_View_Page();
+new AutomatorWP_WordPress_Comment_Post_Category();

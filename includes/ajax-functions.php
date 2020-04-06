@@ -393,7 +393,7 @@ function automatorwp_ajax_get_posts() {
     $where = '1=1';
 
     // Post type conditional
-    $post_type = ( isset( $_REQUEST['post_type'] ) && ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] :  array( 'post', 'page' ) );
+    $post_type = ( isset( $_REQUEST['post_type'] ) && ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : array( 'post', 'page' ) );
 
     if ( is_array( $post_type ) ) {
 
@@ -598,6 +598,101 @@ function automatorwp_ajax_get_posts_results_option_none( $results ) {
     return $results;
 }
 add_filter( 'automatorwp_ajax_get_posts_results', 'automatorwp_ajax_get_posts_results_option_none' );
+
+/**
+ * AJAX Helper for selecting terms
+ *
+ * @since 1.0.0
+ */
+function automatorwp_ajax_get_terms() {
+    // Security check, forces to die if not security passed
+    check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Pull back the search string
+    $search = isset( $_REQUEST['q'] ) ? sanitize_text_field( $_REQUEST['q'] ) : '';
+
+    // Taxonomy conditional
+    $taxonomy = ( isset( $_REQUEST['taxonomy'] ) && ! empty( $_REQUEST['taxonomy'] ) ? sanitize_text_field( $_REQUEST['taxonomy'] ) : 'category' );
+
+    // Pagination args
+    $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
+    $limit = 20;
+    $offset = $limit * ( $page - 1 );
+
+    $term_query = new WP_Term_Query( array(
+        'search'                => $search,
+        'taxonomy'              => $taxonomy,
+        'hide_empty'            => false,
+        'number'                => $limit,
+        'offset'                => $offset,
+    ) );
+
+    $results = $term_query->get_terms();
+
+    $count_term_query = new WP_Term_Query( array(
+        'fields'                => 'count',
+        'taxonomy'              => $taxonomy,
+        'hide_empty'            => false,
+    ) );
+
+    $count = $count_term_query->get_terms();
+
+    /**
+     * Ajax posts results (used on almost every post selector)
+     * Note: Use $_REQUEST for all given parameters
+     *
+     * @since  1.0.0
+     *
+     * @param array $results
+     *
+     * @return array
+     */
+    $results = apply_filters( 'automatorwp_ajax_get_terms_results', $results );
+
+    $response = array(
+        'results' => $results,
+        'more_results' => $count > $limit && $count > $offset,
+    );
+
+    // Return our results
+    wp_send_json_success( $response );
+
+}
+add_action( 'wp_ajax_automatorwp_get_terms', 'automatorwp_ajax_get_terms' );
+
+/**
+ * Prepend the option none to the terms results
+ *
+ * @since 1.0.0
+ *
+ * @param array $results
+ *
+ * @return array
+ */
+function automatorwp_ajax_get_terms_results_option_none( $results ) {
+
+    global $wpdb;
+
+    // Pull back the search string
+    $search = isset( $_REQUEST['q'] ) ? $wpdb->esc_like( $_REQUEST['q'] ) : '';
+    $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
+    $option_none = isset( $_REQUEST['option_none'] ) ? absint( $_REQUEST['option_none'] ) : 0;
+    $option_none_value = isset( $_REQUEST['option_none_value'] ) ? sanitize_text_field( $_REQUEST['option_none_value'] ) : '';
+    $option_none_label = isset( $_REQUEST['option_none_label'] ) ? sanitize_text_field( $_REQUEST['option_none_label'] ) : '';
+
+    if( $option_none && ! empty( $option_none_value ) && ! empty( $option_none_label ) ) {
+
+        if( ( $page === 1 && empty( $search ) )             // Prepend option none if is first page
+            || ( strpos( $option_none_label , $search ) )   // Prepend if search matches option none label
+        ) {
+            array_unshift( $results, array( 'term_id' => $option_none_value, 'name' => $option_none_label ) );
+        }
+
+    }
+
+    return $results;
+}
+add_filter( 'automatorwp_ajax_get_terms_results', 'automatorwp_ajax_get_terms_results_option_none' );
 
 /**
  * AJAX Helper for selecting users

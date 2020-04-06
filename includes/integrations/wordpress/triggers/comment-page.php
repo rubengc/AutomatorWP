@@ -28,7 +28,7 @@ class AutomatorWP_WordPress_Comment_Page extends AutomatorWP_Integration_Trigger
             /* translators: %1$s: Post title. %2$s: Number of times. */
             'edit_label'        => sprintf( __( 'User comments on %1$s %2$s time(s)', 'automatorwp' ), '{post}', '{times}' ),
             /* translators: %1$s: Post title. */
-            'log_label'         => sprintf( __( 'User comments %1$s', 'automatorwp' ), '{post}' ),
+            'log_label'         => sprintf( __( 'User comments on %1$s', 'automatorwp' ), '{post}' ),
             'action'            => 'comment_post',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
@@ -42,7 +42,7 @@ class AutomatorWP_WordPress_Comment_Page extends AutomatorWP_Integration_Trigger
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
-                automatorwp_utilities_post_tags(),
+                automatorwp_utilities_post_tags( __( 'Page', 'automatorwp' ) ),
                 automatorwp_utilities_times_tag()
             )
         ) );

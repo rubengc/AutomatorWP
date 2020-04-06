@@ -6,6 +6,9 @@
     // Post Selector Control
     $('.automatorwp-post-selector select').each(function() { automatorwp_post_selector( $(this) ); });
 
+    // Term Selector Control
+    $('.automatorwp-term-selector select').each(function() { automatorwp_term_selector( $(this) ); });
+
     // User Selector Control
     $('.automatorwp-user-selector select').each(function() { automatorwp_user_selector( $(this) ); });
 
@@ -730,6 +733,9 @@ function automatorwp_initialize_form_fields( form ) {
 
     // Post Selector Control
     form.find('.automatorwp-post-selector select').each(function() { automatorwp_post_selector( $(this) ); });
+
+    // Term Selector Control
+    form.find('.automatorwp-term-selector select').each(function() { automatorwp_term_selector( $(this) ); });
 
     // User Selector Control
     form.find('.automatorwp-user-selector select').each(function() { automatorwp_user_selector( $(this) ); });

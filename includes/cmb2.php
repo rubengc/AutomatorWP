@@ -58,6 +58,48 @@ function automatorwp_options_cb_posts( $field ) {
 }
 
 /**
+ * Options callback for select2 fields assigned to terms
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass $field
+ *
+ * @return array
+ */
+function automatorwp_options_cb_terms( $field ) {
+
+    // Setup vars
+    $value = $field->escaped_value;
+    $taxonomy = $field->args['taxonomy'];
+    $none_value = 'any';
+    $none_label = __( 'any category', 'automatorwp' );
+    $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
+
+    if( ! empty( $value ) ) {
+        if( ! is_array( $value ) ) {
+            $value = array( $value );
+        }
+
+        foreach( $value as $term_id ) {
+
+            // Skip option none
+            if( $term_id === $none_value ) {
+                continue;
+            }
+
+            $term = get_term( $term_id, $taxonomy );
+
+            if( $term ) {
+                $options[$term_id] = $term->name;
+            }
+        }
+    }
+
+    return $options;
+
+}
+
+/**
  * Options callback for select2 fields assigned to users
  *
  * @since 1.0.0
