@@ -156,6 +156,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.0.3 ###
+
+* **Improvements**
+* Ensure to enqueue admin scripts only on the plugin screens to avoid any conflict.
+* Show trigger order if sequential is enabled for new added items.
+
 ### 1.0.2 ###
 
 * **New Features**

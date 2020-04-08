@@ -245,6 +245,11 @@
                     // Append the new item
                     new_item.appendTo( item.closest('.automatorwp-automation-items') );
 
+                    // If sequential enabled, show the item position
+                    if( item_type === 'trigger' && $('#sequential').prop('checked') ) {
+                        item.closest('.automatorwp-automation-items').find('.automatorwp-automation-item-position').show();
+                    }
+
                     // Add tags to all tags selectors
                     if( item_type === 'trigger' && response.data.tags_html.length ) {
                         $( response.data.tags_html ).appendTo('.automatorwp-automation-tag-selector');

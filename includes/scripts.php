@@ -40,11 +40,44 @@ add_action( 'admin_init', 'automatorwp_admin_register_scripts' );
  * Enqueue admin scripts
  *
  * @since       1.0.0
+ *
+ * @param string $hook
+ *
  * @return      void
  */
 function automatorwp_admin_enqueue_scripts( $hook ) {
 
-    global $post_type;
+    $allow_enqueue = true;
+
+    $allowed_hooks = array(
+        'automatorwp_page_automatorwp_automations', // Automations list
+        'admin_page_edit_automatorwp_automations',  // Automation edit
+        'automatorwp_page_automatorwp_logs',        // Logs list
+        'admin_page_edit_automatorwp_logs',         // Log edit
+        'automatorwp_page_automatorwp_add_ons',     // Add-ons page
+        'automatorwp_page_automatorwp_licenses',    // Licenses page
+    );
+
+    // Prevent to enqueue scripts outside our pages
+    if( ! in_array( $hook, $allowed_hooks ) ) {
+        $allow_enqueue = false;
+    }
+
+    /**
+     * Filter to enqueue admin scripts
+     *
+     * @since 1.0.0
+     *
+     * @param bool      $allow_enqueue
+     * @param string    $hook
+     *
+     * @return bool
+     */
+    $allow_enqueue = apply_filters( 'automatorwp_allow_enqueue_admin_scripts', $allow_enqueue, $hook );
+
+    if( ! $allow_enqueue ) {
+        return;
+    }
 
     // Stylesheets
     wp_enqueue_style( 'automatorwp-admin-css' );
@@ -71,7 +104,7 @@ add_action( 'admin_enqueue_scripts', 'automatorwp_admin_enqueue_scripts' );
 /**
  * Enqueue the admin functions script with all required components
  *
- * @since       1.7.4.1
+ * @since       1.0.0
  * @return      void
  */
 function automatorwp_enqueue_admin_functions_script() {
@@ -93,14 +126,14 @@ function automatorwp_enqueue_admin_functions_script() {
 
     // Localize admin functions script
     wp_localize_script( 'automatorwp-admin-functions-js', 'automatorwp_admin_functions', array(
-        'nonce'                     => automatorwp_get_admin_nonce(),
-        'post_type_labels'          => $post_type_labels,
+        'nonce'                         => automatorwp_get_admin_nonce(),
+        'post_type_labels'              => $post_type_labels,
         // Selector placeholders
-        'selector_placeholder'      => __( 'Select an option', 'automatorwp' ),
-        'post_selector_placeholder' => __( 'Select a post', 'automatorwp' ),
-        'term_selector_placeholder' => __( 'Select a term', 'automatorwp' ),
-        'user_selector_placeholder' => __( 'Select a user', 'automatorwp' ),
-        'object_selector_placeholder' => __( 'Select an item', 'automatorwp' ),
+        'selector_placeholder'          => __( 'Select an option', 'automatorwp' ),
+        'post_selector_placeholder'     => __( 'Select a post', 'automatorwp' ),
+        'term_selector_placeholder'     => __( 'Select a term', 'automatorwp' ),
+        'user_selector_placeholder'     => __( 'Select a user', 'automatorwp' ),
+        'object_selector_placeholder'   => __( 'Select an item', 'automatorwp' ),
     ) );
 
     wp_enqueue_script( 'automatorwp-admin-functions-js' );
@@ -110,7 +143,7 @@ function automatorwp_enqueue_admin_functions_script() {
 /**
  * Setup a global nonce for all frontend scripts
  *
- * @since       1.7.9
+ * @since       1.0.0
  *
  * @return      string
  */
@@ -126,7 +159,7 @@ function automatorwp_get_nonce() {
 /**
  * Setup a global nonce for all admin scripts
  *
- * @since       1.7.9
+ * @since       1.0.0
  *
  * @return      string
  */

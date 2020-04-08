@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-04-06 11:53+0200\n"
+"POT-Creation-Date: 2020-04-08 09:47+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: includes/automation-ui.php:346 includes/scripts.php:61
+#: includes/automation-ui.php:346 includes/scripts.php:94
 msgid "Save"
 msgstr ""
 
@@ -974,27 +974,27 @@ msgstr ""
 msgid "User daily visits the site %1$s time(s)"
 msgstr ""
 
-#: includes/scripts.php:62
+#: includes/scripts.php:95
 msgid "Saving"
 msgstr ""
 
-#: includes/scripts.php:99
+#: includes/scripts.php:132
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:100 includes/utilities.php:89
+#: includes/scripts.php:133 includes/utilities.php:89
 msgid "Select a post"
 msgstr ""
 
-#: includes/scripts.php:101
+#: includes/scripts.php:134
 msgid "Select a term"
 msgstr ""
 
-#: includes/scripts.php:102
+#: includes/scripts.php:135
 msgid "Select a user"
 msgstr ""
 
-#: includes/scripts.php:103
+#: includes/scripts.php:136
 msgid "Select an item"
 msgstr ""
 
