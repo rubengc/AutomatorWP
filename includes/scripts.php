@@ -47,6 +47,9 @@ add_action( 'admin_init', 'automatorwp_admin_register_scripts' );
  */
 function automatorwp_admin_enqueue_scripts( $hook ) {
 
+    // Stylesheets
+    wp_enqueue_style( 'automatorwp-admin-css' );
+
     $allow_enqueue = true;
 
     $allowed_hooks = array(
@@ -78,9 +81,6 @@ function automatorwp_admin_enqueue_scripts( $hook ) {
     if( ! $allow_enqueue ) {
         return;
     }
-
-    // Stylesheets
-    wp_enqueue_style( 'automatorwp-admin-css' );
 
     automatorwp_enqueue_admin_functions_script();
 

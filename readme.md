@@ -156,6 +156,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.0.5 ###
+
+* **Improvements**
+* Keep license key hidden included if license key is not valid or gets expired.
+
+### 1.0.4 ###
+
+* **Improvements**
+* Ensure to enqueue admin styles to make AutomatorWP icon visible.
+
 ### 1.0.3 ###
 
 * **Improvements**

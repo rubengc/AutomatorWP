@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, trigger, action, hook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -153,6 +153,16 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.0.5 =
+
+* **Improvements**
+* Keep license key hidden included if license key is not valid or gets expired.
+
+= 1.0.4 =
+
+* **Improvements**
+* Ensure to enqueue admin styles to make AutomatorWP icon visible.
 
 = 1.0.3 =
 
