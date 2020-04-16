@@ -17,6 +17,10 @@ You can create "automations" linked to your WordPress activities and when any of
 
 You can use these automations for automating sales, marketing, administrative tasks, learning and any other kind of processes you want letting you save time and get focused on your most important work.
 
+Here is a video that lets you see how AutomatorWP works in less than 2 minutes!
+
+https://www.youtube.com/watch?v=rtsIFLGECYc&t=1s
+
 = Use automations to connect your plugins =
 
 Here are some automations samples to give you a quick idea of the possible combinations:
