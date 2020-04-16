@@ -156,6 +156,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.0.6 ###
+
+* **Bug Fixes**
+* Fixed typo on license fields.
+
 ### 1.0.5 ###
 
 * **Improvements**
