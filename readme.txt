@@ -72,17 +72,26 @@ AutomatorWP is extremely flexible with plenty of hooks to add custom features an
 
 = Integrated with your favorites WordPress plugins =
 
-Here are a few add-ons from our growing catalog we are extending day by day:
+WordPress.org is home to some amazing integrations for AutomatorWP, including:
 
-* [WooCommerce](https://automatorwp.com/add-ons/woocommerce/)
-* [LearnDash](https://automatorwp.com/add-ons/learndash/)
+* [WooCommerce](https://wordpress.org/plugins/automatorwp-woocommerce-integration/)
+* [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
+* [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
+* [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
+* [BuddyPress](https://wordpress.org/plugins/automatorwp-buddypress-integration/)
+* [GamiPress](https://wordpress.org/plugins/automatorwp-gamipress-integration/)
+* [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
+
+[View all plugins on wordpress.org](https://wordpress.org/plugins/tags/automatorwp/)
+
+If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium integrations, the most popular of which include:
+
+* [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
 * [H5P](https://automatorwp.com/add-ons/h5p/)
-* [LifterLMS](https://automatorwp.com/add-ons/lifterlms/)
-* [BuddyPress](https://automatorwp.com/add-ons/buddypress/)
+* [bbPress](https://automatorwp.com/add-ons/bbpress/)
 * [MemberPress](https://automatorwp.com/add-ons/memberpress/)
 * [WP Fusion](https://automatorwp.com/add-ons/wp-fusion/)
 * [Gravity Forms](https://automatorwp.com/add-ons/gravity-forms/)
-* [GamiPress](https://automatorwp.com/add-ons/gamipress/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 
 [View all add-ons](https://automatorwp.com/add-ons/)
