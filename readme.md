@@ -169,6 +169,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.0.7 ###
+
+* **Improvements**
+* Added the ability to clear license fields.
+* Removed the "Add new log" button.
+
 ### 1.0.6 ###
 
 * **Bug Fixes**

@@ -180,6 +180,7 @@ function automatorwp_register_custom_tables() {
                 'menu_title' => __( 'Logs', 'automatorwp' ),
                 'parent_slug' => 'automatorwp',
             ),
+            'add' => false,
         ),
         'schema' => array(
             'id' => array(

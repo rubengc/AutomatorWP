@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, trigger, action, hook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -78,6 +78,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
 * [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
 * [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
+* [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
 * [BuddyPress](https://wordpress.org/plugins/automatorwp-buddypress-integration/)
 * [GamiPress](https://wordpress.org/plugins/automatorwp-gamipress-integration/)
 * [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
@@ -87,11 +88,12 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium integrations, the most popular of which include:
 
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
-* [H5P](https://automatorwp.com/add-ons/h5p/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
 * [MemberPress](https://automatorwp.com/add-ons/memberpress/)
 * [WP Fusion](https://automatorwp.com/add-ons/wp-fusion/)
 * [Gravity Forms](https://automatorwp.com/add-ons/gravity-forms/)
+* [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
+* [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 
 [View all add-ons](https://automatorwp.com/add-ons/)
@@ -166,6 +168,12 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.0.7 =
+
+* **Improvements**
+* Added the ability to clear license fields.
+* Removed the "Add new log" button.
 
 = 1.0.6 =
 
