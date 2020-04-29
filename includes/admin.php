@@ -52,12 +52,15 @@ add_action( 'admin_menu', 'automatorwp_admin_menu' );
  *
  * @since 1.0.0
  */
-function automatorwp_admin_menu_fix() {
+function automatorwp_admin_menu_fix( $parent_file ) {
+
     global $submenu;
 
     if( isset( $submenu['automatorwp'] ) && isset( $submenu['automatorwp'][0] ) ) {
         unset( $submenu['automatorwp'][0] );
     }
+
+    return $parent_file;
 
 }
 add_filter( 'parent_file', 'automatorwp_admin_menu_fix' );

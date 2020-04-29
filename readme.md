@@ -169,6 +169,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.0.8 ###
+
+* **Bug Fixes**
+* Fixed issue with admin menu parent file override.
+
 ### 1.0.7 ###
 
 * **Improvements**
