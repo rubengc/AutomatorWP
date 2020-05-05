@@ -89,6 +89,39 @@ If you’re looking for something endorsed and maintained by the developers who 
 
 [View all add-ons](https://automatorwp.com/add-ons/)
 
+## Included triggers and actions ##
+
+AutomatorWP comes with a set of triggers and actions, including:
+
+**Triggers**
+
+* User registers to the site.
+* User logs in to the site.
+* User daily visits the site.
+* User views any/specific post.
+* User views a post of any/specific category.
+* User views a post of any/specific tag.
+* User views any/specific page.
+* User views a post of any/specific type.
+* User publishes a post.
+* User publishes a page.
+* User publishes a post with any/specific category.
+* User publishes a post with any/specific tag.
+* User comments on any/specific post.
+* User comments on a post of any/specific category.
+* User comments on a post of any/specific tag.
+* User comments on any/specific page.
+* User completes any/specific automation.
+
+**Actions**
+
+* Send email to user.
+* Add, change or remove role to user.
+* Create a user.
+* Set, insert, increment or decrement user meta.
+* Create a post.
+* Set, insert, increment or decrement post meta.
+
 ## Installation ##
 
 ### From WordPress backend ###
@@ -168,6 +201,21 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.0.9 ###
+
+* **New Features**
+* New trigger: User publishes a post.
+* New trigger: User publishes a post in any/specific category.
+* New trigger: User publishes a post in any/specific tag.
+* New trigger: User publishes a page.
+* New action: Create a post.
+* New action: Create a user.
+* **Improvements**
+* Added the integration icon on the automation list on triggers and actions columns.
+* Added the integration icon on logs.
+* **Developer Notes**
+* Improved automatorwp_terms_matches() function.
 
 ### 1.0.8 ###
 

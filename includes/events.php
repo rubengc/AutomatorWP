@@ -680,13 +680,28 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
          */
         $log_meta = apply_filters( 'automatorwp_user_completed_action_log_meta', $log_meta, $action, $user_id, $action_options, $automation );
 
+        /**
+         * Filter to assign a custom post ID to this action
+         *
+         * @since 1.0.0
+         *
+         * @param int       $post_id            The post ID, by default 0
+         * @param stdClass  $action             The action object
+         * @param int       $user_id            The user ID
+         * @param array     $action_options     The action's stored options (with tags already passed)
+         * @param stdClass  $automation         The action's automation object
+         *
+         * @return int
+         */
+        $post_id = apply_filters( 'automatorwp_user_completed_action_post_id', 0, $action, $user_id, $action_options, $automation );
+
         // Insert a new log entry to register the trigger completion
         automatorwp_insert_log( array(
             'title'     => automatorwp_parse_automation_item_log_label( $action, 'action', 'view' ),
             'type'      => 'action',
             'object_id' => $action->id,
             'user_id'   => $user_id,
-            'post_id'   => 0,
+            'post_id'   => $post_id,
             'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $completed_triggers ) ),
         ), $log_meta );
 

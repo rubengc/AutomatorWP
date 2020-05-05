@@ -427,10 +427,15 @@ function automatorwp_terms_matches( $term_id, $required_term_id ) {
     // Only parse this check if required term ID is provided
     if( $required_term_id !== 0 ) {
 
-        if( is_array( $term_id ) && ! in_array( $required_term_id, $term_id ) ) {
+        if( is_array( $term_id ) ) {
 
-            // If received an array of terms, bail if required term ID isn't in the array
-            return false;
+            // Ensure terms IDs as integer
+            $term_id = array_map( 'absint', $term_id );
+
+            if( ! in_array( $required_term_id, $term_id ) ) {
+                // If received an array of terms, bail if required term ID isn't in the array
+                return false;
+            }
 
         } else if( absint( $term_id ) !== $required_term_id ) {
 
@@ -489,6 +494,7 @@ function automatorwp_number_condition_matches( $to_match, $to_compare, $conditio
     }
 
     return $matches;
+
 }
 
 /**
@@ -506,5 +512,37 @@ function automatorwp_get_term_ids( $post_id, $taxonomy ) {
     $terms = get_the_terms( $post_id, $taxonomy );
 
     return ( empty( $terms ) || is_wp_error( $terms ) ) ? array() : wp_list_pluck( $terms, 'term_id' );
+
+}
+
+/**
+ * Creates a toggleable list
+ *
+ * @since  1.0.0
+ *
+ * @param array $options
+ *
+ * @return string
+ */
+function automatorwp_toggleable_options_list( $options ) {
+
+    // Bail if no options given
+    if( ! is_array( $options ) ) {
+        return '';
+    }
+
+    $show_text = __( 'Show options', 'automatorwp' );
+    $hide_text = __( 'Hide options', 'automatorwp' );
+
+    $html = '<a href="#" class="automatorwp-toggleable-options-list-toggle" data-show-text="' . $show_text . '" data-hide-text="' . $hide_text . '">' . $show_text . '</a>'
+        . '<ul class="automatorwp-toggleable-options-list" style="display: none;">';
+
+    foreach( $options as $option ) {
+        $html .= "<li>{$option}</li>";
+    }
+
+    $html .= '</ul>';
+
+    return $html;
 
 }

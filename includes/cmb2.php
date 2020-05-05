@@ -189,8 +189,9 @@ function automatorwp_options_cb_roles( $field ) {
     foreach ( $editable_roles as $role => $details ) {
 
         // Skip excluded roles
-        if( in_array( $role, $field->args['excluded_roles'] ) )
+        if( in_array( $role, $field->args['excluded_roles'] ) ) {
             continue;
+        }
 
         $options[$role] = translate_user_role( $details['name'] );
 

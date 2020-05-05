@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, trigger, action, hook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -11,7 +11,7 @@ Connect your WordPress plugins together and create automated workflows.
 
 == Description ==
 
-[AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source plugin that let's you connect your WordPress plugins together and create automated workflows.
+[AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source plugin that lets you connect your WordPress plugins together and create automated workflows.
 
 You can create "automations" linked to your WordPress activities and when any of them happen, you can make other things happen accordingly.
 
@@ -65,7 +65,7 @@ Force users to complete triggers in order to complete the automation.
 Limit automation's maximum completion times per user and globally.
 
 **Tags:**
-Tags let's you pass trigger information to actions.
+Tags lets you pass trigger information to actions.
 
 **Developer-friendly:**
 AutomatorWP is extremely flexible with plenty of hooks to add custom features and functionalities.
@@ -98,6 +98,39 @@ If you’re looking for something endorsed and maintained by the developers who 
 
 [View all add-ons](https://automatorwp.com/add-ons/)
 
+= Included triggers and actions =
+
+AutomatorWP comes with a set of triggers and actions, including:
+
+**Triggers**
+
+* User registers to the site.
+* User logs in to the site.
+* User daily visits the site.
+* User views any/specific post.
+* User views a post of any/specific category.
+* User views a post of any/specific tag.
+* User views any/specific page.
+* User views a post of any/specific type.
+* User publishes a post.
+* User publishes a page.
+* User publishes a post with any/specific category.
+* User publishes a post with any/specific tag.
+* User comments on any/specific post.
+* User comments on a post of any/specific category.
+* User comments on a post of any/specific tag.
+* User comments on any/specific page.
+* User completes any/specific automation.
+
+**Actions**
+
+* Send email to user.
+* Add, change or remove role to user.
+* Create a user.
+* Set, insert, increment or decrement user meta.
+* Create a post.
+* Set, insert, increment or decrement post meta.
+
 == Installation ==
 
 = From WordPress backend =
@@ -118,7 +151,7 @@ If you’re looking for something endorsed and maintained by the developers who 
 1. Powerful editor that anyone can learn to use in no time.
 2. Triggers and actions to connect your favorite WordPress plugins.
 3. Every trigger and action option is completely configurable.
-4. Tags let's you pass trigger information to actions.
+4. Tags lets you pass trigger information to actions.
 5. Flexible log system that will keep you informed about who is completing automations.
 
 == Frequently Asked Questions ==
@@ -168,6 +201,21 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.0.9 =
+
+* **New Features**
+* New trigger: User publishes a post.
+* New trigger: User publishes a post in any/specific category.
+* New trigger: User publishes a post in any/specific tag.
+* New trigger: User publishes a page.
+* New action: Create a post.
+* New action: Create a user.
+* **Improvements**
+* Added the integration icon on the automation list on triggers and actions columns.
+* Added the integration icon on logs.
+* **Developer Notes**
+* Improved automatorwp_terms_matches() function.
 
 = 1.0.8 =
 

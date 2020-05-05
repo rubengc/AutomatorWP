@@ -51,6 +51,10 @@ add_action( 'admin_menu', 'automatorwp_admin_menu' );
  * By default, WordPress assigns the first submenu item the same slug as parent, in this case, there isn't such page yet
  *
  * @since 1.0.0
+ *
+ * @param string $parent_file The parent file.
+ *
+ * @return string
  */
 function automatorwp_admin_menu_fix( $parent_file ) {
 

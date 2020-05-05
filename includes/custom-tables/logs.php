@@ -202,6 +202,36 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
 
     switch( $column_name ) {
         case 'title':
+
+            if( in_array( $log->type, array( 'trigger', 'action' ) ) ) {
+
+                // Get the trigger or action
+                ct_setup_table( "automatorwp_{$log->type}s" );
+                $object = ct_get_object( $log->object_id );
+                ct_reset_setup_table();
+
+                $type_args = automatorwp_automation_item_type_args( $object, $log->type );
+
+                if( $type_args ) {
+                    $integration = automatorwp_get_integration( $type_args['integration'] );
+
+                    if( $integration ) : ?>
+
+                        <div class="automatorwp-integration-icon">
+                            <img src="<?php echo esc_attr( $integration['icon'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
+                        </div>
+
+                    <?php endif;
+                }
+
+            } else { ?>
+
+                <div class="automatorwp-integration-icon">
+                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg' ); ?>">
+                </div>
+
+            <?php }
+
             $title = ! empty( $log->title ) ? $log->title : __( '(No title)', 'automatorwp' ); ?>
             <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_logs', $log->id ); ?>"><?php echo $title; ?></a></strong>
             <?php

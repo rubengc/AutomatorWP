@@ -743,6 +743,18 @@
     background: #a00;
 }
 
+.wp-list-table.automatorwp_automations .column-triggers .automatorwp-integration-icon,
+.wp-list-table.automatorwp_automations .column-actions .automatorwp-integration-icon {
+    display: inline-block;
+    width: 22px;
+    max-width: 22px;
+    max-height: 22px;
+    height: 22px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+}
+
 /* -------------------------------------------
     Logs Edit Screen
    ------------------------------------------- */
@@ -788,6 +800,17 @@
 #automatorwp_log_data .cmb-type-title .cmb2-metabox-description {
     padding: 0;
     margin: 0;
+}
+
+/* Logs list screen */
+.wp-list-table.automatorwp_logs .column-title .automatorwp-integration-icon {
+    float: left;
+    margin-right: 6px;
+    width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    height: 40px;
+    margin-top: 1px;
 }
 
 /* -------------------------------------------
@@ -907,6 +930,121 @@
     .automatorwp-has-tooltip .automatorwp-tooltip {
         display: none;
     }
+}
+
+/* -------------------------------------------
+    Options List
+   ------------------------------------------- */
+.cmb2-metabox-description + .automatorwp-toggleable-options-list {
+    color: #757575;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.cmb2-metabox-description + .automatorwp-toggleable-options-list code {
+    color: #444;
+    font-weight: 600;
+}
+
+/* -------------------------------------------
+    Fields Table
+   ------------------------------------------- */
+.automatorwp-fields-table .inside {
+    overflow: inherit !important;
+}
+
+.automatorwp-fields-table .cmb-row {
+    border-bottom: 0;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping > .cmb-remove-group-row,
+.automatorwp-fields-table .cmb-repeatable-grouping > .cmbhandle,
+.automatorwp-fields-table .cmb-repeatable-grouping:not(:nth-child(2)) > .cmb-group-title {
+    display: none;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-group-title {
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    margin: 0 !important;
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping {
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 4px 4px 0 0;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping:not(:nth-child(2)) {
+    border-top: 0 !important;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list {
+    display: flex;
+    background: #f5f5f5;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-row:not(.cmb-remove-field-row) {
+    width: 50%;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-row:not(:first-child) {
+    border-left: 1px solid #ccd0d4 !important;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-row {
+    padding: 10px 10px;
+    margin: 0;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping:not(:nth-child(2)) .cmb-field-list .cmb-th {
+    display: none;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping:nth-child(2) .cmb-field-list .cmb-th {
+    margin-top: -52px;
+    margin-left: -11px;
+    padding: 8px 0 8px 12px;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping:nth-child(2) .cmb-field-list .cmb-row:not(:first-child) .cmb-th {
+    border-left: 1px solid #ccd0d4 !important;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-td {
+    width: 100%;
+}
+
+/* Fields table remove button */
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-row.cmb-remove-field-row .cmb-remove-group-row-button {
+    color: #72777c;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+}
+
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-row.cmb-remove-field-row .cmb-remove-group-row-button:hover {
+    color: #444;
+}
+
+/* Fields table add button */
+.automatorwp-fields-table .cmb-repeatable-group > .cmb-row:last-child {
+    border: 1px solid #ddd !important;
+    border-top: 0 !important;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border-radius: 0 0 4px 4px;
+}
+
+.automatorwp-fields-table .cmb-repeatable-group > .cmb-row:last-child .cmb-add-row {
+    margin: 0;
+}
+
+.automatorwp-fields-table .cmb-repeatable-group > .cmb-row:last-child .cmb-add-group-row {
+    font-size: 12px;
+    min-height: 20px;
 }
 
 /* -------------------------------------------

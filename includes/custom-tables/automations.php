@@ -203,6 +203,21 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
             $triggers = automatorwp_get_automation_triggers( $automation->id );
 
             foreach( $triggers as $trigger ) {
+
+                $type_args = automatorwp_get_trigger( $trigger->type );
+
+                if( $type_args ) {
+                    $integration = automatorwp_get_integration( $type_args['integration'] );
+
+                    if( $integration ) : ?>
+
+                        <div class="automatorwp-integration-icon">
+                            <img src="<?php echo esc_attr( $integration['icon'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
+                        </div>
+
+                    <?php endif;
+                }
+
                 echo $trigger->title . '<br>';
             }
 
@@ -211,6 +226,21 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
             $actions = automatorwp_get_automation_actions( $automation->id );
 
             foreach( $actions as $action ) {
+
+                $type_args = automatorwp_get_action( $action->type );
+
+                if( $type_args ) {
+                    $integration = automatorwp_get_integration( $type_args['integration'] );
+
+                    if( $integration ) : ?>
+
+                        <div class="automatorwp-integration-icon">
+                            <img src="<?php echo esc_attr( $integration['icon'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
+                        </div>
+
+                    <?php endif;
+                }
+
                 echo $action->title . '<br>';
             }
 

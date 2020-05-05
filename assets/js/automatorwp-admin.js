@@ -53,6 +53,26 @@
         }
     });
 
+    // Toggleable options list
+    $('body').on('click', '.automatorwp-toggleable-options-list-toggle', function(e) {
+        e.preventDefault();
+
+        var $this = $(this);
+        var show_text = $this.data( 'show-text' );
+        var hide_text = $this.data( 'hide-text' );
+        var list = $this.closest('.cmb-td').find('.automatorwp-toggleable-options-list');
+
+        // Toggle options list visitibility and change toggle text
+        if( $this.text() === show_text ) {
+            $this.text(hide_text);
+            list.slideDown('fast');
+        } else {
+            $this.text(show_text);
+            list.slideUp('fast');
+        }
+
+    });
+
     // Sequential
     $('body').on('change', 'input#sequential', function(e) {
 
