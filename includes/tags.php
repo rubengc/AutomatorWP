@@ -89,6 +89,12 @@ function automatorwp_get_default_tags() {
         'preview'   => __( 'Plugin', 'automatorwp' ),
     );
 
+    $tags['user']['tags']['user_meta:META_KEY'] = array(
+        'label'     => __( 'User Meta', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => __( 'User meta value, replace "META_KEY" by the user meta key', 'automatorwp' ),
+    );
+
     /**
      * Filter the default tags
      *
@@ -239,8 +245,8 @@ function automatorwp_get_tags_selector_html( $automation_id ) {
  *
  * @since 1.0.0
  *
- * @param string $tags_group_id  The tags group ID
- * @param array $tags_group      The tags group args
+ * @param string    $tags_group_id  The tags group ID
+ * @param array     $tags_group      The tags group args
  *
  * @return string
  */
@@ -268,7 +274,77 @@ function automatorwp_get_tags_selector_group_html( $tags_group_id, $tags_group )
 }
 
 /**
+ * Parse automation tags to received content
+ * Note: Uses a the global var $automatorwp_tags_parser for caching all the vars
+ *
+ * @since 1.1.0
+ *
+ * @param int $automation_id    The automation ID
+ * @param int $user_id          The user ID
+ *
+ * @return string
+ */
+function automatorwp_parse_automation_tags( $automation_id = 0, $user_id = 0, $content = '' ) {
+
+    global $automatorwp_tags_parser;
+
+    // Initialize tags parser
+    if( ! is_array( $automatorwp_tags_parser ) ) {
+        $automatorwp_tags_parser = array();
+    }
+
+    // Initialize tags parser for this user
+    if( ! isset( $automatorwp_tags_parser[$user_id] ) ) {
+        $automatorwp_tags_parser[$user_id] = array();
+    }
+
+    if( ! isset( $automatorwp_tags_parser[$user_id][$automation_id] ) ) {
+
+        // Get all tags replacements to being passed to all actions
+        $replacements = automatorwp_get_automation_tags_replacements( $automation_id, $user_id );
+
+        $tags = array_keys( $replacements );
+
+        $automatorwp_tags_parser[$user_id][$automation_id] = array(
+            'replacements' => $replacements,
+            'tags' => $tags,
+        );
+
+    }
+
+    $replacements = $automatorwp_tags_parser[$user_id][$automation_id]['replacements'];
+    $tags = $automatorwp_tags_parser[$user_id][$automation_id]['tags'];
+
+    // Parse automation tags
+    $parsed_content = str_replace( $tags, $replacements, $content );
+
+    // Parse user meta tags (required here since user meta tags are based on the content)
+    $parsed_content = automatorwp_parse_user_meta_tags( $user_id, $parsed_content );
+
+    // Parse post meta tags (required here since post meta tags are based on the content)
+    $parsed_content = automatorwp_parse_post_meta_tags( $automation_id, $user_id, $parsed_content );
+
+    /**
+     * Available filter to setup custom replacements
+     *
+     * @since 1.0.0
+     *
+     * @param string    $parsed_content     Content parsed
+     * @param array     $replacements       Automation replacements
+     * @param int       $automation_id      The automation ID
+     * @param int       $user_id            The user ID
+     * @param string    $content            The content to parse
+     *
+     * @return string
+     */
+    return apply_filters( 'automatorwp_parse_automation_tags', $parsed_content, $replacements, $automation_id, $user_id, $content );
+
+}
+
+/**
  * Get the automation tags replacements
+ *
+ * @since 1.0.0
  *
  * @param int $automation_id    The automation ID
  * @param int $user_id          The user ID
@@ -310,7 +386,7 @@ function automatorwp_get_automation_tags_replacements( $automation_id = 0, $user
      *
      * @since 1.0.0
      *
-     * @param array $replacements   The automation ID
+     * @param array $replacements   Automation replacements
      * @param int   $automation_id  The automation ID
      * @param int   $user_id        The user ID
      *
@@ -322,6 +398,8 @@ function automatorwp_get_automation_tags_replacements( $automation_id = 0, $user
 
 /**
  * Get the trigger tags replacements
+ *
+ * @since 1.0.0
  *
  * @param stdClass  $trigger    The trigger object
  * @param int       $user_id    The user ID
@@ -374,12 +452,15 @@ function automatorwp_get_trigger_tags_replacements( $trigger, $user_id ) {
 /**
  * Get the post tags replacements
  *
+ * @since 1.0.0
+ *
  * @param int $post_id The post ID
  *
  * @return array
  */
 function automatorwp_get_post_tags_replacements( $post_id ) {
 
+    $replacements = array();
     $post = get_post( $post_id );
     $author = ( $post ? get_userdata( $post->post_author ) : false );
 
@@ -407,5 +488,192 @@ function automatorwp_get_post_tags_replacements( $post_id ) {
      * @return array
      */
     return apply_filters( 'automatorwp_get_post_tags_replacements', $replacements, $post_id, $post, $author );
+
+}
+
+/**
+ * Get the user meta tags replacements
+ *
+ * @since 1.1.0
+ *
+ * @param int       $user_id The user ID
+ * @param string    $content The content to parse
+ *
+ * @return array
+ */
+function automatorwp_get_user_meta_tags_replacements( $user_id = 0, $content = '' ) {
+
+    $replacements = array();
+
+    // Look for user meta tags
+    preg_match_all( "/\{user_meta:\s*(.*?)\s*\}/", $content, $matches );
+
+    if( is_array( $matches ) && isset( $matches[1] ) ) {
+
+        foreach( $matches[1] as $meta_key ) {
+            $replacements['{user_meta:' . $meta_key . '}'] = get_user_meta( $user_id, $meta_key, true );
+        }
+
+    }
+
+    /**
+     * Filter to set custom user meta tags replacements
+     *
+     * @since 1.1.0
+     *
+     * @param array     $replacements   Replacements
+     * @param int       $user_id        The user ID
+     * @param string    $content        The content to parse
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_get_user_meta_tags_replacements', $replacements, $user_id, $content );
+
+}
+
+/**
+ * Parse user meta tags replacements
+ *
+ * @since 1.1.0
+ *
+ * @param int       $user_id The user ID
+ * @param string    $content The content to replace
+ *
+ * @return string
+ */
+function automatorwp_parse_user_meta_tags( $user_id = 0, $content = '' ) {
+
+    $parsed_content = $content;
+
+    // Get user meta tags replacements
+    $replacements = automatorwp_get_user_meta_tags_replacements( $user_id, $content );
+
+    if( $replacements ) {
+
+        $tags = array_keys( $replacements );
+
+        // Replace all tags by their replacements
+        $parsed_content = str_replace( $tags, $replacements, $content );
+
+    }
+
+    /**
+     * Filter to modify a content parsed with user metas
+     *
+     * @since 1.1.0
+     *
+     * @param string    $parsed_content Content parsed
+     * @param array     $replacements   Replacements
+     * @param int       $user_id        The user ID
+     * @param string    $content        The content to parse
+     *
+     * @return string
+     */
+    return apply_filters( 'automatorwp_parse_user_meta_tags', $parsed_content, $replacements, $user_id, $content );
+
+}
+
+/**
+ * Get the post meta tags replacements
+ *
+ * @since 1.1.0
+ *
+ * @param int       $trigger_id The trigger ID
+ * @param int       $post_id    The post ID
+ * @param string    $content    The content to parse
+ *
+ * @return array
+ */
+function automatorwp_get_post_meta_tags_replacements( $trigger_id = 0, $post_id = 0, $content = '' ) {
+
+    $replacements = array();
+
+    // Look for post meta tags
+    preg_match_all( "/\{" . $trigger_id . ":post_meta:\s*(.*?)\s*\}/", $content, $matches );
+
+    if( is_array( $matches ) && isset( $matches[1] ) ) {
+
+        foreach( $matches[1] as $meta_key ) {
+            $replacements['{' . $trigger_id . ':post_meta:' . $meta_key . '}'] = get_post_meta( $post_id, $meta_key, true );
+        }
+
+    }
+
+    /**
+     * Filter to set custom post meta tags replacements
+     *
+     * @since 1.1.0
+     *
+     * @param array     $replacements   Replacements
+     * @param int       $post_id        The post ID
+     * @param string    $content        The content to parse
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_get_post_meta_tags_replacements', $replacements, $post_id, $content );
+
+}
+
+/**
+ * Parse post meta tags replacements
+ *
+ * @since 1.1.0
+ *
+ * @param int       $automation_id  The automation ID
+ * @param int       $user_id        The user ID
+ * @param string    $content        The content to replace
+ *
+ * @return string
+ */
+function automatorwp_parse_post_meta_tags( $automation_id = 0, $user_id = 0, $content = '' ) {
+
+    $parsed_content = $content;
+
+    // Get automation triggers to pass their tags
+    $triggers = automatorwp_get_automation_triggers( $automation_id );
+
+    $replacements = array();
+
+    foreach( $triggers as $trigger ) {
+
+        // Get the last trigger log (where data for tags replacement will be get
+        $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
+
+        if( ! $log ) {
+            continue;
+        }
+
+        // If log has a post assigned, pass his post meta replacements
+        if( $log->post_id !== 0 ) {
+            $trigger_replacements = automatorwp_get_post_meta_tags_replacements( $trigger->id, $log->post_id, $content );
+
+            $replacements = array_merge( $replacements, $trigger_replacements );
+        }
+
+    }
+
+    if( $replacements ) {
+
+        $tags = array_keys( $replacements );
+
+        // Replace all tags by their replacements
+        $parsed_content = str_replace( $tags, $replacements, $content );
+
+    }
+
+    /**
+     * Filter to modify a content parsed with post metas
+     *
+     * @since 1.1.0
+     *
+     * @param string    $parsed_content Content parsed
+     * @param array     $replacements   Replacements
+     * @param int       $automation_id  The automation ID
+     * @param int       $user_id        The user ID
+     * @param string    $content        The content to parse
+     *
+     * @return string
+     */
+    return apply_filters( 'automatorwp_parse_post_meta_tags', $parsed_content, $replacements, $automation_id, $user_id, $content );
 
 }

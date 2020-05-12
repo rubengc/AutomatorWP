@@ -211,15 +211,11 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
 
         if( $this->post_id ) {
 
-            // Get all tags replacements to being passed to all post metas
-            $replacements = automatorwp_get_automation_tags_replacements( $automation->id, $user_id );
-            $tags = array_keys( $replacements );
-
             foreach( $action_options['post_meta'] as $meta ) {
 
-                // Parse tags replacements to both, key and value
-                $meta_key = str_replace( $tags, $replacements, $meta['meta_key'] );
-                $meta_value = str_replace( $tags, $replacements, $meta['meta_value'] );
+                // Parse automation tags replacements to both, key and value
+                $meta_key = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_key'] );
+                $meta_value = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_value'] );
 
                 // Sanitize
                 $meta_key = sanitize_text_field( $meta_key );

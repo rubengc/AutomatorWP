@@ -89,7 +89,7 @@ function automatorwp_save_cache( $key = '', $value = '' ) {
     // Update the floating cache
     AutomatorWP()->cache[$key] = $value;
 
-    return update_option( 'automatorwp_cache_' . $key, $value );
+    return update_option( 'automatorwp_cache_' . $key, $value, false );
 
 }
 

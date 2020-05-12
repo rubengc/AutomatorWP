@@ -202,6 +202,18 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.0 ###
+
+* **New Features**
+* Dynamic tags to pass user metas and post metas to actions.
+* **Improvements**
+* Make cache options don't get autoloaded.
+* Improved the speed and performance of the tags parser.
+* Code reduction thanks to the brand new tags parser functions.
+* Improvements on tags selection function.
+* **Developer Notes**
+* Added an automation tags parser function that automatically parses all automation tags to the content passed.
+
 ### 1.0.9 ###
 
 * **New Features**

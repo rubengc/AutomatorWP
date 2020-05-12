@@ -635,10 +635,6 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
         return false;
     }
 
-    // Get all tags replacements to being passed to all actions
-    $replacements = automatorwp_get_automation_tags_replacements( $automation->id, $user_id );
-    $tags = array_keys( $replacements );
-
     // Get all automation action to execute them
     $actions = automatorwp_get_automation_actions( $automation->id );
 
@@ -648,7 +644,10 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
         $action_options = automatorwp_get_action_stored_options( $action->id );
 
         foreach( $action_options as $option => $value ) {
-            $action_options[$option] = str_replace( $tags, $replacements, $value );
+
+            // Replace all tags by their replacements
+            $action_options[$option] = automatorwp_parse_automation_tags( $automation->id, $user_id, $value );
+
         }
 
         /**

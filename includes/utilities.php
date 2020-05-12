@@ -347,6 +347,12 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'type'      => 'integer',
             'preview'   => '1',
         ),
+        'post_meta:META_KEY' => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Meta', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => sprintf( __( '%s meta value, replace "META_KEY" by the %s meta key', 'automatorwp' ), $post_label, strtolower( $post_label ) ),
+        ),
     ) );
 
 }

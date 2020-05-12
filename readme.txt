@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, trigger, action, hook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -65,7 +65,7 @@ Force users to complete triggers in order to complete the automation.
 Limit automation's maximum completion times per user and globally.
 
 **Tags:**
-Tags lets you pass trigger information to actions.
+Tags lets you pass trigger information to actions (with support to user and post metas).
 
 **Developer-friendly:**
 AutomatorWP is extremely flexible with plenty of hooks to add custom features and functionalities.
@@ -201,6 +201,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.1.0 =
+
+* **New Features**
+* Dynamic tags to pass user metas and post metas to actions.
+* **Improvements**
+* Make cache options don't get autoloaded.
+* Improved the speed and performance of the tags parser.
+* Code reduction thanks to the brand new tags parser functions.
+* Improvements on tags selection function.
+* **Developer Notes**
+* Added an automation tags parser function that automatically parses all automation tags to the content passed.
 
 = 1.0.9 =
 

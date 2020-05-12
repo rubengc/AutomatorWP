@@ -519,6 +519,9 @@
             // Insert content at caret
             automatorwp_insert_at_caret( input, value );
 
+            // Restore tag selector value to allow select again the same option
+            $(this).val('').trigger('change');
+
         }
     });
 
