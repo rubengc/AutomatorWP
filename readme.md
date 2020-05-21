@@ -202,6 +202,15 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.1 ###
+
+* **Improvements**
+* Make sure to assign user that completes the automation as post author if none provided on "Create a post" action.
+* Style improvements.
+* **Developer Notes**
+* Great amount of improvements on several hooks on the events handler and actions processing.
+* Added the global $automatorwp_event to make event accessible globally when an event gets triggered.
+
 ### 1.1.0 ###
 
 * **New Features**

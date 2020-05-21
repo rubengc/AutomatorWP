@@ -81,12 +81,16 @@ add_action( 'automatorwp_post_init', 'automatorwp_autoload_triggers_hooks' );
  */
 function automatorwp_trigger_event( $event ) {
 
-    global $completed_triggers;
+    global $automatorwp_completed_triggers, $automatorwp_event;
+
+    $automatorwp_event = false;
 
     // Check the event received
     if( ! automatorwp_is_event_correct( $event ) ) {
         return false;
     }
+
+    $automatorwp_event = $event;
 
     // Args has been checked on automatorwp_is_event_correct() function
     $user_id = $event['user_id'];
@@ -94,15 +98,15 @@ function automatorwp_trigger_event( $event ) {
     // Get triggered triggers
     $triggers = automatorwp_get_event_triggered_triggers( $event['trigger'] );
 
-    $completed_triggers = array();
+    $automatorwp_completed_triggers = array();
 
     foreach( $triggers as $trigger ) {
         if( automatorwp_maybe_user_completed_trigger( $trigger, $user_id, $event ) ) {
-            $completed_triggers[] = $trigger;
+            $automatorwp_completed_triggers[] = $trigger;
         }
     }
 
-    return ( count( $completed_triggers ) ? $completed_triggers : false );
+    return ( count( $automatorwp_completed_triggers ) ? $automatorwp_completed_triggers : false );
 
 }
 
@@ -419,12 +423,12 @@ function automatorwp_user_deserves_trigger( $trigger = null, $user_id = 0, $even
  */
 function automatorwp_user_completed_trigger( $trigger = null, $user_id = 0, $event = array(), $trigger_options = array(), $automation = null ) {
 
-    global $completed_triggers;
+    global $automatorwp_completed_triggers;
 
-    // The global $completed_triggers is used to increase log time by the number of loops perform
+    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
     // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $completed_triggers ) ) {
-        $completed_triggers = array();
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
     }
 
     // Check if trigger is correct
@@ -476,7 +480,7 @@ function automatorwp_user_completed_trigger( $trigger = null, $user_id = 0, $eve
         'object_id' => $trigger->id,
         'user_id'   => $user_id,
         'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
-        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $completed_triggers ) ),
+        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
     ), $log_meta );
 
     /**
@@ -559,12 +563,12 @@ function automatorwp_maybe_user_completed_automation( $automation = null, $user_
  */
 function automatorwp_user_completed_automation( $automation = null, $user_id = 0, $event = array() ) {
 
-    global $completed_triggers;
+    global $automatorwp_completed_triggers;
 
-    // The global $completed_triggers is used to increase log time by the number of loops perform
+    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
     // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $completed_triggers ) ) {
-        $completed_triggers = array();
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
     }
 
     // Check if automation is correct
@@ -578,7 +582,7 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
     }
 
     // Execute all automation actions
-    automatorwp_execute_all_automation_actions( $automation, $user_id );
+    automatorwp_execute_all_automation_actions( $automation, $user_id, $event );
 
     // Insert a new log entry to register the automation completion
     automatorwp_insert_log( array(
@@ -587,7 +591,7 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
         'object_id' => $automation->id,
         'user_id'   => $user_id,
         'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
-        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $completed_triggers ) ),
+        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
     ) );
 
     /**
@@ -612,17 +616,18 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
  *
  * @param stdClass  $automation         The automation object
  * @param int       $user_id            The user ID
+ * @param array     $event              Event information
  *
  * @return bool
  */
-function automatorwp_execute_all_automation_actions( $automation = null, $user_id = 0 ) {
+function automatorwp_execute_all_automation_actions( $automation = null, $user_id = 0, $event = array() ) {
 
-    global $completed_triggers;
+    global $automatorwp_completed_triggers;
 
-    // The global $completed_triggers is used to increase log time by the number of loops perform
+    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
     // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $completed_triggers ) ) {
-        $completed_triggers = array();
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
     }
 
     // Check if automation is correct
@@ -657,10 +662,11 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
          *
          * @param stdClass  $action             The action object
          * @param int       $user_id            The user ID
+         * @param array     $event              Event information
          * @param array     $action_options     The action's stored options (with tags already passed)
          * @param stdClass  $automation         The action's automation object
          */
-        do_action( 'automatorwp_execute_action', $action, $user_id, $action_options, $automation );
+        do_action( 'automatorwp_execute_action', $action, $user_id, $event, $action_options, $automation );
 
         $log_meta = array();
 
@@ -687,12 +693,13 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
          * @param int       $post_id            The post ID, by default 0
          * @param stdClass  $action             The action object
          * @param int       $user_id            The user ID
+         * @param array     $event              Event information
          * @param array     $action_options     The action's stored options (with tags already passed)
          * @param stdClass  $automation         The action's automation object
          *
          * @return int
          */
-        $post_id = apply_filters( 'automatorwp_user_completed_action_post_id', 0, $action, $user_id, $action_options, $automation );
+        $post_id = apply_filters( 'automatorwp_user_completed_action_post_id', 0, $action, $user_id, $event, $action_options, $automation );
 
         // Insert a new log entry to register the trigger completion
         automatorwp_insert_log( array(
@@ -701,7 +708,7 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
             'object_id' => $action->id,
             'user_id'   => $user_id,
             'post_id'   => $post_id,
-            'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $completed_triggers ) ),
+            'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
         ), $log_meta );
 
         /**
@@ -711,10 +718,11 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
          *
          * @param stdClass  $action             The action object
          * @param int       $user_id            The user ID
+         * @param array     $event              Event information
          * @param array     $action_options     The action's stored options (with tags already passed)
          * @param stdClass  $automation         The action's automation object
          */
-        do_action( 'automatorwp_user_completed_action', $action, $user_id, $action_options, $automation );
+        do_action( 'automatorwp_user_completed_action', $action, $user_id, $event, $action_options, $automation );
 
     }
 

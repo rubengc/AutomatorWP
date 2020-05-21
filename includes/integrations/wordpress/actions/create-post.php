@@ -40,7 +40,7 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
     public function hooks() {
 
         // Log post ID
-        add_filter( 'automatorwp_user_completed_action_post_id', array( $this, 'post_id' ), 10, 5 );
+        add_filter( 'automatorwp_user_completed_action_post_id', array( $this, 'post_id' ), 10, 6 );
 
         // Log meta data
         add_filter( 'automatorwp_user_completed_action_log_meta', array( $this, 'log_meta' ), 10, 5 );
@@ -193,7 +193,7 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
             'post_type'     => 'post',
             'post_status'   => 'draft',
             'post_date'     => '',
-            'post_author'   => $user_id,
+            'post_author'   => '',
             'post_content'  => '',
             'post_excerpt'  => '',
             'post_parent'   => '',
@@ -204,6 +204,11 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
         // Format post date
         if( ! empty( $post_data['post_date'] ) ) {
             $post_data['post_date'] = date( 'Y-m-d H:i:s', strtotime( $post_data['post_date'] ) );
+        }
+
+        // Format post date
+        if( absint( $post_data['post_author'] ) === 0 ) {
+            $post_data['post_author'] = $user_id;
         }
 
         // Insert the post
@@ -240,12 +245,13 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
      * @param int       $post_id            The post ID, by default 0
      * @param stdClass  $action             The action object
      * @param int       $user_id            The user ID
+     * @param array     $event              Event information
      * @param array     $action_options     The action's stored options (with tags already passed)
      * @param stdClass  $automation         The action's automation object
      *
      * @return int
      */
-    public function post_id( $post_id, $action, $user_id, $action_options, $automation ) {
+    public function post_id( $post_id, $action, $user_id, $event, $action_options, $automation ) {
 
         if( $this->post_id ) {
             $post_id = $this->post_id;

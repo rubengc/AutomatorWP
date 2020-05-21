@@ -639,6 +639,10 @@
     border-radius: 4px;
 }
 
+.cmb-type-wysiwyg .automatorwp-automation-tag-selector + .automatorwp-select2 .select2-selection__rendered {
+    display: none;
+}
+
 .automatorwp-automation-tag-selector + .automatorwp-select2 .select2-selection__arrow:hover {
     border-color: #bbc;
     background: #f1f1f1;
@@ -1365,5 +1369,93 @@
 @media screen and (min-width: 1200px) and (max-width: 1600px) {
     .automatorwp_licenses .postbox {
         width: 31%;
+    }
+}
+
+/* -------------------------------------------
+    Review Notice
+   ------------------------------------------- */
+.automatorwp-review-notice {
+    position: relative;
+    background: #222;
+    color: #fff;
+    border: none;
+}
+
+.automatorwp-review-notice p span {
+    opacity: 0.7;
+}
+
+.automatorwp-review-notice .button-primary {
+    background: #febd17;
+    border-color: #fdc63a #926d10 #926d10;
+    box-shadow: 0 1px 0 #926d10;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #926d10, 1px 0 1px #926d10, 0 1px 1px #926d10, -1px 0 1px #926d10;
+}
+
+.automatorwp-review-notice .button-primary.hover,
+.automatorwp-review-notice .button-primary:hover,
+.automatorwp-review-notice .button-primary.focus,
+.automatorwp-review-notice .button-primary:focus {
+    background: #f3b415;
+    border-color: #fdc63a #926d10 #926d10;
+    color: #fff;
+}
+
+.automatorwp-review-notice .button-primary.focus,
+.automatorwp-review-notice .button-primary:focus {
+    box-shadow: 0 1px 0 #febd17,
+    0 0 2px 1px #fdc63a;
+}
+
+.automatorwp-review-notice .button-primary.active,
+.automatorwp-review-notice .button-primary.active:hover,
+.automatorwp-review-notice .button-primary.active:focus,
+.automatorwp-review-notice .button-primary:active {
+    background: #f3b415;
+    border-color: #926d10;
+    box-shadow: inset 0 2px 0 #926d10;
+    vertical-align: top;
+}
+
+.automatorwp-review-notice .automatorwp-hide-review-notice.button {
+    color: #353849;
+    border-color: #353849;
+}
+
+.automatorwp-review-notice .automatorwp-hide-review-notice.button:hover {
+    color: #3b4eb7;
+    border-color: #3b4eb7;
+}
+
+.automatorwp-review-notice ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.automatorwp-review-notice .automatorwp-hide-review-notice:not(.button) {
+    color: #ccc;
+}
+
+.automatorwp-review-notice .automatorwp-hide-review-notice:not(.button):hover {
+    color: #fff;
+}
+
+.automatorwp-review-notice .automatorwp-logo {
+    background-image: url('../img/automatorwp-logo.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 15px auto 0 auto;
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .automatorwp-review-notice .automatorwp-logo {
+        float: left;
+        margin: 20px 20px 20px 5px;
     }
 }

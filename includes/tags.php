@@ -594,6 +594,7 @@ function automatorwp_get_post_meta_tags_replacements( $trigger_id = 0, $post_id 
     if( is_array( $matches ) && isset( $matches[1] ) ) {
 
         foreach( $matches[1] as $meta_key ) {
+            // Replace {ID:post_meta:KEY} by the post meta value
             $replacements['{' . $trigger_id . ':post_meta:' . $meta_key . '}'] = get_post_meta( $post_id, $meta_key, true );
         }
 

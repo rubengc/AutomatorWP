@@ -45,7 +45,7 @@ class AutomatorWP_Integration_Action {
         add_action( 'automatorwp_init', array( $this, 'register' ) );
 
         // Execute action hook
-        add_action( 'automatorwp_execute_action', array( $this, 'maybe_execute' ), 10, 4 );
+        add_action( 'automatorwp_execute_action', array( $this, 'maybe_execute' ), 10, 5 );
 
     }
 
@@ -65,10 +65,11 @@ class AutomatorWP_Integration_Action {
      *
      * @param stdClass  $action             The action object
      * @param int       $user_id            The user ID
+     * @param array     $event              Event information
      * @param array     $action_options     The action's stored options (with tags already passed)
      * @param stdClass  $automation         The action's automation object
      */
-    public function maybe_execute( $action, $user_id, $action_options, $automation ) {
+    public function maybe_execute( $action, $user_id, $event, $action_options, $automation ) {
 
         // Bail if action type don't match this action
         if( $action->type !== $this->action ) {
