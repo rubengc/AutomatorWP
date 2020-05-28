@@ -17,7 +17,7 @@ if( !defined( 'ABSPATH' ) ) exit;
 function automatorwp_admin_notices() {
 
     // Bail if current user is not a site administrator
-    if( ! current_user_can( 'update_plugins' ) ){
+    if( ! current_user_can( 'update_plugins' ) ) {
         return;
     }
 
@@ -43,7 +43,7 @@ function automatorwp_admin_notices() {
                 <div class="automatorwp-logo"></div>
                 <p>
                     <?php _e( 'Awesome! You\'ve been using <strong>AutomatorWP</strong> for a while.', 'automatorwp' ); ?><br>
-                    <?php _e( 'May I ask you to give it a <strong>5-star rating</strong> on Wordpress?', 'automatorwp' ); ?><br>
+                    <?php _e( 'May I ask you to give it a <strong>5-star rating</strong> on WordPress?', 'automatorwp' ); ?><br>
                     <?php _e( 'This will help to spread its popularity and to make this plugin a better one.', 'automatorwp' ); ?><br>
                     <br>
                     <?php _e( 'Your help is much appreciated. Thank you very much,', 'automatorwp' ); ?><br>

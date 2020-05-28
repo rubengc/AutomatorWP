@@ -385,6 +385,51 @@
     min-height: 200px;
 }
 
+/* Automation missing plugin item */
+.automatorwp-automation-missing-integration-item  .automatorwp-automation-item-label {
+    opacity: 0.6;
+}
+
+.automatorwp-automation-missing-integration-item  .automatorwp-notice-warning {
+    margin: 0;
+}
+
+/* Recommended integrations */
+.automatorwp-recommended-integrations {
+    margin-top: 8px;
+}
+
+.automatorwp-recommended-integrations-label {
+    font-size: 16px;
+}
+
+.automatorwp-recommended-integrations-label span {
+    color: #72777c;
+}
+
+.automatorwp-recommended-integrations .automatorwp-integrations {
+    margin-top: 8px;
+}
+
+.automatorwp-recommended-integrations .automatorwp-integration {
+    text-decoration: none;
+    color: #444;
+}
+
+.automatorwp-recommended-integrations .automatorwp-integration-triggers-and-actions {
+    color: #72777c;
+}
+
+/* More integrations */
+.automatorwp-more-integrations {
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.automatorwp-more-integrations span {
+    color: #72777c;
+}
+
 /* -------------------------------------------
     Forms
    ------------------------------------------- */
@@ -1390,9 +1435,10 @@
     background: #febd17;
     border-color: #fdc63a #926d10 #926d10;
     box-shadow: 0 1px 0 #926d10;
-    color: #fff;
     text-decoration: none;
-    text-shadow: 0 -1px 1px #926d10, 1px 0 1px #926d10, 0 1px 1px #926d10, -1px 0 1px #926d10;
+    text-shadow: none;
+    color: #444;
+    font-weight: 500;
 }
 
 .automatorwp-review-notice .button-primary.hover,
@@ -1401,7 +1447,7 @@
 .automatorwp-review-notice .button-primary:focus {
     background: #f3b415;
     border-color: #fdc63a #926d10 #926d10;
-    color: #fff;
+    color: #444;
 }
 
 .automatorwp-review-notice .button-primary.focus,

@@ -60,7 +60,7 @@ function automatorwp_licenses_meta_boxes( $meta_boxes ) {
 
                                 $slug = basename( $field['file'], '.php' );
 
-                                if( $slug === $plugin->info->slug ) {
+                                if( $slug === 'automatorwp-' . $plugin->info->slug ) {
                                     $field['thumbnail'] = $plugin->info->thumbnail;
 
                                     // Thumbnail found so exit loop

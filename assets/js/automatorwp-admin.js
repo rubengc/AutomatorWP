@@ -147,7 +147,7 @@
     });
 
     // Select an integration
-    $('body').on('click', '.automatorwp-automation-item .automatorwp-integration', function(e) {
+    $('body').on('click', '.automatorwp-automation-item .automatorwp-select-integration .automatorwp-integration', function(e) {
         e.preventDefault();
 
         var item = $(this).closest('.automatorwp-automation-item');
@@ -300,6 +300,13 @@
         item.slideUp('fast', function() {
             item.remove();
         });
+    });
+
+    // On click recommended integrations
+    $('body').on('click', '.automatorwp-recommended-integrations-label a', function(e) {
+        e.preventDefault();
+
+        $(this).closest('.automatorwp-recommended-integrations').find('.automatorwp-integrations').slideToggle('fast');
     });
 
     // -----------------------------------------------

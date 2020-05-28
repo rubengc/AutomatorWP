@@ -202,6 +202,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.2 ###
+
+* **Bug Fixes**
+* Correctly display add-ons thumbnails on licenses page.
+* **Improvements**
+* Added missing integration notice on automations and logs.
+* Added recommendations of integrations based on plugins installed.
+* Clear field when license gets deactivated included when server responds that license has been already deactivated.
+* Style improvements.
+
 ### 1.1.1 ###
 
 * **Improvements**

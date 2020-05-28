@@ -218,16 +218,22 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
                     if( $integration ) : ?>
 
                         <div class="automatorwp-integration-icon">
-                            <img src="<?php echo esc_attr( $integration['icon'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
+                            <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
                         </div>
 
                     <?php endif;
-                }
+                } else { ?>
+
+                    <div class="automatorwp-integration-icon">
+                        <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'assets/img/integration-missing.svg' ); ?>" title="<?php echo esc_attr( __( 'Missing plugin', 'automatorwp' ) ); ?>">
+                    </div>
+
+                <?php }
 
             } else { ?>
 
                 <div class="automatorwp-integration-icon">
-                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg' ); ?>">
+                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg' ); ?>" title="AutomatorWP">
                 </div>
 
             <?php }
