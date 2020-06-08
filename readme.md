@@ -202,6 +202,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.3 ###
+
+* **Bug Fixes**
+* Fixed tags selector not working in some repeatable fields.
+* Fixed editors not working after reorder the trigger or action.
+
 ### 1.1.2 ###
 
 * **Bug Fixes**

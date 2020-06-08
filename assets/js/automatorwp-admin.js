@@ -50,6 +50,29 @@
             // Event target refers to .automatorwp-triggers or .automatorwp-actions
             automatorwp_update_items_position( $(e.target) );
 
+        },
+        stop: function( e, ui ) {
+
+            // Refresh wysiwyg editors (after drag and drop forms with editors, is required to refresh them to make them work again)
+            ui.item.find( '.cmb-type-wysiwyg' ).each( function() {
+
+                var $this = $(this);
+
+                var textarea_id = $this.find('textarea').attr('id');
+                var textarea = $this.find('textarea').clone();
+
+                // Remove CMB2 HTML and add a single textarea to be converted as editor
+                $this.find('.wp-editor-wrap').remove();
+                $this.find('.cmb-td').append(textarea);
+
+                automatorwp_initialize_wysiwyg_editor( textarea_id );
+
+            } );
+
+            if ( 'undefined' !== typeof window.QTags ) {
+                window.QTags._buttonsInit();
+            }
+
         }
     });
 
@@ -470,9 +493,18 @@
         // Remove Select2 element
         row.find('.select2').remove();
 
-        // Reset Select2 data
-        row.find('.select2-hidden-accessible')
+        // Find all Select2 elements
+        var select2_elements = row.find('.select2-hidden-accessible');
+
+        // Reset Select2 data on options
+        select2_elements.find('optgroup, option')
+            .removeAttr('id')
+            .removeAttr('data-select2-id'); // For options and group options, select2 assigns this attribute as id
+
+        // Reset Select2 data on the input element
+        select2_elements
             .removeClass('select2-hidden-accessible')
+            .removeAttr('id')
             .removeAttr('data-select2-id'); // For fields without id, select2 assigns this attribute as id
 
         automatorwp_initialize_form_fields( row );
@@ -492,16 +524,17 @@
 
     // On change tag selector
     $('body').on('change', '.automatorwp-automation-tag-selector', function(e) {
-        var input = $(this).parent().find( 'input, textarea' );
-        var value = $(this).val();
+        var $this = $(this);
+        var input = $this.parent().find( 'input, textarea' );
+        var value = $this.val();
 
         if( value && value.length ) {
             value = '{' + value + '}';
 
             // Support for wysiwyg field
-            if( $(this).closest('.cmb-row').hasClass('cmb-type-wysiwyg') ) {
+            if( $this.closest('.cmb-row').hasClass('cmb-type-wysiwyg') ) {
 
-                input = $(this).parent().find( 'textarea.wp-editor-area' );
+                input = $this.parent().find( 'textarea.wp-editor-area' );
 
                 var editor = window.tinyMCE.get( input.attr('id') );
 
@@ -527,7 +560,7 @@
             automatorwp_insert_at_caret( input, value );
 
             // Restore tag selector value to allow select again the same option
-            $(this).val('').trigger('change');
+            $this.val(null).trigger('change');
 
         }
     });
@@ -661,7 +694,7 @@ function automatorwp_tags_selector( element ) {
         dropdownPosition: 'below',
     });
 
-    element.val('').trigger('change');
+    element.val(null).trigger('change');
 
 }
 
@@ -838,22 +871,39 @@ function automatorwp_initialize_form_fields( form ) {
         $this.find('.wp-editor-wrap').remove();
         $this.find('.cmb-td').append(textarea);
 
-        wp.editor.initialize( textarea_id, {
-            mediaButtons: true,
-            tinymce: {
-                wpautop: true,
-                toolbar1: 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link unlink wp_more fullscreen wp_adv',
-                toolbar2: 'strikethrough hr forecolor pastetext removeformat charmap outdent indent undo redo wp_help'
-            },
-            quicktags: {
-                buttons: 'strong,em,link,block,del,ins,img,ul,ol,li,,code,more,close'
-            }
-        });
+        automatorwp_initialize_wysiwyg_editor( textarea_id );
 
     } );
 
     if ( 'undefined' !== typeof window.QTags ) {
         window.QTags._buttonsInit();
     }
+
+}
+
+/**
+ * Initialize a wysiwyg editor
+ *
+ * @since 1.0.0
+ *
+ * @param {string} textarea_id
+ */
+function automatorwp_initialize_wysiwyg_editor( textarea_id ) {
+
+    if( window.tinyMCE.editors.length && window.tinyMCE.editors[textarea_id] ) {
+        window.tinyMCE.editors[textarea_id].remove();
+    }
+
+    wp.editor.initialize( textarea_id, {
+        mediaButtons: true,
+        tinymce: {
+            wpautop: true,
+            toolbar1: 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link unlink wp_more fullscreen wp_adv',
+            toolbar2: 'strikethrough hr forecolor pastetext removeformat charmap outdent indent undo redo wp_help'
+        },
+        quicktags: {
+            buttons: 'strong,em,link,block,del,ins,img,ul,ol,li,,code,more,close'
+        }
+    });
 
 }
