@@ -26,6 +26,7 @@ require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-category.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-tag.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-page.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-type.php';
 // Actions
 require_once plugin_dir_path( __FILE__ ) . 'actions/send-email.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/user-role.php';

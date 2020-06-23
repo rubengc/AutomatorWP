@@ -111,6 +111,7 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User comments on a post of any/specific category.
 * User comments on a post of any/specific tag.
 * User comments on any/specific page.
+* User comments on a post of any/specific type.
 * User completes any/specific automation.
 
 **Actions**
@@ -201,6 +202,11 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.1.4 ###
+
+* **New Features**
+* New trigger: User comments on a post of a type.
 
 ### 1.1.3 ###
 
