@@ -71,20 +71,26 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
 * [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
 * [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
+* [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
+* [BuddyBoss](https://wordpress.org/plugins/automatorwp-buddyboss-integration/)
 * [BuddyPress](https://wordpress.org/plugins/automatorwp-buddypress-integration/)
 * [GamiPress](https://wordpress.org/plugins/automatorwp-gamipress-integration/)
 * [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
+* [Restrict Content Pro](https://wordpress.org/plugins/automatorwp-restrict-content-pro-integration/)
 
 [View all plugins on wordpress.org](https://wordpress.org/plugins/tags/automatorwp/)
 
 If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium integrations, the most popular of which include:
 
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
-* [H5P](https://automatorwp.com/add-ons/h5p/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
+* [Tutor LMS](https://automatorwp.com/add-ons/tutor/)
 * [MemberPress](https://automatorwp.com/add-ons/memberpress/)
 * [WP Fusion](https://automatorwp.com/add-ons/wp-fusion/)
 * [Gravity Forms](https://automatorwp.com/add-ons/gravity-forms/)
+* [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
+* [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
+* [Ultimate Member](https://automatorwp.com/add-ons/ultimate-member/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 
 [View all add-ons](https://automatorwp.com/add-ons/)
