@@ -176,7 +176,7 @@ function automatorwp_options_cb_roles( $field ) {
     $none_label = __( 'another role', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
-    $editable_roles = get_editable_roles();
+    $roles = automatorwp_get_editable_roles();
 
     // Excluded roles
     $field->args['excluded_roles'] = ( isset( $field->args['excluded_roles'] ) ? $field->args['excluded_roles'] : array() );
@@ -186,7 +186,7 @@ function automatorwp_options_cb_roles( $field ) {
         $field->args['excluded_roles'] = array( $field->args['excluded_roles'] );
     }
 
-    foreach ( $editable_roles as $role => $details ) {
+    foreach ( $roles as $role => $details ) {
 
         // Skip excluded roles
         if( in_array( $role, $field->args['excluded_roles'] ) ) {

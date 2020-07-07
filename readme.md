@@ -209,6 +209,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.5 ###
+
+* **Bug Fixes**
+* Prevent issues caused by the get_editable_roles() function.
+
 ### 1.1.4 ###
 
 * **New Features**

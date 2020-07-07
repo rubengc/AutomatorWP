@@ -89,7 +89,7 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
             return;
         }
 
-        $roles = get_editable_roles();
+        $roles = automatorwp_get_editable_roles();
 
         // Bail if empty role to assign
         if( ! isset( $roles[$role] ) ) {

@@ -167,17 +167,17 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
 
         // Setup user fields
         $user_data = wp_parse_args( $action_options, array(
-            'user_login' => '',
-            'user_email' => '',
-            'first_name' => '',
-            'last_name' => '',
-            'user_url' => '',
-            'user_pass' => '',
-            'role' => 'subscriber',
+            'user_login'    => '',
+            'user_email'    => '',
+            'first_name'    => '',
+            'last_name'     => '',
+            'user_url'      => '',
+            'user_pass'     => '',
+            'role'          => 'subscriber',
         ) );
 
         // Check the user role
-        $roles = get_editable_roles();
+        $roles = automatorwp_get_editable_roles();
 
         // Bail if empty role to assign
         if( ! isset( $roles[$user_data['role']] ) ) {
