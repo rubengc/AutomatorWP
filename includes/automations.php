@@ -57,16 +57,35 @@ function automatorwp_get_automation_object( $automation_id, $output = OBJECT ) {
  */
 function automatorwp_get_automation_triggers( $automation_id, $output = OBJECT ) {
 
-    ct_setup_table( 'automatorwp_triggers' );
+    $cache = automatorwp_get_cache( 'automation_triggers', array(), false );
 
-    $ct_query = new CT_Query( array(
-        'automation_id' => $automation_id,
-        'orderby' => 'position',
-        'order' => 'ASC',
-        'items_per_page' => -1,
-    ) );
+    if( isset( $cache[$automation_id] ) ) {
 
-    $triggers = $ct_query->get_results();
+        // Use triggers already cached
+        $triggers = $cache[$automation_id];
+
+    } else {
+
+        // Query the triggers for the first time
+        ct_setup_table( 'automatorwp_triggers' );
+
+        $ct_query = new CT_Query( array(
+            'automation_id' => $automation_id,
+            'orderby' => 'position',
+            'order' => 'ASC',
+            'items_per_page' => -1,
+        ) );
+
+        $triggers = $ct_query->get_results();
+
+        ct_reset_setup_table();
+
+        // Cache triggers
+        $cache[$automation_id] = $triggers;
+
+        automatorwp_set_cache( 'automation_triggers', $cache );
+
+    }
 
     if( $output === ARRAY_N || $output === ARRAY_A ) {
 
@@ -76,8 +95,6 @@ function automatorwp_get_automation_triggers( $automation_id, $output = OBJECT )
         }
 
     }
-
-    ct_reset_setup_table();
 
     return $triggers;
 
@@ -95,27 +112,45 @@ function automatorwp_get_automation_triggers( $automation_id, $output = OBJECT )
  */
 function automatorwp_get_automation_actions( $automation_id, $output = OBJECT ) {
 
-    ct_setup_table( 'automatorwp_actions' );
+    $cache = automatorwp_get_cache( 'automation_actions', array(), false );
 
-    $ct_query = new CT_Query( array(
-        'automation_id' => $automation_id,
-        'orderby' => 'position',
-        'order' => 'ASC',
-        'items_per_page' => -1,
-    ) );
+    if( isset( $cache[$automation_id] ) ) {
 
-    $actions = $ct_query->get_results();
+        // Use triggers already cached
+        $actions = $cache[$automation_id];
+
+    } else {
+
+        // Query the triggers for the first time
+
+        ct_setup_table( 'automatorwp_actions' );
+
+        $ct_query = new CT_Query( array(
+            'automation_id' => $automation_id,
+            'orderby' => 'position',
+            'order' => 'ASC',
+            'items_per_page' => -1,
+        ) );
+
+        $actions = $ct_query->get_results();
+
+        ct_reset_setup_table();
+
+        // Cache actions
+        $cache[$automation_id] = $actions;
+
+        automatorwp_set_cache( 'automation_actions', $cache );
+
+    }
 
     if( $output === ARRAY_N || $output === ARRAY_A ) {
 
         // Turn array of objects into an array of arrays
-        foreach( $actions as $i => $trigger ) {
-            $actions[$i] = (array) $trigger;
+        foreach( $actions as $i => $action ) {
+            $actions[$i] = (array) $action;
         }
 
     }
-
-    ct_reset_setup_table();
 
     return $actions;
 

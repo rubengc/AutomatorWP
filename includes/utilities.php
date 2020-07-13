@@ -299,6 +299,12 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'type'      => 'text',
             'preview'   => __( 'The Title', 'automatorwp' ),
         ),
+        'post_link' => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s URL', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => get_option( 'home' ) . '/sample-' . strtolower( $post_label ),
+        ),
         'post_type'  => array(
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s Type', 'automatorwp' ), $post_label ),

@@ -82,6 +82,7 @@ function automatorwp_ajax_add_automation_item() {
                 if( isset( $field_args['default'] ) ) {
                     ct_update_object_meta( $id, $field_id, $field_args['default'] );
                 }
+
             }
 
         }
@@ -109,12 +110,14 @@ function automatorwp_ajax_add_automation_item() {
 
         // Setup the tags html
         if( $item_type === 'trigger' ) {
+
             // Get the trigger tags
             $tags = automatorwp_get_trigger_tags( (object) $object );
 
             if( ! empty( $tags ) && isset( $tags[$id] ) ) {
                 $tags_html = automatorwp_get_tags_selector_group_html( $id, $tags[$id] );
             }
+
         }
 
         // Send back a successful response

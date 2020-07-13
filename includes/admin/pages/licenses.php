@@ -20,6 +20,15 @@ if( !defined( 'ABSPATH' ) ) exit;
  */
 function automatorwp_licenses_meta_boxes( $meta_boxes ) {
 
+    // Check if we are on the licenses page to prevent API calls outside this page
+    if( ! isset( $_GET['page'] ) ) {
+        return $meta_boxes;
+    }
+
+    if( $_GET['page'] !== 'automatorwp_licenses' ) {
+        return $meta_boxes;
+    }
+
     // Get our add-ons
     $plugins = automatorwp_plugins_api();
 

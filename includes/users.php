@@ -106,6 +106,16 @@ function automatorwp_get_user_completion_times( $object_id, $user_id, $type, $si
         $date = date( 'Y-m-d H:i:s', $since );
     }
 
+    $cache = automatorwp_get_cache( 'user_completion_times', array(), false );
+
+    // If result already cached, return it
+    if( isset( $cache[$user_id] )
+        && isset( $cache[$user_id][$type] )
+        && isset( $cache[$user_id][$type][$object_id] )
+        && isset( $cache[$user_id][$type][$object_id][$date] ) ) {
+        return $cache[$user_id][$type][$object_id][$date];
+    }
+
     $ct_table = ct_setup_table( 'automatorwp_logs' );
 
     $completion_times = (int) $wpdb->get_var(
@@ -119,6 +129,23 @@ function automatorwp_get_user_completion_times( $object_id, $user_id, $type, $si
     );
 
     ct_reset_setup_table();
+
+    // Cache function result
+    if( ! isset( $cache[$user_id] ) ) {
+        $cache[$user_id] = array();
+    }
+
+    if( ! isset( $cache[$user_id][$type] ) ) {
+        $cache[$user_id][$type] = array();
+    }
+
+    if( ! isset( $cache[$user_id][$type][$object_id] ) ) {
+        $cache[$user_id][$type][$object_id] = array();
+    }
+
+    $cache[$user_id][$type][$object_id][$date] = $completion_times;
+
+    automatorwp_set_cache( 'user_completion_times', $cache );
 
     return $completion_times;
 
@@ -156,7 +183,7 @@ function automatorwp_get_user_trigger_completion_times( $trigger_id, $user_id ) 
  *
  * @param int       $object_id  The object ID
  * @param int       $user_id    The user ID
- * @param string    $type       The object type
+ * @param string    $type       The object type (trigger|action|automation)
  *
  * @return int
  */
@@ -185,16 +212,18 @@ function automatorwp_get_user_last_completion_time( $object_id, $user_id, $type 
         return 0;
     }
 
-    $cache = automatorwp_get_cache( 'user_last_completion_time', array() );
+    $cache = automatorwp_get_cache( 'user_last_completion_time', array(), false );
 
     // If result already cached, return it
-    if( isset( $cache[$user_id] ) && isset( $cache[$user_id][$type][$object_id] ) && isset( $cache[$user_id][$type][$object_id] ) ) {
+    if( isset( $cache[$user_id] )
+        && isset( $cache[$user_id][$type] )
+        && isset( $cache[$user_id][$type][$object_id] ) ) {
         return $cache[$user_id][$type][$object_id];
     }
 
     $ct_table = ct_setup_table( 'automatorwp_logs' );
 
-    $date =  $wpdb->get_var(
+    $date = $wpdb->get_var(
         "SELECT l.date
         FROM {$ct_table->db->table_name} AS l
         WHERE 1=1 
@@ -224,72 +253,11 @@ function automatorwp_get_user_last_completion_time( $object_id, $user_id, $type 
 
     $cache[$user_id][$type][$object_id] = $result;
 
+    automatorwp_set_cache( 'user_last_completion_time', $cache );
+
     return $result;
 
 }
-
-/**
- * Clears the 'user_last_completion_time' every time a trigger is completed.
- * Cache used on automatorwp_get_user_last_completion_time() function.
- *
- * @since 1.0.0
- *
- * @param stdClass  $object     The trigger object
- * @param int       $user_id    The user ID
- */
-function automatorwp_clear_trigger_last_completion_time_cache( $object, $user_id ) {
-
-    $cache = automatorwp_get_cache( 'user_last_completion_time', array() );
-
-    // If result already cached, return it
-    if( isset( $cache[$user_id] ) && isset( $cache[$user_id]['trigger'] ) && isset( $cache[$user_id]['trigger'][$object->id] ) ) {
-        unset( $cache[$user_id]['trigger'][$object->id] );
-    }
-
-}
-add_action( 'automatorwp_user_completed_trigger', 'automatorwp_clear_trigger_last_completion_time_cache', 10, 2 );
-
-/**
- * Clears the 'user_last_completion_time' every time an action is completed.
- * Cache used on automatorwp_get_user_last_completion_time() function.
- *
- * @since 1.0.0
- *
- * @param stdClass  $object     The action object
- * @param int       $user_id    The user ID
- */
-function automatorwp_clear_action_last_completion_time_cache( $object, $user_id ) {
-
-    $cache = automatorwp_get_cache( 'user_last_completion_time', array() );
-
-    // If result already cached, return it
-    if( isset( $cache[$user_id] ) && isset( $cache[$user_id]['action'] ) && isset( $cache[$user_id]['action'][$object->id] ) ) {
-        unset( $cache[$user_id]['action'][$object->id] );
-    }
-
-}
-add_action( 'automatorwp_user_completed_action', 'automatorwp_clear_action_last_completion_time_cache', 10, 2 );
-
-/**
- * Clears the 'user_last_completion_time' every time an automation is completed.
- * Cache used on automatorwp_get_user_last_completion_time() function.
- *
- * @since 1.0.0
- *
- * @param stdClass  $object     The automation/trigger/action object
- * @param int       $user_id    The user ID
- */
-function automatorwp_clear_automation_last_completion_time_cache( $object, $user_id ) {
-
-    $cache = automatorwp_get_cache( 'user_last_completion_time', array() );
-
-    // If result already cached, return it
-    if( isset( $cache[$user_id] ) && isset( $cache[$user_id]['automation'] ) && isset( $cache[$user_id]['automation'][$object->id] ) ) {
-        unset( $cache[$user_id]['automation'][$object->id] );
-    }
-
-}
-add_action( 'automatorwp_user_completed_automation', 'automatorwp_clear_automation_last_completion_time_cache', 10, 2 );
 
 /**
  * Get user last object completion log
@@ -324,7 +292,16 @@ function automatorwp_get_user_last_completion( $object_id, $user_id, $type ) {
 
     // Check the type
     if( ! isset( $types[$type] ) ) {
-        return 0;
+        return false;
+    }
+
+    $cache = automatorwp_get_cache( 'user_last_completion', array(), false );
+
+    // If result already cached, return it
+    if( isset( $cache[$user_id] )
+        && isset( $cache[$user_id][$type] )
+        && isset( $cache[$user_id][$type][$object_id] ) ) {
+        return $cache[$user_id][$type][$object_id];
     }
 
     $ct_table = ct_setup_table( 'automatorwp_logs' );
@@ -342,9 +319,51 @@ function automatorwp_get_user_last_completion( $object_id, $user_id, $type ) {
 
     ct_reset_setup_table();
 
+    $cache[$user_id][$type][$object_id] = $log;
+
+    automatorwp_set_cache( 'user_last_completion', $cache );
+
     return $log;
 
 }
+
+/**
+ * Clears the 'user_last_completion' and 'user_last_completion_time' every time a trigger, action or automation is completed.
+ * Cache used on automatorwp_get_user_last_completion() and automatorwp_get_user_last_completion_time() functions.
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass  $object     The trigger object
+ * @param int       $user_id    The user ID
+ */
+function automatorwp_clear_user_last_completion_cache( $object, $user_id ) {
+
+    $type = str_replace( 'automatorwp_user_completed_', '', current_filter() );
+    $caches_to_clear = array(
+        'user_completion_times',
+        'user_last_completion',
+        'user_last_completion_time',
+    );
+
+    // Loop all caches to clear
+    foreach( $caches_to_clear as $cache_to_clear ) {
+
+        $cache = automatorwp_get_cache( $cache_to_clear, array(), false );
+
+        if( isset( $cache[$user_id] )
+            && isset( $cache[$user_id][$type] )
+            && isset( $cache[$user_id][$type][$object->id] ) ) {
+            // Clear the cache entry if exists
+            unset( $cache[$user_id][$type][$object->id] );
+            automatorwp_set_cache( $cache_to_clear, $cache );
+        }
+
+    }
+
+}
+add_action( 'automatorwp_user_completed_trigger', 'automatorwp_clear_user_last_completion_cache', 10, 2 );
+add_action( 'automatorwp_user_completed_action', 'automatorwp_clear_user_last_completion_cache', 10, 2 );
+add_action( 'automatorwp_user_completed_automation', 'automatorwp_clear_user_last_completion_cache', 10, 2 );
 
 /**
  * Check if user has completed the trigger

@@ -466,6 +466,7 @@ function automatorwp_get_post_tags_replacements( $post_id ) {
 
     $replacements['post_id'] = ( $post ? $post->ID : '' );
     $replacements['post_title'] = ( $post ? $post->post_title : '' );
+    $replacements['post_link'] = ( $post ? get_permalink( $post->ID ) : '' );
     $replacements['post_type'] = ( $post ? $post->post_type : '' );
     $replacements['post_author'] = ( $post ? $post->post_author : '' );
     $replacements['post_author_email'] = ( $author ? $author->user_email : '' );

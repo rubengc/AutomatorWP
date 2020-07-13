@@ -16,16 +16,17 @@ if( !defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0.0
  *
- * @param string    $key
- * @param mixed     $default
+ * @param string    $key        Cache key
+ * @param mixed     $default    Default value in case the cache is not found
+ * @param bool      $stored     Whatever if the cache has been stored previously in the database or not
  *
  * @return mixed
  */
-function automatorwp_get_cache( $key = '', $default = null ) {
+function automatorwp_get_cache( $key = '', $default = null, $stored = true ) {
 
     if( isset( AutomatorWP()->cache[$key] ) ) {
         return AutomatorWP()->cache[$key];
-    } else {
+    } else if( $stored ) {
 
         $cached = get_option( 'automatorwp_cache_' . $key );
 

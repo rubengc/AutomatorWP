@@ -3,7 +3,7 @@
  * Plugin Name:     	AutomatorWP
  * Plugin URI:      	https://automatorwp.com
  * Description:     	Connect your WordPress plugins together and create automated workflows.
- * Version:         	1.1.5
+ * Version:         	1.1.6
  * Author:          	AutomatorWP
  * Author URI:      	https://automatorwp.com/
  * Text Domain:     	automatorwp
@@ -66,7 +66,7 @@ final class AutomatorWP {
     public $actions = array();
 
     /**
-     * @var         stdClass $db Database object
+     * @var         AutomatorWP_Database $db Database object
      * @since       1.0.0
      */
     public $db;
@@ -113,7 +113,7 @@ final class AutomatorWP {
     private function constants() {
 
         // Plugin version
-        define( 'AUTOMATORWP_VER', '1.1.5' );
+        define( 'AUTOMATORWP_VER', '1.1.6' );
 
         // Plugin file
         define( 'AUTOMATORWP_FILE', __FILE__ );
@@ -158,6 +158,7 @@ final class AutomatorWP {
      */
     private function classes() {
 
+        require_once AUTOMATORWP_DIR . 'classes/database.php';
         require_once AUTOMATORWP_DIR . 'classes/integration-trigger.php';
         require_once AUTOMATORWP_DIR . 'classes/integration-action.php';
 
@@ -237,7 +238,7 @@ final class AutomatorWP {
 
         global $wpdb;
 
-        $this->db = new stdClass();
+        $this->db = new AutomatorWP_Database();
 
         // Setup WordPress database tables
         $this->db->posts 				= $wpdb->posts;

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-07-07 09:32+0200\n"
+"POT-Creation-Date: 2020-07-13 10:07+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Action \"%s\" has the option key \"%s\" that is not allowed"
 msgstr ""
 
-#: includes/admin.php:46
+#: includes/admin.php:47
 msgid "AutomatorWP"
 msgstr ""
 
-#: includes/admin.php:82
+#: includes/admin.php:83
 msgid "Add-ons"
 msgstr ""
 
@@ -156,22 +156,22 @@ msgstr ""
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:142
+#: includes/admin/pages/licenses.php:151
 msgid "License"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:197 includes/admin/pages/licenses.php:204
+#: includes/admin/pages/licenses.php:206 includes/admin/pages/licenses.php:213
 msgid "Licenses"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:207
+#: includes/admin/pages/licenses.php:216
 #: includes/custom-tables/automations.php:382
-#: includes/custom-tables/automations.php:485
-#: includes/custom-tables/automations.php:493
+#: includes/custom-tables/automations.php:490
+#: includes/custom-tables/automations.php:498
 msgid "Save Changes"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:325
+#: includes/admin/pages/licenses.php:334
 msgid "Enter valid license key for automatic updates."
 msgstr ""
 
@@ -179,13 +179,13 @@ msgstr ""
 msgid "Invalid automation."
 msgstr ""
 
-#: includes/ajax-functions.php:39 includes/ajax-functions.php:156
-#: includes/ajax-functions.php:194 includes/ajax-functions.php:246
+#: includes/ajax-functions.php:39 includes/ajax-functions.php:159
+#: includes/ajax-functions.php:197 includes/ajax-functions.php:249
 msgid "Invalid item type."
 msgstr ""
 
-#: includes/ajax-functions.php:52 includes/ajax-functions.php:242
-#: includes/ajax-functions.php:259 includes/ajax-functions.php:266
+#: includes/ajax-functions.php:52 includes/ajax-functions.php:245
+#: includes/ajax-functions.php:262 includes/ajax-functions.php:269
 msgid "Invalid trigger."
 msgstr ""
 
@@ -193,39 +193,39 @@ msgstr ""
 msgid "Invalid action."
 msgstr ""
 
-#: includes/ajax-functions.php:128
+#: includes/ajax-functions.php:131
 msgid "Trigger can't be created."
 msgstr ""
 
-#: includes/ajax-functions.php:130
+#: includes/ajax-functions.php:133
 msgid "Action can't be created."
 msgstr ""
 
-#: includes/ajax-functions.php:152
+#: includes/ajax-functions.php:155
 msgid "Invalid item."
 msgstr ""
 
-#: includes/ajax-functions.php:166
+#: includes/ajax-functions.php:169
 msgid "Item deleted."
 msgstr ""
 
-#: includes/ajax-functions.php:186 includes/ajax-functions.php:190
+#: includes/ajax-functions.php:189 includes/ajax-functions.php:193
 msgid "Invalid items."
 msgstr ""
 
-#: includes/ajax-functions.php:220
+#: includes/ajax-functions.php:223
 msgid "Items order updated."
 msgstr ""
 
-#: includes/ajax-functions.php:273
+#: includes/ajax-functions.php:276
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:771
+#: includes/ajax-functions.php:774
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:851 includes/cmb2.php:238
+#: includes/ajax-functions.php:854 includes/cmb2.php:238
 #: includes/custom-tables/automations.php:197
 #: includes/custom-tables/logs.php:241 includes/custom-tables/logs.php:284
 #: includes/custom-tables/logs.php:702 includes/custom-tables/logs.php:786
@@ -462,20 +462,20 @@ msgstr ""
 msgid "Maximum number of times this automation can be completed. Set it to 0 for unlimited."
 msgstr ""
 
-#: includes/custom-tables/automations.php:481
+#: includes/custom-tables/automations.php:486
 msgid "Save &amp; Activate"
 msgstr ""
 
-#: includes/custom-tables/automations.php:504
+#: includes/custom-tables/automations.php:509
 msgid "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete."
 msgstr ""
 
-#: includes/custom-tables/automations.php:506
+#: includes/custom-tables/automations.php:511
 #: includes/custom-tables/logs.php:436
 msgid "Delete permanently"
 msgstr ""
 
-#: includes/custom-tables/automations.php:507
+#: includes/custom-tables/automations.php:512
 #: includes/custom-tables/logs.php:437
 msgid "Delete Permanently"
 msgstr ""
@@ -614,7 +614,7 @@ msgid "Create a %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:85
-#: includes/utilities.php:306
+#: includes/utilities.php:312
 msgid "post"
 msgstr ""
 
@@ -1255,6 +1255,7 @@ msgid "User comments on <strong>a post of a type</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-post-type.php:41
+#: includes/integrations/wordpress/triggers/publish-post-type.php:41
 #: includes/integrations/wordpress/triggers/view-post-type.php:41
 msgid "Post type:"
 msgstr ""
@@ -1332,6 +1333,24 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/publish-post-tag.php:31
 #, php-format
 msgid "User publishes a post with %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/publish-post-type.php:26
+msgid "User publishes a post of a type"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/publish-post-type.php:27
+msgid "User publishes <strong>a post of a type</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/publish-post-type.php:29
+#, php-format
+msgid "User publishes %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/publish-post-type.php:31
+#, php-format
+msgid "User publishes %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/publish-post.php:26
@@ -1558,98 +1577,103 @@ msgstr ""
 
 #: includes/utilities.php:304
 #, php-format
-msgid "%s Type"
+msgid "%s URL"
 msgstr ""
 
 #: includes/utilities.php:310
 #, php-format
-msgid "%s Author ID"
+msgid "%s Type"
 msgstr ""
 
 #: includes/utilities.php:316
 #, php-format
-msgid "%s Author Email"
+msgid "%s Author ID"
 msgstr ""
 
 #: includes/utilities.php:322
 #, php-format
-msgid "%s Content"
-msgstr ""
-
-#: includes/utilities.php:324
-msgid "The content"
+msgid "%s Author Email"
 msgstr ""
 
 #: includes/utilities.php:328
 #, php-format
-msgid "%s Excerpt"
+msgid "%s Content"
 msgstr ""
 
 #: includes/utilities.php:330
-msgid "The excerpt"
+msgid "The content"
 msgstr ""
 
 #: includes/utilities.php:334
 #, php-format
-msgid "%s Status"
+msgid "%s Excerpt"
 msgstr ""
 
 #: includes/utilities.php:336
-msgid "publish"
+msgid "The excerpt"
 msgstr ""
 
 #: includes/utilities.php:340
 #, php-format
-msgid "%s Parent ID"
+msgid "%s Status"
+msgstr ""
+
+#: includes/utilities.php:342
+msgid "publish"
 msgstr ""
 
 #: includes/utilities.php:346
 #, php-format
-msgid "%s Menu Order"
+msgid "%s Parent ID"
 msgstr ""
 
 #: includes/utilities.php:352
 #, php-format
+msgid "%s Menu Order"
+msgstr ""
+
+#: includes/utilities.php:358
+#, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:354
+#: includes/utilities.php:360
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:372
+#: includes/utilities.php:378
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:375
+#: includes/utilities.php:381
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:376
+#: includes/utilities.php:382
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:377
+#: includes/utilities.php:383
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:378
+#: includes/utilities.php:384
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:379
+#: includes/utilities.php:385
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:380
+#: includes/utilities.php:386
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:540
+#: includes/utilities.php:546
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:541
+#: includes/utilities.php:547
 msgid "Hide options"
 msgstr ""

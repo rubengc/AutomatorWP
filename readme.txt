@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -117,9 +117,10 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User views any/specific page.
 * User views a post of any/specific type.
 * User publishes a post.
-* User publishes a page.
 * User publishes a post with any/specific category.
 * User publishes a post with any/specific tag.
+* User publishes a page.
+* User publishes a post of any/specific type
 * User comments on any/specific post.
 * User comments on a post of any/specific category.
 * User comments on a post of any/specific tag.
@@ -207,6 +208,20 @@ No, We're unable to provide custom development services, as our focus is develop
 
 == Changelog ==
 
+= 1.1.6 =
+
+* **New Features**
+* New trigger: User publishes a post of any/specific type.
+* Added the "Post URL" tag to triggers who have a post assigned.
+* **Improvements**
+* Force custom database tables to use InnoDB on creation.
+* Added internal upgrade process to update custom database tables to InnoDB.
+* Prevent to perform API calls on areas outside the add-ons or licenses pages.
+* Add caching to several functions to speed up all queries implied on the event detection process.
+* Improvements on the cache functionality.
+* **Developer Notes**
+* Added the ability to force not search in options when retrieving a specific cache element.
+
 = 1.1.5 =
 
 * **Bug Fixes**
@@ -215,7 +230,7 @@ No, We're unable to provide custom development services, as our focus is develop
 = 1.1.4 =
 
 * **New Features**
-* New trigger: User comments on a post of a type.
+* New trigger: User comments on a post of any/specific type.
 
 = 1.1.3 =
 

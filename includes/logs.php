@@ -38,6 +38,8 @@ function automatorwp_get_log_types() {
  */
 function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
 
+    global $wpdb;
+
     $log_data = wp_parse_args( $log_data, array(
         'title'     => '',
         'type'      => '',
@@ -47,16 +49,33 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
         'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
     ) );
 
-    ct_setup_table( 'automatorwp_logs' );
+    $ct_table = ct_setup_table( 'automatorwp_logs' );
 
-    $log_id = ct_insert_object( $log_data );
+    // Store log entry
+    $log_id = $ct_table->db->insert( $log_data );
 
     // If log correctly inserted, insert all meta data received
     if( $log_id && ! empty( $log_meta ) ) {
 
+        $metas = array();
+
         foreach( $log_meta as $meta_key => $meta_value ) {
-            ct_update_object_meta( $log_id, $meta_key, $meta_value );
+            // Sanitize vars
+            $meta_key = sanitize_key( $meta_key );
+            $meta_key = wp_unslash( $meta_key );
+            $meta_value = wp_unslash( $meta_value );
+            $meta_value = sanitize_meta( $meta_key, $meta_value, $ct_table->name );
+            $meta_value = maybe_serialize( $meta_value );
+
+            // Setup the insert value
+            $metas[] = "{$log_id}, '{$meta_key}', '{$meta_value}'";
         }
+
+        $logs_meta = AutomatorWP()->db->logs_meta;
+        $metas = implode( '), (', $metas );
+
+        // Since the log is recently inserted, is faster to run a single query to insert all metas instead of insert them one-by-one
+        $wpdb->query( "INSERT INTO {$logs_meta} (id, meta_key, meta_value) VALUES ({$metas})" );
 
     }
 

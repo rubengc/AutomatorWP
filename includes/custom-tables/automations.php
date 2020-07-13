@@ -468,9 +468,14 @@ function automatorwp_automations_publishing_actions() {
     }
 
     $primary_key = $ct_table->db->primary_key;
-    $object_id = absint( $_GET[$primary_key] );
+    $object_id = isset( $_GET[$primary_key] ) ? absint( $_GET[$primary_key] ) : 0;
 
     $automation = ct_get_object( $object_id );
+
+    // Bail if automation doesn't exists
+    if( ! $automation ) {
+        return;
+    }
 
     ?>
     <div id="major-publishing-actions">

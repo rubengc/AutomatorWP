@@ -209,6 +209,20 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.6 ###
+
+* **New Features**
+* New trigger: User publishes a post of any/specific type.
+* Added the "Post URL" tag to triggers who have a post assigned.
+* **Improvements**
+* Force custom database tables to use InnoDB on creation.
+* Added internal upgrade process to update custom database tables to InnoDB.
+* Prevent to perform API calls on areas outside the add-ons or licenses pages.
+* Add caching to several functions to speed up all queries implied on the event detection process.
+* Improvements on the cache functionality.
+* **Developer Notes**
+* Added the ability to force not search in options when retrieving a specific cache element.
+
 ### 1.1.5 ###
 
 * **Bug Fixes**
