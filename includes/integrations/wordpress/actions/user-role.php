@@ -45,19 +45,11 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
                         ),
                     )
                 ),
-                'role' => array(
-                    'from' => 'role',
-                    'fields' => array(
-                        'role' => array(
-                            'name' => __( 'Role:', 'automatorwp' ),
-                            'type' => 'select',
-                            'option_none' => true,
-                            'classes' => 'automatorwp-selector',
-                            'options_cb' => 'automatorwp_options_cb_roles',
-                            'default' => ''
-                        ),
-                    )
-                )
+                'role' => automatorwp_utilities_role_option( array(
+                    'option_none_value' => '',
+                    'option_none_label' => __( 'another role', 'automatorwp' ),
+                    'default'           => ''
+                ) )
             ),
         ) );
 

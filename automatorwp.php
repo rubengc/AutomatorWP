@@ -3,7 +3,7 @@
  * Plugin Name:     	AutomatorWP
  * Plugin URI:      	https://automatorwp.com
  * Description:     	Connect your WordPress plugins together and create automated workflows.
- * Version:         	1.1.6
+ * Version:         	1.1.7
  * Author:          	AutomatorWP
  * Author URI:      	https://automatorwp.com/
  * Text Domain:     	automatorwp
@@ -113,7 +113,7 @@ final class AutomatorWP {
     private function constants() {
 
         // Plugin version
-        define( 'AUTOMATORWP_VER', '1.1.6' );
+        define( 'AUTOMATORWP_VER', '1.1.7' );
 
         // Plugin file
         define( 'AUTOMATORWP_FILE', __FILE__ );
@@ -222,9 +222,9 @@ final class AutomatorWP {
         register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
         // Hook in all our important pieces
-        add_action( 'init', array( $this, 'pre_init' ), 5 );
-        add_action( 'init', array( $this, 'init' ) );
-        add_action( 'init', array( $this, 'post_init' ), 999 );
+        add_action( 'plugins_loaded', array( $this, 'pre_init' ), 20 );
+        add_action( 'plugins_loaded', array( $this, 'init' ), 50 );
+        add_action( 'plugins_loaded', array( $this, 'post_init' ), 999 );
     }
 
     /**

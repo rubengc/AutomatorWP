@@ -172,8 +172,8 @@ function automatorwp_options_cb_post_types( $field ) {
 function automatorwp_options_cb_roles( $field ) {
 
     // Option none
-    $none_value = '';
-    $none_label = __( 'another role', 'automatorwp' );
+    $none_value = 'any';
+    $none_label = __( 'any role', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     $roles = automatorwp_get_editable_roles();

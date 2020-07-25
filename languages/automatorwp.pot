@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-07-13 10:07+0200\n"
+"POT-Creation-Date: 2020-07-25 11:31+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -370,8 +370,8 @@ msgstr ""
 msgid "a %s"
 msgstr ""
 
-#: includes/cmb2.php:176
-msgid "another role"
+#: includes/cmb2.php:176 includes/utilities.php:257 includes/utilities.php:287
+msgid "any role"
 msgstr ""
 
 #: includes/cmb2.php:218
@@ -488,7 +488,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: includes/custom-tables/logs.php:160 includes/utilities.php:277
+#: includes/custom-tables/logs.php:160 includes/utilities.php:347
 msgid "Post"
 msgstr ""
 
@@ -614,7 +614,7 @@ msgid "Create a %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:85
-#: includes/utilities.php:312
+#: includes/utilities.php:382
 msgid "post"
 msgstr ""
 
@@ -854,7 +854,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:115
 #: includes/integrations/wordpress/actions/create-user.php:348
-#: includes/integrations/wordpress/actions/user-role.php:52
+#: includes/utilities.php:253 includes/utilities.php:283
 msgid "Role:"
 msgstr ""
 
@@ -1168,6 +1168,28 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+#: includes/integrations/wordpress/actions/user-role.php:50
+msgid "another role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/add-role.php:26
+msgid "User gets added to role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/add-role.php:27
+msgid "User gets <strong>added</strong> to role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/add-role.php:29
+#, php-format
+msgid "User gets added to %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/add-role.php:31
+#, php-format
+msgid "User gets added to %1$s"
+msgstr ""
+
 #: includes/integrations/wordpress/triggers/comment-page.php:26
 msgid "User comments on a page"
 msgstr ""
@@ -1380,6 +1402,42 @@ msgstr ""
 msgid "User registers"
 msgstr ""
 
+#: includes/integrations/wordpress/triggers/remove-role.php:26
+msgid "User gets removed from role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/remove-role.php:27
+msgid "User gets <strong>removed</strong> from role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/remove-role.php:29
+#, php-format
+msgid "User gets removed from %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/remove-role.php:31
+#, php-format
+msgid "User gets removed from %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/set-role.php:26
+msgid "User role changes to role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/set-role.php:27
+msgid "User role <strong>changes</strong> to role"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/set-role.php:29
+#, php-format
+msgid "User role changes to %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/set-role.php:31
+#, php-format
+msgid "User role changes to %1$s"
+msgstr ""
+
 #: includes/integrations/wordpress/triggers/view-page.php:26
 msgid "User views a page"
 msgstr ""
@@ -1557,123 +1615,127 @@ msgstr ""
 msgid "Select a category"
 msgstr ""
 
-#: includes/utilities.php:253
+#: includes/utilities.php:288
+msgid "Select a role"
+msgstr ""
+
+#: includes/utilities.php:323
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:292
+#: includes/utilities.php:362
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:298
+#: includes/utilities.php:368
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:300
+#: includes/utilities.php:370
 msgid "The Title"
 msgstr ""
 
-#: includes/utilities.php:304
+#: includes/utilities.php:374
 #, php-format
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:310
+#: includes/utilities.php:380
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:316
+#: includes/utilities.php:386
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:322
+#: includes/utilities.php:392
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:328
+#: includes/utilities.php:398
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:330
+#: includes/utilities.php:400
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:334
+#: includes/utilities.php:404
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:336
+#: includes/utilities.php:406
 msgid "The excerpt"
 msgstr ""
 
-#: includes/utilities.php:340
+#: includes/utilities.php:410
 #, php-format
 msgid "%s Status"
 msgstr ""
 
-#: includes/utilities.php:342
+#: includes/utilities.php:412
 msgid "publish"
 msgstr ""
 
-#: includes/utilities.php:346
+#: includes/utilities.php:416
 #, php-format
 msgid "%s Parent ID"
 msgstr ""
 
-#: includes/utilities.php:352
+#: includes/utilities.php:422
 #, php-format
 msgid "%s Menu Order"
 msgstr ""
 
-#: includes/utilities.php:358
+#: includes/utilities.php:428
 #, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:360
+#: includes/utilities.php:430
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:378
+#: includes/utilities.php:448
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:381
+#: includes/utilities.php:451
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:382
+#: includes/utilities.php:452
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:383
+#: includes/utilities.php:453
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:384
+#: includes/utilities.php:454
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:385
+#: includes/utilities.php:455
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:386
+#: includes/utilities.php:456
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:546
+#: includes/utilities.php:616
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:547
+#: includes/utilities.php:617
 msgid "Hide options"
 msgstr ""

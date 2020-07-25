@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -126,6 +126,9 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User comments on a post of any/specific tag.
 * User comments on any/specific page.
 * User comments on a post of any/specific type.
+* User gets added to any/specific role.
+* User role changes to any/specific role.
+* User gets removed from any/specific role.
 * User completes any/specific automation.
 
 **Actions**
@@ -207,6 +210,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.1.7 =
+
+* **New Features**
+* New trigger: User gets added to any/specific role.
+* New trigger: User role changes to any/specific role.
+* New trigger: User gets removed from any/specific role.
+* **Developer Notes**
+* Initialize everything sooner to get all functions ready as soon as possible.
 
 = 1.1.6 =
 

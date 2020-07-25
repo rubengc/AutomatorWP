@@ -239,6 +239,76 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
 }
 
 /**
+ * Utility function to get the role option parameter
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_role_option( $args = array() ) {
+
+    $args = wp_parse_args( $args, array(
+        'name'              => __( 'Role:', 'automatorwp' ),
+        'option_default'    => '',
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => __( 'any role', 'automatorwp' ),
+        'default'           => 'any'
+    ) );
+
+    return array(
+        'from' => 'role',
+        'default' => $args['option_default'],
+        'fields' => array(
+            'role' => automatorwp_utilities_role_field( $args )
+        )
+    );
+
+}
+
+/**
+ * Utility function to get a role field parameters
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_role_field( $args = array() ) {
+
+    $args = wp_parse_args( $args, array(
+        'name'              => __( 'Role:', 'automatorwp' ),
+        'option_default'    => '',
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => __( 'any role', 'automatorwp' ),
+        'placeholder'       => __( 'Select a role', 'automatorwp' ),
+        'default'           => 'any'
+    ) );
+
+    return array(
+        'name' => $args['name'],
+        'type' => 'select',
+        'classes' => 'automatorwp-selector',
+        'option_none' => $args['option_none'],
+        'option_none_value' => $args['option_none_value'],
+        'option_none_label' => $args['option_none_label'],
+        'attributes' => array(
+            'data-option-none' => $args['option_none'],
+            'data-option-none-value' => $args['option_none_value'],
+            'data-option-none-label' => $args['option_none_label'],
+            'data-placeholder' => $args['placeholder'],
+        ),
+        'options_cb' => 'automatorwp_options_cb_roles',
+        'default' => $args['default']
+    );
+
+}
+
+/**
  * Utility function to get the times tag
  *
  * @since 1.0.0

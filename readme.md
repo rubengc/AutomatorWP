@@ -110,14 +110,18 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User views any/specific page.
 * User views a post of any/specific type.
 * User publishes a post.
-* User publishes a page.
 * User publishes a post with any/specific category.
 * User publishes a post with any/specific tag.
+* User publishes a page.
+* User publishes a post of any/specific type
 * User comments on any/specific post.
 * User comments on a post of any/specific category.
 * User comments on a post of any/specific tag.
 * User comments on any/specific page.
 * User comments on a post of any/specific type.
+* User gets added to any/specific role.
+* User role changes to any/specific role.
+* User gets removed from any/specific role.
 * User completes any/specific automation.
 
 **Actions**
@@ -208,6 +212,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.1.7 ###
+
+* **New Features**
+* New trigger: User gets added to any/specific role.
+* New trigger: User role changes to any/specific role.
+* New trigger: User gets removed from any/specific role.
+* **Developer Notes**
+* Initialize everything sooner to get all functions ready as soon as possible.
 
 ### 1.1.6 ###
 
