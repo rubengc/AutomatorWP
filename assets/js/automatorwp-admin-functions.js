@@ -52,6 +52,7 @@ function automatorwp_post_selector( $this ) {
                     action: 'automatorwp_get_posts',
                     nonce: automatorwp_admin_functions.nonce,
                     post_type: post_types,
+                    post_type_cb: $this.data('post-type-cb'),
                     option_none: $this.data('option-none'),
                     option_none_value: $this.data('option-none-value'),
                     option_none_label: $this.data('option-none-label'),

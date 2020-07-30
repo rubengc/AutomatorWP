@@ -213,6 +213,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.8 ###
+
+* **Developer Notes**
+* Added the ability to pass a custom callback to determine the post types of a post selector.
+
 ### 1.1.7 ###
 
 * **New Features**

@@ -398,6 +398,13 @@ function automatorwp_ajax_get_posts() {
     // Post type conditional
     $post_type = ( isset( $_REQUEST['post_type'] ) && ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : array( 'post', 'page' ) );
 
+    // Add support to the post_type_cb parameter (used on post selector fields)
+    if( isset( $_REQUEST['post_type_cb'] ) && ! empty( $_REQUEST['post_type_cb'] ) && is_callable( $_REQUEST['post_type_cb'] ) ) {
+
+        $post_type = call_user_func( $_REQUEST['post_type_cb'] );
+
+    }
+
     if ( is_array( $post_type ) ) {
 
         // Sanitize all post types given
@@ -454,6 +461,7 @@ function automatorwp_ajax_get_posts() {
             }
 
         }
+
     }
 
     /**

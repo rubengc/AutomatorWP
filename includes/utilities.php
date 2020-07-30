@@ -51,6 +51,7 @@ function automatorwp_utilities_post_option( $args = array() ) {
         'option_none_value' => 'any',
         'option_none_label' => __( 'any post', 'automatorwp' ),
         'post_type'         => 'post',
+        'post_type_cb'      => '',
         'default'           => 'any'
     ) );
 
@@ -86,6 +87,7 @@ function automatorwp_utilities_post_field( $args = array() ) {
         'option_none_value' => 'any',
         'option_none_label' => __( 'any post', 'automatorwp' ),
         'post_type'         => 'post',
+        'post_type_cb'      => '',
         'placeholder'       => __( 'Select a post', 'automatorwp' ),
         'default'           => 'any'
     ) );
@@ -95,21 +97,23 @@ function automatorwp_utilities_post_field( $args = array() ) {
     }
 
     return array(
-        'name' => $args['name'],
-        'type' => 'select',
-        'classes' => 'automatorwp-post-selector',
-        'option_none' => $args['option_none'],
+        'name'              => $args['name'],
+        'type'              => 'select',
+        'classes'           => 'automatorwp-post-selector',
+        'option_none'       => $args['option_none'],
         'option_none_value' => $args['option_none_value'],
         'option_none_label' => $args['option_none_label'],
-        'attributes' => array(
+        'post_type_cb'      => '',
+        'attributes'        => array(
             'data-option-none' => $args['option_none'],
             'data-option-none-value' => $args['option_none_value'],
             'data-option-none-label' => $args['option_none_label'],
             'data-placeholder' => $args['placeholder'],
             'data-post-type' => implode(',', $args['post_type'] ),
+            'data-post-type-cb' => $args['post_type_cb'],
         ),
-        'options_cb' => 'automatorwp_options_cb_posts',
-        'default' => $args['default']
+        'options_cb'        => 'automatorwp_options_cb_posts',
+        'default'           => $args['default']
     );
 
 }

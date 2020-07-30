@@ -764,6 +764,8 @@ function automatorwp_get_automation_item_option_form( $object, $item_type, $opti
  * @param string    $item_type  The item type (trigger|action)
  * @param string    $option     Option form to render
  * @param stdClass  $automation The automation object
+ * @param string    $field_id   The field ID
+ * @param array     $field      The field parameters
  *
  * @return array
  */
@@ -788,7 +790,21 @@ function automatorwp_automation_item_option_field_args( $object, $item_type, $op
 
     }
 
-    return $field;
+    /**
+     * Filter available to process custom field parameters
+     *
+     * @since 1.0.0
+     *
+     * @param array     $field      The field parameters
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     * @param string    $option     Option form to render
+     * @param stdClass  $automation The automation object
+     * @param string    $field_id   The field ID
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_automation_item_option_field_args', $field, $object, $item_type, $option, $automation, $field_id );
 
 }
 
