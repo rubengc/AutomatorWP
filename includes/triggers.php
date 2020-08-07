@@ -247,15 +247,26 @@ function automatorwp_get_triggers_in_use() {
         return array();
     }
 
+    $cache = automatorwp_get_cache( 'triggers_in_use', false, false );
+
+    // If result already cached, return it
+    if( is_array( $cache ) ) {
+        return $cache;
+    }
+
+    $triggers_in_use = array();
     $results = $wpdb->get_results( "SELECT t.type FROM {$ct_table->db->table_name} AS t GROUP BY t.type" );
 
     ct_reset_setup_table();
 
     if( is_array( $results ) && count( $results ) ) {
-        return wp_list_pluck( $results, 'type' );
-    } else {
-        return array();
+        $triggers_in_use = wp_list_pluck( $results, 'type' );
     }
+
+    // Cache function result
+    automatorwp_set_cache( 'triggers_in_use', $triggers_in_use );
+
+    return $triggers_in_use;
 
 }
 

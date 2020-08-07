@@ -42,7 +42,13 @@ class AutomatorWP_Integration_Action {
      */
     public function hooks() {
 
-        add_action( 'automatorwp_init', array( $this, 'register' ) );
+        if ( ! did_action( 'automatorwp_init' ) ) {
+            // Default hook to register
+            add_action('automatorwp_init', array( $this, 'register' ) );
+        } else {
+            // Hook for triggers registered from the theme's functions
+            add_action( 'after_setup_theme', array( $this, 'register' ) );
+        }
 
         // Execute action hook
         add_action( 'automatorwp_execute_action', array( $this, 'maybe_execute' ), 10, 5 );

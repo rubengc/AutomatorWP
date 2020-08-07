@@ -10,67 +10,6 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Autoload triggers in use hooks
- *
- * @since 1.0.0
- */
-function automatorwp_autoload_triggers_hooks() {
-
-    $triggers = automatorwp_get_triggers();
-    $triggers_in_user = automatorwp_get_triggers_in_use();
-
-    foreach( $triggers_in_user as $trigger_name ) {
-
-        // Skip unregistered triggers
-        if( ! isset( $triggers[$trigger_name] ) ) {
-            continue;
-        }
-
-        $trigger = $triggers[$trigger_name];
-
-        // Skip if not action or filter is provided
-        if( empty( $trigger['action'] ) && empty( $trigger['filter'] ) ) {
-            continue;
-        }
-
-        // Skip if not callback function is provided
-        if( empty( $trigger['function'] ) ) {
-            continue;
-        }
-
-        // Register the trigger hook (action or filter)
-        if( ! empty( $trigger['action'] ) ) {
-
-            // Ensure that is an array
-            if( ! is_array( $trigger['action'] ) ) {
-                $trigger['action'] = array( $trigger['action'] );
-            }
-
-            // Add all the actions
-            foreach( $trigger['action'] as $action ) {
-                add_action( $action, $trigger['function'], $trigger['priority'], $trigger['accepted_args'] );
-            }
-
-        } else if( ! empty( $trigger['filter'] ) ) {
-
-            // Ensure that is an array
-            if( ! is_array( $trigger['filter'] ) ) {
-                $trigger['filter'] = array( $trigger['filter'] );
-            }
-
-            // Add all triggers
-            foreach( $trigger['filter'] as $filter ) {
-                add_filter( $filter, $trigger['function'], $trigger['priority'], $trigger['accepted_args'] );
-            }
-
-        }
-
-    }
-
-}
-add_action( 'automatorwp_post_init', 'automatorwp_autoload_triggers_hooks' );
-
-/**
  * Handles an event trigger
  *
  * @since 1.0.0

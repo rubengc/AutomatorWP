@@ -790,6 +790,11 @@ function automatorwp_automation_item_option_field_args( $object, $item_type, $op
 
     }
 
+    // If field is required, update its label with the required mark
+    if( isset( $field['required'] ) && $field['required'] && isset( $field['name'] ) ) {
+        $field['name'] .= '<span class="automatorwp-field-required">*</span>';
+    }
+
     /**
      * Filter available to process custom field parameters
      *

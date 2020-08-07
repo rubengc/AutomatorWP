@@ -70,6 +70,7 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
                             'desc' => __( 'Email address(es) to send the email. Accepts single or comma-separated list of emails.', 'automatorwp' )
                                 . '<br>' . __( 'Leave empty to use the email of the user that completes the automation.', 'automatorwp' ),
                             'type' => 'text',
+                            'required'  => true,
                             'default' => ''
                         ),
                         'cc' => array(
@@ -88,12 +89,14 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
                             'name' => __( 'Subject:', 'automatorwp' ),
                             'desc' => __( 'Email\'s subject.', 'automatorwp' ),
                             'type' => 'text',
+                            'required'  => true,
                             'default' => ''
                         ),
                         'content' => array(
                             'name' => __( 'Content:', 'automatorwp' ),
                             'desc' => __( 'Email\'s content.', 'automatorwp' ),
                             'type' => 'wysiwyg',
+                            'required'  => true,
                             'default' => ''
                         ),
                     )
@@ -144,13 +147,17 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
             $headers[] = 'Bcc: ' . $bcc;
         }
 
-        $headers[] = 'Content-Type: text/html; charset=UTF-8';
+        $headers[] = 'Content-Type: text/html; charset='  . get_option( 'blog_charset' );
 
         // Setup the content
         $content = wpautop( $content );
 
+        add_filter( 'wp_mail_content_type', 'automatorwp_set_html_content_type' );
+
         // Send email
         $this->result = wp_mail( $to, $subject, $content, $headers );
+
+        remove_filter( 'wp_mail_content_type', 'automatorwp_set_html_content_type' );
 
     }
 

@@ -88,6 +88,7 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
                             'name' => __( 'Title:', 'automatorwp' ),
                             'desc' => __( 'The post title.', 'automatorwp' ),
                             'type' => 'text',
+                            'required'  => true,
                             'default' => ''
                         ),
                         'post_type' => array(
@@ -214,7 +215,7 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
         // Insert the post
         $this->post_id = wp_insert_post( $post_data );
 
-        if( $this->post_id ) {
+        if( $this->post_id && is_array( $action_options['post_meta'] ) ) {
 
             foreach( $action_options['post_meta'] as $meta ) {
 
@@ -344,9 +345,9 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
         );
 
         $log_fields['post_title'] = array(
-            'name' => __( 'Title:', 'automatorwp' ),
-            'desc' => __( 'The post title.', 'automatorwp' ),
-            'type' => 'text',
+            'name'      => __( 'Title:', 'automatorwp' ),
+            'desc'      => __( 'The post title.', 'automatorwp' ),
+            'type'      => 'text',
         );
 
         $log_fields['post_type'] = array(

@@ -79,12 +79,14 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
                             'name' => __( 'Username:', 'automatorwp' ),
                             'desc' => __( 'The user\'s login username.', 'automatorwp' ),
                             'type' => 'text',
+                            'required'  => true,
                             'default' => ''
                         ),
                         'user_email' => array(
                             'name' => __( 'Email:', 'automatorwp' ),
                             'desc' => __( 'The user email address.', 'automatorwp' ),
                             'type' => 'text',
+                            'required'  => true,
                             'default' => ''
                         ),
                         'first_name' => array(

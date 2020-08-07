@@ -213,6 +213,18 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.1.9 ###
+
+* **Improvements**
+* Added a required mark on all fields required.
+* Prevent PHP warnings on the "Create post action" when leaving the post metas field blank.
+* Added wp_mail filters to make emails work with 3rd party email providers like SendGrid.
+* Added support on parse tags to parse array elements.
+* Apply tag replacements only if content has any tags.
+* **Developer Notes**
+* Default tags renamed.
+* Improved tags flexibility to allow plugins register custom tags and trigger tags easily.
+
 ### 1.1.8 ###
 
 * **Developer Notes**

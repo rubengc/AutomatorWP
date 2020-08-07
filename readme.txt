@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.4
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -210,6 +210,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.1.9 =
+
+* **Improvements**
+* Added a required mark on all fields required.
+* Prevent PHP warnings on the "Create post action" when leaving the post metas field blank.
+* Added wp_mail filters to make emails work with 3rd party email providers like SendGrid.
+* Added support on parse tags to parse array elements.
+* Apply tag replacements only if content has any tags.
+* **Developer Notes**
+* Default tags renamed.
+* Improved tags flexibility to allow plugins register custom tags and trigger tags easily.
 
 = 1.1.8 =
 

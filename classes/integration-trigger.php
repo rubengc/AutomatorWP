@@ -42,7 +42,21 @@ class AutomatorWP_Integration_Trigger {
      */
     public function hooks() {
 
-        add_action( 'automatorwp_init', array( $this, 'register' ) );
+        if ( ! did_action( 'automatorwp_init' ) ) {
+            // Default hook to register
+            add_action('automatorwp_init', array( $this, 'register' ) );
+        } else {
+            // Hook for triggers registered from the theme's functions
+            add_action( 'after_setup_theme', array( $this, 'register' ) );
+        }
+
+        if ( ! did_action( 'automatorwp_post_init' ) ) {
+            // Default hook to register listener hook
+            add_action('automatorwp_post_init', array( $this, 'register_listener_hook' ) );
+        } else {
+            // Hook for triggers registered from the theme's functions
+            add_action( 'after_setup_theme', array( $this, 'register_listener_hook' ) );
+        }
 
         // User deserves trigger hook
         add_filter( 'automatorwp_user_deserves_trigger', array( $this, 'maybe_user_deserves_trigger' ), 10, 6 );
@@ -55,6 +69,67 @@ class AutomatorWP_Integration_Trigger {
      */
     public function register() {
         // Override
+    }
+
+    /**
+     * Register the trigger listener hook
+     *
+     * @since 1.0.0
+     */
+    public function register_listener_hook() {
+
+        $triggers_in_user = automatorwp_get_triggers_in_use();
+
+        // Bail if this trigger is not in use
+        if( ! in_array( $this->trigger, $triggers_in_user ) ) {
+            return;
+        }
+
+        // Get the trigger args
+        $trigger = automatorwp_get_trigger( $this->trigger );
+
+        // Bail if trigger not registered
+        if( ! $trigger ) {
+            return;
+        }
+
+        // Bail if not action or filter is provided
+        if( empty( $trigger['action'] ) && empty( $trigger['filter'] ) ) {
+            return;
+        }
+
+        // Bail if not callback function is provided
+        if( empty( $trigger['function'] ) ) {
+            return;
+        }
+
+        // Register the trigger hook (action or filter)
+        if( ! empty( $trigger['action'] ) ) {
+
+            // Ensure that is an array
+            if( ! is_array( $trigger['action'] ) ) {
+                $trigger['action'] = array( $trigger['action'] );
+            }
+
+            // Add all the actions
+            foreach( $trigger['action'] as $action ) {
+                add_action( $action, $trigger['function'], $trigger['priority'], $trigger['accepted_args'] );
+            }
+
+        } else if( ! empty( $trigger['filter'] ) ) {
+
+            // Ensure that is an array
+            if( ! is_array( $trigger['filter'] ) ) {
+                $trigger['filter'] = array( $trigger['filter'] );
+            }
+
+            // Add all triggers
+            foreach( $trigger['filter'] as $filter ) {
+                add_filter( $filter, $trigger['function'], $trigger['priority'], $trigger['accepted_args'] );
+            }
+
+        }
+
     }
 
     /**
