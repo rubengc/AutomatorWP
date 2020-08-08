@@ -530,12 +530,11 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
 
     switch( $tag_name ) {
         case 'times':
-            $replacement = ct_get_object_meta( $log->id, 'times', true );
+            $replacement = automatorwp_get_log_meta( $log->id, 'times', true );
             break;
     }
 
-    $post_tags = automatorwp_utilities_post_tags();
-    $post_tags = array_keys( $post_tags );
+    $post_tags = array_keys( automatorwp_utilities_post_tags() );
 
     // If is a post tag and log has a post assigned, pass its replacements
     if( in_array( $tag_name, $post_tags ) && $log->post_id !== 0 ) {
@@ -591,7 +590,7 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
      * @param string    $tag_name       The tag name (without "{}")
      * @param stdClass  $trigger        The trigger object
      * @param int       $user_id        The user ID
-     * @param string    $content    The content to parse
+     * @param string    $content        The content to parse
      * @param stdClass  $log            The last trigger log object
      *
      * @return string

@@ -87,3 +87,45 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
     return $log_id;
 
 }
+
+/**
+ * Get the log object data
+ *
+ * @param int       $log_id         The log ID
+ * @param string    $output         Optional. The required return type. One of OBJECT, ARRAY_A, or ARRAY_N, which correspond to
+ *                                  a object, an associative array, or a numeric array, respectively. Default OBJECT.
+ * @return array|stdClass|null
+ */
+function automatorwp_get_log_object( $log_id, $output = OBJECT ) {
+
+    ct_setup_table( 'automatorwp_logs' );
+
+    $log = ct_get_object( $log_id );
+
+    ct_reset_setup_table();
+
+    return $log;
+
+}
+
+/**
+ * Get the log object data
+ *
+ * @param int       $log_id         The log ID
+ * @param string    $meta_key       Optional. The meta key to retrieve. By default, returns
+ *                                  data for all keys. Default empty.
+ * @param bool      $single         Optional. Whether to return a single value. Default false.
+ *
+ * @return mixed                    Will be an array if $single is false. Will be value of meta data field if $single is true.
+ */
+function automatorwp_get_log_meta( $log_id, $meta_key = '', $single = false ) {
+
+    ct_setup_table( 'automatorwp_logs' );
+
+    $meta_value = ct_get_object_meta( $log_id, $meta_key, $single );
+
+    ct_reset_setup_table();
+
+    return $meta_value;
+
+}

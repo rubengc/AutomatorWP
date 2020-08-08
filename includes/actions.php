@@ -127,6 +127,28 @@ function automatorwp_get_action_object( $action_id, $output = OBJECT ) {
 }
 
 /**
+ * Get the action object data
+ *
+ * @param int       $action_id      The action ID
+ * @param string    $meta_key       Optional. The meta key to retrieve. By default, returns
+ *                                  data for all keys. Default empty.
+ * @param bool      $single         Optional. Whether to return a single value. Default false.
+ *
+ * @return mixed                    Will be an array if $single is false. Will be value of meta data field if $single is true.
+ */
+function automatorwp_get_action_meta( $action_id, $meta_key = '', $single = false ) {
+
+    ct_setup_table( 'automatorwp_actions' );
+
+    $meta_value = ct_get_object_meta( $action_id, $meta_key, $single );
+
+    ct_reset_setup_table();
+
+    return $meta_value;
+
+}
+
+/**
  * Get the action's automation object
  *
  * @since 1.0.0

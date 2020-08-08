@@ -213,6 +213,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.2.0 ###
+
+* **Developer Notes**
+* Added more functions to make easier work with AutomatorWP custom tables data.
+
 ### 1.1.9 ###
 
 * **Improvements**
