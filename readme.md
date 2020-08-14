@@ -213,6 +213,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.2.1 ###
+
+* **Improvements**
+* Added the integration icon on the logs edit screen.
+* Improved the tags parser order to pass first dynamic tags and tags from external plugins.
+* Style improvements on the admin area.
+* Improved fields rendering on logs screen.
+* **Bug Fixes**
+* Fixed typo on the logs edit screen that causes automation links not getting rendered correctly.
+
 ### 1.2.0 ###
 
 * **Developer Notes**

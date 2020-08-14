@@ -304,8 +304,9 @@ function automatorwp_parse_automation_tags( $automation_id = 0, $user_id = 0, $c
 
     $tags = array_keys( $replacements );
 
-    // Parse automation tags
-    $parsed_content = str_replace( $tags, $replacements, $content );
+    $parsed_content = $content;
+
+    // First, parse dynamic tags like post meta, user meta and other plugin tags
 
     // Parse user meta tags (required here since user meta tags are based on the content)
     $parsed_content = automatorwp_parse_user_meta_tags( $user_id, $parsed_content );
@@ -326,7 +327,12 @@ function automatorwp_parse_automation_tags( $automation_id = 0, $user_id = 0, $c
      *
      * @return string
      */
-    return apply_filters( 'automatorwp_parse_automation_tags', $parsed_content, $replacements, $automation_id, $user_id, $content );
+    $parsed_content = apply_filters( 'automatorwp_parse_automation_tags', $parsed_content, $replacements, $automation_id, $user_id, $content );
+
+    // Finally, parse automation tags ensuring that all tags not parsed will be empty
+    $parsed_content = str_replace( $tags, $replacements, $parsed_content );
+
+    return $parsed_content;
 
 }
 

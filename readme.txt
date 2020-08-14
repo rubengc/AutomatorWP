@@ -2,8 +2,8 @@
 Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
-Tested up to: 5.4
-Stable tag: 1.2.0
+Tested up to: 5.5
+Stable tag: 1.2.1
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -210,6 +210,16 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.2.1 =
+
+* **Improvements**
+* Added the integration icon on the logs edit screen.
+* Improved the tags parser order to pass first dynamic tags and tags from external plugins.
+* Style improvements on the admin area.
+* Improved fields rendering on logs screen.
+* **Bug Fixes**
+* Fixed typo on the logs edit screen that causes automation links not getting rendered correctly.
 
 = 1.2.0 =
 

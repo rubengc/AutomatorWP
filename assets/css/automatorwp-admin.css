@@ -43,6 +43,7 @@
     background: transparent;
 }
 
+#automatorwp-automations-title .postbox-header,
 #automatorwp-automations-title .handlediv,
 #automatorwp-automations-title .hndle,
 #automatorwp-automations-title .cmb-th {
@@ -134,8 +135,10 @@
     box-shadow: none;
 }
 
+#automatorwp_triggers.postbox .postbox-header,
 #automatorwp_triggers.postbox .handlediv,
 #automatorwp_triggers.postbox .hndle,
+#automatorwp_actions.postbox .postbox-header,
 #automatorwp_actions.postbox .handlediv,
 #automatorwp_actions.postbox .hndle {
     display: none;
@@ -807,6 +810,15 @@
 /* -------------------------------------------
     Logs Edit Screen
    ------------------------------------------- */
+.automatorwp-log-title-preview .automatorwp-integration-icon {
+    float: left;
+    margin-right: 6px;
+    width: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    height: 30px;
+}
+
 #post-body .misc-pub-post-user:before {
     content: "\f110";
 }

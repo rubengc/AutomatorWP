@@ -91,6 +91,8 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
 /**
  * Get the log object data
  *
+ * @since 1.0.0
+ *
  * @param int       $log_id         The log ID
  * @param string    $output         Optional. The required return type. One of OBJECT, ARRAY_A, or ARRAY_N, which correspond to
  *                                  a object, an associative array, or a numeric array, respectively. Default OBJECT.
@@ -111,6 +113,8 @@ function automatorwp_get_log_object( $log_id, $output = OBJECT ) {
 /**
  * Get the log object data
  *
+ * @since 1.0.0
+ *
  * @param int       $log_id         The log ID
  * @param string    $meta_key       Optional. The meta key to retrieve. By default, returns
  *                                  data for all keys. Default empty.
@@ -127,5 +131,51 @@ function automatorwp_get_log_meta( $log_id, $meta_key = '', $single = false ) {
     ct_reset_setup_table();
 
     return $meta_value;
+
+}
+
+/**
+ * Get the log integration icon HTML markup
+ *
+ * @since 1.0.0
+ *
+ * @param int       $log         The log object
+ */
+function automatorwp_get_log_integration_icon( $log ) {
+
+    if( in_array( $log->type, array( 'trigger', 'action' ) ) ) {
+
+        // Get the trigger or action
+        ct_setup_table( "automatorwp_{$log->type}s" );
+        $object = ct_get_object( $log->object_id );
+        ct_reset_setup_table();
+
+        $type_args = automatorwp_automation_item_type_args( $object, $log->type );
+
+        if( $type_args ) {
+            $integration = automatorwp_get_integration( $type_args['integration'] );
+
+            if( $integration ) : ?>
+
+                <div class="automatorwp-integration-icon">
+                    <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
+                </div>
+
+            <?php endif;
+        } else { ?>
+
+            <div class="automatorwp-integration-icon">
+                <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'assets/img/integration-missing.svg' ); ?>" title="<?php echo esc_attr( __( 'Missing plugin', 'automatorwp' ) ); ?>">
+            </div>
+
+        <?php }
+
+    } else { ?>
+
+        <div class="automatorwp-integration-icon">
+            <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg' ); ?>" title="AutomatorWP">
+        </div>
+
+    <?php }
 
 }

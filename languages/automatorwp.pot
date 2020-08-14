@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-08-08 10:58+0200\n"
+"POT-Creation-Date: 2020-08-14 14:09+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -227,8 +227,9 @@ msgstr ""
 
 #: includes/ajax-functions.php:862 includes/cmb2.php:238
 #: includes/custom-tables/automations.php:197
-#: includes/custom-tables/logs.php:241 includes/custom-tables/logs.php:284
-#: includes/custom-tables/logs.php:702 includes/custom-tables/logs.php:786
+#: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:251
+#: includes/custom-tables/logs.php:326 includes/custom-tables/logs.php:678
+#: includes/custom-tables/logs.php:762
 msgid "(No title)"
 msgstr ""
 
@@ -307,8 +308,7 @@ msgid "Action disabled because plugin associated couldn't be found. Please, re-i
 msgstr ""
 
 #: includes/automation-ui.php:400 includes/automation-ui.php:410
-#: includes/custom-tables/automations.php:222
-#: includes/custom-tables/logs.php:228
+#: includes/custom-tables/automations.php:222 includes/logs.php:168
 msgid "Missing plugin"
 msgstr ""
 
@@ -471,12 +471,12 @@ msgid "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' 
 msgstr ""
 
 #: includes/custom-tables/automations.php:511
-#: includes/custom-tables/logs.php:436
+#: includes/custom-tables/logs.php:406
 msgid "Delete permanently"
 msgstr ""
 
 #: includes/custom-tables/automations.php:512
-#: includes/custom-tables/logs.php:437
+#: includes/custom-tables/logs.php:407
 msgid "Delete Permanently"
 msgstr ""
 
@@ -492,78 +492,78 @@ msgstr ""
 msgid "Post"
 msgstr ""
 
-#: includes/custom-tables/logs.php:370
+#: includes/custom-tables/logs.php:340
 msgid "Log Details"
 msgstr ""
 
-#: includes/custom-tables/logs.php:371
+#: includes/custom-tables/logs.php:341
 msgid "Log Data"
 msgstr ""
 
-#: includes/custom-tables/logs.php:397
+#: includes/custom-tables/logs.php:367
 #: includes/integrations/wordpress/actions/create-post.php:95
 #: includes/integrations/wordpress/actions/create-post.php:354
 msgid "Type:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:402
+#: includes/custom-tables/logs.php:372
 msgid "User:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:419
+#: includes/custom-tables/logs.php:389
 #: includes/integrations/wordpress/actions/create-post.php:109
 #: includes/integrations/wordpress/actions/create-post.php:366
 msgid "Date:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:434
+#: includes/custom-tables/logs.php:404
 msgid "Are you sure you want to delete this item?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete."
 msgstr ""
 
-#: includes/custom-tables/logs.php:518
+#: includes/custom-tables/logs.php:488
 msgid "Trigger:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:519
+#: includes/custom-tables/logs.php:489
 msgid "Trigger assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:523 includes/custom-tables/logs.php:539
-#: includes/custom-tables/logs.php:550
+#: includes/custom-tables/logs.php:493 includes/custom-tables/logs.php:509
+#: includes/custom-tables/logs.php:520
 #: includes/integrations/automatorwp/triggers/complete-automation.php:41
 msgid "Automation:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:524
+#: includes/custom-tables/logs.php:494
 msgid "Trigger's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:534
+#: includes/custom-tables/logs.php:504
 msgid "Action:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:535
+#: includes/custom-tables/logs.php:505
 msgid "Action assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:540
+#: includes/custom-tables/logs.php:510
 msgid "Action's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:551
+#: includes/custom-tables/logs.php:521
 msgid "Automation assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:561 includes/utilities.php:48
+#: includes/custom-tables/logs.php:531 includes/utilities.php:48
 #: includes/utilities.php:84
 msgid "Post:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:562
+#: includes/custom-tables/logs.php:532
 msgid "Post assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:738
+#: includes/custom-tables/logs.php:714
 msgid "(No post assigned)"
 msgstr ""
 
@@ -1115,11 +1115,11 @@ msgstr ""
 msgid "Blind carbon copy emails."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:261
+#: includes/integrations/wordpress/actions/send-email.php:262
 msgid "Sending result:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:262
+#: includes/integrations/wordpress/actions/send-email.php:263
 msgid "If sending result is \"Not sent\" you need to check if your server's wp_mail() function is correctly configured."
 msgstr ""
 

@@ -203,40 +203,7 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
     switch( $column_name ) {
         case 'title':
 
-            if( in_array( $log->type, array( 'trigger', 'action' ) ) ) {
-
-                // Get the trigger or action
-                ct_setup_table( "automatorwp_{$log->type}s" );
-                $object = ct_get_object( $log->object_id );
-                ct_reset_setup_table();
-
-                $type_args = automatorwp_automation_item_type_args( $object, $log->type );
-
-                if( $type_args ) {
-                    $integration = automatorwp_get_integration( $type_args['integration'] );
-
-                    if( $integration ) : ?>
-
-                        <div class="automatorwp-integration-icon">
-                            <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
-                        </div>
-
-                    <?php endif;
-                } else { ?>
-
-                    <div class="automatorwp-integration-icon">
-                        <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'assets/img/integration-missing.svg' ); ?>" title="<?php echo esc_attr( __( 'Missing plugin', 'automatorwp' ) ); ?>">
-                    </div>
-
-                <?php }
-
-            } else { ?>
-
-                <div class="automatorwp-integration-icon">
-                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg' ); ?>" title="AutomatorWP">
-                </div>
-
-            <?php }
+            automatorwp_get_log_integration_icon( $log );
 
             $title = ! empty( $log->title ) ? $log->title : __( '(No title)', 'automatorwp' ); ?>
             <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_logs', $log->id ); ?>"><?php echo $title; ?></a></strong>
@@ -343,9 +310,9 @@ add_action( 'manage_automatorwp_logs_custom_column', 'automatorwp_manage_logs_cu
  *
  * @since  1.0.0
  *
- * @param stdClass $object
+ * @param stdClass $log
  */
-function automatorwp_logs_edit_form_top( $object ) {
+function automatorwp_logs_edit_form_top( $log ) {
     global $ct_table;
 
     if( $ct_table->name !== 'automatorwp_logs' ) {
@@ -354,7 +321,10 @@ function automatorwp_logs_edit_form_top( $object ) {
 
     ?>
     <div class="automatorwp-log-title-preview">
-        <h1><?php echo $object->title; ?></h1>
+        <h1>
+            <?php automatorwp_get_log_integration_icon( $log ); ?>
+            <?php echo ( ! empty( $log->title ) ? $log->title : __( '(No title)', 'automatorwp' ) ); ?>
+        </h1>
     </div>
     <?php
 }
@@ -597,6 +567,12 @@ function automatorwp_log_field_cb( $field_args, $field ) {
     $field_id = $field_args['id'];
     $value = $field->value();
 
+    $wpautop = ( isset( $field_args['wpautop'] ) ? $field_args['wpautop'] : false );
+
+    if( $wpautop ) {
+        $value = wpautop( $value );
+    }
+
     /**
      * Filters the field value display
      *
@@ -696,7 +672,7 @@ function automatorwp_log_object_id_field_display( $value, $field_args, $field, $
             }
             break;
         case 'automation':
-            $automation = automatorwp_get_action_object( $log->object_id );
+            $automation = automatorwp_get_automation_object( $log->object_id );
 
             if( $automation ) {
                 $title = ! empty( $automation->title ) ? $automation->title : __( '(No title)', 'automatorwp' );

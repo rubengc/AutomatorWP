@@ -255,6 +255,7 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
             'name' => __( 'Content:', 'automatorwp' ),
             'desc' => __( 'Email\'s content.', 'automatorwp' ),
             'type' => 'text',
+            'wpautop' => true,
         );
 
         $log_fields['result'] = array(
