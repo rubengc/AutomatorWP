@@ -213,6 +213,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.2.2 ###
+
+* **Bug Fixes**
+* Fixed issues on multisite installs.
+
 ### 1.2.1 ###
 
 * **Improvements**
