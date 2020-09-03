@@ -2,7 +2,7 @@
 /**
  * 1.1.6 Upgrades
  *
- * @package     GamiPress\Admin\Upgrades\1.1.6
+ * @package     AutomatorWP\Admin\Upgrades\1.1.6
  * @since       1.1.6
  */
 // Exit if accessed directly
@@ -34,11 +34,14 @@ function automatorwp_116_upgrades( $stored_version ) {
         return $stored_version;
     }
 
-    // Process 1.1.6 upgrade
-    automatorwp_process_116_upgrade();
+    // Ensure that AutomatorWP tables have been created
+    if( automatorwp_database_table_exists( AutomatorWP()->db->automations ) ) {
+        // Process 1.1.6 upgrade
+        automatorwp_process_116_upgrade();
 
-    // There is nothing to update, so upgrade
-    $stored_version = '1.1.6';
+        // There is nothing to update, so upgrade
+        $stored_version = '1.1.6';
+    }
 
     return $stored_version;
 
@@ -54,6 +57,11 @@ function automatorwp_process_116_upgrade() {
 
     ignore_user_abort( true );
     set_time_limit( 0 );
+
+    // Bail if AutomatorWP tables haven't been created yet
+    if( ! automatorwp_database_table_exists( AutomatorWP()->db->automations ) ) {
+        return;
+    }
 
     // Setup tables to update
     $tables = array(
