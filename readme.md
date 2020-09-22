@@ -1,6 +1,6 @@
 # AutomatorWP #
 
-Connect your WordPress plugins together and create automated workflows.
+Connect your WordPress plugins together and create automated workflows with no code!
 
 ## Description ##
 
