@@ -97,7 +97,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 
 [View all plugins on wordpress.org](https://wordpress.org/plugins/tags/automatorwp/)
 
-If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium integrations, the most popular of which include:
+All integrations count with a premium version that lets you to unlock the full potential of AutomatorWP, the most popular of which include:
 
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
