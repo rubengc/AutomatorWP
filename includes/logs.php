@@ -18,7 +18,7 @@ if( !defined( 'ABSPATH' ) ) exit;
  */
 function automatorwp_get_log_types() {
 
-    return apply_filters( 'automatorwp_log_tupes', array(
+    return apply_filters( 'automatorwp_log_types', array(
         'automation' => __( 'Automation', 'automatorwp' ),
         'trigger' => __( 'Trigger', 'automatorwp' ),
         'action' => __( 'Action', 'automatorwp' ),
@@ -139,7 +139,7 @@ function automatorwp_get_log_meta( $log_id, $meta_key = '', $single = false ) {
  *
  * @since 1.0.0
  *
- * @param int       $log         The log object
+ * @param stdClass $log The log object
  */
 function automatorwp_get_log_integration_icon( $log ) {
 
@@ -170,10 +170,36 @@ function automatorwp_get_log_integration_icon( $log ) {
 
         <?php }
 
-    } else { ?>
+    } else {
+
+        $icon = AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg';
+
+        /**
+         * Available filter to override log default icon
+         *
+         * @since 1.2.4
+         *
+         * @param string    $icon   The icon URL
+         * @param stdClass  $log    The log object
+         *
+         * @return string
+         */
+        $icon = apply_filters( 'automatorwp_get_log_default_icon', $icon, $log );
+
+        /**
+         * Available filter to override log default icon title
+         *
+         * @since 1.2.4
+         *
+         * @param string    $title  The icon title attribute
+         * @param stdClass  $log    The log object
+         *
+         * @return string
+         */
+        $title = apply_filters( 'automatorwp_get_log_default_icon_title', 'AutomatorWP', $log ); ?>
 
         <div class="automatorwp-integration-icon">
-            <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg' ); ?>" title="AutomatorWP">
+            <img src="<?php echo esc_attr( $icon ); ?>" title="<?php echo esc_attr( $title ); ?>">
         </div>
 
     <?php }

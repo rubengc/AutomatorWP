@@ -42,6 +42,7 @@ class AutomatorWP_WordPress_View_Post_Type extends AutomatorWP_Integration_Trigg
                             'type' => 'select',
                             'classes' => 'automatorwp-selector',
                             'options_cb' => 'automatorwp_options_cb_post_types',
+                            'option_none' => true,
                             'default' => 'any'
                         )
                     )

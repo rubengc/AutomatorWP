@@ -15,7 +15,7 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
     public $action = 'wordpress_create_user';
 
     /**
-     * The new inserted post ID
+     * The new inserted user ID
      *
      * @since 1.0.0
      *
@@ -31,22 +31,6 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
      * @var array $user_meta
      */
     public $user_meta = array();
-
-    /**
-     * Register required hooks
-     *
-     * @since 1.0.0
-     */
-    public function hooks() {
-
-        // Log meta data
-        add_filter( 'automatorwp_user_completed_action_log_meta', array( $this, 'log_meta' ), 10, 5 );
-
-        // Log fields
-        add_filter( 'automatorwp_log_fields', array( $this, 'log_fields' ), 10, 5 );
-
-        parent::hooks();
-    }
 
     /**
      * Register the trigger
@@ -224,6 +208,22 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
 
         }
 
+    }
+
+    /**
+     * Register required hooks
+     *
+     * @since 1.0.0
+     */
+    public function hooks() {
+
+        // Log meta data
+        add_filter( 'automatorwp_user_completed_action_log_meta', array( $this, 'log_meta' ), 10, 5 );
+
+        // Log fields
+        add_filter( 'automatorwp_log_fields', array( $this, 'log_fields' ), 10, 5 );
+
+        parent::hooks();
     }
 
     /**

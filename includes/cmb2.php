@@ -140,6 +140,11 @@ function automatorwp_options_cb_users( $field ) {
  */
 function automatorwp_options_cb_post_types( $field ) {
 
+    // Setup vars
+    $none_value = 'any';
+    $none_label = __( 'a post of any type', 'automatorwp' );
+    $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
+
     // Get all public post types which means they are visitable
     $public_post_types = get_post_types( array( 'public' => true ), 'objects' );
 
@@ -148,12 +153,34 @@ function automatorwp_options_cb_post_types( $field ) {
         unset( $public_post_types['attachment'] );
     }
 
-    $options = array(
-        'any' => __( 'a post of any type', 'automatorwp' ),
-    );
-
     foreach( $public_post_types as $post_type => $post_type_object ) {
         $options[$post_type] = sprintf( __( 'a %s', 'automatorwp' ), strtolower( $post_type_object->labels->singular_name ) );
+    }
+
+    return $options;
+
+}
+
+/**
+ * Options callback for post type options
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass $field
+ *
+ * @return array
+ */
+function automatorwp_options_cb_post_status( $field ) {
+
+    // Setup vars
+    $none_value = 'any';
+    $none_label = __( 'any status', 'automatorwp' );
+    $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
+
+    $post_statuses = get_post_statuses();
+
+    foreach( $post_statuses as $post_status => $post_status_label ) {
+        $options[$post_status] = $post_status_label;
     }
 
     return $options;

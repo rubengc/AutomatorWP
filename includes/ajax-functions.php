@@ -249,7 +249,11 @@ function automatorwp_ajax_update_item_option() {
         wp_send_json_error( __( 'Invalid item type.', 'automatorwp' ) );
     }
 
-    $automation = automatorwp_get_trigger_automation( $id );
+    if( $item_type === 'trigger' ) {
+        $automation = automatorwp_get_trigger_automation( $id );
+    } else if( $item_type === 'action' ) {
+        $automation = automatorwp_get_action_automation( $id );
+    }
 
     ct_setup_table( "automatorwp_{$item_type}s" );
 
@@ -259,14 +263,14 @@ function automatorwp_ajax_update_item_option() {
     ct_reset_setup_table();
 
     if( ! $object ) {
-        wp_send_json_error( __( 'Invalid trigger.', 'automatorwp' ) );
+        wp_send_json_error( __( 'Invalid item.', 'automatorwp' ) );
     }
 
     $type_args = automatorwp_automation_item_type_args( $object, $item_type );
 
     // Check if trigger is registered
     if( ! $type_args ) {
-        wp_send_json_error( __( 'Invalid trigger.', 'automatorwp' ) );
+        wp_send_json_error( __( 'Invalid item.', 'automatorwp' ) );
     }
 
     // Get the option form
@@ -347,9 +351,6 @@ function automatorwp_ajax_update_item_option() {
         ct_update_object_meta( $object->id, $field_id, $value );
     }
 
-    // Flush cache to ensure that option replacement gets the newest value
-    wp_cache_flush();
-
     // Update the trigger title
     ct_update_object( array(
         'id' => $id,
@@ -357,6 +358,9 @@ function automatorwp_ajax_update_item_option() {
     ) );
 
     ct_reset_setup_table();
+
+    // Flush cache to ensure that option replacement gets the newest value
+    wp_cache_flush();
 
     $tags_html = '';
 

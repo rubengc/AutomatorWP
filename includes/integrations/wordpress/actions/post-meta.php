@@ -15,6 +15,15 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
     public $action = 'wordpress_post_meta';
 
     /**
+     * The post ID where meta has been applied
+     *
+     * @since 1.0.0
+     *
+     * @var int|WP_Error $post_id
+     */
+    public $post_id = 0;
+
+    /**
      * Register the trigger
      *
      * @since 1.0.0
@@ -105,6 +114,9 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
         add_filter( 'automatorwp_parse_automation_item_edit_label', array( $this, 'dynamic_label' ), 10, 5 );
         add_filter( 'automatorwp_parse_automation_item_log_label', array( $this, 'dynamic_label' ), 10, 5 );
 
+        // Log meta data
+        add_filter( 'automatorwp_user_completed_action_post_id', array( $this, 'post_id' ), 10, 6 );
+
         parent::hooks();
 
     }
@@ -174,6 +186,8 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
             return;
         }
 
+        $this->post_id = $post_id;
+
         // Get the current meta value
         $value = get_post_meta( $post_id, $meta_key, true );
 
@@ -219,6 +233,30 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
         // Update the user meta value
         update_post_meta( $post_id, $meta_key, $value );
 
+    }
+
+    /**
+     * Filter to assign a custom post ID to this action
+     *
+     * @since 1.0.0
+     *
+     * @param int       $post_id            The post ID, by default 0
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     *
+     * @return int
+     */
+    public function post_id( $post_id, $action, $user_id, $event, $action_options, $automation ) {
+
+        // Bail if action type don't match this action
+        if( $action->type !== $this->action ) {
+            return $post_id;
+        }
+
+        return $this->post_id;
     }
 
 }

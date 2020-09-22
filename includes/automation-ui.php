@@ -57,7 +57,7 @@ function automatorwp_automation_ui_triggers_meta_box( $automation, $type ) {
 
     <?php automatorwp_automation_ui_add_item_form( 'trigger' ); ?>
 
-    <button type="button" class="button automatorwp-add-trigger"><?php _e( 'Add Trigger', 'automatorwp' ); ?></button>
+    <button type="button" class="button automatorwp-button-success automatorwp-add-trigger"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Trigger', 'automatorwp' ); ?></button>
     <?php
 }
 
@@ -88,7 +88,7 @@ function automatorwp_automation_ui_actions_meta_box( $automation, $type ) {
 
     <?php automatorwp_automation_ui_add_item_form( 'action' ); ?>
 
-    <button type="button" class="button automatorwp-add-action"><?php _e( 'Add Action', 'automatorwp' ); ?></button>
+    <button type="button" class="button automatorwp-button-success automatorwp-add-action"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Action', 'automatorwp' ); ?></button>
     <?php
 }
 
@@ -133,19 +133,31 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                         }
 
                         // Skip integrations without triggers or actions
-                        if( empty( $choices ) ) {
-                            continue;
-                        } ?>
+                        if( ! empty( $choices ) ) : ?>
 
-                        <div class="automatorwp-integration"
-                             data-integration="<?php echo esc_attr( $integration ); ?>"
-                             data-label="<?php echo esc_attr( $args['label'] ); ?>"
-                             data-icon="<?php echo esc_attr( $args['icon'] ); ?>">
-                            <div class="automatorwp-integration-icon">
-                                <img src="<?php echo esc_attr( $args['icon'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>">
+                            <div class="automatorwp-integration"
+                                 data-integration="<?php echo esc_attr( $integration ); ?>"
+                                 data-label="<?php echo esc_attr( $args['label'] ); ?>"
+                                 data-icon="<?php echo esc_attr( $args['icon'] ); ?>">
+                                <div class="automatorwp-integration-icon">
+                                    <img src="<?php echo esc_attr( $args['icon'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>">
+                                </div>
+                                <div class="automatorwp-integration-label"><?php echo $args['label']; ?></div>
                             </div>
-                            <div class="automatorwp-integration-label"><?php echo $args['label']; ?></div>
-                        </div>
+
+                        <?php endif; ?>
+
+                        <?php
+                        /**
+                         * Available action to extend integration markup
+                         *
+                         * @since 1.0.0
+                         *
+                         * @param string    $integration
+                         * @param array     $integration_args
+                         * @param string    $item_type
+                         */
+                        do_action( 'automatorwp_automation_ui_after_integration_choice', $integration, $args, $item_type ); ?>
 
                     <?php endforeach; ?>
 
@@ -171,11 +183,24 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                                 <option value="<?php echo esc_attr( $trigger ); ?>" data-text="<?php echo esc_attr( $args['select_option'] ); ?>"><?php echo $args['label']; ?></option>
                             <?php endforeach; ?>
 
+                            <?php
+                            /**
+                             * Available action to extend integration triggers choices
+                             *
+                             * @since 1.2.4
+                             *
+                             * @param string    $integration
+                             * @param array     $integration_args
+                             */
+                            do_action( 'automatorwp_automation_ui_after_integration_triggers_choices', $integration, $args ); ?>
+
                         </select>
 
                     <?php endforeach; ?>
 
                 <?php elseif ( $item_type === 'action' ) : ?>
+
+                    <div class="automatorwp-select-action-label"><?php _e( 'Select an action', 'automatorwp' ); ?></div>
 
                     <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
 
@@ -189,13 +214,24 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                                 <option value="<?php echo esc_attr( $action ); ?>" data-text="<?php echo esc_attr( $args['select_option'] ); ?>"><?php echo $args['label']; ?></option>
                             <?php endforeach; ?>
 
+                            <?php
+                            /**
+                             * Available action to extend integration actions choices
+                             *
+                             * @since 1.2.4
+                             *
+                             * @param string    $integration
+                             * @param array     $integration_args
+                             */
+                            do_action( 'automatorwp_automation_ui_after_integration_actions_choices', $integration, $args ); ?>
+
                         </select>
 
                     <?php endforeach; ?>
 
                 <?php endif; ?>
 
-                <button type="button" class="button automatorwp-cancel-choice-select"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
+                <button type="button" class="button automatorwp-button-danger automatorwp-cancel-choice-select"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
 
                 <div class="automatorwp-spinner" style="display: none;">
                     <span class="spinner is-active"></span>
@@ -348,7 +384,7 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
                     do_action( 'automatorwp_automation_ui_before_option_form', $object, $item_type, $option, $args ); ?>
 
                     <button type="button" class="button button-primary automatorwp-save-option-form"><?php _e( 'Save', 'automatorwp' ); ?></button>
-                    <button type="button" class="button automatorwp-cancel-option-form"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
+                    <button type="button" class="button automatorwp-button-danger automatorwp-cancel-option-form"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
 
                     <div class="automatorwp-spinner" style="display: none;">
                         <span class="spinner is-active"></span>
@@ -612,63 +648,90 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
     $option_args = $type_args['options'][$option];
 
     $field_id = ( isset( $option_args['from'] ) ? $option_args['from'] : '' );
+    $value = '';
 
-    // If not isset the from field, try to return a default value
+    // If not isset the from field, try to get a default value
     if( ! isset( $option_args['fields'][$field_id] ) ) {
 
-        $default = '';
-
         if( isset( $option_args['default'] ) && ! empty( $option_args['default'] ) ) {
-            $default = $option_args['default'];
+            $value = $option_args['default'];
         }
 
-        if( $context === 'edit' ) {
-            $default = '<span class="button button-primary automatorwp-option" data-option="' . $option . '">' . $default . '</span>';
+    } else {
+
+        ct_setup_table( "automatorwp_{$item_type}s" );
+
+        $field = $option_args['fields'][$field_id];
+        $value = ct_get_object_meta( $object->id, $field_id, true );
+
+        if( empty( $value ) && isset( $field['default'] ) ) {
+            $value = $field['default'];
         }
 
-        return $default;
+        // Select field
+        if( $field['type'] === 'select' ) {
 
+            $options = array();
+
+            // Try to get the field options from field args
+            if( isset( $field['options'] ) ) {
+                $options = $field['options'];
+            } else if( isset( $field['options_cb'] ) && is_callable( $field['options_cb'] ) ) {
+
+                $field['value'] = $value;
+                $field['escaped_value'] = $value;
+                $field['args'] = $field;
+
+                $options = call_user_func( $field['options_cb'], (object) $field );
+            }
+
+            if( isset( $options[$value] ) ) {
+                $value = $options[$value];
+            }
+        }
+
+        // Fallback to default option if exists
+        if( empty( $value ) && isset( $option_args['default'] ) && ! empty( $option_args['default'] ) ) {
+            $value = $option_args['default'];
+        }
 
     }
 
-    ct_setup_table( "automatorwp_{$item_type}s" );
-
-    $field = $option_args['fields'][$field_id];
-    $value = ct_get_object_meta( $object->id, $field_id, true );
-
-    if( empty( $value ) && isset( $field['default'] ) ) {
-        $value = $field['default'];
-    }
-
-    // Select field
-    if( $field['type'] === 'select' ) {
-
-        $options = array();
-
-        // Try to get the field options from field args
-        if( isset( $field['options'] ) ) {
-            $options = $field['options'];
-        } else if( isset( $field['options_cb'] ) && is_callable( $field['options_cb'] ) ) {
-
-            $field['value'] = $value;
-            $field['escaped_value'] = $value;
-            $field['args'] = $field;
-
-            $options = call_user_func( $field['options_cb'], (object) $field );
-        }
-
-        if( isset( $options[$value] ) ) {
-            $value = $options[$value];
-        }
-    }
-
-    // Fallback to default option if exists
-    if( empty( $value ) && isset( $option_args['default'] ) && ! empty( $option_args['default'] ) ) {
-        $value = $option_args['default'];
-    }
+    /**
+     * Filters the option value for replacement on labels
+     *
+     * @since 1.0.0
+     *
+     * @param string    $value      The option value
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     * @param string    $option     The option name
+     * @param string    $context    The context this function is executed
+     *
+     * @return string
+     */
+    $value = apply_filters( 'automatorwp_get_automation_item_option_replacement', $value, $object, $item_type, $option, $context );
 
     if( $context === 'edit' ) {
-        $value = '<span class="button button-primary automatorwp-option" data-option="' . $option . '">' . $value . '</span>';
+
+        $option_class = 'button button-primary';
+
+        /**
+         * Filters the option button class
+         *
+         * @since 1.2.4
+         *
+         * @param string    $option_class   The option class, by default "button button-primary"
+         * @param stdClass  $object         The trigger/action object
+         * @param string    $item_type      The item type (trigger|action)
+         * @param string    $option         The option name
+         * @param string    $context        The context this function is executed
+         *
+         * @return string
+         */
+        $option_class = apply_filters( 'automatorwp_get_automation_item_option_button_class', $option_class, $object, $item_type, $option, $context );
+
+        $value = '<span class="' . esc_attr__( $option_class ) . ' automatorwp-option" data-option="' . $option . '">' . $value . '</span>';
     }
 
     ct_reset_setup_table();
@@ -1007,3 +1070,208 @@ function automatorwp_integrations_api() {
     return $res;
 
 }
+
+/**
+ * Inform about integration pro choices
+ *
+ * @since 1.2.4
+ *
+ * @param string    $integration_name
+ * @param array     $args
+ * @param string    $item_type
+ */
+function automatorwp_automation_ui_integration_pro_choice( $integration_name, $args, $item_type ) {
+
+    $integrations = automatorwp_integrations_api();
+
+    if( is_wp_error( $integrations ) ) {
+        return;
+    }
+
+    foreach ( $integrations as $integration ) {
+        // Break if found the integration
+        if( $integration->code === $integration_name ) {
+            break;
+        }
+    }
+
+    // Bail if integration if already installed
+    if( class_exists( $integration->integration_class ) ) {
+        return;
+    }
+
+    // Get integration items
+    $items = array();
+
+    if( $item_type === 'trigger' ) {
+
+        $choices = automatorwp_get_integration_triggers( $integration_name );
+
+        // Don't list if already listed
+        if( count( $choices ) ) {
+            return;
+        }
+
+        $items = $integration->triggers;
+
+    } else if( $item_type === 'action' ) {
+
+        $choices = automatorwp_get_integration_actions( $integration_name );
+
+        // Don't list if already listed
+        if( count( $choices ) ) {
+            return;
+        }
+
+        $items = $integration->actions;
+    }
+
+    // Check the free and pro elements
+    $has_free = false;
+    $has_pro = false;
+
+    foreach( $items as $item ) {
+
+        if( $item->free ) {
+            $has_free = true;
+        } else {
+            $has_pro = true;
+        }
+
+    }
+
+    if( ! $has_free && $has_pro ) : ?>
+
+        <div class="automatorwp-integration automatorwp-integration-pro"
+             data-integration="<?php echo esc_attr( $integration_name ); ?>"
+             data-label="<?php echo esc_attr( $args['label'] ); ?>"
+             data-icon="<?php echo esc_attr( $args['icon'] ); ?>">
+            <span class="automatorwp-integration-pro-badge">PRO</span>
+            <div class="automatorwp-integration-icon">
+                <img src="<?php echo esc_attr( $args['icon'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>">
+            </div>
+            <div class="automatorwp-integration-label"><?php echo $args['label']; ?></div>
+        </div>
+
+    <?php endif;
+
+}
+add_action( 'automatorwp_automation_ui_after_integration_choice', 'automatorwp_automation_ui_integration_pro_choice', 10, 3 );
+
+/**
+ * Inform about integration triggers pro choices
+ *
+ * @since 1.2.4
+ *
+ * @param string    $integration_name
+ * @param array     $args
+ */
+function automatorwp_automation_ui_integration_triggers_pro_choices( $integration_name, $args ) {
+
+    $integrations = automatorwp_integrations_api();
+
+    if( is_wp_error( $integrations ) ) {
+        return;
+    }
+
+    foreach ( $integrations as $integration ) {
+        // Break if found the integration
+        if( $integration->code === $integration_name ) {
+            break;
+        }
+    }
+
+    // Bail if integration if already installed
+    if( class_exists( $integration->integration_class ) ) {
+        return;
+    }
+
+    // Get the list of already listed triggers
+    $choices = automatorwp_get_integration_triggers( $integration_name );
+
+    foreach( $integration->triggers as $i => $trigger ) {
+
+        // Skip free triggers
+        if( $trigger->free ) {
+            continue;
+        }
+
+        $already_listed = false;
+
+        foreach( $choices as $choice ) {
+            // Check if trigger has been already listed
+            if( $choice['label'] === $trigger->label ) {
+                $already_listed = true;
+                break;
+            }
+        }
+
+        // Skip triggers already listed
+        if( $already_listed ) {
+            continue;
+        } ?>
+            <option value="<?php echo esc_attr( $integration_name ) . '_' . $i; ?>" disabled="disabled"><?php echo $trigger->label; ?></option>
+
+        <?php
+    }
+
+}
+add_action( 'automatorwp_automation_ui_after_integration_triggers_choices', 'automatorwp_automation_ui_integration_triggers_pro_choices', 10, 2 );
+
+/**
+ * Inform about integration actions pro choices
+ *
+ * @since 1.2.4
+ *
+ * @param string    $integration_name
+ * @param array     $args
+ */
+function automatorwp_automation_ui_integration_actions_pro_choices( $integration_name, $args ) {
+
+    $integrations = automatorwp_integrations_api();
+
+    if( is_wp_error( $integrations ) ) {
+        return;
+    }
+
+    foreach ( $integrations as $integration ) {
+        // Break if found the integration
+        if( $integration->code === $integration_name ) {
+            break;
+        }
+    }
+
+    // Bail if integration if already installed
+    if( class_exists( $integration->integration_class ) ) {
+        return;
+    }
+
+    // Get the list of already listed actions
+    $choices = automatorwp_get_integration_actions( $integration_name );
+
+    foreach( $integration->actions as $i => $action ) {
+        // Skip actions already listed
+        if( $action->free ) {
+            continue;
+        }
+        $already_listed = false;
+
+        foreach( $choices as $choice ) {
+            // Check if action has been already listed
+            if( $choice['label'] === $action->label ) {
+                $already_listed = true;
+                break;
+            }
+        }
+
+        // Skip actions already listed
+        if( $already_listed ) {
+            continue;
+        } ?>
+        <option value="<?php echo esc_attr( $integration_name ) . '_' . $i; ?>" disabled="disabled"><?php echo $action->label; ?></option>
+
+        <?php
+    }
+
+}
+add_action( 'automatorwp_automation_ui_after_integration_actions_choices', 'automatorwp_automation_ui_integration_actions_pro_choices', 10, 2 );

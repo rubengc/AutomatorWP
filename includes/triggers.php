@@ -109,7 +109,17 @@ function automatorwp_get_integration_triggers( $integration ) {
 
     }
 
-    return $triggers;
+    /**
+     * Available filter to extend integration triggers
+     *
+     * @since 1.0.0
+     *
+     * @param array     $triggers
+     * @param string    $integration
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_get_integration_triggers', $triggers, $integration );
 
 }
 

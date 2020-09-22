@@ -581,7 +581,7 @@ function automatorwp_is_plugin_pass( $plugin ) {
         foreach( $plugin->info->category as $category ) {
 
             // Passes category found
-            if( $category->slug === 'passes' ) {
+            if( $category->slug === 'access-pass' ) {
                 return true;
             }
         }

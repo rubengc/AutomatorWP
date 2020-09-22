@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-08-14 14:09+0200\n"
+"POT-Creation-Date: 2020-09-22 09:34+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -147,12 +147,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:981 includes/automation-ui.php:993
+#: includes/automation-ui.php:1044 includes/automation-ui.php:1056
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:983
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1046
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -185,7 +185,6 @@ msgid "Invalid item type."
 msgstr ""
 
 #: includes/ajax-functions.php:52 includes/ajax-functions.php:245
-#: includes/ajax-functions.php:262 includes/ajax-functions.php:269
 msgid "Invalid trigger."
 msgstr ""
 
@@ -201,7 +200,8 @@ msgstr ""
 msgid "Action can't be created."
 msgstr ""
 
-#: includes/ajax-functions.php:155
+#: includes/ajax-functions.php:155 includes/ajax-functions.php:266
+#: includes/ajax-functions.php:273
 msgid "Invalid item."
 msgstr ""
 
@@ -217,15 +217,15 @@ msgstr ""
 msgid "Items order updated."
 msgstr ""
 
-#: includes/ajax-functions.php:276
+#: includes/ajax-functions.php:280
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:782
+#: includes/ajax-functions.php:786
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:862 includes/cmb2.php:238
+#: includes/ajax-functions.php:866 includes/cmb2.php:265
 #: includes/custom-tables/automations.php:197
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:251
 #: includes/custom-tables/logs.php:326 includes/custom-tables/logs.php:678
@@ -271,78 +271,82 @@ msgstr ""
 msgid "Select an integration"
 msgstr ""
 
-#: includes/automation-ui.php:160
+#: includes/automation-ui.php:172
 msgid "Select a trigger"
 msgstr ""
 
-#: includes/automation-ui.php:166
+#: includes/automation-ui.php:178
 msgid "Search for triggers"
 msgstr ""
 
-#: includes/automation-ui.php:184
+#: includes/automation-ui.php:203
+msgid "Select an action"
+msgstr ""
+
+#: includes/automation-ui.php:209
 msgid "Search for actions"
 msgstr ""
 
-#: includes/automation-ui.php:198 includes/automation-ui.php:351
+#: includes/automation-ui.php:234 includes/automation-ui.php:387
 msgid "Cancel"
 msgstr ""
 
-#: includes/automation-ui.php:202 includes/automation-ui.php:355
+#: includes/automation-ui.php:238 includes/automation-ui.php:391
 msgid "Saving..."
 msgstr ""
 
-#: includes/automation-ui.php:283 includes/automation-ui.php:407
+#: includes/automation-ui.php:319 includes/automation-ui.php:443
 msgid "Delete"
 msgstr ""
 
-#: includes/automation-ui.php:350 includes/scripts.php:103
+#: includes/automation-ui.php:386 includes/scripts.php:103
 msgid "Save"
 msgstr ""
 
-#: includes/automation-ui.php:389
+#: includes/automation-ui.php:425
 msgid "Trigger disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this trigger."
 msgstr ""
 
-#: includes/automation-ui.php:391
+#: includes/automation-ui.php:427
 msgid "Action disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this action."
 msgstr ""
 
-#: includes/automation-ui.php:400 includes/automation-ui.php:410
+#: includes/automation-ui.php:436 includes/automation-ui.php:446
 #: includes/custom-tables/automations.php:222 includes/logs.php:168
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:831
+#: includes/automation-ui.php:894
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:831
+#: includes/automation-ui.php:894
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:832
+#: includes/automation-ui.php:895
 msgid "View all add-ons"
 msgstr ""
 
-#: includes/automation-ui.php:843
+#: includes/automation-ui.php:906
 #, php-format
 msgid "%d plugin of your site can be connected with AutomatorWP."
 msgid_plural "%d plugins of your site can be connected with AutomatorWP."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/automation-ui.php:844
+#: includes/automation-ui.php:907
 msgid "View plugins"
 msgstr ""
 
-#: includes/automation-ui.php:855
+#: includes/automation-ui.php:918
 #, php-format
 msgid "%d trigger"
 msgid_plural "%d triggers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/automation-ui.php:859
+#: includes/automation-ui.php:922
 #, php-format
 msgid "%d action"
 msgid_plural "%d actions"
@@ -361,20 +365,24 @@ msgstr ""
 msgid "any category"
 msgstr ""
 
-#: includes/cmb2.php:152
+#: includes/cmb2.php:145
 msgid "a post of any type"
 msgstr ""
 
-#: includes/cmb2.php:156
+#: includes/cmb2.php:157
 #, php-format
 msgid "a %s"
 msgstr ""
 
-#: includes/cmb2.php:176 includes/utilities.php:261 includes/utilities.php:291
+#: includes/cmb2.php:177
+msgid "any status"
+msgstr ""
+
+#: includes/cmb2.php:203 includes/utilities.php:261 includes/utilities.php:291
 msgid "any role"
 msgstr ""
 
-#: includes/cmb2.php:218
+#: includes/cmb2.php:245
 msgid "any item"
 msgstr ""
 
@@ -592,7 +600,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:65
 #: includes/integrations/wordpress/actions/create-post.php:72
-#: includes/integrations/wordpress/actions/create-user.php:63
+#: includes/integrations/wordpress/actions/create-user.php:47
 #, php-format
 msgid "<code>%1$s</code> for %2$s"
 msgstr ""
@@ -607,8 +615,8 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:80
 #: includes/integrations/wordpress/actions/create-post.php:82
-#: includes/integrations/wordpress/actions/create-user.php:71
-#: includes/integrations/wordpress/actions/create-user.php:73
+#: includes/integrations/wordpress/actions/create-user.php:55
+#: includes/integrations/wordpress/actions/create-user.php:57
 #, php-format
 msgid "Create a %1$s"
 msgstr ""
@@ -634,6 +642,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:102
 #: includes/integrations/wordpress/actions/create-post.php:360
+#: includes/integrations/wordpress/triggers/post-type-status.php:55
 msgid "Status:"
 msgstr ""
 
@@ -694,7 +703,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:145
 #: includes/integrations/wordpress/actions/create-post.php:402
-#: includes/integrations/wordpress/actions/create-user.php:111
+#: includes/integrations/wordpress/actions/create-user.php:95
 #: includes/integrations/wordpress/actions/create-user.php:343
 msgid "Password:"
 msgstr ""
@@ -714,17 +723,17 @@ msgid "The post meta values keyed by their post meta key."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:156
-#: includes/integrations/wordpress/actions/create-user.php:135
+#: includes/integrations/wordpress/actions/create-user.php:119
 msgid "Add meta"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:161
-#: includes/integrations/wordpress/actions/create-user.php:140
+#: includes/integrations/wordpress/actions/create-user.php:124
 msgid "Meta Key:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:166
-#: includes/integrations/wordpress/actions/create-user.php:145
+#: includes/integrations/wordpress/actions/create-user.php:129
 msgid "Meta Value:"
 msgstr ""
 
@@ -785,97 +794,97 @@ msgstr ""
 msgid "Result:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:68
+#: includes/integrations/wordpress/actions/create-user.php:52
 msgid "Create a user"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:69
+#: includes/integrations/wordpress/actions/create-user.php:53
 msgid "Create <strong>a user</strong>"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:76
+#: includes/integrations/wordpress/actions/create-user.php:60
 #: includes/integrations/wordpress/actions/send-email.php:60
 msgid "user"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:79
+#: includes/integrations/wordpress/actions/create-user.php:63
 #: includes/integrations/wordpress/actions/create-user.php:309
 msgid "Username:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:80
+#: includes/integrations/wordpress/actions/create-user.php:64
 #: includes/integrations/wordpress/actions/create-user.php:310
 msgid "The user's login username."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:86
+#: includes/integrations/wordpress/actions/create-user.php:70
 #: includes/integrations/wordpress/actions/create-user.php:315
 msgid "Email:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:87
+#: includes/integrations/wordpress/actions/create-user.php:71
 #: includes/integrations/wordpress/actions/create-user.php:316
 msgid "The user email address."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:93
+#: includes/integrations/wordpress/actions/create-user.php:77
 #: includes/integrations/wordpress/actions/create-user.php:322
 msgid "First Name:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:94
+#: includes/integrations/wordpress/actions/create-user.php:78
 #: includes/integrations/wordpress/actions/create-user.php:323
 msgid "The user's first name."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:99
+#: includes/integrations/wordpress/actions/create-user.php:83
 #: includes/integrations/wordpress/actions/create-user.php:329
 msgid "Last Name:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:100
+#: includes/integrations/wordpress/actions/create-user.php:84
 #: includes/integrations/wordpress/actions/create-user.php:330
 msgid "The user's last name."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:105
+#: includes/integrations/wordpress/actions/create-user.php:89
 #: includes/integrations/wordpress/actions/create-user.php:336
 msgid "Website:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:106
+#: includes/integrations/wordpress/actions/create-user.php:90
 #: includes/integrations/wordpress/actions/create-user.php:337
 msgid "The user URL."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:112
+#: includes/integrations/wordpress/actions/create-user.php:96
 msgid "The user password. Leave blank to get password will get automatically generated."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:117
+#: includes/integrations/wordpress/actions/create-user.php:101
 #: includes/integrations/wordpress/actions/create-user.php:350
 #: includes/utilities.php:257 includes/utilities.php:287
 msgid "Role:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:118
+#: includes/integrations/wordpress/actions/create-user.php:102
 msgid "The user's role. By default, \"subscriber\"."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:124
+#: includes/integrations/wordpress/actions/create-user.php:108
 msgid "Send User Notification:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:125
+#: includes/integrations/wordpress/actions/create-user.php:109
 msgid "Send the new user an email about their account."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:130
+#: includes/integrations/wordpress/actions/create-user.php:114
 #: includes/integrations/wordpress/actions/create-user.php:356
 msgid "User Meta:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:131
+#: includes/integrations/wordpress/actions/create-user.php:115
 #: includes/integrations/wordpress/actions/create-user.php:357
 msgid "The user meta values keyed by their user meta key."
 msgstr ""
@@ -904,115 +913,115 @@ msgstr ""
 msgid "The user's role."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:26
+#: includes/integrations/wordpress/actions/post-meta.php:35
 msgid "Set, insert, increment or decrement post meta"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:27
+#: includes/integrations/wordpress/actions/post-meta.php:36
 msgid "Set, insert, increment or decrement <strong>post meta</strong>"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:29
-#: includes/integrations/wordpress/actions/post-meta.php:31
+#: includes/integrations/wordpress/actions/post-meta.php:38
+#: includes/integrations/wordpress/actions/post-meta.php:40
 #, php-format
 msgid "%1$s post %2$s meta value %3$s for meta key %4$s"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:37
+#: includes/integrations/wordpress/actions/post-meta.php:46
 #: includes/integrations/wordpress/actions/user-meta.php:37
 #: includes/integrations/wordpress/actions/user-role.php:37
 msgid "Operation:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:38
+#: includes/integrations/wordpress/actions/post-meta.php:47
 #: includes/integrations/wordpress/actions/user-meta.php:38
 msgid "Operation defines how the meta value will be applied. The available options are:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:39
+#: includes/integrations/wordpress/actions/post-meta.php:48
 #: includes/integrations/wordpress/actions/user-meta.php:39
 msgid "<strong>Set:</strong> The new value will be set as the meta value."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:40
+#: includes/integrations/wordpress/actions/post-meta.php:49
 #: includes/integrations/wordpress/actions/user-meta.php:40
 msgid "Example: If old value is \"Word\" and new value is \"Press\", the final meta value will be \"Press\"."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:41
+#: includes/integrations/wordpress/actions/post-meta.php:50
 #: includes/integrations/wordpress/actions/user-meta.php:41
 msgid "<strong>Insert:</strong> The new value will be inserted to the current meta value (for arrays, the new value will be inserted at the end, for other types, the new value will be appended)."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:42
+#: includes/integrations/wordpress/actions/post-meta.php:51
 #: includes/integrations/wordpress/actions/user-meta.php:42
 msgid "Example for arrays: If old value is array( \"Word\" ) and new value is \"Press\", the final meta value will be array( \"Word\", \"Press\" )."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:43
+#: includes/integrations/wordpress/actions/post-meta.php:52
 #: includes/integrations/wordpress/actions/user-meta.php:43
 msgid "Example for other types: If old value is \"Word\" and new value is \"Press\", the final meta value will be \"WordPress\"."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:44
+#: includes/integrations/wordpress/actions/post-meta.php:53
 #: includes/integrations/wordpress/actions/user-meta.php:44
 msgid "<strong>Increment:</strong> For numeric values, the current meta value will be incremented the same amount as the new value."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:45
+#: includes/integrations/wordpress/actions/post-meta.php:54
 #: includes/integrations/wordpress/actions/user-meta.php:45
 msgid "Example: If old value is \"5\" and new value is \"1\", the final meta value will be \"6\"."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:46
+#: includes/integrations/wordpress/actions/post-meta.php:55
 #: includes/integrations/wordpress/actions/user-meta.php:46
 msgid "<strong>Decrement:</strong> For numeric values, the current meta value will be decremented the same amount as the new value."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:47
+#: includes/integrations/wordpress/actions/post-meta.php:56
 #: includes/integrations/wordpress/actions/user-meta.php:47
 msgid "Example: If old value is \"5\" and new value is \"1\", the final meta value will be \"4\"."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:50
+#: includes/integrations/wordpress/actions/post-meta.php:59
 #: includes/integrations/wordpress/actions/user-meta.php:50
 msgid "Set"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:51
+#: includes/integrations/wordpress/actions/post-meta.php:60
 #: includes/integrations/wordpress/actions/user-meta.php:51
 msgid "Insert"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:52
+#: includes/integrations/wordpress/actions/post-meta.php:61
 #: includes/integrations/wordpress/actions/user-meta.php:52
 msgid "Increment"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:53
+#: includes/integrations/wordpress/actions/post-meta.php:62
 #: includes/integrations/wordpress/actions/user-meta.php:53
 msgid "Decrement"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:61
+#: includes/integrations/wordpress/actions/post-meta.php:70
 msgid "(Post ID)"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:64
+#: includes/integrations/wordpress/actions/post-meta.php:73
 msgid "Post ID:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:75
+#: includes/integrations/wordpress/actions/post-meta.php:84
 #: includes/integrations/wordpress/actions/user-meta.php:64
 msgid "Meta value:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:86
+#: includes/integrations/wordpress/actions/post-meta.php:95
 #: includes/integrations/wordpress/actions/user-meta.php:75
 msgid "Meta key:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:140
+#: includes/integrations/wordpress/actions/post-meta.php:152
 #, php-format
 msgid "%1$s post %2$s meta value in %3$s for meta key %4$s"
 msgstr ""
@@ -1277,6 +1286,7 @@ msgid "User comments on <strong>a post of a type</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-post-type.php:41
+#: includes/integrations/wordpress/triggers/post-type-status.php:41
 #: includes/integrations/wordpress/triggers/publish-post-type.php:41
 #: includes/integrations/wordpress/triggers/view-post-type.php:41
 msgid "Post type:"
@@ -1305,6 +1315,28 @@ msgstr ""
 
 #: includes/integrations/wordpress/triggers/login.php:30
 msgid "User logs in"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-type-status.php:26
+msgid "User post of a type status changes"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-type-status.php:27
+msgid "User post of a type <strong>status changes</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-type-status.php:29
+#, php-format
+msgid "User %1$s status changes to %2$s %3$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-type-status.php:31
+#, php-format
+msgid "User %1$s status changes to %2$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-type-status.php:46
+msgid "post of any type"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/publish-page.php:26

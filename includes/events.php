@@ -37,7 +37,10 @@ function automatorwp_trigger_event( $event ) {
     // Get triggered triggers
     $triggers = automatorwp_get_event_triggered_triggers( $event['trigger'] );
 
-    $automatorwp_completed_triggers = array();
+    // Initialize completed triggers count
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
+    }
 
     foreach( $triggers as $trigger ) {
         if( automatorwp_maybe_user_completed_trigger( $trigger, $user_id, $event ) ) {
@@ -523,6 +526,24 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
     // Execute all automation actions
     automatorwp_execute_all_automation_actions( $automation, $user_id, $event );
 
+    /**
+     * Available filter to determine if user has completed an automation
+     *
+     * @since 1.2.4
+     *
+     * @param bool      $complete           Determines if the automation should be marked as completed, by default true
+     * @param stdClass  $automation         The automation object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     *
+     * @return bool
+     */
+    $complete = apply_filters( 'automatorwp_can_user_complete_automation', true, $automation, $user_id, $event );
+
+    if( ! $complete ) {
+        return false;
+    }
+
     // Insert a new log entry to register the automation completion
     automatorwp_insert_log( array(
         'title'     => $automation->title,
@@ -583,88 +604,152 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
     $actions = automatorwp_get_automation_actions( $automation->id );
 
     foreach( $actions as $action ) {
-
-        // Get all action options to parse all replacements
-        $action_options = automatorwp_get_action_stored_options( $action->id );
-
-        foreach( $action_options as $option => $value ) {
-
-            // Replace all tags by their replacements
-            $action_options[$option] = automatorwp_parse_automation_tags( $automation->id, $user_id, $value );
-
-        }
-
-        /**
-         * Available action to hook for execute an action function
-         *
-         * @since 1.0.0
-         *
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $event              Event information
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         */
-        do_action( 'automatorwp_execute_action', $action, $user_id, $event, $action_options, $automation );
-
-        $log_meta = array();
-
-        /**
-         * Filter to add custom log meta to meet that and action has been executed to a specific user
-         *
-         * @since 1.0.0
-         *
-         * @param array     $log_meta           Log meta data
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return array
-         */
-        $log_meta = apply_filters( 'automatorwp_user_completed_action_log_meta', $log_meta, $action, $user_id, $action_options, $automation );
-
-        /**
-         * Filter to assign a custom post ID to this action
-         *
-         * @since 1.0.0
-         *
-         * @param int       $post_id            The post ID, by default 0
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $event              Event information
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return int
-         */
-        $post_id = apply_filters( 'automatorwp_user_completed_action_post_id', 0, $action, $user_id, $event, $action_options, $automation );
-
-        // Insert a new log entry to register the trigger completion
-        automatorwp_insert_log( array(
-            'title'     => automatorwp_parse_automation_item_log_label( $action, 'action', 'view' ),
-            'type'      => 'action',
-            'object_id' => $action->id,
-            'user_id'   => $user_id,
-            'post_id'   => $post_id,
-            'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
-        ), $log_meta );
-
-        /**
-         * Available action to hook on an action completion
-         *
-         * @since 1.0.0
-         *
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $event              Event information
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         */
-        do_action( 'automatorwp_user_completed_action', $action, $user_id, $event, $action_options, $automation );
-
+        automatorwp_execute_action( $action, $user_id, $event );
     }
 
     return true;
+
+}
+
+/**
+ * Execute an action
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass  $action             The action object
+ * @param int       $user_id            The user ID
+ * @param array     $event              Event information
+ *
+ * @return bool
+ */
+function automatorwp_execute_action( $action = null, $user_id = 0, $event = array() ) {
+
+    global $automatorwp_completed_triggers;
+
+    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
+    // This prevents unlimited completions when multiples triggers has been triggered
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
+    }
+
+    // Check if action is correct
+    if( ! is_object( $action ) ) {
+        return false;
+    }
+
+    // Check the user ID
+    if( $user_id === 0 ) {
+        return false;
+    }
+
+    // Setup the automation assigned to this action
+    $automation = automatorwp_get_automation_object( $action->automation_id );
+
+    // Check if automation is correct
+    if( ! is_object( $automation ) ) {
+        return false;
+    }
+
+    // Get all action options to parse all replacements
+    $action_options = automatorwp_get_action_stored_options( $action->id );
+
+    foreach( $action_options as $option => $value ) {
+        // Replace all tags by their replacements
+        $action_options[$option] = automatorwp_parse_automation_tags( $automation->id, $user_id, $value );
+
+    }
+
+    /**
+     * Available filter to determine if an action should be executed or not
+     *
+     * @since 1.2.4
+     *
+     * @param bool      $execute            Determines if the action should be executed, by default true
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     *
+     * @return bool
+     */
+    $execute = apply_filters( 'automatorwp_can_execute_action', true, $action, $user_id, $event, $action_options, $automation );
+
+    if( ! $execute ) {
+        return false;
+    }
+
+    /**
+     * Available action to hook for execute an action function
+     *
+     * @since 1.0.0
+     *
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     */
+    do_action( 'automatorwp_execute_action', $action, $user_id, $event, $action_options, $automation );
+
+    $log_meta = array();
+
+    /**
+     * Filter to add custom log meta to meet that and action has been executed to a specific user
+     *
+     * @since 1.0.0
+     *
+     * @param array     $log_meta           Log meta data
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     *
+     * @return array
+     */
+    $log_meta = apply_filters( 'automatorwp_user_completed_action_log_meta', $log_meta, $action, $user_id, $action_options, $automation );
+
+    /**
+     * Filter to assign a custom post ID to this action
+     *
+     * @since 1.0.0
+     *
+     * @param int       $post_id            The post ID, by default 0
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     *
+     * @return int
+     */
+    $post_id = apply_filters( 'automatorwp_user_completed_action_post_id', 0, $action, $user_id, $event, $action_options, $automation );
+
+    // Parse the log label (including the automation tags)
+    $log_title = automatorwp_parse_automation_item_log_label( $action, 'action', 'view' );
+    $log_title = automatorwp_parse_automation_tags( $automation->id, $user_id, $log_title );
+
+    // Insert a new log entry to register the trigger completion
+    automatorwp_insert_log( array(
+        'title'     => $log_title,
+        'type'      => 'action',
+        'object_id' => $action->id,
+        'user_id'   => $user_id,
+        'post_id'   => $post_id,
+        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
+    ), $log_meta );
+
+    /**
+     * Available action to hook on an action completion
+     *
+     * @since 1.0.0
+     *
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     */
+    do_action( 'automatorwp_user_completed_action', $action, $user_id, $event, $action_options, $automation );
 
 }

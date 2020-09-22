@@ -370,7 +370,7 @@ add_action( 'automatorwp_user_completed_automation', 'automatorwp_clear_user_las
  *
  * @since 1.0.0
  *
- * @param int $trigger_id   The trigger object
+ * @param int $trigger_id   The trigger ID
  * @param int $user_id      The user ID
  *
  * @return bool
@@ -391,5 +391,40 @@ function automatorwp_has_user_completed_trigger( $trigger_id, $user_id ) {
 
     // If user has not completed this trigger the number of times required then break to finish this function
     return ( $completion_times >= $required_times );
+
+}
+
+/**
+ * Check if has been executed all automation actions for an user
+ *
+ * @since 1.0.0
+ *
+ * @param int $automation_id    The automation ID
+ * @param int $user_id          The user ID
+ *
+ * @return bool
+ */
+function automatorwp_has_user_executed_all_automation_actions( $automation_id, $user_id ) {
+
+    $automation = automatorwp_get_automation_object( $automation_id );
+
+    if( ! $automation ) {
+        return false;
+    }
+
+    $last_completion_time = automatorwp_get_user_last_completion_time( $automation->id, $user_id, 'automation' );
+
+    $actions = automatorwp_get_automation_actions( $automation->id );
+
+    $all_completed = true;
+
+    foreach( $actions as $action ) {
+        if( ! automatorwp_get_user_completion_times( $action->id, $user_id, 'action', $last_completion_time ) ) {
+            $all_completed = false;
+            break;
+        }
+    }
+
+    return $all_completed;
 
 }

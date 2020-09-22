@@ -3,19 +3,19 @@ Contributors: automatorwp, rubengc, eneribs
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
-Connect your WordPress plugins together and create automated workflows.
+Connect your WordPress plugins together and create automated workflows with no code!
 
 == Description ==
 
-[AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source plugin that lets you connect your WordPress plugins together and create automated workflows.
+[AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source automator plugin that lets you connect your WordPress plugins together and create automated workflows.
 
 You can create "automations" linked to your WordPress activities and when any of them happen, you can make other things happen accordingly.
 
-You can use these automations for automating sales, marketing, administrative tasks, learning and any other kind of processes you want letting you save time and get focused on your most important work.
+You can use these automations for automate sales, marketing, administrative tasks, learning and any other kind of processes you want letting you save time and get focused on your most important work.
 
 Here is a video that lets you see how AutomatorWP works in less than 2 minutes!
 
@@ -31,7 +31,7 @@ Add a **WP Fusion tag** to the user.
 When user joins a **BuddyPress group**.
 Enroll user in a **LearnDash course**.
 
-Not only you can create one-to-one connections, also you can create automations with all the triggers and actions you want, such as the following one:
+Not only you can create one-to-one connections, also you can create automations with all the triggers and actions of your choice, such as the following one:
 
 When user creates a **bbPress forum topic**
 and completes a **H5P content**.
@@ -40,7 +40,17 @@ Enroll user in a **LifterLMS course**
 add a **MemberPress membership** to the user
 and **email user** with instructions about how to access to the course.
 
-As you can see, the number of combinations and possibilities are unlimited!
+The number of combinations and possibilities are unlimited!
+
+= Connect your plugins with web services and others WordPress sites =
+
+With the [Webhooks](https://automatorwp.com/add-ons/webhooks/)  add-on you are able to send and receive data from anywhere like external applications, web services or others WordPress sites.
+
+You can connect all your WordPress plugins with platforms like Zapier or Integromat, or included, you can connect your plugins from a site with the plugins of another site and everything with no code.
+
+Any website, application or service with support to webhooks or with a Rest API can be connected with the Webhooks add-on and, in consequence, with your WordPress plugins!
+
+[View Webhooks automations samples](https://automatorwp.com/docs/webhooks/automations-samples/)
 
 = Create automations easily =
 
@@ -102,6 +112,14 @@ If you’re looking for something endorsed and maintained by the developers who 
 
 [View all add-ons](https://automatorwp.com/add-ons/)
 
+= Powerful add-ons to extend AutomatorWP =
+
+If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium add-ons, the most popular of which include:
+
+* [Webhooks](https://automatorwp.com/add-ons/webhooks/): Send and receive data from webhooks to connect all your plugins with web services like Zapier or Integromat or included to connect different WordPress sites.
+* [Block Users](https://automatorwp.com/add-ons/block-users/): Block users and roles for being able to complete any automation of your choice.
+* [Button](https://automatorwp.com/add-ons/button/) & [Link](https://automatorwp.com/add-ons/link/): Launch any automation through button and link clicks.
+
 = Included triggers and actions =
 
 AutomatorWP comes with a set of triggers and actions, including:
@@ -120,7 +138,8 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User publishes a post with any/specific category.
 * User publishes a post with any/specific tag.
 * User publishes a page.
-* User publishes a post of any/specific type
+* User publishes a post of any/specific type.
+* User post of any/specific type status changes to any/specific status.
 * User comments on any/specific post.
 * User comments on a post of any/specific category.
 * User comments on a post of any/specific tag.
@@ -139,6 +158,8 @@ AutomatorWP comes with a set of triggers and actions, including:
 * Set, insert, increment or decrement user meta.
 * Create a post.
 * Set, insert, increment or decrement post meta.
+
+[View all triggers and actions](https://automatorwp.com/all-triggers-and-actions/)
 
 == Installation ==
 
@@ -185,6 +206,18 @@ Check [this page](https://automatorwp.com/all-triggers-and-actions/) where you c
 
 Check the [official documentation](https://automatorwp.com/docs/) where you can start getting familiarized with AutomatorWP.
 
+= Can AutomatorWP connect plugins with external services like Zapier? =
+
+Yes, is completely possible thanks to the [Webhooks](https://automatorwp.com/add-ons/webhooks/) add-on that lets you connect all your plugins with external applications, web services or included others WordPress sites.
+
+= Can AutomatorWP connect plugins from different sites? =
+
+Yes, with the [Webhooks](https://automatorwp.com/add-ons/webhooks/) add-on you connect your plugins from a site to the plugins from another site.
+
+You can create brand new automations between different sites like:
+When user purchases a WooComerce product on Site A, Enroll in a LearnDash course on Site B.
+When user publishes a post of a specific category on Site A, Clone this post on Site B.
+
 = What if I deactivate or remove a plugin that includes new triggers and actions? =
 
 The most recommended is remove first all triggers and actions from this plugin in order to ensure the correct workflow of AutomatorWP, because automations with triggers from this plugin can no longer be completed.
@@ -210,6 +243,22 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.2.4 =
+
+* **New Features**
+* New trigger: User post of any/specific type status changes to any/specific status.
+* **Improvements**
+* Style improvements on the automations UI.
+* Added post information when using the "Set, insert, increment or decrement post meta" action.
+* Correctly pass automation tag on logs labels.
+* Improved the events engine performance.
+* **Bug Fixes**
+* Correctly detect multiples events triggered in a row.
+* **Developer Notes**
+* Added several hooks to extend the events engine.
+* Added several hooks to extend the automations UI.
+* Added several hooks to extend the logs screens.
 
 = 1.2.3 =
 

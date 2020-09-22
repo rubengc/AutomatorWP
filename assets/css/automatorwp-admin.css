@@ -219,6 +219,7 @@
 }
 
 .automatorwp-integrations .automatorwp-integration {
+    position: relative;
     width: 150px;
     text-align: center;
     padding: 1em;
@@ -280,6 +281,37 @@
     position: relative !important;
 }
 
+/* Pro integrations */
+.automatorwp-integration-pro-badge {
+    position: absolute;
+    top: 4px;
+    right: 40px;
+    z-index: 1;
+    background: #46b450;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+/* Pro trigger and actions options */
+.automatorwp-select2-dropdown-container .select2-results__option[aria-disabled="true"] {
+    color: #666 !important;
+    background: #eee;
+}
+.automatorwp-select2-dropdown-container .select2-results__option[aria-disabled="true"]:before {
+    content: 'PRO';
+    display: inline-block;
+    background: #46b450;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 11px;
+    margin-right: 4px;
+}
+
 /* Automation items */
 .automatorwp-automation-item {
     display: flex;
@@ -299,7 +331,6 @@
 .automatorwp-automation-item .button + .button {
     margin-left: 2px;
 }
-
 
 .automatorwp-automation-item-details {
     text-align: center;
@@ -361,14 +392,31 @@
 }
 
 .automatorwp-automation-item-actions .automatorwp-automation-item-action-delete {
-    color: #a00;
+    color: #e15151;
+}
+
+/* Automation item options */
+
+.automatorwp-option.button:not(.button-primary) {
+    border: none;
+    color: #444;
+    background: #e5e5e5;
+}
+
+.automatorwp-option.button:not(.button-primary):hover {
+    background: #ddd;
+}
+
+.automatorwp-option.button:not(.button-primary):focus,
+.automatorwp-option.button:not(.button-primary):active {
+    background: #cfcfcf;
 }
 
 /* Option form */
 .automatorwp-option-form-container {
+    background: #f5f5f5;
     border: 1px solid #ccd0d4;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
-    background: #fff;
     padding: 1em 1.5em 1.5em;
     margin-top: 1em;
     cursor: auto; /* Disable cursor grab  */
@@ -788,11 +836,11 @@
 }
 
 .automatorwp-automation-status-active {
-    background: #79ba49;
+    background: #46b450;
 }
 
 .automatorwp-automation-status-inactive {
-    background: #a00;
+    background: #dc3232;
 }
 
 .wp-list-table.automatorwp_automations .column-triggers .automatorwp-integration-icon,
@@ -901,6 +949,65 @@
     font-size: 14px;
     margin-top: 3px;
     color: #72777c;
+}
+
+/* -------------------------------------------
+    Buttons
+   ------------------------------------------- */
+.button.automatorwp-button-success {
+    background: #46b450;
+    border: #46b450;
+    color: #fff;
+}
+
+.button.automatorwp-button-success:hover {
+    background: #40a549;
+    border: #40a549;
+    color: #fff;
+}
+
+.button.automatorwp-button-success:focus,
+.button.automatorwp-button-success:active {
+    background: #399341;
+    border: #399341;
+    color: #fff;
+}
+
+.button.automatorwp-button-danger {
+    background: #e15151;
+    border: #e15151;
+    color: #fff;
+}
+
+.button.automatorwp-button-danger:hover {
+    background: #de3b3b;
+    border: #de3b3b;
+    color: #fff;
+}
+
+.button.automatorwp-button-danger:focus,
+.button.automatorwp-button-danger:active {
+    background: #da2525;
+    border: #da2525;
+    color: #fff;
+}
+
+.button.automatorwp-cancel-option-form {
+    line-height: 32px;
+}
+
+.automatorwp-add-trigger,
+.automatorwp-add-action {
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.automatorwp-add-trigger .dashicons,
+.automatorwp-add-action .dashicons {
+    line-height: 32px;
+    opacity: 0.8;
+    margin-right: 4px;
+    margin-left: -4px;
 }
 
 /* -------------------------------------------

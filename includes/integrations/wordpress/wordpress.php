@@ -23,6 +23,7 @@ require_once plugin_dir_path( __FILE__ ) . 'triggers/publish-post-category.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/publish-post-tag.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/publish-page.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/publish-post-type.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/post-type-status.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-category.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-tag.php';

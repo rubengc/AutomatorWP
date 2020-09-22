@@ -102,7 +102,17 @@ function automatorwp_get_integration_actions( $integration ) {
 
     }
 
-    return $actions;
+    /**
+     * Available filter to extend integration actions
+     *
+     * @since 1.0.0
+     *
+     * @param array     $actions
+     * @param string    $integration
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_get_integration_actions', $actions, $integration );
 
 }
 
