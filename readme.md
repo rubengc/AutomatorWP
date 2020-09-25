@@ -77,33 +77,56 @@ AutomatorWP is extremely flexible with plenty of hooks to add custom features an
 
 WordPress.org is home to some amazing integrations for AutomatorWP, including:
 
-* [WooCommerce](https://wordpress.org/plugins/automatorwp-woocommerce-integration/)
-* [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
-* [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
-* [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
-* [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
+* [ActiveMember360](https://wordpress.org/plugins/automatorwp-activemember360-integration/)
+* [AffiliateWP](https://wordpress.org/plugins/automatorwp-affiliatewp-integration/)
+* [AnsPress](https://wordpress.org/plugins/automatorwp-anspress-integration/)
+* [bbPress](https://wordpress.org/plugins/automatorwp-bbpress-integration/)
 * [BuddyBoss](https://wordpress.org/plugins/automatorwp-buddyboss-integration/)
 * [BuddyPress](https://wordpress.org/plugins/automatorwp-buddypress-integration/)
+* [Caldera Forms](https://wordpress.org/plugins/automatorwp-caldera-forms-integration/)
+* [Contact Form 7](https://wordpress.org/plugins/automatorwp-contact-form-7-integration/)
+* [DigiMember](https://wordpress.org/plugins/automatorwp-digimember-integration/)
+* [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
+* [Elementor Forms](https://wordpress.org/plugins/automatorwp-elementor-forms-integration/)
+* [Favorites](https://wordpress.org/plugins/automatorwp-favorites-integration/)
+* [Formidable Forms](https://wordpress.org/plugins/automatorwp-formidable-forms-integration/)
+* [Forminator](https://wordpress.org/plugins/automatorwp-forminator-integration/)
 * [GamiPress](https://wordpress.org/plugins/automatorwp-gamipress-integration/)
+* [Gravity Forms](https://wordpress.org/plugins/automatorwp-gravity-forms-integration/)
+* [Groundhogg](https://wordpress.org/plugins/automatorwp-groundhogg-integration/)
+* [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
+* [HappyForms](https://wordpress.org/plugins/automatorwp-happyforms-integration/)
+* [iMember360](https://wordpress.org/plugins/automatorwp-imember360-integration/)
+* [Integromat](https://automatorwp.com/add-ons/integromat/)
+* [Invite Anyone](https://wordpress.org/plugins/automatorwp-invite-anyone-integration/)
+* [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
+* [LearnPress](https://wordpress.org/plugins/automatorwp-learnpress-integration/)
+* [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
+* [MasterStudy LMS](https://wordpress.org/plugins/automatorwp-masterstudy-lms-integration/)
+* [MemberPress](https://wordpress.org/plugins/automatorwp-memberpress-integration/)
+* [Ninja Forms](https://wordpress.org/plugins/automatorwp-ninja-forms-integration/)
+* [Paid Memberships Pro](https://wordpress.org/plugins/automatorwp-paid-memberships-pro-integration/)
 * [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
 * [Restrict Content Pro](https://wordpress.org/plugins/automatorwp-restrict-content-pro-integration/)
-
-[View all plugins on wordpress.org](https://wordpress.org/plugins/tags/automatorwp/)
-
-All integrations count with a premium version that lets you to unlock the full potential of AutomatorWP, the most popular of which include:
-
-* [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
-* [bbPress](https://automatorwp.com/add-ons/bbpress/)
-* [Tutor LMS](https://automatorwp.com/add-ons/tutor/)
-* [MemberPress](https://automatorwp.com/add-ons/memberpress/)
-* [WP Fusion](https://automatorwp.com/add-ons/wp-fusion/)
-* [Gravity Forms](https://automatorwp.com/add-ons/gravity-forms/)
-* [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
-* [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
-* [Ultimate Member](https://automatorwp.com/add-ons/ultimate-member/)
+* [Sensei LMS](https://wordpress.org/plugins/automatorwp-sensei-lms-integration/)
+* [The Events Calendar](https://wordpress.org/plugins/automatorwp-the-events-calendar-integration/)
+* [Tutor LMS](https://wordpress.org/plugins/automatorwp-tutor-integration/)
+* [Ultimate Member](https://wordpress.org/plugins/automatorwp-ultimate-member-integration/)
+* [Upsell Plugin](https://wordpress.org/plugins/automatorwp-upsell-plugin-integration/)
+* [WhishList Member](https://wordpress.org/plugins/automatorwp-wishlist-member-integration/)
+* [WooCommerce](https://wordpress.org/plugins/automatorwp-woocommerce-integration/)
+* [WP Fluent Forms](https://wordpress.org/plugins/automatorwp-fluentform-integration/)
+* [WP Fusion](https://wordpress.org/plugins/automatorwp-wp-fusion-integration/)
+* [WP Job Manager](https://wordpress.org/plugins/automatorwp-wp-job-manager-integration/)
+* [WP Polls](https://wordpress.org/plugins/automatorwp-wp-polls-integration/)
+* [WP PostRatings](https://wordpress.org/plugins/automatorwp-wp-postratings-integration/)
+* [WP Simple Pay](https://wordpress.org/plugins/automatorwp-wp-simple-pay-integration/)
+* [WP Ulike](https://wordpress.org/plugins/automatorwp-wp-ulike-integration/)
+* [WPAdverts](https://wordpress.org/plugins/automatorwp-wpadverts-integration/)
+* [wpDiscuz](https://wordpress.org/plugins/automatorwp-wpdiscuz-integration/)
+* [WPForms](https://wordpress.org/plugins/automatorwp-wpforms-integration/)
+* [WPLMS](https://wordpress.org/plugins/automatorwp-wplms-integration/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
-
-[View all add-ons](https://automatorwp.com/add-ons/)
 
 ## Powerful add-ons to extend AutomatorWP ##
 
@@ -113,6 +136,7 @@ If you’re looking for something endorsed and maintained by the developers who 
 * [Block Users](https://automatorwp.com/add-ons/block-users/): Block users and roles for being able to complete any automation of your choice.
 * [Button](https://automatorwp.com/add-ons/button/) & [Link](https://automatorwp.com/add-ons/link/): Launch any automation through button and link clicks.
 
+[View all add-ons](https://automatorwp.com/add-ons/)
 
 ## Included triggers and actions ##
 
