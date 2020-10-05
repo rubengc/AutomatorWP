@@ -140,6 +140,8 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium add-ons, the most popular of which include:
 
 * [Webhooks](https://automatorwp.com/add-ons/webhooks/): Send and receive data from webhooks to connect all your plugins with web services like Zapier or Integromat or included to connect different WordPress sites.
+* [Schedule Actions](https://automatorwp.com/add-ons/schedule-actions/): Schedule any action to run after a time delay of your choice.
+* [Multimedia Content](https://automatorwp.com/add-ons/multimedia-content/): New triggers based on multimedia content creation and interaction.
 * [Block Users](https://automatorwp.com/add-ons/block-users/): Block users and roles for being able to complete any automation of your choice.
 * [Button](https://automatorwp.com/add-ons/button/) & [Link](https://automatorwp.com/add-ons/link/): Launch any automation through button and link clicks.
 
