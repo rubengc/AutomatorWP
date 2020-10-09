@@ -1,9 +1,9 @@
 === AutomatorWP ===
-Contributors: automatorwp, rubengc, eneribs
+Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -96,6 +96,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
 * [Elementor Forms](https://wordpress.org/plugins/automatorwp-elementor-forms-integration/)
 * [Favorites](https://wordpress.org/plugins/automatorwp-favorites-integration/)
+* [FluentCRM](https://wordpress.org/plugins/automatorwp-fluentcrm-integration/)
 * [Formidable Forms](https://wordpress.org/plugins/automatorwp-formidable-forms-integration/)
 * [Forminator](https://wordpress.org/plugins/automatorwp-forminator-integration/)
 * [GamiPress](https://wordpress.org/plugins/automatorwp-gamipress-integration/)
@@ -113,6 +114,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [MemberPress](https://wordpress.org/plugins/automatorwp-memberpress-integration/)
 * [Ninja Forms](https://wordpress.org/plugins/automatorwp-ninja-forms-integration/)
 * [Paid Memberships Pro](https://wordpress.org/plugins/automatorwp-paid-memberships-pro-integration/)
+* [PeepSo](https://wordpress.org/plugins/automatorwp-peepso-integration/)
 * [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
 * [Restrict Content Pro](https://wordpress.org/plugins/automatorwp-restrict-content-pro-integration/)
 * [Sensei LMS](https://wordpress.org/plugins/automatorwp-sensei-lms-integration/)
@@ -270,6 +272,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.2.5 =
+
+* **Improvements**
+* Prevent to show recommendations if the integration is already installed.
+* **Developer Notes**
+* Delayed the initialization of the Custom Tables library.
 
 = 1.2.4 =
 

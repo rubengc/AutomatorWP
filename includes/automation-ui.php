@@ -1181,7 +1181,7 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
         }
     }
 
-    // Bail if integration if already installed
+    // Bail if integration is already installed
     if( class_exists( $integration->integration_class ) ) {
         return;
     }
@@ -1194,6 +1194,13 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
         // Skip free triggers
         if( $trigger->free ) {
             continue;
+        }
+
+        // Skip if integration is already installed
+        if( property_exists( $trigger, 'required_class' ) && ! empty( $trigger->required_class ) ) {
+            if( class_exists( $trigger->required_class ) ) {
+                continue;
+            }
         }
 
         $already_listed = false;
@@ -1241,7 +1248,7 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
         }
     }
 
-    // Bail if integration if already installed
+    // Bail if integration is already installed
     if( class_exists( $integration->integration_class ) ) {
         return;
     }
@@ -1254,6 +1261,14 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
         if( $action->free ) {
             continue;
         }
+
+        // Skip if integration is already installed
+        if( property_exists( $action, 'required_class' ) && ! empty( $action->required_class ) ) {
+            if( class_exists( $action->required_class ) ) {
+                continue;
+            }
+        }
+
         $already_listed = false;
 
         foreach( $choices as $choice ) {
