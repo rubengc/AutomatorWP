@@ -274,6 +274,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.2.6 ###
+
+* **New Features**
+* New trigger: User gets created through any/specific automation.
+* New trigger: Post gets created through any/specific automation.
+* **Improvements**
+* Ensure to always get triggers and actions titles up to date on the automations list screen.
+
 ### 1.2.5 ###
 
 * **Improvements**

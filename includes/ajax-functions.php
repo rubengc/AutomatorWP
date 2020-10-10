@@ -351,6 +351,9 @@ function automatorwp_ajax_update_item_option() {
         ct_update_object_meta( $object->id, $field_id, $value );
     }
 
+    // Flush cache to ensure that option replacement gets the newest value
+    wp_cache_flush();
+
     // Update the trigger title
     ct_update_object( array(
         'id' => $id,
@@ -358,9 +361,6 @@ function automatorwp_ajax_update_item_option() {
     ) );
 
     ct_reset_setup_table();
-
-    // Flush cache to ensure that option replacement gets the newest value
-    wp_cache_flush();
 
     $tags_html = '';
 

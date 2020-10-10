@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-09-22 09:34+0200\n"
+"POT-Creation-Date: 2020-10-10 12:59+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AutomatorWP (https://automatorwp.com/)\n"
 "Language-Team: AutomatorWP <contact@automatorwp.com>\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:866 includes/cmb2.php:265
+#: includes/ajax-functions.php:866 includes/cmb2.php:278
 #: includes/custom-tables/automations.php:197
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:251
 #: includes/custom-tables/logs.php:326 includes/custom-tables/logs.php:678
@@ -378,7 +378,7 @@ msgstr ""
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:203 includes/utilities.php:261 includes/utilities.php:291
+#: includes/cmb2.php:203 includes/utilities.php:306 includes/utilities.php:336
 msgid "any role"
 msgstr ""
 
@@ -496,7 +496,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: includes/custom-tables/logs.php:160 includes/utilities.php:351
+#: includes/custom-tables/logs.php:160 includes/utilities.php:396
 msgid "Post"
 msgstr ""
 
@@ -510,7 +510,7 @@ msgstr ""
 
 #: includes/custom-tables/logs.php:367
 #: includes/integrations/wordpress/actions/create-post.php:95
-#: includes/integrations/wordpress/actions/create-post.php:354
+#: includes/integrations/wordpress/actions/create-post.php:377
 msgid "Type:"
 msgstr ""
 
@@ -520,7 +520,7 @@ msgstr ""
 
 #: includes/custom-tables/logs.php:389
 #: includes/integrations/wordpress/actions/create-post.php:109
-#: includes/integrations/wordpress/actions/create-post.php:366
+#: includes/integrations/wordpress/actions/create-post.php:389
 msgid "Date:"
 msgstr ""
 
@@ -537,8 +537,7 @@ msgid "Trigger assigned to this log."
 msgstr ""
 
 #: includes/custom-tables/logs.php:493 includes/custom-tables/logs.php:509
-#: includes/custom-tables/logs.php:520
-#: includes/integrations/automatorwp/triggers/complete-automation.php:41
+#: includes/custom-tables/logs.php:520 includes/utilities.php:257
 msgid "Automation:"
 msgstr ""
 
@@ -593,9 +592,40 @@ msgstr ""
 msgid "User completes %1$s"
 msgstr ""
 
-#: includes/integrations/automatorwp/triggers/complete-automation.php:46
-#: includes/integrations/automatorwp/triggers/complete-automation.php:49
-msgid "any automation"
+#: includes/integrations/automatorwp/triggers/post-created.php:26
+msgid "Post gets created through an automation"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/post-created.php:27
+msgid "Post gets created through <strong>an automation</strong>"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/post-created.php:29
+#, php-format
+msgid "Post gets created through %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/post-created.php:31
+#, php-format
+msgid "Post gets created through %1$s"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/user-created.php:26
+msgid "User gets created through an automation"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/user-created.php:27
+msgid "User gets created through <strong>an automation</strong>"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/user-created.php:29
+#, php-format
+msgid "User gets created through %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/automatorwp/triggers/user-created.php:31
+#, php-format
+msgid "User gets created through %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:65
@@ -622,17 +652,17 @@ msgid "Create a %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:85
-#: includes/utilities.php:386
+#: includes/utilities.php:431
 msgid "post"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:88
-#: includes/integrations/wordpress/actions/create-post.php:348
+#: includes/integrations/wordpress/actions/create-post.php:371
 msgid "Title:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:89
-#: includes/integrations/wordpress/actions/create-post.php:349
+#: includes/integrations/wordpress/actions/create-post.php:372
 msgid "The post title."
 msgstr ""
 
@@ -641,7 +671,7 @@ msgid "The post type. By default, \"post\"."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:102
-#: includes/integrations/wordpress/actions/create-post.php:360
+#: includes/integrations/wordpress/actions/create-post.php:383
 #: includes/integrations/wordpress/triggers/post-type-status.php:55
 msgid "Status:"
 msgstr ""
@@ -655,7 +685,7 @@ msgid "The date of the post. Supports \"YYYY-MM-DD HH:MM:SS\" and \"YYYY-MM-DD\"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:115
-#: includes/integrations/wordpress/actions/create-post.php:372
+#: includes/integrations/wordpress/actions/create-post.php:395
 msgid "Author:"
 msgstr ""
 
@@ -664,7 +694,7 @@ msgid "The ID of the user who added this post. By default, ID of user who comple
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:121
-#: includes/integrations/wordpress/actions/create-post.php:378
+#: includes/integrations/wordpress/actions/create-post.php:401
 #: includes/integrations/wordpress/actions/send-email.php:96
 #: includes/integrations/wordpress/actions/send-email.php:255
 msgid "Content:"
@@ -675,7 +705,7 @@ msgid "The post content. By default, empty."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:127
-#: includes/integrations/wordpress/actions/create-post.php:384
+#: includes/integrations/wordpress/actions/create-post.php:407
 msgid "Excerpt:"
 msgstr ""
 
@@ -684,7 +714,7 @@ msgid "The post excerpt. By default, empty."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:133
-#: includes/integrations/wordpress/actions/create-post.php:390
+#: includes/integrations/wordpress/actions/create-post.php:413
 msgid "Parent:"
 msgstr ""
 
@@ -693,7 +723,7 @@ msgid "The post parent. By default, none."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:139
-#: includes/integrations/wordpress/actions/create-post.php:396
+#: includes/integrations/wordpress/actions/create-post.php:419
 msgid "Menu order:"
 msgstr ""
 
@@ -702,9 +732,9 @@ msgid "The post menu order. By default, 0."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:145
-#: includes/integrations/wordpress/actions/create-post.php:402
+#: includes/integrations/wordpress/actions/create-post.php:425
 #: includes/integrations/wordpress/actions/create-user.php:95
-#: includes/integrations/wordpress/actions/create-user.php:343
+#: includes/integrations/wordpress/actions/create-user.php:366
 msgid "Password:"
 msgstr ""
 
@@ -713,12 +743,12 @@ msgid "The password to access this post. By default, empty."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:151
-#: includes/integrations/wordpress/actions/create-post.php:408
+#: includes/integrations/wordpress/actions/create-post.php:431
 msgid "Post Meta:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:152
-#: includes/integrations/wordpress/actions/create-post.php:409
+#: includes/integrations/wordpress/actions/create-post.php:432
 msgid "The post meta values keyed by their post meta key."
 msgstr ""
 
@@ -737,60 +767,60 @@ msgstr ""
 msgid "Meta Value:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:308
+#: includes/integrations/wordpress/actions/create-post.php:331
 msgid "Post created correctly"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:312
+#: includes/integrations/wordpress/actions/create-post.php:335
 msgid "Could not create post"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:342
+#: includes/integrations/wordpress/actions/create-post.php:365
 msgid "Post Information"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:343
+#: includes/integrations/wordpress/actions/create-post.php:366
 msgid "Information about the post created."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:355
+#: includes/integrations/wordpress/actions/create-post.php:378
 msgid "The post type."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:361
+#: includes/integrations/wordpress/actions/create-post.php:384
 msgid "The post status."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:367
+#: includes/integrations/wordpress/actions/create-post.php:390
 msgid "The date of the post."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:373
+#: includes/integrations/wordpress/actions/create-post.php:396
 msgid "The ID of the user who added this post."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:379
+#: includes/integrations/wordpress/actions/create-post.php:402
 msgid "The post content."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:385
+#: includes/integrations/wordpress/actions/create-post.php:408
 msgid "The post excerpt."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:391
+#: includes/integrations/wordpress/actions/create-post.php:414
 msgid "The post parent."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:397
+#: includes/integrations/wordpress/actions/create-post.php:420
 msgid "The post menu order."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:403
+#: includes/integrations/wordpress/actions/create-post.php:426
 msgid "The password to access this post."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-post.php:414
-#: includes/integrations/wordpress/actions/create-user.php:362
+#: includes/integrations/wordpress/actions/create-post.php:437
+#: includes/integrations/wordpress/actions/create-user.php:385
 msgid "Result:"
 msgstr ""
 
@@ -808,52 +838,52 @@ msgid "user"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:63
-#: includes/integrations/wordpress/actions/create-user.php:309
+#: includes/integrations/wordpress/actions/create-user.php:332
 msgid "Username:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:64
-#: includes/integrations/wordpress/actions/create-user.php:310
+#: includes/integrations/wordpress/actions/create-user.php:333
 msgid "The user's login username."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:70
-#: includes/integrations/wordpress/actions/create-user.php:315
+#: includes/integrations/wordpress/actions/create-user.php:338
 msgid "Email:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:71
-#: includes/integrations/wordpress/actions/create-user.php:316
+#: includes/integrations/wordpress/actions/create-user.php:339
 msgid "The user email address."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:77
-#: includes/integrations/wordpress/actions/create-user.php:322
+#: includes/integrations/wordpress/actions/create-user.php:345
 msgid "First Name:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:78
-#: includes/integrations/wordpress/actions/create-user.php:323
+#: includes/integrations/wordpress/actions/create-user.php:346
 msgid "The user's first name."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:83
-#: includes/integrations/wordpress/actions/create-user.php:329
+#: includes/integrations/wordpress/actions/create-user.php:352
 msgid "Last Name:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:84
-#: includes/integrations/wordpress/actions/create-user.php:330
+#: includes/integrations/wordpress/actions/create-user.php:353
 msgid "The user's last name."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:89
-#: includes/integrations/wordpress/actions/create-user.php:336
+#: includes/integrations/wordpress/actions/create-user.php:359
 msgid "Website:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:90
-#: includes/integrations/wordpress/actions/create-user.php:337
+#: includes/integrations/wordpress/actions/create-user.php:360
 msgid "The user URL."
 msgstr ""
 
@@ -862,8 +892,8 @@ msgid "The user password. Leave blank to get password will get automatically gen
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:101
-#: includes/integrations/wordpress/actions/create-user.php:350
-#: includes/utilities.php:257 includes/utilities.php:287
+#: includes/integrations/wordpress/actions/create-user.php:373
+#: includes/utilities.php:302 includes/utilities.php:332
 msgid "Role:"
 msgstr ""
 
@@ -880,36 +910,36 @@ msgid "Send the new user an email about their account."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:114
-#: includes/integrations/wordpress/actions/create-user.php:356
+#: includes/integrations/wordpress/actions/create-user.php:379
 msgid "User Meta:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:115
-#: includes/integrations/wordpress/actions/create-user.php:357
+#: includes/integrations/wordpress/actions/create-user.php:380
 msgid "The user meta values keyed by their user meta key."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:269
+#: includes/integrations/wordpress/actions/create-user.php:292
 msgid "User created correctly"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:273
+#: includes/integrations/wordpress/actions/create-user.php:296
 msgid "Could not create user"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:303
+#: includes/integrations/wordpress/actions/create-user.php:326
 msgid "User Information"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:304
+#: includes/integrations/wordpress/actions/create-user.php:327
 msgid "Information about the user created."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:344
+#: includes/integrations/wordpress/actions/create-user.php:367
 msgid "The user password."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/create-user.php:351
+#: includes/integrations/wordpress/actions/create-user.php:374
 msgid "The user's role."
 msgstr ""
 
@@ -1647,127 +1677,131 @@ msgstr ""
 msgid "Select a category"
 msgstr ""
 
-#: includes/utilities.php:292
+#: includes/utilities.php:261
+msgid "any automation"
+msgstr ""
+
+#: includes/utilities.php:337
 msgid "Select a role"
 msgstr ""
 
-#: includes/utilities.php:327
+#: includes/utilities.php:372
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:366
+#: includes/utilities.php:411
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:372
+#: includes/utilities.php:417
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:374
+#: includes/utilities.php:419
 msgid "The Title"
 msgstr ""
 
-#: includes/utilities.php:378
+#: includes/utilities.php:423
 #, php-format
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:384
+#: includes/utilities.php:429
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:390
+#: includes/utilities.php:435
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:396
+#: includes/utilities.php:441
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:402
+#: includes/utilities.php:447
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:404
+#: includes/utilities.php:449
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:408
+#: includes/utilities.php:453
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:410
+#: includes/utilities.php:455
 msgid "The excerpt"
 msgstr ""
 
-#: includes/utilities.php:414
+#: includes/utilities.php:459
 #, php-format
 msgid "%s Status"
 msgstr ""
 
-#: includes/utilities.php:416
+#: includes/utilities.php:461
 msgid "publish"
 msgstr ""
 
-#: includes/utilities.php:420
+#: includes/utilities.php:465
 #, php-format
 msgid "%s Parent ID"
 msgstr ""
 
-#: includes/utilities.php:426
+#: includes/utilities.php:471
 #, php-format
 msgid "%s Menu Order"
 msgstr ""
 
-#: includes/utilities.php:432
+#: includes/utilities.php:477
 #, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:434
+#: includes/utilities.php:479
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:452
+#: includes/utilities.php:497
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:455
+#: includes/utilities.php:500
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:456
+#: includes/utilities.php:501
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:457
+#: includes/utilities.php:502
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:458
+#: includes/utilities.php:503
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:459
+#: includes/utilities.php:504
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:460
+#: includes/utilities.php:505
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:620
+#: includes/utilities.php:665
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:621
+#: includes/utilities.php:666
 msgid "Hide options"
 msgstr ""

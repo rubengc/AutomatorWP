@@ -243,6 +243,51 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
 }
 
 /**
+ * Utility function to get the automation option parameter
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_automation_option( $args = array() ) {
+
+    $args = wp_parse_args( $args, array(
+        'name'              => __( 'Automation:', 'automatorwp' ),
+        'option_default'    => '',
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => __( 'any automation', 'automatorwp' ),
+        'default'           => 'any'
+    ) );
+
+    return array(
+        'from' => 'automation',
+        'default' => $args['option_default'],
+        'fields' => array(
+            'automation' => array(
+                'name' => $args['name'],
+                'type' => 'select',
+                'classes' => 'automatorwp-object-selector',
+                'option_none' => $args['option_none'],
+                'option_none_value' => $args['option_none_value'],
+                'option_none_label' => $args['option_none_label'],
+                'attributes' => array(
+                    'data-option-none' => $args['option_none'],
+                    'data-option-none-value' => $args['option_none_value'],
+                    'data-option-none-label' => $args['option_none_label'],
+                    'data-table' => 'automatorwp_automations',
+                ),
+                'options_cb' => 'automatorwp_options_cb_objects',
+                'default' => $args['default']
+            )
+        )
+    );
+
+}
+
+/**
  * Utility function to get the role option parameter
  *
  * @since 1.0.0

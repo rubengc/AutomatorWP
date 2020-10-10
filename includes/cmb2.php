@@ -245,6 +245,19 @@ function automatorwp_options_cb_objects( $field ) {
     $none_label = __( 'any item', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
+    // Update option none value with field attributes
+    $none_value = ( isset( $field->args['option_none_value'] ) ? $field->args['option_none_value'] : $none_value );
+
+    // Ensure that required attributes are set
+    if( ! isset( $field->args['attributes'] ) ) {
+        return $options;
+    }
+
+    // Ensure that data-table is set
+    if( ! isset( $field->args['attributes']['data-table'] ) ) {
+        return $options;
+    }
+
     if( ! empty( $value ) ) {
 
         ct_setup_table( $field->args['attributes']['data-table'] );

@@ -180,20 +180,30 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
 
         if( $this->user_id ) {
 
-            foreach( $action_options['user_meta'] as $meta ) {
+            if( is_array( $action_options['user_meta'] ) ) {
 
-                // Parse automation tags replacements to both, key and value
-                $meta_key = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_key'] );
-                $meta_value = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_value'] );
+                foreach( $action_options['user_meta'] as $i => $meta ) {
 
-                // Sanitize
-                $meta_key = sanitize_text_field( $meta_key );
-                $meta_value = sanitize_text_field( $meta_value );
+                    // Parse automation tags replacements to both, key and value
+                    $meta_key = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_key'] );
+                    $meta_value = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_value'] );
 
-                // Update user meta
-                update_user_meta( $this->user_id, $meta_key, $meta_value );
+                    // Sanitize
+                    $meta_key = sanitize_text_field( $meta_key );
+                    $meta_value = sanitize_text_field( $meta_value );
 
-                $this->user_meta[$meta_key] = $meta_value;
+                    // Update user meta
+                    update_user_meta( $this->user_id, $meta_key, $meta_value );
+
+                    $this->user_meta[$meta_key] = $meta_value;
+
+                    // Update action options to be passed on upcoming hooks
+                    $action_options['user_meta'][$i] = array(
+                        'meta_key' => $meta_key,
+                        'meta_value' => $meta_value,
+                    );
+
+                }
 
             }
 
@@ -205,6 +215,19 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
             }
 
             wp_send_new_user_notifications( $this->user_id, $notify );
+
+            /**
+             * Action triggered before the create new user action gets executed
+             *
+             * @since 1.2.6
+             *
+             * @param int       $new_user_id        The new user ID
+             * @param stdClass  $action             The action object
+             * @param int       $user_id            The user ID (user who triggered the automation)
+             * @param array     $action_options     The action's stored options (with tags already passed, included on meta keys and values)
+             * @param stdClass  $automation         The action's automation object
+             */
+            do_action( 'automatorwp_wordpress_create_user_executed', $this->user_id, $action, $user_id, $action_options, $automation );
 
         }
 

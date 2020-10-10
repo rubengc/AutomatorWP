@@ -1,18 +1,18 @@
 <?php
 /**
- * Complete Automation
+ * Post Created
  *
- * @package     AutomatorWP\Integrations\AutomatorWP\Triggers\Complete_Automation
+ * @package     AutomatorWP\Integrations\AutomatorWP\Triggers\Post_Created
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_AutomatorWP_Complete_Automation extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_AutomatorWP_Post_Created extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'automatorwp';
-    public $trigger = 'automatorwp_complete_automation';
+    public $trigger = 'automatorwp_post_created';
 
     /**
      * Register the trigger
@@ -23,21 +23,22 @@ class AutomatorWP_AutomatorWP_Complete_Automation extends AutomatorWP_Integratio
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'User completes an automation', 'automatorwp' ),
-            'select_option'     => __( 'User completes <strong>an automation</strong>', 'automatorwp' ),
+            'label'             => __( 'Post gets created through an automation', 'automatorwp' ),
+            'select_option'     => __( 'Post gets created through <strong>an automation</strong>', 'automatorwp' ),
             /* translators: %1$s: Automation title. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User completes %1$s %2$s time(s)', 'automatorwp' ), '{automation}', '{times}' ),
+            'edit_label'        => sprintf( __( 'Post gets created through %1$s %2$s time(s)', 'automatorwp' ), '{automation}', '{times}' ),
             /* translators: %1$s: Automation title. */
-            'log_label'         => sprintf( __( 'User completes %1$s', 'automatorwp' ), '{automation}' ),
-            'action'            => 'automatorwp_user_completed_automation',
+            'log_label'         => sprintf( __( 'Post gets created through %1$s', 'automatorwp' ), '{automation}' ),
+            'action'            => 'automatorwp_wordpress_create_post_executed',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 3,
+            'accepted_args'     => 5,
             'options'           => array(
                 'automation' => automatorwp_utilities_automation_option(),
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
+                automatorwp_utilities_post_tags(),
                 automatorwp_utilities_times_tag()
             )
         ) );
@@ -49,15 +50,20 @@ class AutomatorWP_AutomatorWP_Complete_Automation extends AutomatorWP_Integratio
      *
      * @since 1.0.0
      *
-     * @param stdClass  $automation         The automation object
-     * @param int       $user_id            The user ID
-     * @param array     $event              Event information
+     * @param int       $post_id            The post ID
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID (user who triggered the automation)
+     * @param array     $action_options     The action's stored options (with tags already passed, included on meta keys and values)
+     * @param stdClass  $automation         The action's automation object
      */
-    public function listener( $automation, $user_id, $event ) {
+    public function listener( $post_id, $action, $user_id, $action_options, $automation ) {
+
+        $post = get_post( $post_id );
 
         automatorwp_trigger_event( array(
             'trigger' => $this->trigger,
-            'user_id' => $user_id,
+            'post_id' => $post_id,
+            'user_id' => $post->post_author,
             'automation_id' => $automation->id,
         ) );
 
@@ -104,4 +110,4 @@ class AutomatorWP_AutomatorWP_Complete_Automation extends AutomatorWP_Integratio
 
 }
 
-new AutomatorWP_AutomatorWP_Complete_Automation();
+new AutomatorWP_AutomatorWP_Post_Created();

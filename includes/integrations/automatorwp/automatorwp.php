@@ -11,6 +11,8 @@ if( !defined( 'ABSPATH' ) ) exit;
 
 // Triggers
 require_once plugin_dir_path( __FILE__ ) . 'triggers/complete-automation.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/user-created.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/post-created.php';
 
 /**
  * Registers this integration
