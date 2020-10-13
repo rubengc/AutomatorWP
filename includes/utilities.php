@@ -193,6 +193,58 @@ function automatorwp_utilities_term_field( $args = array() ) {
 }
 
 /**
+ * Utility function to get the taxonomy option parameter
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_taxonomy_option( $args = array() ) {
+
+    $args = wp_parse_args( $args, array(
+        'name'              => __( 'Taxonomy:', 'automatorwp' ),
+        'option_default'    => __( 'any taxonomy', 'automatorwp' ),
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => __( 'any taxonomy', 'automatorwp' ),
+        'placeholder'       => __( 'Select a taxonomy', 'automatorwp' ),
+        'default'           => 'any'
+    ) );
+
+    $term_args = $args;
+
+    $term_args['name'] = __( 'Term:', 'automatorwp' );
+    $term_args['option_none_label'] = __( 'any term', 'automatorwp' );
+
+    return array(
+        'from' => 'term',
+        'default' => $args['option_default'],
+        'fields' => array(
+            'taxonomy' => array(
+                'name' => $args['name'],
+                'type' => 'select',
+                'classes' => 'automatorwp-taxonomy-selector',
+                'option_none' => $args['option_none'],
+                'option_none_value' => $args['option_none_value'],
+                'option_none_label' => $args['option_none_label'],
+                'attributes' => array(
+                    'data-option-none' => $args['option_none'],
+                    'data-option-none-value' => $args['option_none_value'],
+                    'data-option-none-label' => $args['option_none_label'],
+                    'data-placeholder' => $args['placeholder'],
+                ),
+                'options_cb' => 'automatorwp_options_cb_taxonomies',
+                'default' => $args['default']
+            ),
+            'term' => automatorwp_utilities_term_field( $term_args )
+        )
+    );
+
+}
+
+/**
  * Utility function to get ajax selector option parameter
  *
  * @since 1.0.0

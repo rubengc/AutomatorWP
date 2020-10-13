@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-10-10 12:59+0200\n"
+"POT-Creation-Date: 2020-10-13 17:37+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:866 includes/cmb2.php:278
+#: includes/ajax-functions.php:866 includes/cmb2.php:333
 #: includes/custom-tables/automations.php:197
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:251
 #: includes/custom-tables/logs.php:326 includes/custom-tables/logs.php:678
@@ -365,24 +365,29 @@ msgstr ""
 msgid "any category"
 msgstr ""
 
-#: includes/cmb2.php:145
+#: includes/cmb2.php:115 includes/filters.php:70 includes/utilities.php:208
+#: includes/utilities.php:211
+msgid "any taxonomy"
+msgstr ""
+
+#: includes/cmb2.php:200
 msgid "a post of any type"
 msgstr ""
 
-#: includes/cmb2.php:157
+#: includes/cmb2.php:212
 #, php-format
 msgid "a %s"
 msgstr ""
 
-#: includes/cmb2.php:177
+#: includes/cmb2.php:232
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:203 includes/utilities.php:306 includes/utilities.php:336
+#: includes/cmb2.php:258 includes/utilities.php:358 includes/utilities.php:388
 msgid "any role"
 msgstr ""
 
-#: includes/cmb2.php:245
+#: includes/cmb2.php:300
 msgid "any item"
 msgstr ""
 
@@ -496,7 +501,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: includes/custom-tables/logs.php:160 includes/utilities.php:396
+#: includes/custom-tables/logs.php:160 includes/utilities.php:448
 msgid "Post"
 msgstr ""
 
@@ -537,7 +542,7 @@ msgid "Trigger assigned to this log."
 msgstr ""
 
 #: includes/custom-tables/logs.php:493 includes/custom-tables/logs.php:509
-#: includes/custom-tables/logs.php:520 includes/utilities.php:257
+#: includes/custom-tables/logs.php:520 includes/utilities.php:309
 msgid "Automation:"
 msgstr ""
 
@@ -652,7 +657,7 @@ msgid "Create a %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:85
-#: includes/utilities.php:431
+#: includes/utilities.php:483
 msgid "post"
 msgstr ""
 
@@ -893,7 +898,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:101
 #: includes/integrations/wordpress/actions/create-user.php:373
-#: includes/utilities.php:302 includes/utilities.php:332
+#: includes/utilities.php:354 includes/utilities.php:384
 msgid "Role:"
 msgstr ""
 
@@ -1277,12 +1282,14 @@ msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-post-category.php:29
 #: includes/integrations/wordpress/triggers/comment-post-tag.php:29
+#: includes/integrations/wordpress/triggers/comment-post-taxonomy.php:29
 #, php-format
 msgid "User comments on a post of %1$s %2$s time(s)"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-post-category.php:31
 #: includes/integrations/wordpress/triggers/comment-post-tag.php:31
+#: includes/integrations/wordpress/triggers/comment-post-taxonomy.php:31
 #, php-format
 msgid "User comments on a post of %1$s"
 msgstr ""
@@ -1305,6 +1312,14 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/publish-post-tag.php:39
 #: includes/integrations/wordpress/triggers/view-post-tag.php:39
 msgid "any tag"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/comment-post-taxonomy.php:26
+msgid "User comments on a post of a taxonomy"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/comment-post-taxonomy.php:27
+msgid "User comments on a post of <strong>a taxonomy</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-post-type.php:26
@@ -1392,11 +1407,13 @@ msgid "User publishes a post in <strong>a category</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/publish-post-category.php:29
+#: includes/integrations/wordpress/triggers/publish-post-taxonomy.php:29
 #, php-format
 msgid "User publishes a post in %1$s %2$s time(s)"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/publish-post-category.php:31
+#: includes/integrations/wordpress/triggers/publish-post-taxonomy.php:31
 #, php-format
 msgid "User publishes a post in %1$s"
 msgstr ""
@@ -1417,6 +1434,14 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/publish-post-tag.php:31
 #, php-format
 msgid "User publishes a post with %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/publish-post-taxonomy.php:26
+msgid "User publishes a post in a taxonomy"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/publish-post-taxonomy.php:27
+msgid "User publishes a post in <strong>a taxonomy</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/publish-post-type.php:26
@@ -1532,12 +1557,14 @@ msgstr ""
 
 #: includes/integrations/wordpress/triggers/view-post-category.php:29
 #: includes/integrations/wordpress/triggers/view-post-tag.php:29
+#: includes/integrations/wordpress/triggers/view-post-taxonomy.php:29
 #, php-format
 msgid "User views a post of %1$s %2$s time(s)"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/view-post-category.php:31
 #: includes/integrations/wordpress/triggers/view-post-tag.php:31
+#: includes/integrations/wordpress/triggers/view-post-taxonomy.php:31
 #, php-format
 msgid "User views a post of %1$s"
 msgstr ""
@@ -1548,6 +1575,14 @@ msgstr ""
 
 #: includes/integrations/wordpress/triggers/view-post-tag.php:27
 msgid "User views a post of <strong>a tag</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/view-post-taxonomy.php:26
+msgid "User views a post of a taxonomy"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/view-post-taxonomy.php:27
+msgid "User views a post of <strong>a taxonomy</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/view-post-type.php:26
@@ -1584,23 +1619,28 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#: includes/scripts.php:141
+#: includes/scripts.php:150
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:142 includes/utilities.php:91
+#: includes/scripts.php:151 includes/utilities.php:91
 msgid "Select a post"
 msgstr ""
 
-#: includes/scripts.php:143
+#: includes/scripts.php:152
 msgid "Select a term"
 msgstr ""
 
-#: includes/scripts.php:144
+#: includes/scripts.php:154
+#, php-format
+msgid "Select a %s"
+msgstr ""
+
+#: includes/scripts.php:155
 msgid "Select a user"
 msgstr ""
 
-#: includes/scripts.php:145
+#: includes/scripts.php:156
 msgid "Select an item"
 msgstr ""
 
@@ -1677,131 +1717,147 @@ msgstr ""
 msgid "Select a category"
 msgstr ""
 
-#: includes/utilities.php:261
+#: includes/utilities.php:207
+msgid "Taxonomy:"
+msgstr ""
+
+#: includes/utilities.php:212
+msgid "Select a taxonomy"
+msgstr ""
+
+#: includes/utilities.php:218
+msgid "Term:"
+msgstr ""
+
+#: includes/utilities.php:219
+msgid "any term"
+msgstr ""
+
+#: includes/utilities.php:313
 msgid "any automation"
 msgstr ""
 
-#: includes/utilities.php:337
+#: includes/utilities.php:389
 msgid "Select a role"
 msgstr ""
 
-#: includes/utilities.php:372
+#: includes/utilities.php:424
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:411
+#: includes/utilities.php:463
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:417
+#: includes/utilities.php:469
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:419
+#: includes/utilities.php:471
 msgid "The Title"
 msgstr ""
 
-#: includes/utilities.php:423
+#: includes/utilities.php:475
 #, php-format
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:429
+#: includes/utilities.php:481
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:435
+#: includes/utilities.php:487
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:441
+#: includes/utilities.php:493
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:447
+#: includes/utilities.php:499
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:449
+#: includes/utilities.php:501
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:453
+#: includes/utilities.php:505
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:455
+#: includes/utilities.php:507
 msgid "The excerpt"
 msgstr ""
 
-#: includes/utilities.php:459
+#: includes/utilities.php:511
 #, php-format
 msgid "%s Status"
 msgstr ""
 
-#: includes/utilities.php:461
+#: includes/utilities.php:513
 msgid "publish"
 msgstr ""
 
-#: includes/utilities.php:465
+#: includes/utilities.php:517
 #, php-format
 msgid "%s Parent ID"
 msgstr ""
 
-#: includes/utilities.php:471
+#: includes/utilities.php:523
 #, php-format
 msgid "%s Menu Order"
 msgstr ""
 
-#: includes/utilities.php:477
+#: includes/utilities.php:529
 #, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:479
+#: includes/utilities.php:531
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:497
+#: includes/utilities.php:549
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:500
+#: includes/utilities.php:552
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:501
+#: includes/utilities.php:553
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:502
+#: includes/utilities.php:554
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:503
+#: includes/utilities.php:555
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:504
+#: includes/utilities.php:556
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:505
+#: includes/utilities.php:557
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:665
+#: includes/utilities.php:717
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:666
+#: includes/utilities.php:718
 msgid "Hide options"
 msgstr ""

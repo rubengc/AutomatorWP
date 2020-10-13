@@ -678,6 +678,39 @@ function automatorwp_get_post_type_label( post_type ) {
 }
 
 /**
+ * Check if taxonomy has been registered
+ *
+ * @since 1.0.0
+ *
+ * @param {string} taxonomy
+ *
+ * @return {boolean}
+ */
+function automatorwp_taxonomy_exists( taxonomy ) {
+    return ( automatorwp_admin_functions.taxonomy_labels[taxonomy] !== undefined )
+}
+
+/**
+ * Get the taxonomy label (singular name)
+ *
+ * @since 1.0.0
+ *
+ * @param {string} taxonomy
+ *
+ * @return {string}
+ */
+function automatorwp_get_taxonomy_label( taxonomy ) {
+
+    var label = '';
+
+    if( automatorwp_taxonomy_exists( taxonomy ) ) {
+        label = automatorwp_admin_functions.taxonomy_labels[taxonomy];
+    }
+
+    return label;
+}
+
+/**
  * Function to turn an object or a JSON object to a CSV file and force the download (Used on import/export tools)
  *
  * @since 1.0.0

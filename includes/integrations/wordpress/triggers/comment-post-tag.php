@@ -90,6 +90,7 @@ class AutomatorWP_WordPress_Comment_Post_Tag extends AutomatorWP_Integration_Tri
             'trigger' => $this->trigger,
             'user_id' => $user_id,
             'post_id' => $post->ID,
+            'terms_ids' => $terms_ids,
         ) );
 
     }
@@ -111,12 +112,12 @@ class AutomatorWP_WordPress_Comment_Post_Tag extends AutomatorWP_Integration_Tri
     public function user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
 
         // Don't deserve if post is not received
-        if( ! isset( $event['post_id'] ) ) {
+        if( ! isset( $event['post_id'] ) && ! isset( $event['terms_ids'] ) ) {
             return false;
         }
 
-        // Don't deserve if post doesn't match with the trigger option
-        if( ! automatorwp_posts_matches( $event['post_id'], $trigger_options['post'] ) ) {
+        // Don't deserve if term doesn't match with the trigger option
+        if( ! automatorwp_terms_matches( $event['terms_ids'], $trigger_options['term'] ) ) {
             return false;
         }
 

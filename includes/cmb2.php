@@ -100,6 +100,61 @@ function automatorwp_options_cb_terms( $field ) {
 }
 
 /**
+ * Options callback for select2 fields assigned to taxonomies
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass $field
+ *
+ * @return array
+ */
+function automatorwp_options_cb_taxonomies( $field ) {
+
+    // Setup vars
+    $none_value = 'any';
+    $none_label = __( 'any taxonomy', 'automatorwp' );
+    $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
+
+    $post_types = get_post_types( array( 'public' => true ), 'objects' );
+    $taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
+    $taxonomies_to_exclude = array( 'wp_log_type' );
+
+    foreach( $taxonomies as $taxonomy => $taxonomy_obj ) {
+
+        // Skip some private taxonomies
+        if( in_array( $taxonomy, $taxonomies_to_exclude ) ) {
+            continue;
+        }
+
+        $post_types_label = '';
+        $taxonomy_post_types = array();
+
+        // Loop all taxonomy post types
+        if( is_array( $taxonomy_obj->object_type ) ) {
+
+            foreach( $taxonomy_obj->object_type as $post_type ) {
+
+                if( isset( $post_types[$post_type] ) ) {
+                    $post_type_obj = $post_types[$post_type];
+                    $taxonomy_post_types[] = $post_type_obj->labels->name;
+                }
+            }
+
+        }
+
+        // Setup the post types labels
+        if( ! empty( $taxonomy_post_types ) ) {
+            $post_types_label = ' (' . implode( ', ', $taxonomy_post_types ) . ')';
+        }
+
+        $options[$taxonomy] = $taxonomy_obj->labels->name . $post_types_label;
+    }
+
+    return $options;
+
+}
+
+/**
  * Options callback for select2 fields assigned to users
  *
  * @since 1.0.0

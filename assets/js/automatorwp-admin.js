@@ -9,6 +9,9 @@
     // Term Selector Control
     $('.automatorwp-term-selector select').each(function() { automatorwp_term_selector( $(this) ); });
 
+    // Taxonomy Selector Control
+    $('.automatorwp-taxonomy-selector select').each(function() { automatorwp_selector( $(this) ); });
+
     // User Selector Control
     $('.automatorwp-user-selector select').each(function() { automatorwp_user_selector( $(this) ); });
 
@@ -570,6 +573,84 @@
         $(this).next('ul').slideToggle('fast');
     });
 
+    // -----------------------------------------------
+    // Taxonomy Selector
+    // -----------------------------------------------
+
+    // Change the taxonomy
+    $('body').on('change', '.automatorwp-taxonomy-selector select', function(e) {
+        var row = $(this).closest('.cmb-row');
+        var term_row = row.next('.automatorwp-term-selector');
+
+        // Bail if next field is not a term selector
+        if( term_row === undefined ) {
+            return;
+        }
+
+        var taxonomy = $(this).val();
+        var first_change = row.hasClass('is-option-change');
+
+        if( taxonomy === 'any' || taxonomy === '' ) {
+            // Hide the term selector
+            if( first_change ) {
+                term_row.hide();
+            } else {
+                term_row.slideUp('fast');
+            }
+        } else {
+            var term_selector = term_row.find('select.select2-hidden-accessible');
+            var taxonomy_label = automatorwp_get_taxonomy_label( taxonomy );
+
+            if( ! taxonomy_label.length ) {
+                taxonomy_label = 'Category';
+            }
+
+            // Remove Select2 element
+            term_selector.next('.select2').remove();
+
+            // Update the taxonomy and placeholder
+            term_selector.data( 'taxonomy', taxonomy );
+            term_selector.data( 'placeholder', automatorwp_admin_functions.taxonomy_selector_placeholder_pattern.replace('%s', taxonomy_label.toLowerCase() ) );
+
+            if( ! first_change ) {
+                // Update the the term value
+                term_selector.val('');
+            }
+
+            // Reset the selector
+            term_selector.removeAttr('data-select2-id');
+
+            // Init it again
+            automatorwp_term_selector( term_selector );
+
+            // Show the term selector
+            if( first_change ) {
+                term_row.show();
+            } else {
+                term_row.slideDown('fast');
+            }
+        }
+
+        row.removeClass('is-option-change');
+    });
+
+    // On click on an option, check if form contains the taxonomy selector
+    $('body').on('click', '.automatorwp-automation-item-label > .automatorwp-option', function(e) {
+
+        var item = $(this).closest('.automatorwp-automation-item');
+        var option = $(this).data('option');
+        var option_form = item.find('.automatorwp-option-form-container[data-option="' + option + '"]');
+        var taxonomy_selector = option_form.find('.automatorwp-taxonomy-selector');
+
+        if( taxonomy_selector !== undefined ) {
+
+            taxonomy_selector.addClass('is-option-change');
+            taxonomy_selector.find('select.select2-hidden-accessible').change();
+
+        }
+
+    });
+
 })( jQuery );
 
 /**
@@ -804,6 +885,9 @@ function automatorwp_initialize_form_fields( form ) {
 
     // Term Selector Control
     form.find('.automatorwp-term-selector select').each(function() { automatorwp_term_selector( $(this) ); });
+
+    // Taxonomy Selector Control
+    form.find('.automatorwp-taxonomy-selector select').each(function() { automatorwp_selector( $(this) ); });
 
     // User Selector Control
     form.find('.automatorwp-user-selector select').each(function() { automatorwp_user_selector( $(this) ); });

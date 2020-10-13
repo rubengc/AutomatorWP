@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -163,17 +163,20 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User views a post of any/specific tag.
 * User views any/specific page.
 * User views a post of any/specific type.
+* User views a post of any/specific taxonomy.
 * User publishes a post.
 * User publishes a post with any/specific category.
 * User publishes a post with any/specific tag.
 * User publishes a page.
 * User publishes a post of any/specific type.
+* User publishes a post in any/specific taxonomy.
 * User post of any/specific type status changes to any/specific status.
 * User comments on any/specific post.
 * User comments on a post of any/specific category.
 * User comments on a post of any/specific tag.
 * User comments on any/specific page.
 * User comments on a post of any/specific type.
+* User comments on a post of any/specific taxonomy.
 * User gets added to any/specific role.
 * User role changes to any/specific role.
 * User gets removed from any/specific role.
@@ -274,6 +277,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.2.7 =
+
+* **New Features**
+* New trigger: User views a post of any/specific taxonomy.
+* New trigger: User publishes a post in any/specific taxonomy.
+* New trigger: User comments on a post of any/specific taxonomy.
+* **Bug Fixes**
+* Fixed plugin conflict with Yoast SEO Premium.
 
 = 1.2.6 =
 

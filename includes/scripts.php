@@ -133,16 +133,27 @@ function automatorwp_enqueue_admin_functions_script() {
         $post_type_labels[$key] = $obj->labels->singular_name;
     }
 
+    // Setup an array of taxonomy labels to use on the taxonomy selector field
+    $taxonomies = get_taxonomies( array(), 'objects' );
+    $taxonomy_labels = array();
+
+    foreach( $taxonomies as $key => $obj ) {
+        $taxonomy_labels[$key] = $obj->labels->singular_name;
+    }
+
     // Localize admin functions script
     wp_localize_script( 'automatorwp-admin-functions-js', 'automatorwp_admin_functions', array(
-        'nonce'                         => automatorwp_get_admin_nonce(),
-        'post_type_labels'              => $post_type_labels,
+        'nonce'                                 => automatorwp_get_admin_nonce(),
+        'post_type_labels'                      => $post_type_labels,
+        'taxonomy_labels'                       => $taxonomy_labels,
         // Selector placeholders
-        'selector_placeholder'          => __( 'Select an option', 'automatorwp' ),
-        'post_selector_placeholder'     => __( 'Select a post', 'automatorwp' ),
-        'term_selector_placeholder'     => __( 'Select a term', 'automatorwp' ),
-        'user_selector_placeholder'     => __( 'Select a user', 'automatorwp' ),
-        'object_selector_placeholder'   => __( 'Select an item', 'automatorwp' ),
+        'selector_placeholder'                  => __( 'Select an option', 'automatorwp' ),
+        'post_selector_placeholder'             => __( 'Select a post', 'automatorwp' ),
+        'term_selector_placeholder'             => __( 'Select a term', 'automatorwp' ),
+        /* translators: %s: Taxonomy title (category, tag, etc). */
+        'taxonomy_selector_placeholder_pattern' => __( 'Select a %s', 'automatorwp' ),
+        'user_selector_placeholder'             => __( 'Select a user', 'automatorwp' ),
+        'object_selector_placeholder'           => __( 'Select an item', 'automatorwp' ),
     ) );
 
     wp_enqueue_script( 'automatorwp-admin-functions-js' );
