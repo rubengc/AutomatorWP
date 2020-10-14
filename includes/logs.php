@@ -64,6 +64,7 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
             $meta_key = sanitize_key( $meta_key );
             $meta_key = wp_unslash( $meta_key );
             $meta_value = wp_unslash( $meta_value );
+            $meta_value = esc_sql( $meta_value );
             $meta_value = sanitize_meta( $meta_key, $meta_value, $ct_table->name );
             $meta_value = maybe_serialize( $meta_value );
 

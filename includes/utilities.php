@@ -641,21 +641,28 @@ function automatorwp_terms_matches( $term_id, $required_term_id ) {
  *
  * @param int|float $to_match   Number to match
  * @param int|float $to_compare Number to compare
- * @param string    $condition  The coondition to compare numbers
+ * @param string    $condition  The condition to compare numbers
  *
  * @return bool
  */
 function automatorwp_number_condition_matches( $to_match, $to_compare, $condition ) {
+
+    if( empty( $condition ) ) {
+        $condition = 'equal';
+    }
 
     $matches = false;
 
     switch( $condition ) {
         case 'equal':
         case '=':
-            $matches = ( $to_match = $to_compare );
+        case '==':
+        case '===':
+            $matches = ( $to_match == $to_compare );
             break;
         case 'not_equal':
         case '!=':
+        case '!==':
             $matches = ( $to_match != $to_compare );
             break;
         case 'less_than':

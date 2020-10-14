@@ -280,6 +280,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.2.8 ###
+
+* **Improvements**
+* Added more sanitization when inserting logs.
+* Added more sanitization checks on ajax parameters.
+* Improvements on number conditional functions (used to compare conditions in some triggers).
+
 ### 1.2.7 ###
 
 * **New Features**

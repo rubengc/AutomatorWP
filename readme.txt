@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -277,6 +277,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.2.8 =
+
+* **Improvements**
+* Added more sanitization when inserting logs.
+* Added more sanitization checks on ajax parameters.
+* Improvements on number conditional functions (used to compare conditions in some triggers).
 
 = 1.2.7 =
 
