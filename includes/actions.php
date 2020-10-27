@@ -49,6 +49,10 @@ function automatorwp_register_action( $action, $args ) {
 
     }
 
+    if( isset( AutomatorWP()->actions[$action] ) ) {
+        error_log( sprintf( __( 'Possible action duplication with the key "%s"', 'automatorwp' ), $action ) );
+    }
+
     AutomatorWP()->actions[$action] = $args;
 
 }
@@ -86,19 +90,47 @@ function automatorwp_get_action( $action ) {
  *
  * @since 1.0.0
  *
- * @param string $integration
+ * @param string    $integration    The integration key
+ * @param array     $filters        Filters to filter triggers by args
  *
  * @return array
  */
-function automatorwp_get_integration_actions( $integration ) {
+function automatorwp_get_integration_actions( $integration, $filters = array() ) {
 
     $actions = array();
 
     foreach( AutomatorWP()->actions as $action => $args ) {
 
-        if( $args['integration'] === $integration ) {
-            $actions[$action] = $args;
+        if( $args['integration'] !== $integration ) {
+            continue;
         }
+
+        // If filters defined, apply them
+        if( is_array( $filters ) && ! empty( $filters ) ) {
+
+            $pass_filters = true;
+
+            foreach( $filters as $filter_key => $filter_value ) {
+
+                // Check if argument exists
+                if( ! isset( $args[$filter_key] ) ) {
+                    $pass_filters = false;
+                }
+
+                // Check if argument value matches
+                if( $args[$filter_key] !== $filter_value ) {
+                    $pass_filters = false;
+                }
+
+            }
+
+            // Skip this item if filters not passed
+            if( ! $pass_filters ) {
+                continue;
+            }
+        }
+
+        $actions[$action] = $args;
 
     }
 

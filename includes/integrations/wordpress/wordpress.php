@@ -35,6 +35,11 @@ require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-taxonomy.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/add-role.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/set-role.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/remove-role.php';
+// Anonymous Triggers
+require_once plugin_dir_path( __FILE__ ) . 'triggers/anonymous-view-post-type.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/anonymous-view-post-taxonomy.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/anonymous-comment-post-type.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/anonymous-comment-post-taxonomy.php';
 // Actions
 require_once plugin_dir_path( __FILE__ ) . 'actions/send-email.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/user-role.php';

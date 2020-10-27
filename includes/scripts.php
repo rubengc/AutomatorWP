@@ -30,7 +30,7 @@ function automatorwp_admin_register_scripts() {
     wp_register_style( 'automatorwp-admin-css', AUTOMATORWP_URL . 'assets/css/automatorwp-admin' . $suffix . '.css', array( ), AUTOMATORWP_VER, 'all' );
 
     // Scripts
-    wp_register_script( 'automatorwp-admin-functions-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin-functions' . $suffix . '.js', array( 'jquery' ), AUTOMATORWP_VER, true );
+    wp_register_script( 'automatorwp-admin-functions-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin-functions' . $suffix . '.js', array( 'jquery', 'jquery-ui-dialog' ), AUTOMATORWP_VER, true );
     wp_register_script( 'automatorwp-admin-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'automatorwp-admin-functions-js', 'automatorwp-select2-js' ), AUTOMATORWP_VER, true );
     wp_register_script( 'automatorwp-admin-notices-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin-notices' . $suffix . '.js', array( 'jquery' ), AUTOMATORWP_VER, true );
 

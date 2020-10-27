@@ -38,6 +38,7 @@ class AutomatorWP_WordPress_Comment_Post_Category extends AutomatorWP_Integratio
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
+                automatorwp_utilities_comment_tags(),
                 automatorwp_utilities_post_tags(),
                 automatorwp_utilities_times_tag()
             )
@@ -83,10 +84,11 @@ class AutomatorWP_WordPress_Comment_Post_Category extends AutomatorWP_Integratio
         $user_id = (int) $comment['user_id'];
 
         automatorwp_trigger_event( array(
-            'trigger' => $this->trigger,
-            'user_id' => $user_id,
-            'post_id' => $post->ID,
-            'terms_ids' => $terms_ids,
+            'trigger'       => $this->trigger,
+            'user_id'       => $user_id,
+            'comment_id'    => $comment_ID,
+            'post_id'       => $post->ID,
+            'terms_ids'     => $terms_ids,
         ) );
 
     }

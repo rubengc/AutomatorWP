@@ -174,13 +174,47 @@ function automatorwp_options_cb_users( $field ) {
         }
 
         foreach( $value as $user_id ) {
-            $user_data = get_userdata($user_id);
+            $user_data = get_userdata( $user_id );
 
             $options[$user_id] = $user_data->user_login;
         }
     }
 
     return $options;
+
+}
+
+/**
+ * Display callback for select2 fields assigned to users
+ *
+ * @since 1.3.0
+ *
+ * @param array         $field_args
+ * @param CMB2_Field    $field
+ *
+ * @return array
+ */
+function automatorwp_display_cb_users( $field_args, $field ) {
+
+    $value = $field->escaped_value();
+    $options = array();
+
+    if( ! empty( $value ) ) {
+
+        if( ! is_array( $value ) ) {
+            $value = array( $value );
+        }
+
+        foreach( $value as $user_id ) {
+            $user_data = get_userdata( $user_id );
+
+            $options[$user_id] = $user_data->user_login;
+        }
+
+        $value = implode( ', ', $options );
+    }
+
+    return $value;
 
 }
 

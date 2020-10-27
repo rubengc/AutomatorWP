@@ -38,6 +38,7 @@
 
 .cmb2-switch input:checked:before {
     border-color: transparent;
+    background-color: transparent;
 }
 
 .cmb2-switch input:before {

@@ -148,9 +148,11 @@ add_filter( 'ct_list_automatorwp_automations_views_field_labels', 'automatorwp_a
 function automatorwp_manage_automations_columns( $columns = array() ) {
 
     $columns['title']       = __( 'Title', 'automatorwp' );
+    $columns['type']        = __( 'Type', 'automatorwp' );
     $columns['triggers']    = __( 'Triggers', 'automatorwp' );
     $columns['actions']     = __( 'Actions', 'automatorwp' );
     $columns['user_id']     = __( 'Author', 'automatorwp' );
+    $columns['completions'] = __( 'Completions', 'automatorwp' );
     $columns['status']      = __( 'Status', 'automatorwp' );
     $columns['date']        = __( 'Date', 'automatorwp' );
 
@@ -170,6 +172,7 @@ add_filter( 'manage_automatorwp_automations_columns', 'automatorwp_manage_automa
 function automatorwp_manage_automations_sortable_columns( $sortable_columns ) {
 
     $sortable_columns['title']      = array( 'title', false );
+    $sortable_columns['type']       = array( 'type', false );
     $sortable_columns['user_id']    = array( 'user_id', false );
     $sortable_columns['status']     = array( 'status', false );
     $sortable_columns['date']       = array( 'date', true );
@@ -196,6 +199,16 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
         case 'title':
             $title = ! empty( $automation->title ) ? $automation->title : __( '(No title)', 'automatorwp' ); ?>
                 <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_automations', $automation->id ); ?>"><?php echo $title; ?></a></strong>
+            <?php
+
+            break;
+        case 'type':
+            $types = automatorwp_get_automation_types();
+            $type = isset( $types[$automation->type] ) ? $types[$automation->type]['label'] : $automation->type;
+            ?>
+
+            <span class="automatorwp-automation-type automatorwp-automation-type-<?php echo esc_attr( $automation->type ); ?>"><?php echo $type; ?></span>
+
             <?php
 
             break;
@@ -238,6 +251,10 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
                 if( $type_args ) {
                     $integration = automatorwp_get_integration( $type_args['integration'] );
 
+                    if( $action->type === 'automatorwp_anonymous_user' ) {
+                        $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
+                    }
+
                     if( $integration ) : ?>
 
                         <div class="automatorwp-integration-icon">
@@ -275,6 +292,23 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
 
             }
             break;
+        case 'completions':
+            $completions = ct_get_object_meta( $automation->id, 'completions', true );
+
+            if( empty( $completions ) ) {
+                $completions = automatorwp_get_object_completion_times( $automation->id, 'automation' );
+                ct_update_object_meta( $automation->id, 'completions', $completions );
+            }
+
+            $completions = absint( $completions );
+            $times = absint( $automation->times );
+
+            if( $times === 0 ) : ?>
+                <span class="automatorwp-automation-completions"><?php echo $completions; ?></span>
+            <?php else : ?>
+                <span class="automatorwp-automation-completions <?php echo ( $completions >= $times ? 'automatorwp-automation-completions-completed' : '' ) ?>"><?php echo $completions . '/' . $times; ?></span>
+            <?php endif;
+            break;
         case 'status':
             $statuses = automatorwp_get_automation_statuses();
             $status = isset( $statuses[$automation->status] ) ? $statuses[$automation->status] : $automation->status;
@@ -307,6 +341,14 @@ add_action( 'manage_automatorwp_automations_custom_column', 'automatorwp_manage_
  */
 function automatorwp_automations_default_data( $default_data = array() ) {
 
+    $types = automatorwp_get_automation_types();
+    $type = ( isset( $_GET['type'] ) ? sanitize_text_field( $_GET['type'] ) : 'user' );
+
+    if( ! isset( $types[$type] ) ) {
+        $type = 'user';
+    }
+
+    $default_data['type']           = $type;
     $default_data['user_id']        = get_current_user_id();
     $default_data['sequential']     = 0;
     $default_data['times_per_user'] = 1;
@@ -382,42 +424,19 @@ function automatorwp_automations_meta_boxes( ) {
         __( 'Save Changes', 'automatorwp' ),
         'automatorwp_automations',
         array(
-            'user_id' => array(
-                'name' 	=> __( 'Author', 'automatorwp' ),
+            'type' => array(
+                'name' 	=> __( 'Type', 'automatorwp' ),
                 'type' 	=> 'select',
-                'classes' 	=> 'automatorwp-user-selector',
-                'options_cb' => 'automatorwp_options_cb_users'
-            ),
-            'status' => array(
-                'name' 	=> __( 'Status', 'automatorwp' ),
-                'type' 	=> 'select',
-                'options' => automatorwp_get_automation_statuses()
-            ),
-            'date' => array(
-                'name' 	=> __( 'Date', 'automatorwp' ),
-                'desc' 	=> __( 'Automation will take effect based on this date. You can schedule <strong>future</strong> automations by setting this field with a future date.', 'automatorwp' )
-                    . '<br>' . __( '<strong>Note:</strong> For future automations, status need to be <strong>active</strong> because setting a future date won\'t update the status automatically.', 'automatorwp' ),
-                'type' 	=> 'text_date_timestamp',
-                'attributes' => array(
-                    'autocomplete' => 'off'
+                'options' => automatorwp_get_automation_types_labels(),
+                'js_controls' => array(
+                    'icon' => 'dashicons-star-filled',
+                    'edit_button' => false,
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
                 ),
-                'classes' => 'automatorwp-has-tooltip',
-                'after_field' => 'automatorwp_tooltip_cb',
-                'after_row' => 'automatorwp_automations_publishing_actions'
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
             ),
-        ),
-        array(
-            'priority' => 'default',
-            'context' => 'side',
-        )
-    );
-
-    // Completion Times
-    automatorwp_add_meta_box(
-        'automatorwp-automations-completion-times',
-        __( 'Completion Times', 'automatorwp' ),
-        'automatorwp_automations',
-        array(
             'times_per_user' => array(
                 'name' 	=> __( 'Times per user', 'automatorwp' ),
                 'desc' 	=> __( 'Maximum number of times a user can complete this automation. Set it to 0 for unlimited.', 'automatorwp' ),
@@ -428,6 +447,14 @@ function automatorwp_automations_meta_boxes( ) {
                 ),
                 'classes' => 'automatorwp-has-tooltip',
                 'after_field' => 'automatorwp_tooltip_cb',
+                'js_controls' => array(
+                    'icon' => 'dashicons-filter',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
             ),
             'times' => array(
                 'name' 	=> __( 'Total times', 'automatorwp' ),
@@ -439,6 +466,62 @@ function automatorwp_automations_meta_boxes( ) {
                 ),
                 'classes' => 'automatorwp-has-tooltip',
                 'after_field' => 'automatorwp_tooltip_cb',
+                'js_controls' => array(
+                    'icon' => 'dashicons-admin-site',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
+            ),
+            'user_id' => array(
+                'name' 	=> __( 'Author', 'automatorwp' ),
+                'type' 	=> 'select',
+                'classes' 	=> 'automatorwp-user-selector',
+                'options_cb' => 'automatorwp_options_cb_users',
+                'display_cb' => 'automatorwp_display_cb_users',
+                'js_controls' => array(
+                    'icon' => 'dashicons-admin-users',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
+            ),
+            'status' => array(
+                'name' 	=> __( 'Status', 'automatorwp' ),
+                'type' 	=> 'select',
+                'options' => automatorwp_get_automation_statuses(),
+                'js_controls' => array(
+                    'icon' => 'dashicons-post-status',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
+            ),
+            'date' => array(
+                'name' 	=> __( 'Created on', 'automatorwp' ),
+                'desc' 	=> __( 'Automation will take effect based on this date. You can schedule <strong>future</strong> automations by setting this field with a future date.', 'automatorwp' )
+                    . '<br>' . __( '<strong>Note:</strong> For future automations, status need to be <strong>active</strong> because setting a future date won\'t update the status automatically.', 'automatorwp' ),
+                'type' 	=> 'text_date_timestamp',
+                'attributes' => array(
+                    'autocomplete' => 'off'
+                ),
+                'classes' => 'automatorwp-has-tooltip',
+                'after_field' => 'automatorwp_tooltip_cb',
+                'after_row' => 'automatorwp_automations_publishing_actions',
+                'js_controls' => array(
+                    'icon' => 'dashicons-calendar',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                //'after_row' => 'js_controls_after', // Handled on automatorwp_automations_publishing_actions()
             ),
         ),
         array(
@@ -455,7 +538,7 @@ add_action( 'cmb2_admin_init', 'automatorwp_automations_meta_boxes' );
  *
  * @since 1.0.0
  */
-function automatorwp_automations_publishing_actions() {
+function automatorwp_automations_publishing_actions( $field_args, $field ) {
 
     global $ct_table;
 
@@ -466,6 +549,8 @@ function automatorwp_automations_publishing_actions() {
     if( $ct_table->name !== 'automatorwp_automations' ) {
         return;
     }
+
+    js_controls_after( $field_args, $field );
 
     $primary_key = $ct_table->db->primary_key;
     $object_id = isset( $_GET[$primary_key] ) ? absint( $_GET[$primary_key] ) : 0;

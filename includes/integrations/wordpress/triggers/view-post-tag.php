@@ -82,6 +82,11 @@ class AutomatorWP_WordPress_View_Post_Tag extends AutomatorWP_Integration_Trigge
 
         $user_id = get_current_user_id();
 
+        // Bail if user is not logged in
+        if( $user_id === 0 ) {
+            return;
+        }
+
         automatorwp_trigger_event( array(
             'trigger'   => $this->trigger,
             'user_id'   => $user_id,

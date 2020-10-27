@@ -268,11 +268,11 @@ function automatorwp_get_user_last_completion_time( $object_id, $user_id, $type 
  * @param int       $user_id    The user ID
  * @param string    $type       The object type
  *
- * @return stdClass
+ * @return stdClass|false
  */
 function automatorwp_get_user_last_completion( $object_id, $user_id, $type ) {
 
-    global $wpdb;
+    global $wpdb, $automatorwp_last_anonymous_trigger_log_id;
 
     $object_id = absint( $object_id );
 
@@ -281,17 +281,26 @@ function automatorwp_get_user_last_completion( $object_id, $user_id, $type ) {
         return false;
     }
 
-    $user_id = absint( $user_id );
-
-    // Check the user ID
-    if( $user_id === 0 ) {
-        return false;
-    }
-
     $types = automatorwp_get_log_types();
 
     // Check the type
     if( ! isset( $types[$type] ) ) {
+        return false;
+    }
+
+    $user_id = absint( $user_id );
+
+    // For backward compatibility, check if is trying to get a last anonymous trigger log ID
+    if( $type === 'trigger' && $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
+
+        // Get the last anonymous trigger log if is parsing tags for an anonymous user
+        $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
+
+        return ( $log ? $log : false );
+    }
+
+    // Check the user ID
+    if( $user_id === 0 ) {
         return false;
     }
 

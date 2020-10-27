@@ -21,6 +21,7 @@ function automatorwp_register_trigger( $trigger, $args ) {
 
     $args = wp_parse_args( $args, array(
         'integration'       => '',
+        'anonymous'         => false,
         'label'             => '',
         'select_option'     => '',
         'edit_label'        => '',
@@ -54,6 +55,10 @@ function automatorwp_register_trigger( $trigger, $args ) {
             return;
         }
 
+    }
+
+    if( isset( AutomatorWP()->triggers[$trigger] ) ) {
+        error_log( sprintf( __( 'Possible trigger duplication with the key "%s"', 'automatorwp' ), $trigger ) );
     }
 
     AutomatorWP()->triggers[$trigger] = $args;
@@ -93,19 +98,47 @@ function automatorwp_get_trigger( $trigger ) {
  *
  * @since 1.0.0
  *
- * @param string $integration
+ * @param string    $integration    The integration key
+ * @param array     $filters        Filters to filter triggers by args
  *
  * @return array
  */
-function automatorwp_get_integration_triggers( $integration ) {
+function automatorwp_get_integration_triggers( $integration, $filters = array() ) {
 
     $triggers = array();
 
     foreach( AutomatorWP()->triggers as $trigger => $args ) {
 
-        if( $args['integration'] === $integration ) {
-            $triggers[$trigger] = $args;
+        if( $args['integration'] !== $integration ) {
+            continue;
         }
+
+        // If filters defined, apply them
+        if( is_array( $filters ) && ! empty( $filters )  ) {
+
+            $pass_filters = true;
+
+            foreach( $filters as $filter_key => $filter_value ) {
+
+                // Check if argument exists
+                if( ! isset( $args[$filter_key] ) ) {
+                    $pass_filters = false;
+                }
+
+                // Check if argument value matches
+                if( $args[$filter_key] !== $filter_value ) {
+                    $pass_filters = false;
+                }
+
+            }
+
+            // Skip this item if filters not passed
+            if( ! $pass_filters ) {
+                continue;
+            }
+        }
+
+        $triggers[$trigger] = $args;
 
     }
 
@@ -262,6 +295,24 @@ function automatorwp_get_trigger_stored_options( $trigger_id, $single_level = tr
 }
 
 /**
+ * Check if trigger is in use
+ *
+ * @since 1.3.0
+ *
+ * @param string $trigger
+ *
+ * @return bool
+ */
+function automatorwp_is_trigger_in_use( $trigger ) {
+
+    $triggers_in_user = automatorwp_get_triggers_in_use();
+
+    // Check if this trigger is not in use
+    return (bool) in_array( $trigger, $triggers_in_user );
+
+}
+
+/**
  * Get all triggers in use
  *
  * @since 1.0.0
@@ -276,6 +327,7 @@ function automatorwp_get_triggers_in_use() {
 
     // Check if table exists, just to avoid issues on first install
     if( ! automatorwp_database_table_exists( $ct_table->db->table_name ) ) {
+        ct_reset_setup_table();
         return array();
     }
 
@@ -283,6 +335,7 @@ function automatorwp_get_triggers_in_use() {
 
     // If result already cached, return it
     if( is_array( $cache ) ) {
+        ct_reset_setup_table();
         return $cache;
     }
 

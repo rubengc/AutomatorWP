@@ -20,6 +20,7 @@ function automatorwp_get_log_types() {
 
     return apply_filters( 'automatorwp_log_types', array(
         'automation' => __( 'Automation', 'automatorwp' ),
+        'anonymous' => __( 'Anonymous', 'automatorwp' ),
         'trigger' => __( 'Trigger', 'automatorwp' ),
         'action' => __( 'Action', 'automatorwp' ),
     ) );
@@ -156,7 +157,11 @@ function automatorwp_get_log_integration_icon( $log ) {
         if( $type_args ) {
             $integration = automatorwp_get_integration( $type_args['integration'] );
 
-            if( $integration ) : ?>
+            if( $integration ) :
+
+                if( $log->type === 'action' && $object->type === 'automatorwp_anonymous_user' ) {
+                    $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
+                }?>
 
                 <div class="automatorwp-integration-icon">
                     <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
@@ -174,6 +179,10 @@ function automatorwp_get_log_integration_icon( $log ) {
     } else {
 
         $icon = AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg';
+
+        if( $log->type === 'anonymous' ) {
+            $icon = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
+        }
 
         /**
          * Available filter to override log default icon

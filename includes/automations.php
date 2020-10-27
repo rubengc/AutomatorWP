@@ -26,6 +26,50 @@ function automatorwp_get_automation_statuses() {
 }
 
 /**
+ * Get automation registered types
+ *
+ * @since  1.3.0
+ *
+ * @return array
+ */
+function automatorwp_get_automation_types() {
+
+    return apply_filters( 'automatorwp_automation_types', array(
+        'user' => array(
+            'image' => AUTOMATORWP_URL . 'assets/img/automatorwp-logo.svg',
+            'label' => __( 'Logged-in', 'automatorwp' ),
+            'desc'  => __( 'Automation for logged-in users. Designed to run actions on the user who has completed the triggers.', 'automatorwp' ),
+        ),
+        'anonymous' => array(
+            'image' => AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous-logo.svg',
+            'label' => __( 'Anonymous', 'automatorwp' ),
+            'desc'  => __( 'Automation for anonymous users. Ideal for creating new users or for modifying existing users.', 'automatorwp' ),
+        ),
+    ) );
+
+}
+
+/**
+ * Get automation registered types labels
+ *
+ * @since  1.3.0
+ *
+ * @return array
+ */
+function automatorwp_get_automation_types_labels() {
+
+    $types = automatorwp_get_automation_types();
+    $labels = array();
+
+    foreach( $types as $type => $args ) {
+        $labels[$type] = $args['label'];
+    }
+
+    return $labels;
+
+}
+
+/**
  * Get the automation object data
  *
  * @param int       $automation_id  The automation ID

@@ -449,7 +449,8 @@ function automatorwp_select2_users_process_results( response, params ) {
         // Extend select2 keys (id and text) with given keys (ID, post_title and optionally post_type)
         formatted_results.push( jQuery.extend({
             id: item.ID,
-            text: item.user_login + ' (#' + item.ID + ')',
+            text: item.user_login,
+            //text: item.user_login + ' (#' + item.ID + ')',
         }, item ) );
 
     } );

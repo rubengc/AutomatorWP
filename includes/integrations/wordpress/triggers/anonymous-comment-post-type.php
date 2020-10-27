@@ -1,18 +1,18 @@
 <?php
 /**
- * View Post Type
+ * Anonymous Comment Post Type
  *
- * @package     AutomatorWP\Integrations\WordPress\Triggers\View_Post_Type
+ * @package     AutomatorWP\Integrations\WordPress\Triggers\Anonymous_Comment_Post_Type
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_WordPress_View_Post_Type extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_WordPress_Anonymous_Comment_Post_Type extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'wordpress';
-    public $trigger = 'wordpress_view_post_type';
+    public $trigger = 'wordpress_anonymous_comment_post_type';
 
     /**
      * Register the trigger
@@ -23,16 +23,17 @@ class AutomatorWP_WordPress_View_Post_Type extends AutomatorWP_Integration_Trigg
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'User views a post of a type', 'automatorwp' ),
-            'select_option'     => __( 'User views <strong>a post of a type</strong>', 'automatorwp' ),
+            'anonymous'         => true,
+            'label'             => __( 'Guest comments on a post of a type', 'automatorwp' ),
+            'select_option'     => __( 'Guest comments on <strong>a post of a type</strong>', 'automatorwp' ),
             /* translators: %1$s: Post type. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User views %1$s %2$s time(s)', 'automatorwp' ), '{post_type}', '{times}' ),
+            'edit_label'        => sprintf( __( 'Guest comments on %1$s %2$s time(s)', 'automatorwp' ), '{post_type}', '{times}' ),
             /* translators: %1$s: Post type. */
-            'log_label'         => sprintf( __( 'User views %1$s', 'automatorwp' ), '{post_type}' ),
-            'action'            => 'template_redirect',
+            'log_label'         => sprintf( __( 'Guest comments on %1$s', 'automatorwp' ), '{post_type}' ),
+            'action'            => 'comment_post',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 1,
+            'accepted_args'     => 3,
             'options'           => array(
                 'post_type' => array(
                     'from' => 'post_type',
@@ -47,9 +48,10 @@ class AutomatorWP_WordPress_View_Post_Type extends AutomatorWP_Integration_Trigg
                         )
                     )
                 ),
-                'times' => automatorwp_utilities_times_option()
+                'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
+                automatorwp_utilities_comment_tags(),
                 automatorwp_utilities_post_tags(),
                 automatorwp_utilities_times_tag()
             )
@@ -61,51 +63,54 @@ class AutomatorWP_WordPress_View_Post_Type extends AutomatorWP_Integration_Trigg
      * Trigger listener
      *
      * @since 1.0.0
+     *
+     * @param int        $comment_ID        The comment ID.
+     * @param int|string $comment_approved  1 if the comment is approved, 0 if not, 'spam' if spam.
+     * @param array      $comment           Comment data.
      */
-    public function listener() {
+    public function listener( $comment_ID, $comment_approved, $comment ) {
 
-        global $post;
-
-        // Bail if in admin area
-        if( is_admin() ) {
+        // Bail if comments is not approved
+        if( $comment_approved !== 1 ) {
             return;
         }
+
+        $post = get_post( $comment[ 'comment_post_ID' ] );
 
         // Bail if not post instanced
         if( ! $post instanceof WP_Post ) {
             return;
         }
 
-        $user_id = get_current_user_id();
+        $user_id = (int) $comment['user_id'];
 
-        // Bail if user is not logged in
-        if( $user_id === 0 ) {
+        // Bail if comment assigned to a user
+        if( $user_id !== 0 ) {
             return;
         }
 
         automatorwp_trigger_event( array(
-            'trigger' => $this->trigger,
-            'user_id' => $user_id,
-            'post_id' => $post->ID,
+            'trigger'       => $this->trigger,
+            'comment_id'    => $comment_ID,
+            'post_id'       => $post->ID,
         ) );
 
     }
 
     /**
-     * User deserves check
+     * Anonymous deserves check
      *
      * @since 1.0.0
      *
-     * @param bool      $deserves_trigger   True if user deserves trigger, false otherwise
+     * @param bool      $deserves_trigger   True if anonymous deserves trigger, false otherwise
      * @param stdClass  $trigger            The trigger object
-     * @param int       $user_id            The user ID
      * @param array     $event              Event information
      * @param array     $trigger_options    The trigger's stored options
      * @param stdClass  $automation         The trigger's automation object
      *
-     * @return bool                          True if user deserves trigger, false otherwise
+     * @return bool                         True if anonymous deserves trigger, false otherwise
      */
-    public function user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
+    public function anonymous_deserves_trigger( $deserves_trigger, $trigger, $event, $trigger_options, $automation ) {
 
         // Don't deserve if post is not received
         if( ! isset( $event['post_id'] ) ) {
@@ -132,4 +137,4 @@ class AutomatorWP_WordPress_View_Post_Type extends AutomatorWP_Integration_Trigg
 
 }
 
-new AutomatorWP_WordPress_View_Post_Type();
+new AutomatorWP_WordPress_Anonymous_Comment_Post_Type();

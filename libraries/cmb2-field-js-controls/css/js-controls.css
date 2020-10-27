@@ -1,0 +1,14 @@
+.cmb-field-js-controls-before,
+.cmb-field-js-controls-after { margin: 1em 0; }
+
+.cmb-field-js-controls-before .cmb-field-js-controls-icon { color: #82878c; }
+
+.cmb-field-js-controls-before .cmb-field-js-controls-value { font-weight: 600; display: inline-block; }
+.cmb-field-js-controls-before .cmb-field-js-controls-value > div { display: inline-block; }
+
+.cmb2-postbox .cmb2-wrap > .cmb-field-list > .cmb-field-js-controls-before + .cmb-row,
+#side-sortables .cmb2-wrap > .cmb-field-list > .cmb-field-js-controls-before + .cmb-row,
+.cmb-field-js-controls-before + .cmb-row { display: none; padding: 0; border: none; }
+#side-sortables .cmb-field-js-controls-before + .cmb-row .cmb-th { display: none; }
+
+.cmb-field-js-controls-cancel { padding: 0 5px; line-height: 2; }

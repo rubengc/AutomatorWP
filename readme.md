@@ -58,6 +58,9 @@ AutomatorWP is extremely powerful and infinitely extensible. Check out some of t
 **Unlimited triggers and actions:**
 Configure as many triggers and actions per automation as you want.
 
+**Logged-in and anonymous automations:**
+Create automations for logged-in users or for not logged-in visitors.
+
 **Required number of times:**
 Set the number of times required to complete a trigger like comment on a post 3 times.
 
@@ -177,6 +180,13 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User gets created through any/specific automation.
 * Post gets created through any/specific automation.
 
+**Anonymous Triggers**
+
+* Guest views a post of any/specific type.
+* Guest views a post of any/specific taxonomy.
+* Guest comments on a post of any/specific type.
+* Guest comments on a post of any/specific taxonomy.
+
 **Actions**
 
 * Send email to user.
@@ -279,6 +289,25 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.3.0 ###
+
+* **New Features**
+* Added anonymous automations: automations that can be executed without a user assigned.
+* New anonymous trigger: Guest views a post of any/specific type.
+* New anonymous trigger: Guest views a post of any/specific taxonomy.
+* New anonymous trigger: Guest comments on a post of any/specific type.
+* New anonymous trigger: Guest comments on a post of any/specific taxonomy.
+* On create a new automation, a new dialog will appear to setup the automation type (logged-in or anonymous).
+* Added the "Completions" column on automations list screen.
+* **Improvements**
+* Full rework of the "Save Changes" box.
+* Large rework of several areas to make them more extensible for future new automation types.
+* Several style improvements and changes on the automations UI.
+
+### 1.2.9 ###
+
+* Changes merged on 1.3.0.
 
 ### 1.2.8 ###
 

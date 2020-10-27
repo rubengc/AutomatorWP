@@ -10,6 +10,7 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 require_once AUTOMATORWP_DIR . 'includes/admin/upgrades/1.1.6.php';
+require_once AUTOMATORWP_DIR . 'includes/admin/upgrades/1.3.0.php';
 
 /**
  * AutomatorWP upgrades

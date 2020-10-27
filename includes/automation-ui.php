@@ -10,6 +10,102 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Render automation type dialog
+ *
+ * @since 1.3.0
+ */
+function automatorwp_render_automation_type_dialog() {
+
+    if( ! isset( $_GET['page'] ) ) {
+        return;
+    }
+
+    $allowed_pages = array(
+        'automatorwp_automations',
+        'edit_automatorwp_automations',
+    );
+
+    // Only render on allowed pages
+    if( ! in_array( $_GET['page'], $allowed_pages ) ) {
+        return;
+    }
+
+    $types = automatorwp_get_automation_types(); ?>
+
+    <div class="automatorwp-automation-type-dialog-wrapper" style="display: none;">
+
+        <div class="automatorwp-automation-type-dialog">
+            <h2><?php _e( 'Automation type', 'automatorwp' ); ?></h2>
+            <div class="automatorwp-automation-types">
+                <?php foreach( $types as $type => $args ) : ?>
+                    <div class="automatorwp-automation-type" data-type="<?php echo $type; ?>">
+                        <img src="<?php echo $args['image']; ?>" alt="<?php echo $args['label']; ?>">
+                        <strong><?php echo $args['label']; ?></strong>
+                        <span><?php echo $args['desc']; ?></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="automatorwp-notice-warning">
+                <?php echo __( '<strong>Note:</strong> Automation type cannot be changed later. ', 'automatorwp' ); ?>
+            </div>
+            <div class="automatorwp-automation-type-dialog-bottom">
+                <div class="automatorwp-automation-type-dialog-buttons">
+                    <button type="button" class="button button-primary automatorwp-automation-type-dialog-confirm"><?php _e( 'Confirm', 'automatorwp' ); ?></button>
+                    <button type="button" class="button automatorwp-button-danger automatorwp-automation-type-dialog-cancel"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <?php
+
+}
+add_action( 'admin_footer', 'automatorwp_render_automation_type_dialog' );
+
+/**
+ * Render automation type dialog
+ *
+ * @since 1.3.0
+ *
+ * @param string $classes
+ *
+ * @return string
+ */
+function automatorwp_automation_ui_admin_body_class( $classes ) {
+
+    global $ct_table;
+
+    if( ! isset( $_GET['page'] ) ) {
+        return $classes;
+    }
+
+    // Only add class on allowed pages
+    if( $_GET['page'] !== 'edit_automatorwp_automations' ) {
+        return $classes;
+    }
+
+    if( $ct_table->name !== 'automatorwp_automations' ) {
+        return $classes;
+    }
+
+    $primary_key = $ct_table->db->primary_key;
+
+    if( ! isset( $_GET[$primary_key] ) ) {
+        return $classes;
+    }
+
+    $automation_id = (int) $_GET[$primary_key];
+    $automation = $ct_table->db->get( $automation_id );
+
+    $classes .= ' edit-' . $automation->type . '-automation';
+
+    return $classes;
+
+}
+add_filter( 'admin_body_class', 'automatorwp_automation_ui_admin_body_class' );
+
+/**
  * Automation UI meta boxes
  *
  * @since  1.0.0
@@ -53,10 +149,12 @@ function automatorwp_automation_ui_triggers_meta_box( $automation, $type ) {
             <?php automatorwp_automation_item_edit_html( $trigger, 'trigger', $automation ); ?>
 
         <?php endforeach; ?>
+
     </div>
 
-    <?php automatorwp_automation_ui_add_item_form( 'trigger' ); ?>
+    <?php automatorwp_automation_ui_add_item_form( $automation, 'trigger' ); ?>
 
+    <div class="automatorwp-automation-ui-anonymous-notice"><span class="dashicons dashicons-info"></span> <?php _e( 'Anonymous automations only support one trigger per automation.', 'automatorwp' ); ?></div>
     <button type="button" class="button automatorwp-button-success automatorwp-add-trigger"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Trigger', 'automatorwp' ); ?></button>
     <?php
 }
@@ -79,14 +177,17 @@ function automatorwp_automation_ui_actions_meta_box( $automation, $type ) {
 
     <div class="automatorwp-automation-items automatorwp-actions">
 
+        <?php $actions = automatorwp_check_anonymous_user_action( $automation, $actions ); ?>
+
         <?php foreach( $actions as $action ) : ?>
 
             <?php automatorwp_automation_item_edit_html( $action, 'action', $automation ); ?>
 
         <?php endforeach; ?>
+
     </div>
 
-    <?php automatorwp_automation_ui_add_item_form( 'action' ); ?>
+    <?php automatorwp_automation_ui_add_item_form( $automation, 'action' ); ?>
 
     <button type="button" class="button automatorwp-button-success automatorwp-add-action"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Action', 'automatorwp' ); ?></button>
     <?php
@@ -97,9 +198,16 @@ function automatorwp_automation_ui_actions_meta_box( $automation, $type ) {
  *
  * @since 1.0.0
  *
- * @param string $item_type The item type (trigger|action)
+ * @param stdClass  $automation The automation object
+ * @param string    $item_type  The item type (trigger|action)
  */
-function automatorwp_automation_ui_add_item_form( $item_type ) {
+function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
+
+    $choices_filters = array();
+
+    if( $item_type === 'trigger' ) {
+        $choices_filters['anonymous'] = (bool) ( $automation->type === 'anonymous' );
+    }
 
     ?>
 
@@ -119,13 +227,12 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
 
                     <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
 
-                        <?php
-                        switch ( $item_type ) {
+                        <?php switch ( $item_type ) {
                             case 'trigger':
-                                $choices = automatorwp_get_integration_triggers( $integration );
+                                $choices = automatorwp_get_integration_triggers( $integration, $choices_filters );
                                 break;
                             case 'action':
-                                $choices = automatorwp_get_integration_actions( $integration );
+                                $choices = automatorwp_get_integration_actions( $integration, $choices_filters );
                                 break;
                             default:
                                 $choices = array();
@@ -153,11 +260,12 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                          *
                          * @since 1.0.0
                          *
-                         * @param string    $integration
-                         * @param array     $integration_args
-                         * @param string    $item_type
+                         * @param string    $integration        The integration name
+                         * @param array     $integration_args   Integration arguments
+                         * @param stdClass  $automation         The automation object
+                         * @param string    $item_type          The item type
                          */
-                        do_action( 'automatorwp_automation_ui_after_integration_choice', $integration, $args, $item_type ); ?>
+                        do_action( 'automatorwp_automation_ui_after_integration_choice', $integration, $args, $automation, $item_type ); ?>
 
                     <?php endforeach; ?>
 
@@ -179,7 +287,12 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                                 style="display: none;">
 
                                 <option value=""></option>
-                            <?php foreach( automatorwp_get_integration_triggers( $integration ) as $trigger => $args ) : ?>
+                            <?php foreach( automatorwp_get_integration_triggers( $integration, $choices_filters ) as $trigger => $args ) :
+
+                                // Skip no label items
+                                if( empty( $args['select_option'] ) && empty( $args['label'] ) ) {
+                                    continue;
+                                } ?>
                                 <option value="<?php echo esc_attr( $trigger ); ?>" data-text="<?php echo esc_attr( $args['select_option'] ); ?>"><?php echo $args['label']; ?></option>
                             <?php endforeach; ?>
 
@@ -189,10 +302,12 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                              *
                              * @since 1.2.4
                              *
-                             * @param string    $integration
-                             * @param array     $integration_args
+                             * @param string    $integration        The integration name
+                             * @param array     $integration_args   Integration arguments
+                             * @param stdClass  $automation         The automation object
+                             * @param string    $item_type          The item type
                              */
-                            do_action( 'automatorwp_automation_ui_after_integration_triggers_choices', $integration, $args ); ?>
+                            do_action( 'automatorwp_automation_ui_after_integration_triggers_choices', $integration, $args, $automation, $item_type ); ?>
 
                         </select>
 
@@ -210,7 +325,11 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                                 style="display: none;">
 
                             <option value=""></option>
-                            <?php foreach( automatorwp_get_integration_actions( $integration ) as $action => $args ) : ?>
+                            <?php foreach( automatorwp_get_integration_actions( $integration, $choices_filters ) as $action => $args ) :
+                                // Skip no label items
+                                if( empty( $args['select_option'] ) && empty( $args['label'] ) ) {
+                                    continue;
+                                } ?>
                                 <option value="<?php echo esc_attr( $action ); ?>" data-text="<?php echo esc_attr( $args['select_option'] ); ?>"><?php echo $args['label']; ?></option>
                             <?php endforeach; ?>
 
@@ -220,10 +339,12 @@ function automatorwp_automation_ui_add_item_form( $item_type ) {
                              *
                              * @since 1.2.4
                              *
-                             * @param string    $integration
-                             * @param array     $integration_args
+                             * @param string    $integration        The integration name
+                             * @param array     $integration_args   Integration arguments
+                             * @param stdClass  $automation         The automation object
+                             * @param string    $item_type          The item type
                              */
-                            do_action( 'automatorwp_automation_ui_after_integration_actions_choices', $integration, $args ); ?>
+                            do_action( 'automatorwp_automation_ui_after_integration_actions_choices', $integration, $args, $automation, $item_type ); ?>
 
                         </select>
 
@@ -304,8 +425,64 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
         return;
     }
 
+    if( $item_type === 'action' && $object->type === 'automatorwp_anonymous_user' ) {
+        $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
+    }
+
+    // Setup the item classes
+    $classes = array(
+        'automatorwp-automation-item',
+        'automatorwp-' . $item_type,
+        'automatorwp-' . $item_type . '-' . str_replace( '_', '-', $object->type ),
+    );
+
+    // Setup the item actions
+    $actions = array(
+        'delete' => array(
+            'label' => __( 'Delete', 'automatorwp'),
+            'icon' => 'trash'
+        )
+    );
+
+    if( $automation->type === 'anonymous' ) {
+        if( $item_type === 'trigger' ) {
+            $classes[] = 'automatorwp-no-grab';
+        } else if( $object->type === 'automatorwp_anonymous_user' ) {
+            $classes[] = 'automatorwp-no-grab';
+            unset( $actions['delete'] );
+        }
+    }
+
+    /**
+     * Filter to modify the CSS classes of the trigger/action edit HTML
+     *
+     * @since  1.3.0
+     *
+     * @param array     $classes    The trigger/action CSS classes
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     * @param stdClass  $automation The automation object
+     *
+     * @return array
+     */
+    $classes = apply_filters( 'automatorwp_automations_ui_item_edit_html_classes', $classes, $object, $item_type, $automation );
+
+    /**
+     * Filter to modify the actions of the trigger/action edit HTML
+     *
+     * @since  1.3.0
+     *
+     * @param array     $actions    The trigger/action actions
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     * @param stdClass  $automation The automation object
+     *
+     * @return array
+     */
+    $actions = apply_filters( 'automatorwp_automations_ui_item_edit_html_actions', $actions, $object, $item_type, $automation );
+
     ?>
-    <div id="automatorwp-item-<?php echo esc_attr( $object->id ); ?>" class="automatorwp-automation-item automatorwp-<?php echo esc_attr( $item_type ); ?>">
+    <div id="automatorwp-item-<?php echo esc_attr( $object->id ); ?>" class="<?php echo implode( ' ', $classes ); ?>">
 
         <div class="automatorwp-automation-item-details">
             <div class="automatorwp-integration-icon">
@@ -315,9 +492,14 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
 
         <div class="automatorwp-automation-item-content">
 
-            <div class="automatorwp-automation-item-actions">
-                <div class="automatorwp-automation-item-action automatorwp-automation-item-action-delete" title="<?php echo esc_attr( __( 'Delete', 'automatorwp') ); ?>"><span class="dashicons dashicons-trash"></span></div>
-            </div>
+            <?php if( ! empty( $actions ) ) : ?>
+                <div class="automatorwp-automation-item-actions">
+                    <?php foreach( $actions as $action => $action_args ) : ?>
+                    <div class="automatorwp-automation-item-action automatorwp-automation-item-action-<?php echo $action; ?>" title="<?php echo esc_attr( $action_args['label'] ); ?>"><span class="dashicons dashicons-<?php echo $action_args['icon']; ?>"></span></div>
+                    <?php endforeach; ?>
+
+                </div>
+            <?php endif; ?>
 
             <div class="automatorwp-integration-label"><?php echo $integration['label']; ?></div>
 
@@ -409,6 +591,62 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
 }
 
 /**
+ * Creates the anonymous user action if not exists
+ *
+ * @since  1.3.0
+ *
+ * @param stdClass  $automation The automation object
+ * @param array     $actions The automation actions
+ */
+function automatorwp_check_anonymous_user_action( $automation, $actions ) {
+
+    if( $automation->type === 'anonymous' ) {
+
+        $create_user_action = false;
+
+        // Check if the first action is the action required for anonymous automations
+        if( ! isset( $actions[0] ) ) {
+            $create_user_action = true;
+        }
+
+        if( isset( $actions[0] ) && $actions[0]->type !== 'automatorwp_anonymous_user' ) {
+            $create_user_action = true;
+        }
+
+        if( $create_user_action ) {
+            ct_setup_table( 'automatorwp_actions' );
+
+            $action_data = array(
+                'automation_id' => $automation->id,
+                'title'         => sprintf( __( 'Actions will be run on %1$s', 'automatorwp' ), '{user}' ),
+                'type'          => 'automatorwp_anonymous_user',
+                'status'        => 'active',
+                'position'      => '0',
+                'date'          => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+            );
+
+            // Insert the new action
+            $action_id = ct_insert_object( $action_data );
+
+            if( $action_id ) {
+                $action_data['id'] = $action_id;
+
+                $action_data = (object) $action_data;
+
+                // Prepend the new action at start of the actions list
+                array_unshift( $actions, $action_data );
+            }
+
+            ct_reset_setup_table();
+        }
+
+    }
+
+    return $actions;
+
+}
+
+/**
  * Renders the trigger/action missing integration edit HTML
  *
  * @since  1.1.2
@@ -418,8 +656,6 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
  * @param stdClass  $automation The automation object
  */
 function automatorwp_automation_missing_integration_item_edit_html( $object, $item_type, $automation ) {
-
-    $warning_message = '';
 
     if( $item_type === 'trigger' ) {
         $warning_message = __( 'Trigger disabled because plugin associated couldn\'t be found. Please, re-install the plugin associated or remove this trigger.', 'automatorwp' );
@@ -695,6 +931,8 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
             $value = $option_args['default'];
         }
 
+        ct_reset_setup_table();
+
     }
 
     /**
@@ -733,8 +971,6 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
 
         $value = '<span class="' . esc_attr__( $option_class ) . ' automatorwp-option" data-option="' . $option . '">' . $value . '</span>';
     }
-
-    ct_reset_setup_table();
 
     return $value;
 
@@ -848,7 +1084,7 @@ function automatorwp_automation_item_option_field_args( $object, $item_type, $op
 
         // Check if field type is compatible with tags selector
         if( in_array( $field['type'], array( 'text', 'textarea', 'wysiwyg' ) ) ) {
-            $field['after_field'] = automatorwp_get_tags_selector_html( $automation->id );
+            $field['after_field'] = automatorwp_get_tags_selector_html( $automation, $object, $item_type );
         }
 
     }
@@ -1076,11 +1312,12 @@ function automatorwp_integrations_api() {
  *
  * @since 1.2.4
  *
- * @param string    $integration_name
- * @param array     $args
- * @param string    $item_type
+ * @param string    $integration_name   The integration name
+ * @param array     $args               Integration arguments
+ * @param stdClass  $automation         The automation object
+ * @param string    $item_type          The item type
  */
-function automatorwp_automation_ui_integration_pro_choice( $integration_name, $args, $item_type ) {
+function automatorwp_automation_ui_integration_pro_choice( $integration_name, $args, $automation, $item_type ) {
 
     $integrations = automatorwp_integrations_api();
 
@@ -1132,6 +1369,11 @@ function automatorwp_automation_ui_integration_pro_choice( $integration_name, $a
 
     foreach( $items as $item ) {
 
+        // For triggers, only get anonymous choices
+        if( $item_type === 'trigger' && $automation->type === 'anonymous' && ! $item->anonymous ) {
+            continue;
+        }
+
         if( $item->free ) {
             $has_free = true;
         } else {
@@ -1156,17 +1398,19 @@ function automatorwp_automation_ui_integration_pro_choice( $integration_name, $a
     <?php endif;
 
 }
-add_action( 'automatorwp_automation_ui_after_integration_choice', 'automatorwp_automation_ui_integration_pro_choice', 10, 3 );
+add_action( 'automatorwp_automation_ui_after_integration_choice', 'automatorwp_automation_ui_integration_pro_choice', 10, 4 );
 
 /**
  * Inform about integration triggers pro choices
  *
  * @since 1.2.4
  *
- * @param string    $integration_name
- * @param array     $args
+ * @param string    $integration_name   The integration name
+ * @param array     $args               Integration arguments
+ * @param stdClass  $automation         The automation object
+ * @param string    $item_type          The item type
  */
-function automatorwp_automation_ui_integration_triggers_pro_choices( $integration_name, $args ) {
+function automatorwp_automation_ui_integration_triggers_pro_choices( $integration_name, $args, $automation, $item_type ) {
 
     $integrations = automatorwp_integrations_api();
 
@@ -1190,6 +1434,11 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
     $choices = automatorwp_get_integration_triggers( $integration_name );
 
     foreach( $integration->triggers as $i => $trigger ) {
+
+        // For triggers, only get anonymous choices
+        if( $automation->type === 'anonymous' && ! $trigger->anonymous ) {
+            continue;
+        }
 
         // Skip free triggers
         if( $trigger->free ) {
@@ -1223,17 +1472,19 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
     }
 
 }
-add_action( 'automatorwp_automation_ui_after_integration_triggers_choices', 'automatorwp_automation_ui_integration_triggers_pro_choices', 10, 2 );
+add_action( 'automatorwp_automation_ui_after_integration_triggers_choices', 'automatorwp_automation_ui_integration_triggers_pro_choices', 10, 4 );
 
 /**
  * Inform about integration actions pro choices
  *
  * @since 1.2.4
  *
- * @param string    $integration_name
- * @param array     $args
+ * @param string    $integration_name   The integration name
+ * @param array     $args               Integration arguments
+ * @param stdClass  $automation         The automation object
+ * @param string    $item_type          The item type
  */
-function automatorwp_automation_ui_integration_actions_pro_choices( $integration_name, $args ) {
+function automatorwp_automation_ui_integration_actions_pro_choices( $integration_name, $args, $automation, $item_type ) {
 
     $integrations = automatorwp_integrations_api();
 
@@ -1289,4 +1540,4 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
     }
 
 }
-add_action( 'automatorwp_automation_ui_after_integration_actions_choices', 'automatorwp_automation_ui_integration_actions_pro_choices', 10, 2 );
+add_action( 'automatorwp_automation_ui_after_integration_actions_choices', 'automatorwp_automation_ui_integration_actions_pro_choices', 10, 4 );

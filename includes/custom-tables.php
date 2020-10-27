@@ -31,7 +31,7 @@ function automatorwp_register_custom_tables() {
         'show_ui' => true,
         'show_in_rest' => true,
         'rest_base' => 'automatorwp-automations',
-        'version' => 1,
+        'version' => 2,
         'supports' => array( 'meta' ),
         'views' => array(
             'list' => array(
@@ -47,6 +47,9 @@ function automatorwp_register_custom_tables() {
                 'primary_key' => true,
             ),
             'title' => array(
+                'type' => 'text',
+            ),
+            'type' => array(
                 'type' => 'text',
             ),
             'user_id' => array(

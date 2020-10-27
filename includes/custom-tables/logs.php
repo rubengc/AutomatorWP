@@ -226,6 +226,7 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
 
             switch ( $log->type ) {
                 case 'automation':
+                case 'anonymous':
                     $automation_id = $log->object_id;
                     break;
                 case 'trigger':
@@ -449,6 +450,10 @@ function automatorwp_log_data_meta_box( $object = null ) {
             $field['attributes'] = array();
         }
 
+        if( $field['type'] !== 'title' ) {
+            $field['type'] = 'text';
+        }
+
         $field['attributes']['type'] = 'hidden';
 
         // Add the field to the form
@@ -586,6 +591,20 @@ function automatorwp_log_field_cb( $field_args, $field ) {
      * @return string
      */
     $value = apply_filters( "automatorwp_log_{$field_id}_field_value_display", $value, $field_args, $field, $log );
+
+    // Check options_cb parameter
+    if( isset( $field_args['options_cb'] ) && is_callable( $field_args['options_cb'] ) ) {
+        $field_args['options'] = call_user_func( $field['options_cb'], (object) $field );
+    }
+
+    // Check options parameter
+    if( isset( $field_args['options'] )
+        && is_array( $field_args['options'] )
+        && ! is_array( $value )
+        && isset( $field_args['options'][$value] ) ) {
+        // Set as value the option display instead
+        $value =  $field_args['options'][$value];
+    }
 
     // if empty value, set it as a space
     if( empty( $value ) ) {

@@ -218,13 +218,33 @@ function automatorwp_get_trigger_tags( $object ) {
  *
  * @since 1.0.0
  *
- * @param int $automation_id The automation ID
+ * @param stdClass  $automation The automation object
+ * @param stdClass  $object     The trigger/action object
+ * @param string    $item_type  The item type (trigger|action)
  *
  * @return string
  */
-function automatorwp_get_tags_selector_html( $automation_id ) {
+function automatorwp_get_tags_selector_html( $automation, $object, $item_type ) {
 
-    $tags = automatorwp_get_automation_tags( $automation_id );
+    $tags = automatorwp_get_automation_tags( $automation->id );
+
+    if( $automation->type === 'anonymous' && $object->type === 'automatorwp_anonymous_user' && isset( $tags['user'] ) ) {
+        unset( $tags['user'] );
+    }
+
+    /**
+     * Available filter to override tags displayed on the tag selector
+     *
+     * @since 1.3.0
+     *
+     * @param array     $tags       The tags
+     * @param stdClass  $automation The automation object
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     *
+     * @return array
+     */
+    $tags = apply_filters( 'automatorwp_tags_selector_html_tags', $tags, $automation, $object, $item_type );
 
     ob_start(); ?>
     <select class="automatorwp-automation-tag-selector">
@@ -471,8 +491,15 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
  */
 function automatorwp_get_trigger_tags_replacements( $trigger, $user_id, $content = '' ) {
 
-    // Get the last trigger log (where data for tags replacement is)
-    $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
+    global $automatorwp_last_anonymous_trigger_log_id;
+
+    if( $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
+        // Get the last anonymous trigger log if is parsing tags for an anonymous user
+        $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
+    } else {
+        // Get the last trigger log (where data for tags replacement is)
+        $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
+    }
 
     if( ! $log ) {
         return array();
@@ -540,6 +567,7 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
             break;
     }
 
+    // Post tags
     $post_tags = array_keys( automatorwp_utilities_post_tags() );
 
     // If is a post tag and log has a post assigned, pass its replacements
@@ -583,6 +611,56 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
             case 'menu_order':
                 $replacement = (  $post ? $post->menu_order : '' );
                 break;
+        }
+
+    }
+
+    // Comment tags
+    $comment_tags = array_keys( automatorwp_utilities_comment_tags() );
+
+    // If is a comment tag, pass its replacements
+    if( in_array( $tag_name, $comment_tags ) ) {
+
+        $comment_id = (int) ct_get_object_meta( $log->id, 'comment_id', true );
+
+        if( $comment_id !== 0 ) {
+
+            $comment = get_comment( $comment_id );
+            $post = get_post( $comment->comment_post_ID );
+
+            switch( $tag_name ) {
+                case 'comment_id':
+                    $replacement = ( $comment ? $comment->comment_ID : '' );
+                    break;
+                case 'comment_post_id':
+                    $replacement = ( $post ? $post->ID : '' );
+                    break;
+                case 'comment_post_title':
+                    $replacement = ( $post ? $post->post_title : '' );
+                    break;
+                case 'comment_user_id':
+                    $replacement = ( $comment ? $comment->user_id : '' );
+                    break;
+                case 'comment_author':
+                    $replacement = ( $comment ? $comment->comment_author : '' );
+                    break;
+                case 'comment_author_email':
+                    $replacement = ( $comment ? $comment->comment_author_email : '' );
+                    break;
+                case 'comment_author_url':
+                    $replacement = ( $comment ? $comment->comment_author_url : '' );
+                    break;
+                case 'comment_author_ip':
+                    $replacement = ( $comment ? $comment->comment_author_IP : '' );
+                    break;
+                case 'comment_content':
+                    $replacement = ( $comment ? $comment->comment_content : '' );
+                    break;
+                case 'comment_type':
+                    $replacement = ( $comment ? $comment->comment_type : '' );
+                    break;
+            }
+
         }
 
     }

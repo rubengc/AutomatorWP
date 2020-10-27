@@ -29,7 +29,12 @@
     $('body').on('click', '.automatorwp-save-and-activate input', function(e) {
         e.preventDefault();
 
-        $('select#status').val('active');
+        if( $('select#status').length ) {
+            $('select#status').val('active');
+        } else if( $('input#status1').length ) {
+            $('input#status1').prop('checked', true);
+            $('input#status2').prop('checked', false);
+        }
 
         $('#ct-save').trigger('click');
     });
@@ -127,6 +132,14 @@
             automatorwp_update_items_position( items_list );
         });
 
+        // If is an anonymous automation, add the add trigger form again
+        if( item_type === 'trigger' && $('body.edit-anonymous-automation').length ) {
+            // Show add trigger form
+            $('<div class="automatorwp-automation-item automatorwp-trigger" style="display: none;">'
+                + $('#automatorwp_triggers').find('.automatorwp-add-item-form').html()
+                + '</div>').appendTo('.automatorwp-triggers').slideDown('fast');
+        }
+
         $.ajax({
             url: ajaxurl,
             method: 'POST',
@@ -155,6 +168,249 @@
         });
 
 
+    });
+
+    // Update controls depending of automation type
+    if( $('body.edit-anonymous-automation').length ) {
+
+        if( $('#automatorwp_triggers .automatorwp-automation-item').length === 0 ) {
+            // Show add trigger form
+            $('<div class="automatorwp-automation-item automatorwp-trigger">'
+                + $('#automatorwp_triggers').find('.automatorwp-add-item-form').html()
+                + '</div>').appendTo('.automatorwp-triggers');
+        }
+
+        // Remove elements and inputs not allowed
+        $('.automatorwp-add-trigger').remove();
+        $('.automatorwp-sequential-field').remove();
+        $('#cmb-field-js-controls-times_per_user-before').remove();
+        $('.cmb2-id-times-per-user').remove();
+        $('#cmb-field-js-controls-times_per_user-after').remove();
+
+    } else {
+        // Remove anonymous info
+        $('.automatorwp-automation-ui-anonymous-notice').remove();
+    }
+
+    // -----------------------------------------------
+    // Automation type dialog
+    // -----------------------------------------------
+
+    // Show automation type dialog on new automation links
+    $('body').on('click', 'a[href$="admin.php?page=add_automatorwp_automations"]', function(e) {
+        e.preventDefault();
+
+        $('.automatorwp-automation-type-dialog').dialog({
+            dialogClass: 'automatorwp-dialog',
+            show: { effect: 'fadeIn', duration: 200 },
+            hide: { effect: 'fadeOut', duration: 200 },
+            resizable: false,
+            height: 'auto',
+            width: 600,
+            modal: true,
+            draggable: false,
+            closeOnEscape: false,
+        });
+
+    });
+
+    // Select automation type
+    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type', function(e) {
+        $('.automatorwp-automation-type-dialog .automatorwp-automation-type-selected').removeClass('automatorwp-automation-type-selected');
+        $(this).addClass('automatorwp-automation-type-selected');
+    });
+
+    // Automation type dialog confirm button
+    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-confirm', function(e) {
+
+        var type = 'user';
+        var selected = $('.automatorwp-automation-type-dialog .automatorwp-automation-type-selected');
+
+        if( selected.length ) {
+            type = selected.data('type');
+        }
+
+        var url = window.location.href.split('admin.php')[0];
+
+        // Redirect to the add new automation
+        window.location.href = url + 'admin.php?page=add_automatorwp_automations&type=' + type;
+
+    });
+
+    // Automation type dialog cancel button
+    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-cancel', function(e) {
+        $('.automatorwp-automation-type-dialog').dialog('close');
+    });
+
+    // -----------------------------------------------
+    // Anonymous user action
+    // -----------------------------------------------
+
+    // Anonymous user action choices
+    $('body').on('click', '.automatorwp-action-automatorwp-anonymous-user .automatorwp-anonymous-user-choice', function(e) {
+
+        var item = $(this).closest('.automatorwp-automation-item');
+        var option_form = item.find('.automatorwp-option-form-container[data-option="user"]');
+        var choice = $(this).data('choice');
+
+        // Update the select value
+        option_form.find('.cmb2-id-run-actions-on select').val( choice ).change();
+
+        // Hide the choices
+        $(this).closest('.automatorwp-anonymous-user-choices').slideUp('fast');
+
+        // Show this option form
+        option_form.addClass('automatorwp-option-form-active').slideDown('fast');
+
+    });
+
+    // Anonymous user action change button
+    $('body').on('click', '.automatorwp-action-automatorwp-anonymous-user .automatorwp-anonymous-user-change-button', function(e) {
+        var item = $(this).closest('.automatorwp-automation-item');
+
+        // Hide resume
+        $(this).closest('.automatorwp-anonymous-user-resume').slideUp('fast');
+
+        // Show the choices
+        item.find('.automatorwp-anonymous-user-choices').slideDown('fast');
+    });
+
+    // Anonymous user action resume buttons
+    $('body').on('click', '.automatorwp-action-automatorwp-anonymous-user .automatorwp-anonymous-user-resume strong', function(e) {
+        var item = $(this).closest('.automatorwp-automation-item');
+        var option_form = item.find('.automatorwp-option-form-container[data-option="user"]');
+
+        // Trigger change on select
+        option_form.find('.cmb2-id-run-actions-on select').change();
+
+        // Hide resume
+        $(this).closest('.automatorwp-anonymous-user-resume').slideUp('fast');
+
+        // Show this option form
+        option_form.addClass('automatorwp-option-form-active').slideDown('fast');
+    });
+
+    // Anonymous user action fields visibility
+    $('body').on('change', '.automatorwp-action-automatorwp-anonymous-user .cmb2-id-run-actions-on select', function(e) {
+        var choice = $(this).val();
+        var form = $(this).closest('.cmb2-metabox');
+        var target = undefined;
+        var checked = undefined;
+
+        if( choice === 'existing_user' ) {
+
+            checked = form.find('.cmb2-id-existing-user-not-exists input:checked');
+
+            // Check if, for existing user, wants to create a new user
+            if( checked.length && checked.val() === 'new_user' ) {
+
+                target = undefined;
+
+                // Show all fields
+                form.find('> .cmb-row').show();
+
+                // Hide new user search fields (and run actions on)
+                form.find('.cmb2-id-run-actions-on,' +
+                    '.cmb2-id-new-user-exists,' +
+                    ' .cmb2-id-new-user-search-field').hide();
+
+            } else {
+                // Target to all existing fields
+                target = form.find('.cmb2-id-search-field,' +
+                    ' .cmb2-id-search-field-value,' +
+                    ' .cmb2-id-existing-user-not-exists');
+            }
+        } else if( choice === 'new_user' ) {
+
+            checked = form.find('.cmb2-id-new-user-exists input:checked');
+
+            // Check if, for new user, wants to assign to a existing user
+            if( checked.length && checked.val() === 'existing_user' ) {
+
+                // Target to all new user fields
+                target = form.find('.cmb2-id-user-login,' +
+                    ' .cmb2-id-user-email,' +
+                    ' .cmb2-id-first-name,' +
+                    ' .cmb2-id-last-name,' +
+                    ' .cmb2-id-user-url,' +
+                    ' .cmb2-id-user-pass,' +
+                    ' .cmb2-id-role,' +
+                    ' .cmb2-id-send-user-notification,' +
+                    ' .cmb2-id-user-meta,' +
+                    ' .cmb2-id-new-user-exists,' +
+                    ' .cmb2-id-new-user-search-field');
+
+            } else {
+
+                // target new user fields excepts the search field
+                target = form.find('.cmb2-id-user-login,' +
+                    ' .cmb2-id-user-email,' +
+                    ' .cmb2-id-first-name,' +
+                    ' .cmb2-id-last-name,' +
+                    ' .cmb2-id-user-url,' +
+                    ' .cmb2-id-user-pass,' +
+                    ' .cmb2-id-role,' +
+                    ' .cmb2-id-send-user-notification,' +
+                    ' .cmb2-id-user-meta,' +
+                    ' .cmb2-id-new-user-exists');
+
+            }
+        }
+
+        if( target !== undefined ) {
+            // Hide all fields
+            form.find('> .cmb-row').hide();
+
+            // Only show target fields
+            target.show();
+        }
+
+    });
+
+    // Anonymous user action existing user not exists
+    $('body').on('change', '.automatorwp-action-automatorwp-anonymous-user .cmb2-id-existing-user-not-exists input', function(e) {
+        var $this = $(this);
+        var fields = $this.closest('.cmb2-metabox').find(
+            '.cmb2-id-user-login,' +
+            ' .cmb2-id-user-email,' +
+            ' .cmb2-id-first-name,' +
+            ' .cmb2-id-last-name,' +
+            ' .cmb2-id-user-url,' +
+            ' .cmb2-id-user-pass,' +
+            ' .cmb2-id-role,' +
+            ' .cmb2-id-send-user-notification,' +
+            ' .cmb2-id-user-meta');
+
+        if( $this.prop('checked') && $this.val() === 'new_user' ) {
+            fields.slideDown('fast');
+        } else {
+            fields.slideUp('fast');
+        }
+    });
+
+    // Anonymous user action new user exists
+    $('body').on('change', '.automatorwp-action-automatorwp-anonymous-user .cmb2-id-new-user-exists input', function(e) {
+        var $this = $(this);
+        var fields = $this.closest('.cmb2-metabox').find('.cmb2-id-new-user-search-field');
+
+        if( $this.prop('checked') && $this.val() === 'existing_user' ) {
+            fields.slideDown('fast');
+        } else {
+            fields.slideUp('fast');
+        }
+    });
+
+    // Anonymous user action cancel
+    $('body').on('click', '.automatorwp-action-automatorwp-anonymous-user .automatorwp-cancel-option-form', function(e) {
+
+        var item = $(this).closest('.automatorwp-automation-item');
+        var option_form = item.find('.automatorwp-option-form-container[data-option="user"]');
+
+        // Show the choices again
+        $('.automatorwp-anonymous-user-choices').slideDown('fast');
+
+        // Update the select value
+        option_form.find('.cmb2-id-run-actions-on select').val('').change();
     });
 
     // -----------------------------------------------
@@ -322,6 +578,24 @@
         e.preventDefault();
 
         var item = $(this).closest('.automatorwp-automation-item');
+        var type = ( item.hasClass('automatorwp-trigger') ? 'trigger' : 'action' );
+
+        if( type === 'trigger' && $('body.edit-anonymous-automation').length ) {
+            // Show the integration select
+            item.find('.automatorwp-select-integration').show();
+
+            // Update integration icon and label
+            item.find('.automatorwp-automation-item-details .automatorwp-integration-icon img').remove();
+            item.find('.automatorwp-automation-item-content .automatorwp-integration-label').remove();
+
+            // Hide the trigger select
+            item.find('.automatorwp-integration-choices-container').hide();
+
+            // Remove choices dropdown
+            $('.automatorwp-select2-dropdown-container').remove();
+
+            return;
+        }
 
         item.slideUp('fast', function() {
             item.remove();

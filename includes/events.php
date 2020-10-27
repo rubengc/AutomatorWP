@@ -31,21 +31,20 @@ function automatorwp_trigger_event( $event ) {
 
     $automatorwp_event = $event;
 
-    // Args has been checked on automatorwp_is_event_correct() function
-    $user_id = $event['user_id'];
-
-    // Get triggered triggers
-    $triggers = automatorwp_get_event_triggered_triggers( $event['trigger'] );
-
     // Initialize completed triggers count
     if( ! is_array( $automatorwp_completed_triggers ) ) {
         $automatorwp_completed_triggers = array();
     }
 
+    // Get triggered triggers
+    $triggers = automatorwp_get_event_triggered_triggers( $event['trigger'] );
+
     foreach( $triggers as $trigger ) {
-        if( automatorwp_maybe_user_completed_trigger( $trigger, $user_id, $event ) ) {
+
+        if( automatorwp_maybe_completed_trigger( $trigger, $event ) ) {
             $automatorwp_completed_triggers[] = $trigger;
         }
+
     }
 
     return ( count( $automatorwp_completed_triggers ) ? $automatorwp_completed_triggers : false );
@@ -63,17 +62,6 @@ function automatorwp_trigger_event( $event ) {
  */
 function automatorwp_is_event_correct( $event = array() ) {
 
-    // Check user
-    if( ! isset( $event['user_id'] ) ) {
-        return false;
-    }
-
-    $event['user_id'] = absint( $event['user_id'] );
-
-    if( $event['user_id'] === 0 ) {
-        return false;
-    }
-
     // Check trigger
     if( ! isset( $event['trigger'] ) ) {
         return false;
@@ -81,6 +69,24 @@ function automatorwp_is_event_correct( $event = array() ) {
 
     if( ! isset( AutomatorWP()->triggers[$event['trigger']] ) ) {
         return false;
+    }
+
+    $trigger = AutomatorWP()->triggers[$event['trigger']];
+
+    // Check the user ID if trigger is not anonymous
+    if( ! $trigger['anonymous'] ) {
+
+        // Check user
+        if( ! isset( $event['user_id'] ) ) {
+            return false;
+        }
+
+        $event['user_id'] = absint( $event['user_id'] );
+
+        if( $event['user_id'] === 0 ) {
+            return false;
+        }
+
     }
 
     /**
@@ -128,6 +134,444 @@ function automatorwp_get_event_triggered_triggers( $trigger_type ) {
     }
 
 }
+
+/**
+ * Check if trigger can be marked as completed
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass  $trigger        The trigger object
+ * @param array     $event          Event information
+ *
+ * @return bool
+ */
+function automatorwp_maybe_completed_trigger( $trigger, $event = array() ) {
+
+    // Check if trigger is correct
+    if( ! is_object( $trigger ) ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    $automation = automatorwp_get_trigger_automation( $trigger->id );
+
+    if( ! is_object( $automation ) ) {
+        return false;
+    }
+
+    $trigger_args = automatorwp_get_trigger( $trigger->type );
+
+    if( $automation->type === 'anonymous' ) {
+        // Anonymous automation
+
+        // Bail if user trigger is used on an anonymous automation
+        if( ! $trigger_args['anonymous'] ) {
+            return false;
+        }
+
+        return automatorwp_maybe_anonymous_completed_trigger( $trigger, $event );
+
+    } else {
+        // User automation
+
+        // Bail if anonymous trigger is used on a user automation
+        if( $trigger_args['anonymous'] ) {
+            return false;
+        }
+
+        // Args has been checked on automatorwp_is_event_correct() function
+        $user_id = $event['user_id'];
+
+        return automatorwp_maybe_user_completed_trigger( $trigger, $user_id, $event );
+
+    }
+
+}
+
+// -------------------------------------------
+// Guest event
+// -------------------------------------------
+
+/**
+ * Check if anonymous has completed a trigger
+ *
+ * @since 1.3.0
+ *
+ * @param stdClass  $trigger        The trigger object
+ * @param array     $event          Event information
+ *
+ * @return bool
+ */
+function automatorwp_maybe_anonymous_completed_trigger( $trigger, $event = array() ) {
+
+    // Check if trigger is correct
+    if( ! is_object( $trigger ) ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    $automation = automatorwp_get_trigger_automation( $trigger->id );
+
+    if( ! is_object( $automation ) ) {
+        return false;
+    }
+
+    // Get the trigger stored options
+    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
+
+    // Check if anonymous has access to the trigger
+    if( ! automatorwp_anonymous_has_access_to_trigger( $trigger, $event, $trigger_options, $automation ) ) {
+        return false;
+    }
+
+    // Check if anonymous deserves the trigger
+    if( ! automatorwp_anonymous_deserves_trigger( $trigger, $event, $trigger_options, $automation ) ) {
+        return false;
+    }
+
+    // Mark trigger as completed
+    $trigger_completed = automatorwp_anonymous_completed_trigger( $trigger, $event, $trigger_options, $automation );
+
+    if( ! $trigger_completed ) {
+        return false;
+    }
+
+    $user_id = automatorwp_get_anonymous_automation_user_id( $automation, $event );
+
+    // Bail if user can't be created
+    if( ! $user_id ) {
+        return false;
+    }
+
+    // Update anonymous log user ID
+    automatorwp_update_anonymous_completed_trigger_log_user_id( $user_id );
+
+    automatorwp_maybe_user_completed_automation( $automation, $user_id, $event );
+
+    return true;
+
+}
+
+/**
+ * Check if anonymous has access to trigger
+ *
+ * @since 1.3.0
+ *
+ * @param stdClass  $trigger            The trigger object
+ * @param array     $event              Event information
+ * @param array     $trigger_options    The trigger's stored options
+ * @param stdClass  $automation         The trigger's automation object
+ *
+ * @return bool                         True if anonymous has access, false otherwise
+ */
+function automatorwp_anonymous_has_access_to_trigger( $trigger = null, $event = array(), $trigger_options = array(), $automation = null ) {
+
+    // Check if trigger is correct
+    if( ! is_object( $trigger ) ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    if( $automation === null ) {
+        $automation = automatorwp_get_trigger_automation( $trigger->id );
+
+        if( ! is_object( $automation ) ) {
+            return false;
+        }
+    }
+
+    $has_access = true;
+
+    // Bail if automation is not active
+    if( $automation->status !== 'active' ) {
+        $has_access = false;
+    }
+
+    $now = current_time( 'timestamp' );
+
+    // Bail if is a future automation
+    if( $has_access && strtotime( $automation->date ) > $now ) {
+        $has_access = false;
+    }
+
+    // Check if exceeded automation completion times
+    $times = absint( $automation->times );
+
+    if( $has_access && $times > 0 ) {
+        $completion_times = automatorwp_get_object_completion_times( $automation->id, 'automation' );
+
+        if( $completion_times >= $times ) {
+            $has_access = false;
+        }
+    }
+
+    /**
+     * Filter to override the has access check.
+     * This filter is to check the automation configuration.
+     * Triggers should us the 'automatorwp_anonymous_deserves_trigger' filter instead.
+     *
+     * @since 1.3.0
+     *
+     * @param bool      $has_access         True if anonymous has access, false otherwise
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return bool                         True if anonymous has access, false otherwise
+     */
+    return apply_filters( 'automatorwp_anonymous_has_access_to_trigger', $has_access, $trigger, $event, $trigger_options, $automation );
+
+}
+
+/**
+ * Check if anonymous deserves trigger
+ *
+ * @since 1.3.0
+ *
+ * @param stdClass  $trigger            The trigger object
+ * @param array     $event              Event information
+ * @param array     $trigger_options    The trigger's stored options
+ * @param stdClass  $automation         The trigger's automation object
+ *
+ * @return bool                         True if anonymous deserves trigger, false otherwise
+ */
+function automatorwp_anonymous_deserves_trigger( $trigger = null, $event = array(), $trigger_options = array(), $automation = null ) {
+
+    // Check if trigger is correct
+    if( ! is_object( $trigger ) ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    if( $automation === null ) {
+        $automation = automatorwp_get_trigger_automation( $trigger->id );
+
+        if( ! is_object( $automation ) ) {
+            return false;
+        }
+    }
+
+    $deserves_trigger = true;
+
+    /**
+     * Filter to override the anonymous deserves trigger check.
+     * This filter is to check the trigger configuration.
+     * Triggers should us this filter.
+     *
+     * @since 1.3.0
+     *
+     * @param bool      $deserves_trigger   True if anonymous deserves trigger, false otherwise
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return bool                          True if anonymous deserves trigger, false otherwise
+     */
+    return apply_filters( 'automatorwp_anonymous_deserves_trigger', $deserves_trigger, $trigger, $event, $trigger_options, $automation );
+
+}
+
+/**
+ * Registers the trigger completion
+ *
+ * @since 1.3.0
+ *
+ * @param stdClass  $trigger            The trigger object
+ * @param array     $event              Event information
+ * @param array     $trigger_options    The trigger's stored options
+ * @param stdClass  $automation         The trigger's automation object
+ *
+ * @return bool
+ */
+function automatorwp_anonymous_completed_trigger( $trigger = null, $event = array(), $trigger_options = array(), $automation = null ) {
+
+    global $automatorwp_completed_triggers, $automatorwp_last_anonymous_trigger_log_id;
+
+    // Initialize last anonymous trigger log ID
+    $automatorwp_last_anonymous_trigger_log_id = 0;
+
+    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
+    // This prevents unlimited completions when multiples triggers has been triggered
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
+    }
+
+    // Check if trigger is correct
+    if( ! is_object( $trigger ) ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    if( $automation === null ) {
+        $automation = automatorwp_get_trigger_automation( $trigger->id );
+
+        if( ! is_object( $automation ) ) {
+            return false;
+        }
+    }
+
+    // Get the trigger completion times
+    $log_meta = array(
+        'times' => 1
+    );
+
+    if( isset( $event['comment_id'] ) ) {
+        $log_meta['comment_id'] = $event['comment_id'];
+    }
+
+    /**
+     * Filter to add custom log meta to meet that user has completed this trigger
+     *
+     * @since 1.3.0
+     *
+     * @param array     $log_meta           Log meta data
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return array
+     */
+    $log_meta = apply_filters( 'automatorwp_anonymous_completed_trigger_log_meta', $log_meta, $trigger, $event, $trigger_options, $automation );
+
+    /**
+     * Backward compatibility filter!
+     *
+     * Filter to add custom log meta to meet that user has completed this trigger
+     *
+     * @since 1.0.0
+     *
+     * @param array     $log_meta           Log meta data
+     * @param stdClass  $trigger            The trigger object
+     * @param int       $user_id            The user ID (here will be 0, since user hasn't been created yet)
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return array
+     */
+    $log_meta = apply_filters( 'automatorwp_user_completed_trigger_log_meta', $log_meta, $trigger, 0, $event, $trigger_options, $automation );
+
+    // Insert a new log entry to register the trigger completion
+    $automatorwp_last_anonymous_trigger_log_id = automatorwp_insert_log( array(
+        'title'     => automatorwp_parse_automation_item_log_label( $trigger, 'trigger', 'view' ),
+        'type'      => 'trigger',
+        'object_id' => $trigger->id,
+        'user_id'   => 0,
+        'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
+        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
+    ), $log_meta );
+
+    if( is_wp_error( $automatorwp_last_anonymous_trigger_log_id ) ) {
+        $automatorwp_last_anonymous_trigger_log_id = 0;
+    }
+
+    /**
+     * Available action to hook on a trigger completion
+     *
+     * @since 1.3.0
+     *
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     */
+    do_action( 'automatorwp_anonymous_completed_trigger', $trigger, $event, $trigger_options, $automation );
+
+    return true;
+
+}
+
+/**
+ * Get the anonymous automation user ID
+ *
+ * @since 1.3.0
+ *
+ * @param stdClass  $automation         The automation object
+ * @param array     $event              Event information
+ *
+ * @return int|false                    The user ID, false otherwise
+ */
+function automatorwp_get_anonymous_automation_user_id( $automation = null, $event = array() ) {
+
+    if( ! is_object( $automation ) ) {
+        return false;
+    }
+
+    $actions = automatorwp_get_automation_actions( $automation->id );
+
+    // Check if isset the first action
+    if( ! isset( $actions[0] ) ) {
+        return false;
+    }
+
+    // Check if anonymous user action exists
+    if( isset( $actions[0] ) && $actions[0]->type !== 'automatorwp_anonymous_user' ) {
+        return false;
+    }
+
+    $action = $actions[0];
+
+    // Get all action options to parse all replacements
+    $action_options = automatorwp_get_action_stored_options( $action->id );
+
+    foreach( $action_options as $option => $value ) {
+        // Replace all tags by their replacements
+        $action_options[$option] = automatorwp_parse_automation_tags( $automation->id, 0, $value );
+    }
+
+    // Execute the anonymous user action to decide the user to assign the logs
+    $user_id = false;
+
+    /**
+     * Filter to decide to which user ID will be assigned to the automation
+     *
+     * @since 1.0.0
+     *
+     * @param int       $user_id            The user ID
+     * @param stdClass  $action             The action object
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     *
+     * @return int|false                    The user ID, false otherwise
+     */
+    return apply_filters( 'automatorwp_get_anonymous_automation_user_id', $user_id, $action, $action_options, $automation );
+
+}
+
+/**
+ * Update the trigger log user ID for anonymous events
+ *
+ * @since 1.3.0
+ *
+ * @param int  $user_id            The user ID
+ */
+function automatorwp_update_anonymous_completed_trigger_log_user_id( $user_id ) {
+
+    global $automatorwp_last_anonymous_trigger_log_id;
+
+    // Bail if not ID found
+    if( absint( $automatorwp_last_anonymous_trigger_log_id ) === 0 ) {
+        return;
+    }
+
+    ct_setup_table( 'automatorwp_logs' );
+
+    // Update the log user ID
+    ct_update_object( array(
+        'id' => $automatorwp_last_anonymous_trigger_log_id,
+        'user_id' => $user_id,
+    ) );
+
+    ct_reset_setup_table();
+
+}
+
+// -------------------------------------------
+// User event
+// -------------------------------------------
 
 /**
  * Check if user has completed a trigger
@@ -399,6 +843,10 @@ function automatorwp_user_completed_trigger( $trigger = null, $user_id = 0, $eve
         'times' => ( $completion_times + 1 )
     );
 
+    if( isset( $event['comment_id'] ) ) {
+        $log_meta['comment_id'] = $event['comment_id'];
+    }
+
     /**
      * Filter to add custom log meta to meet that user has completed this trigger
      *
@@ -553,6 +1001,14 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
         'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
         'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
     ) );
+
+    ct_setup_table( 'automatorwp_automations' );
+
+    // Increment the completions
+    $completions = absint( ct_get_object_meta( $automation->id, 'completions', true ) );
+    ct_update_object_meta( $automation->id, 'completions', $completions + 1 );
+
+    ct_reset_setup_table();
 
     /**
      * Available action to hook on an automation completion

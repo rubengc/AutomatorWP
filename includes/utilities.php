@@ -436,7 +436,7 @@ function automatorwp_utilities_times_tag( $only_args = false ) {
 }
 
 /**
- * Utility function to get the times tag
+ * Utility function to get the post tags
  *
  * @since 1.0.0
  *
@@ -468,7 +468,7 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s Title', 'automatorwp' ), $post_label ),
             'type'      => 'text',
-            'preview'   => __( 'The Title', 'automatorwp' ),
+            'preview'   => __( 'The title', 'automatorwp' ),
         ),
         'post_link' => array(
             /* translators: %s: Post label (by default: Post). */
@@ -480,7 +480,7 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s Type', 'automatorwp' ), $post_label ),
             'type'      => 'text',
-            'preview'   => __( 'post', 'automatorwp' ),
+            'preview'   => 'post',
         ),
         'post_author'  => array(
             /* translators: %s: Post label (by default: Post). */
@@ -510,7 +510,7 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s Status', 'automatorwp' ), $post_label ),
             'type'      => 'text',
-            'preview'   => __( 'publish', 'automatorwp' ),
+            'preview'   => 'publish',
         ),
         'post_parent' => array(
             /* translators: %s: Post label (by default: Post). */
@@ -529,6 +529,93 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'label'     => sprintf( __( '%s Meta', 'automatorwp' ), $post_label ),
             'type'      => 'text',
             'preview'   => sprintf( __( '%s meta value, replace "META_KEY" by the %s meta key', 'automatorwp' ), $post_label, strtolower( $post_label ) ),
+        ),
+    ) );
+
+}
+
+/**
+ * Utility function to get the comment tags
+ *
+ * @since 1.3.0
+ *
+ * @return array
+ */
+function automatorwp_utilities_comment_tags( $comment_label = '' ) {
+
+    if( empty( $comment_label ) ) {
+        $comment_label = __( 'Comment', 'automatorwp' );
+    }
+
+    /**
+     * Filter to setup custom comment tags
+     *
+     * @since 1.3.0
+     *
+     * @param array $comment_tags
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_utilities_comment_tags', array(
+        'comment_id' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s ID', 'automatorwp' ), $comment_label ),
+            'type'      => 'integer',
+            'preview'   => '123',
+        ),
+        'comment_post_id' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Post ID', 'automatorwp' ), $comment_label ),
+            'type'      => 'integer',
+            'preview'   => '123',
+        ),
+        'comment_post_title' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Post Title', 'automatorwp' ), $comment_label ),
+            'type'      => 'text',
+            'preview'   => __( 'The post title', 'automatorwp' ),
+        ),
+        'comment_user_id' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s User ID', 'automatorwp' ), $comment_label ),
+            'type'      => 'integer',
+            'preview'   => '123',
+        ),
+        'comment_author' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Author Name', 'automatorwp' ), $comment_label ),
+            'type'      => 'text',
+            'preview'   => 'AutomatorWP',
+        ),
+        'comment_author_email' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Author Email', 'automatorwp' ), $comment_label ),
+            'type'      => 'email',
+            'preview'   => 'contact@automatorwp.com',
+        ),
+        'comment_author_url' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Author URL', 'automatorwp' ), $comment_label ),
+            'type'      => 'text',
+            'preview'   => 'https://automatorwp.com',
+        ),
+        'comment_author_ip' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Author IP', 'automatorwp' ), $comment_label ),
+            'type'      => 'text',
+            'preview'   => '255.255.255.255',
+        ),
+        'comment_content' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Content', 'automatorwp' ), $comment_label ),
+            'type'      => 'text',
+            'preview'   => __( 'The content', 'automatorwp' ),
+        ),
+        'comment_type' => array(
+            /* translators: %s: Comment label (by default: Comment). */
+            'label'     => sprintf( __( '%s Type', 'automatorwp' ), $comment_label ),
+            'type'      => 'text',
+            'preview'   => 'comment',
         ),
     ) );
 

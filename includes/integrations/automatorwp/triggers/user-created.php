@@ -45,6 +45,41 @@ class AutomatorWP_AutomatorWP_User_Created extends AutomatorWP_Integration_Trigg
     }
 
     /**
+     * Register the trigger listener hook
+     *
+     * @since 1.0.0
+     */
+    public function register_listener_hook() {
+
+        parent::register_listener_hook();
+
+        if( automatorwp_is_trigger_in_use( $this->trigger ) ) {
+            // Support for anonymous users
+            add_action( 'automatorwp_anonymous_user_created', array( $this, 'anonymous_listener' ), 10, 4 );
+        }
+
+    }
+    /**
+     * Trigger listener
+     *
+     * @since 1.0.0
+     *
+     * @param int       $new_user_id        The new user ID
+     * @param stdClass  $action             The action object
+     * @param array     $action_options     The action's stored options (with tags already passed, included on meta keys and values)
+     * @param stdClass  $automation         The action's automation object
+     */
+    public function anonymous_listener( $new_user_id, $action, $action_options, $automation ) {
+
+        automatorwp_trigger_event( array(
+            'trigger' => $this->trigger,
+            'user_id' => $new_user_id,
+            'automation_id' => $automation->id,
+        ) );
+
+    }
+
+    /**
      * Trigger listener
      *
      * @since 1.0.0

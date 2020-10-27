@@ -58,6 +58,9 @@ class AutomatorWP_Integration_Trigger {
             add_action( 'after_setup_theme', array( $this, 'register_listener_hook' ) );
         }
 
+        // Guest deserves trigger hook
+        add_filter( 'automatorwp_anonymous_deserves_trigger', array( $this, 'maybe_anonymous_deserves_trigger' ), 10, 5 );
+
         // User deserves trigger hook
         add_filter( 'automatorwp_user_deserves_trigger', array( $this, 'maybe_user_deserves_trigger' ), 10, 6 );
     }
@@ -78,10 +81,8 @@ class AutomatorWP_Integration_Trigger {
      */
     public function register_listener_hook() {
 
-        $triggers_in_user = automatorwp_get_triggers_in_use();
-
         // Bail if this trigger is not in use
-        if( ! in_array( $this->trigger, $triggers_in_user ) ) {
+        if( ! automatorwp_is_trigger_in_use( $this->trigger ) ) {
             return;
         }
 
@@ -177,6 +178,55 @@ class AutomatorWP_Integration_Trigger {
      * @return bool                          True if user deserves trigger, false otherwise
      */
     public function user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
+
+        // Override
+        return $deserves_trigger;
+
+    }
+
+    /**
+     * Checks if maybe should call or not to the anonymous_deserves_trigger() function
+     *
+     * @since 1.0.0
+     *
+     * @param bool      $deserves_trigger   True if anonymous deserves trigger, false otherwise
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return bool                          True if anonymous deserves trigger, false otherwise
+     */
+    public function maybe_anonymous_deserves_trigger( $deserves_trigger, $trigger, $event, $trigger_options, $automation ) {
+
+        // Bail if event has not be deserved
+        if( ! $deserves_trigger ) {
+            return $deserves_trigger;
+        }
+
+        // Bail if trigger type don't match this trigger
+        if( $trigger->type !== $this->trigger ) {
+            return $deserves_trigger;
+        }
+
+        return $this->anonymous_deserves_trigger( $deserves_trigger, $trigger, $event, $trigger_options, $automation );
+
+    }
+
+    /**
+     * Guest deserves check
+     *
+     * @since 1.0.0
+     *
+     * @param bool      $deserves_trigger   True if anonymous deserves trigger, false otherwise
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return bool                         True if anonymous deserves trigger, false otherwise
+     */
+    public function anonymous_deserves_trigger( $deserves_trigger, $trigger, $event, $trigger_options, $automation ) {
 
         // Override
         return $deserves_trigger;
