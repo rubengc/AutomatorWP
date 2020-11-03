@@ -12,7 +12,7 @@ You can use these automations for automating sales, marketing, administrative ta
 
 Here is a video that lets you see how AutomatorWP works in less than 2 minutes!
 
-[![AutomatorWP - Creating your first automation on WordPress](https://img.youtube.com/vi/rtsIFLGECYc/0.jpg)](https://www.youtube.com/watch?v=rtsIFLGECYc)
+[![AutomatorWP - Creating your first automation on WordPress](https://img.youtube.com/vi/rtsIFLGECYc/0.jpg)](https://youtu.be/vWqRcEO8SgY)
 
 ## Use automations to connect your plugins ##
 
