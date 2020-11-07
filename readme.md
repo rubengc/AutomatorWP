@@ -290,6 +290,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.3.1 ###
+
+* **Bug Fixes**
+* Fixed a incorrect post type check on "User publishes a post in any/specific taxonomy" trigger.
+
 ### 1.3.0 ###
 
 * **New Features**

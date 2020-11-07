@@ -56,11 +56,6 @@ class AutomatorWP_WordPress_Publish_Post_Taxonomy extends AutomatorWP_Integratio
      */
     public function listener( $new_status, $old_status, $post ) {
 
-        // Bail if not is a post
-        if( $post->post_type !== 'post' ) {
-            return;
-        }
-
         // Bail if post has been already published
         if( $old_status === 'publish' ) {
             return;
