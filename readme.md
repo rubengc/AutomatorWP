@@ -12,7 +12,7 @@ You can use these automations for automating sales, marketing, administrative ta
 
 Here is a video that lets you see how AutomatorWP works in less than 2 minutes!
 
-[![AutomatorWP - Creating your first automation on WordPress](https://img.youtube.com/vi/rtsIFLGECYc/0.jpg)](https://youtu.be/vWqRcEO8SgY)
+[![AutomatorWP - Creating your first automation on WordPress](https://img.youtube.com/vi/vWqRcEO8SgY/0.jpg)](https://youtu.be/vWqRcEO8SgY)
 
 ## Use automations to connect your plugins ##
 
@@ -106,6 +106,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
 * [LearnPress](https://wordpress.org/plugins/automatorwp-learnpress-integration/)
 * [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
+* [MailPoet](https://wordpress.org/plugins/automatorwp-mailpoet-integration/)
 * [MasterStudy LMS](https://wordpress.org/plugins/automatorwp-masterstudy-lms-integration/)
 * [MemberPress](https://wordpress.org/plugins/automatorwp-memberpress-integration/)
 * [Ninja Forms](https://wordpress.org/plugins/automatorwp-ninja-forms-integration/)
@@ -290,6 +291,21 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.3.2 ###
+
+* **New Features**
+* Added the Settings menu.
+* Added a configurable automatic logs cleanup.
+* Added the setting "Automatic logs cleanup".
+* Added a top bar menu to easily access to the AutomatorWP menus.
+* Added the setting "Disable top bar menu".
+* **Improvements**
+* Style improvements on automations UI.
+* **Bug Fixes**
+* Fixed a incorrect check on "User publishes a post in any/specific taxonomy" trigger.
+* **Developer Notes**
+* Added support for Actions Scheduler when scheduling the automatic logs cleanup process.
+
 ### 1.3.1 ###
 
 * **Bug Fixes**
@@ -309,235 +325,3 @@ No, We're unable to provide custom development services, as our focus is develop
 * Full rework of the "Save Changes" box.
 * Large rework of several areas to make them more extensible for future new automation types.
 * Several style improvements and changes on the automations UI.
-
-### 1.2.9 ###
-
-* Changes merged on 1.3.0.
-
-### 1.2.8 ###
-
-* **Improvements**
-* Added more sanitization when inserting logs.
-* Added more sanitization checks on ajax parameters.
-* Improvements on number conditional functions (used to compare conditions in some triggers).
-
-### 1.2.7 ###
-
-* **New Features**
-* New trigger: User views a post of any/specific taxonomy.
-* New trigger: User publishes a post in any/specific taxonomy.
-* New trigger: User comments on a post of any/specific taxonomy.
-* **Bug Fixes**
-* Fixed plugin conflict with Yoast SEO Premium.
-
-### 1.2.6 ###
-
-* **New Features**
-* New trigger: User gets created through any/specific automation.
-* New trigger: Post gets created through any/specific automation.
-* **Improvements**
-* Ensure to always get triggers and actions titles up to date on the automations list screen.
-
-### 1.2.5 ###
-
-* **Improvements**
-* Prevent to show recommendations if the integration is already installed.
-* **Developer Notes**
-* Delayed the initialization of the Custom Tables library.
-
-### 1.2.4 ###
-
-* **New Features**
-* New trigger: User post of any/specific type status changes to any/specific status.
-* **Improvements**
-* Style improvements on the automations UI.
-* Added post information when using the "Set, insert, increment or decrement post meta" action.
-* Correctly pass automation tag on logs labels.
-* Improved the events engine performance.
-* **Bug Fixes**
-* Correctly detect multiples events triggered in a row.
-* **Developer Notes**
-* Added several hooks to extend the events engine.
-* Added several hooks to extend the automations UI.
-* Added several hooks to extend the logs screens.
-
-### 1.2.3 ###
-
-* **Bug Fixes**
-* Prevent any PHP warnings while migrating AutomatorWP database tables to InnoDB engine.
-
-### 1.2.2 ###
-
-* **Bug Fixes**
-* Fixed issues on multisite installs.
-
-### 1.2.1 ###
-
-* **Improvements**
-* Added the integration icon on the logs edit screen.
-* Improved the tags parser order to pass first dynamic tags and tags from external plugins.
-* Style improvements on the admin area.
-* Improved fields rendering on logs screen.
-* **Bug Fixes**
-* Fixed typo on the logs edit screen that causes automation links not getting rendered correctly.
-
-### 1.2.0 ###
-
-* **Developer Notes**
-* Added more functions to make easier work with AutomatorWP custom tables data.
-
-### 1.1.9 ###
-
-* **Improvements**
-* Added a required mark on all fields required.
-* Prevent PHP warnings on the "Create post action" when leaving the post metas field blank.
-* Added wp_mail filters to make emails work with 3rd party email providers like SendGrid.
-* Added support on parse tags to parse array elements.
-* Apply tag replacements only if content has any tags.
-* **Developer Notes**
-* Default tags renamed.
-* Improved tags flexibility to allow plugins register custom tags and trigger tags easily.
-
-### 1.1.8 ###
-
-* **Developer Notes**
-* Added the ability to pass a custom callback to determine the post types of a post selector.
-
-### 1.1.7 ###
-
-* **New Features**
-* New trigger: User gets added to any/specific role.
-* New trigger: User role changes to any/specific role.
-* New trigger: User gets removed from any/specific role.
-* **Developer Notes**
-* Initialize everything sooner to get all functions ready as soon as possible.
-
-### 1.1.6 ###
-
-* **New Features**
-* New trigger: User publishes a post of any/specific type.
-* Added the "Post URL" tag to triggers who have a post assigned.
-* **Improvements**
-* Force custom database tables to use InnoDB on creation.
-* Added internal upgrade process to update custom database tables to InnoDB.
-* Prevent to perform API calls on areas outside the add-ons or licenses pages.
-* Add caching to several functions to speed up all queries implied on the event detection process.
-* Improvements on the cache functionality.
-* **Developer Notes**
-* Added the ability to force not search in options when retrieving a specific cache element.
-
-### 1.1.5 ###
-
-* **Bug Fixes**
-* Prevent issues caused by the get_editable_roles() function.
-
-### 1.1.4 ###
-
-* **New Features**
-* New trigger: User comments on a post of a type.
-
-### 1.1.3 ###
-
-* **Bug Fixes**
-* Fixed tags selector not working in some repeatable fields.
-* Fixed editors not working after reorder the trigger or action.
-
-### 1.1.2 ###
-
-* **Bug Fixes**
-* Correctly display add-ons thumbnails on licenses page.
-* **Improvements**
-* Added missing integration notice on automations and logs.
-* Added recommendations of integrations based on plugins installed.
-* Clear field when license gets deactivated included when server responds that license has been already deactivated.
-* Style improvements.
-
-### 1.1.1 ###
-
-* **Improvements**
-* Make sure to assign user that completes the automation as post author if none provided on "Create a post" action.
-* Style improvements.
-* **Developer Notes**
-* Great amount of improvements on several hooks on the events handler and actions processing.
-* Added the global $automatorwp_event to make event accessible globally when an event gets triggered.
-
-### 1.1.0 ###
-
-* **New Features**
-* Dynamic tags to pass user metas and post metas to actions.
-* **Improvements**
-* Make cache options don't get autoloaded.
-* Improved the speed and performance of the tags parser.
-* Code reduction thanks to the brand new tags parser functions.
-* Improvements on tags selection function.
-* **Developer Notes**
-* Added an automation tags parser function that automatically parses all automation tags to the content passed.
-
-### 1.0.9 ###
-
-* **New Features**
-* New trigger: User publishes a post.
-* New trigger: User publishes a post in any/specific category.
-* New trigger: User publishes a post in any/specific tag.
-* New trigger: User publishes a page.
-* New action: Create a post.
-* New action: Create a user.
-* **Improvements**
-* Added the integration icon on the automation list on triggers and actions columns.
-* Added the integration icon on logs.
-* **Developer Notes**
-* Improved automatorwp_terms_matches() function.
-
-### 1.0.8 ###
-
-* **Bug Fixes**
-* Fixed issue with admin menu parent file override.
-
-### 1.0.7 ###
-
-* **Improvements**
-* Added the ability to clear license fields.
-* Removed the "Add new log" button.
-
-### 1.0.6 ###
-
-* **Bug Fixes**
-* Fixed typo on license fields.
-
-### 1.0.5 ###
-
-* **Improvements**
-* Keep license key hidden included if license key is not valid or gets expired.
-
-### 1.0.4 ###
-
-* **Improvements**
-* Ensure to enqueue admin styles to make AutomatorWP icon visible.
-
-### 1.0.3 ###
-
-* **Improvements**
-* Ensure to enqueue admin scripts only on the plugin screens to avoid any conflict.
-* Show trigger order if sequential is enabled for new added items.
-
-### 1.0.2 ###
-
-* **New Features**
-* New trigger: User daily visits the site.
-* New trigger: User views a post of any/specific category.
-* New trigger: User views a post of any/specific tag.
-* New trigger: User comments on a post of any/specific category.
-* New trigger: User comments on a post of any/specific tag.
-* **Improvements**
-* Make post tags labels more flexible to allow pass the post type label.
-* Improvements on multiples translatable strings.
-
-### 1.0.1 ###
-
-* **Improvements**
-* Prevent perform calls to database tables on installation.
-
-
-### 1.0.0 ###
-
-* AutomatorWP lands on wordpress.org!

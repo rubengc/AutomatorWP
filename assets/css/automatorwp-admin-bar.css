@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'AutomatorWP';
+    src:  url('../fonts/automatorwp.eot?6ncb0e');
+    src:  url('../fonts/automatorwp.eot?6ncb0e#iefix') format('embedded-opentype'),
+    url('../fonts/automatorwp.ttf?6ncb0e') format('truetype'),
+    url('../fonts/automatorwp.woff?6ncb0e') format('woff'),
+    url('../fonts/automatorwp.svg?6ncb0e#automatorwp') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -------------------------------------------
+	Admin Bar
+   ------------------------------------------- */
+
+#wpadminbar #wp-admin-bar-automatorwp > .ab-item > .ab-icon {
+    font-family: 'AutomatorWP' !important;
+}
+
+#wpadminbar #wp-admin-bar-automatorwp > .ab-item > .ab-icon:before {
+    content: "\e900";
+    top: 2px;
+}

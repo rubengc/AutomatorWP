@@ -10,6 +10,23 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Register frontend scripts
+ *
+ * @since       1.0.0
+ * @return      void
+ */
+function automatorwp_register_scripts() {
+
+    // Use minified libraries if SCRIPT_DEBUG is turned off
+    $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+    // Stylesheets
+    wp_register_style( 'automatorwp-admin-bar-css', AUTOMATORWP_URL . 'assets/css/automatorwp-admin-bar' . $suffix . '.css', array( ), AUTOMATORWP_VER, 'all' );
+
+}
+add_action( 'init', 'automatorwp_register_scripts' );
+
+/**
  * Register admin scripts
  *
  * @since       1.0.0
@@ -159,6 +176,19 @@ function automatorwp_enqueue_admin_functions_script() {
     wp_enqueue_script( 'automatorwp-admin-functions-js' );
 
 }
+
+/**
+ * Register and enqueue admin bar scripts
+ *
+ * @since       1.3.2
+ * @return      void
+ */
+function automatorwp_enqueue_admin_bar_scripts() {
+
+    wp_enqueue_style( 'automatorwp-admin-bar-css' );
+
+}
+add_action( 'admin_bar_init', 'automatorwp_enqueue_admin_bar_scripts' );
 
 /**
  * Setup a global nonce for all frontend scripts

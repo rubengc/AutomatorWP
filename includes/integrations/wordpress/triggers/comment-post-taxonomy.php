@@ -77,7 +77,7 @@ class AutomatorWP_WordPress_Comment_Post_Taxonomy extends AutomatorWP_Integratio
 
             // Bail if post isn't assigned to any category
             if( empty( $terms_ids ) ) {
-                return;
+                continue;
             }
 
             $user_id = (int) $comment['user_id'];

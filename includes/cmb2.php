@@ -87,7 +87,7 @@ function automatorwp_options_cb_terms( $field ) {
                 continue;
             }
 
-            $term = get_term( $term_id, $taxonomy );
+            $term = get_term( $term_id );
 
             if( $term ) {
                 $options[$term_id] = $term->name;

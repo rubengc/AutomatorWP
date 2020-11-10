@@ -15,6 +15,7 @@ require_once AUTOMATORWP_DIR . 'includes/admin/upgrades.php';
 // Admin pages
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/add-ons.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/licenses.php';
+require_once AUTOMATORWP_DIR . 'includes/admin/pages/settings.php';
 
 /**
  * Helper function to get an option value.
@@ -84,6 +85,95 @@ function automatorwp_admin_submenu() {
 
 }
 add_action( 'admin_menu', 'automatorwp_admin_submenu', 12 );
+
+/**
+ * Add AutomatorWP admin bar menu
+ *
+ * @since 1.3.2
+ *
+ * @param WP_Admin_Bar $wp_admin_bar
+ */
+function automatorwp_admin_bar_menu( $wp_admin_bar ) {
+
+    // Bail if current user can't manage AutomatorWP
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    // Bail if admin bar menu disabled
+    if( (bool) automatorwp_get_option( 'disable_admin_bar_menu', false ) ) {
+        return;
+    }
+
+    // AutomatorWP
+    $wp_admin_bar->add_node( array(
+        'id'    => 'automatorwp',
+        'title'	=>	'<span class="ab-icon"></span>' . __( 'AutomatorWP', 'automatorwp' ),
+        'meta'  => array( 'class' => 'automatorwp' ),
+    ) );
+
+    // Automations
+    $wp_admin_bar->add_node( array(
+        'id'     => 'automatorwp-automations',
+        'title'  => __( 'Automations', 'automatorwp' ),
+        'parent' => 'automatorwp',
+        'href'   => admin_url( 'admin.php?page=automatorwp_automations' )
+    ) );
+
+    // Logs
+    $wp_admin_bar->add_node( array(
+        'id'     => 'automatorwp-logs',
+        'title'  => __( 'Logs', 'automatorwp' ),
+        'parent' => 'automatorwp',
+        'href'   => admin_url( 'admin.php?page=automatorwp_logs' )
+    ) );
+
+}
+add_action( 'admin_bar_menu', 'automatorwp_admin_bar_menu', 100 );
+
+/**
+ * Add GamiPress admin bar menu
+ *
+ * @since 1.3.2
+ */
+function automatorwp_admin_bar_menu_bottom( $wp_admin_bar ) {
+
+    // Bail if current user can't manage AutomatorWP
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    // Bail if admin bar menu disabled
+    if( (bool) automatorwp_get_option( 'disable_admin_bar_menu', false ) ) {
+        return;
+    }
+
+    // Add-ons
+    $wp_admin_bar->add_node( array(
+        'id'     => 'automatorwp-add-ons',
+        'title'  => __( 'Add-ons', 'automatorwp' ),
+        'parent' => 'automatorwp',
+        'href'   => admin_url( 'admin.php?page=automatorwp_add_ons' )
+    ) );
+
+    // Licenses
+    $wp_admin_bar->add_node( array(
+        'id'     => 'automatorwp-licenses',
+        'title'  => __( 'Licenses', 'automatorwp' ),
+        'parent' => 'automatorwp',
+        'href'   => admin_url( 'admin.php?page=automatorwp_licenses' )
+    ) );
+
+    // Settings
+    $wp_admin_bar->add_node( array(
+        'id'     => 'automatorwp-settings',
+        'title'  => __( 'Settings', 'automatorwp' ),
+        'parent' => 'automatorwp',
+        'href'   => admin_url( 'admin.php?page=automatorwp_settings' )
+    ) );
+
+}
+add_action( 'admin_bar_menu', 'automatorwp_admin_bar_menu_bottom', 999 );
 
 /**
  * Helper function to register custom meta boxes

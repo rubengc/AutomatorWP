@@ -878,6 +878,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 .automatorwp-automation-tag-selector + .automatorwp-select2 .select2-selection--single {
     border: none;
     box-shadow: none;
+    background: transparent;
 }
 
 .automatorwp-automation-tag-selector + .automatorwp-select2 .select2-selection--single:focus {
@@ -1680,6 +1681,26 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 .automatorwp-page.cmb2-options-page .cmb2-metabox > .cmb-row {
     border: none;
     box-shadow: none;
+}
+
+.automatorwp-page .postbox .hndle {
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+.automatorwp-page .postbox .hndle .dashicons {
+    height: 18px;
+    line-height: 18px;
+    margin-right: 5px;
+}
+
+.automatorwp-page .postbox .handle-actions {
+    display: none;
+}
+
+.automatorwp_settings input[name="submit-cmb"] {
+    float: left;
+    margin-right: 12px;
 }
 
 /* -------------------------------------------

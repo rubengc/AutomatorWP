@@ -70,7 +70,7 @@ class AutomatorWP_WordPress_Publish_Post_Taxonomy extends AutomatorWP_Integratio
         // This is required since on rest saving the post gets updated BEFORE get taxonomies applied
         if( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
             // Hook the action 'rest_after_insert_{post_type}'
-            add_action( 'rest_after_insert_post', array( $this, 'rest_listener' ),  10, 3 );
+            add_action( "rest_after_insert_{$post->post_type}", array( $this, 'rest_listener' ),  10, 3 );
             return;
         }
 
@@ -80,9 +80,9 @@ class AutomatorWP_WordPress_Publish_Post_Taxonomy extends AutomatorWP_Integratio
 
             $terms_ids = automatorwp_get_term_ids( $post->ID, $taxonomy );
 
-            // Bail if post isn't assigned to any category
+            // Bail if post isn't assigned to any term
             if( empty( $terms_ids ) ) {
-                return;
+                continue;
             }
 
             automatorwp_trigger_event( array(
@@ -114,9 +114,9 @@ class AutomatorWP_WordPress_Publish_Post_Taxonomy extends AutomatorWP_Integratio
 
             $terms_ids = automatorwp_get_term_ids( $post->ID, $taxonomy );
 
-            // Bail if post isn't assigned to any category
+            // Bail if post isn't assigned to any term
             if( empty( $terms_ids ) ) {
-                return;
+                continue;
             }
 
             automatorwp_trigger_event( array(

@@ -9,6 +9,11 @@
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
+/**
+ * AutomatorWP installation
+ *
+ * @since 1.0.0
+ */
 function automatorwp_install() {
 
     // Setup default AutomatorWP installation date
@@ -20,5 +25,8 @@ function automatorwp_install() {
 
     // Register AutomatorWP custom DB tables
     automatorwp_register_custom_tables();
+
+    // Schedule events
+    automatorwp_schedule_events();
 
 }
