@@ -291,6 +291,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.3.3 ###
+
+* **Improvements**
+* Ensure that WordPress content filters allow place tags on fields with support to HTML.
+
 ### 1.3.2 ###
 
 * **New Features**

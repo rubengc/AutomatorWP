@@ -406,3 +406,49 @@ function automatorwp_options_cb_none_option( $field, $default_value = '', $defau
     return $options;
 
 }
+
+/**
+ * Handles sanitization for textarea, wysiwyg and oembed fields to allow tags
+ *
+ * @since 1.3.3
+ *
+ * @param  mixed      $value      The unsanitized value from the form.
+ * @param  array      $field_args Array of field arguments.
+ * @param  CMB2_Field $field      The field object
+ *
+ * @return mixed                  Sanitized value to be stored.
+ */
+function automatorwp_textarea_sanitization_cb( $value, $field_args, $field ) {
+
+    $allowed_protocols = wp_allowed_protocols();
+
+    // Look for tags
+    preg_match_all( "/\{\s*(.*?)\s*\}/", $value, $matches );
+
+    if( is_array( $matches ) && isset( $matches[1] ) ) {
+
+        foreach( $matches[1] as $tag_name ) {
+
+            // Check if is a trigger tag
+            if( strpos( $tag_name, ':' ) !== false) {
+
+                $tag_parts = explode( ':',  $tag_name );
+
+                if( isset( $tag_parts[0] ) ) {
+                    $trigger_id = $tag_parts[0];
+                    $protocol = "{{$trigger_id}";
+
+                    if( ! in_array( $protocol, $allowed_protocols ) ) {
+                        // Add the "{ID:" as allowed protocol
+                        $allowed_protocols[] = $protocol;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    return wp_kses( $value, 'post', $allowed_protocols );
+
+}
