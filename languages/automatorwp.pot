@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-11-11 18:20+0100\n"
+"POT-Creation-Date: 2020-11-20 11:16+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,8 +48,8 @@ msgstr ""
 msgid "Logs"
 msgstr ""
 
-#: includes/admin.php:162 includes/admin/pages/licenses.php:206
-#: includes/admin/pages/licenses.php:213
+#: includes/admin.php:162 includes/admin/pages/licenses.php:255
+#: includes/admin/pages/licenses.php:262
 msgid "Licenses"
 msgstr ""
 
@@ -172,27 +172,27 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1284 includes/automation-ui.php:1296
+#: includes/automation-ui.php:1285 includes/automation-ui.php:1297
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1286
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1287
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:151
+#: includes/admin/pages/licenses.php:200
 msgid "License"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:216
+#: includes/admin/pages/licenses.php:265
 #: includes/custom-tables/automations.php:424
 #: includes/custom-tables/automations.php:575
 #: includes/custom-tables/automations.php:583
 msgid "Save Changes"
 msgstr ""
 
-#: includes/admin/pages/licenses.php:334
+#: includes/admin/pages/licenses.php:383
 msgid "Enter valid license key for automatic updates."
 msgstr ""
 
@@ -397,37 +397,37 @@ msgstr ""
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:1134
+#: includes/automation-ui.php:1135
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:1134
+#: includes/automation-ui.php:1135
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:1135
+#: includes/automation-ui.php:1136
 msgid "View all add-ons"
 msgstr ""
 
-#: includes/automation-ui.php:1146
+#: includes/automation-ui.php:1147
 #, php-format
 msgid "%d plugin of your site can be connected with AutomatorWP."
 msgid_plural "%d plugins of your site can be connected with AutomatorWP."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/automation-ui.php:1147
+#: includes/automation-ui.php:1148
 msgid "View plugins"
 msgstr ""
 
-#: includes/automation-ui.php:1158
+#: includes/automation-ui.php:1159
 #, php-format
 msgid "%d trigger"
 msgid_plural "%d triggers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/automation-ui.php:1162
+#: includes/automation-ui.php:1163
 #, php-format
 msgid "%d action"
 msgid_plural "%d actions"

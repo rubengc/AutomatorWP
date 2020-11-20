@@ -10,7 +10,7 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Licenses Settings meta boxes
+ * Setup the default parameters to license meta boxes
  *
  * @since   1.0.0
  *
@@ -18,7 +18,65 @@ if( !defined( 'ABSPATH' ) ) exit;
  *
  * @return array
  */
-function automatorwp_licenses_meta_boxes( $meta_boxes ) {
+function automatorwp_licenses_meta_boxes_params( $meta_boxes ) {
+
+    // Loop settings section meta boxes
+    foreach( $meta_boxes as $meta_box_id => $meta_box ) {
+
+        // Only add settings meta box if has fields
+        if( isset( $meta_box['fields'] ) && ! empty( $meta_box['fields'] ) ) {
+
+            // Loop meta box fields
+            foreach( $meta_box['fields'] as $field_id => $field ) {
+
+                // Update edd_license fields with default parameters to the AutomatorWP server
+                if( $field['type'] !== 'edd_license' ) {
+                    continue;
+                }
+
+                // if not server provider, then add AutomatorWP server
+                if( ! isset( $field['server'] ) ) {
+                    $field['server'] = 'https://automatorwp.com/edd-sl-api';
+                }
+
+                // Check if is a AutomatorWP hosted plugin
+                if( $field['server'] !== 'https://automatorwp.com/edd-sl-api' ) {
+                    continue;
+                }
+
+                // Renew link
+                $field['renew_license_link'] = 'https://automatorwp.com/renew-a-license';
+                $field['license_management_link'] = 'https://automatorwp.com/account';
+                $field['contact_link'] = 'https://automatorwp.com/contact';
+
+                // Before field row hook to render some extra information
+                $field['before_row'] = 'automatorwp_license_field_before';
+
+
+                // Update the field definition
+                $meta_boxes[$meta_box_id]['fields'][$field_id] = $field;
+
+            }
+
+        }
+
+    }
+
+    return $meta_boxes;
+
+}
+add_filter( 'automatorwp_licenses_meta_boxes', 'automatorwp_licenses_meta_boxes_params', 9999 );
+
+/**
+ * Setup the thumbnail to license meta boxes
+ *
+ * @since   1.0.0
+ *
+ * @param array $meta_boxes
+ *
+ * @return array
+ */
+function automatorwp_licenses_meta_boxes_thumbnails( $meta_boxes ) {
 
     // Check if we are on the licenses page to prevent API calls outside this page
     if( ! isset( $_GET['page'] ) ) {
@@ -42,49 +100,40 @@ function automatorwp_licenses_meta_boxes( $meta_boxes ) {
             foreach( $meta_box['fields'] as $field_id => $field ) {
 
                 // Update edd_license fields with default parameters to the AutomatorWP server
-                if( $field['type'] === 'edd_license' ) {
+                if( $field['type'] !== 'edd_license' ) {
+                    continue;
+                }
 
-                    // if not server provider, then add AutomatorWP server
-                    if( ! isset( $field['server'] ) ) {
-                        $field['server'] = 'https://automatorwp.com/edd-sl-api';
-                    }
+                // if not server provider, then add AutomatorWP server
+                if( ! isset( $field['server'] ) ) {
+                    $field['server'] = 'https://automatorwp.com/edd-sl-api';
+                }
 
-                    // Check if is a AutomatorWP hosted plugin
-                    if( $field['server'] === 'https://automatorwp.com/edd-sl-api' ) {
+                // Check if is an AutomatorWP hosted plugin
+                if( $field['server'] !== 'https://automatorwp.com/edd-sl-api' ) {
+                    continue;
+                }
 
-                        // Renew link
-                        $field['renew_license_link'] = 'https://automatorwp.com/renew-a-license';
-                        $field['license_management_link'] = 'https://automatorwp.com/account';
-                        $field['contact_link'] = 'https://automatorwp.com/contact';
+                // Try to find the plugin thumbnail from plugins API
+                if ( ! is_wp_error( $plugins ) && isset( $field['file'] ) && ! isset( $field['thumbnail'] ) ) {
 
-                        // Before field row hook to render some extra information
-                        $field['before_row'] = 'automatorwp_license_field_before';
+                    foreach ( $plugins as $plugin ) {
 
-                        // Try to find the plugin thumbnail from plugins API
-                        if ( ! is_wp_error( $plugins )
-                            && isset( $field['file'] )
-                            && ! isset( $field['thumbnail'] ) ) {
+                        $slug = basename( $field['file'], '.php' );
 
-                            foreach ( $plugins as $plugin ) {
-
-                                $slug = basename( $field['file'], '.php' );
-
-                                if( $slug === 'automatorwp-' . $plugin->info->slug ) {
-                                    $field['thumbnail'] = $plugin->info->thumbnail;
-
-                                    // Thumbnail found so exit loop
-                                    break;
-                                }
-
-                            }
-
+                        if( $slug === 'automatorwp-' . $plugin->info->slug ) {
+                            $field['thumbnail'] = $plugin->info->thumbnail;
+                            // Thumbnail found so exit loop
+                            break;
                         }
 
                     }
 
-                    // Update the field definition
-                    $meta_boxes[$meta_box_id]['fields'][$field_id] = $field;
                 }
+
+                // Update the field definition
+                $meta_boxes[$meta_box_id]['fields'][$field_id] = $field;
+
             }
 
         }
@@ -94,7 +143,7 @@ function automatorwp_licenses_meta_boxes( $meta_boxes ) {
     return $meta_boxes;
 
 }
-add_filter( 'automatorwp_licenses_meta_boxes', 'automatorwp_licenses_meta_boxes', 9999 );
+add_filter( 'automatorwp_licenses_meta_boxes', 'automatorwp_licenses_meta_boxes_thumbnails', 99999 );
 
 /**
  * Register licenses page.

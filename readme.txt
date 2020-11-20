@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -107,6 +107,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [Groundhogg](https://wordpress.org/plugins/automatorwp-groundhogg-integration/)
 * [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
 * [HappyForms](https://wordpress.org/plugins/automatorwp-happyforms-integration/)
+* [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [iMember360](https://wordpress.org/plugins/automatorwp-imember360-integration/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
 * [Invite Anyone](https://wordpress.org/plugins/automatorwp-invite-anyone-integration/)
@@ -288,6 +289,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.3.4 =
+
+* **Improvements**
+* Style improvements on settings.
+* Let WordPress decide SSL verification in some API requests.
+* Updated add-on updater class.
+* Ensure correct server URL for AutomatorWP add-ons.
 
 = 1.3.3 =
 

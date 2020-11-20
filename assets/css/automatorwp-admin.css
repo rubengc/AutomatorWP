@@ -1703,6 +1703,15 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     margin-right: 12px;
 }
 
+.automatorwp-page .nav-tab .dashicons {
+    vertical-align: text-bottom;
+    margin-right: 2px;
+}
+
+.automatorwp-page > h2 {
+    margin-bottom: 0 !important;
+}
+
 /* -------------------------------------------
 	Licensing Settings
    ------------------------------------------- */
