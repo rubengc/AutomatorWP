@@ -46,7 +46,9 @@ function automatorwp_utilities_post_option( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Post:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any post', 'automatorwp' ),
@@ -82,36 +84,45 @@ function automatorwp_utilities_post_field( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Post:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any post', 'automatorwp' ),
         'post_type'         => 'post',
         'post_type_cb'      => '',
         'placeholder'       => __( 'Select a post', 'automatorwp' ),
-        'default'           => 'any'
+        'default'           => 'any',
     ) );
 
     if( ! is_array( $args['post_type'] ) ) {
         $args['post_type'] = array( $args['post_type'] );
     }
 
+    $attributes = array(
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        'data-placeholder' => $args['placeholder'],
+        'data-post-type' => implode(',', $args['post_type'] ),
+        'data-post-type-cb' => $args['post_type_cb'],
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
+
     return array(
         'name'              => $args['name'],
-        'type'              => 'select',
+        'desc'              => $args['desc'],
+        'type'              => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
         'classes'           => 'automatorwp-post-selector',
         'option_none'       => $args['option_none'],
         'option_none_value' => $args['option_none_value'],
         'option_none_label' => $args['option_none_label'],
         'post_type_cb'      => '',
-        'attributes'        => array(
-            'data-option-none' => $args['option_none'],
-            'data-option-none-value' => $args['option_none_value'],
-            'data-option-none-label' => $args['option_none_label'],
-            'data-placeholder' => $args['placeholder'],
-            'data-post-type' => implode(',', $args['post_type'] ),
-            'data-post-type-cb' => $args['post_type_cb'],
-        ),
+        'attributes'        => $attributes,
         'options_cb'        => 'automatorwp_options_cb_posts',
         'default'           => $args['default']
     );
@@ -131,7 +142,9 @@ function automatorwp_utilities_term_option( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Category:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any category', 'automatorwp' ),
@@ -162,7 +175,9 @@ function automatorwp_utilities_term_field( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Category:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any category', 'automatorwp' ),
@@ -171,21 +186,28 @@ function automatorwp_utilities_term_field( $args = array() ) {
         'default'           => 'any'
     ) );
 
+    $attributes = array(
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        'data-placeholder' => $args['placeholder'],
+        'data-taxonomy' => $args['taxonomy'],
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
+
     return array(
         'name' => $args['name'],
-        'type' => 'select',
+        'desc' => $args['desc'],
+        'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
         'classes' => 'automatorwp-term-selector',
         'option_none' => $args['option_none'],
         'option_none_value' => $args['option_none_value'],
         'option_none_label' => $args['option_none_label'],
         'taxonomy' => $args['taxonomy'],
-        'attributes' => array(
-            'data-option-none' => $args['option_none'],
-            'data-option-none-value' => $args['option_none_value'],
-            'data-option-none-label' => $args['option_none_label'],
-            'data-placeholder' => $args['placeholder'],
-            'data-taxonomy' => $args['taxonomy'],
-        ),
+        'attributes' => $attributes,
         'options_cb' => 'automatorwp_options_cb_terms',
         'default' => $args['default']
     );
@@ -205,13 +227,26 @@ function automatorwp_utilities_taxonomy_option( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Taxonomy:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => __( 'any taxonomy', 'automatorwp' ),
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any taxonomy', 'automatorwp' ),
         'placeholder'       => __( 'Select a taxonomy', 'automatorwp' ),
         'default'           => 'any'
     ) );
+
+    $attributes = array(
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        'data-placeholder' => $args['placeholder'],
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
 
     $term_args = $args;
 
@@ -224,17 +259,13 @@ function automatorwp_utilities_taxonomy_option( $args = array() ) {
         'fields' => array(
             'taxonomy' => array(
                 'name' => $args['name'],
-                'type' => 'select',
+                'desc' => $args['desc'],
+                'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
                 'classes' => 'automatorwp-taxonomy-selector',
                 'option_none' => $args['option_none'],
                 'option_none_value' => $args['option_none_value'],
                 'option_none_label' => $args['option_none_label'],
-                'attributes' => array(
-                    'data-option-none' => $args['option_none'],
-                    'data-option-none-value' => $args['option_none_value'],
-                    'data-option-none-label' => $args['option_none_label'],
-                    'data-placeholder' => $args['placeholder'],
-                ),
+                'attributes' => $attributes,
                 'options_cb' => 'automatorwp_options_cb_taxonomies',
                 'default' => $args['default']
             ),
@@ -258,8 +289,10 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
     $args = wp_parse_args( $args, array(
         'field'             => 'ajax_options',
         'name'              => '',
+        'desc'              => '',
         'action_cb'         => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => '',
@@ -268,24 +301,31 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
         'default'           => 'any'
     ) );
 
+    $attributes = array(
+        'data-action' => $args['action_cb'],
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        'data-placeholder' => $args['placeholder'],
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
+
     return array(
         'from' => $args['field'],
         'default' => $args['option_default'],
         'fields' => array(
             $args['field'] => array(
                 'name' => $args['name'],
-                'type' => 'select',
+                'desc' => $args['desc'],
+                'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
                 'classes' => 'automatorwp-ajax-selector',
                 'option_none' => $args['option_none'],
                 'option_none_value' => $args['option_none_value'],
                 'option_none_label' => $args['option_none_label'],
-                'attributes' => array(
-                    'data-action' => $args['action_cb'],
-                    'data-option-none' => $args['option_none'],
-                    'data-option-none-value' => $args['option_none_value'],
-                    'data-option-none-label' => $args['option_none_label'],
-                    'data-placeholder' => $args['placeholder'],
-                ),
+                'attributes' => $attributes,
                 'options_cb' => $args['options_cb'],
                 'default' => $args['default']
             )
@@ -307,12 +347,25 @@ function automatorwp_utilities_automation_option( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Automation:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any automation', 'automatorwp' ),
         'default'           => 'any'
     ) );
+
+    $attributes = array(
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        'data-table' => 'automatorwp_automations',
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
 
     return array(
         'from' => 'automation',
@@ -320,17 +373,13 @@ function automatorwp_utilities_automation_option( $args = array() ) {
         'fields' => array(
             'automation' => array(
                 'name' => $args['name'],
-                'type' => 'select',
+                'desc' => $args['desc'],
+                'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
                 'classes' => 'automatorwp-object-selector',
                 'option_none' => $args['option_none'],
                 'option_none_value' => $args['option_none_value'],
                 'option_none_label' => $args['option_none_label'],
-                'attributes' => array(
-                    'data-option-none' => $args['option_none'],
-                    'data-option-none-value' => $args['option_none_value'],
-                    'data-option-none-label' => $args['option_none_label'],
-                    'data-table' => 'automatorwp_automations',
-                ),
+                'attributes' => $attributes,
                 'options_cb' => 'automatorwp_options_cb_objects',
                 'default' => $args['default']
             )
@@ -352,7 +401,9 @@ function automatorwp_utilities_role_option( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Role:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any role', 'automatorwp' ),
@@ -382,7 +433,9 @@ function automatorwp_utilities_role_field( $args = array() ) {
 
     $args = wp_parse_args( $args, array(
         'name'              => __( 'Role:', 'automatorwp' ),
+        'desc'              => '',
         'option_default'    => '',
+        'multiple'          => false,
         'option_none'       => true,
         'option_none_value' => 'any',
         'option_none_label' => __( 'any role', 'automatorwp' ),
@@ -390,19 +443,26 @@ function automatorwp_utilities_role_field( $args = array() ) {
         'default'           => 'any'
     ) );
 
+    $attributes = array(
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        'data-placeholder' => $args['placeholder'],
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
+
     return array(
         'name' => $args['name'],
-        'type' => 'select',
+        'desc' => $args['desc'],
+        'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
         'classes' => 'automatorwp-selector',
         'option_none' => $args['option_none'],
         'option_none_value' => $args['option_none_value'],
         'option_none_label' => $args['option_none_label'],
-        'attributes' => array(
-            'data-option-none' => $args['option_none'],
-            'data-option-none-value' => $args['option_none_value'],
-            'data-option-none-label' => $args['option_none_label'],
-            'data-placeholder' => $args['placeholder'],
-        ),
+        'attributes' => $attributes,
         'options_cb' => 'automatorwp_options_cb_roles',
         'default' => $args['default']
     );
@@ -421,7 +481,7 @@ function automatorwp_utilities_role_field( $args = array() ) {
 function automatorwp_utilities_times_tag( $only_args = false ) {
 
     $args = array(
-        'label'     => __( 'Number of times' ),
+        'label'     => __( 'Number of times', 'automatorwp' ),
         'type'      => 'integer',
         'preview'   => '1',
     );

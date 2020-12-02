@@ -277,6 +277,11 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
      */
     public function post_id( $post_id, $action, $user_id, $event, $action_options, $automation ) {
 
+        // Bail if action type don't match this action
+        if( $action->type !== $this->action ) {
+            return $post_id;
+        }
+
         if( $this->post_id ) {
             $post_id = $this->post_id;
         }

@@ -3,7 +3,7 @@
  * CMB2 Select Multiple Field Type
  */
 
-if( ! function_exists( 'cmb2_render_automatowp_select_field_type' ) ) {
+if( ! function_exists( 'cmb2_render_automatorwp_select_field_type' ) ) {
 
     /**
      * Adds a custom field type for select multiples.
@@ -14,7 +14,7 @@ if( ! function_exists( 'cmb2_render_automatowp_select_field_type' ) ) {
      * @param  CMB2_Types $field_type_object The CMB2_Types object.
      * @return void
      */
-    function cmb2_render_automatowp_select_field_type( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
+    function cmb2_render_automatorwp_select_field_type( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
 
         // Parse args
         $attrs = $field_type_object->parse_args( 'select', array(
@@ -72,13 +72,13 @@ if( ! function_exists( 'cmb2_render_automatowp_select_field_type' ) ) {
         );
 
     }
-    add_action( 'cmb2_render_automatowp_select', 'cmb2_render_automatowp_select_field_type', 10, 5 );
+    add_action( 'cmb2_render_automatorwp_select', 'cmb2_render_automatorwp_select_field_type', 10, 5 );
 
 
     /**
      * Sanitize the selected value.
      */
-    function cmb2_sanitize_automatowp_select_callback( $override_value, $value ) {
+    function cmb2_sanitize_automatorwp_select_callback( $override_value, $value ) {
 
         // Sanitize multiple value
         if ( is_array( $value ) ) {
@@ -96,6 +96,6 @@ if( ! function_exists( 'cmb2_render_automatowp_select_field_type' ) ) {
         return sanitize_text_field( $value );
 
     }
-    add_filter( 'cmb2_sanitize_automatowp_select', 'cmb2_sanitize_automatowp_select_callback', 10, 2 );
+    add_filter( 'cmb2_sanitize_automatorwp_select', 'cmb2_sanitize_automatorwp_select_callback', 10, 2 );
 
 }

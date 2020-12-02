@@ -905,7 +905,7 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
         }
 
         // Select field
-        if( $field['type'] === 'select' ) {
+        if( in_array( $field['type'], array( 'select', 'automatorwp_select' ) ) ) {
 
             $options = array();
 

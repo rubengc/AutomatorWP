@@ -46,7 +46,7 @@ class AutomatorWP_WordPress_Anonymous_User extends AutomatorWP_Integration_Actio
      *
      * @since 1.0.0
      *
-     * @var array $result
+     * @var string $result
      */
     public $result = '';
 

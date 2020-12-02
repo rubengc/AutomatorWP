@@ -822,8 +822,14 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
 
+.automatorwp-select2 .select2-search--inline {
+    width: 100% !important;
+    margin: 0;
+}
+
 .automatorwp-select2 .select2-search--inline .select2-search__field {
     width: 100% !important;
+    margin: 4px 0 0 0;
 }
 
 .automatorwp-select2 .select2-selection--multiple .select2-selection__choice {
@@ -831,7 +837,16 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     border: 1px solid #ccd0d4 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
     border-radius: 2px !important;
-    padding: 2px 6px !important;
+    padding: 4px 8px !important;
+}
+
+.automatorwp-select2 .select2-selection--multiple .select2-selection__choice__remove {
+    font-size: 16px;
+    margin-left: -2px;
+}
+
+.automatorwp-select2 .select2-selection--multiple .select2-selection__rendered {
+    padding: 4px 8px !important;
 }
 
 /* -------------------------------------------
@@ -1317,9 +1332,14 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 
     #post-body.columns-2 #postbox-container-1 .automatorwp-has-tooltip input,
     #post-body.columns-2 #postbox-container-1 .automatorwp-has-tooltip select,
+    #post-body.columns-2 #postbox-container-1 .automatorwp-has-tooltip .automatorwp-select2,
     .automatorwp-has-tooltip input,
     .automatorwp-has-tooltip select {
         width: calc( 100% - 25px ) !important;
+    }
+
+    #post-body.columns-2 #postbox-container-1 .automatorwp-has-tooltip .automatorwp-select2 .select2-search--inline .select2-search__field {
+        width: 100% !important;
     }
 }
 

@@ -129,6 +129,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [WP PostRatings](https://wordpress.org/plugins/automatorwp-wp-postratings-integration/)
 * [WP Simple Pay](https://wordpress.org/plugins/automatorwp-wp-simple-pay-integration/)
 * [WP Ulike](https://wordpress.org/plugins/automatorwp-wp-ulike-integration/)
+* [WP User Manager](https://wordpress.org/plugins/automatorwp-wp-user-manager-integration/)
 * [WPAdverts](https://wordpress.org/plugins/automatorwp-wpadverts-integration/)
 * [wpDiscuz](https://wordpress.org/plugins/automatorwp-wpdiscuz-integration/)
 * [WPForms](https://wordpress.org/plugins/automatorwp-wpforms-integration/)
@@ -291,6 +292,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.3.5 ###
+
+* **Improvements**
+* Style improvements on automations UI.
+* **Bug Fixes**
+* Fixed a bug on license clear and deactivation functions causing that previous value gets back after save the licenses again.
+* **Developer Notes**
+* Added support for multiples selection on selectors fields.
 
 ### 1.3.4 ###
 
