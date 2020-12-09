@@ -435,7 +435,7 @@ function automatorwp_ajax_get_posts() {
     $where .= " AND p.post_title LIKE %s";
 
     // Post status conditional
-    $where .= " AND p.post_status IN( 'publish', 'private', 'inherit' )";
+    $where .= " AND p.post_status NOT IN ( 'pending', 'draft' )";
 
     // Check for trigger type extra conditionals
     if( isset( $_REQUEST['trigger_type'] ) ) {

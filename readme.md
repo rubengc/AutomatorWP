@@ -78,7 +78,7 @@ AutomatorWP is extremely flexible with plenty of hooks to add custom features an
 
 ## Integrated with your favorites WordPress plugins ##
 
-WordPress.org is home to some amazing integrations for AutomatorWP, including:
+AutomatorWP works with different WordPress plugins, including:
 
 * [ActiveMember360](https://wordpress.org/plugins/automatorwp-activemember360-integration/)
 * [AffiliateWP](https://wordpress.org/plugins/automatorwp-affiliatewp-integration/)
@@ -100,9 +100,7 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [Groundhogg](https://wordpress.org/plugins/automatorwp-groundhogg-integration/)
 * [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
 * [HappyForms](https://wordpress.org/plugins/automatorwp-happyforms-integration/)
-* [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [iMember360](https://wordpress.org/plugins/automatorwp-imember360-integration/)
-* [Integromat](https://automatorwp.com/add-ons/integromat/)
 * [Invite Anyone](https://wordpress.org/plugins/automatorwp-invite-anyone-integration/)
 * [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
 * [LearnPress](https://wordpress.org/plugins/automatorwp-learnpress-integration/)
@@ -134,6 +132,14 @@ WordPress.org is home to some amazing integrations for AutomatorWP, including:
 * [wpDiscuz](https://wordpress.org/plugins/automatorwp-wpdiscuz-integration/)
 * [WPForms](https://wordpress.org/plugins/automatorwp-wpforms-integration/)
 * [WPLMS](https://wordpress.org/plugins/automatorwp-wplms-integration/)
+
+= Integrated with external platforms =
+
+AutomatorWP can also work with external platforms, furthermore WordPress plugins, like these below:
+
+* [HubSpot](https://automatorwp.com/add-ons/hubspot/)
+* [Integromat](https://automatorwp.com/add-ons/integromat/)
+* [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 
 ## Powerful add-ons to extend AutomatorWP ##
@@ -292,6 +298,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.3.6 ###
+
+* **New Features**
+* New user tag: {reset_password_url} to pass the user reset password URL.
+* New user tag: {reset_password_link} to pass the user reset password HTML link.
+* New post tag: {post_url} to pass the post URL.
+* Changed {post_link} tag to pass the post HTML link.
+* Full support to RTL websites.
+* **Improvements**
+* Escape HTML tags on the tags selector previews.
+* Improved the post selector to support custom post statuses (like bbPress or BuddyBoss "hidden" status).
 
 ### 1.3.5 ###
 

@@ -45,6 +45,7 @@ function automatorwp_admin_register_scripts() {
 
     // Stylesheets
     wp_register_style( 'automatorwp-admin-css', AUTOMATORWP_URL . 'assets/css/automatorwp-admin' . $suffix . '.css', array( ), AUTOMATORWP_VER, 'all' );
+    wp_register_style( 'automatorwp-admin-rtl-css', AUTOMATORWP_URL . 'assets/css/automatorwp-admin-rtl' . $suffix . '.css', array( ), AUTOMATORWP_VER, 'all' );
 
     // Scripts
     wp_register_script( 'automatorwp-admin-functions-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin-functions' . $suffix . '.js', array( 'jquery', 'jquery-ui-dialog' ), AUTOMATORWP_VER, true );
@@ -67,6 +68,7 @@ function automatorwp_admin_enqueue_scripts( $hook ) {
 
     // Stylesheets
     wp_enqueue_style( 'automatorwp-admin-css' );
+    wp_enqueue_style( 'automatorwp-admin-rtl-css' );
 
     // Localize admin script
     wp_localize_script( 'automatorwp-admin-notices-js', 'automatorwp_admin_notices', array(

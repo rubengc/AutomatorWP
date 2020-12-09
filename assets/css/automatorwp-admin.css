@@ -1784,6 +1784,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     width: 100%;
     padding: 6px 0 !important;
     margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .automatorwp_licenses .cmb-td input {

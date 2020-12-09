@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-12-02 18:43+0100\n"
+"POT-Creation-Date: 2020-12-09 17:59+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -373,7 +373,7 @@ msgstr ""
 #: includes/custom-tables/automations.php:471
 #: includes/custom-tables/automations.php:486
 #: includes/custom-tables/automations.php:499
-#: includes/custom-tables/automations.php:519 includes/scripts.php:120
+#: includes/custom-tables/automations.php:519 includes/scripts.php:122
 msgid "Save"
 msgstr ""
 
@@ -2018,32 +2018,32 @@ msgstr ""
 msgid "User daily visits the site %1$s time(s)"
 msgstr ""
 
-#: includes/scripts.php:121
+#: includes/scripts.php:123
 msgid "Saving"
 msgstr ""
 
-#: includes/scripts.php:167
+#: includes/scripts.php:169
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:168 includes/utilities.php:95
+#: includes/scripts.php:170 includes/utilities.php:95
 msgid "Select a post"
 msgstr ""
 
-#: includes/scripts.php:169
+#: includes/scripts.php:171
 msgid "Select a term"
 msgstr ""
 
-#: includes/scripts.php:171
+#: includes/scripts.php:173
 #, php-format
 msgid "Select a %s"
 msgstr ""
 
-#: includes/scripts.php:172
+#: includes/scripts.php:174
 msgid "Select a user"
 msgstr ""
 
-#: includes/scripts.php:173
+#: includes/scripts.php:175
 msgid "Select an item"
 msgstr ""
 
@@ -2084,10 +2084,22 @@ msgid "Plugin"
 msgstr ""
 
 #: includes/tags.php:94
+msgid "Reset password URL"
+msgstr ""
+
+#: includes/tags.php:100
+msgid "Reset password link"
+msgstr ""
+
+#: includes/tags.php:102 includes/tags.php:483
+msgid "Click here to reset your password"
+msgstr ""
+
+#: includes/tags.php:106
 msgid "User Meta"
 msgstr ""
 
-#: includes/tags.php:96
+#: includes/tags.php:108
 msgid "User meta value, replace \"META_KEY\" by the user meta key"
 msgstr ""
 
@@ -2141,12 +2153,12 @@ msgstr ""
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:523 includes/utilities.php:622
+#: includes/utilities.php:523 includes/utilities.php:629
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:529
+#: includes/utilities.php:529 includes/utilities.php:544
 #, php-format
 msgid "%s Title"
 msgstr ""
@@ -2160,134 +2172,139 @@ msgstr ""
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:541 includes/utilities.php:676
+#: includes/utilities.php:541
+#, php-format
+msgid "%s Link"
+msgstr ""
+
+#: includes/utilities.php:548 includes/utilities.php:683
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:547
+#: includes/utilities.php:554
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:553 includes/utilities.php:652
+#: includes/utilities.php:560 includes/utilities.php:659
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:559 includes/utilities.php:670
+#: includes/utilities.php:566 includes/utilities.php:677
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:561 includes/utilities.php:672
+#: includes/utilities.php:568 includes/utilities.php:679
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:565
+#: includes/utilities.php:572
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:567
+#: includes/utilities.php:574
 msgid "The excerpt"
 msgstr ""
 
-#: includes/utilities.php:571
+#: includes/utilities.php:578
 #, php-format
 msgid "%s Status"
 msgstr ""
 
-#: includes/utilities.php:577
+#: includes/utilities.php:584
 #, php-format
 msgid "%s Parent ID"
 msgstr ""
 
-#: includes/utilities.php:583
+#: includes/utilities.php:590
 #, php-format
 msgid "%s Menu Order"
 msgstr ""
 
-#: includes/utilities.php:589
+#: includes/utilities.php:596
 #, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:591
+#: includes/utilities.php:598
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:607
+#: includes/utilities.php:614
 msgid "Comment"
 msgstr ""
 
-#: includes/utilities.php:628
+#: includes/utilities.php:635
 #, php-format
 msgid "%s Post ID"
 msgstr ""
 
-#: includes/utilities.php:634
+#: includes/utilities.php:641
 #, php-format
 msgid "%s Post Title"
 msgstr ""
 
-#: includes/utilities.php:636
+#: includes/utilities.php:643
 msgid "The post title"
 msgstr ""
 
-#: includes/utilities.php:640
+#: includes/utilities.php:647
 #, php-format
 msgid "%s User ID"
 msgstr ""
 
-#: includes/utilities.php:646
+#: includes/utilities.php:653
 #, php-format
 msgid "%s Author Name"
 msgstr ""
 
-#: includes/utilities.php:658
+#: includes/utilities.php:665
 #, php-format
 msgid "%s Author URL"
 msgstr ""
 
-#: includes/utilities.php:664
+#: includes/utilities.php:671
 #, php-format
 msgid "%s Author IP"
 msgstr ""
 
-#: includes/utilities.php:696
+#: includes/utilities.php:703
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:699
+#: includes/utilities.php:706
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:700
+#: includes/utilities.php:707
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:701
+#: includes/utilities.php:708
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:702
+#: includes/utilities.php:709
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:703
+#: includes/utilities.php:710
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:704
+#: includes/utilities.php:711
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:871
+#: includes/utilities.php:878
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:872
+#: includes/utilities.php:879
 msgid "Hide options"
 msgstr ""

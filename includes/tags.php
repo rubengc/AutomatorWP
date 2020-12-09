@@ -90,6 +90,18 @@ function automatorwp_get_tags() {
         'preview'   => __( 'Plugin', 'automatorwp' ),
     );
 
+    $tags['user']['tags']['reset_password_url'] = array(
+        'label'     => __( 'Reset password URL', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => get_option( 'home' ) . '/wp-login.php?action=rp',
+    );
+
+    $tags['user']['tags']['reset_password_link'] = array(
+        'label'     => __( 'Reset password link', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => '<a href="' . get_option( 'home' ) . '/wp-login.php?action=rp' . '">' . __( 'Click here to reset your password', 'automatorwp' ) . '</a>',
+    );
+
     $tags['user']['tags']['user_meta:META_KEY'] = array(
         'label'     => __( 'User Meta', 'automatorwp' ),
         'type'      => 'text',
@@ -281,9 +293,9 @@ function automatorwp_get_tags_selector_group_html( $tags_group_id, $tags_group )
 
         <?php foreach( $tags_group['tags'] as $tag_id => $tag ) :
             // Formatted text to make tags more visible
-            $text = '<strong>' . $tag['label'] . '</strong> <span>' . ( isset( $tag['preview'] ) ? $tag['preview'] : '' ) . '</span>'; ?>
+            $text = '<strong>' . esc_attr( $tag['label'] ) . '</strong> <span>' . ( isset( $tag['preview'] ) ? htmlspecialchars( esc_attr( $tag['preview'] ) ) : '' ) . '</span>'; ?>
 
-            <option value="<?php echo esc_attr( $tag_id ); ?>" data-text="<?php echo esc_attr( $text ); ?>"><?php echo $tag['label']; ?></option>
+            <option value="<?php echo esc_attr( $tag_id ); ?>" data-text="<?php echo $text; ?>"><?php echo $tag['label']; ?></option>
         <?php endforeach; ?>
 
     </optgroup>
@@ -459,6 +471,19 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
         case 'last_name':
             $replacement = ( $user ? $user->last_name : '' );
             break;
+        case 'reset_password_url':
+        case 'reset_password_link':
+            $key = ( $user ?  get_password_reset_key( $user ) : '' );
+            $login = ( $user ?  rawurlencode( $user->user_login ) : '' );
+            $url = ( $user ? network_site_url( 'wp-login.php?action=rp&key=' . $key . '&login=' . $login, 'login' ) : '' );
+
+            if( $tag_name === 'reset_password_url' ) {
+                $replacement = $url;
+            } else if( $tag_name === 'reset_password_link' ) {
+                $replacement = '<a href="' . $url . '">' . __( 'Click here to reset your password', 'automatorwp' ) . '</a>';
+            }
+
+            break;
     }
 
     /**
@@ -582,8 +607,11 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
             case 'post_title':
                 $replacement = ( $post ? $post->post_title : '' );
                 break;
-            case 'post_link':
+            case 'post_url':
                 $replacement = (  $post ? get_permalink( $post->ID ) : '' );
+                break;
+            case 'post_link':
+                $replacement = (  $post ? '<a href="' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>' : '' );
                 break;
             case 'post_type':
                 $replacement = (  $post ? $post->post_type : '' );

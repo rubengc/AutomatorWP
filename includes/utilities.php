@@ -530,11 +530,18 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'type'      => 'text',
             'preview'   => __( 'The title', 'automatorwp' ),
         ),
-        'post_link' => array(
+        'post_url' => array(
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s URL', 'automatorwp' ), $post_label ),
             'type'      => 'text',
             'preview'   => get_option( 'home' ) . '/sample-' . strtolower( $post_label ),
+        ),
+        'post_link' => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Link', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            /* translators: %s: Post label (by default: Post). */
+            'preview'   => '<a href="' . get_option( 'home' ) . '/sample-' . strtolower( $post_label ) . '">' . sprintf( __( '%s Title', 'automatorwp' ), $post_label ) . '</a>',
         ),
         'post_type'  => array(
             /* translators: %s: Post label (by default: Post). */
