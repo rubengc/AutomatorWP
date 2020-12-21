@@ -44,8 +44,8 @@ function automatorwp_options_cb_posts( $field ) {
 
         foreach( $value as $post_id ) {
 
-            // Skip option none
-            if( $post_id === $none_value ) {
+            // Skip option none and custom
+            if( isset( $options[$post_id] ) ) {
                 continue;
             }
 
@@ -82,8 +82,8 @@ function automatorwp_options_cb_terms( $field ) {
 
         foreach( $value as $term_id ) {
 
-            // Skip option none
-            if( $term_id === $none_value ) {
+            // Skip option none and custom
+            if( isset( $options[$term_id] ) ) {
                 continue;
             }
 
@@ -334,9 +334,6 @@ function automatorwp_options_cb_objects( $field ) {
     $none_label = __( 'any item', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
-    // Update option none value with field attributes
-    $none_value = ( isset( $field->args['option_none_value'] ) ? $field->args['option_none_value'] : $none_value );
-
     // Ensure that required attributes are set
     if( ! isset( $field->args['attributes'] ) ) {
         return $options;
@@ -357,8 +354,8 @@ function automatorwp_options_cb_objects( $field ) {
 
         foreach( $value as $object_id ) {
 
-            // Skip option none
-            if( $object_id === $none_value ) {
+            // Skip option none and custom
+            if( isset( $options[$object_id] ) ) {
                 continue;
             }
 
@@ -391,6 +388,16 @@ function automatorwp_options_cb_objects( $field ) {
 function automatorwp_options_cb_none_option( $field, $default_value = '', $default_label = '' ) {
 
     $options = array();
+
+    // Setup option custom
+    if( isset( $field->args['option_custom'] ) && $field->args['option_custom'] ) {
+
+        $custom_value = ( isset( $field->args['option_custom_value'] ) ? $field->args['option_custom_value'] : 'custom' );
+        $custom_label = ( isset( $field->args['option_custom_label'] ) ? $field->args['option_custom_label'] : __( 'Use a custom value', 'automatorwp' ) );
+
+        $options[$custom_value] = $custom_label;
+    }
+
     $none_value = $default_value;
     $none_label = $default_label;
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-12-09 17:59+0100\n"
+"POT-Creation-Date: 2020-12-21 12:50+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -274,11 +274,11 @@ msgstr ""
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:790
+#: includes/ajax-functions.php:750
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:870 includes/cmb2.php:367
+#: includes/ajax-functions.php:830 includes/cmb2.php:364
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:252
 #: includes/custom-tables/logs.php:327 includes/custom-tables/logs.php:697
@@ -454,16 +454,16 @@ msgstr ""
 msgid "Automation for anonymous users. Ideal for creating new users or for modifying existing users."
 msgstr ""
 
-#: includes/cmb2.php:37 includes/utilities.php:54 includes/utilities.php:92
+#: includes/cmb2.php:37 includes/utilities.php:52 includes/utilities.php:89
 msgid "any post"
 msgstr ""
 
-#: includes/cmb2.php:75 includes/utilities.php:150 includes/utilities.php:183
+#: includes/cmb2.php:75 includes/utilities.php:135 includes/utilities.php:171
 msgid "any category"
 msgstr ""
 
-#: includes/cmb2.php:115 includes/filters.php:70 includes/utilities.php:231
-#: includes/utilities.php:235
+#: includes/cmb2.php:115 includes/filters.php:70 includes/utilities.php:210
+#: includes/utilities.php:213
 msgid "any taxonomy"
 msgstr ""
 
@@ -480,12 +480,16 @@ msgstr ""
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:292 includes/utilities.php:409 includes/utilities.php:441
+#: includes/cmb2.php:292 includes/utilities.php:369 includes/utilities.php:401
 msgid "any role"
 msgstr ""
 
 #: includes/cmb2.php:334
 msgid "any item"
+msgstr ""
+
+#: includes/cmb2.php:396 includes/utilities.php:469
+msgid "Use a custom value"
 msgstr ""
 
 #: includes/custom-tables.php:29 includes/custom-tables/logs.php:158
@@ -595,7 +599,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: includes/custom-tables/logs.php:160 includes/utilities.php:508
+#: includes/custom-tables/logs.php:160 includes/utilities.php:551
 msgid "Post"
 msgstr ""
 
@@ -636,7 +640,7 @@ msgid "Trigger assigned to this log."
 msgstr ""
 
 #: includes/custom-tables/logs.php:498 includes/custom-tables/logs.php:514
-#: includes/custom-tables/logs.php:525 includes/utilities.php:349
+#: includes/custom-tables/logs.php:525 includes/utilities.php:312
 msgid "Automation:"
 msgstr ""
 
@@ -661,7 +665,7 @@ msgid "Automation assigned to this log."
 msgstr ""
 
 #: includes/custom-tables/logs.php:536 includes/utilities.php:48
-#: includes/utilities.php:86
+#: includes/utilities.php:85
 msgid "Post:"
 msgstr ""
 
@@ -846,7 +850,7 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:856
 #: includes/integrations/wordpress/actions/create-user.php:101
 #: includes/integrations/wordpress/actions/create-user.php:373
-#: includes/utilities.php:403 includes/utilities.php:435
+#: includes/utilities.php:363 includes/utilities.php:395
 msgid "Role:"
 msgstr ""
 
@@ -2026,7 +2030,7 @@ msgstr ""
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:170 includes/utilities.php:95
+#: includes/scripts.php:170 includes/utilities.php:51 includes/utilities.php:88
 msgid "Select a post"
 msgstr ""
 
@@ -2117,194 +2121,215 @@ msgstr ""
 msgid "Number of times:"
 msgstr ""
 
-#: includes/utilities.php:144 includes/utilities.php:177
+#: includes/utilities.php:53 includes/utilities.php:90
+#: includes/utilities.php:436
+msgid "Post ID"
+msgstr ""
+
+#: includes/utilities.php:132 includes/utilities.php:168
 msgid "Category:"
 msgstr ""
 
-#: includes/utilities.php:185
+#: includes/utilities.php:134 includes/utilities.php:170
 msgid "Select a category"
 msgstr ""
 
-#: includes/utilities.php:229
+#: includes/utilities.php:136 includes/utilities.php:172
+msgid "Category ID"
+msgstr ""
+
+#: includes/utilities.php:209
 msgid "Taxonomy:"
 msgstr ""
 
-#: includes/utilities.php:236
+#: includes/utilities.php:212
 msgid "Select a taxonomy"
 msgstr ""
 
-#: includes/utilities.php:253
+#: includes/utilities.php:214
+msgid "Taxonomy"
+msgstr ""
+
+#: includes/utilities.php:221
 msgid "Term:"
 msgstr ""
 
-#: includes/utilities.php:254
+#: includes/utilities.php:222
 msgid "any term"
 msgstr ""
 
-#: includes/utilities.php:355
+#: includes/utilities.php:223
+msgid "Term ID"
+msgstr ""
+
+#: includes/utilities.php:313
 msgid "any automation"
 msgstr ""
 
-#: includes/utilities.php:442
+#: includes/utilities.php:314
+msgid "Automation ID"
+msgstr ""
+
+#: includes/utilities.php:402
 msgid "Select a role"
 msgstr ""
 
-#: includes/utilities.php:484
+#: includes/utilities.php:527
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:523 includes/utilities.php:629
+#: includes/utilities.php:566 includes/utilities.php:672
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:529 includes/utilities.php:544
+#: includes/utilities.php:572 includes/utilities.php:587
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:531
-msgid "The title"
-msgstr ""
-
-#: includes/utilities.php:535
-#, php-format
-msgid "%s URL"
-msgstr ""
-
-#: includes/utilities.php:541
-#, php-format
-msgid "%s Link"
-msgstr ""
-
-#: includes/utilities.php:548 includes/utilities.php:683
-#, php-format
-msgid "%s Type"
-msgstr ""
-
-#: includes/utilities.php:554
-#, php-format
-msgid "%s Author ID"
-msgstr ""
-
-#: includes/utilities.php:560 includes/utilities.php:659
-#, php-format
-msgid "%s Author Email"
-msgstr ""
-
-#: includes/utilities.php:566 includes/utilities.php:677
-#, php-format
-msgid "%s Content"
-msgstr ""
-
-#: includes/utilities.php:568 includes/utilities.php:679
-msgid "The content"
-msgstr ""
-
-#: includes/utilities.php:572
-#, php-format
-msgid "%s Excerpt"
-msgstr ""
-
 #: includes/utilities.php:574
-msgid "The excerpt"
+msgid "The title"
 msgstr ""
 
 #: includes/utilities.php:578
 #, php-format
-msgid "%s Status"
+msgid "%s URL"
 msgstr ""
 
 #: includes/utilities.php:584
 #, php-format
+msgid "%s Link"
+msgstr ""
+
+#: includes/utilities.php:591 includes/utilities.php:726
+#, php-format
+msgid "%s Type"
+msgstr ""
+
+#: includes/utilities.php:597
+#, php-format
+msgid "%s Author ID"
+msgstr ""
+
+#: includes/utilities.php:603 includes/utilities.php:702
+#, php-format
+msgid "%s Author Email"
+msgstr ""
+
+#: includes/utilities.php:609 includes/utilities.php:720
+#, php-format
+msgid "%s Content"
+msgstr ""
+
+#: includes/utilities.php:611 includes/utilities.php:722
+msgid "The content"
+msgstr ""
+
+#: includes/utilities.php:615
+#, php-format
+msgid "%s Excerpt"
+msgstr ""
+
+#: includes/utilities.php:617
+msgid "The excerpt"
+msgstr ""
+
+#: includes/utilities.php:621
+#, php-format
+msgid "%s Status"
+msgstr ""
+
+#: includes/utilities.php:627
+#, php-format
 msgid "%s Parent ID"
 msgstr ""
 
-#: includes/utilities.php:590
+#: includes/utilities.php:633
 #, php-format
 msgid "%s Menu Order"
 msgstr ""
 
-#: includes/utilities.php:596
+#: includes/utilities.php:639
 #, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:598
+#: includes/utilities.php:641
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:614
+#: includes/utilities.php:657
 msgid "Comment"
 msgstr ""
 
-#: includes/utilities.php:635
+#: includes/utilities.php:678
 #, php-format
 msgid "%s Post ID"
 msgstr ""
 
-#: includes/utilities.php:641
+#: includes/utilities.php:684
 #, php-format
 msgid "%s Post Title"
 msgstr ""
 
-#: includes/utilities.php:643
+#: includes/utilities.php:686
 msgid "The post title"
 msgstr ""
 
-#: includes/utilities.php:647
+#: includes/utilities.php:690
 #, php-format
 msgid "%s User ID"
 msgstr ""
 
-#: includes/utilities.php:653
+#: includes/utilities.php:696
 #, php-format
 msgid "%s Author Name"
 msgstr ""
 
-#: includes/utilities.php:665
+#: includes/utilities.php:708
 #, php-format
 msgid "%s Author URL"
 msgstr ""
 
-#: includes/utilities.php:671
+#: includes/utilities.php:714
 #, php-format
 msgid "%s Author IP"
 msgstr ""
 
-#: includes/utilities.php:703
+#: includes/utilities.php:746
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:706
+#: includes/utilities.php:749
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:707
+#: includes/utilities.php:750
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:708
+#: includes/utilities.php:751
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:709
+#: includes/utilities.php:752
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:710
+#: includes/utilities.php:753
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:711
+#: includes/utilities.php:754
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:878
+#: includes/utilities.php:921
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:879
+#: includes/utilities.php:922
 msgid "Hide options"
 msgstr ""

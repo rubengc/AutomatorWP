@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -148,6 +148,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
+* [Zoom](https://wordpress.org/plugins/automatorwp-zoom-integration/)
 
 = Powerful add-ons to extend AutomatorWP =
 
@@ -296,6 +297,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.3.7 =
+
+* **New Features**
+* Added the ability to place custom values on selector fields using the option "Use a custom value".
+* **Improvements**
+* Updated deprecated jQuery functions.
 
 = 1.3.6 =
 

@@ -265,8 +265,16 @@ function automatorwp_get_action_stored_options( $action_id, $single_level = true
 
             $value = ct_get_object_meta( $object->id, $field_id, true );
 
+            // Fallback to default attribute if value is empty
             if( empty( $value ) && isset( $field['default'] ) ) {
                 $value = $field['default'];
+            }
+
+
+            if( isset( $field['option_custom'] ) && $field['option_custom']     // If option_custom is enabled
+                && $value === $field['option_custom_value']                     // Value is setup to use the custom value
+                && isset( $option_args['fields'][$field_id . '_custom'] ) ) {   // Isset the custom field
+                $value = ct_get_object_meta( $object->id, $field_id . '_custom', true );
             }
 
             if( $single_level ) {

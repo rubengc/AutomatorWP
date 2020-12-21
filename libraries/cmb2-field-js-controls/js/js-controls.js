@@ -1,6 +1,6 @@
 (function( $ ) {
     // Edit link
-    $('a.cmb-field-js-controls-edit').click( function( e ) {
+    $('a.cmb-field-js-controls-edit').on( 'click', function( e ) {
         e.preventDefault();
 
         var field_row = $(this).parent().next('.cmb-row');
@@ -20,7 +20,7 @@
     });
 
     // Save link
-    $('a.cmb-field-js-controls-save').click( function( e ) {
+    $('a.cmb-field-js-controls-save').on( 'click', function( e ) {
         e.preventDefault();
 
         var field_row = $(this).parent().prev('.cmb-row');
@@ -50,7 +50,7 @@
     });
 
     // Cancel link
-    $('a.cmb-field-js-controls-cancel').click( function( e ) {
+    $('a.cmb-field-js-controls-cancel').on( 'click', function( e ) {
         e.preventDefault();
 
         var field_row = $(this).parent().prev('.cmb-row');

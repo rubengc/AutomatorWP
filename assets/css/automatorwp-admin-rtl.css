@@ -48,6 +48,21 @@ body.rtl .automatorwp-automation-item.automatorwp-action textarea:not(.wp-editor
 }
 
 /* -------------------------------------------
+    Selector Custom Input
+   ------------------------------------------- */
+
+body.rtl .automatorwp-selector-custom-input .cmb-td {
+    margin-left: 0;
+    margin-right: 30px;
+}
+
+body.rtl .automatorwp-selector-custom-input .cmb-td:before {
+    transform: none;
+    left: auto;
+    right: -23px;
+}
+
+/* -------------------------------------------
     Buttons
    ------------------------------------------- */
 

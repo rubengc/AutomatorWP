@@ -585,7 +585,7 @@ function automatorwp_ajax_get_posts() {
 add_action( 'wp_ajax_automatorwp_get_posts', 'automatorwp_ajax_get_posts' );
 
 /**
- * Prepend the option none to the posts results
+ * Parse the posts results to prepend custom options
  *
  * @since 1.0.0
  *
@@ -593,30 +593,10 @@ add_action( 'wp_ajax_automatorwp_get_posts', 'automatorwp_ajax_get_posts' );
  *
  * @return array
  */
-function automatorwp_ajax_get_posts_results_option_none( $results ) {
-
-    global $wpdb;
-
-    // Pull back the search string
-    $search = isset( $_REQUEST['q'] ) ? $wpdb->esc_like( $_REQUEST['q'] ) : '';
-    $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
-    $option_none = isset( $_REQUEST['option_none'] ) ? absint( $_REQUEST['option_none'] ) : 0;
-    $option_none_value = isset( $_REQUEST['option_none_value'] ) ? sanitize_text_field( $_REQUEST['option_none_value'] ) : '';
-    $option_none_label = isset( $_REQUEST['option_none_label'] ) ? sanitize_text_field( $_REQUEST['option_none_label'] ) : '';
-
-    if( $option_none && ! empty( $option_none_value ) && ! empty( $option_none_label ) ) {
-
-        if( ( $page === 1 && empty( $search ) )             // Prepend option none if is first page
-            || ( strpos( $option_none_label , $search ) )   // Prepend if search matches option none label
-        ) {
-            array_unshift( $results, array( 'ID' => $option_none_value, 'post_title' => $option_none_label ) );
-        }
-
-    }
-
-    return $results;
+function automatorwp_ajax_parse_posts_results( $results ) {
+    return automatorwp_ajax_parse_extra_options( $results, 'ID', 'post_title' );
 }
-add_filter( 'automatorwp_ajax_get_posts_results', 'automatorwp_ajax_get_posts_results_option_none' );
+add_filter( 'automatorwp_ajax_get_posts_results', 'automatorwp_ajax_parse_posts_results' );
 
 /**
  * AJAX Helper for selecting terms
@@ -680,7 +660,7 @@ function automatorwp_ajax_get_terms() {
 add_action( 'wp_ajax_automatorwp_get_terms', 'automatorwp_ajax_get_terms' );
 
 /**
- * Prepend the option none to the terms results
+ * Parse the terms results to prepend custom options
  *
  * @since 1.0.0
  *
@@ -688,30 +668,10 @@ add_action( 'wp_ajax_automatorwp_get_terms', 'automatorwp_ajax_get_terms' );
  *
  * @return array
  */
-function automatorwp_ajax_get_terms_results_option_none( $results ) {
-
-    global $wpdb;
-
-    // Pull back the search string
-    $search = isset( $_REQUEST['q'] ) ? $wpdb->esc_like( $_REQUEST['q'] ) : '';
-    $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
-    $option_none = isset( $_REQUEST['option_none'] ) ? absint( $_REQUEST['option_none'] ) : 0;
-    $option_none_value = isset( $_REQUEST['option_none_value'] ) ? sanitize_text_field( $_REQUEST['option_none_value'] ) : '';
-    $option_none_label = isset( $_REQUEST['option_none_label'] ) ? sanitize_text_field( $_REQUEST['option_none_label'] ) : '';
-
-    if( $option_none && ! empty( $option_none_value ) && ! empty( $option_none_label ) ) {
-
-        if( ( $page === 1 && empty( $search ) )             // Prepend option none if is first page
-            || ( strpos( $option_none_label , $search ) )   // Prepend if search matches option none label
-        ) {
-            array_unshift( $results, array( 'term_id' => $option_none_value, 'name' => $option_none_label ) );
-        }
-
-    }
-
-    return $results;
+function automatorwp_ajax_parse_terms_results( $results ) {
+    return automatorwp_ajax_parse_extra_options( $results, 'term_id', 'name' );
 }
-add_filter( 'automatorwp_ajax_get_terms_results', 'automatorwp_ajax_get_terms_results_option_none' );
+add_filter( 'automatorwp_ajax_get_terms_results', 'automatorwp_ajax_parse_terms_results' );
 
 /**
  * AJAX Helper for selecting users
@@ -880,7 +840,7 @@ function automatorwp_ajax_get_automations_results( $results, $ct_table ) {
 add_filter( 'automatorwp_ajax_get_objects_results', 'automatorwp_ajax_get_automations_results', 10, 2 );
 
 /**
- * Prepend the option none to the objects results
+ * Parse the objects results to prepend custom options
  *
  * @since 1.0.0
  *
@@ -888,47 +848,36 @@ add_filter( 'automatorwp_ajax_get_objects_results', 'automatorwp_ajax_get_automa
  *
  * @return array
  */
-function automatorwp_ajax_get_objects_results_option_none( $results ) {
-
-    global $wpdb;
-
-    // Pull back the search string
-    $search = isset( $_REQUEST['q'] ) ? $wpdb->esc_like( $_REQUEST['q'] ) : '';
-    $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
-    $option_none = isset( $_REQUEST['option_none'] ) ? absint( $_REQUEST['option_none'] ) : 0;
-    $option_none_value = isset( $_REQUEST['option_none_value'] ) ? sanitize_text_field( $_REQUEST['option_none_value'] ) : '';
-    $option_none_label = isset( $_REQUEST['option_none_label'] ) ? sanitize_text_field( $_REQUEST['option_none_label'] ) : '';
-
-    if( $option_none && ! empty( $option_none_value ) && ! empty( $option_none_label ) ) {
-
-        if( ( $page === 1 && empty( $search ) )             // Prepend option none if is first page
-            || ( strpos( $option_none_label , $search ) )   // Prepend if search matches option none label
-        ) {
-            array_unshift( $results, array( 'id' => $option_none_value, 'text' => $option_none_label ) );
-        }
-
-    }
-
-    return $results;
+function automatorwp_ajax_parse_objects_results( $results ) {
+    return automatorwp_ajax_parse_extra_options( $results );
 }
-add_filter( 'automatorwp_ajax_get_objects_results', 'automatorwp_ajax_get_objects_results_option_none', 11 );
+add_filter( 'automatorwp_ajax_get_objects_results', 'automatorwp_ajax_parse_objects_results', 11 );
 
 /**
  * Helper function to prepend the option none to the ajax results
  *
  * @since 1.0.0
  *
+ * @deprecated use automatorwp_ajax_parse_extra_options() instead
+ * Note: Keep for backward compatibility
+ *
  * @param array $results
  *
  * @return array
  */
 function automatorwp_ajax_get_ajax_results_option_none( $results ) {
+    return automatorwp_ajax_parse_extra_options( $results );
+}
+
+function automatorwp_ajax_parse_extra_options( $results, $id_key = 'id', $text_key = 'text' ) {
 
     global $wpdb;
 
     // Pull back the search string
     $search = isset( $_REQUEST['q'] ) ? $wpdb->esc_like( $_REQUEST['q'] ) : '';
     $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
+
+    // Option none
     $option_none = isset( $_REQUEST['option_none'] ) ? absint( $_REQUEST['option_none'] ) : 0;
     $option_none_value = isset( $_REQUEST['option_none_value'] ) ? sanitize_text_field( $_REQUEST['option_none_value'] ) : '';
     $option_none_label = isset( $_REQUEST['option_none_label'] ) ? sanitize_text_field( $_REQUEST['option_none_label'] ) : '';
@@ -938,10 +887,26 @@ function automatorwp_ajax_get_ajax_results_option_none( $results ) {
         if( ( $page === 1 && empty( $search ) )             // Prepend option none if is first page
             || ( strpos( $option_none_label , $search ) )   // Prepend if search matches option none label
         ) {
-            array_unshift( $results, array( 'id' => $option_none_value, 'text' => $option_none_label ) );
+            array_unshift( $results, array( $id_key => $option_none_value, $text_key => $option_none_label ) );
+        }
+
+    }
+
+    // Option custom
+    $option_custom = isset( $_REQUEST['option_custom'] ) ? absint( $_REQUEST['option_custom'] ) : 0;
+    $option_custom_value = isset( $_REQUEST['option_custom_value'] ) ? sanitize_text_field( $_REQUEST['option_custom_value'] ) : '';
+    $option_custom_label = isset( $_REQUEST['option_custom_label'] ) ? sanitize_text_field( $_REQUEST['option_custom_label'] ) : '';
+
+    if( $option_custom && ! empty( $option_custom_value ) && ! empty( $option_custom_label ) ) {
+
+        if( ( $page === 1 && empty( $search ) )                 // Prepend option custom if is first page
+            || ( strpos( $option_custom_label , $search ) )     // Prepend if search matches option custom label
+        ) {
+            array_unshift( $results, array( $id_key => $option_custom_value, $text_key => $option_custom_label ) );
         }
 
     }
 
     return $results;
+
 }

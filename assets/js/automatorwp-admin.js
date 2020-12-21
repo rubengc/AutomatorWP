@@ -254,7 +254,7 @@
         var choice = $(this).data('choice');
 
         // Update the select value
-        option_form.find('.cmb2-id-run-actions-on select').val( choice ).change();
+        option_form.find('.cmb2-id-run-actions-on select').val( choice ).trigger('change');
 
         // Hide the choices
         $(this).closest('.automatorwp-anonymous-user-choices').slideUp('fast');
@@ -281,7 +281,7 @@
         var option_form = item.find('.automatorwp-option-form-container[data-option="user"]');
 
         // Trigger change on select
-        option_form.find('.cmb2-id-run-actions-on select').change();
+        option_form.find('.cmb2-id-run-actions-on select').trigger('change');
 
         // Hide resume
         $(this).closest('.automatorwp-anonymous-user-resume').slideUp('fast');
@@ -410,7 +410,7 @@
         $('.automatorwp-anonymous-user-choices').slideDown('fast');
 
         // Update the select value
-        option_form.find('.cmb2-id-run-actions-on select').val('').change();
+        option_form.find('.cmb2-id-run-actions-on select').val('').trigger('change');
     });
 
     // -----------------------------------------------
@@ -736,13 +736,13 @@
     // Fix radio label click
     $('body').on('click', '.automatorwp-option-form input[type="radio"] + label', function(e) {
         e.preventDefault();
-        $(this).prev('input').prop('checked', true).change();
+        $(this).prev('input').prop('checked', true).trigger('change');
     });
 
     // Fix checkbox label click
     $('body').on('click', '.automatorwp-option-form input[type="checkbox"] + label', function(e) {
         e.preventDefault();
-        $(this).prev('input').prop( 'checked', ( ! $(this).prev('input').prop('checked') ) ).change();
+        $(this).prev('input').prop( 'checked', ( ! $(this).prev('input').prop('checked') ) ).trigger('change');
     });
 
     // Fix repeatable fields selector
@@ -917,10 +917,64 @@
         var taxonomy_selector = option_form.find('.automatorwp-taxonomy-selector');
 
         if( taxonomy_selector !== undefined ) {
-
             taxonomy_selector.addClass('is-option-change');
-            taxonomy_selector.find('select.select2-hidden-accessible').change();
+            taxonomy_selector.find('select.select2-hidden-accessible').trigger('change');
+        }
 
+    });
+
+    // -----------------------------------------------
+    // Selector Custom Input
+    // -----------------------------------------------
+
+    // Change the selector
+    $('body').on('change', 'select', function(e) {
+
+        var row = $(this).closest('.cmb-row');
+        var custom_input_row = row.next('.automatorwp-selector-custom-input');
+
+        // Bail if next field is not a term selector
+        if( custom_input_row === undefined ) {
+            return;
+        }
+
+        var first_change = row.hasClass('is-option-change');
+
+        if( $(this).val() === 'custom' ) {
+            // Show the custom input
+            if( first_change ) {
+                custom_input_row.show();
+            } else {
+                custom_input_row.slideDown('fast');
+            }
+        } else {
+            // Hide the custom input
+            if( first_change ) {
+                custom_input_row.hide();
+            } else {
+                custom_input_row.slideUp('fast');
+            }
+        }
+
+        row.removeClass('is-option-change');
+    });
+
+    // On click on an option, check if form contains a selector custom input
+    $('body').on('click', '.automatorwp-automation-item-label > .automatorwp-option', function(e) {
+
+        var item = $(this).closest('.automatorwp-automation-item');
+        var option = $(this).data('option');
+        var option_form = item.find('.automatorwp-option-form-container[data-option="' + option + '"]');
+        var custom_input_row = option_form.find('.automatorwp-selector-custom-input');
+
+        if( custom_input_row !== undefined ) {
+
+            var selector_row = custom_input_row.prev('.cmb-row');
+
+            if( selector_row !== undefined ) {
+                selector_row.addClass('is-option-change');
+                selector_row.find('select.select2-hidden-accessible').trigger('change');
+            }
         }
 
     });

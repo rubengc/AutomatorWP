@@ -56,6 +56,9 @@ function automatorwp_post_selector( $this ) {
                     option_none: $this.data('option-none'),
                     option_none_value: $this.data('option-none-value'),
                     option_none_label: $this.data('option-none-label'),
+                    option_custom: $this.data('option-custom'),
+                    option_custom_value: $this.data('option-custom-value'),
+                    option_custom_label: $this.data('option-custom-label'),
                 };
             },
             processResults: automatorwp_select2_posts_process_results
@@ -102,6 +105,9 @@ function automatorwp_term_selector( $this ) {
                     option_none: $this.data('option-none'),
                     option_none_value: $this.data('option-none-value'),
                     option_none_label: $this.data('option-none-label'),
+                    option_custom: $this.data('option-custom'),
+                    option_custom_value: $this.data('option-custom-value'),
+                    option_custom_label: $this.data('option-custom-label'),
                 };
             },
             processResults: automatorwp_select2_terms_process_results
@@ -190,6 +196,9 @@ function automatorwp_object_selector( $this ) {
                     option_none: $this.data('option-none'),
                     option_none_value: $this.data('option-none-value'),
                     option_none_label: $this.data('option-none-label'),
+                    option_custom: $this.data('option-custom'),
+                    option_custom_value: $this.data('option-custom-value'),
+                    option_custom_label: $this.data('option-custom-label'),
                 };
             },
             processResults: automatorwp_select2_objects_process_results
@@ -236,6 +245,9 @@ function automatorwp_ajax_selector( $this ) {
                     option_none: $this.data('option-none'),
                     option_none_value: $this.data('option-none-value'),
                     option_none_label: $this.data('option-none-label'),
+                    option_custom: $this.data('option-custom'),
+                    option_custom_value: $this.data('option-custom-value'),
+                    option_custom_label: $this.data('option-custom-label'),
                 };
             },
             processResults: automatorwp_select2_ajax_process_results
@@ -776,7 +788,7 @@ function automatorwp_download_file( content, filename, extension, mime_type = ''
 
             // Append the link element and trigger the click event
             document.body.appendChild( link );
-            link.click();
+            link.trigger('click');
 
             // Finally remove the link element
             document.body.removeChild( link );
@@ -840,10 +852,10 @@ function automatorwp_insert_at_caret(input, content) {
         if ( document.selection ) {
             // Internet Explorer
 
-            this.focus();
+            this.trigger('focus');
             var sel = document.selection.createRange();
             sel.text = content;
-            this.focus();
+            this.trigger('focus');
 
         } else if ( this.selectionStart || this.selectionStart == '0' ) {
             // Firefox/Chrome/Opera
@@ -853,7 +865,7 @@ function automatorwp_insert_at_caret(input, content) {
             var scrollTop = this.scrollTop;
             this.value = this.value.substring(0, startPos) +
                 content + this.value.substring(endPos,this.value.length);
-            this.focus();
+            this.trigger('focus');
             this.selectionStart = startPos + content.length;
             this.selectionEnd = startPos + content.length;
             this.scrollTop = scrollTop;
@@ -862,7 +874,7 @@ function automatorwp_insert_at_caret(input, content) {
             // If can't determine browser, only append at the end
 
             this.value += content;
-            this.focus();
+            this.trigger('focus');
 
         }
     });
@@ -886,7 +898,7 @@ function automatorwp_set_caret_at_end( input ) {
     // For IE Only
     if ( document.selection ) {
         // Set focus
-        input.focus();
+        input.trigger('focus');
         // Use IE Ranges
         var oSel = document.selection.createRange();
         // Reset position to 0 & then set at end
@@ -898,7 +910,7 @@ function automatorwp_set_caret_at_end( input ) {
         // Firefox/Chrome
         input.selectionStart = length;
         input.selectionEnd = length;
-        input.focus();
+        input.trigger('focus');
     }
 
 }

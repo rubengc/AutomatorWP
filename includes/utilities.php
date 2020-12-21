@@ -44,30 +44,29 @@ function automatorwp_utilities_times_option() {
  */
 function automatorwp_utilities_post_option( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
-        'name'              => __( 'Post:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any post', 'automatorwp' ),
-        'post_type'         => 'post',
-        'post_type_cb'      => '',
-        'default'           => 'any'
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'name'                  => __( 'Post:', 'automatorwp' ),
+        'post_type'             => 'post',
+        'post_type_cb'          => '',
+        'placeholder'           => __( 'Select a post', 'automatorwp' ),
+        'option_none_label'     => __( 'any post', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
     ) );
 
-    if( ! is_array( $args['post_type'] ) ) {
-        $args['post_type'] = array( $args['post_type'] );
-    }
-
-    return array(
+    $option = array(
         'from' => 'post',
-        'default' => $args['option_default'],
+        'default' => ( isset( $args['option_default'] ) ? $args['option_default'] : '' ),
         'fields' => array(
             'post' => automatorwp_utilities_post_field( $args )
         )
     );
+
+    // Add the custom field
+    if( $args['option_custom'] ) {
+        $option['fields']['post_custom'] = automatorwp_utilities_custom_field( $args );
+    }
+
+    return $option;
 
 }
 
@@ -82,49 +81,38 @@ function automatorwp_utilities_post_option( $args = array() ) {
  */
 function automatorwp_utilities_post_field( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
-        'name'              => __( 'Post:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any post', 'automatorwp' ),
-        'post_type'         => 'post',
-        'post_type_cb'      => '',
-        'placeholder'       => __( 'Select a post', 'automatorwp' ),
-        'default'           => 'any',
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'name'                  => __( 'Post:', 'automatorwp' ),
+        'post_type'             => 'post',
+        'post_type_cb'          => '',
+        'placeholder'           => __( 'Select a post', 'automatorwp' ),
+        'option_none_label'     => __( 'any post', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
     ) );
 
     if( ! is_array( $args['post_type'] ) ) {
         $args['post_type'] = array( $args['post_type'] );
     }
 
-    $attributes = array(
-        'data-option-none' => $args['option_none'],
-        'data-option-none-value' => $args['option_none_value'],
-        'data-option-none-label' => $args['option_none_label'],
-        'data-placeholder' => $args['placeholder'],
-        'data-post-type' => implode(',', $args['post_type'] ),
-        'data-post-type-cb' => $args['post_type_cb'],
-    );
-
-    if( $args['multiple'] ) {
-        $attributes['multiple'] = true;
-    }
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
+    $attributes['data-post-type'] = implode(',', $args['post_type'] );
+    $attributes['data-post-type-cb'] = $args['post_type_cb'];
 
     return array(
-        'name'              => $args['name'],
-        'desc'              => $args['desc'],
-        'type'              => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
-        'classes'           => 'automatorwp-post-selector',
-        'option_none'       => $args['option_none'],
-        'option_none_value' => $args['option_none_value'],
-        'option_none_label' => $args['option_none_label'],
-        'post_type_cb'      => '',
-        'attributes'        => $attributes,
-        'options_cb'        => 'automatorwp_options_cb_posts',
-        'default'           => $args['default']
+        'name'                  => $args['name'],
+        'desc'                  => $args['desc'],
+        'type'                  => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
+        'classes'               => 'automatorwp-post-selector',
+        'option_none'           => $args['option_none'],
+        'option_none_value'     => $args['option_none_value'],
+        'option_none_label'     => $args['option_none_label'],
+        'option_custom'         => $args['option_custom'],
+        'option_custom_value'   => $args['option_custom_value'],
+        'option_custom_label'   => $args['option_custom_label'],
+        'post_type_cb'          => '',
+        'attributes'            => $attributes,
+        'options_cb'            => 'automatorwp_options_cb_posts',
+        'default'               => $args['default']
     );
 
 }
@@ -140,25 +128,28 @@ function automatorwp_utilities_post_field( $args = array() ) {
  */
 function automatorwp_utilities_term_option( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
-        'name'              => __( 'Category:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any category', 'automatorwp' ),
-        'taxonomy'          => 'category',
-        'default'           => 'any'
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'name'                  => __( 'Category:', 'automatorwp' ),
+        'taxonomy'              => 'category',
+        'placeholder'           => __( 'Select a category', 'automatorwp' ),
+        'option_none_label'     => __( 'any category', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Category ID', 'automatorwp' ),
     ) );
 
-    return array(
+    $option = array(
         'from' => 'term',
-        'default' => $args['option_default'],
+        'default' => ( isset( $args['option_default'] ) ? $args['option_default'] : '' ),
         'fields' => array(
             'term' => automatorwp_utilities_term_field( $args )
         )
     );
+
+    // Add the custom field
+    if( $args['option_custom'] ) {
+        $option['fields']['term_custom'] = automatorwp_utilities_custom_field( $args );
+    }
+
+    return $option;
 
 }
 
@@ -173,39 +164,28 @@ function automatorwp_utilities_term_option( $args = array() ) {
  */
 function automatorwp_utilities_term_field( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
-        'name'              => __( 'Category:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any category', 'automatorwp' ),
-        'taxonomy'          => 'category',
-        'placeholder'       => __( 'Select a category', 'automatorwp' ),
-        'default'           => 'any'
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'name'                  => __( 'Category:', 'automatorwp' ),
+        'taxonomy'              => 'category',
+        'placeholder'           => __( 'Select a category', 'automatorwp' ),
+        'option_none_label'     => __( 'any category', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Category ID', 'automatorwp' ),
     ) );
 
-    $attributes = array(
-        'data-option-none' => $args['option_none'],
-        'data-option-none-value' => $args['option_none_value'],
-        'data-option-none-label' => $args['option_none_label'],
-        'data-placeholder' => $args['placeholder'],
-        'data-taxonomy' => $args['taxonomy'],
-    );
-
-    if( $args['multiple'] ) {
-        $attributes['multiple'] = true;
-    }
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
+    $attributes['data-taxonomy'] = 'taxonomy';
 
     return array(
         'name' => $args['name'],
         'desc' => $args['desc'],
         'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
         'classes' => 'automatorwp-term-selector',
-        'option_none' => $args['option_none'],
-        'option_none_value' => $args['option_none_value'],
-        'option_none_label' => $args['option_none_label'],
+        'option_none'           => $args['option_none'],
+        'option_none_value'     => $args['option_none_value'],
+        'option_none_label'     => $args['option_none_label'],
+        'option_custom'         => $args['option_custom'],
+        'option_custom_value'   => $args['option_custom_value'],
+        'option_custom_label'   => $args['option_custom_label'],
         'taxonomy' => $args['taxonomy'],
         'attributes' => $attributes,
         'options_cb' => 'automatorwp_options_cb_terms',
@@ -225,33 +205,22 @@ function automatorwp_utilities_term_field( $args = array() ) {
  */
 function automatorwp_utilities_taxonomy_option( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
-        'name'              => __( 'Taxonomy:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => __( 'any taxonomy', 'automatorwp' ),
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any taxonomy', 'automatorwp' ),
-        'placeholder'       => __( 'Select a taxonomy', 'automatorwp' ),
-        'default'           => 'any'
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'name'                  => __( 'Taxonomy:', 'automatorwp' ),
+        'option_default'        => __( 'any taxonomy', 'automatorwp' ),
+        'multiple'              => false,
+        'placeholder'           => __( 'Select a taxonomy', 'automatorwp' ),
+        'option_none_label'     => __( 'any taxonomy', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Taxonomy', 'automatorwp' ),
     ) );
 
-    $attributes = array(
-        'data-option-none' => $args['option_none'],
-        'data-option-none-value' => $args['option_none_value'],
-        'data-option-none-label' => $args['option_none_label'],
-        'data-placeholder' => $args['placeholder'],
-    );
-
-    if( $args['multiple'] ) {
-        $attributes['multiple'] = true;
-    }
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
 
     $term_args = $args;
 
     $term_args['name'] = __( 'Term:', 'automatorwp' );
     $term_args['option_none_label'] = __( 'any term', 'automatorwp' );
+    $term_args['option_custom_desc'] = __( 'Term ID', 'automatorwp' );
 
     return array(
         'from' => 'term',
@@ -262,9 +231,12 @@ function automatorwp_utilities_taxonomy_option( $args = array() ) {
                 'desc' => $args['desc'],
                 'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
                 'classes' => 'automatorwp-taxonomy-selector',
-                'option_none' => $args['option_none'],
-                'option_none_value' => $args['option_none_value'],
-                'option_none_label' => $args['option_none_label'],
+                'option_none'           => $args['option_none'],
+                'option_none_value'     => $args['option_none_value'],
+                'option_none_label'     => $args['option_none_label'],
+                'option_custom'         => $args['option_custom'],
+                'option_custom_value'   => $args['option_custom_value'],
+                'option_custom_label'   => $args['option_custom_label'],
                 'attributes' => $attributes,
                 'options_cb' => 'automatorwp_options_cb_taxonomies',
                 'default' => $args['default']
@@ -286,51 +258,42 @@ function automatorwp_utilities_taxonomy_option( $args = array() ) {
  */
 function automatorwp_utilities_ajax_selector_option( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
         'field'             => 'ajax_options',
-        'name'              => '',
-        'desc'              => '',
         'action_cb'         => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => '',
-        'placeholder'       => '',
-        'options_cb'        => '',
-        'default'           => 'any'
     ) );
 
-    $attributes = array(
-        'data-action' => $args['action_cb'],
-        'data-option-none' => $args['option_none'],
-        'data-option-none-value' => $args['option_none_value'],
-        'data-option-none-label' => $args['option_none_label'],
-        'data-placeholder' => $args['placeholder'],
-    );
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
+    $attributes['data-action'] = $args['action_cb'];
 
-    if( $args['multiple'] ) {
-        $attributes['multiple'] = true;
-    }
-
-    return array(
+    $option = array(
         'from' => $args['field'],
         'default' => $args['option_default'],
         'fields' => array(
             $args['field'] => array(
-                'name' => $args['name'],
-                'desc' => $args['desc'],
-                'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
-                'classes' => 'automatorwp-ajax-selector',
-                'option_none' => $args['option_none'],
-                'option_none_value' => $args['option_none_value'],
-                'option_none_label' => $args['option_none_label'],
-                'attributes' => $attributes,
-                'options_cb' => $args['options_cb'],
-                'default' => $args['default']
+                'name'                  => $args['name'],
+                'desc'                  => $args['desc'],
+                'type'                  => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
+                'classes'               => 'automatorwp-ajax-selector',
+                'option_none'           => $args['option_none'],
+                'option_none_value'     => $args['option_none_value'],
+                'option_none_label'     => $args['option_none_label'],
+                'option_custom'         => $args['option_custom'],
+                'option_custom_value'   => $args['option_custom_value'],
+                'option_custom_label'   => $args['option_custom_label'],
+                'attributes'            => $attributes,
+                'options_cb'            => $args['options_cb'],
+                'default'               => $args['default']
             )
         )
     );
+
+    // Add the custom field
+    if( $args['option_custom'] ) {
+        $option['fields'][$args['field'] . '_custom'] = automatorwp_utilities_custom_field( $args );
+    }
+
+    return $option;
 
 }
 
@@ -345,29 +308,16 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
  */
 function automatorwp_utilities_automation_option( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
-        'name'              => __( 'Automation:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any automation', 'automatorwp' ),
-        'default'           => 'any'
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'name'                  => __( 'Automation:', 'automatorwp' ),
+        'option_none_label'     => __( 'any automation', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Automation ID', 'automatorwp' ),
     ) );
 
-    $attributes = array(
-        'data-option-none' => $args['option_none'],
-        'data-option-none-value' => $args['option_none_value'],
-        'data-option-none-label' => $args['option_none_label'],
-        'data-table' => 'automatorwp_automations',
-    );
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
+    $attributes['data-table'] = 'automatorwp_automations';
 
-    if( $args['multiple'] ) {
-        $attributes['multiple'] = true;
-    }
-
-    return array(
+    $option = array(
         'from' => 'automation',
         'default' => $args['option_default'],
         'fields' => array(
@@ -376,15 +326,25 @@ function automatorwp_utilities_automation_option( $args = array() ) {
                 'desc' => $args['desc'],
                 'type' => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
                 'classes' => 'automatorwp-object-selector',
-                'option_none' => $args['option_none'],
-                'option_none_value' => $args['option_none_value'],
-                'option_none_label' => $args['option_none_label'],
+                'option_none'           => $args['option_none'],
+                'option_none_value'     => $args['option_none_value'],
+                'option_none_label'     => $args['option_none_label'],
+                'option_custom'         => $args['option_custom'],
+                'option_custom_value'   => $args['option_custom_value'],
+                'option_custom_label'   => $args['option_custom_label'],
                 'attributes' => $attributes,
                 'options_cb' => 'automatorwp_options_cb_objects',
                 'default' => $args['default']
             )
         )
     );
+
+    // Add the custom field
+    if( $args['option_custom'] ) {
+        $option['fields']['automation_custom'] = automatorwp_utilities_custom_field( $args );
+    }
+
+    return $option;
 
 }
 
@@ -443,16 +403,7 @@ function automatorwp_utilities_role_field( $args = array() ) {
         'default'           => 'any'
     ) );
 
-    $attributes = array(
-        'data-option-none' => $args['option_none'],
-        'data-option-none-value' => $args['option_none_value'],
-        'data-option-none-label' => $args['option_none_label'],
-        'data-placeholder' => $args['placeholder'],
-    );
-
-    if( $args['multiple'] ) {
-        $attributes['multiple'] = true;
-    }
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
 
     return array(
         'name' => $args['name'],
@@ -466,6 +417,98 @@ function automatorwp_utilities_role_field( $args = array() ) {
         'options_cb' => 'automatorwp_options_cb_roles',
         'default' => $args['default']
     );
+
+}
+
+/**
+ * Utility function to get a selector custom field parameters
+ *
+ * @since 1.3.7
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_custom_field( $args = array() ) {
+
+    return array(
+        'name'              => '',
+        'desc'              => ( isset( $args['option_custom_desc'] ) ? $args['option_custom_desc'] : __( 'Post ID', 'automatorwp' ) ),
+        'type'              => 'text',
+        'classes'           => 'automatorwp-selector-custom-input',
+    );
+
+}
+
+/**
+ * Utility function to parse selector args
+ *
+ * @since 1.3.7
+ *
+ * @param array $args
+ * @param array $defaults
+ *
+ * @return array
+ */
+function automatorwp_utilities_parse_selector_args( $args = array(), $defaults = array() ) {
+
+    $selector_defaults = array(
+        'name'              => '',
+        'desc'              => '',
+        'option_default'    => '',
+        'multiple'          => false,
+        'placeholder'       => '',
+        'default'           => 'any',
+        // Option none
+        'option_none'       => true,
+        'option_none_value' => 'any',
+        'option_none_label' => '',
+        // Option custom
+        'option_custom'         => false,
+        'option_custom_value'   => 'custom',
+        'option_custom_label'   => __( 'Use a custom value', 'automatorwp' ),
+        'option_custom_desc'    => '',
+    );
+
+    $final_defaults = array_merge( $selector_defaults, $defaults );
+
+    $args = wp_parse_args( $args, $final_defaults );
+
+    return $args;
+
+}
+
+/**
+ * Utility function to get selector attributes
+ *
+ * @since 1.3.7
+ *
+ * @param array $args
+ * @param array $defaults
+ *
+ * @return array
+ */
+function automatorwp_utilities_get_selector_attributes( $args = array() ) {
+
+    $args = automatorwp_utilities_parse_selector_args( $args, array() );
+
+    $attributes = array(
+        'data-placeholder' => $args['placeholder'],
+        // Option none
+        'data-option-none' => $args['option_none'],
+        'data-option-none-value' => $args['option_none_value'],
+        'data-option-none-label' => $args['option_none_label'],
+        // Option custom
+        'data-option-custom'        => $args['option_custom'],
+        'data-option-custom-value'  => $args['option_custom_value'],
+        'data-option-custom-label'  => $args['option_custom_label'],
+    );
+
+    if( $args['multiple'] ) {
+        $attributes['multiple'] = true;
+    }
+
+    return $attributes;
 
 }
 
