@@ -788,7 +788,8 @@ function automatorwp_download_file( content, filename, extension, mime_type = ''
 
             // Append the link element and trigger the click event
             document.body.appendChild( link );
-            link.trigger('click');
+
+            link.click(); // NOTE: Is not a jQuery element, so is safe to use click()
 
             // Finally remove the link element
             document.body.removeChild( link );
@@ -852,10 +853,10 @@ function automatorwp_insert_at_caret(input, content) {
         if ( document.selection ) {
             // Internet Explorer
 
-            this.trigger('focus');
+            this.focus(); // NOTE: Is not a jQuery element, so is safe to use focus()
             var sel = document.selection.createRange();
             sel.text = content;
-            this.trigger('focus');
+            this.focus();
 
         } else if ( this.selectionStart || this.selectionStart == '0' ) {
             // Firefox/Chrome/Opera
@@ -865,7 +866,7 @@ function automatorwp_insert_at_caret(input, content) {
             var scrollTop = this.scrollTop;
             this.value = this.value.substring(0, startPos) +
                 content + this.value.substring(endPos,this.value.length);
-            this.trigger('focus');
+            this.focus();
             this.selectionStart = startPos + content.length;
             this.selectionEnd = startPos + content.length;
             this.scrollTop = scrollTop;
@@ -874,7 +875,7 @@ function automatorwp_insert_at_caret(input, content) {
             // If can't determine browser, only append at the end
 
             this.value += content;
-            this.trigger('focus');
+            this.focus();
 
         }
     });
@@ -897,20 +898,25 @@ function automatorwp_set_caret_at_end( input ) {
 
     // For IE Only
     if ( document.selection ) {
+
         // Set focus
-        input.trigger('focus');
+        input.focus(); // NOTE: Is not a jQuery element, so is safe to use focus()
+
         // Use IE Ranges
         var oSel = document.selection.createRange();
+
         // Reset position to 0 & then set at end
         oSel.moveStart('character', -length);
         oSel.moveStart('character', length);
         oSel.moveEnd('character', 0);
         oSel.select();
+
     } else if ( input.selectionStart || input.selectionStart == '0' ) {
+
         // Firefox/Chrome
         input.selectionStart = length;
         input.selectionEnd = length;
-        input.trigger('focus');
+        input.focus(); // NOTE: Is not a jQuery element, so is safe to use focus()
     }
 
 }

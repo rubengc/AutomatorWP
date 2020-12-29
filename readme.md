@@ -300,6 +300,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.3.7.1 ###
+
+* **Bug Fixes**
+* Fixed click and focus triggers for some HTML elements in Javascript.
+
 ### 1.3.7 ###
 
 * **New Features**
