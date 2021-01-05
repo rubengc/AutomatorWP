@@ -261,15 +261,33 @@ function automatorwp_options_cb_post_types( $field ) {
  */
 function automatorwp_options_cb_post_status( $field ) {
 
+    global $wp_post_statuses;
+
+    if ( ! is_array( $wp_post_statuses ) ) {
+        $wp_post_statuses = array();
+    }
+
     // Setup vars
     $none_value = 'any';
     $none_label = __( 'any status', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
-    $post_statuses = get_post_statuses();
+    if( count( $wp_post_statuses ) ) {
 
-    foreach( $post_statuses as $post_status => $post_status_label ) {
-        $options[$post_status] = $post_status_label;
+        // Get statuses from registered post statuses
+        foreach( $wp_post_statuses as $post_status => $args ) {
+            $options[$post_status] = $args->label . ' (' . $post_status . ')';
+        }
+
+    } else {
+        // If post statuses global is empty fallback to get_post_statuses()
+
+        $post_statuses = get_post_statuses();
+
+        foreach( $post_statuses as $post_status => $post_status_label ) {
+            $options[$post_status] = $post_status_label;
+        }
+
     }
 
     return $options;

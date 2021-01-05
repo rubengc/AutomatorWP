@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.3.7.1
+Stable tag: 1.3.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -297,6 +297,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.3.8 =
+
+* **Improvements**
+* Make post statuses field handle all registered statuses correctly.
+* Allow shortcodes on "Send email" action subject and content.
+* Added filters on "Send email" action to allow override all parameters.
 
 = 1.3.7.1 =
 

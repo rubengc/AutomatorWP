@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2020-12-21 12:50+0100\n"
+"POT-Creation-Date: 2021-01-05 15:14+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -278,7 +278,7 @@ msgstr ""
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:830 includes/cmb2.php:364
+#: includes/ajax-functions.php:830 includes/cmb2.php:382
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:252
 #: includes/custom-tables/logs.php:327 includes/custom-tables/logs.php:697
@@ -476,19 +476,19 @@ msgstr ""
 msgid "a %s"
 msgstr ""
 
-#: includes/cmb2.php:266
+#: includes/cmb2.php:272
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:292 includes/utilities.php:369 includes/utilities.php:401
+#: includes/cmb2.php:310 includes/utilities.php:369 includes/utilities.php:401
 msgid "any role"
 msgstr ""
 
-#: includes/cmb2.php:334
+#: includes/cmb2.php:352
 msgid "any item"
 msgstr ""
 
-#: includes/cmb2.php:396 includes/utilities.php:469
+#: includes/cmb2.php:414 includes/utilities.php:469
 msgid "Use a custom value"
 msgstr ""
 
@@ -1167,7 +1167,7 @@ msgstr ""
 #: includes/integrations/wordpress/actions/create-post.php:121
 #: includes/integrations/wordpress/actions/create-post.php:406
 #: includes/integrations/wordpress/actions/send-email.php:96
-#: includes/integrations/wordpress/actions/send-email.php:255
+#: includes/integrations/wordpress/actions/send-email.php:335
 msgid "Content:"
 msgstr ""
 
@@ -1413,7 +1413,7 @@ msgid "Send an email to %1$s"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:63
-#: includes/integrations/wordpress/actions/send-email.php:225
+#: includes/integrations/wordpress/actions/send-email.php:305
 msgid "From:"
 msgstr ""
 
@@ -1422,7 +1422,7 @@ msgid "Leave empty to use default WordPress email."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:69
-#: includes/integrations/wordpress/actions/send-email.php:231
+#: includes/integrations/wordpress/actions/send-email.php:311
 msgid "To:"
 msgstr ""
 
@@ -1435,7 +1435,7 @@ msgid "Leave empty to use the email of the user that completes the automation."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:77
-#: includes/integrations/wordpress/actions/send-email.php:237
+#: includes/integrations/wordpress/actions/send-email.php:317
 msgid "CC:"
 msgstr ""
 
@@ -1445,62 +1445,62 @@ msgid "Email address(es) that will receive a copy of this email. Accepts single 
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:83
-#: includes/integrations/wordpress/actions/send-email.php:243
+#: includes/integrations/wordpress/actions/send-email.php:323
 msgid "BCC:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:89
-#: includes/integrations/wordpress/actions/send-email.php:249
+#: includes/integrations/wordpress/actions/send-email.php:329
 msgid "Subject:"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:90
-#: includes/integrations/wordpress/actions/send-email.php:250
+#: includes/integrations/wordpress/actions/send-email.php:330
 msgid "Email's subject."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/send-email.php:97
-#: includes/integrations/wordpress/actions/send-email.php:256
+#: includes/integrations/wordpress/actions/send-email.php:336
 msgid "Email's content."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:190
+#: includes/integrations/wordpress/actions/send-email.php:270
 msgid "Sent"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:190
+#: includes/integrations/wordpress/actions/send-email.php:270
 msgid "Not sent"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:219
+#: includes/integrations/wordpress/actions/send-email.php:299
 msgid "Sending Information"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:220
+#: includes/integrations/wordpress/actions/send-email.php:300
 msgid "Information about email sent."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:226
+#: includes/integrations/wordpress/actions/send-email.php:306
 msgid "Email sender."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:232
+#: includes/integrations/wordpress/actions/send-email.php:312
 msgid "Email recipient."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:238
+#: includes/integrations/wordpress/actions/send-email.php:318
 msgid "Carbon copy emails."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:244
+#: includes/integrations/wordpress/actions/send-email.php:324
 msgid "Blind carbon copy emails."
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:262
+#: includes/integrations/wordpress/actions/send-email.php:342
 msgid "Sending result:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/send-email.php:263
+#: includes/integrations/wordpress/actions/send-email.php:343
 msgid "If sending result is \"Not sent\" you need to check if your server's wp_mail() function is correctly configured."
 msgstr ""
 

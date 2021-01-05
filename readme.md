@@ -300,6 +300,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.3.8 ###
+
+* **Improvements**
+* Make post statuses field handle all registered statuses correctly.
+* Allow shortcodes on "Send email" action subject and content.
+* Added filters on "Send email" action to allow override all parameters.
+
 ### 1.3.7.1 ###
 
 * **Bug Fixes**
