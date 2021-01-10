@@ -300,6 +300,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.3.9 ###
+
+* **Improvements**
+* Added stronger escaping functions when inserting logs metas.
+
 ### 1.3.8 ###
 
 * **Improvements**

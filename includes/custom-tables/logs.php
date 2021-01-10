@@ -572,6 +572,9 @@ function automatorwp_log_field_cb( $field_args, $field ) {
     $field_id = $field_args['id'];
     $value = $field->value();
 
+    $value = str_replace( '\n', "\n", $value );
+    $value = stripslashes_deep( $value );
+
     $wpautop = ( isset( $field_args['wpautop'] ) ? $field_args['wpautop'] : false );
 
     if( $wpautop ) {
@@ -613,9 +616,7 @@ function automatorwp_log_field_cb( $field_args, $field ) {
 
     // Check if value is an array
     if( is_array( $value ) ) {
-
         $value = automatorwp_log_array_display( $value );
-
     }
 
     echo $value;

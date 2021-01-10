@@ -70,7 +70,7 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
             $meta_value = maybe_serialize( $meta_value );
 
             // Setup the insert value
-            $metas[] = "{$log_id}, '{$meta_key}', '{$meta_value}'";
+            $metas[] = $wpdb->prepare( '%d, %s, %s', array( $log_id, $meta_key, $meta_value ) );
         }
 
         $logs_meta = AutomatorWP()->db->logs_meta;
