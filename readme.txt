@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -298,95 +298,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 == Changelog ==
 
-= 1.3.9 =
-
-* **Improvements**
-* Added stronger escaping functions when inserting logs metas.
-
-= 1.3.8 =
-
-* **Improvements**
-* Make post statuses field handle all registered statuses correctly.
-* Allow shortcodes on "Send email" action subject and content.
-* Added filters on "Send email" action to allow override all parameters.
-
-= 1.3.7.1 =
+= 1.4.0 =
 
 * **Bug Fixes**
-* Fixed click and focus triggers for some HTML elements in Javascript.
-
-= 1.3.7 =
-
-* **New Features**
-* Added the ability to place custom values on selector fields using the option "Use a custom value".
-* **Improvements**
-* Updated deprecated jQuery functions.
-
-= 1.3.6 =
-
-* **New Features**
-* New user tag: {reset_password_url} to pass the user reset password URL.
-* New user tag: {reset_password_link} to pass the user reset password HTML link.
-* New post tag: {post_url} to pass the post URL.
-* Changed {post_link} tag to pass the post HTML link.
-* Full support to RTL websites.
-* **Improvements**
-* Escape HTML tags on the tags selector previews.
-* Improved the post selector to support custom post statuses (like bbPress or BuddyBoss "hidden" status).
-
-= 1.3.5 =
-
-* **Improvements**
-* Style improvements on automations UI.
-* **Bug Fixes**
-* Fixed a bug on license clear and deactivation functions causing that previous value gets back after save the licenses again.
+* Fixed incorrect calculation in decrement user/post meta actions.
+* Fixed typo on increment/decrement meta labels.
 * **Developer Notes**
-* Added support for multiples selection on selectors fields.
-
-= 1.3.4 =
-
-* **Improvements**
-* Style improvements on settings.
-* Let WordPress decide SSL verification in some API requests.
-* Updated add-on updater class.
-* Ensure correct server URL for AutomatorWP add-ons.
-
-= 1.3.3 =
-
-* **Improvements**
-* Ensure that WordPress content filters allow place tags on fields with support to HTML.
-
-= 1.3.2 =
-
-* **New Features**
-* Added the Settings menu.
-* Added a configurable automatic logs cleanup.
-* Added the setting "Automatic logs cleanup".
-* Added a top bar menu to easily access to the AutomatorWP menus.
-* Added the setting "Disable top bar menu".
-* **Improvements**
-* Style improvements on automations UI.
-* **Bug Fixes**
-* Fixed a incorrect check on "User publishes a post in any/specific taxonomy" trigger.
-* **Developer Notes**
-* Added support for Actions Scheduler when scheduling the automatic logs cleanup process.
-
-= 1.3.1 =
-
-* **Bug Fixes**
-* Fixed a incorrect post type check on "User publishes a post in any/specific taxonomy" trigger.
-
-= 1.3.0 =
-
-* **New Features**
-* Added anonymous automations: automations that can be executed without a user assigned.
-* New anonymous trigger: Guest views a post of any/specific type.
-* New anonymous trigger: Guest views a post of any/specific taxonomy.
-* New anonymous trigger: Guest comments on a post of any/specific type.
-* New anonymous trigger: Guest comments on a post of any/specific taxonomy.
-* On create a new automation, a new dialog will appear to setup the automation type (logged-in or anonymous).
-* Added the "Completions" column on automations list screen.
-* **Improvements**
-* Full rework of the "Save Changes" box.
-* Large rework of several areas to make them more extensible for future new automation types.
-* Several style improvements and changes on the automations UI.
+* Added the automatorwp_send_email() function.
+* Moved old changelog to changelog.txt.

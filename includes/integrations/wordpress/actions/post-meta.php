@@ -149,7 +149,7 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
         // Update the edit and log labels
         if( in_array( $operation, array( 'increment', 'decrement' ) ) ) {
             /* translators: %1$s: Operation (Set, insert, increment or decrement). %2$s: Post ID. %3$s: Meta value. %4$s: Meta key. */
-            return sprintf( __( '%1$s post %2$s meta value in %3$s for meta key %4$s', 'automatorwp' ), '{operation}', '{post}', '{meta_value}', '{meta_key}' );
+            return sprintf( __( '%1$s post %2$s meta value by %3$s for meta key %4$s', 'automatorwp' ), '{operation}', '{post}', '{meta_value}', '{meta_key}' );
         }
 
         return $label;
@@ -226,7 +226,7 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
                 break;
             case 'decrement':
                 // Decrease meta value
-                $value += $meta_value;
+                $value -= $meta_value;
                 break;
         }
 

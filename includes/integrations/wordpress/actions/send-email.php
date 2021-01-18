@@ -119,28 +119,7 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
     public function execute( $action, $user_id, $action_options, $automation ) {
 
         // Shorthand
-        $from       = $action_options['from'];
-        $to         = $action_options['to'];
-        $cc         = $action_options['cc'];
-        $bcc        = $action_options['bcc'];
-        $subject    = $action_options['subject'];
-        $body       = $action_options['content'];
-
-        // Setup from
-        /**
-         * Filter available to override the email headers
-         *
-         * @since 1.0.0
-         *
-         * @param string    $from               The email from address
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return string
-         */
-        $from = apply_filters( 'automatorwp_wordpress_send_email_from', $from, $action, $user_id, $action_options, $automation );
+        $to = $action_options['to'];
 
         // Setup to
         if( empty( $to ) ) {
@@ -148,96 +127,21 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
             $to = $user->user_email;
         }
 
-        /**
-         * Filter available to override the email headers
-         *
-         * @since 1.0.0
-         *
-         * @param string    $to                 The email to address
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return string
-         */
-        $to = apply_filters( 'automatorwp_wordpress_send_email_to', $to, $action, $user_id, $action_options, $automation );
-
-        // Setup headers
-        $headers = array();
-
-        if( ! empty( $from ) ) {
-            $headers[] = 'From: <' . $from . '>';
-        }
-
-        if ( ! empty( $cc ) ) {
-            $headers[] = 'Cc: ' . $cc;
-        }
-
-        if ( ! empty( $bcc ) ) {
-            $headers[] = 'Bcc: ' . $bcc;
-        }
-
-        $headers[] = 'Content-Type: text/html; charset='  . get_option( 'blog_charset' );
-
-        /**
-         * Filter available to override the email headers
-         *
-         * @since 1.0.0
-         *
-         * @param array     $headers            The email headers
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return array
-         */
-        $headers = apply_filters( 'automatorwp_wordpress_send_email_headers', $headers, $action, $user_id, $action_options, $automation );
-
-        // Setup subject
-        $subject = do_shortcode( $subject );
-
-        /**
-         * Filter available to override the email subject
-         *
-         * @since 1.0.0
-         *
-         * @param string    $subject            The email subject
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return string
-         */
-        $subject = apply_filters( 'automatorwp_wordpress_send_email_subject', $subject, $action, $user_id, $action_options, $automation );
-
-        // Setup body
-        $body = wpautop( $body );
-        $body = do_shortcode( $body );
-
-        /**
-         * Filter available to override the email body
-         *
-         * @since 1.0.0
-         *
-         * @param string    $body               The email body
-         * @param stdClass  $action             The action object
-         * @param int       $user_id            The user ID
-         * @param array     $action_options     The action's stored options (with tags already passed)
-         * @param stdClass  $automation         The action's automation object
-         *
-         * @return string
-         */
-        $body = apply_filters( 'automatorwp_wordpress_send_email_body', $body, $action, $user_id, $action_options, $automation );
-
-        add_filter( 'wp_mail_content_type', 'automatorwp_set_html_content_type' );
-
-        // Send email
-        $this->result = wp_mail( $to, $subject, $body, $headers );
-
-        remove_filter( 'wp_mail_content_type', 'automatorwp_set_html_content_type' );
+        // Send the email
+        $this->result = automatorwp_send_email( array(
+            // Email parameters
+            'from'              => $action_options['from'],
+            'to'                => $to,
+            'cc'                => $action_options['cc'],
+            'bcc'               => $action_options['bcc'],
+            'subject'           => $action_options['subject'],
+            'message'           => $action_options['content'],
+            // Custom parameters
+            'action'            => $action,
+            'user_id'           => $user_id,
+            'action_options'    => $action_options,
+            'automation'        => $automation
+        ) );
 
     }
 
