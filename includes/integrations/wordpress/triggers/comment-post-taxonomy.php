@@ -29,10 +29,14 @@ class AutomatorWP_WordPress_Comment_Post_Taxonomy extends AutomatorWP_Integratio
             'edit_label'        => sprintf( __( 'User comments on a post of %1$s %2$s time(s)', 'automatorwp' ), '{term}', '{times}' ),
             /* translators: %1$s: Term title. */
             'log_label'         => sprintf( __( 'User comments on a post of %1$s', 'automatorwp' ), '{term}' ),
-            'action'            => 'comment_post',
+            'action'            => array(
+                'comment_approved_',
+                'comment_approved_comment',
+                'wp_insert_comment',
+            ),
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 3,
+            'accepted_args'     => 2,
             'options'           => array(
                 'term'  => automatorwp_utilities_taxonomy_option(),
                 'times' => automatorwp_utilities_times_option(),
@@ -51,18 +55,22 @@ class AutomatorWP_WordPress_Comment_Post_Taxonomy extends AutomatorWP_Integratio
      *
      * @since 1.0.0
      *
-     * @param int        $comment_ID        The comment ID.
-     * @param int|string $comment_approved  1 if the comment is approved, 0 if not, 'spam' if spam.
-     * @param array      $comment           Comment data.
+     * @param int               $comment_ID        The comment ID.
+     * @param array|WP_Comment  $comment           The Comment.
      */
-    public function listener( $comment_ID, $comment_approved, $comment ) {
+    public function listener( $comment_ID, $comment ) {
 
-        // Bail if comments is not approved
-        if( $comment_approved !== 1 ) {
+        // Ensure comment as array (wp_insert_comment uses object, comment_{status}_comment uses array)
+        if ( is_object( $comment ) ) {
+            $comment = get_object_vars( $comment );
+        }
+
+        // Check if comment is approved
+        if ( (int) $comment['comment_approved'] !== 1 ) {
             return;
         }
 
-        $post = get_post( $comment[ 'comment_post_ID' ] );
+        $post = get_post( absint( $comment[ 'comment_post_ID' ] ) );
 
         // Bail if not post instanced
         if( ! $post instanceof WP_Post ) {

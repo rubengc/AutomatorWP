@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -46,7 +46,7 @@ The number of combinations and possibilities are unlimited!
 
 With the [Webhooks](https://automatorwp.com/add-ons/webhooks/)  add-on you are able to send and receive data from anywhere like external applications, web services or others WordPress sites.
 
-You can connect all your WordPress plugins with platforms like Zapier or Integromat, or included, you can connect your plugins from a site with the plugins of another site and everything with no code.
+You can connect all your WordPress plugins with platforms like Zapier or Integromat, even you can connect your plugins from a site with the plugins of another site and everything with no code.
 
 Any website, application or service with support to webhooks or with a Rest API can be connected with the Webhooks add-on and, in consequence, with your WordPress plugins!
 
@@ -154,11 +154,11 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 
 If you’re looking for something endorsed and maintained by the developers who built AutomatorWP, there are a plethora of premium add-ons, the most popular of which include:
 
-* [Webhooks](https://automatorwp.com/add-ons/webhooks/): Send and receive data from webhooks to connect all your plugins with web services like Zapier or Integromat or included to connect different WordPress sites.
+* [Webhooks](https://automatorwp.com/add-ons/webhooks/): Send and receive data from webhooks to connect all your plugins with web services like Zapier or Integromat or even to connect different WordPress sites.
 * [Schedule Actions](https://automatorwp.com/add-ons/schedule-actions/): Schedule any action to run after a time delay of your choice.
 * [Multimedia Content](https://automatorwp.com/add-ons/multimedia-content/): New triggers based on multimedia content creation and interaction.
 * [Block Users](https://automatorwp.com/add-ons/block-users/): Block users and roles for being able to complete any automation of your choice.
-* [Button](https://automatorwp.com/add-ons/button/) & [Link](https://automatorwp.com/add-ons/link/): Launch any automation through button and link clicks.
+* [Button](https://automatorwp.com/add-ons/button/) & [Link](https://automatorwp.com/add-ons/link/): Launch any automation through buttons and links clicks.
 
 [View all add-ons](https://automatorwp.com/add-ons/)
 
@@ -262,7 +262,7 @@ Check the [official documentation](https://automatorwp.com/docs/) where you can 
 
 = Can AutomatorWP connect plugins with external services like Zapier? =
 
-Yes, is completely possible thanks to the [Webhooks](https://automatorwp.com/add-ons/webhooks/) add-on that lets you connect all your plugins with external applications, web services or included others WordPress sites.
+Yes, is completely possible thanks to the [Webhooks](https://automatorwp.com/add-ons/webhooks/) add-on that lets you connect all your plugins with external applications, web services or even others WordPress sites.
 
 = Can AutomatorWP connect plugins from different sites? =
 
@@ -297,6 +297,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.4.1 =
+
+* **New Features**
+* Added support for custom values on "Add, change or remove role to user" action.
+* **Improvements**
+* Improved approved comment trigger detection.
 
 = 1.4.0 =
 

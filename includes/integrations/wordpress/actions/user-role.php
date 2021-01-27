@@ -21,6 +21,14 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
      */
     public function register() {
 
+        $role_options = array();
+        $editable_roles = apply_filters( 'editable_roles', wp_roles()->roles );
+
+        foreach( $editable_roles as $role => $details ) {
+            /* translators: %1$s: Role key (subscriber, editor). %2$s: Role name (Subscriber, Editor). */
+            $role_options[] = sprintf( __( '<code>%1$s</code> for %2$s', 'automatorwp' ), $role, translate_user_role( $details['name'] ) );
+        }
+
         automatorwp_register_action( $this->action, array(
             'integration'       => $this->integration,
             'label'             => __( 'Add, change or remove role to user', 'automatorwp' ),
@@ -48,6 +56,9 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
                 'role' => automatorwp_utilities_role_option( array(
                     'option_none_value' => '',
                     'option_none_label' => __( 'another role', 'automatorwp' ),
+                    'option_custom'     => true,
+                    'option_custom_desc'    => __( 'Role name.', 'automatorwp' )
+                        . ' ' . automatorwp_toggleable_options_list( $role_options ),
                     'default'           => ''
                 ) )
             ),

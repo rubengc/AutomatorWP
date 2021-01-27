@@ -359,24 +359,27 @@ function automatorwp_utilities_automation_option( $args = array() ) {
  */
 function automatorwp_utilities_role_option( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
         'name'              => __( 'Role:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
+        'placeholder'       => __( 'Select a role', 'automatorwp' ),
         'option_none_label' => __( 'any role', 'automatorwp' ),
-        'default'           => 'any'
+        'option_custom_desc'    => __( 'Role name.', 'automatorwp' ),
     ) );
 
-    return array(
+    $option = array(
         'from' => 'role',
         'default' => $args['option_default'],
         'fields' => array(
             'role' => automatorwp_utilities_role_field( $args )
         )
     );
+
+    // Add the custom field
+    if( $args['option_custom'] ) {
+        $option['fields']['role_custom'] = automatorwp_utilities_custom_field( $args );
+    }
+
+    return $option;
 
 }
 
@@ -391,16 +394,11 @@ function automatorwp_utilities_role_option( $args = array() ) {
  */
 function automatorwp_utilities_role_field( $args = array() ) {
 
-    $args = wp_parse_args( $args, array(
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
         'name'              => __( 'Role:', 'automatorwp' ),
-        'desc'              => '',
-        'option_default'    => '',
-        'multiple'          => false,
-        'option_none'       => true,
-        'option_none_value' => 'any',
-        'option_none_label' => __( 'any role', 'automatorwp' ),
         'placeholder'       => __( 'Select a role', 'automatorwp' ),
-        'default'           => 'any'
+        'option_none_label' => __( 'any role', 'automatorwp' ),
+        'option_custom_desc'    => __( 'Role name.', 'automatorwp' ),
     ) );
 
     $attributes = automatorwp_utilities_get_selector_attributes( $args );
@@ -413,6 +411,9 @@ function automatorwp_utilities_role_field( $args = array() ) {
         'option_none' => $args['option_none'],
         'option_none_value' => $args['option_none_value'],
         'option_none_label' => $args['option_none_label'],
+        'option_custom' => $args['option_custom'],
+        'option_custom_value' => $args['option_custom_value'],
+        'option_custom_label' => $args['option_custom_label'],
         'attributes' => $attributes,
         'options_cb' => 'automatorwp_options_cb_roles',
         'default' => $args['default']
