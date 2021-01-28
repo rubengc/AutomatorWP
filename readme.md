@@ -300,6 +300,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.4.2 ###
+
+* **Bug Fixes**
+* Fixed typo on taxonomy selectors.
+
 ### 1.4.1 ###
 
 * **New Features**

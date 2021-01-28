@@ -173,7 +173,7 @@ function automatorwp_utilities_term_field( $args = array() ) {
     ) );
 
     $attributes = automatorwp_utilities_get_selector_attributes( $args );
-    $attributes['data-taxonomy'] = 'taxonomy';
+    $attributes['data-taxonomy'] = $args['taxonomy'];
 
     return array(
         'name' => $args['name'],

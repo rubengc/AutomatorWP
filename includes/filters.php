@@ -40,13 +40,17 @@ function automatorwp_dynamic_taxonomy_option_replacement( $value, $object, $item
 
     $field_id = ( isset( $option_args['from'] ) ? $option_args['from'] : '' );
 
-    // Check if field id is not from term
+    // Check if field id is term
     if( $field_id !== 'term' ) {
         return $value;
     }
 
+    if( ! isset( $option_args['fields'] ) ) {
+        return $value;
+    }
+
     // Check if taxonomy field exists
-    if( ! isset( $option_args['fields'] ) && ! isset( $option_args['fields']['taxonomy'] ) ) {
+    if( ! isset( $option_args['fields']['taxonomy'] ) ) {
         return $value;
     }
 
