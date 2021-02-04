@@ -869,6 +869,17 @@ function automatorwp_ajax_get_ajax_results_option_none( $results ) {
     return automatorwp_ajax_parse_extra_options( $results );
 }
 
+/**
+ * Helper function to prepend extra options to the ajax results
+ *
+ * @since 1.0.0
+ *
+ * @param array $results
+ * @param string $id_key
+ * @param string $text_key
+ *
+ * @return array
+ */
 function automatorwp_ajax_parse_extra_options( $results, $id_key = 'id', $text_key = 'text' ) {
 
     global $wpdb;

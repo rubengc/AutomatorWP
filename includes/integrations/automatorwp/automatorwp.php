@@ -15,6 +15,7 @@ require_once plugin_dir_path( __FILE__ ) . 'triggers/user-created.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/post-created.php';
 // Triggers
 require_once plugin_dir_path( __FILE__ ) . 'actions/anonymous-user.php';
+require_once plugin_dir_path( __FILE__ ) . 'actions/redirect-user.php';
 
 /**
  * Registers this integration

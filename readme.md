@@ -205,6 +205,7 @@ AutomatorWP comes with a set of triggers and actions, including:
 * Set, insert, increment or decrement user meta.
 * Create a post.
 * Set, insert, increment or decrement post meta.
+* Redirect user to url.
 
 [View all triggers and actions](https://automatorwp.com/all-triggers-and-actions/)
 
@@ -299,6 +300,11 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.4.3 ###
+
+* **New Features**
+* New action: Redirect user to url.
 
 ### 1.4.2 ###
 

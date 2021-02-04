@@ -131,17 +131,20 @@ function automatorwp_automation_ui_triggers_meta_box( $automation, $type ) {
     $triggers = automatorwp_get_automation_triggers( $automation->id );
 
     ?>
+    <?php // Section title and subtitle ?>
     <div class="automatorwp-title"><?php _e( 'Triggers', 'automatorwp' ); ?></div>
     <div class="automatorwp-subtitle"><?php _e( 'When this happens...', 'automatorwp' ); ?></div>
 
+    <?php // Sequential ?>
     <div class="automatorwp-sequential-field cmb2-switch">
         <label for="sequential"><?php _e( 'Sequential', 'automatorwp' ); ?></label>
         <div class="cmb-td">
-            <input type="checkbox" id="sequential" name="sequential" value="1" <?php checked( $automation->sequential, 1 ); ?> />
+            <input type="checkbox" id="sequential" name="sequential" class="automatorwp-auto-save" value="1" <?php checked( $automation->sequential, 1 ); ?> />
             <label for="sequential"><span class="cmb2-metabox-description"><?php _e( 'Check this option to force users to complete triggers in order.', 'automatorwp' ); ?></span></label>
         </div>
     </div>
 
+    <?php // Triggers ?>
     <div class="automatorwp-automation-items automatorwp-triggers">
 
         <?php foreach( $triggers as $trigger ) : ?>
@@ -172,9 +175,11 @@ function automatorwp_automation_ui_actions_meta_box( $automation, $type ) {
     $actions = automatorwp_get_automation_actions( $automation->id );
 
     ?>
+    <?php // Section title and subtitle ?>
     <div class="automatorwp-title"><?php _e( 'Actions', 'automatorwp' ); ?></div>
     <div class="automatorwp-subtitle"><?php _e( 'Do this...', 'automatorwp' ); ?></div>
 
+    <?php // Actions ?>
     <div class="automatorwp-automation-items automatorwp-actions">
 
         <?php $actions = automatorwp_check_anonymous_user_action( $automation, $actions ); ?>
@@ -190,6 +195,7 @@ function automatorwp_automation_ui_actions_meta_box( $automation, $type ) {
     <?php automatorwp_automation_ui_add_item_form( $automation, 'action' ); ?>
 
     <button type="button" class="button automatorwp-button-success automatorwp-add-action"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Action', 'automatorwp' ); ?></button>
+
     <?php
 }
 

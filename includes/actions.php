@@ -293,3 +293,64 @@ function automatorwp_get_action_stored_options( $action_id, $single_level = true
     return $options;
 
 }
+
+/**
+ * Check if action is in use
+ *
+ * @since 1.4.3
+ *
+ * @param string $action
+ *
+ * @return bool
+ */
+function automatorwp_is_action_in_use( $action ) {
+
+    $actions_in_user = automatorwp_get_actions_in_use();
+
+    // Check if this action is not in use
+    return (bool) in_array( $action, $actions_in_user );
+
+}
+
+/**
+ * Get all actions in use
+ *
+ * @since 1.4.3
+ *
+ * @return array
+ */
+function automatorwp_get_actions_in_use() {
+
+    global $wpdb;
+
+    $ct_table = ct_setup_table( 'automatorwp_actions' );
+
+    // Check if table exists, just to avoid issues on first install
+    if( ! automatorwp_database_table_exists( $ct_table->db->table_name ) ) {
+        ct_reset_setup_table();
+        return array();
+    }
+
+    $cache = automatorwp_get_cache( 'actions_in_use', false, false );
+
+    // If result already cached, return it
+    if( is_array( $cache ) ) {
+        ct_reset_setup_table();
+        return $cache;
+    }
+
+    $actions_in_use = array();
+    $results = $wpdb->get_results( "SELECT t.type FROM {$ct_table->db->table_name} AS t GROUP BY t.type" );
+
+    ct_reset_setup_table();
+
+    if( is_array( $results ) && count( $results ) ) {
+        $actions_in_use = wp_list_pluck( $results, 'type' );
+    }
+
+    // Cache function result
+    automatorwp_set_cache( 'actions_in_use', $actions_in_use );
+
+    return $actions_in_use;
+
+}

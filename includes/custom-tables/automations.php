@@ -408,6 +408,7 @@ function automatorwp_automations_meta_boxes( ) {
             'title' => array(
                 'name' 	=> __( 'Title', 'automatorwp' ),
                 'type' 	=> 'text',
+                'classes' 	=> 'automatorwp-auto-save',
                 'attributes' => array(
                     'placeholder' => __( 'Enter title here', 'automatorwp' ),
                 )
