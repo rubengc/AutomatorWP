@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-02-04 15:40+0100\n"
+"POT-Creation-Date: 2021-02-24 12:11+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -274,11 +274,11 @@ msgstr ""
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:750
+#: includes/ajax-functions.php:758
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:830 includes/cmb2.php:382
+#: includes/ajax-functions.php:838 includes/cmb2.php:382
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:252
 #: includes/custom-tables/logs.php:327 includes/custom-tables/logs.php:698
@@ -681,6 +681,7 @@ msgstr ""
 #: includes/integrations/wordpress/actions/create-post.php:65
 #: includes/integrations/wordpress/actions/create-post.php:72
 #: includes/integrations/wordpress/actions/create-user.php:47
+#: includes/integrations/wordpress/actions/update-user.php:56
 #: includes/integrations/wordpress/actions/user-role.php:29
 #, php-format
 msgid "<code>%1$s</code> for %2$s"
@@ -767,6 +768,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:815
 #: includes/integrations/wordpress/actions/create-user.php:63
 #: includes/integrations/wordpress/actions/create-user.php:332
+#: includes/integrations/wordpress/actions/update-user.php:79
+#: includes/integrations/wordpress/actions/update-user.php:378
 msgid "Username:"
 msgstr ""
 
@@ -774,6 +777,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:816
 #: includes/integrations/wordpress/actions/create-user.php:64
 #: includes/integrations/wordpress/actions/create-user.php:333
+#: includes/integrations/wordpress/actions/update-user.php:80
+#: includes/integrations/wordpress/actions/update-user.php:379
 msgid "The user's login username."
 msgstr ""
 
@@ -781,6 +786,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:821
 #: includes/integrations/wordpress/actions/create-user.php:70
 #: includes/integrations/wordpress/actions/create-user.php:338
+#: includes/integrations/wordpress/actions/update-user.php:86
+#: includes/integrations/wordpress/actions/update-user.php:384
 msgid "Email:"
 msgstr ""
 
@@ -788,6 +795,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:822
 #: includes/integrations/wordpress/actions/create-user.php:71
 #: includes/integrations/wordpress/actions/create-user.php:339
+#: includes/integrations/wordpress/actions/update-user.php:87
+#: includes/integrations/wordpress/actions/update-user.php:385
 msgid "The user email address."
 msgstr ""
 
@@ -795,6 +804,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:828
 #: includes/integrations/wordpress/actions/create-user.php:77
 #: includes/integrations/wordpress/actions/create-user.php:345
+#: includes/integrations/wordpress/actions/update-user.php:93
+#: includes/integrations/wordpress/actions/update-user.php:391
 msgid "First Name:"
 msgstr ""
 
@@ -802,6 +813,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:829
 #: includes/integrations/wordpress/actions/create-user.php:78
 #: includes/integrations/wordpress/actions/create-user.php:346
+#: includes/integrations/wordpress/actions/update-user.php:94
+#: includes/integrations/wordpress/actions/update-user.php:392
 msgid "The user's first name."
 msgstr ""
 
@@ -809,6 +822,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:835
 #: includes/integrations/wordpress/actions/create-user.php:83
 #: includes/integrations/wordpress/actions/create-user.php:352
+#: includes/integrations/wordpress/actions/update-user.php:100
+#: includes/integrations/wordpress/actions/update-user.php:398
 msgid "Last Name:"
 msgstr ""
 
@@ -816,6 +831,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:836
 #: includes/integrations/wordpress/actions/create-user.php:84
 #: includes/integrations/wordpress/actions/create-user.php:353
+#: includes/integrations/wordpress/actions/update-user.php:101
+#: includes/integrations/wordpress/actions/update-user.php:399
 msgid "The user's last name."
 msgstr ""
 
@@ -823,6 +840,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:842
 #: includes/integrations/wordpress/actions/create-user.php:89
 #: includes/integrations/wordpress/actions/create-user.php:359
+#: includes/integrations/wordpress/actions/update-user.php:107
+#: includes/integrations/wordpress/actions/update-user.php:405
 msgid "Website:"
 msgstr ""
 
@@ -830,6 +849,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:843
 #: includes/integrations/wordpress/actions/create-user.php:90
 #: includes/integrations/wordpress/actions/create-user.php:360
+#: includes/integrations/wordpress/actions/update-user.php:108
+#: includes/integrations/wordpress/actions/update-user.php:406
 msgid "The user URL."
 msgstr ""
 
@@ -839,6 +860,8 @@ msgstr ""
 #: includes/integrations/wordpress/actions/create-post.php:430
 #: includes/integrations/wordpress/actions/create-user.php:95
 #: includes/integrations/wordpress/actions/create-user.php:366
+#: includes/integrations/wordpress/actions/update-user.php:114
+#: includes/integrations/wordpress/actions/update-user.php:412
 msgid "Password:"
 msgstr ""
 
@@ -851,6 +874,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:856
 #: includes/integrations/wordpress/actions/create-user.php:101
 #: includes/integrations/wordpress/actions/create-user.php:373
+#: includes/integrations/wordpress/actions/update-user.php:121
+#: includes/integrations/wordpress/actions/update-user.php:419
 #: includes/utilities.php:363 includes/utilities.php:398
 msgid "Role:"
 msgstr ""
@@ -874,6 +899,8 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:862
 #: includes/integrations/wordpress/actions/create-user.php:114
 #: includes/integrations/wordpress/actions/create-user.php:379
+#: includes/integrations/wordpress/actions/update-user.php:129
+#: includes/integrations/wordpress/actions/update-user.php:425
 msgid "User Meta:"
 msgstr ""
 
@@ -881,24 +908,29 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/anonymous-user.php:863
 #: includes/integrations/wordpress/actions/create-user.php:115
 #: includes/integrations/wordpress/actions/create-user.php:380
+#: includes/integrations/wordpress/actions/update-user.php:130
+#: includes/integrations/wordpress/actions/update-user.php:426
 msgid "The user meta values keyed by their user meta key."
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:192
 #: includes/integrations/wordpress/actions/create-post.php:156
 #: includes/integrations/wordpress/actions/create-user.php:119
+#: includes/integrations/wordpress/actions/update-user.php:134
 msgid "Add meta"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:197
 #: includes/integrations/wordpress/actions/create-post.php:161
 #: includes/integrations/wordpress/actions/create-user.php:124
+#: includes/integrations/wordpress/actions/update-user.php:139
 msgid "Meta Key:"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:202
 #: includes/integrations/wordpress/actions/create-post.php:166
 #: includes/integrations/wordpress/actions/create-user.php:129
+#: includes/integrations/wordpress/actions/update-user.php:144
 msgid "Meta Value:"
 msgstr ""
 
@@ -1029,21 +1061,27 @@ msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:809
 #: includes/integrations/wordpress/actions/create-user.php:326
+#: includes/integrations/wordpress/actions/update-user.php:366
 msgid "User Information"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:810
 #: includes/integrations/wordpress/actions/create-user.php:327
+#: includes/integrations/wordpress/actions/update-user.php:367
 msgid "Information about the user created."
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:850
 #: includes/integrations/wordpress/actions/create-user.php:367
+#: includes/integrations/wordpress/actions/update-user.php:115
+#: includes/integrations/wordpress/actions/update-user.php:413
 msgid "The user password."
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:857
 #: includes/integrations/wordpress/actions/create-user.php:374
+#: includes/integrations/wordpress/actions/update-user.php:122
+#: includes/integrations/wordpress/actions/update-user.php:420
 msgid "The user's role."
 msgstr ""
 
@@ -1052,6 +1090,7 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/redirect-user.php:200
 #: includes/integrations/wordpress/actions/create-post.php:442
 #: includes/integrations/wordpress/actions/create-user.php:385
+#: includes/integrations/wordpress/actions/update-user.php:431
 msgid "Result:"
 msgstr ""
 
@@ -1320,6 +1359,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:60
 #: includes/integrations/wordpress/actions/send-email.php:60
+#: includes/integrations/wordpress/actions/update-user.php:69
 msgid "user"
 msgstr ""
 
@@ -1425,17 +1465,31 @@ msgstr ""
 msgid "Post ID:"
 msgstr ""
 
+#: includes/integrations/wordpress/actions/post-meta.php:81
+#: includes/integrations/wordpress/actions/user-meta.php:61
+msgid "value"
+msgstr ""
+
 #: includes/integrations/wordpress/actions/post-meta.php:84
 #: includes/integrations/wordpress/actions/user-meta.php:64
+#: includes/integrations/wordpress/triggers/post-meta-update.php:58
+#: includes/integrations/wordpress/triggers/user-meta-update.php:54
 msgid "Meta value:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:95
-#: includes/integrations/wordpress/actions/user-meta.php:75
+#: includes/integrations/wordpress/actions/post-meta.php:93
+#: includes/integrations/wordpress/actions/user-meta.php:73
+msgid "key"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/post-meta.php:96
+#: includes/integrations/wordpress/actions/user-meta.php:76
+#: includes/integrations/wordpress/triggers/post-meta-update.php:47
+#: includes/integrations/wordpress/triggers/user-meta-update.php:43
 msgid "Meta key:"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/post-meta.php:152
+#: includes/integrations/wordpress/actions/post-meta.php:153
 #, php-format
 msgid "%1$s post %2$s meta value by %3$s for meta key %4$s"
 msgstr ""
@@ -1546,6 +1600,82 @@ msgstr ""
 msgid "If sending result is \"Not sent\" you need to check if your server's wp_mail() function is correctly configured."
 msgstr ""
 
+#: includes/integrations/wordpress/actions/update-user.php:61
+msgid "Update a user"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:62
+msgid "Update a <strong>user</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:64
+#: includes/integrations/wordpress/actions/update-user.php:66
+#, php-format
+msgid "Update a %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:72
+#: includes/integrations/wordpress/actions/update-user.php:372
+msgid "User ID:"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:73
+msgid "The user's ID to update."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:74
+msgid "Leave empty to use the ID of the user that completes the automation."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:81
+#: includes/integrations/wordpress/actions/update-user.php:88
+#: includes/integrations/wordpress/actions/update-user.php:95
+#: includes/integrations/wordpress/actions/update-user.php:102
+#: includes/integrations/wordpress/actions/update-user.php:109
+#: includes/integrations/wordpress/actions/update-user.php:116
+#: includes/integrations/wordpress/actions/update-user.php:123
+msgid "Leave empty to no update this field."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:190
+#, php-format
+msgid "User not found by the ID %1$s."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:199
+#, php-format
+msgid "Invalid username: %1$s."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:201
+#, php-format
+msgid "Username \"%1$s\" already exists."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:211
+#, php-format
+msgid "Invalid email address: %1$s."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:213
+#, php-format
+msgid "Email address \"%1$s\" already exists."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:223
+#, php-format
+msgid "Invalid role: %1$s."
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:274
+#, php-format
+msgid "Failed to update user, reason: %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/update-user.php:373
+msgid "The user's ID updated."
+msgstr ""
+
 #: includes/integrations/wordpress/actions/user-meta.php:26
 msgid "Set, insert, increment or decrement user meta"
 msgstr ""
@@ -1560,7 +1690,7 @@ msgstr ""
 msgid "%1$s user meta value %2$s for meta key %3$s"
 msgstr ""
 
-#: includes/integrations/wordpress/actions/user-meta.php:129
+#: includes/integrations/wordpress/actions/user-meta.php:130
 #, php-format
 msgid "%1$s user meta value by %2$s for meta key %3$s"
 msgstr ""
@@ -1659,6 +1789,47 @@ msgstr ""
 msgid "Post type:"
 msgstr ""
 
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:27
+msgid "Guest views a page"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:28
+msgid "Guest views <strong>a page</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:30
+#: includes/integrations/wordpress/triggers/anonymous-view-post-type.php:30
+#: includes/integrations/wordpress/triggers/anonymous-view-post.php:30
+#, php-format
+msgid "Guest views %1$s %2$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:32
+#: includes/integrations/wordpress/triggers/anonymous-view-post-type.php:32
+#: includes/integrations/wordpress/triggers/anonymous-view-post.php:32
+#, php-format
+msgid "Guest views %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:39
+#: includes/integrations/wordpress/triggers/comment-page.php:42
+#: includes/integrations/wordpress/triggers/view-page.php:38
+msgid "Page:"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:40
+#: includes/integrations/wordpress/triggers/comment-page.php:43
+#: includes/integrations/wordpress/triggers/view-page.php:39
+msgid "any page"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/anonymous-view-page.php:46
+#: includes/integrations/wordpress/triggers/comment-page.php:50
+#: includes/integrations/wordpress/triggers/publish-page.php:39
+#: includes/integrations/wordpress/triggers/view-page.php:45
+msgid "Page"
+msgstr ""
+
 #: includes/integrations/wordpress/triggers/anonymous-view-post-taxonomy.php:27
 msgid "Guest views a post of a taxonomy"
 msgstr ""
@@ -1685,14 +1856,12 @@ msgstr ""
 msgid "Guest views <strong>a post of a type</strong>"
 msgstr ""
 
-#: includes/integrations/wordpress/triggers/anonymous-view-post-type.php:30
-#, php-format
-msgid "Guest views %1$s %2$s time(s)"
+#: includes/integrations/wordpress/triggers/anonymous-view-post.php:27
+msgid "Guest views a post"
 msgstr ""
 
-#: includes/integrations/wordpress/triggers/anonymous-view-post-type.php:32
-#, php-format
-msgid "Guest views %1$s"
+#: includes/integrations/wordpress/triggers/anonymous-view-post.php:28
+msgid "Guest views <strong>a post</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-page.php:26
@@ -1715,22 +1884,6 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/comment-post.php:31
 #, php-format
 msgid "User comments on %1$s"
-msgstr ""
-
-#: includes/integrations/wordpress/triggers/comment-page.php:42
-#: includes/integrations/wordpress/triggers/view-page.php:38
-msgid "Page:"
-msgstr ""
-
-#: includes/integrations/wordpress/triggers/comment-page.php:43
-#: includes/integrations/wordpress/triggers/view-page.php:39
-msgid "any page"
-msgstr ""
-
-#: includes/integrations/wordpress/triggers/comment-page.php:50
-#: includes/integrations/wordpress/triggers/publish-page.php:39
-#: includes/integrations/wordpress/triggers/view-page.php:45
-msgid "Page"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/comment-post-category.php:26
@@ -1814,6 +1967,72 @@ msgstr ""
 
 #: includes/integrations/wordpress/triggers/login.php:30
 msgid "User logs in"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:26
+msgid "Post meta gets updated with a value"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:27
+msgid "Post <strong>meta gets updated</strong> with a value"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:29
+#, php-format
+msgid "%1$s meta %2$s gets updated with %3$s %4$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:31
+#, php-format
+msgid "%1$s meta %2$s gets updated with %3$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:39
+msgid "Any post"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:44
+#: includes/integrations/wordpress/triggers/user-meta-update.php:40
+msgid "with any key"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:55
+#: includes/integrations/wordpress/triggers/user-meta-update.php:51
+msgid "any value"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:69
+#: includes/integrations/wordpress/triggers/post-meta-update.php:257
+#: includes/integrations/wordpress/triggers/user-meta-update.php:65
+#: includes/integrations/wordpress/triggers/user-meta-update.php:242
+msgid "Updated meta key"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:71
+#: includes/integrations/wordpress/triggers/user-meta-update.php:67
+msgid "Key of the updated meta"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:74
+#: includes/integrations/wordpress/triggers/post-meta-update.php:263
+#: includes/integrations/wordpress/triggers/user-meta-update.php:70
+#: includes/integrations/wordpress/triggers/user-meta-update.php:248
+msgid "Updated meta value"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:76
+#: includes/integrations/wordpress/triggers/user-meta-update.php:72
+msgid "Value of the updated meta"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:258
+#: includes/integrations/wordpress/triggers/user-meta-update.php:243
+msgid "Key of the updated meta."
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/post-meta-update.php:264
+#: includes/integrations/wordpress/triggers/user-meta-update.php:249
+msgid "Value of the updated meta."
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/post-type-status.php:26
@@ -1977,6 +2196,24 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/set-role.php:31
 #, php-format
 msgid "User role changes to %1$s"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/user-meta-update.php:26
+msgid "User meta gets updated with a value"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/user-meta-update.php:27
+msgid "User <strong>meta gets updated</strong> with a value"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/user-meta-update.php:29
+#, php-format
+msgid "User meta %1$s gets updated with %2$s %3$s time(s)"
+msgstr ""
+
+#: includes/integrations/wordpress/triggers/user-meta-update.php:31
+#, php-format
+msgid "User meta %1$s gets updated with %2$s"
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/view-page.php:26

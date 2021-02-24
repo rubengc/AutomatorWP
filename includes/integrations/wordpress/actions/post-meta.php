@@ -78,7 +78,7 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
                 ),
                 'meta_value' => array(
                     'from' => 'meta_value',
-                    'default' => 'value',
+                    'default' => __( 'value', 'automatorwp' ),
                     'fields' => array(
                         'meta_value' => array(
                             'name' => __( 'Meta value:', 'automatorwp' ),
@@ -89,7 +89,8 @@ class AutomatorWP_WordPress_Post_Meta extends AutomatorWP_Integration_Action {
                 ),
                 'meta_key' => array(
                     'from' => 'meta_key',
-                    'default' => 'key',
+                    /* translators: Refers to meta key */
+                    'default' => __( 'key', 'automatorwp' ),
                     'fields' => array(
                         'meta_key' => array(
                             'name' => __( 'Meta key:', 'automatorwp' ),

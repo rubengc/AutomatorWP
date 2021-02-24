@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -190,6 +190,8 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User comments on any/specific page.
 * User comments on a post of any/specific type.
 * User comments on a post of any/specific taxonomy.
+* Post meta with any/specific key gets updated with any/specific value.
+* User meta with any/specific key gets updated with any/specific value.
 * User gets added to any/specific role.
 * User role changes to any/specific role.
 * User gets removed from any/specific role.
@@ -199,6 +201,8 @@ AutomatorWP comes with a set of triggers and actions, including:
 
 **Anonymous Triggers**
 
+* Guest views any/specific post.
+* Guest views any/specific page.
 * Guest views a post of any/specific type.
 * Guest views a post of any/specific taxonomy.
 * Guest comments on a post of any/specific type.
@@ -209,6 +213,7 @@ AutomatorWP comes with a set of triggers and actions, including:
 * Send email to user.
 * Add, change or remove role to user.
 * Create a user.
+* Update a user.
 * Set, insert, increment or decrement user meta.
 * Create a post.
 * Set, insert, increment or decrement post meta.
@@ -270,7 +275,7 @@ Yes, is completely possible thanks to the [Webhooks](https://automatorwp.com/add
 Yes, with the [Webhooks](https://automatorwp.com/add-ons/webhooks/) add-on you connect your plugins from a site to the plugins from another site.
 
 You can create brand new automations between different sites like:
-When user purchases a WooComerce product on Site A, Enroll in a LearnDash course on Site B.
+When user purchases a WooCommerce product on Site A, Enroll in a LearnDash course on Site B.
 When user publishes a post of a specific category on Site A, Clone this post on Site B.
 
 = What if I deactivate or remove a plugin that includes new triggers and actions? =
@@ -298,6 +303,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.4.4 =
+
+* **New Features**
+* New trigger: Post meta with any/specific key gets updated with any/specific value.
+* New trigger: User meta with any/specific key gets updated with any/specific value.
+* New anonymous trigger: Guest views any/specific post.
+* New anonymous trigger: Guest views any/specific page.
+* New action: Update a user.
+* **Developer Notes**
+* Ensure compatibility with PHP 8.
+* Updated internal libraries.
 
 = 1.4.3 =
 

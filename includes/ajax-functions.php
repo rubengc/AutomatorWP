@@ -415,21 +415,29 @@ function automatorwp_ajax_get_posts() {
 
     if ( is_array( $post_type ) ) {
 
-        // Sanitize all post types given
-        foreach( $post_type as $i => $value ) {
-            $post_type[$i] = sanitize_text_field( $value );
+        // Support for any post type
+        if( ! in_array( 'any', $post_type ) ) {
+
+            // Sanitize all post types given
+            foreach( $post_type as $i => $value ) {
+                $post_type[$i] = sanitize_text_field( $value );
+            }
+
+            $where .= sprintf( ' AND p.post_type IN(\'%s\')', implode( "','", $post_type ) );
+
         }
 
-        $post_type = sprintf( ' AND p.post_type IN(\'%s\')', implode( "','", $post_type ) );
     } else {
 
-        // Sanitize the post type
-        $post_type = sanitize_text_field( $post_type );
+        // Support for any post type
+        if( $post_type !== 'any' ) {
 
-        $post_type = sprintf( ' AND p.post_type = \'%s\'', $post_type );
+            // Sanitize the post type
+            $post_type = sanitize_text_field( $post_type );
+
+            $where .= sprintf( ' AND p.post_type = \'%s\'', $post_type );
+        }
     }
-
-    $where .= $post_type;
 
     // Post title conditional
     $where .= " AND p.post_title LIKE %s";

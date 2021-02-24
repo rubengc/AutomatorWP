@@ -955,3 +955,73 @@ function automatorwp_get_editable_roles() {
     return $roles;
 
 }
+
+/**
+ * Helper function to pull all values of an array to a single level
+ *
+ * -------------------------------------
+ * Turns keyed arrays:
+ * 'key_1' => array(
+ *     'sub_1' => 'foo',
+ *     'sub_2' => array(
+ *         'sub_1' => 'bar',
+ *     ),
+ * ),
+ *
+ * Into:
+ * 'key_1' => 'foo, bar'
+ * 'key_1/sub_1' => 'foo',
+ * 'key_1/sub_2' => 'bar'
+ * 'key_1/sub_2/sub_1' => 'bar',
+ * -------------------------------------
+ * Turns numeric arrays:
+ * 'key' => array(
+ *     'foo',
+ *     array(
+ *         'bar',
+ *     ),
+ * ),
+ *
+ * Into:
+ * 'key' => 'foo, bar'
+ * 'key/0' => 'foo',
+ * 'key/1' => 'bar'
+ * 'key/1/0' => 'bar',
+ * -------------------------------------
+ *
+ * @since 1.4.4
+ *
+ * @param array $array
+ * @param string $separator
+ *
+ * @return array
+ */
+function automatorwp_utilities_pull_array_values( $array = array(), $separator = '/' ) {
+
+    $new_array = array();
+
+    foreach( $array as $key => $value ) {
+
+        if( is_array( $value ) ) {
+            // Pull all sub values
+            $value = automatorwp_utilities_pull_array_values( $value );
+        }
+
+        $new_array[$key] = $value;
+
+        if( is_array( $value ) ) {
+
+            // Add new entries with the sub values
+            foreach( $value as $sub_key => $sub_value ) {
+                $new_array[$key . $separator . $sub_key] = $sub_value;
+            }
+
+            // Implode all sub values on the main key
+            $new_array[$key] = implode( ', ', $value );
+        }
+
+    }
+
+    return $new_array;
+
+}
