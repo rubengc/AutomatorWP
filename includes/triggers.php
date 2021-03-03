@@ -40,8 +40,8 @@ function automatorwp_register_trigger( $trigger, $args ) {
      *
      * @since 1.0.0
      *
-     * @param string    $trigger    The trigger key
      * @param array     $args       The trigger arguments
+     * @param string    $trigger    The trigger key
      *
      * @return array
      */
@@ -89,7 +89,19 @@ function automatorwp_get_triggers() {
  */
 function automatorwp_get_trigger( $trigger ) {
 
-    return ( isset( AutomatorWP()->triggers[$trigger] ) ? AutomatorWP()->triggers[$trigger] : false );
+    $trigger_args = ( isset( AutomatorWP()->triggers[$trigger] ) ? AutomatorWP()->triggers[$trigger] : false );
+
+    /**
+     * Available filter to override the trigger args
+     *
+     * @since 1.0.0
+     *
+     * @param array|false $trigger_args
+     * @param string $trigger
+     *
+     * @return array|false
+     */
+    return apply_filters( 'automatorwp_get_trigger', $trigger_args, $trigger );
 
 }
 

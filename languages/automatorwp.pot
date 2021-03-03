@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-02-24 12:11+0100\n"
+"POT-Creation-Date: 2021-03-03 12:47+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,6 +19,16 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: libraries\n"
+
+#: classes/integration-filter.php:336
+#: includes/integrations/automatorwp/actions/anonymous-user.php:870
+#: includes/integrations/automatorwp/actions/anonymous-user.php:896
+#: includes/integrations/automatorwp/actions/redirect-user.php:200
+#: includes/integrations/wordpress/actions/create-post.php:442
+#: includes/integrations/wordpress/actions/create-user.php:385
+#: includes/integrations/wordpress/actions/update-user.php:431
+msgid "Result:"
+msgstr ""
 
 #: includes/actions.php:46
 #, php-format
@@ -172,12 +182,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1291 includes/automation-ui.php:1303
+#: includes/automation-ui.php:1380 includes/automation-ui.php:1392
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1293
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1382
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -274,15 +284,15 @@ msgstr ""
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:758
+#: includes/ajax-functions.php:770
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:838 includes/cmb2.php:382
+#: includes/ajax-functions.php:850 includes/cmb2.php:382
 #: includes/custom-tables/automations.php:200
-#: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:252
-#: includes/custom-tables/logs.php:327 includes/custom-tables/logs.php:698
-#: includes/custom-tables/logs.php:782
+#: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
+#: includes/custom-tables/logs.php:341 includes/custom-tables/logs.php:749
+#: includes/custom-tables/logs.php:846
 msgid "(No title)"
 msgstr ""
 
@@ -298,78 +308,91 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: includes/automation-ui.php:54 includes/automation-ui.php:361
-#: includes/automation-ui.php:575
+#: includes/automation-ui.php:54 includes/automation-ui.php:387
+#: includes/automation-ui.php:642
 msgid "Cancel"
 msgstr ""
 
-#: includes/automation-ui.php:115 includes/automation-ui.php:135
+#: includes/automation-ui.php:115 includes/automation-ui.php:139
 #: includes/custom-tables.php:89 includes/custom-tables/automations.php:152
 msgid "Triggers"
 msgstr ""
 
-#: includes/automation-ui.php:116 includes/automation-ui.php:179
+#: includes/automation-ui.php:116 includes/automation-ui.php:192
 #: includes/custom-tables.php:132 includes/custom-tables/automations.php:153
 msgid "Actions"
 msgstr ""
 
-#: includes/automation-ui.php:136
+#: includes/automation-ui.php:140
 msgid "When this happens..."
 msgstr ""
 
-#: includes/automation-ui.php:140
+#: includes/automation-ui.php:144
 msgid "Sequential"
 msgstr ""
 
-#: includes/automation-ui.php:143
+#: includes/automation-ui.php:147
 msgid "Check this option to force users to complete triggers in order."
 msgstr ""
 
-#: includes/automation-ui.php:160
+#: includes/automation-ui.php:165
 msgid "Anonymous automations only support one trigger per automation."
 msgstr ""
 
-#: includes/automation-ui.php:161
+#: includes/automation-ui.php:167
 msgid "Add Trigger"
 msgstr ""
 
-#: includes/automation-ui.php:180
-msgid "Do this..."
+#: includes/automation-ui.php:169 includes/automation-ui.php:213
+msgid "Add Filter"
 msgstr ""
 
-#: includes/automation-ui.php:197
-msgid "Add Action"
-msgstr ""
-
-#: includes/automation-ui.php:230
-msgid "Select an integration"
-msgstr ""
-
-#: includes/automation-ui.php:286
-msgid "Select a trigger"
-msgstr ""
-
-#: includes/automation-ui.php:292
-msgid "Search for triggers"
-msgstr ""
-
-#: includes/automation-ui.php:324
-msgid "Select an action"
-msgstr ""
-
-#: includes/automation-ui.php:330
-msgid "Search for actions"
-msgstr ""
-
-#: includes/automation-ui.php:365 includes/automation-ui.php:579
+#: includes/automation-ui.php:173 includes/automation-ui.php:217
+#: includes/automation-ui.php:391 includes/automation-ui.php:646
 msgid "Saving..."
 msgstr ""
 
-#: includes/automation-ui.php:448 includes/automation-ui.php:685
+#: includes/automation-ui.php:193
+msgid "Do this..."
+msgstr ""
+
+#: includes/automation-ui.php:211
+msgid "Add Action"
+msgstr ""
+
+#: includes/automation-ui.php:250
+msgid "Select an integration"
+msgstr ""
+
+#: includes/automation-ui.php:309
+msgid "Select a trigger"
+msgstr ""
+
+#: includes/automation-ui.php:318
+msgid "Search for triggers"
+msgstr ""
+
+#: includes/automation-ui.php:350
+msgid "Select an action"
+msgstr ""
+
+#: includes/automation-ui.php:356
+msgid "Search for actions"
+msgstr ""
+
+#: includes/automation-ui.php:493
+msgid "Move up"
+msgstr ""
+
+#: includes/automation-ui.php:497
+msgid "Move down"
+msgstr ""
+
+#: includes/automation-ui.php:501 includes/automation-ui.php:752
 msgid "Delete"
 msgstr ""
 
-#: includes/automation-ui.php:574 includes/custom-tables/automations.php:453
+#: includes/automation-ui.php:641 includes/custom-tables/automations.php:453
 #: includes/custom-tables/automations.php:472
 #: includes/custom-tables/automations.php:487
 #: includes/custom-tables/automations.php:500
@@ -377,57 +400,58 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: includes/automation-ui.php:627
+#: includes/automation-ui.php:694
 #: includes/integrations/automatorwp/actions/anonymous-user.php:82
 #: includes/integrations/automatorwp/actions/anonymous-user.php:84
 #, php-format
 msgid "Actions will be run on %1$s"
 msgstr ""
 
-#: includes/automation-ui.php:667
+#: includes/automation-ui.php:734
 msgid "Trigger disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this trigger."
 msgstr ""
 
-#: includes/automation-ui.php:669
+#: includes/automation-ui.php:736
 msgid "Action disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this action."
 msgstr ""
 
-#: includes/automation-ui.php:678 includes/automation-ui.php:688
-#: includes/custom-tables/automations.php:235 includes/logs.php:174
+#: includes/automation-ui.php:745 includes/automation-ui.php:755
+#: includes/custom-tables/automations.php:235 includes/logs.php:180
+#: includes/logs.php:267
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:1141
+#: includes/automation-ui.php:1230
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:1141
+#: includes/automation-ui.php:1230
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:1142
+#: includes/automation-ui.php:1231
 msgid "View all add-ons"
 msgstr ""
 
-#: includes/automation-ui.php:1153
+#: includes/automation-ui.php:1242
 #, php-format
 msgid "%d plugin of your site can be connected with AutomatorWP."
 msgid_plural "%d plugins of your site can be connected with AutomatorWP."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/automation-ui.php:1154
+#: includes/automation-ui.php:1243
 msgid "View plugins"
 msgstr ""
 
-#: includes/automation-ui.php:1165
+#: includes/automation-ui.php:1254
 #, php-format
 msgid "%d trigger"
 msgid_plural "%d triggers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/automation-ui.php:1169
+#: includes/automation-ui.php:1258
 #, php-format
 msgid "%d action"
 msgid_plural "%d actions"
@@ -462,7 +486,7 @@ msgstr ""
 msgid "any category"
 msgstr ""
 
-#: includes/cmb2.php:115 includes/filters.php:74 includes/utilities.php:210
+#: includes/cmb2.php:115 includes/filters.php:310 includes/utilities.php:210
 #: includes/utilities.php:213
 msgid "any taxonomy"
 msgstr ""
@@ -488,7 +512,11 @@ msgstr ""
 msgid "any item"
 msgstr ""
 
-#: includes/cmb2.php:414 includes/utilities.php:470
+#: includes/cmb2.php:407
+msgid "Choose a filter"
+msgstr ""
+
+#: includes/cmb2.php:449 includes/utilities.php:470
 msgid "Use a custom value"
 msgstr ""
 
@@ -586,12 +614,12 @@ msgid "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' 
 msgstr ""
 
 #: includes/custom-tables/automations.php:597
-#: includes/custom-tables/logs.php:407
+#: includes/custom-tables/logs.php:421
 msgid "Delete permanently"
 msgstr ""
 
 #: includes/custom-tables/automations.php:598
-#: includes/custom-tables/logs.php:408
+#: includes/custom-tables/logs.php:422
 msgid "Delete Permanently"
 msgstr ""
 
@@ -599,82 +627,107 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: includes/custom-tables/logs.php:160 includes/utilities.php:552
+#: includes/custom-tables/logs.php:160 includes/utilities.php:553
 msgid "Post"
 msgstr ""
 
-#: includes/custom-tables/logs.php:341
+#: includes/custom-tables/logs.php:355
 msgid "Log Details"
 msgstr ""
 
-#: includes/custom-tables/logs.php:342
+#: includes/custom-tables/logs.php:356
 msgid "Log Data"
 msgstr ""
 
-#: includes/custom-tables/logs.php:368
+#: includes/custom-tables/logs.php:382
 #: includes/integrations/wordpress/actions/create-post.php:95
 #: includes/integrations/wordpress/actions/create-post.php:382
 msgid "Type:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:373
+#: includes/custom-tables/logs.php:387
 msgid "User:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:390
+#: includes/custom-tables/logs.php:404
 #: includes/integrations/wordpress/actions/create-post.php:109
 #: includes/integrations/wordpress/actions/create-post.php:394
 msgid "Date:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:405
+#: includes/custom-tables/logs.php:419
 msgid "Are you sure you want to delete this item?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete."
 msgstr ""
 
-#: includes/custom-tables/logs.php:493
+#: includes/custom-tables/logs.php:507
 msgid "Trigger:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:494
+#: includes/custom-tables/logs.php:508
 msgid "Trigger assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:498 includes/custom-tables/logs.php:514
-#: includes/custom-tables/logs.php:525 includes/utilities.php:312
+#: includes/custom-tables/logs.php:512 includes/custom-tables/logs.php:528
+#: includes/custom-tables/logs.php:544 includes/custom-tables/logs.php:561
+#: includes/utilities.php:312
 msgid "Automation:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:499
+#: includes/custom-tables/logs.php:513
 msgid "Trigger's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:509
+#: includes/custom-tables/logs.php:523
 msgid "Action:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:510
+#: includes/custom-tables/logs.php:524
 msgid "Action assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:515
+#: includes/custom-tables/logs.php:529
 msgid "Action's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:526
+#: includes/custom-tables/logs.php:539
+#: includes/integrations/filter/actions/action-filter.php:49
+#: includes/integrations/filter/triggers/trigger-filter.php:49
+msgid "Filter:"
+msgstr ""
+
+#: includes/custom-tables/logs.php:540
+msgid "Filter assigned to this log."
+msgstr ""
+
+#: includes/custom-tables/logs.php:545
+msgid "Filter's automation."
+msgstr ""
+
+#: includes/custom-tables/logs.php:562
 msgid "Automation assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:536 includes/utilities.php:48
+#: includes/custom-tables/logs.php:572 includes/utilities.php:48
 #: includes/utilities.php:85
 msgid "Post:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:537
+#: includes/custom-tables/logs.php:573
 msgid "Post assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:734
+#: includes/custom-tables/logs.php:785
 msgid "(No post assigned)"
+msgstr ""
+
+#: includes/filters.php:47
+#, php-format
+msgid "Filter \"%s\" has the option key \"%s\" that is not allowed"
+msgstr ""
+
+#: includes/filters.php:54
+#, php-format
+msgid "Possible filter duplication with the key \"%s\""
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:74
@@ -719,18 +772,22 @@ msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:109
 #: includes/integrations/automatorwp/actions/anonymous-user.php:283
+#: includes/integrations/wordpress/filters/user-field.php:41
+#: includes/integrations/wordpress/filters/user-field.php:86
 #: includes/tags.php:58
 msgid "ID"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:110
 #: includes/integrations/automatorwp/actions/anonymous-user.php:224
+#: includes/integrations/wordpress/filters/user-field.php:43
 #: includes/tags.php:70
 msgid "Email"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:111
 #: includes/integrations/automatorwp/actions/anonymous-user.php:225
+#: includes/integrations/wordpress/filters/user-field.php:42
 #: includes/tags.php:64
 msgid "Username"
 msgstr ""
@@ -948,10 +1005,12 @@ msgid "The field by which to search the user if during creation is detected that
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:284
+#: includes/integrations/wordpress/filters/user-field.php:88
 msgid "email"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:285
+#: includes/integrations/wordpress/filters/user-field.php:87
 msgid "username"
 msgstr ""
 
@@ -1085,15 +1144,6 @@ msgstr ""
 msgid "The user's role."
 msgstr ""
 
-#: includes/integrations/automatorwp/actions/anonymous-user.php:870
-#: includes/integrations/automatorwp/actions/anonymous-user.php:896
-#: includes/integrations/automatorwp/actions/redirect-user.php:200
-#: includes/integrations/wordpress/actions/create-post.php:442
-#: includes/integrations/wordpress/actions/create-user.php:385
-#: includes/integrations/wordpress/actions/update-user.php:431
-msgid "Result:"
-msgstr ""
-
 #: includes/integrations/automatorwp/actions/redirect-user.php:35
 msgid "Redirect user to url"
 msgstr ""
@@ -1132,6 +1182,50 @@ msgstr ""
 
 #: includes/integrations/automatorwp/actions/redirect-user.php:195
 msgid "The url where user has been redirected."
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:26
+msgid "Flat condition"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:27
+msgid "Flat <strong>condition</strong>"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:29
+#: includes/integrations/automatorwp/filters/flat-condition.php:31
+#: includes/integrations/wordpress/filters/user-field.php:29
+#: includes/integrations/wordpress/filters/user-field.php:31
+#: includes/integrations/wordpress/filters/user-meta.php:29
+#: includes/integrations/wordpress/filters/user-meta.php:31
+#, php-format
+msgid "%1$s %2$s %3$s"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:35
+msgid "value 1"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:38
+msgid "Value 1:"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:47
+msgid "value 2"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:50
+msgid "Value 2:"
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:84
+#, php-format
+msgid "Filter not passed. \"%1$s\" does not meets the condition %2$s \"%3$s\"."
+msgstr ""
+
+#: includes/integrations/automatorwp/filters/flat-condition.php:92
+#, php-format
+msgid "Filter passed. \"%1$s\" %2$s \"%3$s\"."
 msgstr ""
 
 #: includes/integrations/automatorwp/triggers/complete-automation.php:26
@@ -1186,6 +1280,25 @@ msgstr ""
 #: includes/integrations/automatorwp/triggers/user-created.php:31
 #, php-format
 msgid "User gets created through %1$s"
+msgstr ""
+
+#: includes/integrations/filter/actions/action-filter.php:35
+#: includes/integrations/filter/triggers/trigger-filter.php:35
+msgid "Operator:"
+msgstr ""
+
+#: includes/integrations/filter/actions/action-filter.php:38
+#: includes/integrations/filter/triggers/trigger-filter.php:38
+msgid "AND"
+msgstr ""
+
+#: includes/integrations/filter/actions/action-filter.php:39
+#: includes/integrations/filter/triggers/trigger-filter.php:39
+msgid "OR"
+msgstr ""
+
+#: includes/integrations/filter/filter.php:25 includes/logs.php:26
+msgid "Filter"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:77
@@ -1467,11 +1580,14 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/post-meta.php:81
 #: includes/integrations/wordpress/actions/user-meta.php:61
+#: includes/integrations/wordpress/filters/user-field.php:55
+#: includes/integrations/wordpress/filters/user-meta.php:47
 msgid "value"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/post-meta.php:84
 #: includes/integrations/wordpress/actions/user-meta.php:64
+#: includes/integrations/wordpress/filters/user-meta.php:50
 #: includes/integrations/wordpress/triggers/post-meta-update.php:58
 #: includes/integrations/wordpress/triggers/user-meta-update.php:54
 msgid "Meta value:"
@@ -1479,11 +1595,13 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/post-meta.php:93
 #: includes/integrations/wordpress/actions/user-meta.php:73
+#: includes/integrations/wordpress/filters/user-meta.php:35
 msgid "key"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/post-meta.php:96
 #: includes/integrations/wordpress/actions/user-meta.php:76
+#: includes/integrations/wordpress/filters/user-meta.php:38
 #: includes/integrations/wordpress/triggers/post-meta-update.php:47
 #: includes/integrations/wordpress/triggers/user-meta-update.php:43
 msgid "Meta key:"
@@ -1724,6 +1842,153 @@ msgstr ""
 #: includes/integrations/wordpress/actions/user-role.php:60
 #: includes/utilities.php:366 includes/utilities.php:401
 msgid "Role name."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:26
+msgid "User field"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:27
+msgid "User <strong>field</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:35
+msgid "field"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:38
+msgid "Field:"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:44
+#: includes/integrations/wordpress/filters/user-field.php:89
+msgid "URL"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:45
+msgid "Date registered"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:46
+#: includes/tags.php:76
+msgid "Display name"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:58
+msgid "Value:"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:90
+msgid "date registered"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:91
+msgid "display name"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:101
+msgid "Filter not passed. Field option has not been configured."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:108
+#: includes/integrations/wordpress/filters/user-role.php:87
+msgid "Filter not passed. Could not find the user."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:116
+#, php-format
+msgid "Filter not passed. User %1$s has the value \"%2$s\" and does not meets the condition %3$s \"%4$s\"."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-field.php:125
+#, php-format
+msgid "Filter passed. User %1$s has the value \"%2$s\" and meets the condition %3$s \"%4$s\"."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-meta.php:26
+msgid "User meta"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-meta.php:27
+msgid "User <strong>meta</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-meta.php:84
+msgid "Filter not passed. Meta key option has not been configured."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-meta.php:92
+#, php-format
+msgid "Filter not passed. User meta \"%1$s\" has the value \"%2$s\" and does not meets the condition %3$s \"%4$s\"."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-meta.php:101
+#, php-format
+msgid "Filter passed. User meta \"%1$s\" has the value \"%2$s\" and meets the condition %3$s \"%4$s\"."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:26
+msgid "User role"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:27
+msgid "User <strong>role</strong>"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:29
+#: includes/integrations/wordpress/filters/user-role.php:31
+#, php-format
+msgid "%1$s %2$s"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:37
+#: includes/utilities.php:761 includes/utilities.php:806
+#: includes/utilities.php:845
+msgid "Condition:"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:40
+#: includes/utilities.php:764 includes/utilities.php:848
+#: includes/utilities.php:873
+msgid "is equal to"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:41
+#: includes/utilities.php:765 includes/utilities.php:849
+#: includes/utilities.php:874
+msgid "is not equal to"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:42
+#: includes/utilities.php:766 includes/utilities.php:850
+#: includes/utilities.php:875
+msgid "contains"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:43
+#: includes/utilities.php:767 includes/utilities.php:851
+#: includes/utilities.php:876
+msgid "does not contains"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:51
+msgid "Role name:"
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:80
+msgid "Filter not passed. Role option has not been configured."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:96
+#: includes/integrations/wordpress/filters/user-role.php:110
+#: includes/integrations/wordpress/filters/user-role.php:122
+#, php-format
+msgid "Filter not passed. User role \"%1$s\" does not meets the condition %2$s \"%3$s\"."
+msgstr ""
+
+#: includes/integrations/wordpress/filters/user-role.php:132
+#, php-format
+msgid "Filter passed. User role \"%1$s\" meets the condition %2$s \"%3$s\"."
 msgstr ""
 
 #: includes/integrations/wordpress/triggers/add-role.php:26
@@ -2306,6 +2571,10 @@ msgstr ""
 msgid "User daily visits the site %1$s time(s)"
 msgstr ""
 
+#: includes/logs.php:259 includes/logs.php:269
+msgid "Filter not passed"
+msgstr ""
+
 #: includes/scripts.php:150
 msgid "Saving"
 msgstr ""
@@ -2349,10 +2618,6 @@ msgstr ""
 
 #: includes/tags.php:45
 msgid "Admin email"
-msgstr ""
-
-#: includes/tags.php:76
-msgid "Display name"
 msgstr ""
 
 #: includes/tags.php:78
@@ -2458,162 +2723,194 @@ msgstr ""
 msgid "Select a role"
 msgstr ""
 
-#: includes/utilities.php:528
+#: includes/utilities.php:529
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:567 includes/utilities.php:673
+#: includes/utilities.php:568 includes/utilities.php:674
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:573 includes/utilities.php:588
+#: includes/utilities.php:574 includes/utilities.php:589
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:575
+#: includes/utilities.php:576
 msgid "The title"
 msgstr ""
 
-#: includes/utilities.php:579
+#: includes/utilities.php:580
 #, php-format
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:585
+#: includes/utilities.php:586
 #, php-format
 msgid "%s Link"
 msgstr ""
 
-#: includes/utilities.php:592 includes/utilities.php:727
+#: includes/utilities.php:593 includes/utilities.php:728
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:598
+#: includes/utilities.php:599
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:604 includes/utilities.php:703
+#: includes/utilities.php:605 includes/utilities.php:704
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:610 includes/utilities.php:721
+#: includes/utilities.php:611 includes/utilities.php:722
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:612 includes/utilities.php:723
+#: includes/utilities.php:613 includes/utilities.php:724
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:616
+#: includes/utilities.php:617
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:618
+#: includes/utilities.php:619
 msgid "The excerpt"
 msgstr ""
 
-#: includes/utilities.php:622
+#: includes/utilities.php:623
 #, php-format
 msgid "%s Status"
 msgstr ""
 
-#: includes/utilities.php:628
+#: includes/utilities.php:629
 #, php-format
 msgid "%s Parent ID"
 msgstr ""
 
-#: includes/utilities.php:634
+#: includes/utilities.php:635
 #, php-format
 msgid "%s Menu Order"
 msgstr ""
 
-#: includes/utilities.php:640
+#: includes/utilities.php:641
 #, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:642
+#: includes/utilities.php:643
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:658
+#: includes/utilities.php:659
 msgid "Comment"
 msgstr ""
 
-#: includes/utilities.php:679
+#: includes/utilities.php:680
 #, php-format
 msgid "%s Post ID"
 msgstr ""
 
-#: includes/utilities.php:685
+#: includes/utilities.php:686
 #, php-format
 msgid "%s Post Title"
 msgstr ""
 
-#: includes/utilities.php:687
+#: includes/utilities.php:688
 msgid "The post title"
 msgstr ""
 
-#: includes/utilities.php:691
+#: includes/utilities.php:692
 #, php-format
 msgid "%s User ID"
 msgstr ""
 
-#: includes/utilities.php:697
+#: includes/utilities.php:698
 #, php-format
 msgid "%s Author Name"
 msgstr ""
 
-#: includes/utilities.php:709
+#: includes/utilities.php:710
 #, php-format
 msgid "%s Author URL"
 msgstr ""
 
-#: includes/utilities.php:715
+#: includes/utilities.php:716
 #, php-format
 msgid "%s Author IP"
 msgstr ""
 
-#: includes/utilities.php:747
-msgid "Condition:"
+#: includes/utilities.php:768 includes/utilities.php:852
+#: includes/utilities.php:877
+msgid "starts with"
 msgstr ""
 
-#: includes/utilities.php:750
+#: includes/utilities.php:769 includes/utilities.php:853
+#: includes/utilities.php:878
+msgid "does not starts with"
+msgstr ""
+
+#: includes/utilities.php:770 includes/utilities.php:854
+#: includes/utilities.php:879
+msgid "ends with"
+msgstr ""
+
+#: includes/utilities.php:771 includes/utilities.php:855
+#: includes/utilities.php:880
+msgid "does not ends with"
+msgstr ""
+
+#: includes/utilities.php:772 includes/utilities.php:882
+msgid "is less than"
+msgstr ""
+
+#: includes/utilities.php:773 includes/utilities.php:883
+msgid "is greater than"
+msgstr ""
+
+#: includes/utilities.php:774 includes/utilities.php:884
+msgid "is less or equal to"
+msgstr ""
+
+#: includes/utilities.php:775 includes/utilities.php:885
+msgid "is greater or equal to"
+msgstr ""
+
+#: includes/utilities.php:809
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:751
+#: includes/utilities.php:810
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:752
+#: includes/utilities.php:811
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:753
+#: includes/utilities.php:812
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:754
+#: includes/utilities.php:813
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:755
+#: includes/utilities.php:814
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:922
+#: includes/utilities.php:1128
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:923
+#: includes/utilities.php:1129
 msgid "Hide options"
 msgstr ""

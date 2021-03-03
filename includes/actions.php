@@ -32,8 +32,8 @@ function automatorwp_register_action( $action, $args ) {
      *
      * @since 1.0.0
      *
-     * @param string    $action The action key
      * @param array     $args   The action arguments
+     * @param string    $action The action key
      *
      * @return array
      */
@@ -81,7 +81,19 @@ function automatorwp_get_actions() {
  */
 function automatorwp_get_action( $action ) {
 
-    return ( isset( AutomatorWP()->actions[$action] ) ? AutomatorWP()->actions[$action] : false );
+    $action_args = ( isset( AutomatorWP()->actions[$action] ) ? AutomatorWP()->actions[$action] : false );
+
+    /**
+     * Available filter to override the action args
+     *
+     * @since 1.0.0
+     *
+     * @param array|false $action_args
+     * @param string $action
+     *
+     * @return array|false
+     */
+    return apply_filters( 'automatorwp_get_action', $action_args, $action );
 
 }
 

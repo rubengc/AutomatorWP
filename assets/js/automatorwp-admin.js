@@ -107,19 +107,49 @@
     // Sequential
     $('body').on('change', 'input#sequential', function(e) {
 
+        var selector = '.automatorwp-triggers .automatorwp-automation-item:not(.automatorwp-automation-item-filter) .automatorwp-automation-item-position';
+
         if( $(this).prop('checked') ) {
-            $('.automatorwp-triggers .automatorwp-automation-item-position').show();
+            $(selector).show();
         } else {
-            $('.automatorwp-triggers .automatorwp-automation-item-position').hide();
+            $(selector).hide();
         }
 
+    });
+
+    // Move Up/Down
+    $('body').on('click', '.automatorwp-automation-item-action-move-up, .automatorwp-automation-item-action-move-down', function(e) {
+
+        var item = $(this).closest('.automatorwp-automation-item');
+        var items_list = $(this).closest('.automatorwp-automation-items');
+        var direction = ( $(this).hasClass('automatorwp-automation-item-action-move-up') ? 'up' : 'down' );
+        var sibling_item;
+
+        if( direction === 'up' ) {
+            sibling_item = item.prev('.automatorwp-automation-item');
+        } else {
+            sibling_item = item.next('.automatorwp-automation-item');
+        }
+
+        if( ! sibling_item.length ) {
+            return;
+        }
+
+        if( direction === 'up' ) {
+            $('#' + item.attr('id')).insertBefore( '#' + sibling_item.attr('id') );
+        } else {
+            $('#' + item.attr('id')).insertAfter( '#' + sibling_item.attr('id') );
+        }
+
+        // Update items position
+        automatorwp_update_items_position( items_list );
     });
 
     // Delete item
     $('body').on('click', '.automatorwp-automation-item-action-delete', function(e) {
 
         var item = $(this).closest('.automatorwp-automation-item');
-        var items_list =$(this).closest('.automatorwp-automation-items');
+        var items_list = $(this).closest('.automatorwp-automation-items');
         var item_type = item.hasClass('automatorwp-trigger') ? 'trigger' : 'action';
         var id = item.find('input.id').val();
 
@@ -182,6 +212,7 @@
 
         // Remove elements and inputs not allowed
         $('.automatorwp-add-trigger').remove();
+        $('#automatorwp_triggers .automatorwp-add-filter').remove();
         $('.automatorwp-sequential-field').remove();
         $('#cmb-field-js-controls-times_per_user-before').remove();
         $('.cmb2-id-times-per-user').remove();
@@ -202,6 +233,7 @@
 
         $('.automatorwp-automation-type-dialog').dialog({
             dialogClass: 'automatorwp-dialog',
+            closeText: '',
             show: { effect: 'fadeIn', duration: 200 },
             hide: { effect: 'fadeOut', duration: 200 },
             resizable: false,
@@ -542,23 +574,27 @@
             success: function( response ) {
 
                 if( response.success ) {
+
+                    // Removes the new item form
+                    item.remove();
+
                     var new_item = $( response.data.edit_html );
 
                     // Append the new item
-                    new_item.appendTo( item.closest('.automatorwp-automation-items') );
+                    new_item.appendTo( items_list );
 
                     // If sequential enabled, show the item position
                     if( item_type === 'trigger' && $('#sequential').prop('checked') ) {
-                        item.closest('.automatorwp-automation-items').find('.automatorwp-automation-item-position').show();
+                        // Update items position
+                        automatorwp_update_items_position( items_list );
+
+                        items_list.find('.automatorwp-automation-item:not(.automatorwp-automation-item-filter) .automatorwp-automation-item-position').show();
                     }
 
                     // Add tags to all tags selectors
                     if( item_type === 'trigger' && response.data.tags_html.length ) {
                         $( response.data.tags_html ).appendTo('.automatorwp-automation-tag-selector');
                     }
-
-                    // Removes the new item form
-                    item.remove();
 
                     // Make javascript features work on the new item
                     automatorwp_initialize_form_fields( new_item );
@@ -607,6 +643,83 @@
         e.preventDefault();
 
         $(this).closest('.automatorwp-recommended-integrations').find('.automatorwp-integrations').slideToggle('fast');
+    });
+
+    // -----------------------------------------------
+    // Add Filter
+    // -----------------------------------------------
+
+    $('body').on('click', '.automatorwp-add-filter', function(e) {
+
+        var button = $(this);
+        var box = button.closest('.postbox');
+        var items_list = box.find('.automatorwp-automation-items');
+        var automation_id = $('#object_id').val();
+        var item_type = ( box.attr('id') === 'automatorwp_triggers' ? 'trigger' : 'action' );
+        var type = 'filter';
+
+        var last_position = items_list.find('.automatorwp-automation-item input.position').last();
+        var position = 0;
+
+        if( last_position.length ) {
+            position = parseInt( last_position.val() ) + 1;
+        } else {
+            position = parseInt( items_list.find('.automatorwp-automation-item').length - 1 );
+        }
+
+        // Disable button
+        button.prop('disabled', true);
+        // Show spinner
+        box.find('.automatorwp-box-spinner').show();
+
+        $.ajax({
+            url: ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'automatorwp_add_automation_item',
+                nonce: automatorwp_admin.nonce,
+                automation_id: automation_id,
+                item_type: item_type,
+                type: type,
+                position: position
+            },
+            success: function( response ) {
+
+                // Enable button
+                button.prop('disabled', false);
+                // Hide spinner
+                box.find('.automatorwp-box-spinner').hide();
+
+                if( response.success ) {
+                    var new_item = $( response.data.edit_html );
+
+                    // Append the new item
+                    new_item.appendTo( items_list );
+
+                    // If sequential enabled, show the item position
+                    if( item_type === 'trigger' && $('#sequential').prop('checked') ) {
+                        // Update items position
+                        automatorwp_update_items_position( items_list );
+
+                        items_list.find('.automatorwp-automation-item:not(.automatorwp-automation-item-filter) .automatorwp-automation-item-position').show();
+                    }
+
+                    // Add tags to all tags selectors
+                    if( item_type === 'trigger' && response.data.tags_html.length ) {
+                        $( response.data.tags_html ).appendTo('.automatorwp-automation-tag-selector');
+                    }
+
+                    // Make javascript features work on the new item
+                    automatorwp_initialize_form_fields( new_item );
+
+                } else {
+
+                }
+            },
+            error: function( response ) {
+
+            }
+        });
     });
 
     // -----------------------------------------------
@@ -679,6 +792,22 @@
                     // Hide the option form
                     form.removeClass('automatorwp-option-form-active').slideUp('fast');
 
+                    // Override the item content HTML (used for filters)
+                    if( response.data.item_html !== undefined ) {
+
+                        if( item.hasClass('automatorwp-automation-item-filter') && item.data('update-content') === 'true' ) {
+
+                            var item_content = $(response.data.item_html).filter('.automatorwp-automation-item').find('.automatorwp-automation-item-content').html();
+
+                            item.find('.automatorwp-automation-item-content').html( item_content );
+
+                            // Make javascript features work on the new item
+                            automatorwp_initialize_form_fields( item );
+
+                            item.data('update-content', 'false');
+                        }
+                    }
+
                     // Update the item label
                     item.find('.automatorwp-automation-item-label').html( response.data.edit_html );
 
@@ -722,6 +851,14 @@
         // Hide the option form
         $(this).closest('.automatorwp-option-form-container').removeClass('automatorwp-option-form-active').slideUp('fast');
 
+    });
+
+    // On change filter field
+    $('body').on('change', '.automatorwp-automation-item-filter .cmb2-id-filter select', function(e) {
+
+        var item = $(this).closest('.automatorwp-automation-item-filter');
+
+        item.data('update-content', 'true' );
     });
 
     // -----------------------------------------------
@@ -979,6 +1116,15 @@
 
     });
 
+    // Initial status for filters (where form is always visible)
+    $('.automatorwp-selector-custom-input').each(function() {
+        var selector_row = $(this).prev('.cmb-row');
+
+        if( selector_row.find('select').val() === 'custom' ) {
+            $(this).show();
+        }
+    });
+
 })( jQuery );
 
 /**
@@ -995,6 +1141,7 @@ function automatorwp_update_items_position( element ) {
     var items = element.find('.automatorwp-automation-item');
     var items_order = {};
     var items_order_for_tags = [];
+    var current_position = 0;
 
     // Loop through each item
     items.each(function( index, value ) {
@@ -1002,8 +1149,12 @@ function automatorwp_update_items_position( element ) {
         // Write it's current position to our hidden input value
         $(this).find('input.position').val( index );
 
-        // Update item position
-        $(this).find('.automatorwp-automation-item-position').html( ( index + 1 ) + '.');
+        if( ! $(this).hasClass('automatorwp-automation-item-filter') ) {
+            // Update item position
+            $(this).find('.automatorwp-automation-item-position').html( ( current_position + 1 ) + '.');
+
+            current_position++;
+        }
 
         items_order[$(this).find('input.id').val()] = index;
 

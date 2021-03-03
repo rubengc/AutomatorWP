@@ -441,6 +441,7 @@
 }
 
 .automatorwp-automation-item-actions .automatorwp-automation-item-action {
+    display: inline-block;
     width: 25px;
     height: 25px;
     text-align: center;
@@ -451,6 +452,12 @@
     line-height: 25px;
 }
 
+.automatorwp-automation-item:first-child .automatorwp-automation-item-action-move-up,
+.automatorwp-automation-item:last-child .automatorwp-automation-item-action-move-down {
+    color: #a0a5aa;
+    cursor: default;
+}
+
 .automatorwp-automation-item-actions .automatorwp-automation-item-action-delete {
     color: #e15151;
 }
@@ -458,22 +465,22 @@
 /* Automation item options */
 
 .button.automatorwp-button,
-.automatorwp-option.button:not(.button-primary) {
+.automatorwp-option.button:not(.button-primary):not(.automatorwp-button-success):not(.automatorwp-button-danger):not(.automatorwp-button-dark) {
     border: none;
     color: #444;
     background: #e5e5e5;
 }
 
 .button.automatorwp-button:hover,
-.automatorwp-option.button:not(.button-primary):hover {
+.automatorwp-option.button:not(.button-primary):not(.automatorwp-button-success):not(.automatorwp-button-danger):not(.automatorwp-button-dark):hover {
     background: #ddd;
     color: #444;
 }
 
 .button.automatorwp-button:focus,
 .button.automatorwp-button:active,
-.automatorwp-option.button:not(.button-primary):focus,
-.automatorwp-option.button:not(.button-primary):active {
+.automatorwp-option.button:not(.button-primary):not(.automatorwp-button-success):not(.automatorwp-button-danger):not(.automatorwp-button-dark):focus,
+.automatorwp-option.button:not(.button-primary):not(.automatorwp-button-success):not(.automatorwp-button-danger):not(.automatorwp-button-dark):active {
     background: #cfcfcf;
     color: #444;
 }
@@ -554,6 +561,7 @@
 /* Anonymous automations edit screen */
 body.edit-anonymous-automation .automatorwp-sequential-field,
 body.edit-anonymous-automation .automatorwp-add-trigger,
+body.edit-anonymous-automation #automatorwp_triggers .automatorwp-add-filter,
 body.edit-anonymous-automation #cmb-field-js-controls-times_per_user-before,
 body.edit-anonymous-automation .cmb2-id-times-per-user,
 body.edit-anonymous-automation #cmb-field-js-controls-times_per_user-after {
@@ -659,6 +667,64 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     font-size: 14px;
     cursor: pointer;
 }
+
+/* -------------------------------------------
+    Filters
+   ------------------------------------------- */
+
+.automatorwp-automation-item-filter {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 0.6em;
+}
+
+.automatorwp-automation-item:not(.automatorwp-automation-item-filter) + .automatorwp-automation-item-filter {
+    margin-top: -4px;
+}
+
+.automatorwp-automation-item-filter:before {
+    content: "";
+    display: block;
+    border-left: 2px dashed #ccd0d4;
+    border-bottom: 2px dashed #ccd0d4;
+    width: 12px;
+    height: 38px;
+    position: absolute;
+    top: -10px;
+    left: -14px;
+}
+
+.automatorwp-automation-item-filter + .automatorwp-automation-item-filter:after {
+    content: "";
+    display: block;
+    border-left: 2px dashed #ccd0d4;
+    height: 29px;
+    position: absolute;
+    left: -14px;
+    top: -45px;
+}
+
+.automatorwp-automation-item-filter .automatorwp-automation-item-details {
+    width: 60px;
+}
+
+.automatorwp-automation-item-filter .automatorwp-automation-item-content {
+    width: calc( 100% - 60px );
+}
+
+.automatorwp-automation-item-filter .automatorwp-integration-icon {
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 32px;
+    max-height: 32px;
+    height: 32px;
+}
+
+.automatorwp-automation-item-filter .automatorwp-integration-label,
+.automatorwp-automation-item-filter .automatorwp-automation-item-position {
+    display: none !important;
+}
+
 
 /* -------------------------------------------
     Forms
@@ -852,7 +918,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 /* -------------------------------------------
     Tags Selector
    ------------------------------------------- */
-.automatorwp-automation-item.automatorwp-action .cmb-td {
+.automatorwp-automation-item .cmb-td {
     position: relative;
     z-index: 1;
 }
@@ -1126,15 +1192,6 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 /* -------------------------------------------
     Logs Edit Screen
    ------------------------------------------- */
-.automatorwp-log-title-preview .automatorwp-integration-icon {
-    float: left;
-    margin-right: 6px;
-    width: 30px;
-    max-width: 30px;
-    max-height: 30px;
-    height: 30px;
-}
-
 #post-body .misc-pub-post-user:before {
     content: "\f110";
 }
@@ -1184,8 +1241,20 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     margin: 0;
 }
 
+.automatorwp-log-title-preview .automatorwp-integration-icon {
+    position: relative;
+    float: left;
+    margin-right: 6px;
+    width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    height: 40px;
+    margin-top: -6px;
+}
+
 /* Logs list screen */
 .wp-list-table.automatorwp_logs .column-title .automatorwp-integration-icon {
+    position: relative;
     float: left;
     margin-right: 6px;
     width: 40px;
@@ -1193,6 +1262,35 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     max-height: 40px;
     height: 40px;
     margin-top: 1px;
+}
+
+.automatorwp-log-title-preview .automatorwp-integration-icon .automatorwp-filter-icon,
+.wp-list-table.automatorwp_logs .column-title .automatorwp-integration-icon .automatorwp-filter-icon {
+    position: absolute;
+    top: 23px;
+    left: 23px;
+    width: 16px;
+    height: 16px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.automatorwp-log-title-preview .automatorwp-integration-icon .automatorwp-filter-icon,
+.automatorwp-log-title-preview .automatorwp-integration-icon .automatorwp-filter-icon img,
+.wp-list-table.automatorwp_logs .column-title .automatorwp-integration-icon .automatorwp-filter-icon,
+.wp-list-table.automatorwp_logs .column-title .automatorwp-integration-icon .automatorwp-filter-icon img {
+    display: block;
+    border-radius: 4px;
+}
+
+.automatorwp-integration-icon .automatorwp-filter-icon-passed {
+    background: #46b450;
+    border-color: #46b450;
+}
+
+.automatorwp-integration-icon .automatorwp-filter-icon-not-passed {
+    background: #dc3232;
+    border-color: #dc3232;
 }
 
 /* -------------------------------------------
@@ -1222,6 +1320,11 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     font-size: 14px;
     margin-top: 3px;
     color: #72777c;
+}
+
+.automatorwp-box-spinner {
+    display: inline-block;
+    float: none;
 }
 
 /* -------------------------------------------
@@ -1265,6 +1368,25 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     color: #fff;
 }
 
+.button.automatorwp-button-dark {
+    background: #404459;
+    border: #404459;
+    color: #fff;
+}
+
+.button.automatorwp-button-dark:hover {
+    background: #4b5068;
+    border: #4b5068;
+    color: #fff;
+}
+
+.button.automatorwp-button-dark:focus,
+.button.automatorwp-button-dark:active {
+    background: #36394a;
+    border: #36394a;
+    color: #fff;
+}
+
 .button.automatorwp-cancel-option-form {
     line-height: 32px;
 }
@@ -1281,6 +1403,14 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     opacity: 0.8;
     margin-right: 4px;
     margin-left: -4px;
+}
+
+.automatorwp-add-filter .dashicons {
+    line-height: 29px;
+    opacity: 0.8;
+    margin-right: 4px;
+    margin-left: -4px;
+    font-size: 16px;
 }
 
 /* -------------------------------------------

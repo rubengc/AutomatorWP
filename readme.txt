@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -68,6 +68,9 @@ Configure as many triggers and actions per automation as you want.
 **Logged-in and anonymous automations:**
 Create automations for logged-in users or for not logged-in visitors.
 
+**Filters:**
+Filter any trigger or action with the conditions of your choice.
+
 **Required number of times:**
 Set the number of times required to complete a trigger like comment on a post 3 times.
 
@@ -78,7 +81,7 @@ Force users to complete triggers in order to complete the automation.
 Limit automation's maximum completion times per user and globally.
 
 **Tags:**
-Tags lets you pass trigger information to actions (with support to user and post metas).
+Tags to pass dynamic information from triggers to actions (with support to user and post metas).
 
 **Developer-friendly:**
 AutomatorWP is extremely flexible with plenty of hooks to add custom features and functionalities.
@@ -119,6 +122,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Paid Memberships Pro](https://wordpress.org/plugins/automatorwp-paid-memberships-pro-integration/)
 * [PeepSo](https://wordpress.org/plugins/automatorwp-peepso-integration/)
 * [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
+* [Presto Player](https://wordpress.org/plugins/automatorwp-presto-player-integration/)
 * [Restrict Content Pro](https://wordpress.org/plugins/automatorwp-restrict-content-pro-integration/)
 * [Sensei LMS](https://wordpress.org/plugins/automatorwp-sensei-lms-integration/)
 * [The Events Calendar](https://wordpress.org/plugins/automatorwp-the-events-calendar-integration/)
@@ -219,6 +223,15 @@ AutomatorWP comes with a set of triggers and actions, including:
 * Set, insert, increment or decrement post meta.
 * Redirect user to url.
 
+** Filters **
+
+* Flat condition (you can build the filter using tags).
+* User role matches with a specific role.
+* User field matches with a specific value.
+* User meta key matches with a specific value.
+
+**Note:** Filters lets you configure the condition of your choice like equal to, not equal to, contains, starts with, etc.
+
 [View all triggers and actions](https://automatorwp.com/all-triggers-and-actions/)
 
 == Installation ==
@@ -303,6 +316,21 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.4.5 =
+
+* **New Features**
+* Added support for filters!
+* New filter: Flat condition (you can build the filter using tags).
+* New filter: User role matches with a specific role.
+* New filter: User field matches with a specific value.
+* New filter: User meta key matches with a specific value.
+* Added controls to reorder triggers and actions.
+* **Improvements**
+* Code reduction on the events handler.
+* Code reduction on the trigger and actions execution functions.
+* Improvements for the log's array display function.
+* Style improvements.
 
 = 1.4.4 =
 

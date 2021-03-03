@@ -149,7 +149,7 @@ class AutomatorWP_Integration_Trigger {
      */
     public function maybe_user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
 
-        // Bail if event has not be deserved
+        // Bail if trigger has not be deserved
         if( ! $deserves_trigger ) {
             return $deserves_trigger;
         }

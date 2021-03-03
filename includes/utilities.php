@@ -433,7 +433,7 @@ function automatorwp_utilities_role_field( $args = array() ) {
 function automatorwp_utilities_custom_field( $args = array() ) {
 
     return array(
-        'name'              => '',
+        'name'              => ( isset( $args['option_custom_name'] ) ? $args['option_custom_name'] : '' ),
         'desc'              => ( isset( $args['option_custom_desc'] ) ? $args['option_custom_desc'] : __( 'Post ID', 'automatorwp' ) ),
         'type'              => 'text',
         'classes'           => 'automatorwp-selector-custom-input',
@@ -468,6 +468,7 @@ function automatorwp_utilities_parse_selector_args( $args = array(), $defaults =
         'option_custom'         => false,
         'option_custom_value'   => 'custom',
         'option_custom_label'   => __( 'Use a custom value', 'automatorwp' ),
+        'option_custom_name'    => '',
         'option_custom_desc'    => '',
     );
 
@@ -743,21 +744,148 @@ function automatorwp_utilities_condition_option() {
     return array(
         'from' => 'condition',
         'fields' => array(
-            'condition' => array(
-                'name' => __( 'Condition:', 'automatorwp' ),
-                'type' => 'select',
-                'options' => array(
-                    'equal'  => __( 'equal to', 'automatorwp' ),
-                    'not_equal' => __( 'not equal to', 'automatorwp' ),
-                    'less_than'  => __( 'less than', 'automatorwp' ),
-                    'greater_than'  => __( 'greater than', 'automatorwp' ),
-                    'less_or_equal' => __( 'less or equal to', 'automatorwp' ),
-                    'greater_or_equal' => __( 'greater or equal to', 'automatorwp' ),
-                ),
-                'default' => 'equal'
-            )
+            'condition' => automatorwp_utilities_condition_field()
         )
     );
+}
+
+/**
+ * Utility function to get the condition field
+ *
+ * @since 1.0.0
+ *
+ * @return array
+ */
+function automatorwp_utilities_condition_field() {
+    return array(
+        'name' => __( 'Condition:', 'automatorwp' ),
+        'type' => 'select',
+        'options' => array(
+            'equal'             => __( 'is equal to', 'automatorwp' ),
+            'not_equal'         => __( 'is not equal to', 'automatorwp' ),
+            'contains'          => __( 'contains', 'automatorwp' ),
+            'not_contains'      => __( 'does not contains', 'automatorwp' ),
+            'start_with'        => __( 'starts with', 'automatorwp' ),
+            'not_start_with'    => __( 'does not starts with', 'automatorwp' ),
+            'ends_with'         => __( 'ends with', 'automatorwp' ),
+            'not_ends_with'     => __( 'does not ends with', 'automatorwp' ),
+            'less_than'         => __( 'is less than', 'automatorwp' ),
+            'greater_than'      => __( 'is greater than', 'automatorwp' ),
+            'less_or_equal'     => __( 'is less or equal to', 'automatorwp' ),
+            'greater_or_equal'  => __( 'is greater or equal to', 'automatorwp' ),
+        ),
+        'default' => 'equal'
+    );
+}
+
+/**
+ * Utility function to get the condition option parameter
+ *
+ * @since 1.0.0
+ *
+ * @return array
+ */
+function automatorwp_utilities_number_condition_option() {
+    return array(
+        'from' => 'condition',
+        'fields' => array(
+            'condition' => automatorwp_utilities_condition_field()
+        )
+    );
+}
+
+/**
+ * Utility function to get the condition field
+ *
+ * @since 1.0.0
+ *
+ * @return array
+ */
+function automatorwp_utilities_number_condition_field() {
+    return array(
+        'name' => __( 'Condition:', 'automatorwp' ),
+        'type' => 'select',
+        'options' => array(
+            'equal'             => __( 'equal to', 'automatorwp' ),
+            'not_equal'         => __( 'not equal to', 'automatorwp' ),
+            'less_than'         => __( 'less than', 'automatorwp' ),
+            'greater_than'      => __( 'greater than', 'automatorwp' ),
+            'less_or_equal'     => __( 'less or equal to', 'automatorwp' ),
+            'greater_or_equal'  => __( 'greater or equal to', 'automatorwp' ),
+        ),
+        'default' => 'equal'
+    );
+}
+
+/**
+ * Utility function to get the string condition option parameter
+ *
+ * @since 1.4.5
+ *
+ * @return array
+ */
+function automatorwp_utilities_string_condition_option() {
+    return array(
+        'from' => 'condition',
+        'fields' => array(
+            'condition' => automatorwp_utilities_string_condition_field()
+        )
+    );
+}
+
+/**
+ * Utility function to get the string condition field
+ *
+ * @since 1.4.5
+ *
+ * @return array
+ */
+function automatorwp_utilities_string_condition_field() {
+    return array(
+        'name' => __( 'Condition:', 'automatorwp' ),
+        'type' => 'select',
+        'options' => array(
+            'equal'             => __( 'is equal to', 'automatorwp' ),
+            'not_equal'         => __( 'is not equal to', 'automatorwp' ),
+            'contains'          => __( 'contains', 'automatorwp' ),
+            'not_contains'      => __( 'does not contains', 'automatorwp' ),
+            'start_with'        => __( 'starts with', 'automatorwp' ),
+            'not_start_with'    => __( 'does not starts with', 'automatorwp' ),
+            'ends_with'         => __( 'ends with', 'automatorwp' ),
+            'not_ends_with'     => __( 'does not ends with', 'automatorwp' ),
+        ),
+        'default' => 'equal'
+    );
+}
+
+/**
+ * Utility function to get a condition label
+ *
+ * @since 1.4.5
+ *
+ * @param string $condition
+ * @return string
+ */
+function automatorwp_utilities_get_condition_label( $condition ) {
+
+    $conditions = array(
+        // String
+        'equal'             => __( 'is equal to', 'automatorwp' ),
+        'not_equal'         => __( 'is not equal to', 'automatorwp' ),
+        'contains'          => __( 'contains', 'automatorwp' ),
+        'not_contains'      => __( 'does not contains', 'automatorwp' ),
+        'start_with'        => __( 'starts with', 'automatorwp' ),
+        'not_start_with'    => __( 'does not starts with', 'automatorwp' ),
+        'ends_with'         => __( 'ends with', 'automatorwp' ),
+        'not_ends_with'     => __( 'does not ends with', 'automatorwp' ),
+        // Number
+        'less_than'         => __( 'is less than', 'automatorwp' ),
+        'greater_than'      => __( 'is greater than', 'automatorwp' ),
+        'less_or_equal'     => __( 'is less or equal to', 'automatorwp' ),
+        'greater_or_equal'  => __( 'is greater or equal to', 'automatorwp' ),
+    );
+
+    return ( isset( $conditions[$condition] ) ? $conditions[$condition] : $condition );
 }
 
 /**
@@ -878,6 +1006,84 @@ function automatorwp_number_condition_matches( $to_match, $to_compare, $conditio
         case 'greater_or_equal':
         case '>=':
             $matches = ( $to_match >= $to_compare );
+            break;
+    }
+
+    return $matches;
+
+}
+
+/**
+ * Utility function to get the condition option parameter
+ *
+ * @since 1.4.5
+ *
+ * @param mixed     $to_match   Element to match
+ * @param mixed     $to_compare Element to compare
+ * @param string    $condition  The condition to compare elements
+ *
+ * @return bool
+ */
+function automatorwp_condition_matches( $to_match, $to_compare, $condition ) {
+
+    if( empty( $condition ) ) {
+        $condition = 'equal';
+    }
+
+    $matches = false;
+
+    // Ensure that the element to compare is a string
+    if( is_array( $to_compare ) ) {
+        $to_compare = implode( ',', $to_compare );
+    }
+
+    $to_compare = strval( $to_compare );
+
+    switch( $condition ) {
+        case 'equal':
+        case '=':
+        case '==':
+        case '===':
+            $matches = ( $to_match == $to_compare );
+            break;
+        case 'not_equal':
+        case '!=':
+        case '!==':
+            $matches = ( $to_match != $to_compare );
+            break;
+        case 'less_than':
+        case '<':
+            $matches = ( $to_match < $to_compare );
+            break;
+        case 'greater_than':
+        case '>':
+            $matches = ( $to_match > $to_compare );
+            break;
+        case 'less_or_equal':
+        case '<=':
+            $matches = ( $to_match <= $to_compare );
+            break;
+        case 'greater_or_equal':
+        case '>=':
+            $matches = ( $to_match >= $to_compare );
+            break;
+        case 'contains':
+            $matches = ( strpos( strval( $to_compare ), $to_match ) !== false );
+            break;
+        case 'not_contains':
+            $matches = ( strpos( strval( $to_compare ), $to_match ) === false );
+            break;
+        case 'start_with':
+            $matches = ( automatorwp_starts_with( $to_compare, $to_match ) );
+            break;
+        case 'not_start_with':
+            $matches = ( ! automatorwp_starts_with( $to_compare, $to_match ) );
+            break;
+        case 'ends_with':
+            $matches = ( automatorwp_ends_with( $to_compare, $to_match ) );
+            break;
+        case 'not_ends_with':
+            $matches = ( ! automatorwp_ends_with( $to_compare, $to_match ) );
             break;
     }
 
@@ -1024,4 +1230,66 @@ function automatorwp_utilities_pull_array_values( $array = array(), $separator =
 
     return $new_array;
 
+}
+
+/**
+ * Helper function to search an array key value recursively
+ *
+ * @since 1.4.5
+ *
+ * @param string $key
+ * @param array $haystack
+ *
+ * @return bool
+ */
+function automatorwp_get_array_key_value( $key = '', $haystack = array() ) {
+
+    if( isset( $haystack[$key] ) ) {
+        return $haystack[$key];
+    }
+
+    foreach( $haystack as $value) {
+
+        if ( is_array( $value ) ) {
+
+            $found = automatorwp_get_array_key_value( $key, $value );
+
+            if ( $found ) {
+                return $found;
+            }
+
+        }
+
+    }
+
+    return false;
+
+}
+
+/**
+ * Helper function to check if a string starts by needle string given
+ *
+ * @since 1.4.5
+ *
+ * @param string $haystack
+ * @param string $needle
+ *
+ * @return bool
+ */
+function automatorwp_starts_with( $haystack, $needle ) {
+    return strncmp( $haystack, $needle, strlen( $needle ) ) === 0;
+}
+
+/**
+ * Helper function to check if a string ends by needle string given
+ *
+ * @since 1.4.5
+ *
+ * @param string $haystack
+ * @param string $needle
+ *
+ * @return bool
+ */
+function automatorwp_ends_with( $haystack, $needle ) {
+    return $needle === '' || substr_compare( $haystack, $needle, -strlen( $needle ) ) === 0;
 }

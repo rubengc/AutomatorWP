@@ -23,6 +23,7 @@ function automatorwp_get_log_types() {
         'anonymous' => __( 'Anonymous', 'automatorwp' ),
         'trigger' => __( 'Trigger', 'automatorwp' ),
         'action' => __( 'Action', 'automatorwp' ),
+        'filter' => __( 'Filter', 'automatorwp' ),
     ) );
 
 }
@@ -152,6 +153,11 @@ function automatorwp_get_log_integration_icon( $log ) {
         $object = ct_get_object( $log->object_id );
         ct_reset_setup_table();
 
+        if( $object->type === 'filter' ) {
+            automatorwp_get_log_filter_icon( $log, $log->type, 'passed' );
+            return;
+        }
+
         $type_args = automatorwp_automation_item_type_args( $object, $log->type );
 
         if( $type_args ) {
@@ -161,7 +167,7 @@ function automatorwp_get_log_integration_icon( $log ) {
 
                 if( $log->type === 'action' && $object->type === 'automatorwp_anonymous_user' ) {
                     $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
-                }?>
+                } ?>
 
                 <div class="automatorwp-integration-icon">
                     <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
@@ -175,6 +181,12 @@ function automatorwp_get_log_integration_icon( $log ) {
             </div>
 
         <?php }
+
+    } else if( $log->type === 'filter' ) {
+
+        $item_type = automatorwp_get_log_meta( $log->id, 'item_type', true );
+
+        automatorwp_get_log_filter_icon( $log, $item_type, 'not-passed' );
 
     } else {
 
@@ -213,5 +225,53 @@ function automatorwp_get_log_integration_icon( $log ) {
         </div>
 
     <?php }
+
+}
+
+/**
+ * Get the filter log integration icon HTML markup
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass  $log        The log object
+ * @param string    $item_type  The item type (trigger|action)
+ * @param string    $class      The icon class (passed|not-passed)
+ */
+function automatorwp_get_log_filter_icon( $log, $item_type, $class ) {
+
+    if( in_array( $item_type, array( 'action', 'trigger' ) ) ) {
+
+        // Get the trigger or action
+        ct_setup_table( "automatorwp_{$item_type}s" );
+        $filter = ct_get_object_meta( $log->object_id, 'filter', true );
+        ct_reset_setup_table();
+
+        $filter_args = automatorwp_get_filter( $filter );
+
+        if( $filter_args ) {
+            $integration = automatorwp_get_integration( $filter_args['integration'] );
+
+            if( $integration ) : ?>
+
+                <div class="automatorwp-integration-icon">
+                    <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
+                    <div class="automatorwp-filter-icon automatorwp-filter-icon-<?php echo $class; ?>">
+                        <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/filter/assets/filter-icon.svg' ); ?>" title="<?php echo esc_attr( __( 'Filter not passed', 'automatorwp' ) ); ?>">
+                    </div>
+                </div>
+
+            <?php endif;
+        } else { ?>
+
+            <div class="automatorwp-integration-icon">
+                <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'assets/img/integration-missing.svg' ); ?>" title="<?php echo esc_attr( __( 'Missing plugin', 'automatorwp' ) ); ?>">
+                <div class="automatorwp-filter-icon automatorwp-filter-icon-<?php echo $class; ?>">
+                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/filter/assets/filter-icon.svg' ); ?>" title="<?php echo esc_attr( __( 'Filter not passed', 'automatorwp' ) ); ?>">
+                </div>
+            </div>
+
+        <?php }
+
+    }
 
 }

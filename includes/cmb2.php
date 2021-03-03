@@ -393,6 +393,41 @@ function automatorwp_options_cb_objects( $field ) {
 }
 
 /**
+ * Options callback for select2 fields assigned to posts
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass $field
+ *
+ * @return array
+ */
+function automatorwp_options_cb_filters( $field ) {
+
+    $options = array(
+        'any' => __( 'Choose a filter', 'automatorwp' )
+    );
+
+    foreach( AutomatorWP()->filters as $filter => $args ) {
+
+        // Skip if integration is not registered
+        if( ! isset( AutomatorWP()->integrations[$args['integration']] ) ) {
+            continue;
+        }
+
+        $integration = AutomatorWP()->integrations[$args['integration']]['label'];
+
+        if( ! isset( $options[$integration] ) ) {
+            $options[$integration] = array();
+        }
+
+        $options[$integration][$filter] = $args['label'];
+    }
+
+    return $options;
+
+}
+
+/**
  * Helper function to handle option none
  *
  * @since 1.0.0

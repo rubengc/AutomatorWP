@@ -113,9 +113,9 @@ function automatorwp_auto_logs_cleanup() {
         $wpdb->query( "DELETE FROM {$logs} WHERE id IN ( " . implode( ', ', $logs_ids ) . " )" );
     }
 
-    // Actions and anonymous logs
+    // Actions, anonymous and filter logs
     // They don't need any specific check so is safe to remove them directly
-    $wpdb->query( "DELETE FROM {$logs} WHERE type IN ( 'action', 'anonymous' ) AND date < '{$date}'" );
+    $wpdb->query( "DELETE FROM {$logs} WHERE type IN ( 'action', 'anonymous', 'filter' ) AND date < '{$date}'" );
 
     /**
      * Available action to let other plugins process anything after the logs cleanup

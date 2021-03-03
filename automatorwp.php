@@ -3,7 +3,7 @@
  * Plugin Name:     	AutomatorWP
  * Plugin URI:      	https://automatorwp.com
  * Description:     	Connect your WordPress plugins together and create automated workflows with no code!
- * Version:         	1.4.4
+ * Version:         	1.4.5
  * Author:          	AutomatorWP
  * Author URI:      	https://automatorwp.com/
  * Text Domain:     	automatorwp
@@ -66,6 +66,12 @@ final class AutomatorWP {
     public $actions = array();
 
     /**
+     * @var         array $filters Registered filters
+     * @since       1.0.0
+     */
+    public $filters = array();
+
+    /**
      * @var         AutomatorWP_Database $db Database object
      * @since       1.0.0
      */
@@ -113,7 +119,7 @@ final class AutomatorWP {
     private function constants() {
 
         // Plugin version
-        define( 'AUTOMATORWP_VER', '1.4.4' );
+        define( 'AUTOMATORWP_VER', '1.4.5' );
 
         // Plugin file
         define( 'AUTOMATORWP_FILE', __FILE__ );
@@ -162,6 +168,7 @@ final class AutomatorWP {
         require_once AUTOMATORWP_DIR . 'classes/database.php';
         require_once AUTOMATORWP_DIR . 'classes/integration-trigger.php';
         require_once AUTOMATORWP_DIR . 'classes/integration-action.php';
+        require_once AUTOMATORWP_DIR . 'classes/integration-filter.php';
 
     }
 
@@ -206,8 +213,9 @@ final class AutomatorWP {
      */
     private function integrations() {
 
-        require_once AUTOMATORWP_DIR . 'includes/integrations/wordpress/wordpress.php';
+        require_once AUTOMATORWP_DIR . 'includes/integrations/filter/filter.php';
         require_once AUTOMATORWP_DIR . 'includes/integrations/automatorwp/automatorwp.php';
+        require_once AUTOMATORWP_DIR . 'includes/integrations/wordpress/wordpress.php';
 
     }
 

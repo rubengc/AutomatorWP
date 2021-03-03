@@ -374,10 +374,22 @@ function automatorwp_ajax_update_item_option() {
         }
     }
 
-    wp_send_json_success( array(
+    $response = array(
         'edit_html' => automatorwp_parse_automation_item_edit_label( (object) $object, $item_type ),
         'tags_html' => $tags_html
-    ) );
+    );
+
+    // Special condition for filters
+    if( $object->type === 'filter' ) {
+
+        ob_start();
+        automatorwp_automation_item_edit_html( $object, $item_type, $automation );
+        $edit_html = ob_get_clean();
+
+        $response['item_html'] = $edit_html;
+    }
+
+    wp_send_json_success( $response );
 
 }
 add_action( 'wp_ajax_automatorwp_update_item_option', 'automatorwp_ajax_update_item_option' );

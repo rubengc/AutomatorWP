@@ -308,7 +308,7 @@ function automatorwp_anonymous_has_access_to_trigger( $trigger = null, $event = 
     /**
      * Filter to override the has access check.
      * This filter is to check the automation configuration.
-     * Triggers should us the 'automatorwp_anonymous_deserves_trigger' filter instead.
+     * Triggers should use the 'automatorwp_anonymous_deserves_trigger' filter instead.
      *
      * @since 1.3.0
      *
@@ -357,7 +357,7 @@ function automatorwp_anonymous_deserves_trigger( $trigger = null, $event = array
     /**
      * Filter to override the anonymous deserves trigger check.
      * This filter is to check the trigger configuration.
-     * Triggers should us this filter.
+     * Triggers should use this filter.
      *
      * @since 1.3.0
      *
@@ -367,7 +367,8 @@ function automatorwp_anonymous_deserves_trigger( $trigger = null, $event = array
      * @param array     $trigger_options    The trigger's stored options
      * @param stdClass  $automation         The trigger's automation object
      *
-     * @return bool                          True if anonymous deserves trigger, false otherwise
+     * @return bool                         True if anonymous deserves trigger, false otherwise
+     * @return bool                         True if anonymous deserves trigger, false otherwise
      */
     return apply_filters( 'automatorwp_anonymous_deserves_trigger', $deserves_trigger, $trigger, $event, $trigger_options, $automation );
 
@@ -387,16 +388,10 @@ function automatorwp_anonymous_deserves_trigger( $trigger = null, $event = array
  */
 function automatorwp_anonymous_completed_trigger( $trigger = null, $event = array(), $trigger_options = array(), $automation = null ) {
 
-    global $automatorwp_completed_triggers, $automatorwp_last_anonymous_trigger_log_id;
+    global $automatorwp_last_anonymous_trigger_log_id;
 
     // Initialize last anonymous trigger log ID
     $automatorwp_last_anonymous_trigger_log_id = 0;
-
-    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
-    // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $automatorwp_completed_triggers ) ) {
-        $automatorwp_completed_triggers = array();
-    }
 
     // Check if trigger is correct
     if( ! is_object( $trigger ) ) {
@@ -461,7 +456,7 @@ function automatorwp_anonymous_completed_trigger( $trigger = null, $event = arra
         'object_id' => $trigger->id,
         'user_id'   => 0,
         'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
-        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
+        'date'      => automatorwp_get_event_log_date(),
     ), $log_meta );
 
     if( is_wp_error( $automatorwp_last_anonymous_trigger_log_id ) ) {
@@ -616,6 +611,11 @@ function automatorwp_maybe_user_completed_trigger( $trigger, $user_id = 0, $even
         return false;
     }
 
+    // Check if user deserves the trigger filters
+    if( ! automatorwp_user_deserves_trigger_filters( $trigger, $user_id, $event, $trigger_options, $automation ) ) {
+        return false;
+    }
+
     // Mark trigger as completed
     return automatorwp_user_completed_trigger( $trigger, $user_id, $event, $trigger_options, $automation );
 
@@ -717,7 +717,7 @@ function automatorwp_user_has_access_to_trigger( $trigger = null, $user_id = 0, 
     /**
      * Filter to override the has access check.
      * This filter is to check the automation configuration.
-     * Triggers should us the 'automatorwp_user_deserves_trigger' filter instead.
+     * Triggers should use the 'automatorwp_user_deserves_trigger' filter instead.
      *
      * @since 1.0.0
      *
@@ -777,7 +777,7 @@ function automatorwp_user_deserves_trigger( $trigger = null, $user_id = 0, $even
     /**
      * Filter to override the user deserves trigger check.
      * This filter is to check the trigger configuration.
-     * Triggers should us this filter.
+     * Triggers should use this filter.
      *
      * @since 1.0.0
      *
@@ -791,6 +791,152 @@ function automatorwp_user_deserves_trigger( $trigger = null, $user_id = 0, $even
      * @return bool                          True if user deserves trigger, false otherwise
      */
     return apply_filters( 'automatorwp_user_deserves_trigger', $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation );
+
+}
+
+/**
+ * Check if user deserves trigger filters
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass  $trigger            The trigger object
+ * @param int       $user_id            The user ID
+ * @param array     $event              Event information
+ * @param array     $trigger_options    The trigger's stored options
+ * @param stdClass  $automation         The trigger's automation object
+ *
+ * @return bool                         True if user deserves trigger, false otherwise
+ */
+function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 0, $event = array(), $trigger_options = array(), $automation = null ) {
+
+    global $automatorwp_completed_trigger_filters;
+
+    // Check if trigger is correct
+    if( ! is_object( $trigger ) ) {
+        return false;
+    }
+
+    // Check the user ID
+    if( $user_id === 0 ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    if( $automation === null ) {
+        $automation = automatorwp_get_trigger_automation( $trigger->id );
+
+        if( ! is_object( $automation ) ) {
+            return false;
+        }
+    }
+
+    if( automatorwp_has_user_completed_trigger( $trigger->id, $user_id ) ) {
+        return false;
+    }
+
+    $deserves_trigger_filters = true;
+
+    // Bail if is a filter
+    if( $trigger->type === 'filter' ) {
+        return $deserves_trigger_filters;
+    }
+
+    // Initialize completed filters
+    $automatorwp_completed_trigger_filters = array();
+
+    $filters = automatorwp_get_trigger_filters( $trigger );
+
+    foreach( $filters as $filter ) {
+
+        $deserves_filter = true;
+
+        // Get the trigger stored options
+        $filter_options = automatorwp_get_filter_stored_options( $filter->id, 'trigger' );
+
+        /**
+         * Filter to override the user deserves filter check.
+         * This filter is to check the filter configuration.
+         * Filters should use this filter.
+         *
+         * @since 1.0.0
+         *
+         * @param bool      $deserves_filter    True if user deserves filter, false otherwise
+         * @param stdClass  $filter             The filter object
+         * @param int       $user_id            The user ID
+         * @param array     $event              Event information
+         * @param array     $filter_options     The filter's stored options
+         * @param stdClass  $automation         The filter's automation object
+         *
+         * @return bool                         True if user deserves filter, false otherwise
+         */
+        $deserves_filter = apply_filters( 'automatorwp_user_deserves_trigger_filter', $deserves_filter, $filter, $user_id, $event, $filter_options, $automation );
+
+        // Apply the operator
+        if( $filter_options['operator'] === 'and' ) {
+            $deserves_trigger_filters = $deserves_trigger_filters && $deserves_filter;
+        } else {
+            $deserves_trigger_filters = $deserves_trigger_filters || $deserves_filter;
+        }
+
+        // Store completed filters
+        if( $deserves_filter ) {
+            $automatorwp_completed_trigger_filters[] = $filter;
+        }
+
+        // Break this loop if the trigger filters are not passed
+        if( ! $deserves_trigger_filters ) {
+
+            // Register why user has not completed this filter
+            $log_meta = array(
+                'item_type' => 'trigger'
+            );
+
+            /**
+             * Filter to add custom log meta to meet that user has completed this trigger
+             *
+             * @since 1.0.0
+             *
+             * @param array     $log_meta           Log meta data
+             * @param stdClass  $filter             The filter object
+             * @param int       $user_id            The user ID
+             * @param array     $event              Event information
+             * @param array     $filter_options     The filter's stored options
+             * @param stdClass  $automation         The filter's automation object
+             *
+             * @return array
+             */
+            $log_meta = apply_filters( 'automatorwp_user_not_passed_filter_log_meta', $log_meta, $filter, $user_id, $event, $filter_options, $automation );
+
+            // Insert a new log entry to register why user not passed the trigger filter
+            automatorwp_insert_log( array(
+                'title'     => automatorwp_parse_automation_item_log_label( $filter, 'trigger', 'view' ),
+                'type'      => 'filter',
+                'object_id' => $filter->id,
+                'user_id'   => $user_id,
+                'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
+                'date'      => automatorwp_get_event_log_date(),
+            ), $log_meta );
+
+            break;
+        }
+
+    }
+
+    /**
+     * Filter to override the user deserves trigger filters check.
+     *
+     * @since 1.0.0
+     *
+     * @param bool      $deserves_trigger_filters   True if user deserves the trigger filters, false otherwise
+     * @param stdClass  $trigger                    The trigger object
+     * @param int       $user_id                    The user ID
+     * @param array     $event                      Event information
+     * @param array     $trigger_options            The trigger's stored options
+     * @param stdClass  $automation                 The trigger's automation object
+     *
+     * @return bool                                 True if user deserves trigger, false otherwise
+     */
+    return apply_filters( 'automatorwp_user_deserves_trigger_filters', $deserves_trigger_filters, $trigger, $user_id, $event, $trigger_options, $automation );
 
 }
 
@@ -809,12 +955,10 @@ function automatorwp_user_deserves_trigger( $trigger = null, $user_id = 0, $even
  */
 function automatorwp_user_completed_trigger( $trigger = null, $user_id = 0, $event = array(), $trigger_options = array(), $automation = null ) {
 
-    global $automatorwp_completed_triggers;
+    global $automatorwp_completed_trigger_filters;
 
-    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
-    // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $automatorwp_completed_triggers ) ) {
-        $automatorwp_completed_triggers = array();
+    if( ! is_array( $automatorwp_completed_trigger_filters ) ) {
+        $automatorwp_completed_trigger_filters = array();
     }
 
     // Check if trigger is correct
@@ -870,7 +1014,7 @@ function automatorwp_user_completed_trigger( $trigger = null, $user_id = 0, $eve
         'object_id' => $trigger->id,
         'user_id'   => $user_id,
         'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
-        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
+        'date'      => automatorwp_get_event_log_date(),
     ), $log_meta );
 
     /**
@@ -886,7 +1030,23 @@ function automatorwp_user_completed_trigger( $trigger = null, $user_id = 0, $eve
      */
     do_action( 'automatorwp_user_completed_trigger', $trigger, $user_id, $event, $trigger_options, $automation );
 
-    automatorwp_maybe_user_completed_automation( $automation, $user_id, $event );
+    if( $trigger->type !== 'filter' ) {
+
+        // Mark all completed filters
+        foreach( $automatorwp_completed_trigger_filters as $filter ) {
+
+            // Get the trigger stored options
+            $filter_options = automatorwp_get_filter_stored_options( $filter->id, 'trigger' );
+
+            // Registers the passed filter (as a trigger entry)
+            automatorwp_user_completed_trigger( $filter, $user_id, $event, $filter_options, $automation );
+
+        }
+
+        // Check if user has completed the automation
+        automatorwp_maybe_user_completed_automation( $automation, $user_id, $event );
+
+    }
 
     return true;
 
@@ -953,14 +1113,6 @@ function automatorwp_maybe_user_completed_automation( $automation = null, $user_
  */
 function automatorwp_user_completed_automation( $automation = null, $user_id = 0, $event = array() ) {
 
-    global $automatorwp_completed_triggers;
-
-    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
-    // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $automatorwp_completed_triggers ) ) {
-        $automatorwp_completed_triggers = array();
-    }
-
     // Check if automation is correct
     if( ! is_object( $automation ) ) {
         return false;
@@ -999,7 +1151,7 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
         'object_id' => $automation->id,
         'user_id'   => $user_id,
         'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
-        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
+        'date'      => automatorwp_get_event_log_date(),
     ) );
 
     ct_setup_table( 'automatorwp_automations' );
@@ -1038,14 +1190,6 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
  */
 function automatorwp_execute_all_automation_actions( $automation = null, $user_id = 0, $event = array() ) {
 
-    global $automatorwp_completed_triggers;
-
-    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
-    // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $automatorwp_completed_triggers ) ) {
-        $automatorwp_completed_triggers = array();
-    }
-
     // Check if automation is correct
     if( ! is_object( $automation ) ) {
         return false;
@@ -1080,14 +1224,6 @@ function automatorwp_execute_all_automation_actions( $automation = null, $user_i
  */
 function automatorwp_execute_action( $action = null, $user_id = 0, $event = array() ) {
 
-    global $automatorwp_completed_triggers;
-
-    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
-    // This prevents unlimited completions when multiples triggers has been triggered
-    if( ! is_array( $automatorwp_completed_triggers ) ) {
-        $automatorwp_completed_triggers = array();
-    }
-
     // Check if action is correct
     if( ! is_object( $action ) ) {
         return false;
@@ -1112,26 +1248,15 @@ function automatorwp_execute_action( $action = null, $user_id = 0, $event = arra
     foreach( $action_options as $option => $value ) {
         // Replace all tags by their replacements
         $action_options[$option] = automatorwp_parse_automation_tags( $automation->id, $user_id, $value );
-
     }
 
-    /**
-     * Available filter to determine if an action should be executed or not
-     *
-     * @since 1.2.4
-     *
-     * @param bool      $execute            Determines if the action should be executed, by default true
-     * @param stdClass  $action             The action object
-     * @param int       $user_id            The user ID
-     * @param array     $event              Event information
-     * @param array     $action_options     The action's stored options (with tags already passed)
-     * @param stdClass  $automation         The action's automation object
-     *
-     * @return bool
-     */
-    $execute = apply_filters( 'automatorwp_can_execute_action', true, $action, $user_id, $event, $action_options, $automation );
+    // Bail if action can not be executed
+    if( ! automatorwp_can_execute_action( $action, $user_id, $event, $action_options, $automation ) ) {
+        return false;
+    }
 
-    if( ! $execute ) {
+    // Check if user deserves the action filters
+    if( ! automatorwp_user_deserves_action_filters( $action, $user_id, $event, $action_options, $automation ) ) {
         return false;
     }
 
@@ -1192,7 +1317,7 @@ function automatorwp_execute_action( $action = null, $user_id = 0, $event = arra
         'object_id' => $action->id,
         'user_id'   => $user_id,
         'post_id'   => $post_id,
-        'date'      => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) ),
+        'date'      => automatorwp_get_event_log_date(),
     ), $log_meta );
 
     /**
@@ -1207,5 +1332,256 @@ function automatorwp_execute_action( $action = null, $user_id = 0, $event = arra
      * @param stdClass  $automation         The action's automation object
      */
     do_action( 'automatorwp_user_completed_action', $action, $user_id, $event, $action_options, $automation );
+
+    return true;
+
+}
+
+/**
+ * Checks if an action should be executed or not
+ *
+ * @since 1.2.4
+ *
+ * @param stdClass  $action             The action object
+ * @param int       $user_id            The user ID
+ * @param array     $event              Event information
+ * @param array     $action_options     The action's stored options (with tags already passed)
+ * @param stdClass  $automation         The action's automation object
+ *
+ * @return bool
+ */
+function automatorwp_can_execute_action( $action = null, $user_id = 0, $event = array(), $action_options = array(), $automation = null ) {
+
+    // Check if action is correct
+    if( ! is_object( $action ) ) {
+        return false;
+    }
+
+    // Check the user ID
+    if( $user_id === 0 ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    if( $automation === null ) {
+        $automation = automatorwp_get_action_automation( $action->id );
+
+        if( ! is_object( $automation ) ) {
+            return false;
+        }
+    }
+
+    $execute = true;
+
+    /**
+     * Available filter to determine if an action should be executed or not
+     *
+     * @since 1.2.4
+     *
+     * @param bool      $execute            Determines if the action should be executed, by default true
+     * @param stdClass  $action             The action object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $action_options     The action's stored options (with tags already passed)
+     * @param stdClass  $automation         The action's automation object
+     *
+     * @return bool
+     */
+    return apply_filters( 'automatorwp_can_execute_action', $execute, $action, $user_id, $event, $action_options, $automation );
+
+}
+
+/**
+ * Check if user deserves action filters
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass  $action             The action object
+ * @param int       $user_id            The user ID
+ * @param array     $event              Event information
+ * @param array     $action_options     The action's stored options
+ * @param stdClass  $automation         The action's automation object
+ *
+ * @return bool                         True if user deserves action, false otherwise
+ */
+function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0, $event = array(), $action_options = array(), $automation = null ) {
+
+    global $automatorwp_completed_action_filters, $automatorwp_last_action_passed_all_filters;
+
+    // Check if action is correct
+    if( ! is_object( $action ) ) {
+        return false;
+    }
+
+    // Check the user ID
+    if( $user_id === 0 ) {
+        return false;
+    }
+
+    // Check if automation is correct
+    if( $automation === null ) {
+        $automation = automatorwp_get_action_automation( $action->id );
+
+        if( ! is_object( $automation ) ) {
+            return false;
+        }
+    }
+
+    $deserves_action_filters = true;
+
+    // Bail if is a filter
+    if( $action->type === 'filter' ) {
+
+        if( ! is_array( $automatorwp_completed_action_filters ) ) {
+            return false;
+        }
+
+        if( ! $automatorwp_last_action_passed_all_filters ) {
+            return false;
+        }
+
+        $found = false;
+
+        foreach ( $automatorwp_completed_action_filters as $filter ) {
+            if( absint( $filter->id ) === absint( $action->id ) ) {
+                $found = true;
+            }
+        }
+
+        // If filter has not been passed, prevent its execution
+        if( ! $found ) {
+            return false;
+        }
+
+        return $deserves_action_filters;
+    }
+
+    // Initialize completed actions
+    $automatorwp_completed_action_filters = array();
+    $automatorwp_last_action_passed_all_filters = false;
+
+    $filters = automatorwp_get_action_filters( $action );
+
+    foreach( $filters as $filter ) {
+
+        $deserves_filter = true;
+
+        // Get the action stored options
+        $filter_options = automatorwp_get_filter_stored_options( $filter->id, 'action' );
+
+        foreach( $filter_options as $option => $value ) {
+            // Replace all tags by their replacements
+            $filter_options[$option] = automatorwp_parse_automation_tags( $automation->id, $user_id, $value );
+        }
+
+        /**
+         * Filter to override the user deserves filter check.
+         * This filter is to check the filter configuration.
+         * Filters should use this filter.
+         *
+         * @since 1.0.0
+         *
+         * @param bool      $deserves_filter    True if user deserves filter, false otherwise
+         * @param stdClass  $filter             The filter object
+         * @param int       $user_id            The user ID
+         * @param array     $event              Event information
+         * @param array     $filter_options     The filter's stored options
+         * @param stdClass  $automation         The filter's automation object
+         *
+         * @return bool                         True if user deserves filter, false otherwise
+         */
+        $deserves_filter = apply_filters( 'automatorwp_user_deserves_action_filter', $deserves_filter, $filter, $user_id, $event, $filter_options, $automation );
+
+        // Apply the operator
+        if( $filter_options['operator'] === 'and' ) {
+            $deserves_action_filters = $deserves_action_filters && $deserves_filter;
+        } else {
+            $deserves_action_filters = $deserves_action_filters || $deserves_filter;
+        }
+
+        // Store completed filters
+        if( $deserves_filter ) {
+            $automatorwp_completed_action_filters[] = $filter;
+        }
+
+        // Break this loop if the action filters are not passed
+        if( ! $deserves_action_filters ) {
+
+            // Register why user has not completed this filter
+            $log_meta = array(
+                'item_type' => 'action'
+            );
+
+            /**
+             * Filter to add custom log meta to meet that user has completed this action
+             *
+             * @since 1.0.0
+             *
+             * @param array     $log_meta           Log meta data
+             * @param stdClass  $filter             The filter object
+             * @param int       $user_id            The user ID
+             * @param array     $event              Event information
+             * @param array     $filter_options     The filter's stored options
+             * @param stdClass  $automation         The filter's automation object
+             *
+             * @return array
+             */
+            $log_meta = apply_filters( 'automatorwp_user_not_passed_filter_log_meta', $log_meta, $filter, $user_id, $event, $filter_options, $automation );
+
+            // Insert a new log entry to register why user not passed the action filter
+            automatorwp_insert_log( array(
+                'title'     => automatorwp_parse_automation_item_log_label( $filter, 'action', 'view' ),
+                'type'      => 'filter',
+                'object_id' => $filter->id,
+                'user_id'   => $user_id,
+                'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
+                'date'      => automatorwp_get_event_log_date(),
+            ), $log_meta );
+
+            break;
+        }
+
+    }
+
+    /**
+     * Filter to override the user deserves action filters check.
+     *
+     * @since 1.0.0
+     *
+     * @param bool      $deserves_action_filters    True if user deserves the action filters, false otherwise
+     * @param stdClass  $action                     The action object
+     * @param int       $user_id                    The user ID
+     * @param array     $event                      Event information
+     * @param array     $action_options             The action's stored options
+     * @param stdClass  $automation                 The action's automation object
+     *
+     * @return bool                                 True if user deserves action, false otherwise
+     */
+    $deserves_action_filters = apply_filters( 'automatorwp_user_deserves_action_filters', $deserves_action_filters, $action, $user_id, $event, $action_options, $automation );
+
+    // Used to meet if should register the rest of filter actions
+    $automatorwp_last_action_passed_all_filters = $deserves_action_filters;
+
+    return $deserves_action_filters;
+}
+
+/**
+ * Helper function to get the current log date on the events engine
+ *
+ * @since 1.0.0
+ *
+ * @return string
+ */
+function automatorwp_get_event_log_date() {
+
+    global $automatorwp_completed_triggers;
+
+    // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
+    // This prevents unlimited completions when multiples triggers has been triggered
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
+    }
+
+    return date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + count( $automatorwp_completed_triggers ) );
 
 }

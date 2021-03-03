@@ -128,6 +128,10 @@ add_action( 'add_meta_boxes', 'automatorwp_automation_ui_add_meta_boxes' );
  */
 function automatorwp_automation_ui_triggers_meta_box( $automation, $type ) {
 
+    global $automatorwp_triggers_current_position;
+
+    $automatorwp_triggers_current_position = 0;
+
     $triggers = automatorwp_get_automation_triggers( $automation->id );
 
     ?>
@@ -157,8 +161,17 @@ function automatorwp_automation_ui_triggers_meta_box( $automation, $type ) {
 
     <?php automatorwp_automation_ui_add_item_form( $automation, 'trigger' ); ?>
 
+    <?php // Anonymous automation notice ?>
     <div class="automatorwp-automation-ui-anonymous-notice"><span class="dashicons dashicons-info"></span> <?php _e( 'Anonymous automations only support one trigger per automation.', 'automatorwp' ); ?></div>
+    <?php // Add Trigger ?>
     <button type="button" class="button automatorwp-button-success automatorwp-add-trigger"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Trigger', 'automatorwp' ); ?></button>
+    <?php // Add Filter ?>
+    <button type="button" class="button button-primary automatorwp-add-filter"><span class="dashicons dashicons-filter"></span><?php _e( 'Add Filter', 'automatorwp' ); ?></button>
+    <?php // Box spinner ?>
+    <div class="automatorwp-spinner automatorwp-box-spinner" style="display: none;">
+        <span class="spinner is-active"></span>
+        <span class="spinner-label"><?php _e( 'Saving...', 'automatorwp' ); ?></span>
+    </div>
     <?php
 }
 
@@ -194,8 +207,15 @@ function automatorwp_automation_ui_actions_meta_box( $automation, $type ) {
 
     <?php automatorwp_automation_ui_add_item_form( $automation, 'action' ); ?>
 
+    <?php // Add Action ?>
     <button type="button" class="button automatorwp-button-success automatorwp-add-action"><span class="dashicons dashicons-plus"></span><?php _e( 'Add Action', 'automatorwp' ); ?></button>
-
+    <?php // Add Filter ?>
+    <button type="button" class="button button-primary automatorwp-add-filter"><span class="dashicons dashicons-filter"></span><?php _e( 'Add Filter', 'automatorwp' ); ?></button>
+    <?php // Box spinner ?>
+    <div class="automatorwp-spinner automatorwp-box-spinner" style="display: none;">
+        <span class="spinner is-active"></span>
+        <span class="spinner-label"><?php _e( 'Saving...', 'automatorwp' ); ?></span>
+    </div>
     <?php
 }
 
@@ -232,6 +252,9 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
                 <div class="automatorwp-integrations">
 
                     <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
+
+                        <?php // Skip filters
+                        if( $integration === 'filter' ) continue; ?>
 
                         <?php switch ( $item_type ) {
                             case 'trigger':
@@ -286,6 +309,9 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
                     <div class="automatorwp-select-trigger-label"><?php _e( 'Select a trigger', 'automatorwp' ); ?></div>
 
                     <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
+
+                        <?php // Skip filters
+                        if( $integration === 'filter' ) continue; ?>
 
                         <select class="automatorwp-integration-choices"
                                 data-integration="<?php echo esc_attr( $integration ); ?>"
@@ -380,10 +406,12 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
 /**
  * Get the object type args
  *
+ * @since 1.0.0
+ *
  * @param stdClass  $object     The trigger/action object
  * @param string    $item_type  The item type (trigger|action)
  *
- * @return array|false
+ * @return array
  */
 function automatorwp_automation_item_type_args( $object, $item_type ) {
 
@@ -395,7 +423,18 @@ function automatorwp_automation_item_type_args( $object, $item_type ) {
         $type_args = automatorwp_get_action( $object->type );
     }
 
-    return $type_args;
+    /**
+     * Get the object type args
+     *
+     * @since 1.0.0
+     *
+     * @param array     $type_args  The trigger/action args
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_automation_item_type_args', $type_args, $object, $item_type );
 
 }
 
@@ -409,6 +448,8 @@ function automatorwp_automation_item_type_args( $object, $item_type ) {
  * @param stdClass  $automation The automation object
  */
 function automatorwp_automation_item_edit_html( $object, $item_type, $automation ) {
+
+    global $automatorwp_triggers_current_position;
 
     // Check item type
     if( ! in_array( $item_type, array( 'trigger', 'action' ) ) ) {
@@ -442,19 +483,35 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
         'automatorwp-' . $item_type . '-' . str_replace( '_', '-', $object->type ),
     );
 
+    if( $object->type === 'filter' ) {
+        $classes[] = 'automatorwp-automation-item-filter';
+    }
+
     // Setup the item actions
     $actions = array(
+        'move-up' => array(
+            'label' => __( 'Move up', 'automatorwp'),
+            'icon' => 'arrow-up-alt2'
+        ),
+        'move-down' => array(
+            'label' => __( 'Move down', 'automatorwp'),
+            'icon' => 'arrow-down-alt2'
+        ),
         'delete' => array(
             'label' => __( 'Delete', 'automatorwp'),
             'icon' => 'trash'
-        )
+        ),
     );
 
     if( $automation->type === 'anonymous' ) {
         if( $item_type === 'trigger' ) {
             $classes[] = 'automatorwp-no-grab';
+            unset( $actions['move-up'] );
+            unset( $actions['move-down'] );
         } else if( $object->type === 'automatorwp_anonymous_user' ) {
             $classes[] = 'automatorwp-no-grab';
+            unset( $actions['move-up'] );
+            unset( $actions['move-down'] );
             unset( $actions['delete'] );
         }
     }
@@ -509,7 +566,17 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
 
             <div class="automatorwp-integration-label"><?php echo $integration['label']; ?></div>
 
-            <div class="automatorwp-automation-item-position" style="<?php echo ( $automation->sequential ? '' : 'display: none;' ); ?>"><?php echo $object->position + 1; ?>.</div>
+            <?php
+
+            $position = ( is_int( $automatorwp_triggers_current_position ) ? $automatorwp_triggers_current_position + 1 : $object->position + 1 );
+
+            if( $object->type !== 'filter' && is_int( $automatorwp_triggers_current_position ) ) {
+                $automatorwp_triggers_current_position++;
+            }
+
+            ?>
+
+            <div class="automatorwp-automation-item-position" style="<?php echo ( $automation->sequential ? '' : 'display: none;' ); ?>"><?php echo $position; ?>.</div>
             <div class="automatorwp-automation-item-label"><?php echo automatorwp_parse_automation_item_edit_label( $object, $item_type ); ?></div>
 
             <?php
@@ -927,8 +994,11 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
                 $options = call_user_func( $field['options_cb'], (object) $field );
             }
 
-            if( isset( $options[$value] ) ) {
-                $value = $options[$value];
+            // Try to get the displayed value
+            $found = automatorwp_get_array_key_value( $value, $options );
+
+            if( $found ) {
+                $value = $found;
             }
         }
 
@@ -960,6 +1030,10 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
 
         $option_class = 'button button-primary';
 
+        if( $object->type === 'filter' ) {
+            $option_class = 'button';
+        }
+
         /**
          * Filters the option button class
          *
@@ -983,7 +1057,7 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
 }
 
 /**
- * Gets a CMB2 object from a trigger option
+ * Gets a CMB2 object from a trigger/action option
  *
  * @since 1.0.0
  *
@@ -1015,6 +1089,21 @@ function automatorwp_get_automation_item_option_form( $object, $item_type, $opti
 
     $args = $type_args['options'][$option];
 
+    /**
+     * Filter to override the trigger/action option fields
+     *
+     * @since 1.0.0
+     *
+     * @param array     $fields     The option fields
+     * @param stdClass  $object     The trigger/action object
+     * @param string    $item_type  The item type (trigger|action)
+     * @param string    $option     Option form to render
+     * @param stdClass  $automation The automation object
+     *
+     * @return array
+     */
+    $fields = apply_filters( 'automatorwp_get_automation_item_option_form_fields', $args['fields'], $object, $item_type, $option, $automation );
+
     ct_setup_table( "automatorwp_{$item_type}s" );
 
     // Setup the CMB2 form
@@ -1026,7 +1115,7 @@ function automatorwp_get_automation_item_option_form( $object, $item_type, $opti
     ), $object->id );
 
     // Setup the options fields
-    foreach ( $args['fields'] as $field_id => $field ) {
+    foreach ( $fields as $field_id => $field ) {
 
         $field['id'] = $field_id;
 

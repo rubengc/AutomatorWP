@@ -13,9 +13,11 @@ if( !defined( 'ABSPATH' ) ) exit;
 require_once plugin_dir_path( __FILE__ ) . 'triggers/complete-automation.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/user-created.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/post-created.php';
-// Triggers
+// Actions
 require_once plugin_dir_path( __FILE__ ) . 'actions/anonymous-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/redirect-user.php';
+// Filters
+require_once plugin_dir_path( __FILE__ ) . 'filters/flat-condition.php';
 
 /**
  * Registers this integration

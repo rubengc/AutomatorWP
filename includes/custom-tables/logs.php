@@ -243,6 +243,20 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
                         $automation_id = $action->automation_id;
                     }
                     break;
+                case 'filter':
+                    $item_type = automatorwp_get_log_meta( $log->id, 'item_type', true );
+
+                    if( $item_type === 'trigger' ) {
+                        $object = automatorwp_get_trigger_object( $log->object_id );
+                    } else if( $item_type === 'action' ) {
+                        $object = automatorwp_get_action_object( $log->object_id );
+                    }
+
+                    if( $object ) {
+                        $automation_id = $object->automation_id;
+                    }
+                    break;
+
             }
 
             $automation = automatorwp_get_automation_object( $automation_id );
@@ -519,6 +533,28 @@ function automatorwp_get_log_fields( $log ) {
 
             $object = automatorwp_get_action_object( $log->object_id );
             break;
+        case 'filter':
+            $log_fields = array(
+                'object_id' => array(
+                    'name' => __( 'Filter:', 'automatorwp' ),
+                    'desc' => __( 'Filter assigned to this log.', 'automatorwp' ),
+                    'type' => 'text',
+                ),
+                'automation' => array(
+                    'name' => __( 'Automation:', 'automatorwp' ),
+                    'desc' => __( 'Filter\'s automation.', 'automatorwp' ),
+                    'type' => 'text',
+                ),
+            );
+
+            $item_type = automatorwp_get_log_meta( $log->id, 'item_type', true );
+
+            if( $item_type === 'trigger' ) {
+                $object = automatorwp_get_trigger_object( $log->object_id );
+            } else if( $item_type === 'action' ) {
+                $object = automatorwp_get_action_object( $log->object_id );
+            }
+            break;
         case 'automation':
             $log_fields = array(
                 'object_id' => array(
@@ -572,13 +608,15 @@ function automatorwp_log_field_cb( $field_args, $field ) {
     $field_id = $field_args['id'];
     $value = $field->value();
 
-    $value = str_replace( '\n', "\n", $value );
-    $value = stripslashes_deep( $value );
+    if( ! is_array( $value ) ) {
+        $value = str_replace( '\n', "\n", $value );
+        $value = stripslashes_deep( $value );
 
-    $wpautop = ( isset( $field_args['wpautop'] ) ? $field_args['wpautop'] : false );
+        $wpautop = ( isset( $field_args['wpautop'] ) ? $field_args['wpautop'] : false );
 
-    if( $wpautop ) {
-        $value = wpautop( $value );
+        if( $wpautop ) {
+            $value = wpautop( $value );
+        }
     }
 
     /**
@@ -643,7 +681,7 @@ function automatorwp_log_array_display( $value ) {
 
             if( is_array( $v ) ) {
                 // Recursive array check
-                $new_value = automatorwp_log_array_display( $v );
+                $new_value .= $k . ': ' . automatorwp_log_array_display( $v ) . '<br>';
             } else {
                 // Implode values as "key: value"
                 $new_value .= $k . ': ' . $v . '<br>';
@@ -689,6 +727,19 @@ function automatorwp_log_object_id_field_display( $value, $field_args, $field, $
 
             if( $action ) {
                 $value = $action->title;
+            }
+            break;
+        case 'filter':
+            $item_type = automatorwp_get_log_meta( $log->id, 'item_type', true );
+
+            if( $item_type === 'trigger' ) {
+                $object = automatorwp_get_trigger_object( $log->object_id );
+            } else if( $item_type === 'action' ) {
+                $object = automatorwp_get_action_object( $log->object_id );
+            }
+
+            if( $object ) {
+                $value = $object->title;
             }
             break;
         case 'automation':
@@ -768,6 +819,19 @@ function automatorwp_log_automation_field_display( $value, $field_args, $field, 
 
             if( $action ) {
                 $automation_id = $action->automation_id;
+            }
+            break;
+        case 'filter':
+            $item_type = automatorwp_get_log_meta( $log->id, 'item_type', true );
+
+            if( $item_type === 'trigger' ) {
+                $object = automatorwp_get_trigger_object( $log->object_id );
+            } else if( $item_type === 'action' ) {
+                $object = automatorwp_get_action_object( $log->object_id );
+            }
+
+            if( $object ) {
+                $automation_id = $object->automation_id;
             }
             break;
         case 'automation':
