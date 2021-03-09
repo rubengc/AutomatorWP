@@ -320,7 +320,7 @@ No, We're unable to provide custom development services, as our focus is develop
 = 1.4.6 =
 
 * **Improvements**
-* Prevent incompatibility issues caused by others plugins to the GamiPress settings screen.
+* Prevent incompatibility issues caused by others plugins to the AutomatorWP settings screen.
 * **Developer Notes**
 * Updated internal libraries.
 
