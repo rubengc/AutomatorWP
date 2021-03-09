@@ -319,6 +319,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.4.6 ###
+
+* **Improvements**
+* Prevent incompatibility issues caused by others plugins to the GamiPress settings screen.
+* **Developer Notes**
+* Updated internal libraries.
+
 ### 1.4.5 ###
 
 * **New Features**

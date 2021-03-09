@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -166,9 +166,9 @@ If you’re looking for something endorsed and maintained by the developers who 
 
 [View all add-ons](https://automatorwp.com/add-ons/)
 
-= Included triggers and actions =
+= Included triggers, actions and filters =
 
-AutomatorWP comes with a set of triggers and actions, including:
+AutomatorWP comes with a set of triggers, actions and filters, including:
 
 **Triggers**
 
@@ -316,6 +316,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.4.6 =
+
+* **Improvements**
+* Prevent incompatibility issues caused by others plugins to the GamiPress settings screen.
+* **Developer Notes**
+* Updated internal libraries.
 
 = 1.4.5 =
 
