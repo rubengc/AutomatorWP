@@ -319,6 +319,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.4.7 ###
+
+* **Improvements**
+* Prevent incompatibility issues caused by others plugins to the AutomatorWP licenses screen.
+
 ### 1.4.6 ###
 
 * **Improvements**

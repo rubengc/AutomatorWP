@@ -52,9 +52,9 @@ function automatorwp_licenses_meta_boxes_params( $meta_boxes ) {
                 // Before field row hook to render some extra information
                 $field['before_row'] = 'automatorwp_license_field_before';
 
-
                 // Update the field definition
                 $meta_boxes[$meta_box_id]['fields'][$field_id] = $field;
+                $meta_boxes[$meta_box_id]['priority'] = 'high'; // Fixes issue with CMB2 2.9.0
 
             }
 
