@@ -331,6 +331,164 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
 add_action( 'manage_automatorwp_automations_custom_column', 'automatorwp_manage_automations_custom_column', 10, 2 );
 
 /**
+ * Filters the array of row action links on the item list table.
+ *
+ * @since 1.4.8
+ *
+ * @param array $actions An array of row action links. Defaults are 'Edit' and 'Delete Permanently'.
+ * @param stdClass $item The item object.
+ *
+ * @return array
+ */
+function automatorwp_automations_custom_row_actions( $actions, $item ) {
+
+    global $ct_table;
+
+    $primary_key = $ct_table->db->primary_key;
+
+    // List link + object ID + action delete
+    $url = $ct_table->views->list->get_link();
+    $url = add_query_arg( array( $primary_key => $item->$primary_key ), $url );
+
+    $actions['clone'] = sprintf(
+        '<a href="%s" class="automatorwp-clone-automation" aria-label="%s">%s</a>',
+        add_query_arg( array( 'automatorwp-action' => 'clone_automation' ), $url ),
+        esc_attr( __( 'Clone', 'automatorwp' ) ),
+        __( 'Clone', 'automatorwp' )
+    );
+
+    $actions['url_export'] = sprintf(
+        '<a href="%s" class="automatorwp-url-export-automation" aria-label="%s">%s</a>',
+        add_query_arg( array( 'automatorwp-action' => 'url_export_automation' ), $url ),
+        esc_attr( __( 'Export', 'automatorwp' ) ),
+        __( 'Export', 'automatorwp' )
+    );
+
+    if( isset( $actions['delete'] ) ) {
+
+        // Remove the delete action to move it to the end
+        unset( $actions['delete'] );
+
+        // Override the delete action
+        $actions['delete'] = sprintf(
+            '<a href="%s" class="submitdelete" onclick="%s" aria-label="%s">%s</a>',
+            ct_get_delete_link( $ct_table->name, $item->$primary_key ),
+            "return confirm('" .
+            esc_attr( __( "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete.", 'automatorwp' ) ) .
+            "');",
+            esc_attr( __( 'Delete', 'automatorwp' ) ),
+            __( 'Delete', 'automatorwp' )
+        );
+    }
+
+    return $actions;
+
+}
+add_filter( 'automatorwp_automations_row_actions', 'automatorwp_automations_custom_row_actions', 10, 2 );
+
+/**
+ * Handler for the clone automation action.
+ *
+ * @since 1.4.8
+ *
+ * @param array $request Request parameters
+ */
+function automatorwp_action_clone_automation( $request ) {
+
+
+    // Bail if automation ID not received
+    if( ! isset( $request['id'] ) ) {
+        return;
+    }
+
+    $automation_id = absint( $request['id'] );
+
+    // Bail if automation ID is not correct received
+    if( $automation_id === 0 ) {
+        return;
+    }
+
+    $ct_table = ct_setup_table( 'automatorwp_automations' );
+
+    $automation = ct_get_object( $automation_id );
+    $edit_capability = $ct_table->cap->edit_item;
+    $url = $ct_table->views->list->get_link();
+
+    ct_reset_setup_table();
+
+    // Check if automation exists and current user can edit it
+    if( ! $automation ) {
+        return;
+    }
+
+    // Check if automation exists and current user can edit it
+    if( ! current_user_can( $edit_capability, $automation->id ) ) {
+        return;
+    }
+
+    ct_reset_setup_table();
+
+    $new_automation_id = automatorwp_clone_automation( $automation_id, get_current_user_id() );
+
+    if( $new_automation_id ) {
+
+        $redirect = ( isset( $request['redirect'] ) ? $request['redirect'] : false );
+
+        if( $redirect ) {
+            $url = $ct_table->views->edit->get_link();
+            $url = add_query_arg( array( 'message' => 'automation_cloned' ), $url );
+            $url = add_query_arg( array( 'id' => $new_automation_id ), $url );
+
+            // Redirect to the new automation
+            wp_redirect( $url );
+            exit;
+        }
+
+        $url = add_query_arg( array( 'message' => 'automation_cloned' ), $url );
+        $url = add_query_arg( array( 'new_id' => $new_automation_id ), $url );
+    } else {
+        $url = add_query_arg( array( 'message' => 'automation_not_cloned' ), $url );
+    }
+
+    wp_redirect( $url );
+    exit;
+
+}
+add_action( 'automatorwp_action_clone_automation', 'automatorwp_action_clone_automation' );
+
+function automatorwp_automations_admin_notices() {
+
+    $messages = array(
+        'automation_cloned' => __( 'Automation cloned successfully.', 'automatorwp' ),
+        'automation_not_cloned' => __( 'Automation could not be cloned.', 'automatorwp' ),
+    );
+
+    // If the new id exists, add a link to edit it directly
+    if( isset( $_GET['new_id'] ) && absint( $_GET['new_id'] ) !== 0 ) {
+        $messages['automation_cloned'] = sprintf(
+            __( 'Automation cloned successfully! <a href="%s">Edit the new automation</a>.', 'automatorwp' ),
+            ct_get_edit_link( 'automatorwp_automations', absint( $_GET['new_id'] ) )
+        );
+    }
+
+    /**
+     * Filters the automations table updated messages.
+     *
+     * @since 1.0.0
+     *
+     * @param array $messages Post updated messages. For defaults @see $messages declarations above.
+     */
+    $messages = apply_filters( 'automatorwp_automations_messages', $messages );
+
+    // Setup screen message
+    if ( isset( $_GET['message'] ) && isset( $messages[$_GET['message']] ) ) {
+        echo '<div id="message" class="updated notice is-dismissible"><p>' . $messages[$_GET['message']] . '</p></div>';
+    }
+
+}
+add_action( 'admin_notices', 'automatorwp_automations_admin_notices' );
+
+/**
  * Default data when creating a new item (similar to WP auto draft) see ct_insert_object()
  *
  * @since  1.0.0
@@ -563,8 +721,45 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
         return;
     }
 
+    $actions = array();
+
+    $url = $ct_table->views->edit->get_link();
+    $url = add_query_arg( array( $primary_key => $object_id ), $url );
+    $url = add_query_arg( array( 'redirect' => true ), $url );
+
+    $actions['clone'] = sprintf(
+        '<a href="%s" class="automatorwp-clone-automation" aria-label="%s">%s</a>',
+        add_query_arg( array( 'automatorwp-action' => 'clone_automation' ), $url ),
+        esc_attr( __( 'Clone', 'automatorwp' ) ),
+        __( 'Clone', 'automatorwp' )
+    );
+
+    $actions['url_export'] = sprintf(
+        '<a href="%s" class="automatorwp-url-export-automation" aria-label="%s">%s</a>',
+        add_query_arg( array( 'automatorwp-action' => 'url_export_automation' ), $url ),
+        esc_attr( __( 'Export', 'automatorwp' ) ),
+        __( 'Export', 'automatorwp' )
+    );
+
+    /**
+     * Filters the array of edit action links on the automation edit page.
+     *
+     * @since 1.4.8
+     *
+     * @param array     $actions    An array of row action links.
+     * @param stdClass  $automation The automation object.
+     *
+     * @return array
+     */
+    $actions = apply_filters( 'automatorwp_automations_edit_actions', $actions, $automation )
     ?>
     <div id="major-publishing-actions">
+
+        <div id="automatorwp-automation-actions">
+            <?php foreach( $actions as $action => $action_html ) : ?>
+                <div id="automatorwp-automation-action-<?php echo $action; ?>" class="automatorwp-automation-action"><?php echo $action_html; ?></div>
+            <?php endforeach; ?>
+        </div>
 
         <?php if( $automation->status === 'inactive' ) : ?>
 
@@ -594,8 +789,8 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
                 "return confirm('" .
                 esc_attr( __( "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete.", 'automatorwp' ) ) .
                 "');",
-                esc_attr( __( 'Delete permanently', 'automatorwp' ) ),
-                __( 'Delete Permanently', 'automatorwp' )
+                esc_attr( __( 'Delete', 'automatorwp' ) ),
+                __( 'Delete', 'automatorwp' )
             );
             ?>
         </div>

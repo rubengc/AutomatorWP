@@ -14,6 +14,7 @@ require_once AUTOMATORWP_DIR . 'includes/admin/notices.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/upgrades.php';
 // Admin pages
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/add-ons.php';
+require_once AUTOMATORWP_DIR . 'includes/admin/pages/import-automation.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/licenses.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/settings.php';
 
@@ -82,6 +83,7 @@ function automatorwp_admin_submenu() {
 
     // AutomatorWP sub menus
     add_submenu_page( 'automatorwp', __( 'Add-ons', 'automatorwp' ), __( 'Add-ons', 'automatorwp' ), 'manage_options', 'automatorwp_add_ons', 'automatorwp_add_ons_page' );
+    add_submenu_page( 'automatorwp', __( 'Import Automation', 'automatorwp' ), __( 'Import Automation', 'automatorwp' ), 'manage_options', 'automatorwp_import_automation', 'automatorwp_import_automation_page' );
 
 }
 add_action( 'admin_menu', 'automatorwp_admin_submenu', 12 );
@@ -174,6 +176,22 @@ function automatorwp_admin_bar_menu_bottom( $wp_admin_bar ) {
 
 }
 add_action( 'admin_bar_menu', 'automatorwp_admin_bar_menu_bottom', 999 );
+
+/**
+ * Processes all GamiPress actions sent via POST and GET by looking for the 'automatorwp-action' request and running do_action() to call the function
+ *
+ * @since 1.4.8
+ */
+function automatorwp_process_actions() {
+    if ( isset( $_POST['automatorwp-action'] ) ) {
+        do_action( 'automatorwp_action_' . $_POST['automatorwp-action'], $_POST );
+    }
+
+    if ( isset( $_GET['automatorwp-action'] ) ) {
+        do_action( 'automatorwp_action_' . $_GET['automatorwp-action'], $_GET );
+    }
+}
+add_action( 'admin_init', 'automatorwp_process_actions' );
 
 /**
  * Helper function to register custom meta boxes

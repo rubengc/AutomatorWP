@@ -406,3 +406,28 @@ function automatorwp_licenses_option_key( $option_key, $cmb ) {
 
 }
 add_filter( 'cmb2_edd_license_option_key', 'automatorwp_licenses_option_key', 10, 2 );
+
+/**
+ * Before licenses form
+ *
+ * @since 1.0.0
+ *
+ * @param string $filterable
+ * @param string $page
+ *
+ * @return string
+ */
+function automatorwp_licenses_before_form( $filterable, $page ) {
+
+    if( $page !== 'automatorwp_licenses' ) {
+        return $filterable;
+    }
+
+    $output = '<em class="automatorwp-licenses-intructions">'
+        . sprintf( __( 'Looking to install a pro add-on? Check the <a href="%s" target="_blank">installation instructions</a>.', 'automatorwp' ), 'https://automatorwp.com/docs/getting-started/installing-pro-add-ons/' )
+        . '</em>';
+
+    return $filterable . $output;
+
+}
+add_filter( 'cmb2metatabs_before_form', 'automatorwp_licenses_before_form', 10, 2 );

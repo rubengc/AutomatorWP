@@ -48,10 +48,10 @@ function automatorwp_render_automation_type_dialog() {
             <div class="automatorwp-notice-warning">
                 <?php echo __( '<strong>Note:</strong> Automation type cannot be changed later. ', 'automatorwp' ); ?>
             </div>
-            <div class="automatorwp-automation-type-dialog-bottom">
-                <div class="automatorwp-automation-type-dialog-buttons">
+            <div class="automatorwp-dialog-bottom automatorwp-automation-type-dialog-bottom">
+                <div class="automatorwp-dialog-buttons automatorwp-automation-type-dialog-buttons">
                     <button type="button" class="button button-primary automatorwp-automation-type-dialog-confirm"><?php _e( 'Confirm', 'automatorwp' ); ?></button>
-                    <button type="button" class="button automatorwp-button-danger automatorwp-automation-type-dialog-cancel"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
+                    <button type="button" data-dialog="automatorwp-automation-type-dialog" class="button automatorwp-button-danger automatorwp-dialog-cancel automatorwp-automation-type-dialog-cancel"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
                 </div>
             </div>
         </div>
@@ -62,6 +62,67 @@ function automatorwp_render_automation_type_dialog() {
 
 }
 add_action( 'admin_footer', 'automatorwp_render_automation_type_dialog' );
+
+/**
+ * Render automation url export dialog
+ *
+ * @since 1.4.8
+ */
+function automatorwp_render_automation_url_export_dialog() {
+
+    if( ! isset( $_GET['page'] ) ) {
+        return;
+    }
+
+    $allowed_pages = array(
+        'automatorwp_automations',
+        'edit_automatorwp_automations',
+    );
+
+    // Only render on allowed pages
+    if( ! in_array( $_GET['page'], $allowed_pages ) ) {
+        return;
+    } ?>
+
+    <div class="automatorwp-automation-url-export-dialog-wrapper" style="display: none;">
+
+        <div class="automatorwp-automation-url-export-dialog">
+            <h2><?php _e( 'Export automation', 'automatorwp' ); ?></h2>
+            <div class="automatorwp-automation-url-export-dialog-input">
+                <label><?php _e( 'Enter you website URL:', 'automatorwp' ); ?></label>
+                <input type="text" placeholder="https://website.com">
+                <div class="automatorwp-notice-error" style="display: none;"><?php _e( 'Please, enter a valid URL.', 'automatorwp' ); ?></div>
+            </div>
+            <div class="automatorwp-automation-url-export-dialog-url">
+                <label><?php _e( 'Exportable URL:', 'automatorwp' ); ?></label>
+                <input type="text">
+                <div class="automatorwp-automation-url-export-dialog-url-copy">
+                    <div class="automatorwp-automation-url-export-dialog-url-copy-icon"><span class="dashicons dashicons-admin-page"></span></div>
+                    <div class="automatorwp-automation-url-export-dialog-url-copy-text">
+                        <span class="automatorwp-automation-url-export-dialog-url-copy-text-copy"><?php _e( 'Copy URL', 'automatorwp' ); ?></span>
+                        <span class="automatorwp-automation-url-export-dialog-url-copy-text-copied" style="display: none;"><?php _e( 'Copied!', 'automatorwp' ); ?></span>
+                    </div>
+                </div>
+                <span class="automatorwp-automation-url-export-dialog-desc"><?php _e( 'Copy this URL and place it on your browser to automatically import this automation on your website.', 'automatorwp' ); ?></span>
+            </div>
+            <div class="automatorwp-dialog-bottom automatorwp-automation-url-export-dialog-bottom">
+                <div class="automatorwp-dialog-buttons automatorwp-automation-url-export-dialog-buttons">
+                    <button type="button" class="button button-primary automatorwp-automation-url-export-dialog-confirm">
+                        <span class="automatorwp-automation-url-export-dialog-confirm-default-text"><?php _e( 'Generate URL to export', 'automatorwp' ); ?></span>
+                        <span class="automatorwp-automation-url-export-dialog-confirm-generating-text" style="display: none;"><?php _e( 'Generating URL', 'automatorwp' ); ?>...</span>
+                        <span class="automatorwp-automation-url-export-dialog-confirm-success-text" style="display: none;"><?php _e( 'Done', 'automatorwp' ); ?></span>
+                    </button>
+                    <button type="button" data-dialog="automatorwp-automation-url-export-dialog" class="button automatorwp-button-danger automatorwp-dialog-cancel automatorwp-automation-url-export-dialog-cancel"><?php _e( 'Cancel', 'automatorwp' ); ?></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <?php
+
+}
+add_action( 'admin_footer', 'automatorwp_render_automation_url_export_dialog' );
 
 /**
  * Render automation type dialog

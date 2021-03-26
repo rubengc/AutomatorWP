@@ -33,6 +33,7 @@ require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-page.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-type.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/comment-post-taxonomy.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/post-meta-update.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/post-type-meta-update.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/user-meta-update.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/add-role.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/set-role.php';

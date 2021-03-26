@@ -78,6 +78,7 @@ function automatorwp_admin_register_scripts() {
     wp_register_script( 'automatorwp-admin-functions-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin-functions' . $suffix . '.js', array( 'jquery', 'jquery-ui-dialog' ), AUTOMATORWP_VER, true );
     wp_register_script( 'automatorwp-admin-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'automatorwp-admin-functions-js', 'automatorwp-select2-js' ), AUTOMATORWP_VER, true );
     wp_register_script( 'automatorwp-admin-notices-js', AUTOMATORWP_URL . 'assets/js/automatorwp-admin-notices' . $suffix . '.js', array( 'jquery' ), AUTOMATORWP_VER, true );
+    wp_register_script( 'automatorwp-import-automation-js', AUTOMATORWP_URL . 'assets/js/automatorwp-import-automation' . $suffix . '.js', array( 'jquery' ), AUTOMATORWP_VER, true );
 
 }
 add_action( 'admin_init', 'automatorwp_admin_register_scripts' );
@@ -104,6 +105,15 @@ function automatorwp_admin_enqueue_scripts( $hook ) {
 
     // Scripts
     wp_enqueue_script( 'automatorwp-admin-notices-js' );
+
+    // Import automation scripts
+    if( $hook === 'automatorwp_page_automatorwp_import_automation' ) {
+        wp_localize_script( 'automatorwp-import-automation-js', 'automatorwp_import_automation', array(
+            'nonce' => automatorwp_get_admin_nonce(),
+        ) );
+
+        wp_enqueue_script( 'automatorwp-import-automation-js' );
+    }
 
     $allow_enqueue = true;
 

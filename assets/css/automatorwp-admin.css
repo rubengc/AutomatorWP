@@ -113,6 +113,11 @@
     padding-bottom: 0;
 }
 
+/* Automation actions */
+#automatorwp-automations-save-changes #automatorwp-automation-actions .automatorwp-automation-action {
+    margin-bottom: 6px;
+}
+
 /* Publishing actions */
 #automatorwp-automations-save-changes #major-publishing-actions {
     margin: 20px -12px -12px -12px;
@@ -120,71 +125,17 @@
 
 #automatorwp-automations-save-changes #major-publishing-actions .automatorwp-save-and-activate {
     float: right;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+    margin-top: 4px;
 }
 
 #automatorwp-automations-save-changes #major-publishing-actions .automatorwp-save-and-activate + #publishing-action {
     float: left;
+    margin-top: 4px;
 }
 
 #automatorwp-automations-save-changes .submitdelete {
     color: #a00;
-}
-
-/* Automation type dialog */
-.automatorwp-automation-type-dialog .automatorwp-automation-types {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -6px;
-    margin-right: -6px;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type {
-    position: relative;
-    width: 42%;
-    text-align: center;
-    padding: 1em;
-    border: 2px solid #efefef;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-bottom: 12px;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type:hover {
-    background: rgba(0, 124, 186, 0.1);
-    border-color: #88ccef;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type.automatorwp-automation-type-selected {
-    border-color: #008fd6;
-    background: rgba(0, 124, 186, 0.2);
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type img {
-    width: 40%;
-    margin-bottom: 6px;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type strong {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-bottom:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-buttons {
-    float: right;
-}
-
-.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-buttons .automatorwp-automation-type-dialog-cancel {
-    line-height: 32px;
 }
 
 /* Triggers and actions box */
@@ -1640,6 +1591,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     Dialog
    ------------------------------------------- */
 .automatorwp-dialog {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
     border: 1px solid #ccd0d4;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
     background: #fff;
@@ -1659,12 +1611,19 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     z-index: 99999;
 }
 
+.automatorwp-dialog .ui-dialog-titlebar {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
 .automatorwp-dialog .ui-dialog-title {
     display: none;
 }
 
 .automatorwp-dialog h2 {
     margin-top: 0;
+    font-size: 1.5em;
 }
 
 .automatorwp-dialog .button {
@@ -1714,6 +1673,159 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 
 .automatorwp-dialog .ui-dialog-titlebar-close .ui-button-text {
     display: none;
+}
+
+/* Dialog bottom button */
+.automatorwp-dialog .automatorwp-dialog-bottom:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.automatorwp-dialog .automatorwp-dialog-buttons {
+    float: right;
+}
+
+.automatorwp-dialog .automatorwp-dialog-buttons .automatorwp-dialog-cancel {
+    line-height: 32px;
+}
+
+/* -------------------------------------------
+    Automation type dialog
+   ------------------------------------------- */
+.automatorwp-automation-type-dialog .automatorwp-automation-types {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -6px;
+    margin-right: -6px;
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type {
+    position: relative;
+    width: 42%;
+    text-align: center;
+    padding: 1em;
+    border: 2px solid #efefef;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 12px;
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type:hover {
+    background: rgba(0, 124, 186, 0.1);
+    border-color: #88ccef;
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type.automatorwp-automation-type-selected {
+    border-color: #008fd6;
+    background: rgba(0, 124, 186, 0.2);
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type img {
+    width: 40%;
+    margin-bottom: 6px;
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* -------------------------------------------
+    Automation URL export dialog
+   ------------------------------------------- */
+
+.automatorwp-automation-url-export-dialog label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.automatorwp-automation-url-export-dialog .automatorwp-notice-error {
+    margin-top: 1em;
+}
+
+.automatorwp-automation-url-export-dialog .automatorwp-automation-url-export-dialog-input,
+.automatorwp-automation-url-export-dialog .automatorwp-automation-url-export-dialog-url {
+    margin-bottom: 1em;
+}
+
+.automatorwp-automation-url-export-dialog input {
+    width: 100%;
+    font-size: 18px !important;
+    border: 2px solid #ccc;
+    margin: 0;
+}
+
+.automatorwp-automation-url-export-dialog .automatorwp-automation-url-export-dialog-desc {
+    display: block;
+    margin-top: 6px;
+    font-style: italic;
+}
+
+.automatorwp-automation-url-export-dialog-url input {
+    width: calc( 100% - 40px );
+    margin: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.automatorwp-automation-url-export-dialog-url-copy {
+    position: relative;
+    float: right;
+    height: 36px;
+    width: 38px;
+    border: 2px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+}
+
+.automatorwp-automation-url-export-dialog-url-copy-icon {
+    padding: 8px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.automatorwp-automation-url-export-dialog-url-copy-text {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.automatorwp-automation-url-export-dialog-url-copy:hover .automatorwp-automation-url-export-dialog-url-copy-text {
+    opacity: 1;
+}
+
+.automatorwp-automation-url-export-dialog-url-copy-text {
+    position: absolute;
+    top: -34px;
+    width: 60px;
+    font-size: 11px;
+    text-align: center;
+    right: -10px;
+    z-index: 9999;
+    padding: 4px;
+    font-style: normal;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    background: #000;
+    color: #fff;
+}
+
+.automatorwp-automation-url-export-dialog-url-copy-text:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 8px solid #000;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    bottom: -7px;
+    left: 44%;
 }
 
 /* -------------------------------------------
@@ -2075,4 +2187,119 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
         float: left;
         margin: 20px 20px 20px 5px;
     }
+}
+
+/* -------------------------------------------
+	Import Automation
+   ------------------------------------------- */
+.automatorwp-import-automation-text {
+    font-size: 32px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+.automatorwp-import-automation-text:not(.automatorwp-import-automation-success):not(.automatorwp-import-automation-error) {
+    -webkit-animation: automatorwp_import_text_animation 1s infinite;
+    animation: automatorwp_import_text_animation 1s infinite;
+}
+
+.automatorwp-import-automation-text.automatorwp-import-automation-success {
+    color: #269630;
+}
+
+.automatorwp-import-automation-text.automatorwp-import-automation-error {
+    color: #dc3232;
+}
+
+.automatorwp-import-automation-icon {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.automatorwp-import-automation-icon img {
+    width: 100%;
+}
+
+.automatorwp-import-automation-loader {
+    margin-top: -130px;
+}
+
+.automatorwp-import-automation-loader-background {
+    width: 100px;
+    height: 70px;
+    background: #353849;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 45px;
+}
+
+.automatorwp-import-automation-loader-icon,
+.automatorwp-import-automation-loader-icon:before,
+.automatorwp-import-automation-loader-icon:after {
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation: automatorwp_import_logo_animation 1.8s infinite ease-in-out;
+    animation: automatorwp_import_logo_animation 1.8s infinite ease-in-out;
+}
+
+.automatorwp-import-automation-loader-icon {
+    color: #4ceedf;
+    font-size: 10px;
+    margin: 0 auto;
+    margin-top: -66px;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+.automatorwp-import-automation-loader-icon:before,
+.automatorwp-import-automation-loader-icon:after {
+    content: '';
+    position: absolute;
+    top: 0;
+}
+
+.automatorwp-import-automation-loader-icon:before {
+    left: -26px;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.automatorwp-import-automation-loader-icon:after {
+    left: 26px;
+}
+
+@-webkit-keyframes automatorwp_import_text_animation {
+    0%   { opacity:1; }
+    50%  { opacity:0.6; }
+    100% { opacity:1; }
+}
+@keyframes automatorwp_import_text_animation {
+    0%   { opacity:1; }
+    50%  { opacity:0.6; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes automatorwp_import_logo_animation {
+    0%,
+    80%,
+    100% { box-shadow: 0 2.5em 0 -1.3em; }
+    40% { box-shadow: 0 2.5em 0 0; }
+}
+@keyframes automatorwp_import_logo_animation {
+    0%,
+    80%,
+    100% { box-shadow: 0 2.5em 0 -1.3em; }
+    40% { box-shadow: 0 2.5em 0 0; }
 }

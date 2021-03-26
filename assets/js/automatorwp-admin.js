@@ -224,57 +224,6 @@
     }
 
     // -----------------------------------------------
-    // Automation type dialog
-    // -----------------------------------------------
-
-    // Show automation type dialog on new automation links
-    $('body').on('click', 'a[href$="admin.php?page=add_automatorwp_automations"]', function(e) {
-        e.preventDefault();
-
-        $('.automatorwp-automation-type-dialog').dialog({
-            dialogClass: 'automatorwp-dialog',
-            closeText: '',
-            show: { effect: 'fadeIn', duration: 200 },
-            hide: { effect: 'fadeOut', duration: 200 },
-            resizable: false,
-            height: 'auto',
-            width: 600,
-            modal: true,
-            draggable: false,
-            closeOnEscape: false,
-        });
-
-    });
-
-    // Select automation type
-    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type', function(e) {
-        $('.automatorwp-automation-type-dialog .automatorwp-automation-type-selected').removeClass('automatorwp-automation-type-selected');
-        $(this).addClass('automatorwp-automation-type-selected');
-    });
-
-    // Automation type dialog confirm button
-    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-confirm', function(e) {
-
-        var type = 'user';
-        var selected = $('.automatorwp-automation-type-dialog .automatorwp-automation-type-selected');
-
-        if( selected.length ) {
-            type = selected.data('type');
-        }
-
-        var url = window.location.href.split('admin.php')[0];
-
-        // Redirect to the add new automation
-        window.location.href = url + 'admin.php?page=add_automatorwp_automations&type=' + type;
-
-    });
-
-    // Automation type dialog cancel button
-    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-cancel', function(e) {
-        $('.automatorwp-automation-type-dialog').dialog('close');
-    });
-
-    // -----------------------------------------------
     // Anonymous user action
     // -----------------------------------------------
 
@@ -1123,6 +1072,231 @@
         if( selector_row.find('select').val() === 'custom' ) {
             $(this).show();
         }
+    });
+
+    // -----------------------------------------------
+    // Dialog
+    // -----------------------------------------------
+
+    // Dialog cancel button
+    $('body').on('click', '.automatorwp-dialog-cancel', function(e) {
+
+        var target = $(this).data('dialog');
+
+        if( target.length ) {
+            $('.' + target).dialog('close');
+        }
+    });
+
+    // -----------------------------------------------
+    // Automation type dialog
+    // -----------------------------------------------
+
+    // Show automation type dialog on new automation links
+    $('body').on('click', 'a[href$="admin.php?page=add_automatorwp_automations"]', function(e) {
+        e.preventDefault();
+
+        $('.automatorwp-automation-type-dialog').dialog({
+            dialogClass: 'automatorwp-dialog',
+            closeText: '',
+            show: { effect: 'fadeIn', duration: 200 },
+            hide: { effect: 'fadeOut', duration: 200 },
+            resizable: false,
+            height: 'auto',
+            width: 600,
+            modal: true,
+            draggable: false,
+            closeOnEscape: false,
+        });
+
+    });
+
+    // Select automation type
+    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type', function(e) {
+        $('.automatorwp-automation-type-dialog .automatorwp-automation-type-selected').removeClass('automatorwp-automation-type-selected');
+        $(this).addClass('automatorwp-automation-type-selected');
+    });
+
+    // Automation type dialog confirm button
+    $('body').on('click', '.automatorwp-automation-type-dialog .automatorwp-automation-type-dialog-confirm', function(e) {
+
+        var type = 'user';
+        var selected = $('.automatorwp-automation-type-dialog .automatorwp-automation-type-selected');
+
+        if( selected.length ) {
+            type = selected.data('type');
+        }
+
+        var url = window.location.href.split('admin.php')[0];
+
+        // Redirect to the add new automation
+        window.location.href = url + 'admin.php?page=add_automatorwp_automations&type=' + type;
+
+    });
+
+    // -----------------------------------------------
+    // Automation URL export dialog
+    // -----------------------------------------------
+
+    var url_export_id = 0;
+    var url_export_url = '';
+
+    // Show automation url export dialog on export links
+    $('body').on('click', 'a.automatorwp-url-export-automation', function(e) {
+        e.preventDefault();
+
+        url_export_id = automatorwp_get_url_param( $(this).attr('href'), 'id', 0 );
+        url_export_url = '';
+
+        // Hide the URL
+        $('.automatorwp-automation-url-export-dialog input').val('');
+        $('.automatorwp-automation-url-export-dialog .automatorwp-automation-url-export-dialog-url').hide();
+        $('.automatorwp-automation-url-export-dialog .automatorwp-automation-url-export-dialog-input .automatorwp-notice-error').hide();
+
+        // Update confirm button label
+        $('.automatorwp-automation-url-export-dialog-confirm .automatorwp-automation-url-export-dialog-confirm-default-text').show();
+        $('.automatorwp-automation-url-export-dialog-confirm .automatorwp-automation-url-export-dialog-confirm-generating-text').hide();
+        $('.automatorwp-automation-url-export-dialog-confirm .automatorwp-automation-url-export-dialog-confirm-success-text').hide();
+
+        $('.automatorwp-automation-url-export-dialog').dialog({
+            dialogClass: 'automatorwp-dialog',
+            closeText: '',
+            show: { effect: 'fadeIn', duration: 200 },
+            hide: { effect: 'fadeOut', duration: 200 },
+            resizable: false,
+            height: 'auto',
+            width: 600,
+            modal: true,
+            draggable: false,
+            closeOnEscape: false,
+        });
+
+    });
+
+    $('body').on('keypress', '.automatorwp-automation-url-export-dialog-input input', function(e) {
+
+        var keycode = ( e.keyCode ? e.keyCode : e.which );
+
+        if( parseInt( keycode ) === 13 ) {
+            $('.automatorwp-automation-url-export-dialog-confirm').trigger('click');
+        }
+    });
+
+    // Automation url export confirm button
+    $('body').on('click', '.automatorwp-automation-url-export-dialog-confirm', function(e) {
+
+        var button = $(this);
+        var dialog = button.closest('.automatorwp-automation-url-export-dialog');
+        dialog.find('.automatorwp-automation-url-export-dialog-input .automatorwp-notice-error').slideUp('fast');
+
+        // Close dialog if button display the success text
+        if( button.find('.automatorwp-automation-url-export-dialog-confirm-success-text').is(":visible") ) {
+            dialog.dialog('close');
+            return;
+        }
+
+        // Bail if button is disabled
+        if( button.prop( 'disabled' ) ) {
+            return;
+        }
+
+        // Bail if no automation ID provided
+        if( url_export_id === 0 ) {
+            return;
+        }
+
+        // Check the URL
+        var url = dialog.find('.automatorwp-automation-url-export-dialog-input input').val();
+
+        // Only check url if not is a local or development URL
+        if( ! ( url.includes('dev') || url.includes('127.0.0.') || url.includes('localhost') || url.includes(':8888') ) ) {
+            if( ! automatorwp_is_valid_url( url ) ) {
+                dialog.find('.automatorwp-automation-url-export-dialog-input .automatorwp-notice-error').slideDown('fast');
+                return;
+            }
+        }
+
+        if( ! url.startsWith('http') ) {
+            url = 'https://' + url;
+        }
+
+
+        button.prop( 'disabled', true );
+
+        // Update confirm button label
+        button.find('.automatorwp-automation-url-export-dialog-confirm-default-text').hide();
+        button.find('.automatorwp-automation-url-export-dialog-confirm-generating-text').show();
+        button.find('.automatorwp-automation-url-export-dialog-confirm-success-text').hide();
+
+        $.ajax({
+            url: ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'automatorwp_get_automation_export_url',
+                nonce: automatorwp_admin.nonce,
+                automation_id: url_export_id,
+            },
+            success: function( response ) {
+
+                // Update the URL
+                if( ! url.endsWith('/') ) {
+                    url += '/';
+                }
+
+                url_export_url = response.data;
+
+                url += url_export_url;
+
+                var url_input = dialog.find('.automatorwp-automation-url-export-dialog-url input');
+
+                url_input.val(url);
+
+                // Show the URL input
+                dialog.find('.automatorwp-automation-url-export-dialog-url').slideDown('fast', function() {
+                    url_input.trigger('focus');
+                    url_input.trigger('select');
+                    url_input[0].setSelectionRange(0, 99999);
+                });
+
+                button.prop( 'disabled', false );
+
+                // Update confirm button label
+                button.find('.automatorwp-automation-url-export-dialog-confirm-default-text').hide();
+                button.find('.automatorwp-automation-url-export-dialog-confirm-generating-text').hide();
+                button.find('.automatorwp-automation-url-export-dialog-confirm-success-text').show();
+
+            },
+            error: function( response ) {
+
+                button.prop( 'disabled', false );
+
+                // Update confirm button label
+                button.find('.automatorwp-automation-url-export-dialog-confirm-default-text').show();
+                button.find('.automatorwp-automation-url-export-dialog-confirm-generating-text').hide();
+                button.find('.automatorwp-automation-url-export-dialog-confirm-success-text').hide();
+
+            }
+        });
+
+    });
+
+    // Force select on click on the URL input
+    $('body').on('click', '.automatorwp-automation-url-export-dialog-url input', function(e) {
+        $(this).trigger('select');
+        $(this)[0].setSelectionRange(0, 99999); // For mobile devices
+    });
+
+    // Copy URL
+    $('body').on('click', '.automatorwp-automation-url-export-dialog-url-copy', function(e) {
+        var input = $('.automatorwp-automation-url-export-dialog-url input');
+
+        input.trigger('select');
+        input[0].setSelectionRange(0, 99999); // For mobile devices
+
+        document.execCommand("copy");
+
+        $(this).find('.automatorwp-automation-url-export-dialog-url-copy-text-copy').hide();
+        $(this).find('.automatorwp-automation-url-export-dialog-url-copy-text-copied').show();
     });
 
 })( jQuery );

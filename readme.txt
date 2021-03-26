@@ -2,8 +2,8 @@
 Contributors: automatorwp, rubengc, eneribs, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
-Tested up to: 5.6
-Stable tag: 1.4.7
+Tested up to: 5.7
+Stable tag: 1.4.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -195,6 +195,7 @@ AutomatorWP comes with a set of triggers, actions and filters, including:
 * User comments on a post of any/specific type.
 * User comments on a post of any/specific taxonomy.
 * Post meta with any/specific key gets updated with any/specific value.
+* Post of a specific type meta with any/specific key gets updated with any/specific value.
 * User meta with any/specific key gets updated with any/specific value.
 * User gets added to any/specific role.
 * User role changes to any/specific role.
@@ -316,6 +317,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.4.8 =
+
+* **New Features**
+* New trigger: Post of a specific type meta with any/specific key gets updated with any/specific value.
+* Added the ability to clone automations.
+* Added the ability to export automations through URL (no files required!).
+* **Improvements**
+* Added installation instructions on the Licenses page.
 
 = 1.4.7 =
 

@@ -920,3 +920,36 @@ function automatorwp_set_caret_at_end( input ) {
     }
 
 }
+
+/**
+ * Helper function to get a parameter from an URL
+ *
+ * @since 1.0.0
+ *
+ * @param {String} url
+ * @param {String} param
+ * @param default_value
+ *
+ * @return {String}
+ */
+function automatorwp_get_url_param( url, param, default_value = false ) {
+
+    var results = new RegExp('[\?&]' + param + '=([^&#]*)').exec( url );
+
+    return results[1] || default_value;
+
+}
+
+/**
+ * Helper function to check if given URL is a valid one
+ *
+ * @since 1.0.0
+ *
+ * @param {String} url
+ *
+ * @return {boolean}
+ */
+function automatorwp_is_valid_url( url ) {
+    var result = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    return ( result !== null )
+}

@@ -188,6 +188,7 @@ AutomatorWP comes with a set of triggers and actions, including:
 * User comments on a post of any/specific type.
 * User comments on a post of any/specific taxonomy.
 * Post meta with any/specific key gets updated with any/specific value.
+* Post of a specific type meta with any/specific key gets updated with any/specific value.
 * User meta with any/specific key gets updated with any/specific value.
 * User gets added to any/specific role.
 * User role changes to any/specific role.
@@ -318,6 +319,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.4.8 ###
+
+* **New Features**
+* New trigger: Post of a specific type meta with any/specific key gets updated with any/specific value.
+* Added the ability to clone automations.
+* Added the ability to export automations through URL (no files required!).
+* **Improvements**
+* Added installation instructions on the Licenses page.
 
 ### 1.4.7 ###
 
