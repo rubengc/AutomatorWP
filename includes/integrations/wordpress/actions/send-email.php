@@ -70,7 +70,6 @@ class AutomatorWP_WordPress_Send_Email extends AutomatorWP_Integration_Action {
                             'desc' => __( 'Email address(es) to send the email. Accepts single or comma-separated list of emails.', 'automatorwp' )
                                 . '<br>' . __( 'Leave empty to use the email of the user that completes the automation.', 'automatorwp' ),
                             'type' => 'text',
-                            'required'  => true,
                             'default' => ''
                         ),
                         'cc' => array(

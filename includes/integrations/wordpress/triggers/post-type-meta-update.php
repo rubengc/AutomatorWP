@@ -136,7 +136,7 @@ class AutomatorWP_WordPress_Post_Type_Meta_Update extends AutomatorWP_Integratio
             'trigger'       => $this->trigger,
             'user_id'       => $post->post_author,
             'post_id'       => $object_id,
-            'post_type'     => $object_id,
+            'post_type'     => $post->post_type,
             'meta_key'      => $meta_key,
             'meta_value'    => $meta_value,
         ) );

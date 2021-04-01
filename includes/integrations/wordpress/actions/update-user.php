@@ -176,7 +176,6 @@ class AutomatorWP_WordPress_Update_User extends AutomatorWP_Integration_Action {
         $user_data = array();
         $this->result = array();
 
-
         // User ID
         if( empty( $action_options['user_id'] ) ) {
             $action_options['user_id'] = $user_id;

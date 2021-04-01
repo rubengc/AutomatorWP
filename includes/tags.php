@@ -90,6 +90,17 @@ function automatorwp_get_tags() {
         'preview'   => __( 'Plugin', 'automatorwp' ),
     );
 
+    $tags['user']['tags']['avatar'] = array(
+        'label'     => __( 'Avatar', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => '<img src="' . get_option( 'home' ) . '/wp-content/uploads/avatar.jpg'  . '"/>',
+    );
+    $tags['user']['tags']['avatar_url'] = array(
+        'label'     => __( 'Avatar URL', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => get_option( 'home' ) . '/wp-content/uploads/avatar.jpg',
+    );
+
     $tags['user']['tags']['reset_password_url'] = array(
         'label'     => __( 'Reset password URL', 'automatorwp' ),
         'type'      => 'text',
@@ -471,18 +482,26 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
         case 'last_name':
             $replacement = ( $user ? $user->last_name : '' );
             break;
+        case 'avatar':
+        case 'avatar_url':
+            $user_id = ( $user ? $user->ID : 0 );
+            $url = get_avatar_url( $user_id, array( 'force_default' => true ) );
+            $replacement = $url;
+
+            if( $tag_name === 'avatar' ) {
+                $replacement = '<img src="' . $url . '"/>';
+            }
+            break;
         case 'reset_password_url':
         case 'reset_password_link':
             $key = ( $user ?  get_password_reset_key( $user ) : '' );
             $login = ( $user ?  rawurlencode( $user->user_login ) : '' );
             $url = ( $user ? network_site_url( 'wp-login.php?action=rp&key=' . $key . '&login=' . $login, 'login' ) : '' );
+            $replacement = $url;
 
-            if( $tag_name === 'reset_password_url' ) {
-                $replacement = $url;
-            } else if( $tag_name === 'reset_password_link' ) {
+            if( $tag_name === 'reset_password_link' ) {
                 $replacement = '<a href="' . $url . '">' . __( 'Click here to reset your password', 'automatorwp' ) . '</a>';
             }
-
             break;
     }
 

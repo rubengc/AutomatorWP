@@ -52,6 +52,7 @@ require_once plugin_dir_path( __FILE__ ) . 'actions/create-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/update-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/user-meta.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/create-post.php';
+require_once plugin_dir_path( __FILE__ ) . 'actions/update-post.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/post-meta.php';
 // Filters
 require_once plugin_dir_path( __FILE__ ) . 'filters/user-role.php';

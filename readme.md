@@ -214,6 +214,7 @@ AutomatorWP comes with a set of triggers and actions, including:
 * Update a user.
 * Set, insert, increment or decrement user meta.
 * Create a post.
+* Update a post.
 * Set, insert, increment or decrement post meta.
 * Redirect user to url.
 
@@ -319,6 +320,16 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.4.9 ###
+
+* **New Features**
+* New action: Update a post.
+* New user tag: {avatar} to pass the user avatar image (in a <img> HTML tag).
+* New user tag: {avatar_url} to pass the user avatar URL.
+* Added the "URL slug" field to the "Create a post" action.
+* **Bug Fixes**
+* Fixed a typo on "Post of a specific type meta with any/specific key gets updated with any/specific value" trigger.
 
 ### 1.4.8 ###
 

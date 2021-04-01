@@ -1,18 +1,18 @@
 <?php
 /**
- * Create Post
+ * Update Post
  *
- * @package     AutomatorWP\Integrations\WordPress\Actions\Create_Post
+ * @package     AutomatorWP\Integrations\WordPress\Actions\Update_Post
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
+class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
 
     public $integration = 'wordpress';
-    public $action = 'wordpress_create_post';
+    public $action = 'wordpress_update_post';
 
     /**
      * The new inserted post ID
@@ -74,83 +74,105 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
 
         automatorwp_register_action( $this->action, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Create a post', 'automatorwp' ),
-            'select_option'     => __( 'Create <strong>a post</strong>', 'automatorwp' ),
+            'label'             => __( 'Update a post', 'automatorwp' ),
+            'select_option'     => __( 'Update <strong>a post</strong>', 'automatorwp' ),
             /* translators: %1$s: Post. */
-            'edit_label'        => sprintf( __( 'Create a %1$s', 'automatorwp' ), '{post}' ),
+            'edit_label'        => sprintf( __( 'Update %1$s', 'automatorwp' ), '{post}' ),
             /* translators: %1$s: Post. */
-            'log_label'         => sprintf( __( 'Create a %1$s', 'automatorwp' ), '{post}' ),
+            'log_label'         => sprintf( __( 'Update %1$s', 'automatorwp' ), '{post}' ),
             'options'           => array(
                 'post' => array(
-                    'default' => __( 'post', 'automatorwp' ),
+                    'default' => __( 'a post', 'automatorwp' ),
+                    'from' => 'post_id',
                     'fields' => array(
+                        'post_id' => automatorwp_utilities_post_field( array(
+                            'name'                  => __( 'Post to update:', 'automatorwp' ),
+                            'post_type'             => 'any',
+                            'placeholder'           => __( 'Select a post', 'automatorwp' ),
+                            'option_none_label'     => __( 'a post', 'automatorwp' ),
+                            'option_custom'         => true,
+                            'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
+                        ) ),
+                        'post_id_custom' => automatorwp_utilities_custom_field( array(
+                            'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
+                        ) ),
                         'post_title' => array(
                             'name' => __( 'Title:', 'automatorwp' ),
-                            'desc' => __( 'The post title.', 'automatorwp' ),
+                            'desc' => __( 'The post title.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
-                            'required'  => true,
                             'default' => ''
                         ),
                         'post_name' => array(
                             'name' => __( 'URL slug:', 'automatorwp' ),
-                            'desc' => __( 'The last part of the URL. Leave blank to generate one based on the title.', 'automatorwp' )
+                            'desc' => __( 'The last part of the URL.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' )
                                 . ' ' . sprintf( __( '<a href="" target="_blank">Read about permalinks</a>', 'automatorwp' ), 'https://wordpress.org/support/article/writing-posts/#post-field-descriptions' ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'post_type' => array(
                             'name' => __( 'Type:', 'automatorwp' ),
-                            'desc' => __( 'The post type. By default, "post".', 'automatorwp' )
+                            'desc' => __( 'The post type.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' )
                                 . ' ' . automatorwp_toggleable_options_list( $post_type_options ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'post_status' => array(
                             'name' => __( 'Status:', 'automatorwp' ),
-                            'desc' => __( 'The post status. By default, "draft".', 'automatorwp' )
+                            'desc' => __( 'The post status.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' )
                                 . ' ' . automatorwp_toggleable_options_list( $post_status_options ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'post_date' => array(
                             'name' => __( 'Date:', 'automatorwp' ),
-                            'desc' => __( 'The date of the post. Supports "YYYY-MM-DD HH:MM:SS" and "YYYY-MM-DD" formats. By default, the date at the moment the automation gets completed.', 'automatorwp' ),
+                            'desc' => __( 'The date of the post. Supports "YYYY-MM-DD HH:MM:SS" and "YYYY-MM-DD" formats.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'post_author' => array(
                             'name' => __( 'Author:', 'automatorwp' ),
-                            'desc' => __( 'The ID of the user who added this post. By default, ID of user who completes this automation.', 'automatorwp' ),
+                            'desc' => __( 'The ID of the user who added this post.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'post_content' => array(
                             'name' => __( 'Content:', 'automatorwp' ),
-                            'desc' => __( 'The post content. By default, empty.', 'automatorwp' ),
+                            'desc' => __( 'The post content.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'wysiwyg',
                             'default' => ''
                         ),
                         'post_excerpt' => array(
                             'name' => __( 'Excerpt:', 'automatorwp' ),
-                            'desc' => __( 'The post excerpt. By default, empty.', 'automatorwp' ),
+                            'desc' => __( 'The post excerpt.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'textarea',
                             'default' => ''
                         ),
                         'post_parent' => array(
                             'name' => __( 'Parent:', 'automatorwp' ),
-                            'desc' => __( 'The post parent. By default, none.', 'automatorwp' ),
+                            'desc' => __( 'The post parent.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'menu_order' => array(
                             'name' => __( 'Menu order:', 'automatorwp' ),
-                            'desc' => __( 'The post menu order. By default, 0.', 'automatorwp' ),
+                            'desc' => __( 'The post menu order.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         ),
                         'post_password' => array(
                             'name' => __( 'Password:', 'automatorwp' ),
-                            'desc' => __( 'The password to access this post. By default, empty.', 'automatorwp' ),
+                            'desc' => __( 'The password to access this post.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         ),
@@ -195,75 +217,68 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
      */
     public function execute( $action, $user_id, $action_options, $automation ) {
 
+        $post_id = absint( $action_options['post_id'] );
+        $this->post_id = $post_id;
+
+        // Bail if not post ID provided
+        if( $post_id === 0 ) {
+            return;
+        }
+
         // Setup post data
-        $post_data = wp_parse_args( $action_options, array(
-            'post_title'    => '',
-            'post_name'     => '',
-            'post_type'     => 'post',
-            'post_status'   => 'draft',
-            'post_date'     => '',
-            'post_author'   => '',
-            'post_content'  => '',
-            'post_excerpt'  => '',
-            'post_parent'   => '',
-            'menu_order'    => '0',
-            'post_password' => '',
-        ) );
+        $post_data = array(
+            'ID'    => $post_id,
+        );
 
-        // Format post date
-        if( ! empty( $post_data['post_date'] ) ) {
-            $post_data['post_date'] = date( 'Y-m-d H:i:s', strtotime( $post_data['post_date'] ) );
+        $post_fields = array(
+            'post_title',
+            'post_name',
+            'post_type',
+            'post_status',
+            'post_date',
+            'post_author',
+            'post_content',
+            'post_excerpt',
+            'post_parent',
+            'menu_order',
+            'post_password',
+        );
+
+        foreach( $post_fields as $post_field ) {
+            if( ! empty( $action_options[$post_field] ) ) {
+                $post_data[$post_field] = $action_options[$post_field];
+            }
         }
 
-        // Format post date
-        if( absint( $post_data['post_author'] ) === 0 ) {
-            $post_data['post_author'] = $user_id;
-        }
+        $post_data['ID'] = $this->post_id;
 
-        // Insert the post
-        $this->post_id = wp_insert_post( $post_data );
+        // Update the post
+        wp_update_post( $post_data );
 
-        if( $this->post_id ) {
+        if( is_array( $action_options['post_meta'] ) ) {
 
-            if( is_array( $action_options['post_meta'] ) ) {
+            foreach( $action_options['post_meta'] as $i => $meta ) {
 
-                foreach( $action_options['post_meta'] as $i => $meta ) {
+                // Parse automation tags replacements to both, key and value
+                $meta_key = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_key'] );
+                $meta_value = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_value'] );
 
-                    // Parse automation tags replacements to both, key and value
-                    $meta_key = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_key'] );
-                    $meta_value = automatorwp_parse_automation_tags( $automation->id, $user_id, $meta['meta_value'] );
+                // Sanitize
+                $meta_key = sanitize_text_field( $meta_key );
+                $meta_value = sanitize_text_field( $meta_value );
 
-                    // Sanitize
-                    $meta_key = sanitize_text_field( $meta_key );
-                    $meta_value = sanitize_text_field( $meta_value );
+                // Update post meta
+                update_post_meta( $this->post_id, $meta_key, $meta_value );
 
-                    // Update post meta
-                    update_post_meta( $this->post_id, $meta_key, $meta_value );
+                $this->post_meta[$meta_key] = $meta_value;
 
-                    $this->post_meta[$meta_key] = $meta_value;
-
-                    // Update action options to be passed on upcoming hooks
-                    $action_options['post_meta'][$i] = array(
-                        'meta_key' => $meta_key,
-                        'meta_value' => $meta_value,
-                    );
-
-                }
+                // Update action options to be passed on upcoming hooks
+                $action_options['post_meta'][$i] = array(
+                    'meta_key' => $meta_key,
+                    'meta_value' => $meta_value,
+                );
 
             }
-
-            /**
-             * Action triggered before the create new user action gets executed
-             *
-             * @since 1.2.6
-             *
-             * @param int       $post_id            The new post ID
-             * @param stdClass  $action             The action object
-             * @param int       $user_id            The user ID (user who triggered the automation)
-             * @param array     $action_options     The action's stored options (with tags already passed, included on meta keys and values)
-             * @param stdClass  $automation         The action's automation object
-             */
-            do_action( 'automatorwp_wordpress_create_post_executed', $this->post_id, $action, $user_id, $action_options, $automation );
 
         }
 
@@ -342,11 +357,11 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
 
         // Store result
         if( $this->post_id ) {
-            $log_meta['result'] = __( 'Post created correctly', 'automatorwp' );
+            $log_meta['result'] = __( 'Post updated successfully', 'automatorwp' );
         } else if( is_wp_error( $this->post_id ) ) {
             $log_meta['result'] = $this->post_id->get_error_message();
         } else {
-            $log_meta['result'] = __( 'Could not create post', 'automatorwp' );
+            $log_meta['result'] = __( 'Could not update the post', 'automatorwp' );
         }
 
         return $log_meta;
@@ -463,4 +478,4 @@ class AutomatorWP_WordPress_Create_Post extends AutomatorWP_Integration_Action {
 
 }
 
-new AutomatorWP_WordPress_Create_Post();
+new AutomatorWP_WordPress_Update_Post();
