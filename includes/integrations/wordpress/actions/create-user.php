@@ -87,7 +87,7 @@ class AutomatorWP_WordPress_Create_User extends AutomatorWP_Integration_Action {
                         ),
                         'user_url' => array(
                             'name' => __( 'Website:', 'automatorwp' ),
-                            'desc' => __( 'The user URL.', 'automatorwp' ),
+                            'desc' => __( 'The user\'s website URL.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         ),

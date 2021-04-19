@@ -172,3 +172,16 @@ function automatorwp_get_settings_sections() {
     return apply_filters( 'automatorwp_settings_sections', $automatorwp_settings_sections );
 
 }
+
+/**
+ * Get capability required for AutomatorWP administration.
+ *
+ * @since  1.0.0
+ *
+ * @return string User capability.
+ */
+function automatorwp_get_manager_capability() {
+
+    return automatorwp_get_option( 'minimum_role', 'manage_options' );
+
+}

@@ -19,7 +19,7 @@ require_once AUTOMATORWP_DIR . 'includes/admin/upgrades/1.3.0.php';
  */
 function automatorwp_process_upgrades() {
 
-    if ( ! current_user_can( 'manage_options' ) ) {
+    if ( ! current_user_can( automatorwp_get_manager_capability() ) ) {
         return;
     }
 

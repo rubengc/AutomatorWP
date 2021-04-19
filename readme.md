@@ -321,6 +321,17 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.0 ###
+
+* **New Features**
+* Added a new setting to configure the minimum role allowed to manage AutomatorWP.
+* New user tag: {user_url} to pass the user's website URL.
+* **Improvements**
+* Improved support for array fields on export through URL.
+* **Developer Notes**
+* Updated Custom Tables library.
+* New hooks to exclude options when getting cloned or exported through URL.
+
 ### 1.4.9 ###
 
 * **New Features**

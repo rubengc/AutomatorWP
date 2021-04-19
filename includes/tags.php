@@ -90,11 +90,18 @@ function automatorwp_get_tags() {
         'preview'   => __( 'Plugin', 'automatorwp' ),
     );
 
+    $tags['user']['tags']['user_url'] = array(
+        'label'     => __( 'User\'s website URL', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => 'https://automatorwp.com',
+    );
+
     $tags['user']['tags']['avatar'] = array(
         'label'     => __( 'Avatar', 'automatorwp' ),
         'type'      => 'text',
         'preview'   => '<img src="' . get_option( 'home' ) . '/wp-content/uploads/avatar.jpg'  . '"/>',
     );
+
     $tags['user']['tags']['avatar_url'] = array(
         'label'     => __( 'Avatar URL', 'automatorwp' ),
         'type'      => 'text',
@@ -481,6 +488,9 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
             break;
         case 'last_name':
             $replacement = ( $user ? $user->last_name : '' );
+            break;
+        case 'user_url':
+            $replacement = ( $user ? $user->user_url : '' );
             break;
         case 'avatar':
         case 'avatar_url':

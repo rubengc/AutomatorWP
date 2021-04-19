@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-04-01 18:25+0200\n"
+"POT-Creation-Date: 2021-04-19 12:15+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,34 +41,34 @@ msgstr ""
 msgid "Possible action duplication with the key \"%s\""
 msgstr ""
 
-#: includes/admin.php:49 includes/admin.php:113
+#: includes/admin.php:51 includes/admin.php:117
 msgid "AutomatorWP"
 msgstr ""
 
-#: includes/admin.php:85 includes/admin.php:156
+#: includes/admin.php:89 includes/admin.php:160
 msgid "Add-ons"
 msgstr ""
 
-#: includes/admin.php:86
+#: includes/admin.php:90
 msgid "Import Automation"
 msgstr ""
 
-#: includes/admin.php:120 includes/custom-tables.php:30
-#: includes/custom-tables.php:38
+#: includes/admin.php:124 includes/custom-tables.php:30
+#: includes/custom-tables.php:39
 msgid "Automations"
 msgstr ""
 
-#: includes/admin.php:128 includes/custom-tables.php:175
-#: includes/custom-tables.php:183
+#: includes/admin.php:132 includes/custom-tables.php:178
+#: includes/custom-tables.php:187
 msgid "Logs"
 msgstr ""
 
-#: includes/admin.php:164 includes/admin/pages/licenses.php:255
+#: includes/admin.php:168 includes/admin/pages/licenses.php:255
 #: includes/admin/pages/licenses.php:262
 msgid "Licenses"
 msgstr ""
 
-#: includes/admin.php:172 includes/admin/pages/settings.php:136
+#: includes/admin.php:176 includes/admin/pages/settings.php:136
 #: includes/admin/pages/settings.php:142 includes/admin/pages/settings.php:167
 msgid "Settings"
 msgstr ""
@@ -217,7 +217,7 @@ msgstr ""
 msgid "Could not create the automation from this URL."
 msgstr ""
 
-#: includes/admin/pages/import-automation.php:322
+#: includes/admin/pages/import-automation.php:343
 msgid "Automation imported successfully! Redirecting..."
 msgstr ""
 
@@ -254,22 +254,44 @@ msgid "General Settings"
 msgstr ""
 
 #: includes/admin/settings/general.php:27
-msgid "Automatic logs cleanup:"
+msgid "Minimum role to administer AutomatorWP"
 msgstr ""
 
 #: includes/admin/settings/general.php:28
-msgid "Enter the number of days you want to keep the logs. Leave empty to disable the automatic logs cleanup."
+msgid "Minimum role a user needs to access to AutomatorWP management areas."
 msgstr ""
 
-#: includes/admin/settings/general.php:29
-msgid "Automatic logs cleanup will remove unused logs older than the number of days entered keeping only the important logs entries."
+#: includes/admin/settings/general.php:31
+msgid "Administrator"
+msgstr ""
+
+#: includes/admin/settings/general.php:32
+msgid "Editor"
 msgstr ""
 
 #: includes/admin/settings/general.php:33
+#: includes/custom-tables/automations.php:154
+#: includes/custom-tables/automations.php:638
+msgid "Author"
+msgstr ""
+
+#: includes/admin/settings/general.php:37
+msgid "Automatic logs cleanup:"
+msgstr ""
+
+#: includes/admin/settings/general.php:38
+msgid "Enter the number of days you want to keep the logs. Leave empty to disable the automatic logs cleanup."
+msgstr ""
+
+#: includes/admin/settings/general.php:39
+msgid "Automatic logs cleanup will remove unused logs older than the number of days entered keeping only the important logs entries."
+msgstr ""
+
+#: includes/admin/settings/general.php:43
 msgid "Disable top bar menu:"
 msgstr ""
 
-#: includes/admin/settings/general.php:34
+#: includes/admin/settings/general.php:44
 msgid "Check this option to disable the AutomatorWP top bar menu."
 msgstr ""
 
@@ -389,12 +411,12 @@ msgid "Done"
 msgstr ""
 
 #: includes/automation-ui.php:176 includes/automation-ui.php:200
-#: includes/custom-tables.php:89 includes/custom-tables/automations.php:152
+#: includes/custom-tables.php:90 includes/custom-tables/automations.php:152
 msgid "Triggers"
 msgstr ""
 
 #: includes/automation-ui.php:177 includes/automation-ui.php:253
-#: includes/custom-tables.php:132 includes/custom-tables/automations.php:153
+#: includes/custom-tables.php:134 includes/custom-tables/automations.php:153
 msgid "Actions"
 msgstr ""
 
@@ -609,15 +631,15 @@ msgstr ""
 msgid "Automation"
 msgstr ""
 
-#: includes/custom-tables.php:88 includes/logs.php:24
+#: includes/custom-tables.php:89 includes/logs.php:24
 msgid "Trigger"
 msgstr ""
 
-#: includes/custom-tables.php:131 includes/logs.php:25
+#: includes/custom-tables.php:133 includes/logs.php:25
 msgid "Action"
 msgstr ""
 
-#: includes/custom-tables.php:174
+#: includes/custom-tables.php:177
 msgid "Log"
 msgstr ""
 
@@ -632,11 +654,6 @@ msgstr ""
 #: includes/custom-tables/automations.php:587
 #: includes/custom-tables/logs.php:157
 msgid "Type"
-msgstr ""
-
-#: includes/custom-tables/automations.php:154
-#: includes/custom-tables/automations.php:638
-msgid "Author"
 msgstr ""
 
 #: includes/custom-tables/automations.php:155
@@ -1020,9 +1037,7 @@ msgstr ""
 
 #: includes/integrations/automatorwp/actions/anonymous-user.php:163
 #: includes/integrations/automatorwp/actions/anonymous-user.php:843
-#: includes/integrations/wordpress/actions/create-user.php:90
 #: includes/integrations/wordpress/actions/create-user.php:360
-#: includes/integrations/wordpress/actions/update-user.php:108
 #: includes/integrations/wordpress/actions/update-user.php:405
 msgid "The user URL."
 msgstr ""
@@ -1655,6 +1670,11 @@ msgstr ""
 #: includes/integrations/wordpress/actions/send-email.php:60
 #: includes/integrations/wordpress/actions/update-user.php:69
 msgid "user"
+msgstr ""
+
+#: includes/integrations/wordpress/actions/create-user.php:90
+#: includes/integrations/wordpress/actions/update-user.php:108
+msgid "The user's website URL."
 msgstr ""
 
 #: includes/integrations/wordpress/actions/create-user.php:292
@@ -2903,30 +2923,34 @@ msgid "Plugin"
 msgstr ""
 
 #: includes/tags.php:94
+msgid "User's website URL"
+msgstr ""
+
+#: includes/tags.php:100
 msgid "Avatar"
 msgstr ""
 
-#: includes/tags.php:99
+#: includes/tags.php:106
 msgid "Avatar URL"
 msgstr ""
 
-#: includes/tags.php:105
+#: includes/tags.php:112
 msgid "Reset password URL"
 msgstr ""
 
-#: includes/tags.php:111
+#: includes/tags.php:118
 msgid "Reset password link"
 msgstr ""
 
-#: includes/tags.php:113 includes/tags.php:503
+#: includes/tags.php:120 includes/tags.php:513
 msgid "Click here to reset your password"
 msgstr ""
 
-#: includes/tags.php:117
+#: includes/tags.php:124
 msgid "User Meta"
 msgstr ""
 
-#: includes/tags.php:119
+#: includes/tags.php:126
 msgid "User meta value, replace \"META_KEY\" by the user meta key"
 msgstr ""
 

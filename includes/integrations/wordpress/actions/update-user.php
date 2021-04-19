@@ -105,7 +105,7 @@ class AutomatorWP_WordPress_Update_User extends AutomatorWP_Integration_Action {
                         ),
                         'user_url' => array(
                             'name' => __( 'Website:', 'automatorwp' ),
-                            'desc' => __( 'The user URL.', 'automatorwp' )
+                            'desc' => __( 'The user\'s website URL.', 'automatorwp' )
                                 . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''

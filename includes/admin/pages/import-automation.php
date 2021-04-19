@@ -187,7 +187,6 @@ function automatorwp_ajax_import_automation_from_url() {
 
             $new_item_id = ct_insert_object( $new_item );
 
-
             if( $new_item_id ) {
 
                 if( isset( $item['i'] ) && absint( $item['i'] ) !== 0 ) {
@@ -251,10 +250,32 @@ function automatorwp_ajax_import_automation_from_url() {
 
             foreach ( $item['o'] as $meta_key => $meta_value ) {
 
+                $type = sanitize_text_field( $item['t'] );
+
+                /**
+                 * Filter to exclude a meta on export this item through URL
+                 * $item_type: trigger | action
+                 * $type: The trigger or action type
+                 * $meta_key: The meta key
+                 *
+                 * @since  1.0.0
+                 *
+                 * @param bool $exclude
+                 *
+                 * @return bool
+                 */
+                $exclude = apply_filters( "automatorwp_export_url_{$item_type}_{$type}_meta_{$meta_key}_excluded", false );
+
+                // Skip if meta gets excluded on export through URL
+                if( $exclude ) {
+                    continue;
+                }
+
                 $meta_key = sanitize_key( $meta_key );
                 $meta_key = wp_unslash( $meta_key );
 
                 $meta_value = urldecode( $meta_value );
+                $meta_value = maybe_unserialize( $meta_value );
                 $meta_value = wp_unslash( $meta_value );
                 $meta_value = esc_sql( $meta_value );
                 $meta_value = sanitize_meta( $meta_key, $meta_value, $ct_table->name );

@@ -348,11 +348,33 @@ function automatorwp_clone_automation_items( $automation_id, $new_automation_id 
             $item_metas = $wpdb->get_results( "SELECT meta_key, meta_value FROM {$ct_table->meta->db->table_name} WHERE id = {$item->id}", ARRAY_A );
 
             foreach( $item_metas as $i => $item_meta ) {
+
+                $meta_key = $item_metas[$i]['meta_key'];
+
+                /**
+                 * Filter to exclude a meta on clone this item
+                 * $item_type: trigger | action
+                 * $item->type: The trigger or action type
+                 * $meta_key: The meta key
+                 *
+                 * @since  1.0.0
+                 *
+                 * @param bool $exclude
+                 *
+                 * @return bool
+                 */
+                $exclude = apply_filters( "automatorwp_clone_{$item_type}_{$item->type}_meta_{$meta_key}_excluded", false );
+
+                // Skip if meta gets excluded on clone
+                if( $exclude ) {
+                    continue;
+                }
+
                 // Replace metas with old IDs with the new ones
                 $meta_value = str_replace( $tags, $replacements, $item_metas[$i]['meta_value'] );
 
                 // Prepare for the upcoming insert
-                $metas[] = $wpdb->prepare( '%d, %s, %s', array( $ids[$item->id], $item_metas[$i]['meta_key'], $meta_value ) );
+                $metas[] = $wpdb->prepare( '%d, %s, %s', array( $ids[$item->id], $meta_key, $meta_value ) );
             }
 
             // Update the new item title
@@ -491,6 +513,25 @@ function automatorwp_get_automation_items_export_url( $automation_id ) {
 
                 foreach( $option_args['fields'] as $field_id => $field_args ) {
 
+                    /**
+                     * Filter to exclude a meta on export this item through URL
+                     * $item_type: trigger | action
+                     * $item->type: The trigger or action type
+                     * $field_id: The meta key
+                     *
+                     * @since  1.0.0
+                     *
+                     * @param bool $exclude
+                     *
+                     * @return bool
+                     */
+                    $exclude = apply_filters( "automatorwp_export_url_{$item_type}_{$item->type}_meta_{$field_id}_excluded", false );
+
+                    // Skip if meta gets excluded on export through URL
+                    if( $exclude ) {
+                        continue;
+                    }
+
                     $field_value = ct_get_object_meta( $item->id, $field_id, true );
 
                     // Skip options with
@@ -503,7 +544,7 @@ function automatorwp_get_automation_items_export_url( $automation_id ) {
                         continue;
                     }
 
-                    $options[$field_id] = urlencode( $field_value );
+                    $options[$field_id] = urlencode( maybe_serialize( $field_value ) );
 
                 }
 
@@ -518,8 +559,6 @@ function automatorwp_get_automation_items_export_url( $automation_id ) {
         }
 
         ct_reset_setup_table();
-
-
 
         // Add the items to the URL
         if( $item_type === 'trigger' ) {

@@ -45,8 +45,10 @@ function automatorwp_get_option( $option_name, $default = false ) {
  */
 function automatorwp_admin_menu() {
 
+    $minimum_role = automatorwp_get_manager_capability();
+
     // AutomatorWP menu
-    add_menu_page( __( 'AutomatorWP', 'automatorwp' ), __( 'AutomatorWP', 'automatorwp' ), 'manage_options', 'automatorwp', '', 'dashicons-automatorwp', 50 );
+    add_menu_page( __( 'AutomatorWP', 'automatorwp' ), __( 'AutomatorWP', 'automatorwp' ), $minimum_role, 'automatorwp', '', 'dashicons-automatorwp', 50 );
 
 }
 add_action( 'admin_menu', 'automatorwp_admin_menu' );
@@ -81,9 +83,11 @@ add_filter( 'parent_file', 'automatorwp_admin_menu_fix' );
  */
 function automatorwp_admin_submenu() {
 
+    $minimum_role = automatorwp_get_manager_capability();
+
     // AutomatorWP sub menus
-    add_submenu_page( 'automatorwp', __( 'Add-ons', 'automatorwp' ), __( 'Add-ons', 'automatorwp' ), 'manage_options', 'automatorwp_add_ons', 'automatorwp_add_ons_page' );
-    add_submenu_page( 'automatorwp', __( 'Import Automation', 'automatorwp' ), __( 'Import Automation', 'automatorwp' ), 'manage_options', 'automatorwp_import_automation', 'automatorwp_import_automation_page' );
+    add_submenu_page( 'automatorwp', __( 'Add-ons', 'automatorwp' ), __( 'Add-ons', 'automatorwp' ), $minimum_role, 'automatorwp_add_ons', 'automatorwp_add_ons_page' );
+    add_submenu_page( 'automatorwp', __( 'Import Automation', 'automatorwp' ), __( 'Import Automation', 'automatorwp' ), $minimum_role, 'automatorwp_import_automation', 'automatorwp_import_automation_page' );
 
 }
 add_action( 'admin_menu', 'automatorwp_admin_submenu', 12 );
@@ -98,7 +102,7 @@ add_action( 'admin_menu', 'automatorwp_admin_submenu', 12 );
 function automatorwp_admin_bar_menu( $wp_admin_bar ) {
 
     // Bail if current user can't manage AutomatorWP
-    if ( ! current_user_can( 'manage_options' ) ) {
+    if ( ! current_user_can( automatorwp_get_manager_capability() ) ) {
         return;
     }
 
@@ -141,7 +145,7 @@ add_action( 'admin_bar_menu', 'automatorwp_admin_bar_menu', 100 );
 function automatorwp_admin_bar_menu_bottom( $wp_admin_bar ) {
 
     // Bail if current user can't manage AutomatorWP
-    if ( ! current_user_can( 'manage_options' ) ) {
+    if ( ! current_user_can( automatorwp_get_manager_capability() ) ) {
         return;
     }
 

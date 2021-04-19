@@ -32,6 +32,7 @@ function automatorwp_register_custom_tables() {
         'show_in_rest' => true,
         'rest_base' => 'automatorwp-automations',
         'version' => 2,
+        'capability' => automatorwp_get_manager_capability(),
         'supports' => array( 'meta' ),
         'views' => array(
             'list' => array(
@@ -91,6 +92,7 @@ function automatorwp_register_custom_tables() {
         'show_in_rest' => true,
         'rest_base' => 'automatorwp-triggers',
         'version' => 1,
+        'capability' => automatorwp_get_manager_capability(),
         'supports' => array( 'meta' ),
         'schema' => array(
             'id' => array(
@@ -134,6 +136,7 @@ function automatorwp_register_custom_tables() {
         'show_in_rest' => true,
         'rest_base' => 'automatorwp-actions',
         'version' => 1,
+        'capability' => automatorwp_get_manager_capability(),
         'supports' => array( 'meta' ),
         'schema' => array(
             'id' => array(
@@ -177,6 +180,7 @@ function automatorwp_register_custom_tables() {
         'show_in_rest' => true,
         'rest_base' => 'automatorwp-logs',
         'version' => 1,
+        'capability' => automatorwp_get_manager_capability(),
         'supports' => array( 'meta' ),
         'views' => array(
             'list' => array(
