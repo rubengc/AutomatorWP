@@ -190,7 +190,7 @@ function automatorwp_get_log_integration_icon( $log ) {
 
     } else {
 
-        $icon = AUTOMATORWP_URL . 'includes/integrations/automatorwp/assets/automatorwp.svg';
+        $icon = AUTOMATORWP_URL . 'integrations/automatorwp/assets/automatorwp.svg';
 
         if( $log->type === 'anonymous' ) {
             $icon = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
@@ -256,7 +256,7 @@ function automatorwp_get_log_filter_icon( $log, $item_type, $class ) {
                 <div class="automatorwp-integration-icon">
                     <img src="<?php echo esc_attr( $integration['icon'] ); ?>" title="<?php echo esc_attr( $integration['label'] ); ?>" alt="<?php echo esc_attr( $integration['label'] ); ?>">
                     <div class="automatorwp-filter-icon automatorwp-filter-icon-<?php echo $class; ?>">
-                        <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/filter/assets/filter-icon.svg' ); ?>" title="<?php echo esc_attr( __( 'Filter not passed', 'automatorwp' ) ); ?>">
+                        <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'integrations/filter/assets/filter-icon.svg' ); ?>" title="<?php echo esc_attr( __( 'Filter not passed', 'automatorwp' ) ); ?>">
                     </div>
                 </div>
 
@@ -266,7 +266,7 @@ function automatorwp_get_log_filter_icon( $log, $item_type, $class ) {
             <div class="automatorwp-integration-icon">
                 <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'assets/img/integration-missing.svg' ); ?>" title="<?php echo esc_attr( __( 'Missing plugin', 'automatorwp' ) ); ?>">
                 <div class="automatorwp-filter-icon automatorwp-filter-icon-<?php echo $class; ?>">
-                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'includes/integrations/filter/assets/filter-icon.svg' ); ?>" title="<?php echo esc_attr( __( 'Filter not passed', 'automatorwp' ) ); ?>">
+                    <img src="<?php echo esc_attr( AUTOMATORWP_URL . 'integrations/filter/assets/filter-icon.svg' ); ?>" title="<?php echo esc_attr( __( 'Filter not passed', 'automatorwp' ) ); ?>">
                 </div>
             </div>
 

@@ -3,7 +3,7 @@
  * Plugin Name:     	AutomatorWP
  * Plugin URI:      	https://automatorwp.com
  * Description:     	Connect your WordPress plugins together and create automated workflows with no code!
- * Version:         	1.5.0
+ * Version:         	1.5.1
  * Author:          	AutomatorWP
  * Author URI:      	https://automatorwp.com/
  * Text Domain:     	automatorwp
@@ -119,7 +119,7 @@ final class AutomatorWP {
     private function constants() {
 
         // Plugin version
-        define( 'AUTOMATORWP_VER', '1.5.0' );
+        define( 'AUTOMATORWP_VER', '1.5.1' );
 
         // Plugin file
         define( 'AUTOMATORWP_FILE', __FILE__ );
@@ -205,7 +205,7 @@ final class AutomatorWP {
     }
 
     /**
-     * Include plugin files
+     * Include integrations files
      *
      * @access      private
      * @since       1.0.0
@@ -213,9 +213,47 @@ final class AutomatorWP {
      */
     private function integrations() {
 
-        require_once AUTOMATORWP_DIR . 'includes/integrations/filter/filter.php';
-        require_once AUTOMATORWP_DIR . 'includes/integrations/automatorwp/automatorwp.php';
-        require_once AUTOMATORWP_DIR . 'includes/integrations/wordpress/wordpress.php';
+        $integrations_dir = AUTOMATORWP_DIR . 'integrations';
+
+        require_once AUTOMATORWP_DIR . 'integrations/filter/filter.php';
+        require_once AUTOMATORWP_DIR . 'integrations/automatorwp/automatorwp.php';
+        require_once AUTOMATORWP_DIR . 'integrations/wordpress/wordpress.php';
+
+        $integrations = @opendir( $integrations_dir );
+
+        while ( ( $integration = @readdir( $integrations ) ) !== false ) {
+
+            if ( $integration === '.' || $integration === '..' || $integration === 'index.php' ) {
+                continue;
+            }
+
+            if ( $integration === 'filter' || $integration === 'automatorwp' || $integration === 'wordpress' ) {
+                continue;
+            }
+
+            // Skip if plugin is already active
+            if( function_exists( 'is_plugin_active' ) && ( is_plugin_active( "automatorwp-{$integration}/automatorwp-{$integration}.php" )
+            || is_plugin_active( "automatorwp-{$integration}-integration/automatorwp-{$integration}.php" ) ) ) {
+                continue;
+            }
+
+            // Skip if AutomatorWP Pro is already active
+            if( is_plugin_active( 'automatorwp-pro/automatorwp-pro.php' ) ) {
+                continue;
+            }
+
+            $integration_file = $integrations_dir . DIRECTORY_SEPARATOR . $integration . DIRECTORY_SEPARATOR . $integration . '.php';
+
+            // Skip if no file to load
+            if( ! file_exists( $integration_file ) ) {
+                continue;
+            }
+
+            require_once $integration_file;
+
+        }
+
+        closedir( $integrations );
 
     }
 

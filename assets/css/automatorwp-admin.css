@@ -2005,6 +2005,10 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     margin-right: 12px;
 }
 
+.automatorwp_settings.cmb2-options-page #poststuff h2.nav-tab-wrapper {
+    margin-bottom: 20px !important;
+}
+
 .automatorwp-page .nav-tab .dashicons {
     vertical-align: text-bottom;
     margin-right: 2px;

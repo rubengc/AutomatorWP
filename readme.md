@@ -321,6 +321,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.1 ###
+
+* **New Features**
+* Moved all integrations inside AutomatorWP core plugin.
+* **Improvements**
+* Style improvements on the settings area.
+
 ### 1.5.0 ###
 
 * **New Features**

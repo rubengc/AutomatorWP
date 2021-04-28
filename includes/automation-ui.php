@@ -1285,7 +1285,7 @@ function automatorwp_automation_ui_integrations_recommendations( $item_type ) {
     $integrations = automatorwp_get_recommended_integrations();
 
     // If not recommendations, show a generic message
-    if ( is_wp_error( $integrations ) ||  empty( $integrations ) ) { ?>
+    if ( is_wp_error( $integrations ) || empty( $integrations ) ) { ?>
 
         <div class="automatorwp-more-integrations">
             <span><?php if ( $item_type === 'trigger' ) : _e( 'Looking for more triggers?', 'automatorwp' ); elseif ( $item_type === 'action' ) : _e( 'Looking for more actions?', 'automatorwp' ); endif; ?></span>
@@ -1379,25 +1379,8 @@ function automatorwp_get_recommended_integrations() {
             continue;
         }
 
-        // Skip integration if hasn't defined any way to meet if plugin is installed
-        if( empty( $integration->required_class )
-            && empty( $integration->required_function )
-            && empty( $integration->required_constant ) ) {
-            continue;
-        }
-
-        // Skip if integrated plugin is not installed
-        if( ! empty( $integration->required_class ) && ! class_exists( $integration->required_class ) ) {
-            continue;
-        }
-
-        // Skip if integrated plugin is not installed
-        if( ! empty( $integration->required_function ) && ! function_exists( $integration->required_function ) ) {
-            continue;
-        }
-
-        // Skip if integrated plugin is not installed
-        if( ! empty( $integration->required_constant ) && ! defined( $integration->required_constant ) ) {
+        // Bail if integration plugin is not installed
+        if( ! automatorwp_automation_ui_integration_plugin_installed( $integration ) ) {
             continue;
         }
 
@@ -1498,6 +1481,11 @@ function automatorwp_automation_ui_integration_pro_choice( $integration_name, $a
         return;
     }
 
+    // Bail if integration plugin is not installed
+    if( ! automatorwp_automation_ui_integration_plugin_installed( $integration ) ) {
+        return;
+    }
+
     // Get integration items
     $items = array();
 
@@ -1591,6 +1579,11 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
         return;
     }
 
+    // Bail if integration plugin is not installed
+    if( ! automatorwp_automation_ui_integration_plugin_installed( $integration ) ) {
+        return;
+    }
+
     // Get the list of already listed triggers
     $choices = automatorwp_get_integration_triggers( $integration_name );
 
@@ -1603,6 +1596,11 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
 
         // Skip free triggers
         if( $trigger->free ) {
+            continue;
+        }
+
+        // Skip if trigger label is empty
+        if( empty( $action->label ) ) {
             continue;
         }
 
@@ -1628,7 +1626,6 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
             continue;
         } ?>
             <option value="<?php echo esc_attr( $integration_name ) . '_' . $i; ?>" disabled="disabled"><?php echo $trigger->label; ?></option>
-
         <?php
     }
 
@@ -1665,12 +1662,22 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
         return;
     }
 
+    // Bail if integration plugin is not installed
+    if( ! automatorwp_automation_ui_integration_plugin_installed( $integration ) ) {
+        return;
+    }
+
     // Get the list of already listed actions
     $choices = automatorwp_get_integration_actions( $integration_name );
 
     foreach( $integration->actions as $i => $action ) {
-        // Skip actions already listed
+        // Skip free actions
         if( $action->free ) {
+            continue;
+        }
+
+        // Skip if action label is empty
+        if( empty( $action->label ) ) {
             continue;
         }
 
@@ -1702,3 +1709,31 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
 
 }
 add_action( 'automatorwp_automation_ui_after_integration_actions_choices', 'automatorwp_automation_ui_integration_actions_pro_choices', 10, 4 );
+
+/**
+ * Check if integration plugin is installed
+ *
+ * @since 1.5.1
+ *
+ * @param stdClass $integration
+ */
+function automatorwp_automation_ui_integration_plugin_installed( $integration ) {
+
+    // Check if required class exists
+    if( property_exists( $integration, 'required_class' ) && ! empty( $integration->required_class ) ) {
+        return class_exists( $integration->required_class );
+    }
+
+    // Check if required function exists
+    if( property_exists( $integration, 'required_function' ) && ! empty( $integration->required_function ) ) {
+        return function_exists( $integration->required_function );
+    }
+
+    // Check if required constant is defined
+    if( property_exists( $integration, 'required_constant' ) && ! empty( $integration->required_constant ) ) {
+        return defined( $integration->required_constant );
+    }
+
+    return false;
+
+}

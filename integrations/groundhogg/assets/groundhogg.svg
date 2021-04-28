@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="groundhogg.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#a52828"
+     borderopacity="1"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="83.591302"
+     inkscape:cy="237.55046"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     borderlayer="false"
+     inkscape:pagecheckerboard="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:measure-start="249.821,63.0357"
+     inkscape:measure-end="249.821,0">
+    <sodipodi:guide
+       position="9.5882942,66.182616"
+       orientation="0,1"
+       id="guide859"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="66.145833,14.717448"
+       orientation="1,0"
+       id="guide863"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="91.281245,132.29167"
+       orientation="0,1"
+       id="guide865"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="4.943e-007,86.758659"
+       orientation="1,0"
+       id="guide867"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-164.70832)">
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.41420996;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 0,164.70832 V 296.99998 H 132.29167 V 164.70832 Z"
+       id="rect815"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g841"
+       transform="matrix(2.938313,0,0,2.938313,-121.6604,-657.69945)"
+       style="stroke-width:0.34033138">
+      <path
+         style="opacity:1;fill:#db781a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.09004601;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 49.14882,310.83958 v -16.98839 c 0,0 13.218367,-8.4942 14.728596,-8.4942 1.670184,0 14.728596,8.4942 14.728596,8.4942 v 16.98839 c 0,0 -13.378321,8.49419 -14.728596,8.49419 -1.190321,0 -14.728596,-8.49419 -14.728596,-8.49419 z"
+         id="path1030"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccsccsc" />
+      <g
+         transform="matrix(0.63981655,0,0,0.63911207,-388.01489,583.32306)"
+         id="g1052"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:40.19868469px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';letter-spacing:0px;word-spacing:0px;opacity:1;fill:#e05601;fill-opacity:1;stroke:none;stroke-width:0.14081477"
+         aria-label="G">
+        <path
+           sodipodi:nodetypes="cccccccsccccccccc"
+           inkscape:connector-curvature="0"
+           id="path1050"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#e05601;fill-opacity:1;stroke-width:0.14081477"
+           d="m 706.36864,-433.54719 v -4.84819 h 14.08534 l 0.0625,4.91038 c -0.52155,4.74499 -6.88256,10.87849 -13.93193,11.00815 -9.18654,0.0701 -14.81009,-6.92775 -14.97842,-15.16387 0.28038,-6.76604 3.31879,-10.81175 7.77485,-13.15972 1.84506,-0.95524 4.14157,-1.43286 6.88952,-1.43286 3.57235,0 6.35956,0.75242 8.36164,2.25725 0.63518,0.4702 1.69103,1.58219 1.69103,1.58219 l -5.13784,5.76239 c 0,0 0.39134,-0.0878 -0.73401,-0.89909 -1.11227,-0.82439 -2.56837,-0.79908 -4.24332,-0.79908 -4.96057,0.20034 -6.60968,3.66074 -6.61525,6.39088 0.12708,4.62889 2.56745,6.68007 6.61887,7.2956 2.61161,-0.0411 4.73988,-0.95425 6.06101,-2.84184 z" />
+      </g>
+      <g
+         aria-label="G"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:40.19868469px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';letter-spacing:0px;word-spacing:0px;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.14081477"
+         id="text944"
+         transform="matrix(0.63981655,0,0,0.63911207,-388.01489,581.85322)">
+        <path
+           d="m 706.36864,-433.54719 v -4.84819 h 14.08534 l 0.0625,4.91038 c -0.52155,4.74499 -6.88256,10.87849 -13.93193,11.00815 -9.18654,0.0701 -14.81009,-6.92775 -14.97842,-15.16387 0.28038,-6.76604 3.31879,-10.81175 7.77485,-13.15972 1.84506,-0.95524 4.14157,-1.43286 6.88952,-1.43286 3.57235,0 6.35956,0.75242 8.36164,2.25725 0.63518,0.4702 1.69103,1.58219 1.69103,1.58219 l -5.13784,5.76239 c 0,0 0.39134,-0.0878 -0.73401,-0.89909 -1.11227,-0.82439 -2.56837,-0.79908 -4.24332,-0.79908 -4.96057,0.20034 -6.60968,3.66074 -6.61525,6.39088 0.12708,4.62889 2.56745,6.68007 6.61887,7.2956 2.61161,-0.0411 4.73988,-0.95425 6.06101,-2.84184 z"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffffff;fill-opacity:1;stroke-width:0.14081477"
+           id="path1027"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccccsccccccccc" />
+      </g>
+    </g>
+  </g>
+</svg>

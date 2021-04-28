@@ -1,0 +1,20 @@
+.cmb2-id-automatorwp-zoom-authorize .automatorwp-notice-success,
+.cmb2-id-automatorwp-zoom-authorize .automatorwp-notice-error {
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+
+.automatorwp-zoom-refresh-token {
+    margin-bottom: 0;
+}
+
+.automatorwp-zoom-access-token strong,
+.automatorwp-zoom-refresh-token strong {
+    display: inline-block;
+    min-width: 85px;
+}
+
+.automatorwp-zoom-access-token input,
+.automatorwp-zoom-refresh-token input {
+    min-width: 300px;
+}
