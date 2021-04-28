@@ -321,6 +321,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.2 ###
+
+* **Bug Fixes**
+* Fixed undefined function call on activation.
+
 ### 1.5.1 ###
 
 * **New Features**
