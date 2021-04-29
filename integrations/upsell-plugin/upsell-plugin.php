@@ -162,4 +162,4 @@ final class AutomatorWP_Upsell_Plugin_Integration {
 function AutomatorWP_Upsell_Plugin_Integration() {
     return AutomatorWP_Upsell_Plugin_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Upsell_Plugin_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Upsell_Plugin_Integration' );

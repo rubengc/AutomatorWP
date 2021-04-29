@@ -1600,7 +1600,7 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
         }
 
         // Skip if trigger label is empty
-        if( empty( $action->label ) ) {
+        if( empty( $trigger->label ) ) {
             continue;
         }
 
@@ -1718,6 +1718,10 @@ add_action( 'automatorwp_automation_ui_after_integration_actions_choices', 'auto
  * @param stdClass $integration
  */
 function automatorwp_automation_ui_integration_plugin_installed( $integration ) {
+
+    if( $integration->code === 'automatorwp' || $integration->code === 'wordpress' ) {
+        return true;
+    }
 
     // Check if required class exists
     if( property_exists( $integration, 'required_class' ) && ! empty( $integration->required_class ) ) {

@@ -168,4 +168,4 @@ final class AutomatorWP_PeepSo_Integration {
 function AutomatorWP_PeepSo_Integration() {
     return AutomatorWP_PeepSo_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_PeepSo_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_PeepSo_Integration' );

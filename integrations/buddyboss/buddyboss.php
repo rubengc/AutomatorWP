@@ -191,4 +191,4 @@ final class AutomatorWP_BuddyBoss_Integration {
 function AutomatorWP_BuddyBoss_Integration() {
     return AutomatorWP_BuddyBoss_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_BuddyBoss_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_BuddyBoss_Integration' );

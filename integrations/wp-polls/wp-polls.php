@@ -163,4 +163,4 @@ final class AutomatorWP_WP_Polls_Integration {
 function AutomatorWP_WP_Polls_Integration() {
     return AutomatorWP_WP_Polls_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_WP_Polls_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_WP_Polls_Integration' );

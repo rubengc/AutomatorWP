@@ -170,4 +170,4 @@ final class AutomatorWP_FluentCRM_Integration {
 function AutomatorWP_FluentCRM_Integration() {
     return AutomatorWP_FluentCRM_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_FluentCRM_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_FluentCRM_Integration' );

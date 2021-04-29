@@ -165,4 +165,4 @@ final class AutomatorWP_Presto_Player_Integration {
 function AutomatorWP_Presto_Player_Integration() {
     return AutomatorWP_Presto_Player_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Presto_Player_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Presto_Player_Integration' );

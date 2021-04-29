@@ -157,4 +157,4 @@ final class AutomatorWP_Popup_Maker_Integration {
 function AutomatorWP_Popup_Maker_Integration() {
     return AutomatorWP_Popup_Maker_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Popup_Maker_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Popup_Maker_Integration' );

@@ -172,4 +172,4 @@ final class AutomatorWP_Restrict_Content_Pro_Integration {
 function AutomatorWP_Restrict_Content_Pro_Integration() {
     return AutomatorWP_Restrict_Content_Pro_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Restrict_Content_Pro_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Restrict_Content_Pro_Integration' );

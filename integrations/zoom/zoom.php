@@ -3,7 +3,7 @@
  * Plugin Name:           AutomatorWP - Zoom integration
  * Plugin URI:            https://wordpress.org/plugins/automatorwp-zoom-integration/
  * Description:           Connect AutomatorWP with Zoom.
- * Version:               1.0.2
+ * Version:               1.0.3
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
  * Text Domain:           automatorwp-zoom
@@ -59,7 +59,7 @@ final class AutomatorWP_Zoom_Integration {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_ZOOM_VER', '1.0.2' );
+        define( 'AUTOMATORWP_ZOOM_VER', '1.0.3' );
 
         // Plugin file
         define( 'AUTOMATORWP_ZOOM_FILE', __FILE__ );
@@ -166,4 +166,4 @@ final class AutomatorWP_Zoom_Integration {
 function AutomatorWP_Zoom_Integration() {
     return AutomatorWP_Zoom_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Zoom_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Zoom_Integration' );

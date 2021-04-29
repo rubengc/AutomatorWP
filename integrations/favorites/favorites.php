@@ -167,4 +167,4 @@ final class AutomatorWP_Favorites_Integration {
 function AutomatorWP_Favorites_Integration() {
     return AutomatorWP_Favorites_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Favorites_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Favorites_Integration' );

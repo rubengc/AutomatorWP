@@ -169,4 +169,4 @@ final class AutomatorWP_LifterLMS_Integration {
 function AutomatorWP_LifterLMS_Integration() {
     return AutomatorWP_LifterLMS_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_LifterLMS_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_LifterLMS_Integration' );

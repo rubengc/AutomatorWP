@@ -162,4 +162,4 @@ final class AutomatorWP_Forminator_Integration {
 function AutomatorWP_Forminator_Integration() {
     return AutomatorWP_Forminator_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Forminator_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Forminator_Integration' );

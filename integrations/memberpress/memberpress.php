@@ -163,4 +163,4 @@ final class AutomatorWP_MemberPress_Integration {
 function AutomatorWP_MemberPress_Integration() {
     return AutomatorWP_MemberPress_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_MemberPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_MemberPress_Integration' );

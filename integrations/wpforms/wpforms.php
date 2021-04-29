@@ -162,4 +162,4 @@ final class AutomatorWP_WPForms_Integration {
 function AutomatorWP_WPForms_Integration() {
     return AutomatorWP_WPForms_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_WPForms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_WPForms_Integration' );

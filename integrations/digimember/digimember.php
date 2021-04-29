@@ -167,4 +167,4 @@ final class AutomatorWP_Digimember_Integration {
 function AutomatorWP_Digimember_Integration() {
     return AutomatorWP_Digimember_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Digimember_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Digimember_Integration' );

@@ -164,4 +164,4 @@ final class AutomatorWP_AnsPress_Integration {
 function AutomatorWP_AnsPress_Integration() {
     return AutomatorWP_AnsPress_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_AnsPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_AnsPress_Integration' );

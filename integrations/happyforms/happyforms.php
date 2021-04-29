@@ -162,4 +162,4 @@ final class AutomatorWP_HappyForms_Integration {
 function AutomatorWP_HappyForms_Integration() {
     return AutomatorWP_HappyForms_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_HappyForms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_HappyForms_Integration' );

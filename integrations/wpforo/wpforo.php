@@ -164,4 +164,4 @@ final class AutomatorWP_wpForo_Integration {
 function AutomatorWP_wpForo_Integration() {
     return AutomatorWP_wpForo_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_wpForo_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_wpForo_Integration' );

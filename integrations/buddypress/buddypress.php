@@ -184,4 +184,4 @@ final class AutomatorWP_BuddyPress_Integration {
 function AutomatorWP_BuddyPress_Integration() {
     return AutomatorWP_BuddyPress_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_BuddyPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_BuddyPress_Integration' );

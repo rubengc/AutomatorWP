@@ -195,4 +195,4 @@ final class AutomatorWP_WooCommerce_Integration {
 function AutomatorWP_WooCommerce_Integration() {
     return AutomatorWP_WooCommerce_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_WooCommerce_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_WooCommerce_Integration' );

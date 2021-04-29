@@ -164,4 +164,4 @@ final class AutomatorWP_Easy_Digital_Downloads_Integration {
 function AutomatorWP_Easy_Digital_Downloads_Integration() {
     return AutomatorWP_Easy_Digital_Downloads_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Easy_Digital_Downloads_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Easy_Digital_Downloads_Integration' );

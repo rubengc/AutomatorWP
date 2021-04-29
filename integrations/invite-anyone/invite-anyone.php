@@ -163,4 +163,4 @@ final class AutomatorWP_Invite_Anyone_Integration {
 function AutomatorWP_Invite_Anyone_Integration() {
     return AutomatorWP_Invite_Anyone_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Invite_Anyone_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Invite_Anyone_Integration' );

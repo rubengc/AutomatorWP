@@ -223,7 +223,7 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
     public function configuration_notice( $object, $item_type ) {
 
         // Bail if action type don't match this action
-        if( $item_type !== 'action' && $object->type !== $this->action ) {
+        if( $item_type !== 'action' || $object->type !== $this->action ) {
             return;
         }
 

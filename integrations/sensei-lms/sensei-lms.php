@@ -165,4 +165,4 @@ final class AutomatorWP_Sensei_LMS_Integration {
 function AutomatorWP_Sensei_LMS_Integration() {
     return AutomatorWP_Sensei_LMS_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Sensei_LMS_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Sensei_LMS_Integration' );

@@ -172,4 +172,4 @@ final class AutomatorWP_WP_Simple_Pay_Integration {
 function AutomatorWP_WP_Simple_Pay_Integration() {
     return AutomatorWP_WP_Simple_Pay_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_WP_Simple_Pay_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_WP_Simple_Pay_Integration' );

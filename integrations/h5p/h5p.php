@@ -167,4 +167,4 @@ final class AutomatorWP_H5P_Integration {
 function AutomatorWP_H5P_Integration() {
     return AutomatorWP_H5P_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_H5P_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_H5P_Integration' );

@@ -166,4 +166,4 @@ final class AutomatorWP_WPLMS_Integration {
 function AutomatorWP_WPLMS_Integration() {
     return AutomatorWP_WPLMS_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_WPLMS_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_WPLMS_Integration' );

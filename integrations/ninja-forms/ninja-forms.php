@@ -189,4 +189,4 @@ final class AutomatorWP_Ninja_Forms_Integration {
 function AutomatorWP_Ninja_Forms_Integration() {
     return AutomatorWP_Ninja_Forms_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Ninja_Forms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Ninja_Forms_Integration' );

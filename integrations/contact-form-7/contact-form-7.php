@@ -162,4 +162,4 @@ final class AutomatorWP_Contact_Form_7_Integration {
 function AutomatorWP_Contact_Form_7_Integration() {
     return AutomatorWP_Contact_Form_7_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Contact_Form_7_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Contact_Form_7_Integration' );

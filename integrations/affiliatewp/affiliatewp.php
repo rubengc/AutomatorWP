@@ -189,4 +189,4 @@ final class AutomatorWP_AffiliateWP_Integration {
 function AutomatorWP_AffiliateWP_Integration() {
     return AutomatorWP_AffiliateWP_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_AffiliateWP_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_AffiliateWP_Integration' );

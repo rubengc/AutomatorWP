@@ -167,4 +167,4 @@ final class AutomatorWP_MailPoet_Integration {
 function AutomatorWP_MailPoet_Integration() {
     return AutomatorWP_MailPoet_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_MailPoet_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_MailPoet_Integration' );

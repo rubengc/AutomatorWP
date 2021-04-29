@@ -164,4 +164,4 @@ final class AutomatorWP_Ultimate_Member_Integration {
 function AutomatorWP_Ultimate_Member_Integration() {
     return AutomatorWP_Ultimate_Member_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Ultimate_Member_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Ultimate_Member_Integration' );

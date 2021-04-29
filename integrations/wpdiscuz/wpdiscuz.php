@@ -171,4 +171,4 @@ final class AutomatorWP_wpDiscuz_Integration {
 function AutomatorWP_wpDiscuz_Integration() {
     return AutomatorWP_wpDiscuz_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_wpDiscuz_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_wpDiscuz_Integration' );

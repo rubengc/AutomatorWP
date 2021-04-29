@@ -168,4 +168,4 @@ final class AutomatorWP_LearnPress_Integration {
 function AutomatorWP_LearnPress_Integration() {
     return AutomatorWP_LearnPress_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_LearnPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_LearnPress_Integration' );

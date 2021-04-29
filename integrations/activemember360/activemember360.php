@@ -166,4 +166,4 @@ final class AutomatorWP_ActiveMember360_Integration {
 function AutomatorWP_ActiveMember360_Integration() {
     return AutomatorWP_ActiveMember360_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_ActiveMember360_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_ActiveMember360_Integration' );

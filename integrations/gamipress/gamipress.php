@@ -176,4 +176,4 @@ final class AutomatorWP_GamiPress_Integration {
 function AutomatorWP_GamiPress_Integration() {
     return AutomatorWP_GamiPress_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_GamiPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_GamiPress_Integration' );

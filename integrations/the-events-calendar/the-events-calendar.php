@@ -169,4 +169,4 @@ final class AutomatorWP_The_Events_Calendar_Integration {
 function AutomatorWP_The_Events_Calendar_Integration() {
     return AutomatorWP_The_Events_Calendar_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_The_Events_Calendar_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_The_Events_Calendar_Integration' );

@@ -164,4 +164,4 @@ final class AutomatorWP_WPAdverts_Integration {
 function AutomatorWP_WPAdverts_Integration() {
     return AutomatorWP_WPAdverts_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_WPAdverts_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_WPAdverts_Integration' );

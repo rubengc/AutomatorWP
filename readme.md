@@ -321,6 +321,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.3 ###
+
+* **Bug Fixes**
+* Fixed some integrations are not getting loaded.
+* Fixed detection of recommended triggers and actions.
+
 ### 1.5.2 ###
 
 * **Bug Fixes**

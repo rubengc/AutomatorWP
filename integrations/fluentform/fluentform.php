@@ -163,4 +163,4 @@ final class AutomatorWP_FluentForm_Integration {
 function AutomatorWP_FluentForm_Integration() {
     return AutomatorWP_FluentForm_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_FluentForm_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_FluentForm_Integration' );

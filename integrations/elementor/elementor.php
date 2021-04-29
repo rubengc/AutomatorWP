@@ -168,4 +168,4 @@ final class AutomatorWP_Elementor_Forms_Integration {
 function AutomatorWP_Elementor_Forms_Integration() {
     return AutomatorWP_Elementor_Forms_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Elementor_Forms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Elementor_Forms_Integration' );

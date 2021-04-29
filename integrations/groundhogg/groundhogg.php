@@ -164,4 +164,4 @@ final class AutomatorWP_Groundhogg_Integration {
 function AutomatorWP_Groundhogg_Integration() {
     return AutomatorWP_Groundhogg_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Groundhogg_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Groundhogg_Integration' );

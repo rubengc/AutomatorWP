@@ -165,4 +165,4 @@ final class AutomatorWP_bbPress_Integration {
 function AutomatorWP_bbPress_Integration() {
     return AutomatorWP_bbPress_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_bbPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_bbPress_Integration' );

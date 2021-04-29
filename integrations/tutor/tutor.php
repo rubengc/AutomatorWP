@@ -168,4 +168,4 @@ final class AutomatorWP_Tutor_LMS_Integration {
 function AutomatorWP_Tutor_LMS_Integration() {
     return AutomatorWP_Tutor_LMS_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Tutor_LMS_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Tutor_LMS_Integration' );

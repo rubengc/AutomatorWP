@@ -166,4 +166,4 @@ final class AutomatorWP_Paid_Memberships_Pro_Integration {
 function AutomatorWP_Paid_Memberships_Pro_Integration() {
     return AutomatorWP_Paid_Memberships_Pro_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Paid_Memberships_Pro_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Paid_Memberships_Pro_Integration' );

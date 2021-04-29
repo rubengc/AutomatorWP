@@ -177,4 +177,4 @@ final class AutomatorWP_LearnDash_Integration {
 function AutomatorWP_LearnDash_Integration() {
     return AutomatorWP_LearnDash_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_LearnDash_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_LearnDash_Integration' );

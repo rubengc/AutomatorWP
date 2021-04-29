@@ -163,4 +163,4 @@ final class AutomatorWP_Formidable_Forms_Integration {
 function AutomatorWP_Formidable_Forms_Integration() {
     return AutomatorWP_Formidable_Forms_Integration::instance();
 }
-add_action( 'plugins_loaded', 'AutomatorWP_Formidable_Forms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Formidable_Forms_Integration' );
