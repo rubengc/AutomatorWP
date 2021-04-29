@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Favorites_Integration {
+final class AutomatorWP_Integration_Favorites {
 
     /**
-     * @var         AutomatorWP_Favorites_Integration $instance The one true AutomatorWP_Favorites_Integration
+     * @var         AutomatorWP_Integration_Favorites $instance The one true AutomatorWP_Integration_Favorites
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Favorites_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Favorites_Integration self::$instance The one true AutomatorWP_Favorites_Integration
+     * @return      AutomatorWP_Integration_Favorites self::$instance The one true AutomatorWP_Integration_Favorites
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Favorites_Integration();
+            self::$instance = new AutomatorWP_Integration_Favorites();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -159,12 +159,12 @@ final class AutomatorWP_Favorites_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Favorites_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Favorites instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Favorites_Integration The one true AutomatorWP_Favorites_Integration
+ * @return      \AutomatorWP_Integration_Favorites The one true AutomatorWP_Integration_Favorites
  */
-function AutomatorWP_Favorites_Integration() {
-    return AutomatorWP_Favorites_Integration::instance();
+function AutomatorWP_Integration_Favorites() {
+    return AutomatorWP_Integration_Favorites::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Favorites_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Favorites' );

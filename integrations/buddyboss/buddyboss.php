@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_BuddyBoss_Integration {
+final class AutomatorWP_Integration_BuddyBoss {
 
     /**
-     * @var         AutomatorWP_BuddyBoss_Integration $instance The one true AutomatorWP_BuddyBoss_Integration
+     * @var         AutomatorWP_Integration_BuddyBoss $instance The one true AutomatorWP_Integration_BuddyBoss
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_BuddyBoss_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_BuddyBoss_Integration self::$instance The one true AutomatorWP_BuddyBoss_Integration
+     * @return      AutomatorWP_Integration_BuddyBoss self::$instance The one true AutomatorWP_Integration_BuddyBoss
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_BuddyBoss_Integration();
+            self::$instance = new AutomatorWP_Integration_BuddyBoss();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -183,12 +183,12 @@ final class AutomatorWP_BuddyBoss_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_BuddyBoss_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_BuddyBoss instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_BuddyBoss_Integration The one true AutomatorWP_BuddyBoss_Integration
+ * @return      \AutomatorWP_Integration_BuddyBoss The one true AutomatorWP_Integration_BuddyBoss
  */
-function AutomatorWP_BuddyBoss_Integration() {
-    return AutomatorWP_BuddyBoss_Integration::instance();
+function AutomatorWP_Integration_BuddyBoss() {
+    return AutomatorWP_Integration_BuddyBoss::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_BuddyBoss_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_BuddyBoss' );

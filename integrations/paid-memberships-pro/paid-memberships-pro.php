@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Paid_Memberships_Pro_Integration {
+final class AutomatorWP_Integration_Paid_Memberships_Pro {
 
     /**
-     * @var         AutomatorWP_Paid_Memberships_Pro_Integration $instance The one true AutomatorWP_Paid_Memberships_Pro_Integration
+     * @var         AutomatorWP_Integration_Paid_Memberships_Pro $instance The one true AutomatorWP_Integration_Paid_Memberships_Pro
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Paid_Memberships_Pro_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Paid_Memberships_Pro_Integration self::$instance The one true AutomatorWP_Paid_Memberships_Pro_Integration
+     * @return      AutomatorWP_Integration_Paid_Memberships_Pro self::$instance The one true AutomatorWP_Integration_Paid_Memberships_Pro
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Paid_Memberships_Pro_Integration();
+            self::$instance = new AutomatorWP_Integration_Paid_Memberships_Pro();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -158,12 +158,12 @@ final class AutomatorWP_Paid_Memberships_Pro_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Paid_Memberships_Pro_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Paid_Memberships_Pro instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Paid_Memberships_Pro_Integration The one true AutomatorWP_Paid_Memberships_Pro_Integration
+ * @return      \AutomatorWP_Integration_Paid_Memberships_Pro The one true AutomatorWP_Integration_Paid_Memberships_Pro
  */
-function AutomatorWP_Paid_Memberships_Pro_Integration() {
-    return AutomatorWP_Paid_Memberships_Pro_Integration::instance();
+function AutomatorWP_Integration_Paid_Memberships_Pro() {
+    return AutomatorWP_Integration_Paid_Memberships_Pro::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Paid_Memberships_Pro_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Paid_Memberships_Pro' );

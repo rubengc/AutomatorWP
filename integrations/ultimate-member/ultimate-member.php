@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Ultimate_Member_Integration {
+final class AutomatorWP_Integration_Ultimate_Member {
 
     /**
-     * @var         AutomatorWP_Ultimate_Member_Integration $instance The one true AutomatorWP_Ultimate_Member_Integration
+     * @var         AutomatorWP_Integration_Ultimate_Member $instance The one true AutomatorWP_Integration_Ultimate_Member
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Ultimate_Member_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Ultimate_Member_Integration self::$instance The one true AutomatorWP_Ultimate_Member_Integration
+     * @return      AutomatorWP_Integration_Ultimate_Member self::$instance The one true AutomatorWP_Integration_Ultimate_Member
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Ultimate_Member_Integration();
+            self::$instance = new AutomatorWP_Integration_Ultimate_Member();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -156,12 +156,12 @@ final class AutomatorWP_Ultimate_Member_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Ultimate_Member_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Ultimate_Member instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Ultimate_Member_Integration The one true AutomatorWP_Ultimate_Member_Integration
+ * @return      \AutomatorWP_Integration_Ultimate_Member The one true AutomatorWP_Integration_Ultimate_Member
  */
-function AutomatorWP_Ultimate_Member_Integration() {
-    return AutomatorWP_Ultimate_Member_Integration::instance();
+function AutomatorWP_Integration_Ultimate_Member() {
+    return AutomatorWP_Integration_Ultimate_Member::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Ultimate_Member_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Ultimate_Member' );

@@ -321,6 +321,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.4 ###
+
+* **Improvements**
+* Renamed integrations class names to prevent errors if any integration is installed.
+
 ### 1.5.3 ###
 
 * **Bug Fixes**

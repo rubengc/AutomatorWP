@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Restrict_Content_Pro_Integration {
+final class AutomatorWP_Integration_Restrict_Content_Pro {
 
     /**
-     * @var         AutomatorWP_Restrict_Content_Pro_Integration $instance The one true AutomatorWP_Restrict_Content_Pro_Integration
+     * @var         AutomatorWP_Integration_Restrict_Content_Pro $instance The one true AutomatorWP_Integration_Restrict_Content_Pro
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Restrict_Content_Pro_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Restrict_Content_Pro_Integration self::$instance The one true AutomatorWP_Restrict_Content_Pro_Integration
+     * @return      AutomatorWP_Integration_Restrict_Content_Pro self::$instance The one true AutomatorWP_Integration_Restrict_Content_Pro
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Restrict_Content_Pro_Integration();
+            self::$instance = new AutomatorWP_Integration_Restrict_Content_Pro();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -164,12 +164,12 @@ final class AutomatorWP_Restrict_Content_Pro_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Restrict_Content_Pro_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Restrict_Content_Pro instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Restrict_Content_Pro_Integration The one true AutomatorWP_Restrict_Content_Pro_Integration
+ * @return      \AutomatorWP_Integration_Restrict_Content_Pro The one true AutomatorWP_Integration_Restrict_Content_Pro
  */
-function AutomatorWP_Restrict_Content_Pro_Integration() {
-    return AutomatorWP_Restrict_Content_Pro_Integration::instance();
+function AutomatorWP_Integration_Restrict_Content_Pro() {
+    return AutomatorWP_Integration_Restrict_Content_Pro::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Restrict_Content_Pro_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Restrict_Content_Pro' );

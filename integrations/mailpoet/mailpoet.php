@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_MailPoet_Integration {
+final class AutomatorWP_Integration_MailPoet {
 
     /**
-     * @var         AutomatorWP_MailPoet_Integration $instance The one true AutomatorWP_MailPoet_Integration
+     * @var         AutomatorWP_Integration_MailPoet $instance The one true AutomatorWP_Integration_MailPoet
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_MailPoet_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_MailPoet_Integration self::$instance The one true AutomatorWP_MailPoet_Integration
+     * @return      AutomatorWP_Integration_MailPoet self::$instance The one true AutomatorWP_Integration_MailPoet
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_MailPoet_Integration();
+            self::$instance = new AutomatorWP_Integration_MailPoet();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -159,12 +159,12 @@ final class AutomatorWP_MailPoet_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_MailPoet_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_MailPoet instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_MailPoet_Integration The one true AutomatorWP_MailPoet_Integration
+ * @return      \AutomatorWP_Integration_MailPoet The one true AutomatorWP_Integration_MailPoet
  */
-function AutomatorWP_MailPoet_Integration() {
-    return AutomatorWP_MailPoet_Integration::instance();
+function AutomatorWP_Integration_MailPoet() {
+    return AutomatorWP_Integration_MailPoet::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_MailPoet_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_MailPoet' );

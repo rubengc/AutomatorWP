@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_FluentCRM_Integration {
+final class AutomatorWP_Integration_FluentCRM {
 
     /**
-     * @var         AutomatorWP_FluentCRM_Integration $instance The one true AutomatorWP_FluentCRM_Integration
+     * @var         AutomatorWP_Integration_FluentCRM $instance The one true AutomatorWP_Integration_FluentCRM
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_FluentCRM_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_FluentCRM_Integration self::$instance The one true AutomatorWP_FluentCRM_Integration
+     * @return      AutomatorWP_Integration_FluentCRM self::$instance The one true AutomatorWP_Integration_FluentCRM
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_FluentCRM_Integration();
+            self::$instance = new AutomatorWP_Integration_FluentCRM();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -162,12 +162,12 @@ final class AutomatorWP_FluentCRM_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_FluentCRM_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_FluentCRM instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_FluentCRM_Integration The one true AutomatorWP_FluentCRM_Integration
+ * @return      \AutomatorWP_Integration_FluentCRM The one true AutomatorWP_Integration_FluentCRM
  */
-function AutomatorWP_FluentCRM_Integration() {
-    return AutomatorWP_FluentCRM_Integration::instance();
+function AutomatorWP_Integration_FluentCRM() {
+    return AutomatorWP_Integration_FluentCRM::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_FluentCRM_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_FluentCRM' );

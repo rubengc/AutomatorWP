@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Invite_Anyone_Integration {
+final class AutomatorWP_Integration_Invite_Anyone {
 
     /**
-     * @var         AutomatorWP_Invite_Anyone_Integration $instance The one true AutomatorWP_Invite_Anyone_Integration
+     * @var         AutomatorWP_Integration_Invite_Anyone $instance The one true AutomatorWP_Integration_Invite_Anyone
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Invite_Anyone_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Invite_Anyone_Integration self::$instance The one true AutomatorWP_Invite_Anyone_Integration
+     * @return      AutomatorWP_Integration_Invite_Anyone self::$instance The one true AutomatorWP_Integration_Invite_Anyone
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Invite_Anyone_Integration();
+            self::$instance = new AutomatorWP_Integration_Invite_Anyone();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -155,12 +155,12 @@ final class AutomatorWP_Invite_Anyone_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Invite_Anyone_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Invite_Anyone instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Invite_Anyone_Integration The one true AutomatorWP_Invite_Anyone_Integration
+ * @return      \AutomatorWP_Integration_Invite_Anyone The one true AutomatorWP_Integration_Invite_Anyone
  */
-function AutomatorWP_Invite_Anyone_Integration() {
-    return AutomatorWP_Invite_Anyone_Integration::instance();
+function AutomatorWP_Integration_Invite_Anyone() {
+    return AutomatorWP_Integration_Invite_Anyone::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Invite_Anyone_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Invite_Anyone' );

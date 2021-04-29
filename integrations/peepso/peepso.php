@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_PeepSo_Integration {
+final class AutomatorWP_Integration_PeepSo {
 
     /**
-     * @var         AutomatorWP_PeepSo_Integration $instance The one true AutomatorWP_PeepSo_Integration
+     * @var         AutomatorWP_Integration_PeepSo $instance The one true AutomatorWP_Integration_PeepSo
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_PeepSo_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_PeepSo_Integration self::$instance The one true AutomatorWP_PeepSo_Integration
+     * @return      AutomatorWP_Integration_PeepSo self::$instance The one true AutomatorWP_Integration_PeepSo
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_PeepSo_Integration();
+            self::$instance = new AutomatorWP_Integration_PeepSo();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -160,12 +160,12 @@ final class AutomatorWP_PeepSo_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_PeepSo_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_PeepSo instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_PeepSo_Integration The one true AutomatorWP_PeepSo_Integration
+ * @return      \AutomatorWP_Integration_PeepSo The one true AutomatorWP_Integration_PeepSo
  */
-function AutomatorWP_PeepSo_Integration() {
-    return AutomatorWP_PeepSo_Integration::instance();
+function AutomatorWP_Integration_PeepSo() {
+    return AutomatorWP_Integration_PeepSo::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_PeepSo_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_PeepSo' );

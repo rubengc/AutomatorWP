@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Formidable_Forms_Integration {
+final class AutomatorWP_Integration_Formidable_Forms {
 
     /**
-     * @var         AutomatorWP_Formidable_Forms_Integration $instance The one true AutomatorWP_Formidable_Forms_Integration
+     * @var         AutomatorWP_Integration_Formidable_Forms $instance The one true AutomatorWP_Integration_Formidable_Forms
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Formidable_Forms_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Formidable_Forms_Integration self::$instance The one true AutomatorWP_Formidable_Forms_Integration
+     * @return      AutomatorWP_Integration_Formidable_Forms self::$instance The one true AutomatorWP_Integration_Formidable_Forms
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Formidable_Forms_Integration();
+            self::$instance = new AutomatorWP_Integration_Formidable_Forms();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -155,12 +155,12 @@ final class AutomatorWP_Formidable_Forms_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Formidable_Forms_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Formidable_Forms instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Formidable_Forms_Integration The one true AutomatorWP_Formidable_Forms_Integration
+ * @return      \AutomatorWP_Integration_Formidable_Forms The one true AutomatorWP_Integration_Formidable_Forms
  */
-function AutomatorWP_Formidable_Forms_Integration() {
-    return AutomatorWP_Formidable_Forms_Integration::instance();
+function AutomatorWP_Integration_Formidable_Forms() {
+    return AutomatorWP_Integration_Formidable_Forms::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Formidable_Forms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Formidable_Forms' );

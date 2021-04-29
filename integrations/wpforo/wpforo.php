@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_wpForo_Integration {
+final class AutomatorWP_Integration_wpForo {
 
     /**
-     * @var         AutomatorWP_wpForo_Integration $instance The one true AutomatorWP_wpForo_Integration
+     * @var         AutomatorWP_Integration_wpForo $instance The one true AutomatorWP_Integration_wpForo
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_wpForo_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_wpForo_Integration self::$instance The one true AutomatorWP_wpForo_Integration
+     * @return      AutomatorWP_Integration_wpForo self::$instance The one true AutomatorWP_Integration_wpForo
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_wpForo_Integration();
+            self::$instance = new AutomatorWP_Integration_wpForo();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -156,12 +156,12 @@ final class AutomatorWP_wpForo_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_wpForo_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_wpForo instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_wpForo_Integration The one true AutomatorWP_wpForo_Integration
+ * @return      \AutomatorWP_Integration_wpForo The one true AutomatorWP_Integration_wpForo
  */
-function AutomatorWP_wpForo_Integration() {
-    return AutomatorWP_wpForo_Integration::instance();
+function AutomatorWP_Integration_wpForo() {
+    return AutomatorWP_Integration_wpForo::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_wpForo_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_wpForo' );

@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WP_Ulike_Integration {
+final class AutomatorWP_Integration_WP_Ulike {
 
     /**
-     * @var         AutomatorWP_WP_Ulike_Integration $instance The one true AutomatorWP_WP_Ulike_Integration
+     * @var         AutomatorWP_Integration_WP_Ulike $instance The one true AutomatorWP_Integration_WP_Ulike
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_WP_Ulike_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WP_Ulike_Integration self::$instance The one true AutomatorWP_WP_Ulike_Integration
+     * @return      AutomatorWP_Integration_WP_Ulike self::$instance The one true AutomatorWP_Integration_WP_Ulike
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_WP_Ulike_Integration();
+            self::$instance = new AutomatorWP_Integration_WP_Ulike();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -156,12 +156,12 @@ final class AutomatorWP_WP_Ulike_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WP_Ulike_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WP_Ulike instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WP_Ulike_Integration The one true AutomatorWP_WP_Ulike_Integration
+ * @return      \AutomatorWP_Integration_WP_Ulike The one true AutomatorWP_Integration_WP_Ulike
  */
-function AutomatorWP_WP_Ulike_Integration() {
-    return AutomatorWP_WP_Ulike_Integration::instance();
+function AutomatorWP_Integration_WP_Ulike() {
+    return AutomatorWP_Integration_WP_Ulike::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WP_Ulike_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WP_Ulike' );

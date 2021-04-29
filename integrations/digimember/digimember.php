@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Digimember_Integration {
+final class AutomatorWP_Integration_Digimember {
 
     /**
-     * @var         AutomatorWP_Digimember_Integration $instance The one true AutomatorWP_Digimember_Integration
+     * @var         AutomatorWP_Integration_Digimember $instance The one true AutomatorWP_Integration_Digimember
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Digimember_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Digimember_Integration self::$instance The one true AutomatorWP_Digimember_Integration
+     * @return      AutomatorWP_Integration_Digimember self::$instance The one true AutomatorWP_Integration_Digimember
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Digimember_Integration();
+            self::$instance = new AutomatorWP_Integration_Digimember();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -159,12 +159,12 @@ final class AutomatorWP_Digimember_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Digimember_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Digimember instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Digimember_Integration The one true AutomatorWP_Digimember_Integration
+ * @return      \AutomatorWP_Integration_Digimember The one true AutomatorWP_Integration_Digimember
  */
-function AutomatorWP_Digimember_Integration() {
-    return AutomatorWP_Digimember_Integration::instance();
+function AutomatorWP_Integration_Digimember() {
+    return AutomatorWP_Integration_Digimember::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Digimember_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Digimember' );

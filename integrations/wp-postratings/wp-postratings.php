@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WP_PostRatings_Integration {
+final class AutomatorWP_Integration_WP_PostRatings {
 
     /**
-     * @var         AutomatorWP_WP_PostRatings_Integration $instance The one true AutomatorWP_WP_PostRatings_Integration
+     * @var         AutomatorWP_Integration_WP_PostRatings $instance The one true AutomatorWP_Integration_WP_PostRatings
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_WP_PostRatings_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WP_PostRatings_Integration self::$instance The one true AutomatorWP_WP_PostRatings_Integration
+     * @return      AutomatorWP_Integration_WP_PostRatings self::$instance The one true AutomatorWP_Integration_WP_PostRatings
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_WP_PostRatings_Integration();
+            self::$instance = new AutomatorWP_Integration_WP_PostRatings();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -155,12 +155,12 @@ final class AutomatorWP_WP_PostRatings_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WP_PostRatings_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WP_PostRatings instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WP_PostRatings_Integration The one true AutomatorWP_WP_PostRatings_Integration
+ * @return      \AutomatorWP_Integration_WP_PostRatings The one true AutomatorWP_Integration_WP_PostRatings
  */
-function AutomatorWP_WP_PostRatings_Integration() {
-    return AutomatorWP_WP_PostRatings_Integration::instance();
+function AutomatorWP_Integration_WP_PostRatings() {
+    return AutomatorWP_Integration_WP_PostRatings::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WP_PostRatings_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WP_PostRatings' );

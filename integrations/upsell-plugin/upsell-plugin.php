@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Upsell_Plugin_Integration {
+final class AutomatorWP_Integration_Upsell_Plugin {
 
     /**
-     * @var         AutomatorWP_Upsell_Plugin_Integration $instance The one true AutomatorWP_Upsell_Plugin_Integration
+     * @var         AutomatorWP_Integration_Upsell_Plugin $instance The one true AutomatorWP_Integration_Upsell_Plugin
      * @since       1.0.0
      */
     private static $instance;
@@ -30,17 +30,18 @@ final class AutomatorWP_Upsell_Plugin_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Upsell_Plugin_Integration self::$instance The one true AutomatorWP_Upsell_Plugin_Integration
+     * @return      AutomatorWP_Integration_Upsell_Plugin self::$instance The one true AutomatorWP_Integration_Upsell_Plugin
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Upsell_Plugin_Integration();
-
+            self::$instance = new AutomatorWP_Integration_Upsell_Plugin();
             
             if( ! self::$instance->pro_installed() ) {
+
                 self::$instance->constants();
                 self::$instance->includes();
-                            }
+                
+            }
 
             self::$instance->hooks();
         }
@@ -154,12 +155,12 @@ final class AutomatorWP_Upsell_Plugin_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Upsell_Plugin_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Upsell_Plugin instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Upsell_Plugin_Integration The one true AutomatorWP_Upsell_Plugin_Integration
+ * @return      \AutomatorWP_Integration_Upsell_Plugin The one true AutomatorWP_Integration_Upsell_Plugin
  */
-function AutomatorWP_Upsell_Plugin_Integration() {
-    return AutomatorWP_Upsell_Plugin_Integration::instance();
+function AutomatorWP_Integration_Upsell_Plugin() {
+    return AutomatorWP_Integration_Upsell_Plugin::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Upsell_Plugin_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Upsell_Plugin' );

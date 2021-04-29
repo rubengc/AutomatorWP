@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WooCommerce_Integration {
+final class AutomatorWP_Integration_WooCommerce {
 
     /**
-     * @var         AutomatorWP_WooCommerce_Integration $instance The one true AutomatorWP_WooCommerce_Integration
+     * @var         AutomatorWP_Integration_WooCommerce $instance The one true AutomatorWP_Integration_WooCommerce
      * @since       1.0.0
      */
     private static $instance;
@@ -30,13 +30,13 @@ final class AutomatorWP_WooCommerce_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WooCommerce_Integration self::$instance The one true AutomatorWP_WooCommerce_Integration
+     * @return      AutomatorWP_Integration_WooCommerce self::$instance The one true AutomatorWP_Integration_WooCommerce
      */
     public static function instance() {
 
         if( ! self::$instance ) {
 
-            self::$instance = new AutomatorWP_WooCommerce_Integration();
+            self::$instance = new AutomatorWP_Integration_WooCommerce();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -187,12 +187,12 @@ final class AutomatorWP_WooCommerce_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WooCommerce_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WooCommerce instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WooCommerce_Integration The one true AutomatorWP_WooCommerce_Integration
+ * @return      \AutomatorWP_Integration_WooCommerce The one true AutomatorWP_Integration_WooCommerce
  */
-function AutomatorWP_WooCommerce_Integration() {
-    return AutomatorWP_WooCommerce_Integration::instance();
+function AutomatorWP_Integration_WooCommerce() {
+    return AutomatorWP_Integration_WooCommerce::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WooCommerce_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WooCommerce' );

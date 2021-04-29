@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WPForms_Integration {
+final class AutomatorWP_Integration_WPForms {
 
     /**
-     * @var         AutomatorWP_WPForms_Integration $instance The one true AutomatorWP_WPForms_Integration
+     * @var         AutomatorWP_Integration_WPForms $instance The one true AutomatorWP_Integration_WPForms
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_WPForms_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WPForms_Integration self::$instance The one true AutomatorWP_WPForms_Integration
+     * @return      AutomatorWP_Integration_WPForms self::$instance The one true AutomatorWP_Integration_WPForms
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_WPForms_Integration();
+            self::$instance = new AutomatorWP_Integration_WPForms();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -154,12 +154,12 @@ final class AutomatorWP_WPForms_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WPForms_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WPForms instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WPForms_Integration The one true AutomatorWP_WPForms_Integration
+ * @return      \AutomatorWP_Integration_WPForms The one true AutomatorWP_Integration_WPForms
  */
-function AutomatorWP_WPForms_Integration() {
-    return AutomatorWP_WPForms_Integration::instance();
+function AutomatorWP_Integration_WPForms() {
+    return AutomatorWP_Integration_WPForms::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WPForms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WPForms' );

@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Presto_Player_Integration {
+final class AutomatorWP_Integration_Presto_Player {
 
     /**
-     * @var         AutomatorWP_Presto_Player_Integration $instance The one true AutomatorWP_Presto_Player_Integration
+     * @var         AutomatorWP_Integration_Presto_Player $instance The one true AutomatorWP_Integration_Presto_Player
      * @since       1.0.0
      */
     private static $instance;
@@ -30,12 +30,12 @@ final class AutomatorWP_Presto_Player_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Presto_Player_Integration self::$instance The one true AutomatorWP_Presto_Player_Integration
+     * @return      AutomatorWP_Integration_Presto_Player self::$instance The one true AutomatorWP_Integration_Presto_Player
      */
     public static function instance() {
         if( ! self::$instance ) {
 
-            self::$instance = new AutomatorWP_Presto_Player_Integration();
+            self::$instance = new AutomatorWP_Integration_Presto_Player();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -157,12 +157,12 @@ final class AutomatorWP_Presto_Player_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Presto_Player_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Presto_Player instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Presto_Player_Integration The one true AutomatorWP_Presto_Player_Integration
+ * @return      \AutomatorWP_Integration_Presto_Player The one true AutomatorWP_Integration_Presto_Player
  */
-function AutomatorWP_Presto_Player_Integration() {
-    return AutomatorWP_Presto_Player_Integration::instance();
+function AutomatorWP_Integration_Presto_Player() {
+    return AutomatorWP_Integration_Presto_Player::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Presto_Player_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Presto_Player' );

@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WPAdverts_Integration {
+final class AutomatorWP_Integration_WPAdverts {
 
     /**
-     * @var         AutomatorWP_WPAdverts_Integration $instance The one true AutomatorWP_WPAdverts_Integration
+     * @var         AutomatorWP_Integration_WPAdverts $instance The one true AutomatorWP_Integration_WPAdverts
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_WPAdverts_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WPAdverts_Integration self::$instance The one true AutomatorWP_WPAdverts_Integration
+     * @return      AutomatorWP_Integration_WPAdverts self::$instance The one true AutomatorWP_Integration_WPAdverts
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_WPAdverts_Integration();
+            self::$instance = new AutomatorWP_Integration_WPAdverts();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -156,12 +156,12 @@ final class AutomatorWP_WPAdverts_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WPAdverts_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WPAdverts instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WPAdverts_Integration The one true AutomatorWP_WPAdverts_Integration
+ * @return      \AutomatorWP_Integration_WPAdverts The one true AutomatorWP_Integration_WPAdverts
  */
-function AutomatorWP_WPAdverts_Integration() {
-    return AutomatorWP_WPAdverts_Integration::instance();
+function AutomatorWP_Integration_WPAdverts() {
+    return AutomatorWP_Integration_WPAdverts::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WPAdverts_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WPAdverts' );

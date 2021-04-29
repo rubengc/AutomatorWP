@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WP_Polls_Integration {
+final class AutomatorWP_Integration_WP_Polls {
 
     /**
-     * @var         AutomatorWP_WP_Polls_Integration $instance The one true AutomatorWP_WP_Polls_Integration
+     * @var         AutomatorWP_Integration_WP_Polls $instance The one true AutomatorWP_Integration_WP_Polls
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_WP_Polls_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WP_Polls_Integration self::$instance The one true AutomatorWP_WP_Polls_Integration
+     * @return      AutomatorWP_Integration_WP_Polls self::$instance The one true AutomatorWP_Integration_WP_Polls
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_WP_Polls_Integration();
+            self::$instance = new AutomatorWP_Integration_WP_Polls();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -155,12 +155,12 @@ final class AutomatorWP_WP_Polls_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WP_Polls_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WP_Polls instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WP_Polls_Integration The one true AutomatorWP_WP_Polls_Integration
+ * @return      \AutomatorWP_Integration_WP_Polls The one true AutomatorWP_Integration_WP_Polls
  */
-function AutomatorWP_WP_Polls_Integration() {
-    return AutomatorWP_WP_Polls_Integration::instance();
+function AutomatorWP_Integration_WP_Polls() {
+    return AutomatorWP_Integration_WP_Polls::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WP_Polls_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WP_Polls' );

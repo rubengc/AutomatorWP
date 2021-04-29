@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_wpDiscuz_Integration {
+final class AutomatorWP_Integration_wpDiscuz {
 
     /**
-     * @var         AutomatorWP_wpDiscuz_Integration $instance The one true AutomatorWP_wpDiscuz_Integration
+     * @var         AutomatorWP_Integration_wpDiscuz $instance The one true AutomatorWP_Integration_wpDiscuz
      * @since       1.0.0
      */
     private static $instance;
@@ -30,13 +30,13 @@ final class AutomatorWP_wpDiscuz_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_wpDiscuz_Integration self::$instance The one true AutomatorWP_wpDiscuz_Integration
+     * @return      AutomatorWP_Integration_wpDiscuz self::$instance The one true AutomatorWP_Integration_wpDiscuz
      */
     public static function instance() {
 
         if( ! self::$instance ) {
 
-            self::$instance = new AutomatorWP_wpDiscuz_Integration();
+            self::$instance = new AutomatorWP_Integration_wpDiscuz();
 
             if( ! self::$instance->pro_installed() ) {
 
@@ -163,12 +163,12 @@ final class AutomatorWP_wpDiscuz_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_wpDiscuz_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_wpDiscuz instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_wpDiscuz_Integration The one true AutomatorWP_wpDiscuz_Integration
+ * @return      \AutomatorWP_Integration_wpDiscuz The one true AutomatorWP_Integration_wpDiscuz
  */
-function AutomatorWP_wpDiscuz_Integration() {
-    return AutomatorWP_wpDiscuz_Integration::instance();
+function AutomatorWP_Integration_wpDiscuz() {
+    return AutomatorWP_Integration_wpDiscuz::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_wpDiscuz_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_wpDiscuz' );

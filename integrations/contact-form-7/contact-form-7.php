@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Contact_Form_7_Integration {
+final class AutomatorWP_Integration_Contact_Form_7 {
 
     /**
-     * @var         AutomatorWP_Contact_Form_7_Integration $instance The one true AutomatorWP_Contact_Form_7_Integration
+     * @var         AutomatorWP_Integration_Contact_Form_7 $instance The one true AutomatorWP_Integration_Contact_Form_7
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Contact_Form_7_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Contact_Form_7_Integration self::$instance The one true AutomatorWP_Contact_Form_7_Integration
+     * @return      AutomatorWP_Integration_Contact_Form_7 self::$instance The one true AutomatorWP_Integration_Contact_Form_7
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Contact_Form_7_Integration();
+            self::$instance = new AutomatorWP_Integration_Contact_Form_7();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -154,12 +154,12 @@ final class AutomatorWP_Contact_Form_7_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Contact_Form_7_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Contact_Form_7 instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Contact_Form_7_Integration The one true AutomatorWP_Contact_Form_7_Integration
+ * @return      \AutomatorWP_Integration_Contact_Form_7 The one true AutomatorWP_Integration_Contact_Form_7
  */
-function AutomatorWP_Contact_Form_7_Integration() {
-    return AutomatorWP_Contact_Form_7_Integration::instance();
+function AutomatorWP_Integration_Contact_Form_7() {
+    return AutomatorWP_Integration_Contact_Form_7::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Contact_Form_7_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Contact_Form_7' );

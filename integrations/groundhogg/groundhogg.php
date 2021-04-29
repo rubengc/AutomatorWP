@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Groundhogg_Integration {
+final class AutomatorWP_Integration_Groundhogg {
 
     /**
-     * @var         AutomatorWP_Groundhogg_Integration $instance The one true AutomatorWP_Groundhogg_Integration
+     * @var         AutomatorWP_Integration_Groundhogg $instance The one true AutomatorWP_Integration_Groundhogg
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Groundhogg_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Groundhogg_Integration self::$instance The one true AutomatorWP_Groundhogg_Integration
+     * @return      AutomatorWP_Integration_Groundhogg self::$instance The one true AutomatorWP_Integration_Groundhogg
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Groundhogg_Integration();
+            self::$instance = new AutomatorWP_Integration_Groundhogg();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -156,12 +156,12 @@ final class AutomatorWP_Groundhogg_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Groundhogg_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Groundhogg instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Groundhogg_Integration The one true AutomatorWP_Groundhogg_Integration
+ * @return      \AutomatorWP_Integration_Groundhogg The one true AutomatorWP_Integration_Groundhogg
  */
-function AutomatorWP_Groundhogg_Integration() {
-    return AutomatorWP_Groundhogg_Integration::instance();
+function AutomatorWP_Integration_Groundhogg() {
+    return AutomatorWP_Integration_Groundhogg::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Groundhogg_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Groundhogg' );

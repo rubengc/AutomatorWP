@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_H5P_Integration {
+final class AutomatorWP_Integration_H5P {
 
     /**
-     * @var         AutomatorWP_H5P_Integration $instance The one true AutomatorWP_H5P_Integration
+     * @var         AutomatorWP_Integration_H5P $instance The one true AutomatorWP_Integration_H5P
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_H5P_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_H5P_Integration self::$instance The one true AutomatorWP_H5P_Integration
+     * @return      AutomatorWP_Integration_H5P self::$instance The one true AutomatorWP_Integration_H5P
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_H5P_Integration();
+            self::$instance = new AutomatorWP_Integration_H5P();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -159,12 +159,12 @@ final class AutomatorWP_H5P_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_H5P_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_H5P instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_H5P_Integration The one true AutomatorWP_H5P_Integration
+ * @return      \AutomatorWP_Integration_H5P The one true AutomatorWP_Integration_H5P
  */
-function AutomatorWP_H5P_Integration() {
-    return AutomatorWP_H5P_Integration::instance();
+function AutomatorWP_Integration_H5P() {
+    return AutomatorWP_Integration_H5P::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_H5P_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_H5P' );

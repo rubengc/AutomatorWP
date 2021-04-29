@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_LifterLMS_Integration {
+final class AutomatorWP_Integration_LifterLMS {
 
     /**
-     * @var         AutomatorWP_LifterLMS_Integration $instance The one true AutomatorWP_LifterLMS_Integration
+     * @var         AutomatorWP_Integration_LifterLMS $instance The one true AutomatorWP_Integration_LifterLMS
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_LifterLMS_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_LifterLMS_Integration self::$instance The one true AutomatorWP_LifterLMS_Integration
+     * @return      AutomatorWP_Integration_LifterLMS self::$instance The one true AutomatorWP_Integration_LifterLMS
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_LifterLMS_Integration();
+            self::$instance = new AutomatorWP_Integration_LifterLMS();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -161,12 +161,12 @@ final class AutomatorWP_LifterLMS_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_LifterLMS_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_LifterLMS instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_LifterLMS_Integration The one true AutomatorWP_LifterLMS_Integration
+ * @return      \AutomatorWP_Integration_LifterLMS The one true AutomatorWP_Integration_LifterLMS
  */
-function AutomatorWP_LifterLMS_Integration() {
-    return AutomatorWP_LifterLMS_Integration::instance();
+function AutomatorWP_Integration_LifterLMS() {
+    return AutomatorWP_Integration_LifterLMS::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_LifterLMS_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_LifterLMS' );

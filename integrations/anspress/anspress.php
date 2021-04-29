@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_AnsPress_Integration {
+final class AutomatorWP_Integration_AnsPress {
 
     /**
-     * @var         AutomatorWP_AnsPress_Integration $instance The one true AutomatorWP_AnsPress_Integration
+     * @var         AutomatorWP_Integration_AnsPress $instance The one true AutomatorWP_Integration_AnsPress
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_AnsPress_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_AnsPress_Integration self::$instance The one true AutomatorWP_AnsPress_Integration
+     * @return      AutomatorWP_Integration_AnsPress self::$instance The one true AutomatorWP_Integration_AnsPress
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_AnsPress_Integration();
+            self::$instance = new AutomatorWP_Integration_AnsPress();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -156,12 +156,12 @@ final class AutomatorWP_AnsPress_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_AnsPress_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_AnsPress instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_AnsPress_Integration The one true AutomatorWP_AnsPress_Integration
+ * @return      \AutomatorWP_Integration_AnsPress The one true AutomatorWP_Integration_AnsPress
  */
-function AutomatorWP_AnsPress_Integration() {
-    return AutomatorWP_AnsPress_Integration::instance();
+function AutomatorWP_Integration_AnsPress() {
+    return AutomatorWP_Integration_AnsPress::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_AnsPress_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_AnsPress' );

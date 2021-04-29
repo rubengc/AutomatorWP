@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_HappyForms_Integration {
+final class AutomatorWP_Integration_HappyForms {
 
     /**
-     * @var         AutomatorWP_HappyForms_Integration $instance The one true AutomatorWP_HappyForms_Integration
+     * @var         AutomatorWP_Integration_HappyForms $instance The one true AutomatorWP_Integration_HappyForms
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_HappyForms_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_HappyForms_Integration self::$instance The one true AutomatorWP_HappyForms_Integration
+     * @return      AutomatorWP_Integration_HappyForms self::$instance The one true AutomatorWP_Integration_HappyForms
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_HappyForms_Integration();
+            self::$instance = new AutomatorWP_Integration_HappyForms();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -154,12 +154,12 @@ final class AutomatorWP_HappyForms_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_HappyForms_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_HappyForms instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_HappyForms_Integration The one true AutomatorWP_HappyForms_Integration
+ * @return      \AutomatorWP_Integration_HappyForms The one true AutomatorWP_Integration_HappyForms
  */
-function AutomatorWP_HappyForms_Integration() {
-    return AutomatorWP_HappyForms_Integration::instance();
+function AutomatorWP_Integration_HappyForms() {
+    return AutomatorWP_Integration_HappyForms::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_HappyForms_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_HappyForms' );

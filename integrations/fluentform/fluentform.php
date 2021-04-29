@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_FluentForm_Integration {
+final class AutomatorWP_Integration_FluentForm {
 
     /**
-     * @var         AutomatorWP_FluentForm_Integration $instance The one true AutomatorWP_FluentForm_Integration
+     * @var         AutomatorWP_Integration_FluentForm $instance The one true AutomatorWP_Integration_FluentForm
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_FluentForm_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_FluentForm_Integration self::$instance The one true AutomatorWP_FluentForm_Integration
+     * @return      AutomatorWP_Integration_FluentForm self::$instance The one true AutomatorWP_Integration_FluentForm
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_FluentForm_Integration();
+            self::$instance = new AutomatorWP_Integration_FluentForm();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -155,12 +155,12 @@ final class AutomatorWP_FluentForm_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_FluentForm_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_FluentForm instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_FluentForm_Integration The one true AutomatorWP_FluentForm_Integration
+ * @return      \AutomatorWP_Integration_FluentForm The one true AutomatorWP_Integration_FluentForm
  */
-function AutomatorWP_FluentForm_Integration() {
-    return AutomatorWP_FluentForm_Integration::instance();
+function AutomatorWP_Integration_FluentForm() {
+    return AutomatorWP_Integration_FluentForm::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_FluentForm_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_FluentForm' );

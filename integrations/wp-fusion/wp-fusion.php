@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_WP_Fusion_Integration {
+final class AutomatorWP_Integration_WP_Fusion {
 
     /**
-     * @var         AutomatorWP_WP_Fusion_Integration $instance The one true AutomatorWP_WP_Fusion_Integration
+     * @var         AutomatorWP_Integration_WP_Fusion $instance The one true AutomatorWP_Integration_WP_Fusion
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_WP_Fusion_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_WP_Fusion_Integration self::$instance The one true AutomatorWP_WP_Fusion_Integration
+     * @return      AutomatorWP_Integration_WP_Fusion self::$instance The one true AutomatorWP_Integration_WP_Fusion
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_WP_Fusion_Integration();
+            self::$instance = new AutomatorWP_Integration_WP_Fusion();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -155,12 +155,12 @@ final class AutomatorWP_WP_Fusion_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_WP_Fusion_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_WP_Fusion instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_WP_Fusion_Integration The one true AutomatorWP_WP_Fusion_Integration
+ * @return      \AutomatorWP_Integration_WP_Fusion The one true AutomatorWP_Integration_WP_Fusion
  */
-function AutomatorWP_WP_Fusion_Integration() {
-    return AutomatorWP_WP_Fusion_Integration::instance();
+function AutomatorWP_Integration_WP_Fusion() {
+    return AutomatorWP_Integration_WP_Fusion::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_WP_Fusion_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WP_Fusion' );

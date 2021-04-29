@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_ActiveMember360_Integration {
+final class AutomatorWP_Integration_ActiveMember360 {
 
     /**
-     * @var         AutomatorWP_ActiveMember360_Integration $instance The one true AutomatorWP_ActiveMember360_Integration
+     * @var         AutomatorWP_Integration_ActiveMember360 $instance The one true AutomatorWP_Integration_ActiveMember360
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_ActiveMember360_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_ActiveMember360_Integration self::$instance The one true AutomatorWP_ActiveMember360_Integration
+     * @return      AutomatorWP_Integration_ActiveMember360 self::$instance The one true AutomatorWP_Integration_ActiveMember360
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_ActiveMember360_Integration();
+            self::$instance = new AutomatorWP_Integration_ActiveMember360();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -158,12 +158,12 @@ final class AutomatorWP_ActiveMember360_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_ActiveMember360_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_ActiveMember360 instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_ActiveMember360_Integration The one true AutomatorWP_ActiveMember360_Integration
+ * @return      \AutomatorWP_Integration_ActiveMember360 The one true AutomatorWP_Integration_ActiveMember360
  */
-function AutomatorWP_ActiveMember360_Integration() {
-    return AutomatorWP_ActiveMember360_Integration::instance();
+function AutomatorWP_Integration_ActiveMember360() {
+    return AutomatorWP_Integration_ActiveMember360::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_ActiveMember360_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_ActiveMember360' );

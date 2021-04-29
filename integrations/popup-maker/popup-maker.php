@@ -17,10 +17,10 @@
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Popup_Maker_Integration {
+final class AutomatorWP_Integration_Popup_Maker {
 
     /**
-     * @var         AutomatorWP_Popup_Maker_Integration $instance The one true AutomatorWP_Popup_Maker_Integration
+     * @var         AutomatorWP_Integration_Popup_Maker $instance The one true AutomatorWP_Integration_Popup_Maker
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Popup_Maker_Integration {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Popup_Maker_Integration self::$instance The one true AutomatorWP_Popup_Maker_Integration
+     * @return      AutomatorWP_Integration_Popup_Maker self::$instance The one true AutomatorWP_Integration_Popup_Maker
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Popup_Maker_Integration();
+            self::$instance = new AutomatorWP_Integration_Popup_Maker();
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
@@ -149,12 +149,12 @@ final class AutomatorWP_Popup_Maker_Integration {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Popup_Maker_Integration instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Popup_Maker instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Popup_Maker_Integration The one true AutomatorWP_Popup_Maker_Integration
+ * @return      \AutomatorWP_Integration_Popup_Maker The one true AutomatorWP_Integration_Popup_Maker
  */
-function AutomatorWP_Popup_Maker_Integration() {
-    return AutomatorWP_Popup_Maker_Integration::instance();
+function AutomatorWP_Integration_Popup_Maker() {
+    return AutomatorWP_Integration_Popup_Maker::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Popup_Maker_Integration' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Popup_Maker' );
