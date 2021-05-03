@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-04-26 11:36+0200\n"
+"POT-Creation-Date: 2021-05-03 18:58+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: integrations/wordpress/actions/create-user.php:385
 #: integrations/wordpress/actions/update-post.php:472
 #: integrations/wordpress/actions/update-user.php:430
-#: integrations/zoom/includes/actions/add-user-meeting.php:301
+#: integrations/zoom/includes/actions/add-user-meeting.php:337
 msgid "Result:"
 msgstr ""
 
@@ -352,8 +352,8 @@ msgstr ""
 #: includes/ajax-functions.php:850 includes/cmb2.php:382
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
-#: includes/custom-tables/logs.php:341 includes/custom-tables/logs.php:749
-#: includes/custom-tables/logs.php:846
+#: includes/custom-tables/logs.php:341 includes/custom-tables/logs.php:768
+#: includes/custom-tables/logs.php:865
 msgid "(No title)"
 msgstr ""
 
@@ -861,7 +861,7 @@ msgstr ""
 msgid "Post assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:785
+#: includes/custom-tables/logs.php:804
 msgid "(No post assigned)"
 msgstr ""
 
@@ -873,6 +873,11 @@ msgstr ""
 #: includes/filters.php:54
 #, php-format
 msgid "Possible filter duplication with the key \"%s\""
+msgstr ""
+
+#: includes/functions.php:129
+#, php-format
+msgid "[AutomatorWP] Email failed to send to %s with subject: %s"
 msgstr ""
 
 #: includes/logs.php:26 integrations/filter/filter.php:25
@@ -6062,39 +6067,49 @@ msgstr ""
 msgid "Registrant successfully registered"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:268
+#: integrations/zoom/includes/actions/add-user-meeting.php:236
+#, php-format
+msgid "You need to configure the <a href=\"%s\" target=\"_blank\">Zoom Meetings settings</a> to get this action to work."
+msgstr ""
+
+#: integrations/zoom/includes/actions/add-user-meeting.php:240
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Documentation</a>"
+msgstr ""
+
+#: integrations/zoom/includes/actions/add-user-meeting.php:304
 msgid "Registrant First Name:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:273
+#: integrations/zoom/includes/actions/add-user-meeting.php:309
 msgid "Registrant Last Name:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:278
+#: integrations/zoom/includes/actions/add-user-meeting.php:314
 msgid "Registrant Email:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:283
+#: integrations/zoom/includes/actions/add-user-meeting.php:319
 msgid "Meeting ID:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:284
+#: integrations/zoom/includes/actions/add-user-meeting.php:320
 msgid "Unique identifier for the meeting."
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:289
+#: integrations/zoom/includes/actions/add-user-meeting.php:325
 msgid "Registrant ID:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:290
+#: integrations/zoom/includes/actions/add-user-meeting.php:326
 msgid "Unique identifier assigned to the registrant."
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:295
+#: integrations/zoom/includes/actions/add-user-meeting.php:331
 msgid "Join URL:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:296
+#: integrations/zoom/includes/actions/add-user-meeting.php:332
 msgid "Unique URL for this registrant to join the meeting."
 msgstr ""
 

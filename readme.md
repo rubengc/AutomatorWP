@@ -321,6 +321,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.5 ###
+
+* **Improvements**
+* Improved the display of nested elements in logs.
+* HappyForms: Added support to detect HappyForms pro.
+* **Bug Fixes**
+* Fixed a type that causes that notifications to new created users on anonymous automations are not getting sent.
+
 ### 1.5.4 ###
 
 * **Improvements**

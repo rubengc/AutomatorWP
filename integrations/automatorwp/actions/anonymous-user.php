@@ -543,7 +543,7 @@ class AutomatorWP_WordPress_Anonymous_User extends AutomatorWP_Integration_Actio
                 $notify = 'both';
             }
 
-            wp_send_new_user_notifications( $this->user_id, $notify );
+            wp_send_new_user_notifications( $user_id, $notify );
 
             /**
              * Action triggered before create the new user for an anonymous automation

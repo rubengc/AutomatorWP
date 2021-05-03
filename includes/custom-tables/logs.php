@@ -667,36 +667,55 @@ function automatorwp_log_field_cb( $field_args, $field ) {
  * @since 1.0.0
  *
  * @param array $value
+ * @param int   $level
  *
  * @return string
  */
-function automatorwp_log_array_display( $value ) {
+function automatorwp_log_array_display( $value, $level = 0 ) {
 
-    // Check if is an associative array
-    if( array_keys( $value ) !== range( 0, count( $value ) - 1 ) ) {
-
-        $new_value = '';
-
-        foreach( $value as $k => $v ) {
-
-            if( is_array( $v ) ) {
-                // Recursive array check
-                $new_value .= $k . ': ' . automatorwp_log_array_display( $v ) . '<br>';
-            } else {
-                // Implode values as "key: value"
-                $new_value .= $k . ': ' . $v . '<br>';
-            }
-
-        }
-
-        $value = $new_value;
-
-    } else {
+    // Check if not is an associative array
+    if( $level === 0 && array_keys( $value ) === range( 0, count( $value ) - 1 ) && ! is_array( $value[0] ) ) {
         // Implode array values by a comma-separated list
-        $value = implode( ', ', $value );
+        return implode( ', ', $value );
     }
 
-    return $value;
+    $padding_char = '&nbsp&nbsp&nbsp&nbsp';
+    $new_value = '';
+
+    // Only place the keys on first level
+    if( $level !== 0 ) {
+        $new_value .= '[' . '<br>';
+    }
+
+    foreach ( $value as $k => $v ) {
+
+        // Add a inner padding per level
+        $new_value .= str_repeat( $padding_char, $level );
+
+        if ( is_array( $v ) ) {
+
+            // Check if not is an associative array
+            if( array_keys( $v ) === range( 0, count( $v ) - 1 ) && ! is_array( $v[0] ) ) {
+                // Implode array values by a comma-separated list
+                $new_value .= $k . ': [ ' . implode( ', ', $v ) . ' ]<br>';
+            } else {
+                // Display all sub arrays
+                $new_value .= $k . ': ' . automatorwp_log_array_display( $v, $level + 1 ) . '<br>';
+            }
+
+        } else {
+            $new_value .= $k . ': ' . $v . '<br>';
+        }
+
+    }
+
+    // Only place the keys on first level
+    if( $level !== 0 ) {
+        // Add a outer padding
+        $new_value .= str_repeat( $padding_char, max( $level - 1, 0 ) ) . ']';
+    }
+
+    return $new_value;
 
 }
 

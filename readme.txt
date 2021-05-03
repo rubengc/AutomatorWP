@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.7
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -318,6 +318,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.5.5 =
+
+* **Improvements**
+* Improved the display of nested elements in logs.
+* HappyForms: Added support to detect HappyForms pro.
+* **Bug Fixes**
+* Fixed a type that causes that notifications to new created users on anonymous automations are not getting sent.
 
 = 1.5.4 =
 

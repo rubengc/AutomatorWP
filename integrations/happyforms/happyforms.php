@@ -3,7 +3,7 @@
  * Plugin Name:           AutomatorWP - HappyForms integration
  * Plugin URI:            https://wordpress.org/plugins/automatorwp-happyforms-integration/
  * Description:           Connect AutomatorWP with HappyForms.
- * Version:               1.0.3
+ * Version:               1.0.4
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
  * Text Domain:           automatorwp-happyforms-integration-integration
@@ -52,7 +52,7 @@ final class AutomatorWP_Integration_HappyForms {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_HAPPYFORMS_VER', '1.0.3' );
+        define( 'AUTOMATORWP_HAPPYFORMS_VER', '1.0.4' );
 
         // Plugin file
         define( 'AUTOMATORWP_HAPPYFORMS_FILE', __FILE__ );
@@ -126,7 +126,7 @@ final class AutomatorWP_Integration_HappyForms {
             return false;
         }
 
-        if ( ! class_exists( 'HappyForms' ) ) {
+        if ( ! function_exists( 'HappyForms' ) ) {
             return false;
         }
 

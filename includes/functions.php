@@ -111,6 +111,29 @@ function automatorwp_send_email( $args = array() ) {
 
     remove_filter( 'wp_mail_content_type', 'automatorwp_set_html_content_type' );
 
+    /**
+     * Filter available to decide to log email errors or not
+     *
+     * @since 1.4.0
+     *
+     * @param bool      $log_errors Whatever to log email errors or not, by default true
+     * @param array     $email      The email arguments
+     * @param array     $args       The original arguments received
+     *
+     * @return bool
+     */
+    $log_errors = apply_filters( 'automatorwp_log_email_errors', true, $email, $args );
+
+    if( ! $result && $log_errors === true) {
+        $log_message = sprintf(
+            __( "[AutomatorWP] Email failed to send to %s with subject: %s", 'autoamtorwp' ),
+            ( is_array( $email['to'] ) ? implode( ',', $email['to'] ) : $email['to'] ),
+            $email['subject']
+        );
+
+        error_log( $log_message );
+    }
+
     return $result;
 
 }
