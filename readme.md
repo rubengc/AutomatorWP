@@ -83,59 +83,60 @@ AutomatorWP is extremely flexible with plenty of hooks to add custom features an
 
 AutomatorWP works with different WordPress plugins, including:
 
-* [ActiveMember360](https://wordpress.org/plugins/automatorwp-activemember360-integration/)
-* [AffiliateWP](https://wordpress.org/plugins/automatorwp-affiliatewp-integration/)
-* [AnsPress](https://wordpress.org/plugins/automatorwp-anspress-integration/)
-* [bbPress](https://wordpress.org/plugins/automatorwp-bbpress-integration/)
-* [BuddyBoss](https://wordpress.org/plugins/automatorwp-buddyboss-integration/)
-* [BuddyPress](https://wordpress.org/plugins/automatorwp-buddypress-integration/)
-* [Caldera Forms](https://wordpress.org/plugins/automatorwp-caldera-forms-integration/)
-* [Contact Form 7](https://wordpress.org/plugins/automatorwp-contact-form-7-integration/)
-* [DigiMember](https://wordpress.org/plugins/automatorwp-digimember-integration/)
-* [Easy Digital Downloads](https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/)
-* [Elementor Forms](https://wordpress.org/plugins/automatorwp-elementor-forms-integration/)
-* [Favorites](https://wordpress.org/plugins/automatorwp-favorites-integration/)
-* [FluentCRM](https://wordpress.org/plugins/automatorwp-fluentcrm-integration/)
-* [Formidable Forms](https://wordpress.org/plugins/automatorwp-formidable-forms-integration/)
-* [Forminator](https://wordpress.org/plugins/automatorwp-forminator-integration/)
-* [GamiPress](https://wordpress.org/plugins/automatorwp-gamipress-integration/)
-* [Gravity Forms](https://wordpress.org/plugins/automatorwp-gravity-forms-integration/)
-* [Groundhogg](https://wordpress.org/plugins/automatorwp-groundhogg-integration/)
-* [H5P](https://wordpress.org/plugins/automatorwp-h5p-integration/)
-* [HappyForms](https://wordpress.org/plugins/automatorwp-happyforms-integration/)
-* [iMember360](https://wordpress.org/plugins/automatorwp-imember360-integration/)
-* [Invite Anyone](https://wordpress.org/plugins/automatorwp-invite-anyone-integration/)
-* [LearnDash](https://wordpress.org/plugins/automatorwp-learndash-integration/)
-* [LearnPress](https://wordpress.org/plugins/automatorwp-learnpress-integration/)
-* [LifterLMS](https://wordpress.org/plugins/automatorwp-lifterlms-integration/)
-* [MailPoet](https://wordpress.org/plugins/automatorwp-mailpoet-integration/)
-* [MasterStudy LMS](https://wordpress.org/plugins/automatorwp-masterstudy-lms-integration/)
-* [MemberPress](https://wordpress.org/plugins/automatorwp-memberpress-integration/)
-* [Ninja Forms](https://wordpress.org/plugins/automatorwp-ninja-forms-integration/)
-* [Paid Memberships Pro](https://wordpress.org/plugins/automatorwp-paid-memberships-pro-integration/)
-* [PeepSo](https://wordpress.org/plugins/automatorwp-peepso-integration/)
-* [Popup Maker](https://wordpress.org/plugins/automatorwp-popup-maker-integration/)
-* [Presto Player](https://wordpress.org/plugins/automatorwp-presto-player-integration/)
-* [Restrict Content Pro](https://wordpress.org/plugins/automatorwp-restrict-content-pro-integration/)
-* [Sensei LMS](https://wordpress.org/plugins/automatorwp-sensei-lms-integration/)
-* [The Events Calendar](https://wordpress.org/plugins/automatorwp-the-events-calendar-integration/)
-* [Tutor LMS](https://wordpress.org/plugins/automatorwp-tutor-integration/)
-* [Ultimate Member](https://wordpress.org/plugins/automatorwp-ultimate-member-integration/)
-* [Upsell Plugin](https://wordpress.org/plugins/automatorwp-upsell-plugin-integration/)
-* [WhishList Member](https://wordpress.org/plugins/automatorwp-wishlist-member-integration/)
-* [WooCommerce](https://wordpress.org/plugins/automatorwp-woocommerce-integration/)
-* [WP Fluent Forms](https://wordpress.org/plugins/automatorwp-fluentform-integration/)
-* [WP Fusion](https://wordpress.org/plugins/automatorwp-wp-fusion-integration/)
-* [WP Job Manager](https://wordpress.org/plugins/automatorwp-wp-job-manager-integration/)
-* [WP Polls](https://wordpress.org/plugins/automatorwp-wp-polls-integration/)
-* [WP PostRatings](https://wordpress.org/plugins/automatorwp-wp-postratings-integration/)
-* [WP Simple Pay](https://wordpress.org/plugins/automatorwp-wp-simple-pay-integration/)
-* [WP Ulike](https://wordpress.org/plugins/automatorwp-wp-ulike-integration/)
-* [WP User Manager](https://wordpress.org/plugins/automatorwp-wp-user-manager-integration/)
-* [WPAdverts](https://wordpress.org/plugins/automatorwp-wpadverts-integration/)
-* [wpDiscuz](https://wordpress.org/plugins/automatorwp-wpdiscuz-integration/)
-* [WPForms](https://wordpress.org/plugins/automatorwp-wpforms-integration/)
-* [WPLMS](https://wordpress.org/plugins/automatorwp-wplms-integration/)
+* [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
+* [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
+* [AnsPress](https://automatorwp.com/add-ons/anspress/)
+* [bbPress](https://automatorwp.com/add-ons/bbpress/)
+* [BuddyBoss](https://automatorwp.com/add-ons/buddyboss/)
+* [BuddyPress](https://automatorwp.com/add-ons/buddypress/)
+* [Caldera Forms](https://automatorwp.com/add-ons/caldera-forms/)
+* [Contact Form 7](https://automatorwp.com/add-ons/contact-form-7/)
+* [DigiMember](https://automatorwp.com/add-ons/digimember/)
+* [Easy Digital Downloads](https://automatorwp.com/add-ons/easy-digital-downloads/)
+* [Elementor](https://automatorwp.com/add-ons/elementor-forms/)
+* [Favorites](https://automatorwp.com/add-ons/favorites/)
+* [FluentCRM](https://automatorwp.com/add-ons/fluentcrm/)
+* [Formidable Forms](https://automatorwp.com/add-ons/formidable-forms/)
+* [Forminator](https://automatorwp.com/add-ons/forminator/)
+* [GamiPress](https://automatorwp.com/add-ons/gamipress/)
+* [Gravity Forms](https://automatorwp.com/add-ons/gravity-forms/)
+* [Groundhogg](https://automatorwp.com/add-ons/groundhogg/)
+* [H5P](https://automatorwp.com/add-ons/h5p/)
+* [HappyForms](https://automatorwp.com/add-ons/happyforms/)
+* [iMember360](https://automatorwp.com/add-ons/imember360/)
+* [Invite Anyone](https://automatorwp.com/add-ons/invite-anyone/)
+* [LearnDash](https://automatorwp.com/add-ons/learndash/)
+* [LearnPress](https://automatorwp.com/add-ons/learnpress/)
+* [LifterLMS](https://automatorwp.com/add-ons/lifterlms/)
+* [MailPoet](https://automatorwp.com/add-ons/mailpoet/)
+* [MasterStudy LMS](https://automatorwp.com/add-ons/masterstudy-lms/)
+* [MemberPress](https://automatorwp.com/add-ons/memberpress/)
+* [Newsletter](https://automatorwp.com/add-ons/newsletter/)
+* [Ninja Forms](https://automatorwp.com/add-ons/ninja-forms/)
+* [Paid Memberships Pro](https://automatorwp.com/add-ons/paid-memberships-pro/)
+* [PeepSo](https://automatorwp.com/add-ons/peepso/)
+* [Popup Maker](https://automatorwp.com/add-ons/popup-maker/)
+* [Presto Player](https://automatorwp.com/add-ons/presto-player/)
+* [Restrict Content Pro](https://automatorwp.com/add-ons/restrict-content-pro/)
+* [Sensei LMS](https://automatorwp.com/add-ons/sensei-lms/)
+* [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
+* [Tutor LMS](https://automatorwp.com/add-ons/tutor/)
+* [Ultimate Member](https://automatorwp.com/add-ons/ultimate-member/)
+* [Upsell Plugin](https://automatorwp.com/add-ons/upsell-plugin/)
+* [WhishList Member](https://automatorwp.com/add-ons/wishlist-member/)
+* [WooCommerce](https://automatorwp.com/add-ons/woocommerce/)
+* [WP Fluent Forms](https://automatorwp.com/add-ons/fluentform/)
+* [WP Fusion](https://automatorwp.com/add-ons/wp-fusion/)
+* [WP Job Manager](https://automatorwp.com/add-ons/wp-job-manager/)
+* [WP Polls](https://automatorwp.com/add-ons/wp-polls/)
+* [WP PostRatings](https://automatorwp.com/add-ons/wp-postratings/)
+* [WP Simple Pay](https://automatorwp.com/add-ons/wp-simple-pay/)
+* [WP Ulike](https://automatorwp.com/add-ons/wp-ulike/)
+* [WP User Manager](https://automatorwp.com/add-ons/wp-user-manager/)
+* [WPAdverts](https://automatorwp.com/add-ons/wpadverts/)
+* [wpDiscuz](https://automatorwp.com/add-ons/wpdiscuz/)
+* [WPForms](https://automatorwp.com/add-ons/wpforms/)
+* [WPLMS](https://automatorwp.com/add-ons/wplms/)
 
 = Integrated with external platforms =
 
@@ -145,7 +146,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
-* [Zoom](https://wordpress.org/plugins/automatorwp-zoom-integration/)
+* [Zoom](https://automatorwp.com/add-ons/zoom/)
 
 ## Powerful add-ons to extend AutomatorWP ##
 
@@ -161,73 +162,7 @@ If you’re looking for something endorsed and maintained by the developers who 
 
 ## Included triggers, actions and filters ##
 
-AutomatorWP comes with a set of triggers and actions, including:
-
-**Triggers**
-
-* User registers to the site.
-* User logs in to the site.
-* User daily visits the site.
-* User views any/specific post.
-* User views a post of any/specific category.
-* User views a post of any/specific tag.
-* User views any/specific page.
-* User views a post of any/specific type.
-* User views a post of any/specific taxonomy.
-* User publishes a post.
-* User publishes a post with any/specific category.
-* User publishes a post with any/specific tag.
-* User publishes a page.
-* User publishes a post of any/specific type.
-* User publishes a post in any/specific taxonomy.
-* User post of any/specific type status changes to any/specific status.
-* User comments on any/specific post.
-* User comments on a post of any/specific category.
-* User comments on a post of any/specific tag.
-* User comments on any/specific page.
-* User comments on a post of any/specific type.
-* User comments on a post of any/specific taxonomy.
-* Post meta with any/specific key gets updated with any/specific value.
-* Post of a specific type meta with any/specific key gets updated with any/specific value.
-* User meta with any/specific key gets updated with any/specific value.
-* User gets added to any/specific role.
-* User role changes to any/specific role.
-* User gets removed from any/specific role.
-* User completes any/specific automation.
-* User gets created through any/specific automation.
-* Post gets created through any/specific automation.
-
-**Anonymous Triggers**
-
-* Guest views any/specific post.
-* Guest views any/specific page.
-* Guest views a post of any/specific type.
-* Guest views a post of any/specific taxonomy.
-* Guest comments on a post of any/specific type.
-* Guest comments on a post of any/specific taxonomy.
-
-**Actions**
-
-* Send email to user.
-* Add, change or remove role to user.
-* Create a user.
-* Update a user.
-* Set, insert, increment or decrement user meta.
-* Create a post.
-* Update a post.
-* Set, insert, increment or decrement post meta.
-* Redirect user to url.
-
-** Filters **
-
-* Flat condition (you can build the filter using tags).
-* User role matches with a specific role.
-* User field matches with a specific value.
-* User meta key matches with a specific value.
-
-**Note:** Filters lets you configure the condition of your choice like equal to, not equal to, contains, starts with, etc.
-
-[View all triggers and actions](https://automatorwp.com/all-triggers-and-actions/)
+AutomatorWP includes +200 triggers, actions and filters for free, all of them listed [here](https://automatorwp.com/all-triggers-and-actions/).
 
 ## Installation ##
 
@@ -320,6 +255,12 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.5.6 ###
+
+* **New Features**
+* New integration with Newsletter.
+* Newsletter: New anonymous trigger: Guest subscribes to a list.
 
 ### 1.5.5 ###
 
