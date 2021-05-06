@@ -95,13 +95,9 @@ final class AutomatorWP_Integration_WooCommerce {
             require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/purchase-product-tag.php';
             require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/complete-purchase.php';
             // WooCommerce Memberships
-            if ( class_exists( 'WC_Memberships_Loader' ) ) {
-                require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/membership-created.php';
-            }
+            require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/membership-created.php';
             // WooCommerce Subscriptions
-            if ( class_exists( 'WC_Subscriptions' ) ) {
-                require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/purchase-subscription.php';
-            }
+            require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/purchase-subscription.php';
 
             // Anonymous Triggers
             require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/triggers/anonymous-purchase-product.php';
@@ -112,9 +108,7 @@ final class AutomatorWP_Integration_WooCommerce {
             // Actions
             require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/actions/add-user-to-coupon.php';
             // WooCommerce Memberships
-            if ( class_exists( 'WC_Memberships_Loader' ) ) {
-                require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/actions/add-membership.php';
-            }
+            require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/actions/add-membership.php';
 
         }
     }

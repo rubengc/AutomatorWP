@@ -101,7 +101,7 @@ class AutomatorWP_GamiPress_User_Points extends AutomatorWP_Integration_Action {
         }
 
         // Award the points
-        gamipress_award_points_to_user( $user_id, $points, $points_type );
+        gamipress_award_points_to_user( $user_id_to_award, $points, $points_type );
 
     }
 

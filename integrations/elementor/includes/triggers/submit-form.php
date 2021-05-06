@@ -79,7 +79,7 @@ class AutomatorWP_Elementor_Forms_Submit_Form extends AutomatorWP_Integration_Tr
             return;
         }
 
-        $form_fields = automatorwp_elementor_forms_get_form_fields_values( $record );
+        $form_fields = automatorwp_elementor_get_form_fields_values( $record );
 
         // Trigger submit form event
         automatorwp_trigger_event( array(

@@ -18,7 +18,7 @@ if( !defined( 'ABSPATH' ) ) exit;
  *
  * @return array
  */
-function automatorwp_elementor_forms_get_form_fields_values( $record ) {
+function automatorwp_elementor_get_form_fields_values( $record ) {
 
     $form_fields = array();
 
@@ -34,9 +34,7 @@ function automatorwp_elementor_forms_get_form_fields_values( $record ) {
     }
 
     // Check for AutomatorWP 1.4.4
-    if( function_exists( 'automatorwp_utilities_pull_array_values' ) ) {
-        $form_fields = automatorwp_utilities_pull_array_values( $form_fields );
-    }
+    $form_fields = automatorwp_utilities_pull_array_values( $form_fields );
 
     return $form_fields;
 
@@ -55,7 +53,7 @@ function automatorwp_elementor_forms_get_form_fields_values( $record ) {
  *
  * @return string
  */
-function automatorwp_elementor_forms_parse_automation_tags( $parsed_content, $replacements, $automation_id, $user_id, $content ) {
+function automatorwp_elementor_parse_automation_tags( $parsed_content, $replacements, $automation_id, $user_id, $content ) {
 
     $new_replacements = array();
 
@@ -67,7 +65,7 @@ function automatorwp_elementor_forms_parse_automation_tags( $parsed_content, $re
         $trigger_args = automatorwp_get_trigger( $trigger->type );
 
         // Skip if trigger is not from this integration
-        if( $trigger_args['integration'] !== 'elementor_forms' ) {
+        if( $trigger_args['integration'] !== 'elementor' ) {
             continue;
         }
 
@@ -115,4 +113,4 @@ function automatorwp_elementor_forms_parse_automation_tags( $parsed_content, $re
     return $parsed_content;
 
 }
-add_filter( 'automatorwp_parse_automation_tags', 'automatorwp_elementor_forms_parse_automation_tags', 10, 5 );
+add_filter( 'automatorwp_parse_automation_tags', 'automatorwp_elementor_parse_automation_tags', 10, 5 );

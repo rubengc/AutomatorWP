@@ -256,6 +256,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.7 ###
+
+* **Bug Fixes**
+* Fixed bug on filters check when all filters operators are OR.
+* Elementor: Fixed tags replacement bug.
+* GamiPress: Fixed user to award on all GamiPress actions.
+* WooCommerce: Fixed issue that prevents to load all actions correctly.
+
 ### 1.5.6 ###
 
 * **New Features**

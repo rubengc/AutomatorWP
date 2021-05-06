@@ -306,6 +306,17 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
 
         <div class="automatorwp-automation-item-content">
 
+            <?php
+            /**
+             * Available action at top of the add item content
+             *
+             * @since 1.57
+             *
+             * @param stdClass  $automation         The automation object
+             * @param string    $item_type          The item type
+             */
+            do_action( 'automatorwp_automation_ui_add_item_content_top', $automation, $item_type ); ?>
+
             <div class="automatorwp-select-integration">
 
                 <div class="automatorwp-select-integration-label"><?php _e( 'Select an integration', 'automatorwp' ); ?></div>
@@ -454,7 +465,16 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
 
             </div>
 
-            <?php automatorwp_automation_ui_integrations_recommendations( $item_type ); ?>
+            <?php
+            /**
+             * Available action at bottom of the add item content
+             *
+             * @since 1.57
+             *
+             * @param stdClass  $automation         The automation object
+             * @param string    $item_type          The item type (trigger|action)
+             */
+            do_action( 'automatorwp_automation_ui_add_item_content_bottom', $automation, $item_type ); ?>
 
         </div>
 
@@ -1278,72 +1298,26 @@ function automatorwp_automation_item_option_field_args( $object, $item_type, $op
  *
  * @since 1.1.2
  *
- * @param string $item_type The item type (trigger|action)
+ * @param stdClass  $automation         The automation object
+ * @param string    $item_type          The item type (trigger|action)
  */
-function automatorwp_automation_ui_integrations_recommendations( $item_type ) {
+function automatorwp_automation_ui_integrations_recommendations( $automation, $item_type ) {
 
-    $integrations = automatorwp_get_recommended_integrations();
-
-    // If not recommendations, show a generic message
-    if ( is_wp_error( $integrations ) || empty( $integrations ) ) { ?>
-
-        <div class="automatorwp-more-integrations">
-            <span><?php if ( $item_type === 'trigger' ) : _e( 'Looking for more triggers?', 'automatorwp' ); elseif ( $item_type === 'action' ) : _e( 'Looking for more actions?', 'automatorwp' ); endif; ?></span>
-            <a href="https://automatorwp.com/add-ons/" target="_blank"><?php _e( 'View all add-ons', 'automatorwp' ); ?></a>
-        </div>
-
-        <?php
+    if( class_exists( 'AutomatorWP_Pro' ) ) {
         return;
     }
+
     ?>
 
-    <div class="automatorwp-recommended-integrations">
-
-        <div class="automatorwp-recommended-integrations-label">
-            <span><?php printf( _n( '%d plugin of your site can be connected with AutomatorWP.', '%d plugins of your site can be connected with AutomatorWP.', count( $integrations ), 'automatorwp' ), count( $integrations ) ); ?></span>
-            <a href="#"><?php _e( 'View plugins', 'automatorwp' ); ?></a>
-        </div>
-
-        <div class="automatorwp-integrations" style="display: none;">
-
-            <?php foreach ( $integrations as $integration ) :
-
-                // Setup the triggers and actions information
-                $triggers_and_actions = array();
-
-                if( count( $integration->triggers ) ) {
-                    $triggers_and_actions[] = sprintf( _n( '%d trigger', '%d triggers', count( $integration->triggers ), 'automatorwp' ), count( $integration->triggers ) );
-                }
-
-                if( count( $integration->actions ) ) {
-                    $triggers_and_actions[] = sprintf( _n( '%d action', '%d actions', count( $integration->actions ), 'automatorwp' ), count( $integration->actions ) );
-                }
-
-                // Setup the add-on slug for the add-on URL
-                $slug = str_replace( '_', '-', $integration->code ); ?>
-
-                <a class="automatorwp-integration"
-                     href="https://automatorwp.com/add-ons/<?php echo $slug; ?>/"
-                     target="_blank"
-                     data-integration="<?php echo esc_attr( $integration->code ); ?>"
-                     data-label="<?php echo esc_attr( $integration->title ); ?>"
-                     data-icon="<?php echo esc_attr( $integration->icon ); ?>">
-                    <div class="automatorwp-integration-icon">
-                        <img src="<?php echo esc_attr( $integration->icon ); ?>" alt="<?php echo esc_attr( $integration->title ); ?>">
-                    </div>
-                    <div class="automatorwp-integration-label"><?php echo $integration->title; ?></div>
-                    <div class="automatorwp-integration-triggers-and-actions"><?php echo implode( ', ', $triggers_and_actions ); ?></div>
-                </a>
-
-            <?php endforeach; ?>
-
-        </div>
-
+    <div class="automatorwp-more-integrations">
+        <span><?php if ( $item_type === 'trigger' ) : _e( 'Looking for more triggers?', 'automatorwp' ); elseif ( $item_type === 'action' ) : _e( 'Looking for more actions?', 'automatorwp' ); endif; ?></span>
+        <a href="https://automatorwp.com/add-ons/" target="_blank"><?php _e( 'View all add-ons', 'automatorwp' ); ?></a>
     </div>
 
     <?php
 
 }
+add_action( 'automatorwp_automation_ui_add_item_content_bottom', 'automatorwp_automation_ui_integrations_recommendations', 10, 2 );
 
 /**
  * Get recommended integrations

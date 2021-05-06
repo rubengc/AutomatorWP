@@ -846,7 +846,7 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
 
     $filters = automatorwp_get_trigger_filters( $trigger );
 
-    foreach( $filters as $filter ) {
+    foreach( $filters as $i => $filter ) {
 
         $deserves_filter = true;
 
@@ -871,11 +871,16 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
          */
         $deserves_filter = apply_filters( 'automatorwp_user_deserves_trigger_filter', $deserves_filter, $filter, $user_id, $event, $filter_options, $automation );
 
-        // Apply the operator
-        if( $filter_options['operator'] === 'and' ) {
-            $deserves_trigger_filters = $deserves_trigger_filters && $deserves_filter;
+        if( $i === 0 ) {
+            // On first filter there is no need to apply the operator
+            $deserves_trigger_filters = $deserves_filter;
         } else {
-            $deserves_trigger_filters = $deserves_trigger_filters || $deserves_filter;
+            // Apply the operator
+            if( $filter_options['operator'] === 'and' ) {
+                $deserves_trigger_filters = $deserves_trigger_filters && $deserves_filter;
+            } else {
+                $deserves_trigger_filters = $deserves_trigger_filters || $deserves_filter;
+            }
         }
 
         // Store completed filters
@@ -918,6 +923,7 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
             ), $log_meta );
 
             break;
+
         }
 
     }
@@ -1462,7 +1468,7 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
 
     $filters = automatorwp_get_action_filters( $action );
 
-    foreach( $filters as $filter ) {
+    foreach( $filters as $i => $filter ) {
 
         $deserves_filter = true;
 
@@ -1492,11 +1498,16 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
          */
         $deserves_filter = apply_filters( 'automatorwp_user_deserves_action_filter', $deserves_filter, $filter, $user_id, $event, $filter_options, $automation );
 
-        // Apply the operator
-        if( $filter_options['operator'] === 'and' ) {
-            $deserves_action_filters = $deserves_action_filters && $deserves_filter;
+        if( $i === 0 ) {
+            // On first filter there is no need to apply the operator
+            $deserves_action_filters = $deserves_filter;
         } else {
-            $deserves_action_filters = $deserves_action_filters || $deserves_filter;
+            // Apply the operator
+            if( $filter_options['operator'] === 'and' ) {
+                $deserves_action_filters = $deserves_action_filters && $deserves_filter;
+            } else {
+                $deserves_action_filters = $deserves_action_filters || $deserves_filter;
+            }
         }
 
         // Store completed filters

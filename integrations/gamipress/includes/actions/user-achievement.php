@@ -88,7 +88,7 @@ class AutomatorWP_GamiPress_User_Achievement extends AutomatorWP_Integration_Act
         }
 
         // Award the achievement
-        gamipress_award_achievement_to_user( $post_id, $user_id );
+        gamipress_award_achievement_to_user( $post_id, $user_id_to_award );
 
     }
 

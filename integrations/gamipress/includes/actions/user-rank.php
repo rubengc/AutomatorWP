@@ -88,7 +88,7 @@ class AutomatorWP_GamiPress_User_Rank extends AutomatorWP_Integration_Action {
         }
 
         // Award the rank
-        gamipress_award_rank_to_user( $post_id, $user_id );
+        gamipress_award_rank_to_user( $post_id, $user_id_to_award );
 
     }
 

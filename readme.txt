@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automatorwp, automator, automation, zapier, webhook
 Requires at least: 4.4
 Tested up to: 5.7
-Stable tag: 1.5.6
+Stable tag: 1.5.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -253,6 +253,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.5.7 =
+
+* **Bug Fixes**
+* Fixed bug on filters check when all filters operators are OR.
+* Elementor: Fixed tags replacement bug.
+* GamiPress: Fixed user to award on all GamiPress actions.
+* WooCommerce: Fixed issue that prevents to load all actions correctly.
 
 = 1.5.6 =
 
