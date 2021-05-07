@@ -256,6 +256,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.9 ###
+
+* **Improvements**
+* Improved functions to detect if integration is active to make it work even if some WordPress core functions have been deactivated.
+
 ### 1.5.8 ###
 
 * **Improvements**

@@ -3,7 +3,7 @@
  * Plugin Name:     	AutomatorWP
  * Plugin URI:      	https://automatorwp.com
  * Description:     	Connect your WordPress plugins together and create automated workflows with no code!
- * Version:         	1.5.8
+ * Version:         	1.5.9
  * Author:          	AutomatorWP
  * Author URI:      	https://automatorwp.com/
  * Text Domain:     	automatorwp
@@ -118,7 +118,7 @@ final class AutomatorWP {
     private function constants() {
 
         // Plugin version
-        define( 'AUTOMATORWP_VER', '1.5.8' );
+        define( 'AUTOMATORWP_VER', '1.5.9' );
 
         // Plugin file
         define( 'AUTOMATORWP_FILE', __FILE__ );
@@ -218,6 +218,11 @@ final class AutomatorWP {
         require_once AUTOMATORWP_DIR . 'integrations/automatorwp/automatorwp.php';
         require_once AUTOMATORWP_DIR . 'integrations/wordpress/wordpress.php';
 
+        // Skip if integration is already active
+        if( $this->is_integration_active( 'pro' ) ) {
+            return;
+        }
+
         $integrations = @opendir( $integrations_dir );
 
         while ( ( $integration = @readdir( $integrations ) ) !== false ) {
@@ -230,19 +235,8 @@ final class AutomatorWP {
                 continue;
             }
 
-            // Skip if is_plugin_active does not exists
-            if( ! function_exists( 'is_plugin_active' ) ) {
-                continue;
-            }
-
-            // Skip if AutomatorWP Pro is already active
-            if( is_plugin_active( 'automatorwp-pro/automatorwp-pro.php' ) ) {
-                continue;
-            }
-
-            // Skip if plugin is already active
-            if( is_plugin_active( "automatorwp-{$integration}/automatorwp-{$integration}.php" )
-            || is_plugin_active( "automatorwp-{$integration}-integration/automatorwp-{$integration}.php" ) ) {
+            // Skip if integration is already active
+            if( $this->is_integration_active( $integration ) ) {
                 continue;
             }
 
@@ -258,6 +252,68 @@ final class AutomatorWP {
         }
 
         closedir( $integrations );
+
+    }
+
+    /**
+     * Include integrations files
+     *
+     * @access      private
+     * @since       1.0.0
+     * @param       string $integration
+     * @return      bool
+     */
+    private function is_integration_active( $integration ) {
+
+        $plugins = array(
+            "automatorwp-{$integration}/automatorwp-{$integration}.php",
+            "automatorwp-{$integration}-integration/automatorwp-{$integration}.php",
+        );
+
+        foreach( $plugins as $plugin ) {
+
+            // Check if is_plugin_active  exists
+            if( function_exists( 'is_plugin_active' ) ) {
+
+                // Bail if plugin is active
+                if( is_plugin_active( $plugin ) ) {
+                    return true;
+                }
+
+            } else if( function_exists( 'get_option' ) ) {
+                // Fallback to get_option
+
+                $active_plugins = (array) get_option( 'active_plugins', array() );
+
+                // Bail if plugin is active
+                if( in_array( $plugin, $active_plugins, true ) ) {
+                    return true;
+                }
+
+                // Check for multi sites
+                if( function_exists( 'is_plugin_active_for_network' ) ) {
+
+                    // Bail if plugin is network wide active
+                    if( is_plugin_active_for_network( $plugin ) ) {
+                        return true;
+                    }
+
+                } else if( function_exists( 'get_site_option' ) ) {
+
+                    $network_plugins = get_site_option( 'active_sitewide_plugins' );
+
+                    // Bail if plugin is network wide active
+                    if ( isset( $network_plugins[$plugin] ) ) {
+                        return true;
+                    }
+
+                }
+
+
+            }
+        }
+
+        return false;
 
     }
 
