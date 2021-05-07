@@ -29,10 +29,10 @@ class AutomatorWP_Paid_Memberships_Pro_Subscription_Expired extends AutomatorWP_
             'edit_label'        => sprintf( __( 'User subscription of %1$s expires %2$s time(s)', 'automatorwp' ), '{membership}', '{times}' ),
             /* translators: %1$s: Content title. */
             'log_label'         => sprintf( __( 'User subscription of %1$s expires', 'automatorwp' ), '{membership}' ),
-            'action'            => 'pmpro_subscription_expired',
+            'action'            => 'pmpro_membership_post_membership_expiry',
             'function'          => array( $this, 'listener' ),
-            'priority'          => 10,
-            'accepted_args'     => 1,
+            'priority'          => 999,
+            'accepted_args'     => 2,
             'options'           => array(
                 'membership' => automatorwp_utilities_ajax_selector_option( array(
                     'field'             => 'membership',
@@ -57,14 +57,15 @@ class AutomatorWP_Paid_Memberships_Pro_Subscription_Expired extends AutomatorWP_
      *
      * @since 1.0.0
      *
-     * @param MemberOrder $morder
+     * @param int $user_id
+     * @param int $membership_id
      */
-    public function listener( $morder ) {
+    public function listener( $user_id, $membership_id ) {
 
-        $user                = $morder->getUser();
-        $membership          = $morder->getMembershipLevel();
-        $user_id             = $user->ID;
-        $membership_id       = $membership->id;
+        // Bail if not all details provided
+        if ( empty( $user_id ) || empty( $membership_id ) ) {
+            return;
+        }
 
         automatorwp_trigger_event( array(
             'trigger'       => $this->trigger,

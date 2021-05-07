@@ -20,7 +20,7 @@ function automatorwp_check_for_redirect() {
     automatorwp_redirect_in_progress = true;
 
     $.ajax({
-        url: ajaxurl,
+        url: automatorwp_redirect.ajaxurl,
         method: 'POST',
         data: {
             action: 'automatorwp_check_for_redirect',

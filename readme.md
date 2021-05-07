@@ -256,6 +256,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.5.8 ###
+
+* **Improvements**
+* Paid Memberships Pro: Improved membership expiration listener.
+* **Bug Fixes**
+* Fixed undefined var in Javascript.
+
 ### 1.5.7 ###
 
 * **Bug Fixes**
