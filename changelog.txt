@@ -1,5 +1,157 @@
 == Changelog ==
 
+= 1.5.9 =
+
+* **Improvements**
+* Improved functions to detect if integration is active to make it work even if some WordPress core functions have been deactivated.
+
+= 1.5.8 =
+
+* **Improvements**
+* Paid Memberships Pro: Improved membership expiration listener.
+* **Bug Fixes**
+* Fixed undefined var in Javascript.
+
+= 1.5.7 =
+
+* **Bug Fixes**
+* Fixed bug on filters check when all filters operators are OR.
+* Elementor: Fixed tags replacement bug.
+* GamiPress: Fixed user to award on all GamiPress actions.
+* WooCommerce: Fixed issue that prevents to load all actions correctly.
+
+= 1.5.6 =
+
+* **New Features**
+* New integration with Newsletter.
+* Newsletter: New anonymous trigger: Guest subscribes to a list.
+
+= 1.5.5 =
+
+* **Improvements**
+* Improved the display of nested elements in logs.
+* HappyForms: Added support to detect HappyForms pro.
+* **Bug Fixes**
+* Fixed a type that causes that notifications to new created users on anonymous automations are not getting sent.
+
+= 1.5.4 =
+
+* **Improvements**
+* Renamed integrations class names to prevent errors if any integration is installed.
+
+= 1.5.3 =
+
+* **Bug Fixes**
+* Fixed some integrations are not getting loaded.
+* Fixed detection of recommended triggers and actions.
+
+= 1.5.2 =
+
+* **Bug Fixes**
+* Fixed undefined function call on activation.
+
+= 1.5.1 =
+
+* **New Features**
+* Moved all integrations inside AutomatorWP core plugin.
+* **Improvements**
+* Style improvements on the settings area.
+
+= 1.5.0 =
+
+* **New Features**
+* Added a new setting to configure the minimum role allowed to manage AutomatorWP.
+* New user tag: {user_url} to pass the user's website URL.
+* **Improvements**
+* Improved support for array fields on export through URL.
+* **Developer Notes**
+* Updated Custom Tables library.
+* New hooks to exclude options when getting cloned or exported through URL.
+
+= 1.4.9 =
+
+* **New Features**
+* New action: Update a post.
+* New user tag: {avatar} to pass the user avatar image (in a <img> HTML tag).
+* New user tag: {avatar_url} to pass the user avatar URL.
+* Added the "URL slug" field to the "Create a post" action.
+* **Bug Fixes**
+* Fixed a typo on "Post of a specific type meta with any/specific key gets updated with any/specific value" trigger.
+
+= 1.4.8 =
+
+* **New Features**
+* New trigger: Post of a specific type meta with any/specific key gets updated with any/specific value.
+* Added the ability to clone automations.
+* Added the ability to export automations through URL (no files required!).
+* **Improvements**
+* Added installation instructions on the Licenses page.
+
+= 1.4.7 =
+
+* **Improvements**
+* Prevent incompatibility issues caused by others plugins to the AutomatorWP licenses screen.
+
+= 1.4.6 =
+
+* **Improvements**
+* Prevent incompatibility issues caused by others plugins to the AutomatorWP settings screen.
+* **Developer Notes**
+* Updated internal libraries.
+
+= 1.4.5 =
+
+* **New Features**
+* Added support for filters!
+* New filter: Flat condition (you can build the filter using tags).
+* New filter: User role matches with a specific role.
+* New filter: User field matches with a specific value.
+* New filter: User meta key matches with a specific value.
+* Added controls to reorder triggers and actions.
+* **Improvements**
+* Code reduction on the events handler.
+* Code reduction on the trigger and actions execution functions.
+* Improvements for the log's array display function.
+* Style improvements.
+
+= 1.4.4 =
+
+* **New Features**
+* New trigger: Post meta with any/specific key gets updated with any/specific value.
+* New trigger: User meta with any/specific key gets updated with any/specific value.
+* New anonymous trigger: Guest views any/specific post.
+* New anonymous trigger: Guest views any/specific page.
+* New action: Update a user.
+* **Developer Notes**
+* Ensure compatibility with PHP 8.
+* Updated internal libraries.
+
+= 1.4.3 =
+
+* **New Features**
+* New action: Redirect user to url.
+
+= 1.4.2 =
+
+* **Bug Fixes**
+* Fixed typo on taxonomy selectors.
+
+= 1.4.1 =
+
+* **New Features**
+* Added support for custom values on "Add, change or remove role to user" action.
+* **Improvements**
+* Improved approved comment trigger detection.
+
+= 1.4.0 =
+
+* **Bug Fixes**
+* Fixed incorrect calculation in decrement user/post meta actions.
+* Fixed typo on increment/decrement meta labels.
+* **Developer Notes**
+* Added the automatorwp_send_email() function.
+* Moved old changelog to changelog.txt.
+
 = 1.3.9 =
 
 * **Improvements**
