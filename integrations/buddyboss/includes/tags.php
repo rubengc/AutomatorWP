@@ -100,29 +100,29 @@ function automatorwp_buddyboss_get_group_tags() {
 
     return array(
         'group_id' => array(
-            'label'     => __( 'Group ID', 'automatorwp-buddyboss' ),
+            'label'     => __( 'Group ID', 'automatorwp' ),
             'type'      => 'integer',
             'preview'   => '1',
         ),
         'group_name' => array(
-            'label'     => __( 'Group name', 'automatorwp-buddyboss' ),
+            'label'     => __( 'Group name', 'automatorwp' ),
             'type'      => 'text',
-            'preview'   => __( 'My group', 'automatorwp-buddyboss' ),
+            'preview'   => __( 'My group', 'automatorwp' ),
         ),
         'group_description' => array(
-            'label'     => __( 'Group description', 'automatorwp-buddyboss' ),
+            'label'     => __( 'Group description', 'automatorwp' ),
             'type'      => 'text',
-            'preview'   => __( 'My group description', 'automatorwp-buddyboss' ),
+            'preview'   => __( 'My group description', 'automatorwp' ),
         ),
         'group_url' => array(
-            'label'     => __( 'Group URL', 'automatorwp-buddyboss' ),
+            'label'     => __( 'Group URL', 'automatorwp' ),
             'type'      => 'text',
             'preview'   => $groups_url . '/my-group',
         ),
         'group_link' => array(
-            'label'     => __( 'Group link', 'automatorwp-buddyboss' ),
+            'label'     => __( 'Group link', 'automatorwp' ),
             'type'      => 'text',
-            'preview'   => '<a href="' . $groups_url . '/my-group' . '">' . __( 'My group', 'automatorwp-buddyboss' ) . '</a>',
+            'preview'   => '<a href="' . $groups_url . '/my-group' . '">' . __( 'My group', 'automatorwp' ) . '</a>',
         ),
     );
 

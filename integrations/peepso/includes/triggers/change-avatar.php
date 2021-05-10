@@ -23,7 +23,7 @@ class AutomatorWP_PeepSo_Change_Avatar extends AutomatorWP_Integration_Trigger {
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'User changes his profile avatar', 'automatorwp-peepso-integration-integration' ),
+            'label'             => __( 'User changes his profile avatar', 'automatorwp' ),
             'select_option'     => __( 'User changes his <strong>profile avatar</strong>', 'automatorwp' ),
             /* translators: %1$s: Number of times. */
             'edit_label'        => sprintf( __( 'User changes his profile avatar %1$s time(s)', 'automatorwp' ), '{times}' ),

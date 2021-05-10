@@ -35,7 +35,7 @@ class AutomatorWP_Groundhogg_User_Tag extends AutomatorWP_Integration_Action {
                     'option_default'    => __( 'Select a tag', 'automatorwp' ),
                     'name'              => __( 'Tag:', 'automatorwp' ),
                     'option_custom'         => true,
-                    'option_custom_desc'    => __( 'Tag ID', 'automatorwp-´groundhogg' ),
+                    'option_custom_desc'    => __( 'Tag ID', 'automatorwp' ),
                     'action_cb'         => 'automatorwp_groundhogg_get_tags',
                     'options_cb'        => 'automatorwp_groundhogg_options_cb_tag',
                     'default'           => ''

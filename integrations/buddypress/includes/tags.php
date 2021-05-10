@@ -100,29 +100,29 @@ function automatorwp_buddypress_get_group_tags() {
 
     return array(
         'group_id' => array(
-            'label'     => __( 'Group ID', 'automatorwp-buddypress' ),
+            'label'     => __( 'Group ID', 'automatorwp' ),
             'type'      => 'integer',
             'preview'   => '1',
         ),
         'group_name' => array(
-            'label'     => __( 'Group name', 'automatorwp-buddypress' ),
+            'label'     => __( 'Group name', 'automatorwp' ),
             'type'      => 'text',
-            'preview'   => __( 'My group', 'automatorwp-buddypress' ),
+            'preview'   => __( 'My group', 'automatorwp' ),
         ),
         'group_description' => array(
-            'label'     => __( 'Group description', 'automatorwp-buddypress' ),
+            'label'     => __( 'Group description', 'automatorwp' ),
             'type'      => 'text',
-            'preview'   => __( 'My group description', 'automatorwp-buddypress' ),
+            'preview'   => __( 'My group description', 'automatorwp' ),
         ),
         'group_url' => array(
-            'label'     => __( 'Group URL', 'automatorwp-buddypress' ),
+            'label'     => __( 'Group URL', 'automatorwp' ),
             'type'      => 'text',
             'preview'   => $groups_url . '/my-group',
         ),
         'group_link' => array(
-            'label'     => __( 'Group link', 'automatorwp-buddypress' ),
+            'label'     => __( 'Group link', 'automatorwp' ),
             'type'      => 'text',
-            'preview'   => '<a href="' . $groups_url . '/my-group' . '">' . __( 'My group', 'automatorwp-buddypress' ) . '</a>',
+            'preview'   => '<a href="' . $groups_url . '/my-group' . '">' . __( 'My group', 'automatorwp' ) . '</a>',
         ),
     );
 

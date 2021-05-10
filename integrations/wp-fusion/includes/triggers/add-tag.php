@@ -66,7 +66,7 @@ class AutomatorWP_WP_Fusion_Add_Tag extends AutomatorWP_Integration_Trigger {
     public function options_cb_tags( $field ) {
 
         $options = array(
-            'any' => __( 'Any tag', 'automatorwp-gamipress' ),
+            'any' => __( 'Any tag', 'automatorwp' ),
         );
 
         $tags = wp_fusion()->settings->get( 'available_tags' );

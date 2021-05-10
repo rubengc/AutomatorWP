@@ -23,12 +23,12 @@ class AutomatorWP_Elementor_Forms_Submit_Form extends AutomatorWP_Integration_Tr
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'User submits a form', 'automatorwp-elementor-forms' ),
-            'select_option'     => __( 'User submits <strong>a form</strong>', 'automatorwp-elementor-forms' ),
+            'label'             => __( 'User submits a form', 'automatorwp' ),
+            'select_option'     => __( 'User submits <strong>a form</strong>', 'automatorwp' ),
             /* translators: %1$s: Form name. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User submits %1$s %2$s time(s)', 'automatorwp-elementor-forms' ), '{form_name}', '{times}' ),
+            'edit_label'        => sprintf( __( 'User submits %1$s %2$s time(s)', 'automatorwp' ), '{form_name}', '{times}' ),
             /* translators: %1$s: Form name. */
-            'log_label'         => sprintf( __( 'User submits %1$s', 'automatorwp-elementor-forms' ), '{form_name}' ),
+            'log_label'         => sprintf( __( 'User submits %1$s', 'automatorwp' ), '{form_name}' ),
             'action'            => 'elementor_pro/forms/new_record',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
@@ -36,10 +36,10 @@ class AutomatorWP_Elementor_Forms_Submit_Form extends AutomatorWP_Integration_Tr
             'options'           => array(
                 'form_name' => array(
                     'from' => 'form_name',
-                    'default' => __( 'any form', 'automatorwp-elementor-forms' ),
+                    'default' => __( 'any form', 'automatorwp' ),
                     'fields' => array(
                         'form_name' => array(
-                            'name' => __( 'Form name:', 'automatorwp-elementor-forms' ),
+                            'name' => __( 'Form name:', 'automatorwp' ),
                             'type' => 'text',
                             'default' => ''
                         )
@@ -50,9 +50,9 @@ class AutomatorWP_Elementor_Forms_Submit_Form extends AutomatorWP_Integration_Tr
             'tags' => array_merge(
                 array(
                     'form_field:FIELD_ID' => array(
-                        'label'     => __( 'Form field value', 'automatorwp-elementor-forms' ),
+                        'label'     => __( 'Form field value', 'automatorwp' ),
                         'type'      => 'text',
-                        'preview'   => __( 'Form field value, replace "FIELD_ID" by the field id', 'automatorwp-elementor-forms' ),
+                        'preview'   => __( 'Form field value, replace "FIELD_ID" by the field id', 'automatorwp' ),
                     ),
                 ),
                 automatorwp_utilities_times_tag()
@@ -188,8 +188,8 @@ class AutomatorWP_Elementor_Forms_Submit_Form extends AutomatorWP_Integration_Tr
         }
 
         $log_fields['form_fields'] = array(
-            'name' => __( 'Fields Submitted', 'automatorwp-elementor-forms' ),
-            'desc' => __( 'Information about the fields values sent on this form submission.', 'automatorwp-elementor-forms' ),
+            'name' => __( 'Fields Submitted', 'automatorwp' ),
+            'desc' => __( 'Information about the fields values sent on this form submission.', 'automatorwp' ),
             'type' => 'text',
         );
 
