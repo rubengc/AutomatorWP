@@ -1088,6 +1088,10 @@ function automatorwp_maybe_user_completed_automation( $automation = null, $user_
     // Check if user has completed all automation trigger
     foreach( $triggers as $trigger ) {
 
+        if( $trigger->type === 'filter' ) {
+            continue;
+        }
+
         // If user has not completed this trigger the number of times required then break to finish this function
         if( ! automatorwp_has_user_completed_trigger( $trigger->id, $user_id ) ) {
             $all_completed = false;

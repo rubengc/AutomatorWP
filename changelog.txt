@@ -32,7 +32,7 @@
 * Improved the display of nested elements in logs.
 * HappyForms: Added support to detect HappyForms pro.
 * **Bug Fixes**
-* Fixed a type that causes that notifications to new created users on anonymous automations are not getting sent.
+* Fixed a typo that causes that notifications to new created users on anonymous automations are not getting sent.
 
 = 1.5.4 =
 

@@ -256,6 +256,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.1 ###
+
+* **Bug Fixes**
+* Fixed a issue that causes that automations with several OR filters does not get completed.
+
 ### 1.6.0 ###
 
 * **Bug Fixes**
