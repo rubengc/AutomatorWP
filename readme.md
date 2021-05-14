@@ -256,6 +256,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.2 ###
+
+* **Improvements**
+* Improved filters check for triggers and actions with multiples filters.
+* Performance improvements in filters check function.
+
 ### 1.6.1 ###
 
 * **Bug Fixes**

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-05-07 16:44+0200\n"
+"POT-Creation-Date: 2021-05-14 17:35+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2139,7 +2139,9 @@ msgid "Group:"
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:39
+#: integrations/buddyboss/includes/tags.php:103
 #: integrations/buddypress/includes/actions/add-user-group.php:39
+#: integrations/buddypress/includes/tags.php:103
 #: integrations/learndash/includes/actions/user-group-leader.php:40
 #: integrations/learndash/includes/actions/user-group-leader.php:46
 #: integrations/learndash/includes/actions/user-group.php:37
@@ -2212,6 +2214,38 @@ msgstr ""
 msgid "Activity content"
 msgstr ""
 
+#: integrations/buddyboss/includes/tags.php:108
+#: integrations/buddypress/includes/tags.php:108
+msgid "Group name"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:110
+#: integrations/buddyboss/includes/tags.php:125
+#: integrations/buddypress/includes/tags.php:110
+#: integrations/buddypress/includes/tags.php:125
+msgid "My group"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:113
+#: integrations/buddypress/includes/tags.php:113
+msgid "Group description"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:115
+#: integrations/buddypress/includes/tags.php:115
+msgid "My group description"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:118
+#: integrations/buddypress/includes/tags.php:118
+msgid "Group URL"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:123
+#: integrations/buddypress/includes/tags.php:123
+msgid "Group link"
+msgstr ""
+
 #: integrations/buddyboss/includes/triggers/account-activation.php:26
 #: integrations/buddyboss/includes/triggers/account-activation.php:28
 #: integrations/buddyboss/includes/triggers/account-activation.php:29
@@ -2250,11 +2284,6 @@ msgstr ""
 #: integrations/wp-user-manager/includes/triggers/join-group.php:31
 #, php-format
 msgid "User joins %1$s"
-msgstr ""
-
-#: integrations/buddyboss/includes/triggers/join-group.php:49
-#: integrations/buddypress/includes/triggers/join-group.php:49
-msgid "Group"
 msgstr ""
 
 #: integrations/buddyboss/includes/triggers/publish-activity.php:26

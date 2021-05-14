@@ -891,6 +891,11 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
         // Break this loop if the trigger filters are not passed
         if( ! $deserves_trigger_filters ) {
 
+            // For OR operators, prevent to bail until check all of them
+            if( $i < count( $filters ) && $filter_options['operator'] === 'or' ) {
+                continue;
+            }
+
             // Register why user has not completed this filter
             $log_meta = array(
                 'item_type' => 'trigger'
@@ -923,7 +928,6 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
             ), $log_meta );
 
             break;
-
         }
 
     }
@@ -1521,6 +1525,11 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
 
         // Break this loop if the action filters are not passed
         if( ! $deserves_action_filters ) {
+
+            // For OR operators, prevent to bail until check all of them
+            if( $i < count( $filters ) && $filter_options['operator'] === 'or' ) {
+                continue;
+            }
 
             // Register why user has not completed this filter
             $log_meta = array(
