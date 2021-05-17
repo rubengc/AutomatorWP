@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_FluentForm {
 
         automatorwp_register_integration( 'fluentform', array(
             'label' => 'WP Fluent Forms',
-            'icon'  => AUTOMATORWP_FLUENTFORM_URL . 'assets/fluentform.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/fluentform.svg',
         ) );
 
     }

@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_wpForo {
 
         automatorwp_register_integration( 'wpforo', array(
             'label' => 'wpForo',
-            'icon'  => AUTOMATORWP_WPFORO_URL . 'assets/wpforo.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wpforo.svg',
         ) );
 
     }

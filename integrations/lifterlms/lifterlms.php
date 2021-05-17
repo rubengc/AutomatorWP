@@ -115,7 +115,7 @@ final class AutomatorWP_Integration_LifterLMS {
 
         automatorwp_register_integration( 'lifterlms', array(
             'label' => 'LifterLMS',
-            'icon'  => AUTOMATORWP_LIFTERLMS_URL . 'assets/lifterlms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/lifterlms.svg',
         ) );
 
     }

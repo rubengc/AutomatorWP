@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_The_Events_Calendar {
 
         automatorwp_register_integration( 'the_events_calendar', array(
             'label' => 'The Events Calendar',
-            'icon'  => AUTOMATORWP_THE_EVENTS_CALENDAR_URL . 'assets/the-events-calendar.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/the-events-calendar.svg',
         ) );
 
     }

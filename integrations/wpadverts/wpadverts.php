@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_WPAdverts {
 
         automatorwp_register_integration( 'wpadverts', array(
             'label' => 'WPAdverts',
-            'icon'  => AUTOMATORWP_WPADVERTS_URL . 'assets/wpadverts.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wpadverts.svg',
         ) );
 
     }

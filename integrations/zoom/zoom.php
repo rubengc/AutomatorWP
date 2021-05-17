@@ -116,7 +116,7 @@ final class AutomatorWP_Integration_Zoom {
 
         automatorwp_register_integration( 'zoom', array(
             'label' => 'Zoom',
-            'icon'  => AUTOMATORWP_ZOOM_URL . 'assets/zoom.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/zoom.svg',
         ) );
 
     }

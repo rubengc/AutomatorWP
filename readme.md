@@ -256,6 +256,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.3 ###
+
+* **Improvements**
+* Elementor: Improved pro version detection checks.
+* Replace the use of constants by the plugin_dir_url() when registering integrations.
+* **Bug Fixes**
+* Elementor: Fixed constants already defined.
+
 ### 1.6.2 ###
 
 * **Improvements**

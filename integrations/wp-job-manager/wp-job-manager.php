@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_WP_Job_Manager {
 
         automatorwp_register_integration( 'wp_job_manager', array(
             'label' => 'WP Job Manager',
-            'icon'  => AUTOMATORWP_WP_JOB_MANAGER_URL . 'assets/wp-job-manager.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-job-manager.svg',
         ) );
 
     }

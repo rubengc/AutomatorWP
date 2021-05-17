@@ -114,7 +114,7 @@ final class AutomatorWP_Integration_MasterStudy_LMS {
 
         automatorwp_register_integration( 'masterstudy_lms', array(
             'label' => 'MasterStudy LMS',
-            'icon'  => AUTOMATORWP_MASTERSTUDY_LMS_URL . 'assets/masterstudy-lms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/masterstudy-lms.svg',
         ) );
 
     }

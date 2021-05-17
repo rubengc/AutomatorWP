@@ -108,7 +108,7 @@ final class AutomatorWP_Integration_Forminator {
 
         automatorwp_register_integration( 'forminator', array(
             'label' => 'Forminator',
-            'icon'  => AUTOMATORWP_FORMINATOR_URL . 'assets/forminator.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/forminator.svg',
         ) );
 
     }

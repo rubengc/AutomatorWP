@@ -114,7 +114,7 @@ final class AutomatorWP_Integration_PeepSo {
 
         automatorwp_register_integration( 'peepso', array(
             'label' => 'PeepSo',
-            'icon'  => AUTOMATORWP_PEEPSO_URL . 'assets/peepso.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/peepso.svg',
         ) );
 
     }

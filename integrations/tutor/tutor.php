@@ -114,7 +114,7 @@ final class AutomatorWP_Integration_Tutor_LMS {
 
         automatorwp_register_integration( 'tutor', array(
             'label' => 'Tutor LMS',
-            'icon'  => AUTOMATORWP_TUTOR_URL . 'assets/tutor.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/tutor.svg',
         ) );
 
     }

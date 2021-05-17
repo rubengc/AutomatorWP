@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_Digimember {
 
         automatorwp_register_integration( 'digimember', array(
             'label' => 'Digimember',
-            'icon'  => AUTOMATORWP_DIGIMEMBER_URL . 'assets/digimember.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/digimember.svg',
         ) );
 
     }

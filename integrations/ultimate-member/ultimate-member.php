@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_Ultimate_Member {
 
         automatorwp_register_integration( 'ultimate_member', array(
             'label' => 'Ultimate Member',
-            'icon'  => AUTOMATORWP_ULTIMATE_MEMBER_URL . 'assets/ultimate-member.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/ultimate-member.svg',
         ) );
 
     }

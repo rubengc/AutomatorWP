@@ -117,7 +117,7 @@ final class AutomatorWP_Integration_wpDiscuz {
 
         automatorwp_register_integration( 'wpdiscuz', array(
             'label' => 'wpDiscuz',
-            'icon'  => AUTOMATORWP_WPDISCUZ_URL . 'assets/wpdiscuz.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wpdiscuz.svg',
         ) );
 
     }

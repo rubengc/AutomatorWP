@@ -38,7 +38,7 @@ final class AutomatorWP_Integration_Caldera_Forms {
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
-                    }
+        }
 
         return self::$instance;
     }
@@ -97,10 +97,6 @@ final class AutomatorWP_Integration_Caldera_Forms {
     private function hooks() {
 
         add_action( 'automatorwp_init', array( $this, 'register_integration' ) );
-        // Setup our activation and deactivation hooks
-        register_activation_hook( __FILE__, array( $this, 'activate' ) );
-        register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-
         
     }
 
@@ -113,30 +109,8 @@ final class AutomatorWP_Integration_Caldera_Forms {
 
         automatorwp_register_integration( 'caldera_forms', array(
             'label' => 'Caldera Forms',
-            'icon'  => AUTOMATORWP_CALDERA_FORMS_URL . 'assets/caldera-forms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/caldera-forms.svg',
         ) );
-
-    }
-
-    /**
-     * Activation hook for the plugin.
-     *
-     * @since  1.0.0
-     */
-    function activate() {
-
-        if( $this->meets_requirements() && ! $this->pro_installed() ) {
-
-        }
-
-    }
-
-    /**
-     * Deactivation hook for the plugin.
-     *
-     * @since  1.0.0
-     */
-    function deactivate() {
 
     }
 

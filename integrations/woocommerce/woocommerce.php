@@ -135,7 +135,7 @@ final class AutomatorWP_Integration_WooCommerce {
 
         automatorwp_register_integration( 'woocommerce', array(
             'label' => 'WooCommerce',
-            'icon'  => AUTOMATORWP_WOOCOMMERCE_URL . 'assets/woocommerce.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/woocommerce.svg',
         ) );
 
     }

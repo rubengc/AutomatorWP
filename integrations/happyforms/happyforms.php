@@ -108,7 +108,7 @@ final class AutomatorWP_Integration_HappyForms {
 
         automatorwp_register_integration( 'happyforms', array(
             'label' => 'HappyForms',
-            'icon'  => AUTOMATORWP_HAPPYFORMS_URL . 'assets/happyforms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/happyforms.svg',
         ) );
 
     }

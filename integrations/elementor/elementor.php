@@ -114,7 +114,7 @@ final class AutomatorWP_Integration_Elementor_Forms {
 
         automatorwp_register_integration( 'elementor', array(
             'label' => 'Elementor',
-            'icon'  => AUTOMATORWP_ELEMENTOR_FORMS_URL . 'assets/elementor.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/elementor.svg',
         ) );
 
     }
@@ -149,11 +149,11 @@ final class AutomatorWP_Integration_Elementor_Forms {
      */
     private function pro_installed() {
 
-        if ( ! class_exists( 'AutomatorWP_Elementor_Forms' ) ) {
-            return false;
+        if ( class_exists( 'AutomatorWP_Elementor' ) || class_exists( 'AutomatorWP_Elementor_Forms' ) ) {
+            return true;
         }
 
-        return true;
+        return false;
 
     }
 

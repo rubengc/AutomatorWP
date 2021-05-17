@@ -38,7 +38,7 @@ final class AutomatorWP_Integration_Contact_Form_7 {
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
-                    }
+        }
 
         return self::$instance;
     }
@@ -108,7 +108,7 @@ final class AutomatorWP_Integration_Contact_Form_7 {
 
         automatorwp_register_integration( 'contact_form_7', array(
             'label' => 'Contact Form 7',
-            'icon'  => AUTOMATORWP_CONTACT_FORM_7_URL . 'assets/contact-form-7.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/contact-form-7.svg',
         ) );
 
     }

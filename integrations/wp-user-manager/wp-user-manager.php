@@ -124,7 +124,7 @@ final class AutomatorWP_Integration_WP_User_Manager {
 
         automatorwp_register_integration( 'wp_user_manager', array(
             'label' => 'WP User Manager',
-            'icon'  => AUTOMATORWP_WP_USER_MANAGER_URL . 'assets/wp-user-manager.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-user-manager.svg',
         ) );
 
     }

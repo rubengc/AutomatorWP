@@ -130,7 +130,7 @@ final class AutomatorWP_Integration_BuddyPress {
 
         automatorwp_register_integration( 'buddypress', array(
             'label' => 'BuddyPress',
-            'icon'  => AUTOMATORWP_BUDDYPRESS_URL . 'assets/buddypress.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/buddypress.svg',
         ) );
 
     }

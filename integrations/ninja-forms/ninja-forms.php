@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_Ninja_Forms {
 
         automatorwp_register_integration( 'ninja_forms', array(
             'label' => 'Ninja Forms',
-            'icon'  => AUTOMATORWP_NINJA_FORMS_URL . 'assets/ninja-forms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/ninja-forms.svg',
         ) );
 
     }

@@ -111,7 +111,7 @@ final class AutomatorWP_Integration_Presto_Player {
 
         automatorwp_register_integration( 'presto_player', array(
             'label' => 'Presto Player',
-            'icon'  => AUTOMATORWP_PRESTO_PLAYER_URL . 'assets/presto-player.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/presto-player.svg',
         ) );
 
     }

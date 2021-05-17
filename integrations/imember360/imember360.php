@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_iMember360 {
 
         automatorwp_register_integration( 'imember360', array(
             'label' => 'iMember360',
-            'icon'  => AUTOMATORWP_IMEMBER360_URL . 'assets/imember360.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/imember360.svg',
         ) );
 
     }

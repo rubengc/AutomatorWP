@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_AffiliateWP {
 
         automatorwp_register_integration( 'affiliatewp', array(
             'label' => 'AffiliateWP',
-            'icon'  => AUTOMATORWP_AFFILIATEWP_URL . 'assets/affiliatewp.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/affiliatewp.svg',
         ) );
 
     }

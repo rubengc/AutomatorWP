@@ -122,7 +122,7 @@ final class AutomatorWP_Integration_GamiPress {
 
         automatorwp_register_integration( 'gamipress', array(
             'label' => 'GamiPress',
-            'icon'  => AUTOMATORWP_GAMIPRESS_URL . 'assets/gamipress.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/gamipress.svg',
         ) );
 
     }

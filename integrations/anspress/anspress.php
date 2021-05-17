@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_AnsPress {
 
         automatorwp_register_integration( 'anspress', array(
             'label' => 'AnsPress',
-            'icon'  => AUTOMATORWP_ANSPRESS_URL . 'assets/anspress.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/anspress.svg',
         ) );
 
     }

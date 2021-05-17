@@ -112,7 +112,7 @@ final class AutomatorWP_Integration_Paid_Memberships_Pro {
 
         automatorwp_register_integration( 'paid_memberships_pro', array(
             'label' => 'Paid Memberships Pro',
-            'icon'  => AUTOMATORWP_PAID_MEMBERSHIPS_PRO_URL . 'assets/paid-memberships-pro.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/paid-memberships-pro.svg',
         ) );
 
     }

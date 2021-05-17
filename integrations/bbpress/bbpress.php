@@ -111,7 +111,7 @@ final class AutomatorWP_Integration_bbPress {
 
         automatorwp_register_integration( 'bbpress', array(
             'label' => 'bbPress',
-            'icon'  => AUTOMATORWP_BBPRESS_URL . 'assets/bbpress.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/bbpress.svg',
         ) );
 
     }

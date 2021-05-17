@@ -118,7 +118,7 @@ final class AutomatorWP_Integration_WP_Simple_Pay {
 
         automatorwp_register_integration( 'wp_simple_pay', array(
             'label' => 'WP Simple Pay',
-            'icon'  => AUTOMATORWP_WP_SIMPLE_PAY_URL . 'assets/wp-simple-pay.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-simple-pay.svg',
         ) );
 
     }

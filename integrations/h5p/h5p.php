@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_H5P {
 
         automatorwp_register_integration( 'h5p', array(
             'label' => 'H5P',
-            'icon'  => AUTOMATORWP_H5P_URL . 'assets/h5p.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/h5p.svg',
         ) );
 
     }

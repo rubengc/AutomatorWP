@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_Formidable_Forms {
 
         automatorwp_register_integration( 'formidable_forms', array(
             'label' => 'Formidable Forms',
-            'icon'  => AUTOMATORWP_FORMIDABLE_FORMS_URL . 'assets/formidable-forms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/formidable-forms.svg',
         ) );
 
     }

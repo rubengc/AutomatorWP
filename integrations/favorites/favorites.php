@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_Favorites {
 
         automatorwp_register_integration( 'favorites', array(
             'label' => 'Favorites',
-            'icon'  => AUTOMATORWP_FAVORITES_URL . 'assets/favorites.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/favorites.svg',
         ) );
 
     }

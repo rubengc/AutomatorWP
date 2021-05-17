@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_Upsell_Plugin {
 
         automatorwp_register_integration( 'upsell_plugin', array(
             'label' => 'Upsell Plugin',
-            'icon'  => AUTOMATORWP_UPSELL_PLUGIN_URL . 'assets/upsell-plugin.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/upsell-plugin.svg',
         ) );
 
     }

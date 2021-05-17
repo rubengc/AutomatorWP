@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_MemberPress {
 
         automatorwp_register_integration( 'memberpress', array(
             'label' => 'MemberPress',
-            'icon'  => AUTOMATORWP_MEMBERPRESS_URL . 'assets/memberpress.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/memberpress.svg',
         ) );
 
     }

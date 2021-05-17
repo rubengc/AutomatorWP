@@ -123,7 +123,7 @@ final class AutomatorWP_Integration_LearnDash {
 
         automatorwp_register_integration( 'learndash', array(
             'label' => 'LearnDash',
-            'icon'  => AUTOMATORWP_LEARNDASH_URL . 'assets/learndash.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/learndash.svg',
         ) );
 
     }

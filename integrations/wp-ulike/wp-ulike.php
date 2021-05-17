@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_WP_Ulike {
 
         automatorwp_register_integration( 'wp_ulike', array(
             'label' => 'WP Ulike',
-            'icon'  => AUTOMATORWP_WP_ULIKE_URL . 'assets/wp-ulike.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-ulike.svg',
         ) );
 
     }

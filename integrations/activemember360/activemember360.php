@@ -112,7 +112,7 @@ final class AutomatorWP_Integration_ActiveMember360 {
 
         automatorwp_register_integration( 'activemember360', array(
             'label' => 'ActiveMember360',
-            'icon'  => AUTOMATORWP_ACTIVEMEMBER360_URL . 'assets/activemember360.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/activemember360.svg',
         ) );
 
     }

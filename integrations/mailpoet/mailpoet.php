@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_MailPoet {
 
         automatorwp_register_integration( 'mailpoet', array(
             'label' => 'MailPoet',
-            'icon'  => AUTOMATORWP_MAILPOET_URL . 'assets/mailpoet.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/mailpoet.svg',
         ) );
 
     }

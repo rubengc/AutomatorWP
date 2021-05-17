@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_Easy_Digital_Downloads {
 
         automatorwp_register_integration( 'easy_digital_downloads', array(
             'label' => 'Easy Digital Downloads',
-            'icon'  => AUTOMATORWP_EASY_DIGITAL_DOWNLOADS_URL . 'assets/easy-digital-downloads.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/easy-digital-downloads.svg',
         ) );
 
     }

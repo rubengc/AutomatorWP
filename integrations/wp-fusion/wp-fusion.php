@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_WP_Fusion {
 
         automatorwp_register_integration( 'wp_fusion', array(
             'label' => 'WP Fusion',
-            'icon'  => AUTOMATORWP_WP_FUSION_URL . 'assets/wp-fusion.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-fusion.svg',
         ) );
 
     }

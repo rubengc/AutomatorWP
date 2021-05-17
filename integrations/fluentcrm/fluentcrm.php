@@ -116,7 +116,7 @@ final class AutomatorWP_Integration_FluentCRM {
 
         automatorwp_register_integration( 'fluentcrm', array(
             'label' => 'FluentCRM',
-            'icon'  => AUTOMATORWP_FLUENTCRM_URL . 'assets/fluentcrm.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/fluentcrm.svg',
         ) );
 
     }

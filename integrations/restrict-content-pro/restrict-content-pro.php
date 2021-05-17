@@ -118,7 +118,7 @@ final class AutomatorWP_Integration_Restrict_Content_Pro {
 
         automatorwp_register_integration( 'restrict_content_pro', array(
             'label' => 'Restrict Content Pro',
-            'icon'  => AUTOMATORWP_RESTRICT_CONTENT_PRO_URL . 'assets/restrict-content-pro.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/restrict-content-pro.svg',
         ) );
 
     }

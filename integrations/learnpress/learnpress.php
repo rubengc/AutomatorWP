@@ -114,7 +114,7 @@ final class AutomatorWP_Integration_LearnPress {
 
         automatorwp_register_integration( 'learnpress', array(
             'label' => 'LearnPress',
-            'icon'  => AUTOMATORWP_LEARNPRESS_URL . 'assets/learnpress.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/learnpress.svg',
         ) );
 
     }

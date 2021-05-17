@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_Invite_Anyone {
 
         automatorwp_register_integration( 'invite_anyone', array(
             'label' => 'Invite Anyone',
-            'icon'  => AUTOMATORWP_INVITE_ANYONE_URL . 'assets/invite-anyone.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/invite-anyone.svg',
         ) );
 
     }

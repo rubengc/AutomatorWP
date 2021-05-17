@@ -108,7 +108,7 @@ final class AutomatorWP_Integration_WPForms {
 
         automatorwp_register_integration( 'wpforms', array(
             'label' => 'WPForms',
-            'icon'  => AUTOMATORWP_WPFORMS_URL . 'assets/wpforms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wpforms.svg',
         ) );
 
     }

@@ -137,7 +137,7 @@ final class AutomatorWP_Integration_BuddyBoss {
 
         automatorwp_register_integration( 'buddyboss', array(
             'label' => 'BuddyBoss',
-            'icon'  => AUTOMATORWP_BUDDYBOSS_URL . 'assets/buddyboss.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/buddyboss.svg',
         ) );
 
     }

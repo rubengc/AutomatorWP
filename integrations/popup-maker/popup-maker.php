@@ -103,7 +103,7 @@ final class AutomatorWP_Integration_Popup_Maker {
 
         automatorwp_register_integration( 'popup_maker', array(
             'label' => 'Popup Maker',
-            'icon'  => AUTOMATORWP_POPUP_MAKER_URL . 'assets/popup-maker.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/popup-maker.svg',
         ) );
 
     }

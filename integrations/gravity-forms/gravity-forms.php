@@ -113,7 +113,7 @@ final class AutomatorWP_Integration_Gravity_Forms {
 
         automatorwp_register_integration( 'gravity_forms', array(
             'label' => 'Gravity Forms',
-            'icon'  => AUTOMATORWP_GRAVITY_FORMS_URL . 'assets/gravity-forms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/gravity-forms.svg',
         ) );
 
     }

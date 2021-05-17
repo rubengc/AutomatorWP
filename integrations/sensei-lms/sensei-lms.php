@@ -111,7 +111,7 @@ final class AutomatorWP_Integration_Sensei_LMS {
 
         automatorwp_register_integration( 'sensei_lms', array(
             'label' => 'Sensei LMS',
-            'icon'  => AUTOMATORWP_SENSEI_LMS_URL . 'assets/sensei-lms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/sensei-lms.svg',
         ) );
 
     }

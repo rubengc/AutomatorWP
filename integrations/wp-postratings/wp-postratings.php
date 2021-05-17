@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_WP_PostRatings {
 
         automatorwp_register_integration( 'wp_postratings', array(
             'label' => 'WP PostRatings',
-            'icon'  => AUTOMATORWP_WP_POSTRATINGS_URL . 'assets/wp-postratings.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-postratings.svg',
         ) );
 
     }

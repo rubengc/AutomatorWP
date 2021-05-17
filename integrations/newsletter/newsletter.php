@@ -103,7 +103,7 @@ final class AutomatorWP_Integration_Newsletter {
 
         automatorwp_register_integration( 'newsletter', array(
             'label' => 'Newsletter',
-            'icon'  => AUTOMATORWP_NEWSLETTER_URL . 'assets/newsletter.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/newsletter.svg',
         ) );
 
     }

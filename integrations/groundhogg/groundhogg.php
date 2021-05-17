@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_Groundhogg {
 
         automatorwp_register_integration( 'groundhogg', array(
             'label' => 'Groundhogg',
-            'icon'  => AUTOMATORWP_GROUNDHOGG_URL . 'assets/groundhogg.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/groundhogg.svg',
         ) );
 
     }

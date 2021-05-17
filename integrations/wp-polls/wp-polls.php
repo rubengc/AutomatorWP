@@ -109,7 +109,7 @@ final class AutomatorWP_Integration_WP_Polls {
 
         automatorwp_register_integration( 'wp_polls', array(
             'label' => 'WP Polls',
-            'icon'  => AUTOMATORWP_WP_POLLS_URL . 'assets/wp-polls.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-polls.svg',
         ) );
 
     }

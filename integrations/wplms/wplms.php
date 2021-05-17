@@ -112,7 +112,7 @@ final class AutomatorWP_Integration_WPLMS {
 
         automatorwp_register_integration( 'wplms', array(
             'label' => 'WPLMS',
-            'icon'  => AUTOMATORWP_WPLMS_URL . 'assets/wplms.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wplms.svg',
         ) );
 
     }

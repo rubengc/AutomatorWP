@@ -110,7 +110,7 @@ final class AutomatorWP_Integration_WishList_Member {
 
         automatorwp_register_integration( 'wishlist_member', array(
             'label' => 'WishList Member',
-            'icon'  => AUTOMATORWP_WISHLIST_MEMBER_URL . 'assets/wishlist-member.svg',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wishlist-member.svg',
         ) );
 
     }
