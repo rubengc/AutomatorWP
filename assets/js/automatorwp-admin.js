@@ -21,6 +21,9 @@
     // Ajax Selector Control
     $('.automatorwp-ajax-selector select').each(function() { automatorwp_ajax_selector( $(this) ); });
 
+    // Filter selector
+    $('.automatorwp-filter-selector select').each(function() { automatorwp_filter_selector( $(this) ); });
+
     // Update items positions at init to avoid any order error
     automatorwp_update_items_position( $('.automatorwp-automation-items.automatorwp-triggers') );
     automatorwp_update_items_position( $('.automatorwp-automation-items.automatorwp-actions') );
@@ -1433,6 +1436,55 @@ function automatorwp_tags_selector( element ) {
 }
 
 /**
+ * Turns the given element into a filter selector
+ *
+ * @since 1.0.0
+ *
+ * @param {Object} element
+ */
+function automatorwp_filter_selector( element ) {
+
+    var $ = $ || jQuery;
+
+    element.automatorwp_select2({
+        theme: 'default automatorwp-select2 automatorwp-filter-select2',
+        escapeMarkup: function(markup) { return markup; },
+        templateResult: function(data) {
+            // Custom template result to allow HTML markup on select items
+            var text = data.text;
+
+            if( data.element !== undefined ) {
+                // Check if option has something on label attribute
+                var label = $(data.element).attr('label');
+
+                if( label !== undefined && label.length ) {
+                    text = label;
+                }
+
+                // Check if option has something on data-text attribute
+                var custom_text = $(data.element).data('text');
+
+                if( custom_text !== undefined && custom_text.length ) {
+                    text = custom_text;
+                }
+
+                // Check if option has an icon
+                var icon = $(data.element).data('icon');
+
+                if( icon !== undefined ) {
+                    text = '<img src="' + icon + '" />' + text;
+                }
+
+            }
+
+            return text;
+        },
+        matcher: automatorwp_select2_optgroup_matcher,
+    });
+
+}
+
+/**
  * Get form fields values
  *
  * @since 1.0.0
@@ -1553,6 +1605,9 @@ function automatorwp_initialize_form_fields( form ) {
 
     // Tags selector
     form.find('.automatorwp-automation-tag-selector').each(function() { automatorwp_tags_selector( $(this) ); });
+
+    // Filter selector
+    form.find('.automatorwp-filter-selector select').each(function() { automatorwp_filter_selector( $(this) ); });
 
     // Fix repeatable fields selector
     form.find('.cmb-repeat-table').each(function() {

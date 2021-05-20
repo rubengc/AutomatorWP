@@ -676,6 +676,23 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     display: none !important;
 }
 
+.automatorwp-filter-select2 .select2-dropdown li[role="group"] > strong {
+    background: #fff;
+    border-bottom: 1px solid #ccd0d4;
+    padding: 10px 12px;
+    line-height: 24px;
+}
+
+.automatorwp-filter-select2 .select2-dropdown li[role="group"] > strong img {
+    display: inline-block;
+    float: left;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin-right: 8px;
+}
 
 /* -------------------------------------------
     Forms
@@ -979,7 +996,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     float: left;
     width: 24px;
     height: 24px;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #ccd0d4;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
     margin-right: 8px;

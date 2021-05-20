@@ -47,8 +47,8 @@ class AutomatorWP_Trigger_Filter extends AutomatorWP_Integration_Trigger {
                     'fields' => array(
                         'filter' => array(
                             'name' => __( 'Filter:', 'automatorwp' ),
-                            'type' => 'automatorwp_select',
-                            'classes' => 'automatorwp-selector',
+                            'type' => 'automatorwp_select_filter',
+                            'classes' => 'automatorwp-filter-selector',
                             'options_cb'  => 'automatorwp_options_cb_filters',
                             'default' => 'any'
                         ),

@@ -256,6 +256,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.4 ###
+
+* **New Features**
+* WordPress: New trigger: User resets their password.
+* WordPress: New trigger: User profile field gets updated.
+* **Improvements**
+* Style improvements for the filter selector.
+
 ### 1.6.3 ###
 
 * **Improvements**

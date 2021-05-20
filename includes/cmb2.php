@@ -414,7 +414,7 @@ function automatorwp_options_cb_filters( $field ) {
             continue;
         }
 
-        $integration = AutomatorWP()->integrations[$args['integration']]['label'];
+        $integration = $args['integration'];
 
         if( ! isset( $options[$integration] ) ) {
             $options[$integration] = array();
