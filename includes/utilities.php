@@ -263,28 +263,11 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
         'action_cb'         => '',
     ) );
 
-    $attributes = automatorwp_utilities_get_selector_attributes( $args );
-    $attributes['data-action'] = $args['action_cb'];
-
     $option = array(
         'from' => $args['field'],
         'default' => $args['option_default'],
         'fields' => array(
-            $args['field'] => array(
-                'name'                  => $args['name'],
-                'desc'                  => $args['desc'],
-                'type'                  => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
-                'classes'               => 'automatorwp-ajax-selector',
-                'option_none'           => $args['option_none'],
-                'option_none_value'     => $args['option_none_value'],
-                'option_none_label'     => $args['option_none_label'],
-                'option_custom'         => $args['option_custom'],
-                'option_custom_value'   => $args['option_custom_value'],
-                'option_custom_label'   => $args['option_custom_label'],
-                'attributes'            => $attributes,
-                'options_cb'            => $args['options_cb'],
-                'default'               => $args['default']
-            )
+            $args['field'] => automatorwp_utilities_ajax_selector_field( $args )
         )
     );
 
@@ -294,6 +277,43 @@ function automatorwp_utilities_ajax_selector_option( $args = array() ) {
     }
 
     return $option;
+
+}
+
+/**
+ * Utility function to get ajax selector field
+ *
+ * @since 1.0.0
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function automatorwp_utilities_ajax_selector_field( $args = array() ) {
+
+    $args = automatorwp_utilities_parse_selector_args( $args, array(
+        'field'             => 'ajax_options',
+        'action_cb'         => '',
+    ) );
+
+    $attributes = automatorwp_utilities_get_selector_attributes( $args );
+    $attributes['data-action'] = $args['action_cb'];
+
+    return array(
+        'name'                  => $args['name'],
+        'desc'                  => $args['desc'],
+        'type'                  => ( $args['multiple'] ? 'automatorwp_select' : 'select' ),
+        'classes'               => 'automatorwp-ajax-selector',
+        'option_none'           => $args['option_none'],
+        'option_none_value'     => $args['option_none_value'],
+        'option_none_label'     => $args['option_none_label'],
+        'option_custom'         => $args['option_custom'],
+        'option_custom_value'   => $args['option_custom_value'],
+        'option_custom_label'   => $args['option_custom_label'],
+        'attributes'            => $attributes,
+        'options_cb'            => $args['options_cb'],
+        'default'               => $args['default']
+    );
 
 }
 

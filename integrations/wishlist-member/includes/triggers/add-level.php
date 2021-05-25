@@ -68,7 +68,7 @@ class AutomatorWP_WishList_Member_Add_Level extends AutomatorWP_Integration_Trig
         global $WishListMemberInstance;
 
         $options = array(
-            'any' => __( 'any level', 'automatorwp-gamipress' ),
+            'any' => __( 'any level', 'automatorwp' ),
         );
 
         $levels = $WishListMemberInstance->GetOption( 'wpm_levels' );

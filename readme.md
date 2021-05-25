@@ -86,6 +86,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
 * [AnsPress](https://automatorwp.com/add-ons/anspress/)
+* [Awesome Support](https://automatorwp.com/add-ons/awesome-support/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
 * [BuddyBoss](https://automatorwp.com/add-ons/buddyboss/)
 * [BuddyPress](https://automatorwp.com/add-ons/buddypress/)
@@ -111,6 +112,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [MailPoet](https://automatorwp.com/add-ons/mailpoet/)
 * [MasterStudy LMS](https://automatorwp.com/add-ons/masterstudy-lms/)
 * [MemberPress](https://automatorwp.com/add-ons/memberpress/)
+* [Modern Events Calendar](https://automatorwp.com/add-ons/modern-events-calendar/)
 * [Newsletter](https://automatorwp.com/add-ons/newsletter/)
 * [Ninja Forms](https://automatorwp.com/add-ons/ninja-forms/)
 * [Paid Memberships Pro](https://automatorwp.com/add-ons/paid-memberships-pro/)
@@ -255,6 +257,17 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.6.5 ###
+
+* **New Features**
+* New integration: Awesome Support.
+* Awesome Support: New trigger: Agent opens a ticket.
+* Awesome Support: New trigger: Client opens a ticket.
+* New integration: Modern Events Calendar.
+* Modern Events Calendar: New trigger: User booking for any/specific event is completed.
+* **Developer Notes**
+* Made ajax selector request data more extensible.
 
 ### 1.6.4 ###
 

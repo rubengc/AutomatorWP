@@ -236,7 +236,8 @@ function automatorwp_ajax_selector( $this ) {
             delay: 250,
             type: 'POST',
             data: function( params ) {
-                return {
+
+                var data = {
                     q: params.term,
                     page: params.page || 1,
                     action: $this.data('action'),
@@ -249,6 +250,18 @@ function automatorwp_ajax_selector( $this ) {
                     option_custom_value: $this.data('option-custom-value'),
                     option_custom_label: $this.data('option-custom-label'),
                 };
+
+                /**
+                 * Allow external functions to add their own data
+                 *
+                 * @since 1.0.0
+                 *
+                 * @param Object    data
+                 * @param Node      element
+                 */
+                $this.trigger( 'automatorwp_ajax_selector_data', [ data, $this ] );
+
+                return data;
             },
             processResults: automatorwp_select2_ajax_process_results
         },

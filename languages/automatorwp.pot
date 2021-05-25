@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-05-20 12:09+0200\n"
+"POT-Creation-Date: 2021-05-25 09:11+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -592,7 +592,7 @@ msgstr ""
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:310 includes/utilities.php:365 includes/utilities.php:400
+#: includes/cmb2.php:310 includes/utilities.php:385 includes/utilities.php:420
 msgid "any role"
 msgstr ""
 
@@ -604,7 +604,7 @@ msgstr ""
 msgid "Choose a filter"
 msgstr ""
 
-#: includes/cmb2.php:449 includes/utilities.php:470
+#: includes/cmb2.php:449 includes/utilities.php:490
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:45
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:54
 msgid "Use a custom value"
@@ -730,7 +730,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: includes/custom-tables/logs.php:160 includes/utilities.php:553
+#: includes/custom-tables/logs.php:160 includes/utilities.php:573
 msgid "Post"
 msgstr ""
 
@@ -785,7 +785,7 @@ msgstr ""
 
 #: includes/custom-tables/logs.php:512 includes/custom-tables/logs.php:528
 #: includes/custom-tables/logs.php:544 includes/custom-tables/logs.php:561
-#: includes/utilities.php:312
+#: includes/utilities.php:332
 msgid "Automation:"
 msgstr ""
 
@@ -1002,7 +1002,7 @@ msgid "Number of times:"
 msgstr ""
 
 #: includes/utilities.php:53 includes/utilities.php:90
-#: includes/utilities.php:437 integrations/wordpress/actions/update-post.php:94
+#: includes/utilities.php:457 integrations/wordpress/actions/update-post.php:94
 #: integrations/wordpress/actions/update-post.php:97
 msgid "Post ID"
 msgstr ""
@@ -1043,15 +1043,15 @@ msgstr ""
 msgid "Term ID"
 msgstr ""
 
-#: includes/utilities.php:313
+#: includes/utilities.php:333
 msgid "any automation"
 msgstr ""
 
-#: includes/utilities.php:314
+#: includes/utilities.php:334
 msgid "Automation ID"
 msgstr ""
 
-#: includes/utilities.php:363 includes/utilities.php:398
+#: includes/utilities.php:383 includes/utilities.php:418
 #: integrations/automatorwp/actions/anonymous-user.php:174
 #: integrations/automatorwp/actions/anonymous-user.php:856
 #: integrations/wordpress/actions/create-user.php:101
@@ -1061,229 +1061,229 @@ msgstr ""
 msgid "Role:"
 msgstr ""
 
-#: includes/utilities.php:364 includes/utilities.php:399
+#: includes/utilities.php:384 includes/utilities.php:419
 msgid "Select a role"
 msgstr ""
 
-#: includes/utilities.php:366 includes/utilities.php:401
+#: includes/utilities.php:386 includes/utilities.php:421
 #: integrations/wordpress/actions/user-role.php:60
 msgid "Role name."
 msgstr ""
 
-#: includes/utilities.php:529
+#: includes/utilities.php:549
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:568 includes/utilities.php:674
+#: includes/utilities.php:588 includes/utilities.php:694
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:574 includes/utilities.php:589
+#: includes/utilities.php:594 includes/utilities.php:609
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:576
+#: includes/utilities.php:596
 msgid "The title"
 msgstr ""
 
-#: includes/utilities.php:580
+#: includes/utilities.php:600
 #, php-format
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:586
+#: includes/utilities.php:606
 #, php-format
 msgid "%s Link"
 msgstr ""
 
-#: includes/utilities.php:593 includes/utilities.php:728
+#: includes/utilities.php:613 includes/utilities.php:748
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:599
+#: includes/utilities.php:619
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:605 includes/utilities.php:704
+#: includes/utilities.php:625 includes/utilities.php:724
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:611 includes/utilities.php:722
+#: includes/utilities.php:631 includes/utilities.php:742
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:613 includes/utilities.php:724
+#: includes/utilities.php:633 includes/utilities.php:744
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:617
+#: includes/utilities.php:637
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:619
+#: includes/utilities.php:639
 msgid "The excerpt"
-msgstr ""
-
-#: includes/utilities.php:623
-#, php-format
-msgid "%s Status"
-msgstr ""
-
-#: includes/utilities.php:629
-#, php-format
-msgid "%s Parent ID"
-msgstr ""
-
-#: includes/utilities.php:635
-#, php-format
-msgid "%s Menu Order"
-msgstr ""
-
-#: includes/utilities.php:641
-#, php-format
-msgid "%s Meta"
 msgstr ""
 
 #: includes/utilities.php:643
 #, php-format
+msgid "%s Status"
+msgstr ""
+
+#: includes/utilities.php:649
+#, php-format
+msgid "%s Parent ID"
+msgstr ""
+
+#: includes/utilities.php:655
+#, php-format
+msgid "%s Menu Order"
+msgstr ""
+
+#: includes/utilities.php:661
+#, php-format
+msgid "%s Meta"
+msgstr ""
+
+#: includes/utilities.php:663
+#, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:659
+#: includes/utilities.php:679
 msgid "Comment"
 msgstr ""
 
-#: includes/utilities.php:680
+#: includes/utilities.php:700
 #, php-format
 msgid "%s Post ID"
 msgstr ""
 
-#: includes/utilities.php:686
+#: includes/utilities.php:706
 #, php-format
 msgid "%s Post Title"
 msgstr ""
 
-#: includes/utilities.php:688
+#: includes/utilities.php:708
 msgid "The post title"
 msgstr ""
 
-#: includes/utilities.php:692
+#: includes/utilities.php:712
 #, php-format
 msgid "%s User ID"
 msgstr ""
 
-#: includes/utilities.php:698
+#: includes/utilities.php:718
 #, php-format
 msgid "%s Author Name"
 msgstr ""
 
-#: includes/utilities.php:710
+#: includes/utilities.php:730
 #, php-format
 msgid "%s Author URL"
 msgstr ""
 
-#: includes/utilities.php:716
+#: includes/utilities.php:736
 #, php-format
 msgid "%s Author IP"
 msgstr ""
 
-#: includes/utilities.php:761 includes/utilities.php:806
-#: includes/utilities.php:845 integrations/wordpress/filters/user-role.php:37
+#: includes/utilities.php:781 includes/utilities.php:826
+#: includes/utilities.php:865 integrations/wordpress/filters/user-role.php:37
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:764 includes/utilities.php:848
-#: includes/utilities.php:873 integrations/wordpress/filters/user-role.php:40
+#: includes/utilities.php:784 includes/utilities.php:868
+#: includes/utilities.php:893 integrations/wordpress/filters/user-role.php:40
 msgid "is equal to"
 msgstr ""
 
-#: includes/utilities.php:765 includes/utilities.php:849
-#: includes/utilities.php:874 integrations/wordpress/filters/user-role.php:41
+#: includes/utilities.php:785 includes/utilities.php:869
+#: includes/utilities.php:894 integrations/wordpress/filters/user-role.php:41
 msgid "is not equal to"
 msgstr ""
 
-#: includes/utilities.php:766 includes/utilities.php:850
-#: includes/utilities.php:875 integrations/wordpress/filters/user-role.php:42
+#: includes/utilities.php:786 includes/utilities.php:870
+#: includes/utilities.php:895 integrations/wordpress/filters/user-role.php:42
 msgid "contains"
 msgstr ""
 
-#: includes/utilities.php:767 includes/utilities.php:851
-#: includes/utilities.php:876 integrations/wordpress/filters/user-role.php:43
+#: includes/utilities.php:787 includes/utilities.php:871
+#: includes/utilities.php:896 integrations/wordpress/filters/user-role.php:43
 msgid "does not contains"
 msgstr ""
 
-#: includes/utilities.php:768 includes/utilities.php:852
-#: includes/utilities.php:877
+#: includes/utilities.php:788 includes/utilities.php:872
+#: includes/utilities.php:897
 msgid "starts with"
 msgstr ""
 
-#: includes/utilities.php:769 includes/utilities.php:853
-#: includes/utilities.php:878
+#: includes/utilities.php:789 includes/utilities.php:873
+#: includes/utilities.php:898
 msgid "does not starts with"
 msgstr ""
 
-#: includes/utilities.php:770 includes/utilities.php:854
-#: includes/utilities.php:879
+#: includes/utilities.php:790 includes/utilities.php:874
+#: includes/utilities.php:899
 msgid "ends with"
 msgstr ""
 
-#: includes/utilities.php:771 includes/utilities.php:855
-#: includes/utilities.php:880
+#: includes/utilities.php:791 includes/utilities.php:875
+#: includes/utilities.php:900
 msgid "does not ends with"
 msgstr ""
 
-#: includes/utilities.php:772 includes/utilities.php:882
+#: includes/utilities.php:792 includes/utilities.php:902
 msgid "is less than"
 msgstr ""
 
-#: includes/utilities.php:773 includes/utilities.php:883
+#: includes/utilities.php:793 includes/utilities.php:903
 msgid "is greater than"
 msgstr ""
 
-#: includes/utilities.php:774 includes/utilities.php:884
+#: includes/utilities.php:794 includes/utilities.php:904
 msgid "is less or equal to"
 msgstr ""
 
-#: includes/utilities.php:775 includes/utilities.php:885
+#: includes/utilities.php:795 includes/utilities.php:905
 msgid "is greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:809
+#: includes/utilities.php:829
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:810
+#: includes/utilities.php:830
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:811
+#: includes/utilities.php:831
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:812
+#: includes/utilities.php:832
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:813
+#: includes/utilities.php:833
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:814
+#: includes/utilities.php:834
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:1128
+#: includes/utilities.php:1148
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:1129
+#: includes/utilities.php:1149
 msgid "Hide options"
 msgstr ""
 
@@ -1971,6 +1971,39 @@ msgstr ""
 #: integrations/automatorwp/triggers/user-created.php:31
 #, php-format
 msgid "User gets created through %1$s"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/agent-open-ticket.php:26
+#: integrations/awesome-support/includes/triggers/agent-open-ticket.php:30
+msgid "Agent opens a ticket"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/agent-open-ticket.php:27
+msgid "Agent <strong>opens</strong> a ticket"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/agent-open-ticket.php:29
+#, php-format
+msgid "Agent opens a ticket %1$s time(s)"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/agent-open-ticket.php:42
+#: integrations/awesome-support/includes/triggers/client-open-ticket.php:42
+msgid "Ticket"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/client-open-ticket.php:26
+#: integrations/awesome-support/includes/triggers/client-open-ticket.php:30
+msgid "Client opens a ticket"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/client-open-ticket.php:27
+msgid "Client <strong>opens</strong> a ticket"
+msgstr ""
+
+#: integrations/awesome-support/includes/triggers/client-open-ticket.php:29
+#, php-format
+msgid "Client opens a ticket %1$s time(s)"
 msgstr ""
 
 #: integrations/bbpress/includes/triggers/create-forum.php:26
@@ -3666,6 +3699,70 @@ msgstr ""
 msgid "any membership"
 msgstr ""
 
+#: integrations/modern-events-calendar/includes/tags.php:23
+msgid "Event Start Date"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:28
+msgid "Event Start Time"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:33
+msgid "Event End Date"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:38
+msgid "Event End Time"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:43
+msgid "Event Location"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:45
+msgid "City Hall"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:48
+msgid "Event Organizer"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/tags.php:53
+msgid "Event Cost"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:26
+msgid "User booking for an event is completed"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:27
+msgid "User booking for an event is <strong>completed</strong>"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:29
+#, php-format
+msgid "User booking for %1$s is completed %2$s time(s)"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:31
+#, php-format
+msgid "User booking for %1$s is completed"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:38
+#: integrations/the-events-calendar/includes/triggers/confirm-rsvp.php:42
+msgid "Event:"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:39
+#: integrations/the-events-calendar/includes/triggers/confirm-rsvp.php:43
+msgid "any event"
+msgstr ""
+
+#: integrations/modern-events-calendar/includes/triggers/booking-completed.php:45
+msgid "Event"
+msgstr ""
+
 #: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:27
 msgid "Guest subscribes to a list"
 msgstr ""
@@ -3988,14 +4085,6 @@ msgstr ""
 #: integrations/the-events-calendar/includes/triggers/confirm-rsvp.php:31
 #, php-format
 msgid "User confirms RSVP for %1$s"
-msgstr ""
-
-#: integrations/the-events-calendar/includes/triggers/confirm-rsvp.php:42
-msgid "Event:"
-msgstr ""
-
-#: integrations/the-events-calendar/includes/triggers/confirm-rsvp.php:43
-msgid "any event"
 msgstr ""
 
 #: integrations/tutor/includes/actions/user-course.php:26
