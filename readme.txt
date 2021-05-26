@@ -210,7 +210,7 @@ You can setup an automation like this:
 Trigger: When user visits a post.
 Action: Send email to the user.
 
-= Where can I find all available triggers, actions and filers? =
+= Where can I find all available triggers, actions and filters? =
 
 Check [this page](https://automatorwp.com/all-triggers-and-actions/) where you can find all available triggers, actions and filters from all our add-ons.
 
