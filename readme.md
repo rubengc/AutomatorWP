@@ -258,6 +258,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.6 ###
+
+* **New Features**
+* Added the log time in AutomatorWP > Logs.
+* **Bug Fixes**
+* Fixed contains and does not contains check for the Flat Condition filter.
+
 ### 1.6.5 ###
 
 * **New Features**

@@ -310,9 +310,13 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
             }
             break;
         case 'date':
+            $date = date( 'Y/m/d', strtotime( $log->date ) );
+            $time = date( 'H:i:s', strtotime( $log->date ) );
             ?>
 
-            <abbr title="<?php echo date( 'Y/m/d g:i:s a', strtotime( $log->date ) ); ?>"><?php echo date( 'Y/m/d', strtotime( $log->date ) ); ?></abbr>
+            <span class="automatorwp-log-date"><?php echo $date; ?></span>
+            <br>
+            <span class="automatorwp-log-time"><?php echo $time; ?></span>
 
             <?php
             break;
@@ -401,7 +405,7 @@ function automatorwp_log_details_meta_box( $object = null ) {
                 </div>
 
                 <div class="misc-pub-section curtime misc-pub-curtime">
-                    <span id="timestamp"><?php echo __( 'Date:', 'automatorwp' ); ?> <b><abbr title="<?php echo date( 'Y/m/d g:i:s a', strtotime( $object->date ) ); ?>"><?php echo date( 'Y/m/d', strtotime( $object->date ) ); ?></abbr></b></span>
+                    <span id="timestamp"><?php echo __( 'Date:', 'automatorwp' ); ?> <b><?php echo date( 'Y/m/d H:i:s', strtotime( $object->date ) ); ?></b></span>
                 </div>
 
             </div>

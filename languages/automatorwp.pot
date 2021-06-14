@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-05-25 09:11+0200\n"
+"POT-Creation-Date: 2021-06-14 17:40+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -352,8 +352,8 @@ msgstr ""
 #: includes/ajax-functions.php:850 includes/cmb2.php:382
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
-#: includes/custom-tables/logs.php:341 includes/custom-tables/logs.php:768
-#: includes/custom-tables/logs.php:865
+#: includes/custom-tables/logs.php:345 includes/custom-tables/logs.php:772
+#: includes/custom-tables/logs.php:869
 msgid "(No title)"
 msgstr ""
 
@@ -734,15 +734,15 @@ msgstr ""
 msgid "Post"
 msgstr ""
 
-#: includes/custom-tables/logs.php:355
+#: includes/custom-tables/logs.php:359
 msgid "Log Details"
 msgstr ""
 
-#: includes/custom-tables/logs.php:356
+#: includes/custom-tables/logs.php:360
 msgid "Log Data"
 msgstr ""
 
-#: includes/custom-tables/logs.php:382
+#: includes/custom-tables/logs.php:386
 #: integrations/wordpress/actions/create-post.php:102
 #: integrations/wordpress/actions/create-post.php:397
 #: integrations/wordpress/actions/update-post.php:115
@@ -751,11 +751,11 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:387
+#: includes/custom-tables/logs.php:391
 msgid "User:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:404
+#: includes/custom-tables/logs.php:408
 #: integrations/wordpress/actions/create-post.php:116
 #: integrations/wordpress/actions/create-post.php:409
 #: integrations/wordpress/actions/update-post.php:131
@@ -763,80 +763,80 @@ msgstr ""
 msgid "Date:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:419
+#: includes/custom-tables/logs.php:423
 msgid "Are you sure you want to delete this item?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete."
 msgstr ""
 
-#: includes/custom-tables/logs.php:421
+#: includes/custom-tables/logs.php:425
 msgid "Delete permanently"
 msgstr ""
 
-#: includes/custom-tables/logs.php:422
+#: includes/custom-tables/logs.php:426
 msgid "Delete Permanently"
 msgstr ""
 
-#: includes/custom-tables/logs.php:507
+#: includes/custom-tables/logs.php:511
 msgid "Trigger:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:508
+#: includes/custom-tables/logs.php:512
 msgid "Trigger assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:512 includes/custom-tables/logs.php:528
-#: includes/custom-tables/logs.php:544 includes/custom-tables/logs.php:561
+#: includes/custom-tables/logs.php:516 includes/custom-tables/logs.php:532
+#: includes/custom-tables/logs.php:548 includes/custom-tables/logs.php:565
 #: includes/utilities.php:332
 msgid "Automation:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:513
+#: includes/custom-tables/logs.php:517
 msgid "Trigger's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:523
+#: includes/custom-tables/logs.php:527
 #: integrations/buddyboss/includes/actions/add-user-activity.php:38
 #: integrations/buddypress/includes/actions/add-user-activity.php:38
 msgid "Action:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:524
+#: includes/custom-tables/logs.php:528
 msgid "Action assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:529
+#: includes/custom-tables/logs.php:533
 msgid "Action's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:539
+#: includes/custom-tables/logs.php:543
 #: integrations/filter/actions/action-filter.php:49
 #: integrations/filter/triggers/trigger-filter.php:49
 msgid "Filter:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:540
+#: includes/custom-tables/logs.php:544
 msgid "Filter assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:545
+#: includes/custom-tables/logs.php:549
 msgid "Filter's automation."
 msgstr ""
 
-#: includes/custom-tables/logs.php:562
+#: includes/custom-tables/logs.php:566
 msgid "Automation assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:572 includes/utilities.php:48
+#: includes/custom-tables/logs.php:576 includes/utilities.php:48
 #: includes/utilities.php:85
 #: integrations/favorites/includes/triggers/favorite-post.php:38
 #: integrations/favorites/includes/triggers/get-favorite-post.php:38
 msgid "Post:"
 msgstr ""
 
-#: includes/custom-tables/logs.php:573
+#: includes/custom-tables/logs.php:577
 msgid "Post assigned to this log."
 msgstr ""
 
-#: includes/custom-tables/logs.php:804
+#: includes/custom-tables/logs.php:808
 msgid "(No post assigned)"
 msgstr ""
 
