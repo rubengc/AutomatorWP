@@ -44,7 +44,6 @@ final class AutomatorWP_Integration_Zoom {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

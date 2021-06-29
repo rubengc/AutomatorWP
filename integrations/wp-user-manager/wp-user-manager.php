@@ -46,7 +46,6 @@ final class AutomatorWP_Integration_WP_User_Manager {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

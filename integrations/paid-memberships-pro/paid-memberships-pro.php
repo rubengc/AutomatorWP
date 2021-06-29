@@ -38,7 +38,7 @@ final class AutomatorWP_Integration_Paid_Memberships_Pro {
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
-                    }
+        }
 
         return self::$instance;
     }

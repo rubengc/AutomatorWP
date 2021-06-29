@@ -45,7 +45,6 @@ final class AutomatorWP_Integration_Modern_Events_Calendar {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

@@ -45,7 +45,6 @@ final class AutomatorWP_Integration_Presto_Player {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

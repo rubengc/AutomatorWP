@@ -46,7 +46,6 @@ final class AutomatorWP_Integration_GamiPress {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

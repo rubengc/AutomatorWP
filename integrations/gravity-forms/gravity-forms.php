@@ -38,7 +38,7 @@ final class AutomatorWP_Integration_Gravity_Forms {
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
-                    }
+        }
 
         return self::$instance;
     }

@@ -29,7 +29,7 @@ class AutomatorWP_LearnPress_Complete_Lesson extends AutomatorWP_Integration_Tri
             'edit_label'        => sprintf( __( 'User completes %1$s %2$s time(s)', 'automatorwp' ), '{post}', '{times}' ),
             /* translators: %1$s: Post title. */
             'log_label'         => sprintf( __( 'User completes %1$s', 'automatorwp' ), '{post}' ),
-            'action'            => 'learn_press_user_complete_lesson',
+            'action'            => 'learn-press/user-completed-lesson',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 3,
@@ -42,7 +42,7 @@ class AutomatorWP_LearnPress_Complete_Lesson extends AutomatorWP_Integration_Tri
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
-                automatorwp_utilities_post_tags(),
+                automatorwp_utilities_post_tags( __( 'Lesson', 'automatorwp' ) ),
                 automatorwp_utilities_times_tag()
             )
         ) );
@@ -55,15 +55,16 @@ class AutomatorWP_LearnPress_Complete_Lesson extends AutomatorWP_Integration_Tri
      * @since 1.0.0
      *
      * @param  int  	$lesson_id
-     * @param  array  	$result
+     * @param  int  	$course_id
      * @param  int      $user_id
      */
-    public function listener( $lesson_id, $result, $user_id ) {
+    public function listener( $lesson_id, $course_id, $user_id ) {
 
         automatorwp_trigger_event( array(
             'trigger'   => $this->trigger,
             'user_id'   => $user_id,
             'post_id'   => $lesson_id,
+            'course_id' => $course_id,
         ) );
 
     }

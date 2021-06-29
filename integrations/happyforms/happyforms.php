@@ -38,7 +38,7 @@ final class AutomatorWP_Integration_HappyForms {
             self::$instance->constants();
             self::$instance->includes();
             self::$instance->hooks();
-                    }
+        }
 
         return self::$instance;
     }

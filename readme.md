@@ -139,6 +139,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [wpDiscuz](https://automatorwp.com/add-ons/wpdiscuz/)
 * [WPForms](https://automatorwp.com/add-ons/wpforms/)
 * [WPLMS](https://automatorwp.com/add-ons/wplms/)
+* [WS Form](https://automatorwp.com/add-ons/ws-form/)
 
 = Integrated with external platforms =
 
@@ -257,6 +258,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.6.7 ###
+
+* **New Features**
+* New integration: WS Form.
+* WS Form: New trigger: User submits a form.
+* WS Form: New trigger: Guest submits a form.
+* **Improvements**
+* LearnPress: Updated complete lesson listener to latest LearnPress version.
 
 ### 1.6.6 ###
 

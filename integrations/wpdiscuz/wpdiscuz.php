@@ -46,7 +46,6 @@ final class AutomatorWP_Integration_wpDiscuz {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

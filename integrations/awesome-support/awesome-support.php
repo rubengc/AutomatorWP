@@ -45,7 +45,6 @@ final class AutomatorWP_Integration_Awesome_Support {
             }
 
             self::$instance->hooks();
-
         }
 
         return self::$instance;

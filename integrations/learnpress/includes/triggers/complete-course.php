@@ -42,7 +42,7 @@ class AutomatorWP_LearnPress_Complete_Course extends AutomatorWP_Integration_Tri
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
-                automatorwp_utilities_post_tags(),
+                automatorwp_utilities_post_tags( __( 'Course', 'automatorwp' ) ),
                 automatorwp_utilities_times_tag()
             )
         ) );
