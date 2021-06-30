@@ -259,6 +259,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.8 ###
+
+* **Bug Fixes**
+* WS Form: Fixed WS Form version check.
+
 ### 1.6.7 ###
 
 * **New Features**

@@ -157,7 +157,7 @@ final class AutomatorWP_Integration_WS_Form {
             return false;
         }
 
-        if ( version_compare( WS_FORM_VERSION, '1.8.71' ) ) {
+        if ( ! version_compare( WS_FORM_VERSION, '1.8.71' ) ) {
             return false;
         }
 
