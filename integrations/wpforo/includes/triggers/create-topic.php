@@ -34,20 +34,19 @@ class AutomatorWP_wpForo_Create_Topic extends AutomatorWP_Integration_Trigger {
             'priority'          => 10,
             'accepted_args'     => 1,
             'options'           => array(
-                'forum' => array(
-                    'from' => 'forum',
-                    'fields' => array(
-                        'forum' => automatorwp_utilities_post_field( array(
-                            'name' => __( 'Forum:', 'automatorwp' ),
-                            'option_none_label' => __( 'any forum', 'automatorwp' ),
-                            'post_type' => 'wpforo_forum'
-                        ) )
-                    )
-                ),
+                'forum' => automatorwp_utilities_ajax_selector_option( array(
+                    'field'             => 'forum',
+                    'name'              => __( 'Forum:', 'automatorwp' ),
+                    'option_none_value' => 'any',
+                    'option_none_label' => __( 'any forum', 'automatorwp' ),
+                    'action_cb'         => 'automatorwp_wpforo_get_forums',
+                    'options_cb'        => 'automatorwp_wpforo_options_cb_forum',
+                    'default'           => 'any'
+                ) ),
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
-                automatorwp_utilities_post_tags(),
+                automatorwp_wpforo_forum_tags(),
                 automatorwp_utilities_times_tag()
             )
         ) );
@@ -105,7 +104,7 @@ class AutomatorWP_wpForo_Create_Topic extends AutomatorWP_Integration_Trigger {
         }
 
         // Don't deserve if forum doesn't match with the trigger option
-        if( ! automatorwp_posts_matches( $event['forum_id'], $trigger_options['forum'] ) ) {
+        if( $trigger_options['forum'] !== 'any' && absint( $event['forum_id'] ) !== absint( $trigger_options['forum'] ) ) {
             return false;
         }
 

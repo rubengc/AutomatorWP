@@ -68,10 +68,74 @@ function automatorwp_redirect_to_url( url ) {
 
 }
 
+/**
+ * Check if request URL or its data should be excluded from the redirect check
+ *
+ * @since 1.6.9
+ *
+ * @param {string} url
+ * @param {string} data
+ *
+ * @return {boolean}
+ */
+function automatorwp_redirect_is_url_excluded( url, data ) {
+
+    // Check for excluded urls
+    var excluded_url = false;
+
+    automatorwp_redirect.excluded_urls.forEach( function ( to_match ) {
+        if( url.includes( to_match ) ) {
+            excluded_url = true;
+        }
+    } );
+
+    if( excluded_url ) {
+        return true;
+    }
+
+    // Check for excluded data
+    var excluded_data = false;
+
+    automatorwp_redirect.excluded_data.forEach( function ( to_match ) {
+        if( data.includes( to_match ) ) {
+            excluded_data = true;
+        }
+    } );
+
+    if( excluded_data ) {
+        return true;
+    }
+
+    // If is an ajax call, check for excluded ajax actions
+    if( url.includes('admin-ajax.php') ) {
+
+        var excluded_action = false;
+
+        automatorwp_redirect.excluded_ajax_actions.forEach( function ( to_match ) {
+            if( data.includes( 'action=' + to_match ) ) {
+                excluded_action = true;
+            }
+        } );
+
+        if( excluded_action ) {
+            return true;
+        }
+
+    }
+
+    return false;
+
+}
+
 (function ( $ ) {
 
     // Listen for any ajax success
-    $(document).ajaxSuccess( function ( event, request ) {
+    $(document).ajaxSuccess( function ( event, request, settings ) {
+
+        // Bail if URL is excluded
+        if( automatorwp_redirect_is_url_excluded( settings.url, settings.data ) ) {
+            return;
+        }
 
         var status = parseInt( request.status );
 

@@ -81,6 +81,11 @@ final class AutomatorWP_Integration_wpForo {
 
         if( $this->meets_requirements() ) {
 
+            // Includes
+            require_once AUTOMATORWP_WPFORO_DIR . 'includes/ajax-functions.php';
+            require_once AUTOMATORWP_WPFORO_DIR . 'includes/functions.php';
+            require_once AUTOMATORWP_WPFORO_DIR . 'includes/tags.php';
+
             // Triggers
             require_once AUTOMATORWP_WPFORO_DIR . 'includes/triggers/create-reply.php';
             require_once AUTOMATORWP_WPFORO_DIR . 'includes/triggers/create-topic.php';

@@ -122,7 +122,7 @@ class AutomatorWP_MailPoet_Add_Subscriber_To_List extends AutomatorWP_Integratio
 
             if( $existing_subscriber ) {
                 // Add existing subscriber to the list
-                $mailpoet->subscribeToLists( $existing_subscriber->id, $list_id, array( 'send_confirmation_email' => true ) );
+                $mailpoet->subscribeToList( $existing_subscriber->id, $list_id, array( 'send_confirmation_email' => true ) );
             } else {
                 // Register the new subscriber
                 $mailpoet->addSubscriber( $subscriber, $list_id, array( 'send_confirmation_email' => true ) );

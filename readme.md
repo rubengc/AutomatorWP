@@ -259,6 +259,17 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.6.9 ###
+
+* **New Features**
+* Tested AutomatorWP with WordPress 5.8.
+* **Improvements**
+* wpForo: Improved all listeners to correctly match with the wpForo database structure.
+* **Bug Fixes**
+* MailPoet: Fixed typo in "Add subscriber to list" action.
+* **Developer Notes**
+* Added new filters to exclude URLs from the redirect check.
+
 ### 1.6.8 ###
 
 * **Bug Fixes**

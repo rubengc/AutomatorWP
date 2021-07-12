@@ -40,10 +40,54 @@ function automatorwp_enqueue_scripts( $hook = null ) {
     // Redirect script
     if( automatorwp_is_action_in_use( 'automatorwp_redirect_user' ) ) {
 
+        $excluded_urls = array();
+
+        /**
+         * Filter to let plugins exclude URLs from the redirect check
+         *
+         * @since 1.6.9
+         *
+         * @param array $excluded_urls
+         *
+         * @return array
+         */
+        $excluded_urls = apply_filters( 'automatorwp_redirect_excluded_urls', $excluded_urls );
+
+        $excluded_data = array();
+
+        /**
+         * Filter to let plugins exclude request data from the redirect check
+         *
+         * @since 1.6.9
+         *
+         * @param array $excluded_data
+         *
+         * @return array
+         */
+        $excluded_data = apply_filters( 'automatorwp_redirect_excluded_data', $excluded_data );
+
+        $excluded_ajax_actions = array(
+            'automatorwp_check_for_redirect'
+        );
+
+        /**
+         * Filter to let plugins exclude ajax actions from the redirect check
+         *
+         * @since 1.6.9
+         *
+         * @param array $excluded_ajax_actions
+         *
+         * @return array
+         */
+        $excluded_ajax_actions = apply_filters( 'automatorwp_redirect_excluded_ajax_actions', $excluded_ajax_actions );
+
         wp_localize_script( 'automatorwp-redirect-js', 'automatorwp_redirect', array(
-            'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
-            'nonce'         => automatorwp_get_nonce(),
-            'user_id'       => get_current_user_id(),
+            'ajaxurl'               => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
+            'nonce'                 => automatorwp_get_nonce(),
+            'user_id'               => get_current_user_id(),
+            'excluded_urls'         => $excluded_urls,
+            'excluded_data'         => $excluded_data,
+            'excluded_ajax_actions' => $excluded_ajax_actions,
         ) );
 
         wp_enqueue_script( 'automatorwp-redirect-js' );
