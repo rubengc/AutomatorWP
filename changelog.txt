@@ -1,5 +1,83 @@
 == Changelog ==
 
+= 1.6.9 =
+
+* **New Features**
+* Tested AutomatorWP with WordPress 5.8.
+* **Improvements**
+* wpForo: Improved all listeners to correctly match with the wpForo database structure.
+* **Bug Fixes**
+* MailPoet: Fixed typo in "Add subscriber to list" action.
+* **Developer Notes**
+* Added new filters to exclude URLs from the redirect check.
+
+= 1.6.8 =
+
+* **Bug Fixes**
+* WS Form: Fixed WS Form version check.
+
+= 1.6.7 =
+
+* **New Features**
+* New integration: WS Form.
+* WS Form: New trigger: User submits a form.
+* WS Form: New trigger: Guest submits a form.
+* **Improvements**
+* LearnPress: Updated complete lesson listener to latest LearnPress version.
+
+= 1.6.6 =
+
+* **New Features**
+* Added the log time in AutomatorWP > Logs.
+* **Bug Fixes**
+* Fixed contains and does not contains check for the Flat Condition filter.
+
+= 1.6.5 =
+
+* **New Features**
+* New integration: Awesome Support.
+* Awesome Support: New trigger: Agent opens a ticket.
+* Awesome Support: New trigger: Client opens a ticket.
+* New integration: Modern Events Calendar.
+* Modern Events Calendar: New trigger: User booking for any/specific event is completed.
+* **Developer Notes**
+* Made ajax selector request data more extensible.
+
+= 1.6.4 =
+
+* **New Features**
+* WordPress: New trigger: User resets their password.
+* WordPress: New trigger: User profile field gets updated.
+* **Improvements**
+* Style improvements for the filter selector.
+
+= 1.6.3 =
+
+* **Improvements**
+* Elementor: Improved pro version detection checks.
+* Replace the use of constants by the plugin_dir_url() when registering integrations.
+* **Bug Fixes**
+* Elementor: Fixed constants already defined.
+
+= 1.6.2 =
+
+* **Improvements**
+* Improved filters check for triggers and actions with multiples filters.
+* Performance improvements in filters check function.
+
+= 1.6.1 =
+
+* **Bug Fixes**
+* Fixed a issue that causes that automations with several OR filters does not get completed.
+
+= 1.6.0 =
+
+* **Bug Fixes**
+* BuddyBoss: Fixed the group tags and stop to use the post tags in groups.
+* BuddyPress: Fixed the group tags and stop to use the post tags in groups.
+* **Developer Notes**
+* Moved old changelog to changelog.txt.
+
 = 1.5.9 =
 
 * **Improvements**

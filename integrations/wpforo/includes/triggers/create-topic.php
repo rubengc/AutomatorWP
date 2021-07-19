@@ -112,6 +112,46 @@ class AutomatorWP_wpForo_Create_Topic extends AutomatorWP_Integration_Trigger {
 
     }
 
+    /**
+     * Register the required hooks
+     *
+     * @since 1.0.0
+     */
+    public function hooks() {
+
+        // Log meta data
+        add_filter( 'automatorwp_user_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 6 );
+
+        parent::hooks();
+    }
+
+    /**
+     * Trigger custom log meta
+     *
+     * @since 1.0.0
+     *
+     * @param array     $log_meta           Log meta data
+     * @param stdClass  $trigger            The trigger object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return array
+     */
+    function log_meta( $log_meta, $trigger, $user_id, $event, $trigger_options, $automation ) {
+
+        // Bail if action type don't match this action
+        if( $trigger->type !== $this->trigger ) {
+            return $log_meta;
+        }
+
+        $log_meta['forum_id'] = ( isset( $event['forum_id'] ) ? $event['forum_id'] : 0 );
+
+        return $log_meta;
+
+    }
+
 }
 
 new AutomatorWP_wpForo_Create_Topic();
