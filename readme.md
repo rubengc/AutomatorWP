@@ -260,6 +260,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.2 ###
+
+* **Improvements**
+* WPLMS: Updated check to meet if WPLMS is installed to match latest WPLMS v4.
+
 ### 1.7.1 ###
 
 * **New Features**
