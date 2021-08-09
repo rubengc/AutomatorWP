@@ -260,6 +260,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.3 ###
+
+* **New Features**
+* PeepSo: Added post tags to the "User writes an activity post" trigger.
+* **Improvements**
+* Presto Player: Improved the video selector to correctly load videos instead of video blocks.
+
 ### 1.7.2 ###
 
 * **Improvements**

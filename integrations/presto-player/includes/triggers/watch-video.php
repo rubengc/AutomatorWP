@@ -26,23 +26,27 @@ class AutomatorWP_Presto_Player_Watch_Video extends AutomatorWP_Integration_Trig
             'label'             => __( 'User fully watches a video', 'automatorwp' ),
             'select_option'     => __( 'User fully watches a <strong>video</strong>', 'automatorwp' ),
             /* translators: %1$s: Post Title. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User fully watches %1$s %2$s time(s)', 'automatorwp' ), '{post}', '{times}' ),
+            'edit_label'        => sprintf( __( 'User fully watches %1$s %2$s time(s)', 'automatorwp' ), '{video}', '{times}' ),
             /* translators: %1$s: Post Title. */
-            'log_label'         => sprintf( __( 'User fully watches %1$s', 'automatorwp' ), '{post}' ),
+            'log_label'         => sprintf( __( 'User fully watches %1$s', 'automatorwp' ), '{video}' ),
             'action'            => 'presto_player_progress',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 2,
             'options'           => array(
-                'post' => automatorwp_utilities_post_option( array(
-                    'name' => __( 'Video:', 'automatorwp' ),
+                'video' => automatorwp_utilities_ajax_selector_option( array(
+                    'field'             => 'video',
+                    'name'              => __( 'Video:', 'automatorwp' ),
+                    'option_none_value' => 'any',
                     'option_none_label' => __( 'any video', 'automatorwp' ),
-                    'post_type' => 'pp_video_block'
+                    'action_cb'         => 'automatorwp_presto_player_get_videos',
+                    'options_cb'        => 'automatorwp_presto_player_options_cb_video',
+                    'default'           => 'any'
                 ) ),
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
-                automatorwp_utilities_post_tags( __( 'Video', 'automatorwp' ) ),
+                automatorwp_presto_player_video_tags(),
                 automatorwp_utilities_times_tag()
             )
         ) );
@@ -74,7 +78,7 @@ class AutomatorWP_Presto_Player_Watch_Video extends AutomatorWP_Integration_Trig
         automatorwp_trigger_event( array(
             'trigger'           => $this->trigger,
             'user_id'           => $user_id,
-            'post_id'           => $video_id,
+            'video_id'          => $video_id,
         ) );
 
     }
@@ -95,17 +99,65 @@ class AutomatorWP_Presto_Player_Watch_Video extends AutomatorWP_Integration_Trig
      */
     public function user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
 
-        // Don't deserve if post is not received
-        if( ! isset( $event['post_id'] ) ) {
+        // Don't deserve if video is not received
+        if( ! isset( $event['video_id'] ) ) {
             return false;
         }
 
-        // Don't deserve if post doesn't match with the trigger option
-        if( ! automatorwp_posts_matches( $event['post_id'], $trigger_options['post'] ) ) {
+        $video_id = absint( $event['video_id'] );
+
+        // Don't deserve if video doesn't exists
+        if( $video_id === 0 ) {
+            return false;
+        }
+
+        $required_video_id = absint( $trigger_options['video'] );
+
+        // Don't deserve if video doesn't match with the trigger option
+        if( $trigger_options['video'] !== 'any' && $video_id !== $required_video_id ) {
             return false;
         }
 
         return $deserves_trigger;
+
+    }
+
+    /**
+     * Register the required hooks
+     *
+     * @since 1.0.0
+     */
+    public function hooks() {
+
+        // Log meta data
+        add_filter( 'automatorwp_anonymous_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 5 );
+
+        parent::hooks();
+    }
+
+    /**
+     * Trigger custom log meta
+     *
+     * @since 1.0.0
+     *
+     * @param array     $log_meta           Log meta data
+     * @param stdClass  $trigger            The trigger object
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return array
+     */
+    function log_meta( $log_meta, $trigger, $event, $trigger_options, $automation ) {
+
+        // Bail if action type don't match this action
+        if( $trigger->type !== $this->trigger ) {
+            return $log_meta;
+        }
+
+        $log_meta['video_id'] = ( isset( $event['video_id'] ) ? $event['video_id'] : 0 );
+
+        return $log_meta;
 
     }
 

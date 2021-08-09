@@ -407,6 +407,7 @@ function automatorwp_get_automation_tags_replacements( $automation_id = 0, $user
     if( is_array( $matches ) && isset( $matches[1] ) ) {
 
         foreach( $matches[1] as $tag_name ) {
+
             // Setup tags replacements
             $replacements['{' . $tag_name . '}'] = automatorwp_get_tag_replacement( $tag_name, $automation_id, $user_id, $content );
         }

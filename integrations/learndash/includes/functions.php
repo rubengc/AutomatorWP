@@ -173,6 +173,4 @@ function automatorwp_learndash_mark_course_as_completed( $user_id = 0, $course_i
     // Mark course as completed
     $completed = learndash_process_mark_complete( $user_id, $course_id, false, $course_id );
 
-    error_log( "Completed?" . ( $completed ? 'yes' : 'no' ) );
-
 }

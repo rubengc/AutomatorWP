@@ -36,6 +36,7 @@ class AutomatorWP_PeepSo_Write_Activity_Post extends AutomatorWP_Integration_Tri
                 'times' => automatorwp_utilities_times_option(),
             ),
             'tags' => array_merge(
+                automatorwp_utilities_post_tags( __( 'Activity', 'automatorwp' ) ),
                 automatorwp_utilities_times_tag()
             )
         ) );

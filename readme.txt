@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -257,6 +257,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.7.3 =
+
+* **New Features**
+* PeepSo: Added post tags to the "User writes an activity post" trigger.
+* **Improvements**
+* Presto Player: Improved the video selector to correctly load videos instead of video blocks.
 
 = 1.7.2 =
 
