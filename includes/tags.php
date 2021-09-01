@@ -660,6 +660,15 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
             case 'post_excerpt':
                 $replacement = (  $post ? $post->post_excerpt : '' );
                 break;
+            case 'post_thumbnail':
+                $replacement = (  $post ? '<img src="' . get_the_post_thumbnail_url( $post ) . '"/>' : '' );
+                break;
+            case 'post_thumbnail_id':
+                $replacement = (  $post ? get_post_thumbnail_id( $post ) : '' );
+                break;
+            case 'post_thumbnail_url':
+                $replacement = (  $post ? get_the_post_thumbnail_url( $post ) : '' );
+                break;
             case 'post_status':
                 $replacement = (  $post ? $post->post_status : '' );
                 break;

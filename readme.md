@@ -260,6 +260,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.4 ###
+
+* **New Features**
+* Added new tags to get the post thumbnail as an img HTML tag, ID and URL.
+* **Improvements**
+* Make the flat condition filter able to detect numeric values to correctly compare them.
+* Newsletter: Improved the list selector.
+
 ### 1.7.3 ###
 
 * **New Features**

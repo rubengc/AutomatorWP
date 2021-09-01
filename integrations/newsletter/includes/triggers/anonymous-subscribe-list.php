@@ -77,22 +77,16 @@ class AutomatorWP_Newsletter_Anonymous_Subscribe_List extends AutomatorWP_Integr
             'any' => __( 'any list', 'automatorwp' ),
         );
 
-        $lists = get_option( 'newsletter_subscription_lists', [] );
+        if ( class_exists( '\Newsletter' ) ) {
 
-        for ( $i = 1; $i <= NEWSLETTER_LIST_MAX; $i ++ ) {
+            $lists = \Newsletter::instance()->get_lists();
 
-            $list_id = 'list_' . $i;
-
-            // Skip invalid lists
-            if ( empty( $lists[$list_id] ) ) {
-                continue;
-            }
-            // Skip private lists
-            if ( $lists[$list_id . '_status'] !== '1' ) {
-                continue;
+            if ( ! empty( $lists ) ) {
+                foreach ( $lists as $list ) {
+                    $options['list_' . $list->id] = $list->name;
+                }
             }
 
-            $options[$list_id] = $lists[$list_id];
         }
 
         return $options;

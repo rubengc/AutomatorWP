@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 1.7.3
+Stable tag: 1.7.4
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -257,6 +257,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.7.4 =
+
+* **New Features**
+* Added new tags to get the post thumbnail as an img HTML tag, ID and URL.
+* **Improvements**
+* Make the flat condition filter able to detect numeric values to correctly compare them.
+* Newsletter: Improved the list selector.
 
 = 1.7.3 =
 

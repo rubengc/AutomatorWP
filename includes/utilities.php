@@ -573,6 +573,8 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
         $post_label = __( 'Post', 'automatorwp' );
     }
 
+    $site_url = get_option( 'home' );
+
     /**
      * Filter to setup custom post tags
      *
@@ -599,14 +601,14 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s URL', 'automatorwp' ), $post_label ),
             'type'      => 'text',
-            'preview'   => get_option( 'home' ) . '/sample-' . strtolower( $post_label ),
+            'preview'   => $site_url . '/sample-' . strtolower( $post_label ),
         ),
         'post_link' => array(
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s Link', 'automatorwp' ), $post_label ),
             'type'      => 'text',
             /* translators: %s: Post label (by default: Post). */
-            'preview'   => '<a href="' . get_option( 'home' ) . '/sample-' . strtolower( $post_label ) . '">' . sprintf( __( '%s Title', 'automatorwp' ), $post_label ) . '</a>',
+            'preview'   => '<a href="' . $site_url . '/sample-' . strtolower( $post_label ) . '">' . sprintf( __( '%s Title', 'automatorwp' ), $post_label ) . '</a>',
         ),
         'post_type'  => array(
             /* translators: %s: Post label (by default: Post). */
@@ -637,6 +639,24 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'label'     => sprintf( __( '%s Excerpt', 'automatorwp' ), $post_label ),
             'type'      => 'text',
             'preview'   => __( 'The excerpt', 'automatorwp' ),
+        ),
+        'post_thumbnail'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Featured Image', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => '<img src="' . $site_url . '/sample-' . strtolower( $post_label ) . '-image"/>',
+        ),
+        'post_thumbnail_id'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Featured Image ID', 'automatorwp' ), $post_label ),
+            'type'      => 'integer',
+            'preview'   => '123',
+        ),
+        'post_thumbnail_url'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Featured Image URL', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => $site_url . '/sample-' . strtolower( $post_label ) . '-image',
         ),
         'post_status'  => array(
             /* translators: %s: Post label (by default: Post). */
@@ -1058,6 +1078,14 @@ function automatorwp_condition_matches( $to_match, $to_compare, $condition ) {
     }
 
     $to_compare = strval( $to_compare );
+
+    if( is_numeric( $to_match ) ) {
+        $to_match = (float) $to_match;
+    }
+
+    if( is_numeric( $to_compare ) ) {
+        $to_compare = (float) $to_compare;
+    }
 
     switch( $condition ) {
         case 'equal':
