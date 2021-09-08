@@ -260,6 +260,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.5 ###
+
+* **Bug Fixes**
+* Fixed flat condition filter check to correctly compare the values provided.
+
 ### 1.7.4 ###
 
 * **New Features**

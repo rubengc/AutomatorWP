@@ -80,7 +80,7 @@ class AutomatorWP_WordPress_Flat_Condition_Filter extends AutomatorWP_Integratio
         $second_value = $filter_options['second_value'];
 
         // Don't deserve if meta value doesn't match with the user meta value
-        if( ! automatorwp_condition_matches( $second_value, $first_value, $condition ) ) {
+        if( ! automatorwp_condition_matches( $first_value, $second_value, $condition ) ) {
             $this->result = sprintf( __( 'Filter not passed. "%1$s" does not meets the condition %2$s "%3$s".', 'automatorwp' ),
                 $first_value,
                 automatorwp_utilities_get_condition_label( $condition ),

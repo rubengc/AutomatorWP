@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-06-14 17:40+0200\n"
+"POT-Creation-Date: 2021-09-08 09:10+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -501,7 +501,7 @@ msgstr ""
 #: includes/custom-tables/automations.php:630
 #: includes/custom-tables/automations.php:645
 #: includes/custom-tables/automations.php:658
-#: includes/custom-tables/automations.php:678 includes/scripts.php:159
+#: includes/custom-tables/automations.php:678 includes/scripts.php:203
 msgid "Save"
 msgstr ""
 
@@ -863,33 +863,33 @@ msgstr ""
 msgid "Filter not passed"
 msgstr ""
 
-#: includes/scripts.php:160
+#: includes/scripts.php:204
 msgid "Saving"
 msgstr ""
 
-#: includes/scripts.php:206
+#: includes/scripts.php:250
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:207 includes/utilities.php:51 includes/utilities.php:88
+#: includes/scripts.php:251 includes/utilities.php:51 includes/utilities.php:88
 #: integrations/wordpress/actions/update-post.php:91
 msgid "Select a post"
 msgstr ""
 
-#: includes/scripts.php:208
+#: includes/scripts.php:252
 msgid "Select a term"
 msgstr ""
 
-#: includes/scripts.php:210
+#: includes/scripts.php:254
 #, php-format
 msgid "Select a %s"
 msgstr ""
 
-#: includes/scripts.php:211
+#: includes/scripts.php:255
 msgid "Select a user"
 msgstr ""
 
-#: includes/scripts.php:212
+#: includes/scripts.php:256
 msgid "Select an item"
 msgstr ""
 
@@ -975,7 +975,7 @@ msgstr ""
 msgid "Reset password link"
 msgstr ""
 
-#: includes/tags.php:120 includes/tags.php:513
+#: includes/tags.php:120 includes/tags.php:514
 msgid "Click here to reset your password"
 msgstr ""
 
@@ -1074,216 +1074,231 @@ msgstr ""
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:588 includes/utilities.php:694
+#: includes/utilities.php:590 includes/utilities.php:714
 #, php-format
 msgid "%s ID"
 msgstr ""
 
-#: includes/utilities.php:594 includes/utilities.php:609
+#: includes/utilities.php:596 includes/utilities.php:611
 #, php-format
 msgid "%s Title"
 msgstr ""
 
-#: includes/utilities.php:596
+#: includes/utilities.php:598 integrations/presto-player/includes/tags.php:29
 msgid "The title"
 msgstr ""
 
-#: includes/utilities.php:600
+#: includes/utilities.php:602
 #, php-format
 msgid "%s URL"
 msgstr ""
 
-#: includes/utilities.php:606
+#: includes/utilities.php:608
 #, php-format
 msgid "%s Link"
 msgstr ""
 
-#: includes/utilities.php:613 includes/utilities.php:748
+#: includes/utilities.php:615 includes/utilities.php:768
 #, php-format
 msgid "%s Type"
 msgstr ""
 
-#: includes/utilities.php:619
+#: includes/utilities.php:621
 #, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:625 includes/utilities.php:724
+#: includes/utilities.php:627 includes/utilities.php:744
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:631 includes/utilities.php:742
+#: includes/utilities.php:633 includes/utilities.php:762
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:633 includes/utilities.php:744
+#: includes/utilities.php:635 includes/utilities.php:764
 msgid "The content"
 msgstr ""
 
-#: includes/utilities.php:637
+#: includes/utilities.php:639
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: includes/utilities.php:639
+#: includes/utilities.php:641
 msgid "The excerpt"
 msgstr ""
 
-#: includes/utilities.php:643
+#: includes/utilities.php:645
 #, php-format
-msgid "%s Status"
+msgid "%s Featured Image"
 msgstr ""
 
-#: includes/utilities.php:649
+#: includes/utilities.php:651
 #, php-format
-msgid "%s Parent ID"
+msgid "%s Featured Image ID"
 msgstr ""
 
-#: includes/utilities.php:655
+#: includes/utilities.php:657
 #, php-format
-msgid "%s Menu Order"
-msgstr ""
-
-#: includes/utilities.php:661
-#, php-format
-msgid "%s Meta"
+msgid "%s Featured Image URL"
 msgstr ""
 
 #: includes/utilities.php:663
 #, php-format
+msgid "%s Status"
+msgstr ""
+
+#: includes/utilities.php:669
+#, php-format
+msgid "%s Parent ID"
+msgstr ""
+
+#: includes/utilities.php:675
+#, php-format
+msgid "%s Menu Order"
+msgstr ""
+
+#: includes/utilities.php:681
+#, php-format
+msgid "%s Meta"
+msgstr ""
+
+#: includes/utilities.php:683
+#, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:679
+#: includes/utilities.php:699
 msgid "Comment"
 msgstr ""
 
-#: includes/utilities.php:700
+#: includes/utilities.php:720
 #, php-format
 msgid "%s Post ID"
 msgstr ""
 
-#: includes/utilities.php:706
+#: includes/utilities.php:726
 #, php-format
 msgid "%s Post Title"
 msgstr ""
 
-#: includes/utilities.php:708
+#: includes/utilities.php:728
 msgid "The post title"
 msgstr ""
 
-#: includes/utilities.php:712
+#: includes/utilities.php:732
 #, php-format
 msgid "%s User ID"
 msgstr ""
 
-#: includes/utilities.php:718
+#: includes/utilities.php:738
 #, php-format
 msgid "%s Author Name"
 msgstr ""
 
-#: includes/utilities.php:730
+#: includes/utilities.php:750
 #, php-format
 msgid "%s Author URL"
 msgstr ""
 
-#: includes/utilities.php:736
+#: includes/utilities.php:756
 #, php-format
 msgid "%s Author IP"
 msgstr ""
 
-#: includes/utilities.php:781 includes/utilities.php:826
-#: includes/utilities.php:865 integrations/wordpress/filters/user-role.php:37
+#: includes/utilities.php:801 includes/utilities.php:846
+#: includes/utilities.php:885 integrations/wordpress/filters/user-role.php:37
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:784 includes/utilities.php:868
-#: includes/utilities.php:893 integrations/wordpress/filters/user-role.php:40
+#: includes/utilities.php:804 includes/utilities.php:888
+#: includes/utilities.php:913 integrations/wordpress/filters/user-role.php:40
 msgid "is equal to"
 msgstr ""
 
-#: includes/utilities.php:785 includes/utilities.php:869
-#: includes/utilities.php:894 integrations/wordpress/filters/user-role.php:41
+#: includes/utilities.php:805 includes/utilities.php:889
+#: includes/utilities.php:914 integrations/wordpress/filters/user-role.php:41
 msgid "is not equal to"
 msgstr ""
 
-#: includes/utilities.php:786 includes/utilities.php:870
-#: includes/utilities.php:895 integrations/wordpress/filters/user-role.php:42
+#: includes/utilities.php:806 includes/utilities.php:890
+#: includes/utilities.php:915 integrations/wordpress/filters/user-role.php:42
 msgid "contains"
 msgstr ""
 
-#: includes/utilities.php:787 includes/utilities.php:871
-#: includes/utilities.php:896 integrations/wordpress/filters/user-role.php:43
+#: includes/utilities.php:807 includes/utilities.php:891
+#: includes/utilities.php:916 integrations/wordpress/filters/user-role.php:43
 msgid "does not contains"
 msgstr ""
 
-#: includes/utilities.php:788 includes/utilities.php:872
-#: includes/utilities.php:897
+#: includes/utilities.php:808 includes/utilities.php:892
+#: includes/utilities.php:917
 msgid "starts with"
 msgstr ""
 
-#: includes/utilities.php:789 includes/utilities.php:873
-#: includes/utilities.php:898
+#: includes/utilities.php:809 includes/utilities.php:893
+#: includes/utilities.php:918
 msgid "does not starts with"
 msgstr ""
 
-#: includes/utilities.php:790 includes/utilities.php:874
-#: includes/utilities.php:899
+#: includes/utilities.php:810 includes/utilities.php:894
+#: includes/utilities.php:919
 msgid "ends with"
 msgstr ""
 
-#: includes/utilities.php:791 includes/utilities.php:875
-#: includes/utilities.php:900
+#: includes/utilities.php:811 includes/utilities.php:895
+#: includes/utilities.php:920
 msgid "does not ends with"
 msgstr ""
 
-#: includes/utilities.php:792 includes/utilities.php:902
+#: includes/utilities.php:812 includes/utilities.php:922
 msgid "is less than"
 msgstr ""
 
-#: includes/utilities.php:793 includes/utilities.php:903
+#: includes/utilities.php:813 includes/utilities.php:923
 msgid "is greater than"
 msgstr ""
 
-#: includes/utilities.php:794 includes/utilities.php:904
+#: includes/utilities.php:814 includes/utilities.php:924
 msgid "is less or equal to"
 msgstr ""
 
-#: includes/utilities.php:795 includes/utilities.php:905
+#: includes/utilities.php:815 includes/utilities.php:925
 msgid "is greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:829
+#: includes/utilities.php:849
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:830
+#: includes/utilities.php:850
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:831
+#: includes/utilities.php:851
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:832
+#: includes/utilities.php:852
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:833
+#: includes/utilities.php:853
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:834
+#: includes/utilities.php:854
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:1148
+#: includes/utilities.php:1176
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:1149
+#: includes/utilities.php:1177
 msgid "Hide options"
 msgstr ""
 
@@ -1361,6 +1376,48 @@ msgstr ""
 #: integrations/wordpress/triggers/publish-post-tag.php:39
 #: integrations/wordpress/triggers/view-post-tag.php:39
 msgid "any tag"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-expired.php:26
+#: integrations/advanced-ads/includes/triggers/ad-expired.php:30
+msgid "User ad expires"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-expired.php:27
+msgid "User ad <strong>expires</strong>"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-expired.php:29
+#, php-format
+msgid "User ad expires %1$s time(s)"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-published.php:26
+#: integrations/advanced-ads/includes/triggers/ad-published.php:30
+msgid "User ad gets published"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-published.php:27
+msgid "User ad gets <strong>published</strong>"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-published.php:29
+#, php-format
+msgid "User ad gets published %1$s time(s)"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-unpublished.php:26
+#: integrations/advanced-ads/includes/triggers/ad-unpublished.php:30
+msgid "User ad gets unpublished"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-unpublished.php:27
+msgid "User ad gets <strong>unpublished</strong>"
+msgstr ""
+
+#: integrations/advanced-ads/includes/triggers/ad-unpublished.php:29
+#, php-format
+msgid "User ad gets unpublished %1$s time(s)"
 msgstr ""
 
 #: integrations/affiliatewp/includes/triggers/become-affiliate.php:26
@@ -2048,15 +2105,16 @@ msgstr ""
 
 #: integrations/bbpress/includes/triggers/create-topic.php:41
 #: integrations/buddyboss/includes/triggers/create-topic.php:41
-#: integrations/wpforo/includes/triggers/create-reply.php:51
-#: integrations/wpforo/includes/triggers/create-topic.php:41
+#: integrations/wpforo/includes/triggers/create-reply.php:48
+#: integrations/wpforo/includes/triggers/create-topic.php:39
 msgid "Forum:"
 msgstr ""
 
 #: integrations/bbpress/includes/triggers/create-topic.php:42
 #: integrations/buddyboss/includes/triggers/create-topic.php:42
-#: integrations/wpforo/includes/triggers/create-reply.php:52
-#: integrations/wpforo/includes/triggers/create-topic.php:42
+#: integrations/wpforo/includes/functions.php:25
+#: integrations/wpforo/includes/triggers/create-reply.php:50
+#: integrations/wpforo/includes/triggers/create-topic.php:41
 msgid "any forum"
 msgstr ""
 
@@ -2464,6 +2522,9 @@ msgstr ""
 #: integrations/wp-user-manager/includes/triggers/user-register.php:40
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/wpforms/includes/triggers/submit-form.php:39
+#: integrations/ws-form/includes/functions.php:25
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:42
+#: integrations/ws-form/includes/triggers/submit-form.php:41
 msgid "any form"
 msgstr ""
 
@@ -2477,6 +2538,7 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:27
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:27
 msgid "Guest submits a form"
 msgstr ""
 
@@ -2490,6 +2552,7 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:28
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:28
 msgid "Guest submits <strong>a form</strong>"
 msgstr ""
 
@@ -2513,6 +2576,8 @@ msgstr ""
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:32
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:30
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:32
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:30
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:32
 #, php-format
 msgid "Guest submits %1$s"
 msgstr ""
@@ -2536,6 +2601,8 @@ msgstr ""
 #: integrations/wp-user-manager/includes/triggers/user-register.php:38
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:39
 #: integrations/wpforms/includes/triggers/submit-form.php:38
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:40
+#: integrations/ws-form/includes/triggers/submit-form.php:39
 msgid "Form:"
 msgstr ""
 
@@ -2559,6 +2626,8 @@ msgstr ""
 #: integrations/ninja-forms/includes/triggers/submit-form.php:51
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:48
 #: integrations/wpforms/includes/triggers/submit-form.php:47
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:52
+#: integrations/ws-form/includes/triggers/submit-form.php:51
 msgid "Form field value"
 msgstr ""
 
@@ -2599,6 +2668,8 @@ msgstr ""
 #: integrations/ninja-forms/includes/triggers/submit-form.php:188
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:186
 #: integrations/wpforms/includes/triggers/submit-form.php:187
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:192
+#: integrations/ws-form/includes/triggers/submit-form.php:194
 msgid "Fields Submitted"
 msgstr ""
 
@@ -2622,6 +2693,8 @@ msgstr ""
 #: integrations/ninja-forms/includes/triggers/submit-form.php:189
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:187
 #: integrations/wpforms/includes/triggers/submit-form.php:188
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:193
+#: integrations/ws-form/includes/triggers/submit-form.php:195
 msgid "Information about the fields values sent on this form submission."
 msgstr ""
 
@@ -2635,6 +2708,7 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:26
 #: integrations/ninja-forms/includes/triggers/submit-form.php:26
 #: integrations/wpforms/includes/triggers/submit-form.php:26
+#: integrations/ws-form/includes/triggers/submit-form.php:26
 msgid "User submits a form"
 msgstr ""
 
@@ -2648,6 +2722,7 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:27
 #: integrations/ninja-forms/includes/triggers/submit-form.php:27
 #: integrations/wpforms/includes/triggers/submit-form.php:27
+#: integrations/ws-form/includes/triggers/submit-form.php:27
 msgid "User submits <strong>a form</strong>"
 msgstr ""
 
@@ -2661,6 +2736,7 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:29
 #: integrations/ninja-forms/includes/triggers/submit-form.php:29
 #: integrations/wpforms/includes/triggers/submit-form.php:29
+#: integrations/ws-form/includes/triggers/submit-form.php:29
 #, php-format
 msgid "User submits %1$s %2$s time(s)"
 msgstr ""
@@ -2675,6 +2751,7 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:31
 #: integrations/ninja-forms/includes/triggers/submit-form.php:31
 #: integrations/wpforms/includes/triggers/submit-form.php:31
+#: integrations/ws-form/includes/triggers/submit-form.php:31
 #, php-format
 msgid "User submits %1$s"
 msgstr ""
@@ -3091,6 +3168,8 @@ msgstr ""
 
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:54
 #: integrations/gravity-forms/includes/triggers/submit-form.php:53
+#: integrations/ws-form/includes/triggers/anonymous-submit-form.php:54
+#: integrations/ws-form/includes/triggers/submit-form.php:53
 msgid "Form field value, replace \"FIELD_ID\" by the field ID"
 msgstr ""
 
@@ -3261,7 +3340,7 @@ msgstr ""
 
 #: integrations/learndash/includes/actions/mark-topic.php:34
 #: integrations/learndash/includes/triggers/complete-topic.php:38
-#: integrations/wpforo/includes/triggers/create-reply.php:41
+#: integrations/wpforo/includes/triggers/create-reply.php:39
 msgid "Topic:"
 msgstr ""
 
@@ -3477,7 +3556,8 @@ msgstr ""
 
 #: integrations/learndash/includes/triggers/complete-topic.php:39
 #: integrations/learndash/includes/triggers/view-topic.php:39
-#: integrations/wpforo/includes/triggers/create-reply.php:42
+#: integrations/wpforo/includes/functions.php:89
+#: integrations/wpforo/includes/triggers/create-reply.php:41
 msgid "any topic"
 msgstr ""
 
@@ -3500,6 +3580,7 @@ msgid "Page:"
 msgstr ""
 
 #: integrations/learndash/includes/triggers/view-course.php:45
+#: integrations/learnpress/includes/triggers/complete-course.php:45
 #: integrations/sensei-lms/includes/triggers/complete-course.php:45
 msgid "Course"
 msgstr ""
@@ -3513,6 +3594,7 @@ msgid "User views <strong>a lesson</strong>"
 msgstr ""
 
 #: integrations/learndash/includes/triggers/view-lesson.php:45
+#: integrations/learnpress/includes/triggers/complete-lesson.php:45
 #: integrations/sensei-lms/includes/triggers/complete-lesson.php:45
 msgid "Lesson"
 msgstr ""
@@ -3526,6 +3608,7 @@ msgid "User views <strong>a quiz</strong>"
 msgstr ""
 
 #: integrations/learndash/includes/triggers/view-quiz.php:45
+#: integrations/learnpress/includes/triggers/complete-quiz.php:45
 #: integrations/sensei-lms/includes/triggers/complete-quiz.php:45
 msgid "Quiz"
 msgstr ""
@@ -3782,7 +3865,7 @@ msgid "Guest subscribes to %1$s"
 msgstr ""
 
 #: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:55
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:264
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:258
 msgid "User email"
 msgstr ""
 
@@ -3795,19 +3878,19 @@ msgstr ""
 msgid "any list"
 msgstr ""
 
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:265
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:259
 msgid "Email used to get subscribed."
 msgstr ""
 
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:270
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:264
 msgid "List subscribed"
 msgstr ""
 
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:271
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:265
 msgid "List subscribed."
 msgstr ""
 
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:294
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:288
 #, php-format
 msgid "List with ID %s not found."
 msgstr ""
@@ -3953,6 +4036,10 @@ msgstr ""
 msgid "User writes an activity post %1$s time(s)"
 msgstr ""
 
+#: integrations/peepso/includes/triggers/write-activity-post.php:39
+msgid "Activity"
+msgstr ""
+
 #: integrations/popup-maker/includes/actions/show-popup.php:27
 msgid "Show a popup"
 msgstr ""
@@ -3979,6 +4066,22 @@ msgstr ""
 msgid "Popup ID"
 msgstr ""
 
+#: integrations/presto-player/includes/functions.php:25
+msgid "any video level"
+msgstr ""
+
+#: integrations/presto-player/includes/tags.php:22
+msgid "Video ID"
+msgstr ""
+
+#: integrations/presto-player/includes/tags.php:27
+msgid "Video Title"
+msgstr ""
+
+#: integrations/presto-player/includes/tags.php:32
+msgid "Video Source"
+msgstr ""
+
 #: integrations/presto-player/includes/triggers/watch-video.php:26
 msgid "User fully watches a video"
 msgstr ""
@@ -3997,16 +4100,12 @@ msgstr ""
 msgid "User fully watches %1$s"
 msgstr ""
 
-#: integrations/presto-player/includes/triggers/watch-video.php:38
+#: integrations/presto-player/includes/triggers/watch-video.php:39
 msgid "Video:"
 msgstr ""
 
-#: integrations/presto-player/includes/triggers/watch-video.php:39
+#: integrations/presto-player/includes/triggers/watch-video.php:41
 msgid "any video"
-msgstr ""
-
-#: integrations/presto-player/includes/triggers/watch-video.php:45
-msgid "Video"
 msgstr ""
 
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:26
@@ -6180,6 +6279,40 @@ msgstr ""
 
 #: integrations/wpdiscuz/includes/triggers/vote-comment.php:45
 msgid "votes down"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:22
+msgid "Forum ID"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:27
+#: integrations/wpforo/includes/tags.php:39
+msgid "Forum Title"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:32
+msgid "Forum URL"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:37
+msgid "Forum Link"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:67
+msgid "Topic ID"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:72
+#: integrations/wpforo/includes/tags.php:84
+msgid "Topic Title"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:77
+msgid "Topic URL"
+msgstr ""
+
+#: integrations/wpforo/includes/tags.php:82
+msgid "Topic Link"
 msgstr ""
 
 #: integrations/wpforo/includes/triggers/create-reply.php:26
