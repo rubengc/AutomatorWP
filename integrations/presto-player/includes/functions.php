@@ -22,7 +22,7 @@ function automatorwp_presto_player_options_cb_video( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any video level', 'automatorwp' );
+    $none_label = __( 'any video', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     if( ! empty( $value ) ) {

@@ -260,6 +260,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.7 ###
+
+* **Bug Fixes**
+* Presto Player: Fixed typo on a video selector label.
+
 ### 1.7.6 ###
 
 * **Improvements**
