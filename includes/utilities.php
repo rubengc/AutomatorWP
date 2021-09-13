@@ -1005,13 +1005,13 @@ function automatorwp_terms_matches( $term_id, $required_term_id ) {
  *
  * @since 1.0.0
  *
- * @param int|float $to_match   Number to match
- * @param int|float $to_compare Number to compare
+ * @param int|float $a          Number to match
+ * @param int|float $b          Number to compare
  * @param string    $condition  The condition to compare numbers
  *
  * @return bool
  */
-function automatorwp_number_condition_matches( $to_match, $to_compare, $condition ) {
+function automatorwp_number_condition_matches( $a, $b, $condition ) {
 
     if( empty( $condition ) ) {
         $condition = 'equal';
@@ -1024,28 +1024,28 @@ function automatorwp_number_condition_matches( $to_match, $to_compare, $conditio
         case '=':
         case '==':
         case '===':
-            $matches = ( $to_match == $to_compare );
+            $matches = ( $a == $b );
             break;
         case 'not_equal':
         case '!=':
         case '!==':
-            $matches = ( $to_match != $to_compare );
+            $matches = ( $a != $b );
             break;
         case 'less_than':
         case '<':
-            $matches = ( $to_match < $to_compare );
+            $matches = ( $a < $b );
             break;
         case 'greater_than':
         case '>':
-            $matches = ( $to_match > $to_compare );
+            $matches = ( $a > $b );
             break;
         case 'less_or_equal':
         case '<=':
-            $matches = ( $to_match <= $to_compare );
+            $matches = ( $a <= $b );
             break;
         case 'greater_or_equal':
         case '>=':
-            $matches = ( $to_match >= $to_compare );
+            $matches = ( $a >= $b );
             break;
     }
 
@@ -1058,13 +1058,13 @@ function automatorwp_number_condition_matches( $to_match, $to_compare, $conditio
  *
  * @since 1.4.5
  *
- * @param mixed     $to_match   Element to match
- * @param mixed     $to_compare Element to compare
+ * @param mixed     $a          Element to match
+ * @param mixed     $b          Element to compare
  * @param string    $condition  The condition to compare elements
  *
  * @return bool
  */
-function automatorwp_condition_matches( $to_match, $to_compare, $condition ) {
+function automatorwp_condition_matches( $a, $b, $condition ) {
 
     if( empty( $condition ) ) {
         $condition = 'equal';
@@ -1073,18 +1073,22 @@ function automatorwp_condition_matches( $to_match, $to_compare, $condition ) {
     $matches = false;
 
     // Ensure that the element to compare is a string
-    if( is_array( $to_compare ) ) {
-        $to_compare = implode( ',', $to_compare );
+    if( is_array( $b ) ) {
+        $b = implode( ',', $b );
     }
 
-    $to_compare = strval( $to_compare );
+    $a = strval( $a );
+    $b = strval( $b );
 
-    if( is_numeric( $to_match ) ) {
-        $to_match = (float) $to_match;
-    }
+    // If not is a string condition and elements to compare are numerics, turn them to float
+    if( ! automatorwp_is_string_condition( $condition ) ) {
+        if( is_numeric( $a ) ) {
+            $a = (float) $a;
+        }
 
-    if( is_numeric( $to_compare ) ) {
-        $to_compare = (float) $to_compare;
+        if( is_numeric( $b ) ) {
+            $b = (float) $b;
+        }
     }
 
     switch( $condition ) {
@@ -1092,50 +1096,78 @@ function automatorwp_condition_matches( $to_match, $to_compare, $condition ) {
         case '=':
         case '==':
         case '===':
-            $matches = ( $to_match == $to_compare );
+            $matches = ( $a == $b );
             break;
         case 'not_equal':
         case '!=':
         case '!==':
-            $matches = ( $to_match != $to_compare );
+            $matches = ( $a != $b );
             break;
         case 'less_than':
         case '<':
-            $matches = ( $to_match < $to_compare );
+            $matches = ( $a < $b );
             break;
         case 'greater_than':
         case '>':
-            $matches = ( $to_match > $to_compare );
+            $matches = ( $a > $b );
             break;
         case 'less_or_equal':
         case '<=':
-            $matches = ( $to_match <= $to_compare );
+            $matches = ( $a <= $b );
             break;
         case 'greater_or_equal':
         case '>=':
-            $matches = ( $to_match >= $to_compare );
+            $matches = ( $a >= $b );
             break;
         case 'contains':
-            $matches = ( strpos( strval( $to_compare ), $to_match ) !== false );
+            $matches = ( strpos( strval( $b ), $a ) !== false );
             break;
         case 'not_contains':
-            $matches = ( strpos( strval( $to_compare ), $to_match ) === false );
+            $matches = ( strpos( strval( $b ), $a ) === false );
             break;
         case 'start_with':
-            $matches = ( automatorwp_starts_with( $to_compare, $to_match ) );
+            $matches = ( automatorwp_starts_with( $b, $a ) );
             break;
         case 'not_start_with':
-            $matches = ( ! automatorwp_starts_with( $to_compare, $to_match ) );
+            $matches = ( ! automatorwp_starts_with( $b, $a ) );
             break;
         case 'ends_with':
-            $matches = ( automatorwp_ends_with( $to_compare, $to_match ) );
+            $matches = ( automatorwp_ends_with( $b, $a ) );
             break;
         case 'not_ends_with':
-            $matches = ( ! automatorwp_ends_with( $to_compare, $to_match ) );
+            $matches = ( ! automatorwp_ends_with( $b, $a ) );
             break;
     }
 
     return $matches;
+
+}
+
+/**
+ * Utility function to meet if condition is related to string
+ *
+ * @since 1.7.6
+ *
+ * @param string    $condition  The condition to check
+ *
+ * @return bool
+ */
+function automatorwp_is_string_condition( $condition ) {
+
+    $return = false;
+
+    switch( $condition ) {
+        case 'contains':
+        case 'not_contains':
+        case 'start_with':
+        case 'not_start_with':
+        case 'ends_with':
+        case 'not_ends_with':
+            $return = true;
+            break;
+    }
+
+    return $return;
 
 }
 

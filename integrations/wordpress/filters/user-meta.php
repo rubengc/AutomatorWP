@@ -88,7 +88,7 @@ class AutomatorWP_WordPress_User_Meta_Filter extends AutomatorWP_Integration_Fil
         $user_meta_value = get_user_meta( $user_id, $meta_key, true );
 
         // Don't deserve if meta value doesn't match with the user meta value
-        if( ! automatorwp_condition_matches( $meta_value, $user_meta_value, $condition ) ) {
+        if( ! automatorwp_condition_matches( $user_meta_value, $meta_value, $condition ) ) {
             $this->result = sprintf( __( 'Filter not passed. User meta "%1$s" has the value "%2$s" and does not meets the condition %3$s "%4$s".', 'automatorwp' ),
                 $meta_key,
                 $user_meta_value,

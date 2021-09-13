@@ -260,6 +260,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.6 ###
+
+* **Improvements**
+* Improvements in the flat condition filter to apply better checks depending of the condition configured.
+* Security improvements added extra checks to all ajax calls.
+
 ### 1.7.5 ###
 
 * **Bug Fixes**

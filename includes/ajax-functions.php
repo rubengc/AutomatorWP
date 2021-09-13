@@ -18,6 +18,11 @@ function automatorwp_ajax_add_automation_item() {
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
 
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
+
     // Sanitize parameters
     $automation_id = absint( $_POST['automation_id'] );
     $type = sanitize_text_field( $_POST['type'] );              // The trigger or action reference
@@ -146,6 +151,11 @@ function automatorwp_ajax_delete_automation_item() {
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
 
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
+
     // Sanitize parameters
     $id = absint( $_POST['id'] );
     $item_type = sanitize_text_field( $_POST['item_type'] );    // 'trigger' or 'action'
@@ -179,6 +189,11 @@ function automatorwp_ajax_update_automation_items_order() {
 
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
 
     // Sanitize parameters
     $items_order = $_POST['items_order']; // Sanitized before
@@ -234,6 +249,11 @@ function automatorwp_ajax_update_item_option() {
 
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
 
     // Sanitize parameters
     $id = absint( $_POST['id'] );
@@ -402,6 +422,11 @@ add_action( 'wp_ajax_automatorwp_update_item_option', 'automatorwp_ajax_update_i
 function automatorwp_ajax_get_posts() {
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
 
     global $wpdb;
 
@@ -627,6 +652,11 @@ function automatorwp_ajax_get_terms() {
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
 
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
+
     // Pull back the search string
     $search = isset( $_REQUEST['q'] ) ? sanitize_text_field( $_REQUEST['q'] ) : '';
 
@@ -702,6 +732,11 @@ function automatorwp_ajax_get_users() {
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
 
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
+
     // If no word query sent, initialize it
     if ( ! isset( $_REQUEST['q'] ) ) {
         $_REQUEST['q'] = '';
@@ -757,6 +792,11 @@ add_action( 'wp_ajax_automatorwp_get_users', 'automatorwp_ajax_get_users' );
 function automatorwp_ajax_get_objects() {
     // Security check, forces to die if not security passed
     check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
 
     global $ct_registered_tables;
 

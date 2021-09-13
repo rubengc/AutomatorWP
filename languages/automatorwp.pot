@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-09-08 09:10+0200\n"
+"POT-Creation-Date: 2021-09-13 12:09+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -299,57 +299,64 @@ msgstr ""
 msgid "Check this option to disable the AutomatorWP top bar menu."
 msgstr ""
 
-#: includes/ajax-functions.php:29 includes/ajax-functions.php:35
+#: includes/ajax-functions.php:23 includes/ajax-functions.php:156
+#: includes/ajax-functions.php:195 includes/ajax-functions.php:255
+#: includes/ajax-functions.php:428 includes/ajax-functions.php:657
+#: includes/ajax-functions.php:737 includes/ajax-functions.php:798
+msgid "You're not allowed to perform this action."
+msgstr ""
+
+#: includes/ajax-functions.php:34 includes/ajax-functions.php:40
 msgid "Invalid automation."
 msgstr ""
 
-#: includes/ajax-functions.php:39 includes/ajax-functions.php:159
-#: includes/ajax-functions.php:197 includes/ajax-functions.php:249
+#: includes/ajax-functions.php:44 includes/ajax-functions.php:169
+#: includes/ajax-functions.php:212 includes/ajax-functions.php:269
 msgid "Invalid item type."
 msgstr ""
 
-#: includes/ajax-functions.php:52 includes/ajax-functions.php:245
+#: includes/ajax-functions.php:57 includes/ajax-functions.php:265
 msgid "Invalid trigger."
 msgstr ""
 
-#: includes/ajax-functions.php:54
+#: includes/ajax-functions.php:59
 msgid "Invalid action."
 msgstr ""
 
-#: includes/ajax-functions.php:131
+#: includes/ajax-functions.php:136
 msgid "Trigger can't be created."
 msgstr ""
 
-#: includes/ajax-functions.php:133
+#: includes/ajax-functions.php:138
 msgid "Action can't be created."
 msgstr ""
 
-#: includes/ajax-functions.php:155 includes/ajax-functions.php:266
-#: includes/ajax-functions.php:273
+#: includes/ajax-functions.php:165 includes/ajax-functions.php:286
+#: includes/ajax-functions.php:293
 msgid "Invalid item."
 msgstr ""
 
-#: includes/ajax-functions.php:169
+#: includes/ajax-functions.php:179
 msgid "Item deleted."
 msgstr ""
 
-#: includes/ajax-functions.php:189 includes/ajax-functions.php:193
+#: includes/ajax-functions.php:204 includes/ajax-functions.php:208
 msgid "Invalid items."
 msgstr ""
 
-#: includes/ajax-functions.php:223
+#: includes/ajax-functions.php:238
 msgid "Items order updated."
 msgstr ""
 
-#: includes/ajax-functions.php:280
+#: includes/ajax-functions.php:300
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:770
+#: includes/ajax-functions.php:810
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:850 includes/cmb2.php:382
+#: includes/ajax-functions.php:890 includes/cmb2.php:382
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
 #: includes/custom-tables/logs.php:345 includes/custom-tables/logs.php:772
@@ -1294,11 +1301,11 @@ msgstr ""
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:1176
+#: includes/utilities.php:1208
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:1177
+#: includes/utilities.php:1209
 msgid "Hide options"
 msgstr ""
 

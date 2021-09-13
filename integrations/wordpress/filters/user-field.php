@@ -112,7 +112,7 @@ class AutomatorWP_WordPress_User_Field_Filter extends AutomatorWP_Integration_Fi
         $user_field_value = $user->get( $field_name );
 
         // Don't deserve if meta value doesn't match with the user meta value
-        if( ! automatorwp_condition_matches( $field_value, $user_field_value, $condition ) ) {
+        if( ! automatorwp_condition_matches( $user_field_value, $field_value, $condition ) ) {
             $this->result = sprintf( __( 'Filter not passed. User %1$s has the value "%2$s" and does not meets the condition %3$s "%4$s".', 'automatorwp' ),
                 $field_labels[$field_name],
                 $user_field_value,
