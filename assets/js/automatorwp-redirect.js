@@ -80,6 +80,14 @@ function automatorwp_redirect_to_url( url ) {
  */
 function automatorwp_redirect_is_url_excluded( url, data ) {
 
+    if( url === undefined ) {
+        url = '';
+    }
+
+    if( data === undefined ) {
+        data = url;
+    }
+
     // Check for excluded urls
     var excluded_url = false;
 

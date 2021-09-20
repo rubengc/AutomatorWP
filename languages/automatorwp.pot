@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-09-13 17:41+0200\n"
+"POT-Creation-Date: 2021-09-20 13:38+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5383,6 +5383,7 @@ msgstr ""
 #: integrations/wordpress/triggers/anonymous-comment-post-type.php:46
 #: integrations/wordpress/triggers/anonymous-view-post-type.php:42
 #: integrations/wordpress/triggers/comment-post-type.php:45
+#: integrations/wordpress/triggers/delete-post-type.php:44
 #: integrations/wordpress/triggers/post-type-meta-update.php:41
 #: integrations/wordpress/triggers/post-type-status.php:41
 #: integrations/wordpress/triggers/publish-post-type.php:41
@@ -5533,6 +5534,56 @@ msgstr ""
 
 #: integrations/wordpress/triggers/comment-post.php:27
 msgid "User comments on <strong>a post</strong>"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-taxonomy.php:26
+msgid "User deletes a post in a taxonomy"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-taxonomy.php:27
+msgid "User deletes a post in <strong>a taxonomy</strong>"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-taxonomy.php:29
+#, php-format
+msgid "User deletes a post in %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-taxonomy.php:31
+#, php-format
+msgid "User deletes a post in %1$s"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-type.php:26
+msgid "User deletes a post of a type"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-type.php:27
+msgid "User deletes <strong>a post of a type</strong>"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-type.php:29
+#, php-format
+msgid "User deletes %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post-type.php:31
+#, php-format
+msgid "User deletes %1$s"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post.php:26
+#: integrations/wordpress/triggers/delete-post.php:30
+msgid "User deletes a post"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post.php:27
+msgid "User deletes <strong>a post</strong>"
+msgstr ""
+
+#: integrations/wordpress/triggers/delete-post.php:29
+#, php-format
+msgid "User deletes a post %1$s time(s)"
 msgstr ""
 
 #: integrations/wordpress/triggers/login.php:26

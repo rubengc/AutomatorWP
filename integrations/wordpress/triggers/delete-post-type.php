@@ -1,18 +1,18 @@
 <?php
 /**
- * Publish Post Type
+ * Delete Post Type
  *
- * @package     AutomatorWP\Integrations\WordPress\Triggers\Publish_Post_Tyoe
+ * @package     AutomatorWP\Integrations\WordPress\Triggers\Delete_Post_Tyoe
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_WordPress_Publish_Post_Type extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_WordPress_Delete_Post_Type extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'wordpress';
-    public $trigger = 'wordpress_publish_post_type';
+    public $trigger = 'wordpress_delete_post_type';
 
     /**
      * Register the trigger
@@ -23,16 +23,19 @@ class AutomatorWP_WordPress_Publish_Post_Type extends AutomatorWP_Integration_Tr
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'User publishes a post of a type', 'automatorwp' ),
-            'select_option'     => __( 'User publishes <strong>a post of a type</strong>', 'automatorwp' ),
+            'label'             => __( 'User deletes a post of a type', 'automatorwp' ),
+            'select_option'     => __( 'User deletes <strong>a post of a type</strong>', 'automatorwp' ),
             /* translators: %1$s: Post type. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( 'User publishes %1$s %2$s time(s)', 'automatorwp' ), '{post_type}', '{times}' ),
+            'edit_label'        => sprintf( __( 'User deletes %1$s %2$s time(s)', 'automatorwp' ), '{post_type}', '{times}' ),
             /* translators: %1$s: Post type. */
-            'log_label'         => sprintf( __( 'User publishes %1$s', 'automatorwp' ), '{post_type}' ),
-            'action'            => 'transition_post_status',
+            'log_label'         => sprintf( __( 'User deletes %1$s', 'automatorwp' ), '{post_type}' ),
+            'action'            => array(
+                'trashed_post',
+                'before_delete_post'
+            ),
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 3,
+            'accepted_args'     => 1,
             'options'           => array(
                 'post_type' => array(
                     'from' => 'post_type',
@@ -62,21 +65,11 @@ class AutomatorWP_WordPress_Publish_Post_Type extends AutomatorWP_Integration_Tr
      *
      * @since 1.0.0
      *
-     * @param string    $new_status The new post status
-     * @param string    $old_status The old post status
-     * @param WP_Post   $post       The post
+     * @param int $post_id The post ID
      */
-    public function listener( $new_status, $old_status, $post ) {
+    public function listener( $post_id ) {
 
-        // Bail if post has been already published
-        if( $old_status === 'publish' ) {
-            return;
-        }
-
-        // Bail if post is not published
-        if( $new_status !== 'publish' ) {
-            return;
-        }
+        $post = get_post( $post_id );
 
         automatorwp_trigger_event( array(
             'trigger' => $this->trigger,
@@ -127,4 +120,4 @@ class AutomatorWP_WordPress_Publish_Post_Type extends AutomatorWP_Integration_Tr
 
 }
 
-new AutomatorWP_WordPress_Publish_Post_Type();
+new AutomatorWP_WordPress_Delete_Post_Type();

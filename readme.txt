@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 1.7.7
+Stable tag: 1.7.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -257,6 +257,17 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.7.8 =
+
+* **New Features**
+* New trigger: User deletes a post.
+* New trigger: User deletes a post of a type.
+* New trigger: User deletes a post in a taxonomy.
+* **Improvements**
+* Added checks in Javascript to detect if URL is correctly passed on redirect.
+* **Developer Notes**
+* Added filter to prevent to load an integration.
 
 = 1.7.7 =
 

@@ -260,6 +260,17 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.8 ###
+
+* **New Features**
+* New trigger: User deletes a post.
+* New trigger: User deletes a post of a type.
+* New trigger: User deletes a post in a taxonomy.
+* **Improvements**
+* Added checks in Javascript to detect if URL is correctly passed on redirect.
+* **Developer Notes**
+* Added filter to prevent to load an integration.
+
 ### 1.7.7 ###
 
 * **Bug Fixes**
