@@ -37,6 +37,12 @@ class AutomatorWP_GamiPress_User_Points extends AutomatorWP_Integration_Action {
                             'name' => __( 'Points amount:', 'automatorwp' ),
                             'type' => 'text',
                             'default' => '1'
+                        ),
+                        'earning_text' => array(
+                            'name' => __( 'User earning text:', 'automatorwp' ),
+                            'desc' => __( 'Enter the text for the user earning entry. Leave blank to do not register a new user earning entry.', 'automatorwp' ),
+                            'type' => 'text',
+                            'default' => ''
                         )
                     )
                 ),
@@ -84,6 +90,7 @@ class AutomatorWP_GamiPress_User_Points extends AutomatorWP_Integration_Action {
         // Shorthand
         $points = absint( $action_options['points'] );
         $points_type = $action_options['points_type'];
+        $earning_text = $action_options['earning_text'];
         $user_id_to_award = absint( $action_options['user'] );
 
         if( $user_id_to_award === 0 ) {
@@ -102,6 +109,19 @@ class AutomatorWP_GamiPress_User_Points extends AutomatorWP_Integration_Action {
 
         // Award the points
         gamipress_award_points_to_user( $user_id_to_award, $points, $points_type );
+
+        if( ! empty( $earning_text ) ) {
+            // Insert the custom user earning
+            gamipress_insert_user_earning( $user_id, array(
+                'title'	        => $earning_text,
+                'user_id'	    => $user_id_to_award,
+                'post_id'	    => gamipress_get_points_type_id( $points_type ),
+                'post_type' 	=> 'points-type',
+                'points'	    => $points,
+                'points_type'	=> $points_type,
+                'date'	        => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+            ) );
+        }
 
     }
 

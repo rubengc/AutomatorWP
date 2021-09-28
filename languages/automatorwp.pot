@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-09-20 13:38+0200\n"
+"POT-Creation-Date: 2021-09-28 13:14+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,6 +23,8 @@ msgstr ""
 #: classes/integration-filter.php:336
 #: integrations/automatorwp/actions/anonymous-user.php:870
 #: integrations/automatorwp/actions/anonymous-user.php:896
+#: integrations/automatorwp/actions/call-function.php:188
+#: integrations/automatorwp/actions/do-action.php:185
 #: integrations/automatorwp/actions/redirect-user.php:200
 #: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:164
 #: integrations/wordpress/actions/create-post.php:457
@@ -1861,6 +1863,115 @@ msgstr ""
 msgid "The user's role."
 msgstr ""
 
+#: integrations/automatorwp/actions/call-function.php:35
+msgid "Call a function"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:36
+msgid "Call a <strong>function</strong>"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:38
+#: integrations/automatorwp/actions/call-function.php:40
+#, php-format
+msgid "Call %1$s"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:44
+msgid "a function"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:47
+msgid "Function name:"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:48
+msgid "The function to call."
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:53
+#: integrations/automatorwp/actions/do-action.php:53
+msgid "Variables:"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:54
+msgid "The variables to pass to the function."
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:58
+#: integrations/automatorwp/actions/do-action.php:58
+msgid "Add variable"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:63
+#: integrations/automatorwp/actions/do-action.php:63
+#: integrations/wordpress/filters/user-field.php:58
+msgid "Value:"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:94
+msgid "Empty function name."
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:100
+#, php-format
+msgid "Function \"%s\" not found."
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:115
+#, php-format
+msgid "Function \"%s\" called successfully."
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:118
+#, php-format
+msgid "Function \"%s\" throw the error: %s"
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:35
+msgid "Run a WordPress hook"
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:36
+msgid "Run a <strong>WordPress hook</strong>"
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:38
+#: integrations/automatorwp/actions/do-action.php:40
+#, php-format
+msgid "Run %1$s"
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:44
+msgid "a WordPress hook"
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:47
+msgid "Hook:"
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:48
+msgid "The hook to run."
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:54
+msgid "The variables to pass to the hook."
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:94
+msgid "Empty hook name."
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:112
+#, php-format
+msgid "Hook \"%s\" run successfully."
+msgstr ""
+
+#: integrations/automatorwp/actions/do-action.php:115
+#, php-format
+msgid "Hook \"%s\" throw the error: %s"
+msgstr ""
+
 #: integrations/automatorwp/actions/redirect-user.php:35
 msgid "Redirect user to url"
 msgstr ""
@@ -3012,7 +3123,7 @@ msgid "Achievement ID"
 msgstr ""
 
 #: integrations/gamipress/includes/actions/user-achievement.php:43
-#: integrations/gamipress/includes/actions/user-points.php:57
+#: integrations/gamipress/includes/actions/user-points.php:63
 #: integrations/gamipress/includes/actions/user-rank.php:43
 #: integrations/wordpress/actions/create-user.php:60
 #: integrations/wordpress/actions/send-email.php:60
@@ -3021,7 +3132,7 @@ msgid "user"
 msgstr ""
 
 #: integrations/gamipress/includes/actions/user-achievement.php:46
-#: integrations/gamipress/includes/actions/user-points.php:60
+#: integrations/gamipress/includes/actions/user-points.php:66
 #: integrations/gamipress/includes/actions/user-rank.php:46
 #: integrations/wordpress/actions/update-user.php:72
 #: integrations/wordpress/actions/update-user.php:371
@@ -3051,16 +3162,24 @@ msgstr ""
 msgid "Points amount:"
 msgstr ""
 
-#: integrations/gamipress/includes/actions/user-points.php:45
+#: integrations/gamipress/includes/actions/user-points.php:42
+msgid "User earning text:"
+msgstr ""
+
+#: integrations/gamipress/includes/actions/user-points.php:43
+msgid "Enter the text for the user earning entry. Leave blank to do not register a new user earning entry."
+msgstr ""
+
+#: integrations/gamipress/includes/actions/user-points.php:51
 msgid "Choose a points type"
 msgstr ""
 
-#: integrations/gamipress/includes/actions/user-points.php:48
+#: integrations/gamipress/includes/actions/user-points.php:54
 #: integrations/gamipress/includes/triggers/earn-points.php:53
 msgid "Points Type:"
 msgstr ""
 
-#: integrations/gamipress/includes/actions/user-points.php:61
+#: integrations/gamipress/includes/actions/user-points.php:67
 msgid "User ID that will receive this points. Leave blank to award the points to the user that completes the automation."
 msgstr ""
 
@@ -5247,10 +5366,6 @@ msgstr ""
 
 #: integrations/wordpress/filters/user-field.php:45
 msgid "Date registered"
-msgstr ""
-
-#: integrations/wordpress/filters/user-field.php:58
-msgid "Value:"
 msgstr ""
 
 #: integrations/wordpress/filters/user-field.php:90

@@ -1373,3 +1373,80 @@ function automatorwp_starts_with( $haystack, $needle ) {
 function automatorwp_ends_with( $haystack, $needle ) {
     return $needle === '' || substr_compare( $haystack, $needle, -strlen( $needle ) ) === 0;
 }
+
+/**
+ * Helper function to parse the function args option
+ *
+ * @since 1.7.9
+ *
+ * @param array     $args Expects an array like: array( array( 'value' => 'value_1' ), array( 'value' => 'value_2' ) )
+ * @param stdClass  $item
+ * @param int       $user_id
+ * @param array     $options
+ * @param stdClass  $automation
+ *
+ * @return array
+ */
+function automatorwp_parse_function_args_option( $args, $item, $user_id, $options, $automation ) {
+
+    foreach( $args as $key => $param ) {
+
+        $value = automatorwp_parse_automation_tags( $automation->id, $user_id, $param['value'] );
+
+        $value = automatorwp_parse_function_arg_value( $value );
+
+        $args[$key] = $value;
+
+    }
+
+    /**
+     * Filter available to override the function args option parsed
+     *
+     * @since 1.7.9
+     *
+     * @param array     $args
+     * @param stdClass  $item
+     * @param int       $user_id
+     * @param array     $options
+     * @param stdClass  $automation
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_parse_function_args_option', $args, $item, $user_id, $options, $automation );
+
+}
+
+/**
+ * Helper function to parse the function arg value
+ * Turn values like "null" to null or "array()" to array()
+ *
+ * @since 1.7.9
+ *
+ * @param mixed $value
+ *
+ * @return mixed
+ */
+function automatorwp_parse_function_arg_value( $value ) {
+
+    switch ( $value ) {
+        case 'null':
+            $value = null;
+            break;
+        case 'array()':
+        case '[]':
+            $value = array();
+            break;
+    }
+
+    /**
+     * Filter available to override the function arg value parsed
+     *
+     * @since 1.7.9
+     *
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    return apply_filters( 'automatorwp_parse_function_arg_value', $value );
+
+}

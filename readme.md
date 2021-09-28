@@ -260,6 +260,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.9 ###
+
+* **New Features**
+* New action: Call a function.
+* New action: Run a WordPress hook.
+* GamiPress: Added the ability to insert a user earning entry in the "Award points to user" action.
+
 ### 1.7.8 ###
 
 * **New Features**

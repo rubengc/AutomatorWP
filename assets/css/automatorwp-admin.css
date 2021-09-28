@@ -1542,6 +1542,9 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     background: #f5f5f5;
 }
 
+.automatorwp-fields-table.automatorwp-fields-table-col-1 .cmb-repeatable-grouping .cmb-field-list .cmb-row:not(.cmb-remove-field-row) {
+    width: 100%;
+}
 .automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-row:not(.cmb-remove-field-row) {
     width: 50%;
 }
