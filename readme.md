@@ -260,6 +260,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.7.9.1 ###
+
+* **New Features**
+* Added support for booleans on "Call a function" and "Run a WordPress hook" actions.
+
 ### 1.7.9 ###
 
 * **New Features**

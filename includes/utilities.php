@@ -1432,6 +1432,18 @@ function automatorwp_parse_function_arg_value( $value ) {
         case 'null':
             $value = null;
             break;
+        case 'true':
+            $value = true;
+            break;
+        case 'TRUE':
+            $value = TRUE;
+            break;
+        case 'false':
+            $value = false;
+            break;
+        case 'FALSE':
+            $value = FALSE;
+            break;
         case 'array()':
         case '[]':
             $value = array();
