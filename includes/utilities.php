@@ -1428,6 +1428,7 @@ function automatorwp_parse_function_args_option( $args, $item, $user_id, $option
  */
 function automatorwp_parse_function_arg_value( $value ) {
 
+    // Check PHP objects
     switch ( $value ) {
         case 'null':
             $value = null;
@@ -1448,6 +1449,15 @@ function automatorwp_parse_function_arg_value( $value ) {
         case '[]':
             $value = array();
             break;
+    }
+
+    // Check possible numeric values
+    if( is_numeric( $value ) ) {
+        if ( strpos( $value , '.') !== false ) {
+            $value = (float) $value ;
+        } else {
+            $value = (int) $value;
+        }
     }
 
     /**
