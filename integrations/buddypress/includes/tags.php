@@ -154,7 +154,6 @@ function automatorwp_buddypress_get_trigger_group_tag_replacement( $replacement,
 
     // Bail if groups module is not active
     if( ! function_exists( 'groups_get_group' ) ) {
-        error_log( $tag_name . ' function not exists' );
         return $replacement;
     }
 
@@ -162,14 +161,12 @@ function automatorwp_buddypress_get_trigger_group_tag_replacement( $replacement,
 
     // Bail if not group ID store
     if( $group_id === 0 ) {
-        error_log( $tag_name . ' group ID is 0' );
         return $replacement;
     }
 
     $group = groups_get_group( $group_id );
 
     if( ! $group ) {
-        error_log( $tag_name . ' group not found' );
         return $replacement;
     }
 

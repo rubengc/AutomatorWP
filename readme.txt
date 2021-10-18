@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 1.7.9.2
+Stable tag: 1.8.0
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -129,6 +129,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Presto Player](https://automatorwp.com/add-ons/presto-player/)
 * [Restrict Content Pro](https://automatorwp.com/add-ons/restrict-content-pro/)
 * [Sensei LMS](https://automatorwp.com/add-ons/sensei-lms/)
+* [SliceWP](https://automatorwp.com/add-ons/slicewp/)
 * [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
 * [Tutor LMS](https://automatorwp.com/add-ons/tutor/)
 * [Ultimate Member](https://automatorwp.com/add-ons/ultimate-member/)
@@ -258,81 +259,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 == Changelog ==
 
-= 1.7.9.2 =
-
-* **Improvements**
-* Improved support for numeric values on "Call a function" and "Run a WordPress hook" actions.
-
-= 1.7.9.1 =
+= 1.8.0 =
 
 * **New Features**
-* Added support for booleans on "Call a function" and "Run a WordPress hook" actions.
-
-= 1.7.9 =
-
-* **New Features**
-* New action: Call a function.
-* New action: Run a WordPress hook.
-* GamiPress: Added the ability to insert a user earning entry in the "Award points to user" action.
-
-= 1.7.8 =
-
-* **New Features**
-* New trigger: User deletes a post.
-* New trigger: User deletes a post of a type.
-* New trigger: User deletes a post in a taxonomy.
+* WordPress: New filter: User with field exists or does not exists.
+* New integration: SliceWP.
+* SliceWP: New trigger: User becomes an affiliate.
 * **Improvements**
-* Added checks in Javascript to detect if URL is correctly passed on redirect.
-* **Developer Notes**
-* Added filter to prevent to load an integration.
-
-= 1.7.7 =
-
-* **Bug Fixes**
-* Presto Player: Fixed typo on a video selector label.
-
-= 1.7.6 =
-
-* **Improvements**
-* Improvements in the flat condition filter to apply better checks depending of the condition configured.
-* Security improvements added extra checks to all ajax calls.
-
-= 1.7.5 =
-
-* **Bug Fixes**
-* Fixed flat condition filter check to correctly compare the values provided.
-
-= 1.7.4 =
-
-* **New Features**
-* Added new tags to get the post thumbnail as an img HTML tag, ID and URL.
-* **Improvements**
-* Make the flat condition filter able to detect numeric values to correctly compare them.
-* Newsletter: Improved the list selector.
-
-= 1.7.3 =
-
-* **New Features**
-* PeepSo: Added post tags to the "User writes an activity post" trigger.
-* **Improvements**
-* Presto Player: Improved the video selector to correctly load videos instead of video blocks.
-
-= 1.7.2 =
-
-* **Improvements**
-* WPLMS: Updated check to meet if WPLMS is installed to match latest WPLMS v4.
-
-= 1.7.1 =
-
-* **New Features**
-* New integration: Advanced Ads.
-* Advanced Ads: New trigger: User ad gets published.
-* Advanced Ads: New trigger: User ad gets unpublished.
-* Advanced Ads: New trigger: User ad expires.
-
-= 1.7.0 =
-
-* **Bug Fixes**
-* wpForo: Fixed typo that prevents some tags to get rendered correctly.
+* Improved the way to detect that all actions of an automation has been executed.
+* Ensure to clear the completion times cache when a filter entry gets registered.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.

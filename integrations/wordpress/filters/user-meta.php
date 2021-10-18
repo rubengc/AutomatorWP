@@ -89,6 +89,7 @@ class AutomatorWP_WordPress_User_Meta_Filter extends AutomatorWP_Integration_Fil
 
         // Don't deserve if meta value doesn't match with the user meta value
         if( ! automatorwp_condition_matches( $user_meta_value, $meta_value, $condition ) ) {
+            /* translators: %1$s: Meta key. %2$s: Meta value. %3$s: Condition. %4$s: Meta value. */
             $this->result = sprintf( __( 'Filter not passed. User meta "%1$s" has the value "%2$s" and does not meets the condition %3$s "%4$s".', 'automatorwp' ),
                 $meta_key,
                 $user_meta_value,
@@ -98,6 +99,7 @@ class AutomatorWP_WordPress_User_Meta_Filter extends AutomatorWP_Integration_Fil
             return false;
         }
 
+        /* translators: %1$s: Meta key. %2$s: Meta value. %3$s: Condition. %4$s: Meta value. */
         $this->result = sprintf( __( 'Filter passed. User meta "%1$s" has the value "%2$s" and meets the condition %3$s "%4$s".', 'automatorwp' ),
             $meta_key,
             $user_meta_value,

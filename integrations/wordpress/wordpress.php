@@ -61,6 +61,7 @@ require_once plugin_dir_path( __FILE__ ) . 'actions/update-post.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/post-meta.php';
 // Filters
 require_once plugin_dir_path( __FILE__ ) . 'filters/user-role.php';
+require_once plugin_dir_path( __FILE__ ) . 'filters/user-exists.php';
 require_once plugin_dir_path( __FILE__ ) . 'filters/user-field.php';
 require_once plugin_dir_path( __FILE__ ) . 'filters/user-meta.php';
 

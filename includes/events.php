@@ -927,6 +927,9 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
                 'date'      => automatorwp_get_event_log_date(),
             ), $log_meta );
 
+            // Force to clear the cache for this filter
+            automatorwp_clear_user_last_completion_cache( $filter, $user_id, 'filter' );
+
             break;
         }
 
@@ -1561,6 +1564,9 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
                 'post_id'   => ( isset( $event['post_id'] ) ? $event['post_id'] : 0 ),
                 'date'      => automatorwp_get_event_log_date(),
             ), $log_meta );
+
+            // Force to clear the cache for this filter
+            automatorwp_clear_user_last_completion_cache( $filter, $user_id, 'filter' );
 
             break;
         }

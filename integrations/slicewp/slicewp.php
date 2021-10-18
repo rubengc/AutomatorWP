@@ -1,26 +1,26 @@
 <?php
 /**
- * Plugin Name:           AutomatorWP - AffiliateWP integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-affiliatewp-integration/
- * Description:           Connect AutomatorWP with AffiliateWP.
+ * Plugin Name:           AutomatorWP - SliceWP integration
+ * Plugin URI:            https://automatorwp.com/add-ons/slicewp/
+ * Description:           Connect AutomatorWP with SliceWP.
  * Version:               1.0.0
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
- * Text Domain:           automatorwp-affiliatewp-integration
+ * Text Domain:           automatorwp-slicewp-integration
  * Domain Path:           /languages/
  * Requires at least:     4.4
- * Tested up to:          5.7
+ * Tested up to:          5.8
  * License:               GNU AGPL v3.0 (http://www.gnu.org/licenses/agpl.txt)
  *
- * @package               AutomatorWP\AffiliateWP
+ * @package               AutomatorWP\SliceWP
  * @author                AutomatorWP
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Integration_AffiliateWP {
+final class AutomatorWP_Integration_SliceWP {
 
     /**
-     * @var         AutomatorWP_Integration_AffiliateWP $instance The one true AutomatorWP_Integration_AffiliateWP
+     * @var         AutomatorWP_Integration_SliceWP $instance The one true AutomatorWP_Integration_SliceWP
      * @since       1.0.0
      */
     private static $instance;
@@ -30,17 +30,17 @@ final class AutomatorWP_Integration_AffiliateWP {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Integration_AffiliateWP self::$instance The one true AutomatorWP_Integration_AffiliateWP
+     * @return      AutomatorWP_Integration_SliceWP self::$instance The one true AutomatorWP_Integration_SliceWP
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Integration_AffiliateWP();
-            
+            self::$instance = new AutomatorWP_Integration_SliceWP();
+
             if( ! self::$instance->pro_installed() ) {
 
                 self::$instance->constants();
                 self::$instance->includes();
-                
+
             }
 
             self::$instance->hooks();
@@ -58,16 +58,16 @@ final class AutomatorWP_Integration_AffiliateWP {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_AFFILIATEWP_VER', '1.0.0' );
+        define( 'AUTOMATORWP_SLICEWP_VER', '1.0.0' );
 
         // Plugin file
-        define( 'AUTOMATORWP_AFFILIATEWP_FILE', __FILE__ );
+        define( 'AUTOMATORWP_SLICEWP_FILE', __FILE__ );
 
         // Plugin path
-        define( 'AUTOMATORWP_AFFILIATEWP_DIR', plugin_dir_path( __FILE__ ) );
+        define( 'AUTOMATORWP_SLICEWP_DIR', plugin_dir_path( __FILE__ ) );
 
         // Plugin URL
-        define( 'AUTOMATORWP_AFFILIATEWP_URL', plugin_dir_url( __FILE__ ) );
+        define( 'AUTOMATORWP_SLICEWP_URL', plugin_dir_url( __FILE__ ) );
     }
 
     /**
@@ -82,7 +82,7 @@ final class AutomatorWP_Integration_AffiliateWP {
         if( $this->meets_requirements() ) {
 
             // Triggers
-            require_once AUTOMATORWP_AFFILIATEWP_DIR . 'includes/triggers/become-affiliate.php';
+            require_once AUTOMATORWP_SLICEWP_DIR . 'includes/triggers/become-affiliate.php';
 
         }
     }
@@ -101,7 +101,6 @@ final class AutomatorWP_Integration_AffiliateWP {
         // Setup our activation and deactivation hooks
         register_activation_hook( __FILE__, array( $this, 'activate' ) );
         register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-
     }
 
     /**
@@ -111,9 +110,9 @@ final class AutomatorWP_Integration_AffiliateWP {
      */
     function register_integration() {
 
-        automatorwp_register_integration( 'affiliatewp', array(
-            'label' => 'AffiliateWP',
-            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/affiliatewp.svg',
+        automatorwp_register_integration( 'slicewp', array(
+            'label' => 'SliceWP',
+            'icon'  => AUTOMATORWP_SLICEWP_URL . 'assets/slicewp.svg',
         ) );
 
     }
@@ -153,7 +152,7 @@ final class AutomatorWP_Integration_AffiliateWP {
             return false;
         }
 
-        if ( ! class_exists( 'Affiliate_WP' ) ) {
+        if ( ! class_exists( 'SliceWP' ) ) {
             return false;
         }
 
@@ -170,7 +169,7 @@ final class AutomatorWP_Integration_AffiliateWP {
      */
     private function pro_installed() {
 
-        if ( ! class_exists( 'AutomatorWP_AffiliateWP' ) ) {
+        if ( ! class_exists( 'AutomatorWP_SliceWP' ) ) {
             return false;
         }
 
@@ -181,12 +180,12 @@ final class AutomatorWP_Integration_AffiliateWP {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Integration_AffiliateWP instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_SliceWP instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Integration_AffiliateWP The one true AutomatorWP_Integration_AffiliateWP
+ * @return      \AutomatorWP_Integration_SliceWP The one true AutomatorWP_Integration_SliceWP
  */
-function AutomatorWP_Integration_AffiliateWP() {
-    return AutomatorWP_Integration_AffiliateWP::instance();
+function AutomatorWP_Integration_SliceWP() {
+    return AutomatorWP_Integration_SliceWP::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_AffiliateWP' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_SliceWP' );

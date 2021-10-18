@@ -111,9 +111,14 @@ function automatorwp_get_user_completion_times( $object_id, $user_id, $type, $si
     // If result already cached, return it
     if( isset( $cache[$user_id] )
         && isset( $cache[$user_id][$type] )
-        && isset( $cache[$user_id][$type][$object_id] )
-        && isset( $cache[$user_id][$type][$object_id][$date] ) ) {
-        return $cache[$user_id][$type][$object_id][$date];
+        && isset( $cache[$user_id][$type][$object_id] ) ) {
+
+        if( $date !== false && isset( $cache[$user_id][$type][$object_id][$date] ) ) {
+            return $cache[$user_id][$type][$object_id][$date];
+        } else {
+            return $cache[$user_id][$type][$object_id];
+        }
+
     }
 
     $ct_table = ct_setup_table( 'automatorwp_logs' );
@@ -342,12 +347,16 @@ function automatorwp_get_user_last_completion( $object_id, $user_id, $type ) {
  *
  * @since 1.0.0
  *
- * @param stdClass  $object     The trigger object
+ * @param stdClass  $object     The trigger/action/filter/automation object
  * @param int       $user_id    The user ID
+ * @param string    $type       The object type (only pass this parameter to force the type)
  */
-function automatorwp_clear_user_last_completion_cache( $object, $user_id ) {
+function automatorwp_clear_user_last_completion_cache( $object, $user_id, $type = '' ) {
 
-    $type = str_replace( 'automatorwp_user_completed_', '', current_filter() );
+    if( empty( $type ) ) {
+        $type = str_replace( 'automatorwp_user_completed_', '', current_filter() );
+    }
+
     $caches_to_clear = array(
         'user_completion_times',
         'user_last_completion',
@@ -428,10 +437,50 @@ function automatorwp_has_user_executed_all_automation_actions( $automation_id, $
     $all_completed = true;
 
     foreach( $actions as $action ) {
-        if( ! automatorwp_get_user_completion_times( $action->id, $user_id, 'action', $last_completion_time ) ) {
-            $all_completed = false;
-            break;
+
+        // Skip filters
+        if( $action->type === 'filter' ) {
+            continue;
         }
+
+        // Check if action has not been completed
+        if( ! automatorwp_get_user_completion_times( $action->id, $user_id, 'action', $last_completion_time ) ) {
+
+            // If the action has filters, check if there is an entry for any of the filters
+            $filters = automatorwp_get_action_filters( $action );
+
+            if( count( $filters ) ) {
+
+                $filter_registered = false;
+
+                foreach( $filters as $filter ) {
+
+                    // Skip if a filter log entry have already found
+                    if( $filter_registered ) {
+                        continue;
+                    }
+
+                    // Check if there is a filter log entry registered for this action
+                    if( automatorwp_get_user_completion_times( $filter->id, $user_id, 'filter', $last_completion_time ) ) {
+                        $filter_registered = true;
+                    }
+
+                }
+
+                if( ! $filter_registered ) {
+                    // The action has not been executed yet
+                    $all_completed = false;
+                    break;
+                }
+
+            } else {
+                // If the action does not have filters, them check it as not completed
+                $all_completed = false;
+                break;
+            }
+
+        }
+
     }
 
     return $all_completed;

@@ -25,9 +25,9 @@ class AutomatorWP_WordPress_User_Field_Filter extends AutomatorWP_Integration_Fi
             'integration'       => $this->integration,
             'label'             => __( 'User field', 'automatorwp' ),
             'select_option'     => __( 'User <strong>field</strong>', 'automatorwp' ),
-            /* translators: %1$s: Meta key. %2$s: Condition. %1$s: Meta value. */
+            /* translators: %1$s: Field name. %2$s: Condition. %3$s: Field value. */
             'edit_label'        => sprintf( __( '%1$s %2$s %3$s', 'automatorwp' ), '{field_name}', '{condition}', '{field_value}'  ),
-            /* translators: %1$s: Meta key. %2$s: Condition. %1$s: Meta value. */
+            /* translators: %1$s: Field. %2$s: Condition. %3$s: Field value. */
             'log_label'         => sprintf( __( '%1$s %2$s %3$s', 'automatorwp' ), '{field_name}', '{condition}', '{field_value}' ),
             'options'           => array(
                 'field_name' => array(
@@ -113,6 +113,7 @@ class AutomatorWP_WordPress_User_Field_Filter extends AutomatorWP_Integration_Fi
 
         // Don't deserve if meta value doesn't match with the user meta value
         if( ! automatorwp_condition_matches( $user_field_value, $field_value, $condition ) ) {
+            /* translators: %1$s: Field name. %2$s: Field value. %3$s: Condition. %4$s: Field value. */
             $this->result = sprintf( __( 'Filter not passed. User %1$s has the value "%2$s" and does not meets the condition %3$s "%4$s".', 'automatorwp' ),
                 $field_labels[$field_name],
                 $user_field_value,
@@ -122,6 +123,7 @@ class AutomatorWP_WordPress_User_Field_Filter extends AutomatorWP_Integration_Fi
             return false;
         }
 
+        /* translators: %1$s: Field name. %2$s: Field value. %3$s: Condition. %4$s: Field value. */
         $this->result = sprintf( __( 'Filter passed. User %1$s has the value "%2$s" and meets the condition %3$s "%4$s".', 'automatorwp' ),
             $field_labels[$field_name],
             $user_field_value,
