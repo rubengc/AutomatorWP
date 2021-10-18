@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.0.1 ###
+
+* **Improvements**
+* Ensure to get the existent cache for database recounting queries.
+
 ### 1.8.0 ###
 
 * **New Features**

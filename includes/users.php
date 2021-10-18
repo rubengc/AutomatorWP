@@ -111,13 +111,10 @@ function automatorwp_get_user_completion_times( $object_id, $user_id, $type, $si
     // If result already cached, return it
     if( isset( $cache[$user_id] )
         && isset( $cache[$user_id][$type] )
-        && isset( $cache[$user_id][$type][$object_id] ) ) {
+        && isset( $cache[$user_id][$type][$object_id] )
+        && isset( $cache[$user_id][$type][$object_id][$date] ) ) {
 
-        if( $date !== false && isset( $cache[$user_id][$type][$object_id][$date] ) ) {
-            return $cache[$user_id][$type][$object_id][$date];
-        } else {
-            return $cache[$user_id][$type][$object_id];
-        }
+        return $cache[$user_id][$type][$object_id][$date];
 
     }
 

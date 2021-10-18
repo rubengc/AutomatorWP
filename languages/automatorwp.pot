@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-09-28 15:13+0200\n"
+"POT-Creation-Date: 2021-10-18 15:03+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -927,6 +927,7 @@ msgstr ""
 
 #: includes/tags.php:64 integrations/automatorwp/actions/anonymous-user.php:111
 #: integrations/automatorwp/actions/anonymous-user.php:225
+#: integrations/wordpress/filters/user-exists.php:42
 #: integrations/wordpress/filters/user-field.php:42
 #: integrations/wordpress/triggers/user-field-update.php:46
 #: integrations/wordpress/triggers/user-field-update.php:257
@@ -936,6 +937,7 @@ msgstr ""
 #: includes/tags.php:70 integrations/automatorwp/actions/anonymous-user.php:110
 #: integrations/automatorwp/actions/anonymous-user.php:224
 #: integrations/woocommerce/includes/functions.php:59
+#: integrations/wordpress/filters/user-exists.php:41
 #: integrations/wordpress/filters/user-field.php:43
 #: integrations/wordpress/triggers/user-field-update.php:47
 #: integrations/wordpress/triggers/user-field-update.php:258
@@ -1219,7 +1221,8 @@ msgid "%s Author IP"
 msgstr ""
 
 #: includes/utilities.php:801 includes/utilities.php:846
-#: includes/utilities.php:885 integrations/wordpress/filters/user-role.php:37
+#: includes/utilities.php:885 integrations/wordpress/filters/user-exists.php:64
+#: integrations/wordpress/filters/user-role.php:37
 msgid "Condition:"
 msgstr ""
 
@@ -1432,10 +1435,14 @@ msgstr ""
 #: integrations/affiliatewp/includes/triggers/become-affiliate.php:26
 #: integrations/affiliatewp/includes/triggers/become-affiliate.php:28
 #: integrations/affiliatewp/includes/triggers/become-affiliate.php:29
+#: integrations/slicewp/includes/triggers/become-affiliate.php:26
+#: integrations/slicewp/includes/triggers/become-affiliate.php:28
+#: integrations/slicewp/includes/triggers/become-affiliate.php:29
 msgid "User becomes an affiliate"
 msgstr ""
 
 #: integrations/affiliatewp/includes/triggers/become-affiliate.php:27
+#: integrations/slicewp/includes/triggers/become-affiliate.php:27
 msgid "User <strong>becomes</strong> an affiliate"
 msgstr ""
 
@@ -1724,11 +1731,13 @@ msgid "The field by which to search the user if during creation is detected that
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:284
+#: integrations/wordpress/filters/user-exists.php:96
 #: integrations/wordpress/filters/user-field.php:88
 msgid "email"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:285
+#: integrations/wordpress/filters/user-exists.php:97
 #: integrations/wordpress/filters/user-field.php:87
 msgid "username"
 msgstr ""
@@ -1905,6 +1914,7 @@ msgstr ""
 
 #: integrations/automatorwp/actions/call-function.php:63
 #: integrations/automatorwp/actions/do-action.php:63
+#: integrations/wordpress/filters/user-exists.php:53
 #: integrations/wordpress/filters/user-field.php:58
 msgid "Value:"
 msgstr ""
@@ -5037,6 +5047,7 @@ msgstr ""
 
 #: integrations/wordpress/actions/post-meta.php:81
 #: integrations/wordpress/actions/user-meta.php:61
+#: integrations/wordpress/filters/user-exists.php:50
 #: integrations/wordpress/filters/user-field.php:55
 #: integrations/wordpress/filters/user-meta.php:47
 msgid "value"
@@ -5343,20 +5354,74 @@ msgstr ""
 msgid "another role"
 msgstr ""
 
+#: integrations/wordpress/filters/user-exists.php:26
+msgid "User with field exists or does not exists"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:27
+msgid "User with field <strong>exists</strong> or <strong>does not exists</strong>"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:29
+#: integrations/wordpress/filters/user-exists.php:31
+#, php-format
+msgid "User with %1$s %2$s %3$s"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:35
+#: integrations/wordpress/filters/user-field.php:35
+msgid "field"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:38
+#: integrations/wordpress/filters/user-field.php:38
+msgid "Field:"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:61
+#: integrations/wordpress/filters/user-exists.php:67
+msgid "exists"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:68
+msgid "does not exists"
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:111
+#: integrations/wordpress/filters/user-field.php:101
+msgid "Filter not passed. Field option has not been configured."
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:117
+msgid "Filter not passed. Field value option is empty."
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:128
+#, php-format
+msgid "Filter not passed. User with %1$s \"%2$s\" not found."
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:136
+#, php-format
+msgid "Filter passed. User with %1$s \"%2$s\" found."
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:147
+#, php-format
+msgid "Filter not passed. User with %1$s \"%2$s\" found."
+msgstr ""
+
+#: integrations/wordpress/filters/user-exists.php:155
+#, php-format
+msgid "Filter passed. User with %1$s \"%2$s\" not found."
+msgstr ""
+
 #: integrations/wordpress/filters/user-field.php:26
 msgid "User field"
 msgstr ""
 
 #: integrations/wordpress/filters/user-field.php:27
 msgid "User <strong>field</strong>"
-msgstr ""
-
-#: integrations/wordpress/filters/user-field.php:35
-msgid "field"
-msgstr ""
-
-#: integrations/wordpress/filters/user-field.php:38
-msgid "Field:"
 msgstr ""
 
 #: integrations/wordpress/filters/user-field.php:44
@@ -5376,21 +5441,17 @@ msgstr ""
 msgid "display name"
 msgstr ""
 
-#: integrations/wordpress/filters/user-field.php:101
-msgid "Filter not passed. Field option has not been configured."
-msgstr ""
-
 #: integrations/wordpress/filters/user-field.php:108
 #: integrations/wordpress/filters/user-role.php:87
 msgid "Filter not passed. Could not find the user."
 msgstr ""
 
-#: integrations/wordpress/filters/user-field.php:116
+#: integrations/wordpress/filters/user-field.php:117
 #, php-format
 msgid "Filter not passed. User %1$s has the value \"%2$s\" and does not meets the condition %3$s \"%4$s\"."
 msgstr ""
 
-#: integrations/wordpress/filters/user-field.php:125
+#: integrations/wordpress/filters/user-field.php:127
 #, php-format
 msgid "Filter passed. User %1$s has the value \"%2$s\" and meets the condition %3$s \"%4$s\"."
 msgstr ""
@@ -5407,12 +5468,12 @@ msgstr ""
 msgid "Filter not passed. Meta key option has not been configured."
 msgstr ""
 
-#: integrations/wordpress/filters/user-meta.php:92
+#: integrations/wordpress/filters/user-meta.php:93
 #, php-format
 msgid "Filter not passed. User meta \"%1$s\" has the value \"%2$s\" and does not meets the condition %3$s \"%4$s\"."
 msgstr ""
 
-#: integrations/wordpress/filters/user-meta.php:101
+#: integrations/wordpress/filters/user-meta.php:103
 #, php-format
 msgid "Filter passed. User meta \"%1$s\" has the value \"%2$s\" and meets the condition %3$s \"%4$s\"."
 msgstr ""
