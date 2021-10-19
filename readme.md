@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.1 ###
+
+* **Improvements**
+* Tutor LMS: Ensure to mark the enrollment as completed on "Enoll user in a course" action.
+
 ### 1.8.0.1 ###
 
 * **Improvements**

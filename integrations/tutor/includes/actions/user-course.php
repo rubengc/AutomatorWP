@@ -83,10 +83,31 @@ class AutomatorWP_Tutor_LMS_User_Course extends AutomatorWP_Integration_Action {
             $courses = $query->get_posts();
         }
 
+        // Add a filter to force all enrollment to completed
+        add_filter( 'tutor_enroll_data', array( $this, 'force_enrollment_status_to_completed' ) );
+
         // Enroll user in courses
         foreach( $courses as $course_id ) {
             tutor_utils()->do_enroll( $course_id, $order_id = 0, $user_id );
         }
+
+        // Remove the filter added previously
+        remove_filter( 'tutor_enroll_data', array( $this, 'force_enrollment_status_to_completed' ) );
+
+    }
+
+    /**
+     * Forces the enrollment status to completed
+     *
+     * @param array $enrollment
+     *
+     * @return array
+     */
+    public function force_enrollment_status_to_completed( $enrollment ) {
+
+        $enrollment['status'] = 'completed';
+
+        return $enrollment;
 
     }
 
