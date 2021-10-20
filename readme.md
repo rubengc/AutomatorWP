@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.2 ###
+
+* **Developer Notes**
+* Added more hooks to make the triggers replacement more flexible.
+
 ### 1.8.1 ###
 
 * **Improvements**

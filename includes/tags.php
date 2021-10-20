@@ -333,7 +333,7 @@ function automatorwp_get_tags_selector_group_html( $tags_group_id, $tags_group )
  * @param int       $user_id        The user ID
  * @param mixed     $content        The content to parse (arrays supported)
  *
- * @return string
+ * @return string|array
  */
 function automatorwp_parse_automation_tags( $automation_id = 0, $user_id = 0, $content = '' ) {
 
@@ -546,15 +546,8 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
  */
 function automatorwp_get_trigger_tags_replacements( $trigger, $user_id, $content = '' ) {
 
-    global $automatorwp_last_anonymous_trigger_log_id;
-
-    if( $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
-        // Get the last anonymous trigger log if is parsing tags for an anonymous user
-        $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
-    } else {
-        // Get the last trigger log (where data for tags replacement is)
-        $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
-    }
+    // Get the last completion log for this trigger (where data for tags replacement is)
+    $log = automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $content );
 
     if( ! $log ) {
         return array();
@@ -896,8 +889,8 @@ function automatorwp_parse_post_meta_tags( $automation_id = 0, $user_id = 0, $co
 
     foreach( $triggers as $trigger ) {
 
-        // Get the last trigger log (where data for tags replacement will be get
-        $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
+        // Get the last completion log for this trigger (where data for tags replacement is)
+        $log = automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $content );
 
         if( ! $log ) {
             continue;

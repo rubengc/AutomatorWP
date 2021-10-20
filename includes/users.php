@@ -483,3 +483,50 @@ function automatorwp_has_user_executed_all_automation_actions( $automation_id, $
     return $all_completed;
 
 }
+
+/**
+ * Get the trigger last completion log (used for parse tags replacements)
+ *
+ * @since 1.8.2
+ *
+ * @param stdClass  $trigger    The trigger object
+ * @param int       $user_id    The user ID
+ * @param string    $content    The content to parse
+ *
+ * @return array
+ */
+function automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $content = '' ) {
+
+    global $automatorwp_last_anonymous_trigger_log_id;
+
+    $log = false;
+
+    /**
+     * Filter available to override the log entry to get the tags from
+     *
+     * @since 1.8.2
+     *
+     * @param stdClass  $log        The log object
+     * @param stdClass  $trigger    The trigger object
+     * @param int       $user_id    The user ID
+     * @param string    $content    The content to parse
+     *
+     * @return stdClass|false
+     */
+    $log = apply_filters( 'automatorwp_get_trigger_last_completion_log', $log, $trigger, $user_id, $content );
+
+    if( ! $log ) {
+
+        if( $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
+            // Get the last anonymous trigger log if is parsing tags for an anonymous user
+            $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
+        } else {
+            // Get the last trigger log (where data for tags replacement is)
+            $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
+        }
+
+    }
+
+    return $log;
+
+}
