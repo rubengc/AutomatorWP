@@ -261,6 +261,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.3 ###
+
+* **Improvements**
+* Improved database indexes creation to ensure maximum performance on the AutomatorWP tables.
+* Ensure the creation of table indexes during installation.
+* Updated AutomatorWP table versions to force table indexes creation on already installed websites.
+* Updated Custom Tables library.
+
 ### 1.8.2 ###
 
 * **Developer Notes**
