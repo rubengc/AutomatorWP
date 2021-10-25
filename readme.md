@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.4 ###
+
+* **Improvements**
+* Ensure to provide a key length during database indexes creation to avoid issues with databases that requires key length.
+
 ### 1.8.3 ###
 
 * **Improvements**
