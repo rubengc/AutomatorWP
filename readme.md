@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.5 ###
+
+* **Bug Fixes**
+* Fixed issue during database tables creation for numeric keys.
+
 ### 1.8.4 ###
 
 * **Improvements**
