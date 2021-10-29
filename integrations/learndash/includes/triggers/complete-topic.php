@@ -65,9 +65,9 @@ class AutomatorWP_LearnDash_Complete_Topic extends AutomatorWP_Integration_Trigg
     public function listener( $args ) {
 
         $user_id = $args['user']->ID;
-        $topic_id = $args['topic']->ID;
-        $lesson_id = $args['lesson'] instanceof WP_Post ? $args['lesson']->ID : 0;
-        $course_id = $args['course'] instanceof WP_Post ? $args['course']->ID : 0;
+        $topic_id = automatorwp_learndash_get_post_id( $args['topic'] );
+        $lesson_id = automatorwp_learndash_get_post_id( $args['lesson'] );
+        $course_id = automatorwp_learndash_get_post_id( $args['course'] );
 
         automatorwp_trigger_event( array(
             'trigger'   => $this->trigger,

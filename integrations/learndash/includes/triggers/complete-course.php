@@ -63,7 +63,7 @@ class AutomatorWP_LearnDash_Complete_Course extends AutomatorWP_Integration_Trig
     public function listener( $args ) {
 
         $user_id = $args['user']->ID;
-        $course_id = $args['course']->ID;
+        $course_id = automatorwp_learndash_get_post_id( $args['course'] );
 
         automatorwp_trigger_event( array(
             'trigger'   => $this->trigger,

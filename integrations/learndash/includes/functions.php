@@ -10,6 +10,33 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Retrieves the post ID.
+ *
+ * @since 1.0.0
+ *
+ * @param mixed $thing
+ *
+ * @return int|false
+ */
+function automatorwp_learndash_get_post_id( $thing ) {
+
+    if( $thing instanceof WP_Post ) {
+        return absint( $thing->ID );
+    }
+
+    if( is_numeric( $thing ) ) {
+
+        if( absint( $thing ) === 0 ) {
+            return false;
+        } else {
+            return absint( $thing );
+        }
+    }
+
+    return false;
+}
+
+/**
  * Helper function to mark a quiz as completed
  *
  * @since 1.0.0

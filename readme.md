@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.6 ###
+
+* **Improvements**
+* LearnDash: Update code to match with latest LearnDash changes.
+
 ### 1.8.5 ###
 
 * **Bug Fixes**

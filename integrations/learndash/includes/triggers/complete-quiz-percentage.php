@@ -81,8 +81,8 @@ class AutomatorWP_LearnDash_Complete_Quiz_Percentage extends AutomatorWP_Integra
     public function listener( $quiz_data, $current_user ) {
 
         $user_id = $current_user->ID;
-        $quiz_id = $quiz_data['quiz']->ID;
-        $course_id = $quiz_data['course'] instanceof WP_Post ? absint( $quiz_data['course']->ID ) : 0;
+        $quiz_id = automatorwp_learndash_get_post_id( $quiz_data['quiz'] );
+        $course_id = automatorwp_learndash_get_post_id( $quiz_data['course'] );
 
         automatorwp_trigger_event( array(
             'trigger'       => $this->trigger,
