@@ -1120,22 +1120,22 @@ function automatorwp_condition_matches( $a, $b, $condition ) {
             $matches = ( $a >= $b );
             break;
         case 'contains':
-            $matches = ( strpos( strval( $b ), $a ) !== false );
+            $matches = ( strpos( $a, strval( $b ) ) !== false );
             break;
         case 'not_contains':
-            $matches = ( strpos( strval( $b ), $a ) === false );
+            $matches = ( strpos( $a, strval( $b ) ) === false );
             break;
         case 'start_with':
-            $matches = ( automatorwp_starts_with( $b, $a ) );
+            $matches = ( automatorwp_starts_with( $a, $b ) );
             break;
         case 'not_start_with':
-            $matches = ( ! automatorwp_starts_with( $b, $a ) );
+            $matches = ( ! automatorwp_starts_with( $a, $b ) );
             break;
         case 'ends_with':
-            $matches = ( automatorwp_ends_with( $b, $a ) );
+            $matches = ( automatorwp_ends_with( $a, $b ) );
             break;
         case 'not_ends_with':
-            $matches = ( ! automatorwp_ends_with( $b, $a ) );
+            $matches = ( ! automatorwp_ends_with( $a, $b ) );
             break;
     }
 

@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.7 ###
+
+* **Bug Fixes**
+* Fixed incorrect check for the "starts with", "ends with" and "contains" conditions.
+
 ### 1.8.6 ###
 
 * **Improvements**
