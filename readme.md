@@ -261,6 +261,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.8 ###
+
+* **Improvements**
+* WooCommerce: Ensure to trigger "User is added to a membership" only for active memberships.
+* **Bug Fixes**
+* Fixed the {times} tag replacement to show the correct number of times the user has triggered a trigger.
+
 ### 1.8.7 ###
 
 * **Bug Fixes**
