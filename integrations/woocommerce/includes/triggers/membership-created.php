@@ -67,6 +67,15 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
             return;
         }
 
+        if( function_exists( 'wc_memberships_get_user_membership' ) ) {
+            $user_membership = wc_memberships_get_user_membership( $data['user_membership_id'] );
+
+            // Bail if user membership is not active
+            if( ! $user_membership->is_active() ) {
+                return;
+            }
+        }
+
         // Get the order ID
         $order_id = 0;
         $access_method = get_post_meta( $membership_plan->id, '_access_method', true );
