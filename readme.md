@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.8.9 ###
+
+* **Improvements**
+* WooCommerce: Improved "User is added to a membership" trigger detection.
+
 ### 1.8.8 ###
 
 * **Improvements**

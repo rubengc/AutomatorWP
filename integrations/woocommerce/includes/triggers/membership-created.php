@@ -29,9 +29,12 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
             'edit_label'        => sprintf( __( 'User is added to %1$s %2$s time(s)', 'automatorwp' ), '{post}', '{times}' ),
             /* translators: %1$s: Post title. */
             'log_label'         => sprintf( __( 'User is added to %1$s', 'automatorwp' ), '{post}' ),
-            'action'            => 'wc_memberships_user_membership_saved',
+            'action'            => array(
+                'wc_memberships_user_membership_created',
+                'wc_memberships_user_membership_saved'
+            ),
             'function'          => array( $this, 'listener' ),
-            'priority'          => 10,
+            'priority'          => 999,
             'accepted_args'     => 2,
             'options'           => array(
                 'post' => automatorwp_utilities_post_option( array(
@@ -55,25 +58,34 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
      *
      * @since 1.0.0
      *
-     * @param $membership_plan
-     * @param array $data
+     * @param \WC_Memberships_Membership_Plan $membership_plan
+     * @param array $args
      */
-    public function listener( $membership_plan, $data ) {
+    public function listener( $membership_plan, $args ) {
 
-        $user_id = absint( $data['user_id'] );
+        // Bail if the callback is for a membership updated hook
+        if ( isset( $args['is_update'] ) && $args['is_update'] === true ) {
+            return;
+        }
+
+        $user_id = absint( $args['user_id'] );
+        $user_membership_id = absint( $args['user_membership_id'] );
 
         // Bail if not user provided
         if( $user_id === 0 ) {
             return;
         }
 
-        if( function_exists( 'wc_memberships_get_user_membership' ) ) {
-            $user_membership = wc_memberships_get_user_membership( $data['user_membership_id'] );
+        // Bail if required function does not exists
+        if( ! function_exists( 'wc_memberships_get_user_membership' ) ) {
+            return;
+        }
 
-            // Bail if user membership is not active
-            if( ! $user_membership->is_active() ) {
-                return;
-            }
+        $user_membership = wc_memberships_get_user_membership( $user_membership_id );
+
+        // Bail if user membership is not active
+        if( ! $user_membership->is_active() ) {
+            return;
         }
 
         // Get the order ID
@@ -81,7 +93,7 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
         $access_method = get_post_meta( $membership_plan->id, '_access_method', true );
 
         if ( $access_method === 'purchase' ) {
-            $order_id = get_post_meta( $data['user_membership_id'], '_order_id', true );
+            $order_id = get_post_meta( $user_membership_id, '_order_id', true );
         }
 
         automatorwp_trigger_event( array(
