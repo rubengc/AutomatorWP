@@ -1555,9 +1555,13 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
              */
             $log_meta = apply_filters( 'automatorwp_user_not_passed_filter_log_meta', $log_meta, $filter, $user_id, $event, $filter_options, $automation );
 
+            // Parse the log label (including the automation tags)
+            $log_title = automatorwp_parse_automation_item_log_label( $filter, 'action', 'view' );
+            $log_title = automatorwp_parse_automation_tags( $automation->id, $user_id, $log_title );
+
             // Insert a new log entry to register why user not passed the action filter
             automatorwp_insert_log( array(
-                'title'     => automatorwp_parse_automation_item_log_label( $filter, 'action', 'view' ),
+                'title'     => $log_title,
                 'type'      => 'filter',
                 'object_id' => $filter->id,
                 'user_id'   => $user_id,

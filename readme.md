@@ -261,69 +261,10 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
-### 1.8.9 ###
+### 1.9.0 ###
 
 * **Improvements**
-* WooCommerce: Improved "User is added to a membership" trigger detection.
-
-### 1.8.8 ###
-
-* **Improvements**
-* WooCommerce: Ensure to trigger "User is added to a membership" only for active memberships.
-* **Bug Fixes**
-* Fixed the {times} tag replacement to show the correct number of times the user has triggered a trigger.
-
-### 1.8.7 ###
-
-* **Bug Fixes**
-* Fixed incorrect check for the "starts with", "ends with" and "contains" conditions.
-
-### 1.8.6 ###
-
-* **Improvements**
-* LearnDash: Update code to match with latest LearnDash changes.
-
-### 1.8.5 ###
-
-* **Bug Fixes**
-* Fixed issue during database tables creation for numeric keys.
-
-### 1.8.4 ###
-
-* **Improvements**
-* Ensure to provide a key length during database indexes creation to avoid issues with databases that requires key length.
-
-### 1.8.3 ###
-
-* **Improvements**
-* Improved database indexes creation to ensure maximum performance on the AutomatorWP tables.
-* Ensure the creation of table indexes during installation.
-* Updated AutomatorWP table versions to force table indexes creation on already installed websites.
-* Updated Custom Tables library.
-
-### 1.8.2 ###
-
-* **Developer Notes**
-* Added more hooks to make the triggers replacement more flexible.
-
-### 1.8.1 ###
-
-* **Improvements**
-* Tutor LMS: Ensure to mark the enrollment as completed on "Enoll user in a course" action.
-
-### 1.8.0.1 ###
-
-* **Improvements**
-* Ensure to get the existent cache for database recounting queries.
-
-### 1.8.0 ###
-
-* **New Features**
-* WordPress: New filter: User with field exists or does not exists.
-* New integration: SliceWP.
-* SliceWP: New trigger: User becomes an affiliate.
-* **Improvements**
-* Improved the way to detect that all actions of an automation has been executed.
-* Ensure to clear the completion times cache when a filter entry gets registered.
+* Store the "Call a function" action result to meet the function return.
+* Ensure to pass all tags on filter logs entries.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.

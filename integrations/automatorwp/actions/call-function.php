@@ -110,9 +110,16 @@ class AutomatorWP_WordPress_Call_Function extends AutomatorWP_Integration_Action
 
         try {
             // Try to call to the function
-            call_user_func_array( $function_name, $function_args );
+            $function_result = call_user_func_array( $function_name, $function_args );
+
+            $function_result = automatorwp_parse_function_arg_value( $function_result );
 
             $this->result = sprintf( __( 'Function "%s" called successfully.', 'automatorwp' ), $function_name );
+
+            // Store the function result
+            if( ! empty( $function_result ) ) {
+                $this->result .= ' ' . sprintf( __( 'The function returned: %s', 'automatorwp' ), $function_result );
+            }
         } catch ( Error $e ) {
             // Notify about any error handled
             $this->result = sprintf( __( 'Function "%s" throw the error: %s', 'automatorwp' ), $function_name, $e->getMessage() );
