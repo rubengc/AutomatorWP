@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.1.1 ###
+
+* **New Features**
+* Make the post type selector more flexible and with support to private post types.
+
 ### 1.9.1 ###
 
 * **Improvements**

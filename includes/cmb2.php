@@ -235,14 +235,51 @@ function automatorwp_options_cb_post_types( $field ) {
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     // Get all public post types which means they are visitable
-    $public_post_types = get_post_types( array( 'public' => true ), 'objects' );
+    $post_types = get_post_types( array(), 'objects' );
 
-    // Exclude attachment post type from this list
-    if( isset( $public_post_types['attachment'] ) ) {
-        unset( $public_post_types['attachment'] );
+    $post_types_excluded = array(
+        'revision',
+        'nav_menu_item',
+        'custom_css',
+        'customize_changeset',
+        'user_request',
+        'oembed_cache',
+        'wp_block',
+        'wp_template',
+    );
+
+    /**
+     * Filter available to extend the post types excluded for the post type selector
+     *
+     * @since 1.0.0
+     *
+     * @param array     $post_types_excluded
+     * @param stdClass  $field
+     *
+     * @return array
+     */
+    $post_types_excluded = apply_filters( 'automatorwp_options_cb_post_types_excluded', $post_types_excluded, $field );
+
+    // Unset excluded post types
+    foreach( $post_types_excluded as $excluded ) {
+        if( isset( $post_types[$excluded] ) ) {
+            unset( $post_types[$excluded] );
+        }
     }
 
-    foreach( $public_post_types as $post_type => $post_type_object ) {
+    /**
+     * Filter available to extend the post types for the post type selector
+     *
+     * @since 1.0.0
+     *
+     * @param array     $post_types
+     * @param stdClass  $field
+     *
+     * @return array
+     */
+    $post_types = apply_filters( 'automatorwp_options_cb_post_types', $post_types, $field );
+
+    foreach( $post_types as $post_type => $post_type_object ) {
         $options[$post_type] = sprintf( __( 'a %s', 'automatorwp' ), strtolower( $post_type_object->labels->singular_name ) );
     }
 
