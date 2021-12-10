@@ -29,7 +29,7 @@ class AutomatorWP_LearnDash_Complete_Quiz_Percentage extends AutomatorWP_Integra
             'edit_label'        => sprintf( __( 'User completes %1$s with a grade percentage %2$s %3$s %4$s time(s)', 'automatorwp' ), '{post}', '{condition}', '{percentage}', '{times}' ),
             /* translators: %1$s: Post title. %2$s: Condition. %3$s: Percent. */
             'log_label'         => sprintf( __( 'User completes %1$s with a grade percentage %2$s %3$s', 'automatorwp' ), '{post}', '{condition}', '{percentage}' ),
-            'action'            => 'learndash_quiz_completed',
+            'action'            => ( defined( 'LEARNDASH_VERSION' ) && version_compare( LEARNDASH_VERSION, '3.0.0', '>=' ) ? 'learndash_quiz_submitted' : 'learndash_quiz_completed' ),
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 2,

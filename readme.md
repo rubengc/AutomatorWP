@@ -261,6 +261,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.1 ###
+
+* **Improvements**
+* LearnDash: Update quiz listener to match with LearnDash 3.0.0 changes.
+* **Developer Notes**
+* Quote all fields and indexes during database creation to improve compatibility with some database servers.
+
 ### 1.9.0 ###
 
 * **Improvements**

@@ -29,7 +29,7 @@ class AutomatorWP_LearnDash_Complete_Quiz extends AutomatorWP_Integration_Trigge
             'edit_label'        => sprintf( __( 'User %1$s %2$s %3$s time(s)', 'automatorwp' ), '{operation}', '{post}', '{times}' ),
             /* translators: %1$s: Operation (attempts, passes or fails). %2$s: Post title. */
             'log_label'         => sprintf( __( 'User %1$s %2$s', 'automatorwp' ), '{operation}', '{post}' ),
-            'action'            => 'learndash_quiz_completed',
+            'action'            => ( defined( 'LEARNDASH_VERSION' ) && version_compare( LEARNDASH_VERSION, '3.0.0', '>=' ) ? 'learndash_quiz_submitted' : 'learndash_quiz_completed' ),
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 2,
