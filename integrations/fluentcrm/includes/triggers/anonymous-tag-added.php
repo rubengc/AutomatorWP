@@ -1,18 +1,18 @@
 <?php
 /**
- * Tag Added
+ * Anonymous Tag Added
  *
- * @package     AutomatorWP\Integrations\FluentCRM\Triggers\Tag_Added
+ * @package     AutomatorWP\Integrations\FluentCRM\Triggers\Anonymous_Tag_Added
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_FluentCRM_Anonymous_Tag_Added extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'fluentcrm';
-    public $trigger = 'fluentcrm_tag_added';
+    public $trigger = 'fluentcrm_anonymous_tag_added';
 
     /**
      * Register the trigger
@@ -23,12 +23,13 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Tag added to user', 'automatorwp' ),
-            'select_option'     => __( '<strong>Tag</strong> added to user', 'automatorwp' ),
+            'anonymous'         => true,
+            'label'             => __( 'Tag added to contact', 'automatorwp' ),
+            'select_option'     => __( '<strong>Tag</strong> added to contact', 'automatorwp' ),
             /* translators: %1$s: Tag. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( '%1$s added to user %2$s time(s)', 'automatorwp' ), '{tag}', '{times}' ),
+            'edit_label'        => sprintf( __( '%1$s added to contact %2$s time(s)', 'automatorwp' ), '{tag}', '{times}' ),
             /* translators: %1$s: Tag. */
-            'log_label'         => sprintf( __( '%1$s added to user', 'automatorwp' ), '{tag}' ),
+            'log_label'         => sprintf( __( '%1$s added to contact', 'automatorwp' ), '{tag}' ),
             'action'            => 'fluentcrm_contact_added_to_tags',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
@@ -65,8 +66,8 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
 
         $user_id = automatorwp_fluentcrm_get_subscriber_user_id( $subscriber );
 
-        // Make sure subscriber has a user ID assigned
-        if ( $user_id === 0 ) {
+        // Make sure subscriber has not a user ID assigned
+        if ( $user_id !== 0 ) {
             return;
         }
 
@@ -74,7 +75,6 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
             // Trigger the tag added
             automatorwp_trigger_event( array(
                 'trigger'           => $this->trigger,
-                'user_id'           => $user_id,
                 'tag_id'            => $tag_id,
                 'subscriber_email'  => $subscriber->email,
             ) );
@@ -83,20 +83,19 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
     }
 
     /**
-     * User deserves check
+     * Guest deserves check
      *
      * @since 1.0.0
      *
-     * @param bool      $deserves_trigger   True if user deserves trigger, false otherwise
+     * @param bool      $deserves_trigger   True if guest deserves trigger, false otherwise
      * @param stdClass  $trigger            The trigger object
-     * @param int       $user_id            The user ID
      * @param array     $event              Event information
      * @param array     $trigger_options    The trigger's stored options
      * @param stdClass  $automation         The trigger's automation object
      *
-     * @return bool                          True if user deserves trigger, false otherwise
+     * @return bool                          True if guest deserves trigger, false otherwise
      */
-    public function user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
+    public function anonymous_deserves_trigger( $deserves_trigger, $trigger, $event, $trigger_options, $automation ) {
 
         // Don't deserve if post is not received
         if( ! isset( $event['tag_id'] ) ) {
@@ -120,7 +119,7 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
     public function hooks() {
 
         // Log meta data
-        add_filter( 'automatorwp_user_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 6 );
+        add_filter( 'automatorwp_anonymous_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 5 );
 
         parent::hooks();
     }
@@ -132,14 +131,13 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
      *
      * @param array     $log_meta           Log meta data
      * @param stdClass  $trigger            The trigger object
-     * @param int       $user_id            The user ID
      * @param array     $event              Event information
      * @param array     $trigger_options    The trigger's stored options
      * @param stdClass  $automation         The trigger's automation object
      *
      * @return array
      */
-    function log_meta( $log_meta, $trigger, $user_id, $event, $trigger_options, $automation ) {
+    function log_meta( $log_meta, $trigger, $event, $trigger_options, $automation ) {
 
         // Bail if action type don't match this action
         if( $trigger->type !== $this->trigger ) {
@@ -154,4 +152,4 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
 
 }
 
-new AutomatorWP_FluentCRM_Tag_Added();
+new AutomatorWP_FluentCRM_Anonymous_Tag_Added();

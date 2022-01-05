@@ -84,12 +84,19 @@ final class AutomatorWP_Integration_FluentCRM {
             // Includes
             require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/ajax-functions.php';
             require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/functions.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/tags.php';
 
             // Triggers
             require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/triggers/tag-added.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/triggers/list-added.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/triggers/status-change.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/triggers/anonymous-tag-added.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/triggers/anonymous-list-added.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/triggers/anonymous-status-change.php';
 
             // Actions
             require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/actions/user-tag.php';
+            require_once AUTOMATORWP_FLUENTCRM_DIR . 'includes/actions/user-list.php';
 
         }
     }

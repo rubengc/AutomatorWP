@@ -1,18 +1,18 @@
 <?php
 /**
- * Tag Added
+ * List Added
  *
- * @package     AutomatorWP\Integrations\FluentCRM\Triggers\Tag_Added
+ * @package     AutomatorWP\Integrations\FluentCRM\Triggers\List_Added
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_FluentCRM_List_Added extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'fluentcrm';
-    public $trigger = 'fluentcrm_tag_added';
+    public $trigger = 'fluentcrm_list_added';
 
     /**
      * Register the trigger
@@ -23,24 +23,24 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Tag added to user', 'automatorwp' ),
-            'select_option'     => __( '<strong>Tag</strong> added to user', 'automatorwp' ),
-            /* translators: %1$s: Tag. %2$s: Number of times. */
-            'edit_label'        => sprintf( __( '%1$s added to user %2$s time(s)', 'automatorwp' ), '{tag}', '{times}' ),
-            /* translators: %1$s: Tag. */
-            'log_label'         => sprintf( __( '%1$s added to user', 'automatorwp' ), '{tag}' ),
-            'action'            => 'fluentcrm_contact_added_to_tags',
+            'label'             => __( 'User gets added to list', 'automatorwp' ),
+            'select_option'     => __( 'User gets added to <strong>list</strong>', 'automatorwp' ),
+            /* translators: %1$s: List. %2$s: Number of times. */
+            'edit_label'        => sprintf( __( 'User gets added to %1$s %2$s time(s)', 'automatorwp' ), '{list}', '{times}' ),
+            /* translators: %1$s: List. */
+            'log_label'         => sprintf( __( 'User gets added to %1$s', 'automatorwp' ), '{list}' ),
+            'action'            => 'fluentcrm_contact_added_to_lists',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 2,
             'options'           => array(
-                'tag' => automatorwp_utilities_ajax_selector_option( array(
-                    'field'             => 'tag',
-                    'name'              => __( 'Tag:', 'automatorwp' ),
+                'list' => automatorwp_utilities_ajax_selector_option( array(
+                    'field'             => 'list',
+                    'name'              => __( 'List:', 'automatorwp' ),
                     'option_none_value' => 'any',
-                    'option_none_label' => __( 'any tag', 'automatorwp' ),
-                    'action_cb'         => 'automatorwp_fluentcrm_get_tags',
-                    'options_cb'        => 'automatorwp_fluentcrm_options_cb_tag',
+                    'option_none_label' => __( 'any list', 'automatorwp' ),
+                    'action_cb'         => 'automatorwp_fluentcrm_get_lists',
+                    'options_cb'        => 'automatorwp_fluentcrm_options_cb_list',
                     'default'           => 'any'
                 ) ),
                 'times' => automatorwp_utilities_times_option(),
@@ -58,10 +58,10 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
      *
      * @since 1.0.0
      *
-     * @param array $tags_ids
+     * @param array $lists_ids
      * @param \FluentCrm\App\Models\Subscriber $subscriber
      */
-    public function listener( $tags_ids, $subscriber ) {
+    public function listener( $lists_ids, $subscriber ) {
 
         $user_id = automatorwp_fluentcrm_get_subscriber_user_id( $subscriber );
 
@@ -70,12 +70,12 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
             return;
         }
 
-        foreach( $tags_ids as $tag_id ) {
-            // Trigger the tag added
+        foreach( $lists_ids as $list_id ) {
+            // Trigger the list added
             automatorwp_trigger_event( array(
                 'trigger'           => $this->trigger,
                 'user_id'           => $user_id,
-                'tag_id'            => $tag_id,
+                'list_id'           => $list_id,
                 'subscriber_email'  => $subscriber->email,
             ) );
         }
@@ -99,12 +99,12 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
     public function user_deserves_trigger( $deserves_trigger, $trigger, $user_id, $event, $trigger_options, $automation ) {
 
         // Don't deserve if post is not received
-        if( ! isset( $event['tag_id'] ) ) {
+        if( ! isset( $event['list_id'] ) ) {
             return false;
         }
 
         // Don't deserve if post doesn't match with the trigger option
-        if( $trigger_options['tag'] !== 'any' && absint( $trigger_options['tag'] ) !== absint( $event['tag_id'] ) ) {
+        if( $trigger_options['list'] !== 'any' && absint( $trigger_options['list'] ) !== absint( $event['list_id'] ) ) {
             return false;
         }
 
@@ -154,4 +154,4 @@ class AutomatorWP_FluentCRM_Tag_Added extends AutomatorWP_Integration_Trigger {
 
 }
 
-new AutomatorWP_FluentCRM_Tag_Added();
+new AutomatorWP_FluentCRM_List_Added();

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2021-11-03 11:35+0100\n"
+"POT-Creation-Date: 2022-01-05 12:51+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: classes/integration-filter.php:336
 #: integrations/automatorwp/actions/anonymous-user.php:870
 #: integrations/automatorwp/actions/anonymous-user.php:896
-#: integrations/automatorwp/actions/call-function.php:188
+#: integrations/automatorwp/actions/call-function.php:195
 #: integrations/automatorwp/actions/do-action.php:185
 #: integrations/automatorwp/actions/redirect-user.php:200
 #: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:164
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:890 includes/cmb2.php:382
+#: includes/ajax-functions.php:890 includes/cmb2.php:419
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
 #: includes/custom-tables/logs.php:345 includes/custom-tables/logs.php:772
@@ -592,28 +592,30 @@ msgstr ""
 msgid "a post of any type"
 msgstr ""
 
-#: includes/cmb2.php:246
+#: includes/cmb2.php:283
 #, php-format
 msgid "a %s"
 msgstr ""
 
-#: includes/cmb2.php:272
+#: includes/cmb2.php:309
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:51
+#: integrations/fluentcrm/includes/triggers/status-change.php:50
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:310 includes/utilities.php:385 includes/utilities.php:420
+#: includes/cmb2.php:347 includes/utilities.php:385 includes/utilities.php:420
 msgid "any role"
 msgstr ""
 
-#: includes/cmb2.php:352
+#: includes/cmb2.php:389
 msgid "any item"
 msgstr ""
 
-#: includes/cmb2.php:407
+#: includes/cmb2.php:444
 msgid "Choose a filter"
 msgstr ""
 
-#: includes/cmb2.php:449 includes/utilities.php:490
+#: includes/cmb2.php:486 includes/utilities.php:490
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:45
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:54
 msgid "Use a custom value"
@@ -1337,6 +1339,7 @@ msgstr ""
 #: integrations/activemember360/includes/actions/user-tag.php:37
 #: integrations/activemember360/includes/triggers/contact-tag.php:41
 #: integrations/fluentcrm/includes/actions/user-tag.php:37
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:40
 #: integrations/fluentcrm/includes/triggers/tag-added.php:39
 #: integrations/groundhogg/includes/actions/user-tag.php:36
 #: integrations/groundhogg/includes/triggers/tag-added.php:39
@@ -1377,7 +1380,8 @@ msgid "User has %1$s"
 msgstr ""
 
 #: integrations/activemember360/includes/triggers/contact-tag.php:68
-#: integrations/fluentcrm/includes/functions.php:52
+#: integrations/fluentcrm/includes/functions.php:77
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:42
 #: integrations/fluentcrm/includes/triggers/tag-added.php:41
 #: integrations/groundhogg/includes/functions.php:25
 #: integrations/groundhogg/includes/triggers/tag-added.php:41
@@ -1928,12 +1932,17 @@ msgstr ""
 msgid "Function \"%s\" not found."
 msgstr ""
 
-#: integrations/automatorwp/actions/call-function.php:115
+#: integrations/automatorwp/actions/call-function.php:117
 #, php-format
 msgid "Function \"%s\" called successfully."
 msgstr ""
 
-#: integrations/automatorwp/actions/call-function.php:118
+#: integrations/automatorwp/actions/call-function.php:121
+#, php-format
+msgid "The function returned: %s"
+msgstr ""
+
+#: integrations/automatorwp/actions/call-function.php:125
 #, php-format
 msgid "Function \"%s\" throw the error: %s"
 msgstr ""
@@ -2327,6 +2336,8 @@ msgstr ""
 #: integrations/buddyboss/includes/actions/add-user-group.php:31
 #: integrations/buddypress/includes/actions/add-user-group.php:29
 #: integrations/buddypress/includes/actions/add-user-group.php:31
+#: integrations/fluentcrm/includes/actions/user-list.php:30
+#: integrations/fluentcrm/includes/actions/user-list.php:32
 #: integrations/learndash/includes/actions/user-group.php:29
 #: integrations/learndash/includes/actions/user-group.php:31
 #: integrations/mailpoet/includes/actions/add-user-to-list.php:29
@@ -3055,6 +3066,31 @@ msgstr ""
 msgid "OR"
 msgstr ""
 
+#: integrations/fluentcrm/includes/actions/user-list.php:27
+msgid "Add user to list"
+msgstr ""
+
+#: integrations/fluentcrm/includes/actions/user-list.php:28
+msgid "Add user to <strong>list</strong>"
+msgstr ""
+
+#: integrations/fluentcrm/includes/actions/user-list.php:36
+msgid "Select a list"
+msgstr ""
+
+#: integrations/fluentcrm/includes/actions/user-list.php:37
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:40
+#: integrations/fluentcrm/includes/triggers/list-added.php:39
+#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:67
+#: integrations/mailpoet/includes/actions/add-user-to-list.php:37
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:42
+msgid "List:"
+msgstr ""
+
+#: integrations/fluentcrm/includes/actions/user-list.php:39
+msgid "List ID"
+msgstr ""
+
 #: integrations/fluentcrm/includes/actions/user-tag.php:30
 #: integrations/fluentcrm/includes/actions/user-tag.php:32
 #: integrations/groundhogg/includes/actions/user-tag.php:29
@@ -3071,6 +3107,193 @@ msgstr ""
 #: integrations/fluentcrm/includes/actions/user-tag.php:39
 #: integrations/groundhogg/includes/actions/user-tag.php:38
 msgid "Tag ID"
+msgstr ""
+
+#: integrations/fluentcrm/includes/functions.php:139
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:42
+#: integrations/fluentcrm/includes/triggers/list-added.php:41
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:77
+msgid "any list"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:23
+msgid "Subscription status"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:25
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:52
+#: integrations/fluentcrm/includes/triggers/status-change.php:51
+#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:53
+msgid "Subscribed"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:48
+#: integrations/fluentcrm/includes/tags.php:97
+#, php-format
+msgid "The contact %s field"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:78
+msgid "Mr"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:84
+#: integrations/woocommerce/includes/functions.php:81
+msgid "False Street, 123"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:85
+#: integrations/woocommerce/includes/functions.php:82
+msgid "First floor, door 2"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:86
+#: integrations/woocommerce/includes/functions.php:83
+msgid "Brooklyn"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:87
+#: integrations/woocommerce/includes/functions.php:86
+msgid "New York"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:89
+#: integrations/woocommerce/includes/functions.php:85
+msgid "United States"
+msgstr ""
+
+#: integrations/fluentcrm/includes/tags.php:91
+#: integrations/woocommerce/includes/functions.php:87
+msgid "202-555-1234"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:27
+msgid "Contact gets added to list"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:28
+msgid "Contact gets added to <strong>list</strong>"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:30
+#, php-format
+msgid "Contact gets added to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:32
+#, php-format
+msgid "Contact gets added to %1$s"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:27
+msgid "Contact status changes to a status"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:28
+msgid "Contact status changes to <strong>a status</strong>"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:30
+#, php-format
+msgid "Contact status changes to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:32
+#, php-format
+msgid "Contact status changes to %1$s"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:48
+#: integrations/fluentcrm/includes/triggers/status-change.php:47
+#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:50
+#: integrations/restrict-content-pro/includes/actions/add-membership.php:64
+#: integrations/wordpress/actions/create-post.php:109
+#: integrations/wordpress/actions/create-post.php:403
+#: integrations/wordpress/actions/update-post.php:123
+#: integrations/wordpress/actions/update-post.php:418
+#: integrations/wordpress/triggers/post-type-status.php:55
+msgid "Status:"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:53
+#: integrations/fluentcrm/includes/triggers/status-change.php:52
+#: integrations/restrict-content-pro/includes/actions/add-membership.php:68
+msgid "Pending"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:54
+#: integrations/fluentcrm/includes/triggers/status-change.php:53
+#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:54
+msgid "Unsubscribed"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:55
+#: integrations/fluentcrm/includes/triggers/status-change.php:54
+#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:57
+msgid "Bounced"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:56
+#: integrations/fluentcrm/includes/triggers/status-change.php:55
+msgid "Complained"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:27
+msgid "Tag added to contact"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:28
+msgid "<strong>Tag</strong> added to contact"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:30
+#, php-format
+msgid "%1$s added to contact %2$s time(s)"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:32
+#, php-format
+msgid "%1$s added to contact"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/list-added.php:26
+msgid "User gets added to list"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/list-added.php:27
+msgid "User gets added to <strong>list</strong>"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/list-added.php:29
+#: integrations/wishlist-member/includes/triggers/add-level.php:29
+#: integrations/wordpress/triggers/add-role.php:29
+#, php-format
+msgid "User gets added to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/list-added.php:31
+#: integrations/wishlist-member/includes/triggers/add-level.php:31
+#: integrations/wordpress/triggers/add-role.php:31
+#, php-format
+msgid "User gets added to %1$s"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/status-change.php:26
+msgid "User status changes to a status"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/status-change.php:27
+msgid "User status changes to <strong>a status</strong>"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/status-change.php:29
+#, php-format
+msgid "User status changes to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/fluentcrm/includes/triggers/status-change.php:31
+#, php-format
+msgid "User status changes to %1$s"
 msgstr ""
 
 #: integrations/fluentcrm/includes/triggers/tag-added.php:26
@@ -3855,36 +4078,8 @@ msgstr ""
 msgid "Last name:"
 msgstr ""
 
-#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:50
-#: integrations/restrict-content-pro/includes/actions/add-membership.php:64
-#: integrations/wordpress/actions/create-post.php:109
-#: integrations/wordpress/actions/create-post.php:403
-#: integrations/wordpress/actions/update-post.php:123
-#: integrations/wordpress/actions/update-post.php:418
-#: integrations/wordpress/triggers/post-type-status.php:55
-msgid "Status:"
-msgstr ""
-
-#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:53
-msgid "Subscribed"
-msgstr ""
-
-#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:54
-msgid "Unsubscribed"
-msgstr ""
-
 #: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:55
 msgid "Unconfirmed"
-msgstr ""
-
-#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:57
-msgid "Bounced"
-msgstr ""
-
-#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:67
-#: integrations/mailpoet/includes/actions/add-user-to-list.php:37
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:42
-msgid "List:"
 msgstr ""
 
 #: integrations/mailpoet/includes/actions/add-user-to-list.php:26
@@ -3909,12 +4104,12 @@ msgstr ""
 
 #: integrations/memberpress/includes/triggers/purchase-membership.php:41
 #: integrations/woocommerce/includes/actions/add-membership.php:34
-#: integrations/woocommerce/includes/triggers/membership-created.php:38
+#: integrations/woocommerce/includes/triggers/membership-created.php:41
 msgid "Membership:"
 msgstr ""
 
 #: integrations/memberpress/includes/triggers/purchase-membership.php:42
-#: integrations/woocommerce/includes/triggers/membership-created.php:39
+#: integrations/woocommerce/includes/triggers/membership-created.php:42
 msgid "any membership"
 msgstr ""
 
@@ -4008,10 +4203,6 @@ msgstr ""
 #: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:57
 #: integrations/woocommerce/includes/functions.php:88
 msgid "contact@automatorwp.com"
-msgstr ""
-
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:77
-msgid "any list"
 msgstr ""
 
 #: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:259
@@ -4259,10 +4450,6 @@ msgstr ""
 msgid "Membership ID"
 msgstr ""
 
-#: integrations/restrict-content-pro/includes/actions/add-membership.php:68
-msgid "Pending"
-msgstr ""
-
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:69
 msgid "Expired"
 msgstr ""
@@ -4374,18 +4561,6 @@ msgstr ""
 msgid "User gets <strong>added</strong> to a level"
 msgstr ""
 
-#: integrations/wishlist-member/includes/triggers/add-level.php:29
-#: integrations/wordpress/triggers/add-role.php:29
-#, php-format
-msgid "User gets added to %1$s %2$s time(s)"
-msgstr ""
-
-#: integrations/wishlist-member/includes/triggers/add-level.php:31
-#: integrations/wordpress/triggers/add-role.php:31
-#, php-format
-msgid "User gets added to %1$s"
-msgstr ""
-
 #: integrations/wishlist-member/includes/triggers/add-level.php:41
 #: integrations/wishlist-member/includes/triggers/remove-level.php:41
 msgid "Level:"
@@ -4488,32 +4663,8 @@ msgstr ""
 msgid "AutomatorWP Ltd."
 msgstr ""
 
-#: integrations/woocommerce/includes/functions.php:81
-msgid "False Street, 123"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:82
-msgid "First floor, door 2"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:83
-msgid "Brooklyn"
-msgstr ""
-
 #: integrations/woocommerce/includes/functions.php:84
 msgid "12345"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:85
-msgid "United States"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:86
-msgid "New York"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:87
-msgid "202-555-1234"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:25
@@ -4682,7 +4833,7 @@ msgstr ""
 msgid "User is added to %1$s"
 msgstr ""
 
-#: integrations/woocommerce/includes/triggers/membership-created.php:45
+#: integrations/woocommerce/includes/triggers/membership-created.php:48
 msgid "Membership"
 msgstr ""
 

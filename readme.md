@@ -261,6 +261,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.2 ###
+
+* **New Features**
+* FluentCRM: New trigger: User gets added.
+* FluentCRM: New trigger: User status change to a status.
+* FluentCRM: New anonymous trigger: A tag added to a contact.
+* FluentCRM: New anonymous trigger: Contact gets added to a list.
+* FluentCRM: New anonymous trigger: Contact status change to a status.
+* FluentCRM: New tags: Contact field and custom field tags.
+
 ### 1.9.1.1 ###
 
 * **New Features**

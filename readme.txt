@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 1.9.1.1
+Stable tag: 1.9.2
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -258,6 +258,16 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.9.2 =
+
+* **New Features**
+* FluentCRM: New trigger: User gets added.
+* FluentCRM: New trigger: User status change to a status.
+* FluentCRM: New anonymous trigger: A tag added to a contact.
+* FluentCRM: New anonymous trigger: Contact gets added to a list.
+* FluentCRM: New anonymous trigger: Contact status change to a status.
+* FluentCRM: New tags: Contact field and custom field tags.
 
 = 1.9.1.1 =
 
