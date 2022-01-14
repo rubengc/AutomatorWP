@@ -261,6 +261,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.4 ###
+
+* **Developer Notes**
+* Added support for CMB2 fields data removal if field has "multiple" set to "true".
+
 ### 1.9.3 ###
 
 * **New Features**
