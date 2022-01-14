@@ -1,27 +1,36 @@
 <?php
 /**
- * Update Post
+ * Update Multiple Posts
  *
- * @package     AutomatorWP\Integrations\WordPress\Actions\Update_Post
+ * @package     AutomatorWP\Integrations\WordPress\Actions\Update_Multiple_Posts
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
+class AutomatorWP_WordPress_Update_Multiple_Posts extends AutomatorWP_Integration_Action {
 
     public $integration = 'wordpress';
-    public $action = 'wordpress_update_post';
+    public $action = 'wordpress_update_multiple_posts';
 
     /**
-     * The new inserted post ID
+     * The post field conditions
      *
      * @since 1.0.0
      *
-     * @var int|WP_Error $post_id
+     * @var array $field_conditions
      */
-    public $post_id = 0;
+    public $field_conditions = array();
+
+    /**
+     * The post meta conditions
+     *
+     * @since 1.0.0
+     *
+     * @var array $meta_conditions
+     */
+    public $meta_conditions = array();
 
     /**
      * The post meta
@@ -31,6 +40,15 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
      * @var array $post_meta
      */
     public $post_meta = array();
+
+    /**
+     * Store the action result
+     *
+     * @since 1.0.0
+     *
+     * @var string $result
+     */
+    public $result = '';
 
     /**
      * Register the trigger
@@ -55,28 +73,83 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
 
         automatorwp_register_action( $this->action, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Update a post', 'automatorwp' ),
-            'select_option'     => __( 'Update <strong>a post</strong>', 'automatorwp' ),
-            /* translators: %1$s: Post. */
-            'edit_label'        => sprintf( __( 'Update %1$s', 'automatorwp' ), '{post}' ),
-            /* translators: %1$s: Post. */
-            'log_label'         => sprintf( __( 'Update %1$s', 'automatorwp' ), '{post}' ),
+            'label'             => __( 'Update multiple posts', 'automatorwp' ),
+            'select_option'     => __( 'Update <strong>multiple posts</strong>', 'automatorwp' ),
+            /* translators: %1$s: Multiple Posts.  %2$s: Data. */
+            'edit_label'        => sprintf( __( 'Update %1$s with %2$s', 'automatorwp' ), '{conditions}', '{post}' ),
+            /* translators: %1$s: Multiple Posts. %2$s: Data. */
+            'log_label'         => sprintf( __( 'Update %1$s with %2$s', 'automatorwp' ), '{conditions}', '{post}' ),
             'options'           => array(
-                'post' => array(
-                    'default' => __( 'a post', 'automatorwp' ),
-                    'from' => 'post_id',
+                'conditions' => array(
+                    'default' => __( 'multiple posts', 'automatorwp' ),
                     'fields' => array(
-                        'post_id' => automatorwp_utilities_post_field( array(
-                            'name'                  => __( 'Post to update:', 'automatorwp' ),
-                            'post_type'             => 'any',
-                            'placeholder'           => __( 'Select a post', 'automatorwp' ),
-                            'option_none_label'     => __( 'a post', 'automatorwp' ),
-                            'option_custom'         => true,
-                            'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
-                        ) ),
-                        'post_id_custom' => automatorwp_utilities_custom_field( array(
-                            'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
-                        ) ),
+                        'post_field_conditions' => array(
+                            'name' => __( 'Field Conditions:', 'automatorwp' ),
+                            'desc' => __( 'Set conditions to filter posts to update by post fields.', 'automatorwp' ),
+                            'type' => 'group',
+                            'classes' => 'automatorwp-fields-table',
+                            'options'     => array(
+                                'add_button'        => __( 'Add condition', 'automatorwp' ),
+                                'remove_button'     => '<span class="dashicons dashicons-no-alt"></span>',
+                            ),
+                            'fields' => array(
+                                'field' => array(
+                                    'name' => __( 'Field:', 'automatorwp' ),
+                                    'type' => 'select',
+                                    'options' => array(
+                                        ''                      => __( 'Choose a field', 'automatorwp' ),
+                                        'ID'                    => __( 'ID', 'automatorwp' ),
+                                        'post_title'            => __( 'Title', 'automatorwp' ),
+                                        'post_name'             => __( 'Slug', 'automatorwp' ),
+                                        'post_type'             => __( 'Type', 'automatorwp' ),
+                                        'post_status'           => __( 'Status', 'automatorwp' ),
+                                        'post_date'             => __( 'Date', 'automatorwp' ),
+                                        'post_date_modified'    => __( 'Date Modified', 'automatorwp' ),
+                                        'post_author'           => __( 'Author', 'automatorwp' ),
+                                        'post_content'          => __( 'Content', 'automatorwp' ),
+                                        'post_excerpt'          => __( 'Excerpt', 'automatorwp' ),
+                                        'post_parent'           => __( 'Parent', 'automatorwp' ),
+                                        'menu_order'            => __( 'Order', 'automatorwp' ),
+                                        'post_password'         => __( 'Password', 'automatorwp' ),
+                                    ),
+                                    'default' => ''
+                                ),
+                                'condition' => automatorwp_utilities_condition_field(),
+                                'value' => array(
+                                    'name' => __( 'Value:', 'automatorwp' ),
+                                    'type' => 'text',
+                                    'default' => ''
+                                ),
+                            ),
+                        ),
+                        'post_meta_conditions' => array(
+                            'name' => __( 'Meta Conditions:', 'automatorwp' ),
+                            'desc' => __( 'Set conditions to filter posts to update by post metas.', 'automatorwp' ),
+                            'type' => 'group',
+                            'classes' => 'automatorwp-fields-table',
+                            'options'     => array(
+                                'add_button'        => __( 'Add condition', 'automatorwp' ),
+                                'remove_button'     => '<span class="dashicons dashicons-no-alt"></span>',
+                            ),
+                            'fields' => array(
+                                'meta_key' => array(
+                                    'name' => __( 'Meta Key:', 'automatorwp' ),
+                                    'type' => 'text',
+                                    'default' => ''
+                                ),
+                                'condition' => automatorwp_utilities_condition_field(),
+                                'meta_value' => array(
+                                    'name' => __( 'Meta Value:', 'automatorwp' ),
+                                    'type' => 'text',
+                                    'default' => ''
+                                ),
+                            ),
+                        ),
+                    )
+                ),
+                'post' => array(
+                    'default' => __( 'data', 'automatorwp' ),
+                    'fields' => array(
                         'post_title' => array(
                             'name' => __( 'Title:', 'automatorwp' ),
                             'desc' => __( 'The post title.', 'automatorwp' )
@@ -198,44 +271,86 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
      */
     public function execute( $action, $user_id, $action_options, $automation ) {
 
-        $post_id = absint( $action_options['post_id'] );
-        $this->post_id = $post_id;
+        $this->result = '';
+        $this->field_conditions = array();
+        $this->meta_conditions = array();
+        $this->post_meta = array();
 
-        // Bail if not post ID provided
-        if( $post_id === 0 ) {
-            return;
-        }
+        global $wpdb;
 
-        // Setup post data
-        $post_data = array(
-            'ID'    => $post_id,
-        );
+        // Filter the posts
+        $field_conditions = $action_options['post_field_conditions'];
+        $meta_conditions = $action_options['post_meta_conditions'];
 
-        $post_fields = array(
-            'post_title',
-            'post_name',
-            'post_type',
-            'post_status',
-            'post_date',
-            'post_author',
-            'post_content',
-            'post_excerpt',
-            'post_parent',
-            'menu_order',
-            'post_password',
-        );
+        $joins      = array();
+        $where      = array();
 
-        foreach( $post_fields as $post_field ) {
-            if( ! empty( $action_options[$post_field] ) ) {
-                $post_data[$post_field] = $action_options[$post_field];
+        // Setup the post field conditions
+        foreach( $field_conditions as $condition ) {
+
+            // Parse automation tags replacements to both, key and value
+            $field = automatorwp_parse_automation_tags( $automation->id, $user_id, $condition['field'] );
+            $value = automatorwp_parse_automation_tags( $automation->id, $user_id, $condition['value'] );
+
+            // Sanitize
+            $field = sanitize_text_field( $field );
+            $value = sanitize_text_field( $value );
+
+            if( ! empty( $field ) ) {
+                $where[] = automatorwp_utilities_parse_condition_to_sql( 'p.' . $field, $condition['condition'], $value );
+
+                $this->field_conditions[] = array(
+                    'field' => $field,
+                    'condition' => $condition['condition'],
+                    'value' => $value,
+                );
             }
         }
 
-        $post_data['ID'] = $this->post_id;
+        // Setup the post meta conditions
+        foreach( $meta_conditions as $condition ) {
 
-        // Update the post
-        wp_update_post( $post_data );
+            // Parse automation tags replacements to both, key and value
+            $meta_key = automatorwp_parse_automation_tags( $automation->id, $user_id, $condition['meta_key'] );
+            $meta_value = automatorwp_parse_automation_tags( $automation->id, $user_id, $condition['meta_value'] );
 
+            // Sanitize
+            $meta_key = sanitize_text_field( $meta_key );
+            $meta_value = sanitize_text_field( $meta_value );
+
+            if( ! empty( $meta_key ) ) {
+                $index = count( $joins );
+
+                $joins[] = "INNER JOIN {$wpdb->postmeta} AS pm{$index} ON ( pm{$index}.post_id = p.ID AND pm{$index}.meta_key = '{$meta_key}' )";
+
+                $where[] = automatorwp_utilities_parse_condition_to_sql( "pm{$index}.meta_value", $condition['condition'], $meta_value, false );
+
+                $this->meta_conditions[] = array(
+                    'meta_key' => $meta_key,
+                    'condition' => $condition['condition'],
+                    'meta_value' => $meta_value,
+                );
+            }
+        }
+
+        // Turn arrays into strings
+        $joins = implode( ' ', $joins );
+        $where = ( ! empty( $where ) ? 'WHERE ( ' . implode( ' ) AND ( ', $where ) . ' ) ' : '' );
+
+        $sql = "SELECT p.ID
+            FROM {$wpdb->posts} AS p
+            {$joins}
+            {$where}";
+
+        $post_ids = $wpdb->get_col( $sql );
+
+        // Bail if not posts found
+        if( count( $post_ids ) === 0 ) {
+            $this->result = __( 'No posts found to be updated.', 'automatorwp' );
+            return;
+        }
+
+        // Parse the metas to update
         if( is_array( $action_options['post_meta'] ) ) {
 
             foreach( $action_options['post_meta'] as $i => $meta ) {
@@ -247,9 +362,6 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
                 // Sanitize
                 $meta_key = sanitize_text_field( $meta_key );
                 $meta_value = sanitize_text_field( $meta_value );
-
-                // Update post meta
-                update_post_meta( $this->post_id, $meta_key, $meta_value );
 
                 $this->post_meta[$meta_key] = $meta_value;
 
@@ -263,6 +375,45 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
 
         }
 
+        // Update the posts
+        foreach( $post_ids as $post_id ) {
+
+            // Setup post data
+            $post_data = array();
+
+            $post_fields = array(
+                'post_title',
+                'post_name',
+                'post_type',
+                'post_status',
+                'post_date',
+                'post_author',
+                'post_content',
+                'post_excerpt',
+                'post_parent',
+                'menu_order',
+                'post_password',
+            );
+
+            foreach( $post_fields as $post_field ) {
+                if( ! empty( $action_options[$post_field] ) ) {
+                    $post_data[$post_field] = $action_options[$post_field];
+                }
+            }
+
+            $post_data['ID'] = $post_id;
+
+            // Update the post
+            wp_update_post( $post_data );
+
+            // Update the post metas
+            foreach( $this->post_meta as $meta_key => $meta_value ) {
+                update_post_meta( $post_id, $meta_key, $meta_value );
+            }
+        }
+
+        $this->result = sprintf( __( '%d posts updated.', 'automatorwp' ), count( $post_ids ) );
+
     }
 
     /**
@@ -272,9 +423,6 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
      */
     public function hooks() {
 
-        // Log post ID
-        add_filter( 'automatorwp_user_completed_action_post_id', array( $this, 'post_id' ), 10, 6 );
-
         // Log meta data
         add_filter( 'automatorwp_user_completed_action_log_meta', array( $this, 'log_meta' ), 10, 5 );
 
@@ -282,35 +430,6 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
         add_filter( 'automatorwp_log_fields', array( $this, 'log_fields' ), 10, 5 );
 
         parent::hooks();
-    }
-
-    /**
-     * Action custom log post ID
-     *
-     * @since 1.0.0
-     *
-     * @param int       $post_id            The post ID, by default 0
-     * @param stdClass  $action             The action object
-     * @param int       $user_id            The user ID
-     * @param array     $event              Event information
-     * @param array     $action_options     The action's stored options (with tags already passed)
-     * @param stdClass  $automation         The action's automation object
-     *
-     * @return int
-     */
-    public function post_id( $post_id, $action, $user_id, $event, $action_options, $automation ) {
-
-        // Bail if action type don't match this action
-        if( $action->type !== $this->action ) {
-            return $post_id;
-        }
-
-        if( $this->post_id ) {
-            $post_id = $this->post_id;
-        }
-
-        return $post_id;
-
     }
 
     /**
@@ -333,6 +452,32 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
             return $log_meta;
         }
 
+        // Store the filters applied
+        $log_meta['field_conditions'] = $this->field_conditions;
+        $log_meta['field_conditions_parsed'] = '';
+
+        foreach( $this->field_conditions as $condition ) {
+            $log_meta['field_conditions_parsed'] .= sprintf( '%s %s %s',
+                $condition['field'],
+                automatorwp_utilities_get_condition_label( $condition['condition'] ),
+                $condition['value'],
+            ) . "<br>";
+        }
+
+        $log_meta['meta_conditions'] = $this->meta_conditions;
+        $log_meta['meta_conditions_parsed'] = '';
+
+        foreach( $this->meta_conditions as $condition ) {
+            $log_meta['meta_conditions_parsed'] .= sprintf( '%s %s %s',
+                $condition['meta_key'],
+                automatorwp_utilities_get_condition_label( $condition['condition'] ),
+                $condition['meta_value'],
+            ) . "<br>";
+        }
+
+        // Store result
+        $log_meta['result'] = $this->result;
+
         // Store post fields
         $post_fields = array(
             'post_title',
@@ -354,15 +499,6 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
 
         // Store post meta
         $log_meta['post_meta'] = $this->post_meta;
-
-        // Store result
-        if( $this->post_id ) {
-            $log_meta['result'] = __( 'Post updated successfully', 'automatorwp' );
-        } else if( is_wp_error( $this->post_id ) ) {
-            $log_meta['result'] = $this->post_id->get_error_message();
-        } else {
-            $log_meta['result'] = __( 'Could not update the post', 'automatorwp' );
-        }
 
         return $log_meta;
     }
@@ -390,9 +526,30 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
             return $log_fields;
         }
 
+        $log_fields['posts_found_info'] = array(
+            'name' => __( 'Posts Filtered', 'automatorwp' ),
+            'desc' => __( 'Information about the filters applied and the posts found.', 'automatorwp' ),
+            'type' => 'title',
+        );
+
+        $log_fields['field_conditions_parsed'] = array(
+            'name' => __( 'Field conditions:', 'automatorwp' ),
+            'type' => 'text',
+        );
+
+        $log_fields['meta_conditions_parsed'] = array(
+            'name' => __( 'Meta conditions:', 'automatorwp' ),
+            'type' => 'text',
+        );
+
+        $log_fields['result'] = array(
+            'name' => __( 'Result:', 'automatorwp' ),
+            'type' => 'text',
+        );
+
         $log_fields['post_info'] = array(
-            'name' => __( 'Post Information', 'automatorwp' ),
-            'desc' => __( 'Information about the post created.', 'automatorwp' ),
+            'name' => __( 'Data Updated', 'automatorwp' ),
+            'desc' => __( 'Information about the data updated to all posts found.', 'automatorwp' ),
             'type' => 'title',
         );
 
@@ -468,14 +625,9 @@ class AutomatorWP_WordPress_Update_Post extends AutomatorWP_Integration_Action {
             'type' => 'text',
         );
 
-        $log_fields['result'] = array(
-            'name' => __( 'Result:', 'automatorwp' ),
-            'type' => 'text',
-        );
-
         return $log_fields;
     }
 
 }
 
-new AutomatorWP_WordPress_Update_Post();
+new AutomatorWP_WordPress_Update_Multiple_Posts();

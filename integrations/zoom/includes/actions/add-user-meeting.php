@@ -42,6 +42,15 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
     public $registrant_email = '';
 
     /**
+     * Registrant Status
+     *
+     * @since 1.0.0
+     *
+     * @var string $registrant_status
+     */
+    public $registrant_status = '';
+
+    /**
      * Meeting ID
      *
      * @since 1.0.0
@@ -93,15 +102,31 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
             /* translators: %1$s: Meeting. */
             'log_label'         => sprintf( __( 'Add user to %1$s', 'automatorwp' ), '{meeting}' ),
             'options'           => array(
-                'meeting' => automatorwp_utilities_ajax_selector_option( array(
-                    'field'             => 'meeting',
-                    'option_default'    => __( 'meeting', 'automatorwp' ),
-                    'placeholder'       => __( 'Select a meeting', 'automatorwp' ),
-                    'name'              => __( 'Meeting:', 'automatorwp' ),
-                    'action_cb'         => 'automatorwp_zoom_get_meetings',
-                    'options_cb'        => 'automatorwp_zoom_options_cb_meetings',
-                    'default'           => ''
-                ) ),
+                'meeting' => array(
+                    'from' => 'meeting',
+                    'default' => __( 'meeting', 'automatorwp' ),
+                    'fields' => array(
+                        'meeting' => automatorwp_utilities_ajax_selector_field( array(
+                            'field'             => 'meeting',
+                            'option_default'    => __( 'meeting', 'automatorwp' ),
+                            'placeholder'       => __( 'Select a meeting', 'automatorwp' ),
+                            'name'              => __( 'Meeting:', 'automatorwp' ),
+                            'action_cb'         => 'automatorwp_zoom_get_meetings',
+                            'options_cb'        => 'automatorwp_zoom_options_cb_meetings',
+                            'default'           => ''
+                        ) ),
+                        'registrant_status' => array(
+                            'name' => __( 'Status:', 'automatorwp' ),
+                            'desc' => __( 'The registrant status.', 'automatorwp' ),
+                            'type' => 'select',
+                            'options' => array(
+                                'approved'  => __( 'Approved', 'automatorwp' ),
+                                'denied'    => __( 'Denied', 'automatorwp' ),
+                                'pending'   => __( 'Pending', 'automatorwp' ),
+                            ),
+                        ),
+                    )
+                )
             ),
         ) );
 
@@ -124,6 +149,7 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
         $this->registrant_first_name = '';
         $this->registrant_last_name = '';
         $this->registrant_email = '';
+        $this->registrant_status = '';
         $this->meeting_id = '';
         $this->registrant_id = '';
         $this->join_url = '';
@@ -151,11 +177,13 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
         $this->registrant_first_name = $user->first_name;
         $this->registrant_last_name = $user->last_name;
         $this->registrant_email = $user->user_email;
+        $this->registrant_status = $action_options['registrant_status'];
 
         $params['body'] = json_encode( array(
             'first_name' => $this->registrant_first_name,
             'last_name'  => $this->registrant_last_name,
             'email'      => $this->registrant_email,
+            'status'     => $this->registrant_status,
         ) );
 
         // Setup the URL
@@ -223,7 +251,11 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
     public function configuration_notice( $object, $item_type ) {
 
         // Bail if action type don't match this action
-        if( $item_type !== 'action' || $object->type !== $this->action ) {
+        if( $item_type !== 'action' ) {
+            return;
+        }
+
+        if( $object->type !== $this->action ) {
             return;
         }
 
@@ -233,8 +265,8 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
         if( $params === false ) : ?>
             <div class="automatorwp-notice-warning" style="margin-top: 10px; margin-bottom: 0;">
                 <?php echo sprintf(
-                        __( 'You need to configure the <a href="%s" target="_blank">Zoom Meetings settings</a> to get this action to work.', 'automatorwp' ),
-                        get_admin_url() . 'admin.php?page=automatorwp_settings&tab=opt-tab-zoom'
+                    __( 'You need to configure the <a href="%s" target="_blank">Zoom Meetings settings</a> to get this action to work.', 'automatorwp' ),
+                    get_admin_url() . 'admin.php?page=automatorwp_settings&tab=opt-tab-zoom'
                 ); ?>
                 <?php echo sprintf(
                     __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp' ),
@@ -269,6 +301,7 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
         $log_meta['registrant_first_name'] = $this->registrant_first_name;
         $log_meta['registrant_last_name'] = $this->registrant_last_name;
         $log_meta['registrant_email'] = $this->registrant_email;
+        $log_meta['registrant_status'] = $this->registrant_status;
         $log_meta['meeting_id'] = $this->meeting_id;
         $log_meta['registrant_id'] = $this->registrant_id;
         $log_meta['join_url'] = $this->join_url;
@@ -312,6 +345,11 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
 
         $log_fields['registrant_email'] = array(
             'name' => __( 'Registrant Email:', 'automatorwp' ),
+            'type' => 'text',
+        );
+
+        $log_fields['registrant_status'] = array(
+            'name' => __( 'Registrant Status:', 'automatorwp' ),
             'type' => 'text',
         );
 

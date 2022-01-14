@@ -128,7 +128,7 @@ final class AutomatorWP_Integration_WishList_Member {
             return false;
         }
 
-        if ( ! class_exists( 'WishListMember3' ) ) {
+        if ( ! class_exists( 'WishListMember' ) ) {
             return false;
         }
 

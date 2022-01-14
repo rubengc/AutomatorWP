@@ -261,6 +261,22 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.3 ###
+
+* **New Features**
+* New trigger: User gets deleted.
+* New trigger: User role changes from role to role.
+* New Action: Update multiple posts.
+* New Action: Delete a post.
+* New Action: Delete multiple posts.
+* New Action: Delete a user.
+* **Improvements**
+* WishList Member: Updated class check to correctly detect if WishList Member is active.
+* Zoom: Added the ability to register registrants with a custom status (approved, denied or pending).
+* WordPress: Added support to the user nicename in the trigger "User field gets updated".
+* **Developer Notes**
+* Make use of the min() function when defining length of the table keys (thanks to @mholubowski).
+
 ### 1.9.2 ###
 
 * **New Features**

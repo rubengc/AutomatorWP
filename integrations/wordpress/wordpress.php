@@ -42,7 +42,9 @@ require_once plugin_dir_path( __FILE__ ) . 'triggers/user-field-update.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/user-meta-update.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/add-role.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/set-role.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/set-role-from-to.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/remove-role.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/user-deleted.php';
 // Anonymous Triggers
 require_once plugin_dir_path( __FILE__ ) . 'triggers/anonymous-view-post.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/anonymous-view-page.php';
@@ -56,9 +58,13 @@ require_once plugin_dir_path( __FILE__ ) . 'actions/user-role.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/create-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/update-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/user-meta.php';
+require_once plugin_dir_path( __FILE__ ) . 'actions/delete-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/create-post.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/update-post.php';
+require_once plugin_dir_path( __FILE__ ) . 'actions/update-multiple-posts.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/post-meta.php';
+require_once plugin_dir_path( __FILE__ ) . 'actions/delete-post.php';
+require_once plugin_dir_path( __FILE__ ) . 'actions/delete-multiple-posts.php';
 // Filters
 require_once plugin_dir_path( __FILE__ ) . 'filters/user-role.php';
 require_once plugin_dir_path( __FILE__ ) . 'filters/user-exists.php';
