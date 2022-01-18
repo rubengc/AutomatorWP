@@ -179,12 +179,24 @@ class AutomatorWP_Zoom_Add_User_Meeting extends AutomatorWP_Integration_Action {
         $this->registrant_email = $user->user_email;
         $this->registrant_status = $action_options['registrant_status'];
 
-        $params['body'] = json_encode( array(
+        if( $this->registrant_status === '' ) {
+            $this->registrant_status = 'approved';
+        }
+
+        // Setup the request parameters
+        $body_params = array(
             'first_name' => $this->registrant_first_name,
             'last_name'  => $this->registrant_last_name,
             'email'      => $this->registrant_email,
             'status'     => $this->registrant_status,
-        ) );
+        );
+
+        // Force auto approval
+        if( $this->registrant_status === 'approved' ) {
+            $body_params['auto_approve'] = true;
+        }
+
+        $params['body'] = json_encode( $body_params );
 
         // Setup the URL
         $url = 'https://api.zoom.us/v2/meetings/' . $meeting_id . '/registrants';

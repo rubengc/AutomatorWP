@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-01-05 12:51+0100\n"
+"POT-Creation-Date: 2022-01-18 10:00+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,9 +29,11 @@ msgstr ""
 #: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:164
 #: integrations/wordpress/actions/create-post.php:457
 #: integrations/wordpress/actions/create-user.php:385
+#: integrations/wordpress/actions/delete-multiple-posts.php:362
+#: integrations/wordpress/actions/update-multiple-posts.php:546
 #: integrations/wordpress/actions/update-post.php:472
 #: integrations/wordpress/actions/update-user.php:430
-#: integrations/zoom/includes/actions/add-user-meeting.php:337
+#: integrations/zoom/includes/actions/add-user-meeting.php:387
 msgid "Result:"
 msgstr ""
 
@@ -278,6 +280,8 @@ msgstr ""
 #: includes/admin/settings/general.php:33
 #: includes/custom-tables/automations.php:154
 #: includes/custom-tables/automations.php:638
+#: integrations/wordpress/actions/delete-multiple-posts.php:108
+#: integrations/wordpress/actions/update-multiple-posts.php:108
 msgid "Author"
 msgstr ""
 
@@ -575,6 +579,7 @@ msgstr ""
 #: includes/cmb2.php:37 includes/utilities.php:52 includes/utilities.php:89
 #: integrations/favorites/includes/triggers/favorite-post.php:39
 #: integrations/favorites/includes/triggers/get-favorite-post.php:39
+#: integrations/wordpress/actions/delete-post.php:35
 msgid "any post"
 msgstr ""
 
@@ -642,12 +647,16 @@ msgstr ""
 #: includes/custom-tables/automations.php:563
 #: includes/custom-tables/automations.php:567
 #: includes/custom-tables/logs.php:156
+#: integrations/wordpress/actions/delete-multiple-posts.php:102
+#: integrations/wordpress/actions/update-multiple-posts.php:102
 msgid "Title"
 msgstr ""
 
 #: includes/custom-tables/automations.php:151
 #: includes/custom-tables/automations.php:587
 #: includes/custom-tables/logs.php:157
+#: integrations/wordpress/actions/delete-multiple-posts.php:104
+#: integrations/wordpress/actions/update-multiple-posts.php:104
 msgid "Type"
 msgstr ""
 
@@ -657,11 +666,15 @@ msgstr ""
 
 #: includes/custom-tables/automations.php:156
 #: includes/custom-tables/automations.php:653
+#: integrations/wordpress/actions/delete-multiple-posts.php:105
+#: integrations/wordpress/actions/update-multiple-posts.php:105
 msgid "Status"
 msgstr ""
 
 #: includes/custom-tables/automations.php:157
 #: includes/custom-tables/logs.php:161
+#: integrations/wordpress/actions/delete-multiple-posts.php:106
+#: integrations/wordpress/actions/update-multiple-posts.php:106
 msgid "Date"
 msgstr ""
 
@@ -756,7 +769,9 @@ msgstr ""
 #: includes/custom-tables/logs.php:386
 #: integrations/wordpress/actions/create-post.php:102
 #: integrations/wordpress/actions/create-post.php:397
-#: integrations/wordpress/actions/update-post.php:115
+#: integrations/wordpress/actions/update-multiple-posts.php:169
+#: integrations/wordpress/actions/update-multiple-posts.php:569
+#: integrations/wordpress/actions/update-post.php:96
 #: integrations/wordpress/actions/update-post.php:412
 #: integrations/wp-job-manager/includes/triggers/publish-job.php:38
 msgid "Type:"
@@ -769,7 +784,9 @@ msgstr ""
 #: includes/custom-tables/logs.php:408
 #: integrations/wordpress/actions/create-post.php:116
 #: integrations/wordpress/actions/create-post.php:409
-#: integrations/wordpress/actions/update-post.php:131
+#: integrations/wordpress/actions/update-multiple-posts.php:185
+#: integrations/wordpress/actions/update-multiple-posts.php:581
+#: integrations/wordpress/actions/update-post.php:112
 #: integrations/wordpress/actions/update-post.php:424
 msgid "Date:"
 msgstr ""
@@ -883,7 +900,7 @@ msgid "Select an option"
 msgstr ""
 
 #: includes/scripts.php:251 includes/utilities.php:51 includes/utilities.php:88
-#: integrations/wordpress/actions/update-post.php:91
+#: integrations/wordpress/actions/update-post.php:72
 msgid "Select a post"
 msgstr ""
 
@@ -922,6 +939,8 @@ msgstr ""
 
 #: includes/tags.php:58 integrations/automatorwp/actions/anonymous-user.php:109
 #: integrations/automatorwp/actions/anonymous-user.php:283
+#: integrations/wordpress/actions/delete-multiple-posts.php:101
+#: integrations/wordpress/actions/update-multiple-posts.php:101
 #: integrations/wordpress/filters/user-field.php:41
 #: integrations/wordpress/filters/user-field.php:86
 msgid "ID"
@@ -932,7 +951,7 @@ msgstr ""
 #: integrations/wordpress/filters/user-exists.php:42
 #: integrations/wordpress/filters/user-field.php:42
 #: integrations/wordpress/triggers/user-field-update.php:46
-#: integrations/wordpress/triggers/user-field-update.php:257
+#: integrations/wordpress/triggers/user-field-update.php:261
 msgid "Username"
 msgstr ""
 
@@ -942,13 +961,13 @@ msgstr ""
 #: integrations/wordpress/filters/user-exists.php:41
 #: integrations/wordpress/filters/user-field.php:43
 #: integrations/wordpress/triggers/user-field-update.php:47
-#: integrations/wordpress/triggers/user-field-update.php:258
+#: integrations/wordpress/triggers/user-field-update.php:262
 msgid "Email"
 msgstr ""
 
 #: includes/tags.php:76 integrations/wordpress/filters/user-field.php:46
 #: integrations/wordpress/triggers/user-field-update.php:48
-#: integrations/wordpress/triggers/user-field-update.php:259
+#: integrations/wordpress/triggers/user-field-update.php:263
 msgid "Display name"
 msgstr ""
 
@@ -1015,8 +1034,9 @@ msgid "Number of times:"
 msgstr ""
 
 #: includes/utilities.php:53 includes/utilities.php:90
-#: includes/utilities.php:457 integrations/wordpress/actions/update-post.php:94
-#: integrations/wordpress/actions/update-post.php:97
+#: includes/utilities.php:457 integrations/wordpress/actions/delete-post.php:37
+#: integrations/wordpress/actions/update-post.php:75
+#: integrations/wordpress/actions/update-post.php:78
 msgid "Post ID"
 msgstr ""
 
@@ -1080,6 +1100,8 @@ msgstr ""
 
 #: includes/utilities.php:386 includes/utilities.php:421
 #: integrations/wordpress/actions/user-role.php:60
+#: integrations/wordpress/triggers/set-role-from-to.php:45
+#: integrations/wordpress/triggers/set-role-from-to.php:57
 msgid "Role name."
 msgstr ""
 
@@ -1490,8 +1512,12 @@ msgstr ""
 #: integrations/wordpress/actions/create-post.php:65
 #: integrations/wordpress/actions/create-post.php:72
 #: integrations/wordpress/actions/create-user.php:47
-#: integrations/wordpress/actions/update-post.php:65
-#: integrations/wordpress/actions/update-post.php:72
+#: integrations/wordpress/actions/delete-multiple-posts.php:64
+#: integrations/wordpress/actions/delete-multiple-posts.php:71
+#: integrations/wordpress/actions/update-multiple-posts.php:64
+#: integrations/wordpress/actions/update-multiple-posts.php:71
+#: integrations/wordpress/actions/update-post.php:46
+#: integrations/wordpress/actions/update-post.php:53
 #: integrations/wordpress/actions/update-user.php:56
 #: integrations/wordpress/actions/user-role.php:29
 #, php-format
@@ -1652,7 +1678,9 @@ msgstr ""
 #: integrations/wordpress/actions/create-post.php:445
 #: integrations/wordpress/actions/create-user.php:95
 #: integrations/wordpress/actions/create-user.php:366
-#: integrations/wordpress/actions/update-post.php:173
+#: integrations/wordpress/actions/update-multiple-posts.php:227
+#: integrations/wordpress/actions/update-multiple-posts.php:617
+#: integrations/wordpress/actions/update-post.php:154
 #: integrations/wordpress/actions/update-post.php:460
 #: integrations/wordpress/actions/update-user.php:114
 #: integrations/wordpress/actions/update-user.php:411
@@ -1700,7 +1728,8 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:192
 #: integrations/wordpress/actions/create-post.php:163
 #: integrations/wordpress/actions/create-user.php:119
-#: integrations/wordpress/actions/update-post.php:185
+#: integrations/wordpress/actions/update-multiple-posts.php:239
+#: integrations/wordpress/actions/update-post.php:166
 #: integrations/wordpress/actions/update-user.php:134
 msgid "Add meta"
 msgstr ""
@@ -1708,7 +1737,10 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:197
 #: integrations/wordpress/actions/create-post.php:168
 #: integrations/wordpress/actions/create-user.php:124
-#: integrations/wordpress/actions/update-post.php:190
+#: integrations/wordpress/actions/delete-multiple-posts.php:136
+#: integrations/wordpress/actions/update-multiple-posts.php:136
+#: integrations/wordpress/actions/update-multiple-posts.php:244
+#: integrations/wordpress/actions/update-post.php:171
 #: integrations/wordpress/actions/update-user.php:139
 msgid "Meta Key:"
 msgstr ""
@@ -1716,7 +1748,10 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:202
 #: integrations/wordpress/actions/create-post.php:173
 #: integrations/wordpress/actions/create-user.php:129
-#: integrations/wordpress/actions/update-post.php:195
+#: integrations/wordpress/actions/delete-multiple-posts.php:142
+#: integrations/wordpress/actions/update-multiple-posts.php:142
+#: integrations/wordpress/actions/update-multiple-posts.php:249
+#: integrations/wordpress/actions/update-post.php:176
 #: integrations/wordpress/actions/update-user.php:144
 msgid "Meta Value:"
 msgstr ""
@@ -1918,6 +1953,8 @@ msgstr ""
 
 #: integrations/automatorwp/actions/call-function.php:63
 #: integrations/automatorwp/actions/do-action.php:63
+#: integrations/wordpress/actions/delete-multiple-posts.php:119
+#: integrations/wordpress/actions/update-multiple-posts.php:119
 #: integrations/wordpress/filters/user-exists.php:53
 #: integrations/wordpress/filters/user-field.php:58
 msgid "Value:"
@@ -2169,33 +2206,42 @@ msgstr ""
 
 #: integrations/awesome-support/includes/triggers/agent-open-ticket.php:26
 #: integrations/awesome-support/includes/triggers/agent-open-ticket.php:30
+#: integrations/fluent-support/includes/triggers/agent-open-ticket.php:26
+#: integrations/fluent-support/includes/triggers/agent-open-ticket.php:30
 msgid "Agent opens a ticket"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/agent-open-ticket.php:27
+#: integrations/fluent-support/includes/triggers/agent-open-ticket.php:27
 msgid "Agent <strong>opens</strong> a ticket"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/agent-open-ticket.php:29
+#: integrations/fluent-support/includes/triggers/agent-open-ticket.php:29
 #, php-format
 msgid "Agent opens a ticket %1$s time(s)"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/agent-open-ticket.php:42
 #: integrations/awesome-support/includes/triggers/client-open-ticket.php:42
+#: integrations/fluent-support/includes/triggers/agent-open-ticket.php:39
 msgid "Ticket"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/client-open-ticket.php:26
 #: integrations/awesome-support/includes/triggers/client-open-ticket.php:30
+#: integrations/fluent-support/includes/triggers/client-open-ticket.php:26
+#: integrations/fluent-support/includes/triggers/client-open-ticket.php:30
 msgid "Client opens a ticket"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/client-open-ticket.php:27
+#: integrations/fluent-support/includes/triggers/client-open-ticket.php:27
 msgid "Client <strong>opens</strong> a ticket"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/client-open-ticket.php:29
+#: integrations/fluent-support/includes/triggers/client-open-ticket.php:29
 #, php-format
 msgid "Client opens a ticket %1$s time(s)"
 msgstr ""
@@ -2290,7 +2336,9 @@ msgstr ""
 #: integrations/wordpress/actions/create-post.php:421
 #: integrations/wordpress/actions/send-email.php:95
 #: integrations/wordpress/actions/send-email.php:238
-#: integrations/wordpress/actions/update-post.php:145
+#: integrations/wordpress/actions/update-multiple-posts.php:199
+#: integrations/wordpress/actions/update-multiple-posts.php:593
+#: integrations/wordpress/actions/update-post.php:126
 #: integrations/wordpress/actions/update-post.php:436
 msgid "Content:"
 msgstr ""
@@ -2350,8 +2398,8 @@ msgstr ""
 #: integrations/woocommerce/includes/actions/add-user-to-coupon.php:31
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:29
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:31
-#: integrations/zoom/includes/actions/add-user-meeting.php:92
-#: integrations/zoom/includes/actions/add-user-meeting.php:94
+#: integrations/zoom/includes/actions/add-user-meeting.php:101
+#: integrations/zoom/includes/actions/add-user-meeting.php:103
 #, php-format
 msgid "Add user to %1$s"
 msgstr ""
@@ -3209,15 +3257,19 @@ msgstr ""
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:64
 #: integrations/wordpress/actions/create-post.php:109
 #: integrations/wordpress/actions/create-post.php:403
-#: integrations/wordpress/actions/update-post.php:123
+#: integrations/wordpress/actions/update-multiple-posts.php:177
+#: integrations/wordpress/actions/update-multiple-posts.php:575
+#: integrations/wordpress/actions/update-post.php:104
 #: integrations/wordpress/actions/update-post.php:418
 #: integrations/wordpress/triggers/post-type-status.php:55
+#: integrations/zoom/includes/actions/add-user-meeting.php:119
 msgid "Status:"
 msgstr ""
 
 #: integrations/fluentcrm/includes/triggers/anonymous-status-change.php:53
 #: integrations/fluentcrm/includes/triggers/status-change.php:52
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:68
+#: integrations/zoom/includes/actions/add-user-meeting.php:125
 msgid "Pending"
 msgstr ""
 
@@ -3359,6 +3411,7 @@ msgstr ""
 #: integrations/gamipress/includes/actions/user-points.php:63
 #: integrations/gamipress/includes/actions/user-rank.php:43
 #: integrations/wordpress/actions/create-user.php:60
+#: integrations/wordpress/actions/delete-user.php:34
 #: integrations/wordpress/actions/send-email.php:60
 #: integrations/wordpress/actions/update-user.php:69
 msgid "user"
@@ -3367,6 +3420,7 @@ msgstr ""
 #: integrations/gamipress/includes/actions/user-achievement.php:46
 #: integrations/gamipress/includes/actions/user-points.php:66
 #: integrations/gamipress/includes/actions/user-rank.php:46
+#: integrations/wordpress/actions/delete-user.php:37
 #: integrations/wordpress/actions/update-user.php:72
 #: integrations/wordpress/actions/update-user.php:371
 msgid "User ID:"
@@ -4905,21 +4959,27 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:88
 #: integrations/wordpress/actions/create-post.php:385
-#: integrations/wordpress/actions/update-post.php:100
+#: integrations/wordpress/actions/update-multiple-posts.php:154
+#: integrations/wordpress/actions/update-multiple-posts.php:557
+#: integrations/wordpress/actions/update-post.php:81
 #: integrations/wordpress/actions/update-post.php:400
 msgid "Title:"
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:89
 #: integrations/wordpress/actions/create-post.php:386
-#: integrations/wordpress/actions/update-post.php:101
+#: integrations/wordpress/actions/update-multiple-posts.php:155
+#: integrations/wordpress/actions/update-multiple-posts.php:558
+#: integrations/wordpress/actions/update-post.php:82
 #: integrations/wordpress/actions/update-post.php:401
 msgid "The post title."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:95
 #: integrations/wordpress/actions/create-post.php:391
-#: integrations/wordpress/actions/update-post.php:107
+#: integrations/wordpress/actions/update-multiple-posts.php:161
+#: integrations/wordpress/actions/update-multiple-posts.php:563
+#: integrations/wordpress/actions/update-post.php:88
 #: integrations/wordpress/actions/update-post.php:406
 msgid "URL slug:"
 msgstr ""
@@ -4929,7 +4989,8 @@ msgid "The last part of the URL. Leave blank to generate one based on the title.
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:97
-#: integrations/wordpress/actions/update-post.php:110
+#: integrations/wordpress/actions/update-multiple-posts.php:164
+#: integrations/wordpress/actions/update-post.php:91
 msgid "<a href=\"\" target=\"_blank\">Read about permalinks</a>"
 msgstr ""
 
@@ -4947,7 +5008,9 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:122
 #: integrations/wordpress/actions/create-post.php:415
-#: integrations/wordpress/actions/update-post.php:138
+#: integrations/wordpress/actions/update-multiple-posts.php:192
+#: integrations/wordpress/actions/update-multiple-posts.php:587
+#: integrations/wordpress/actions/update-post.php:119
 #: integrations/wordpress/actions/update-post.php:430
 msgid "Author:"
 msgstr ""
@@ -4962,7 +5025,9 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:134
 #: integrations/wordpress/actions/create-post.php:427
-#: integrations/wordpress/actions/update-post.php:152
+#: integrations/wordpress/actions/update-multiple-posts.php:206
+#: integrations/wordpress/actions/update-multiple-posts.php:599
+#: integrations/wordpress/actions/update-post.php:133
 #: integrations/wordpress/actions/update-post.php:442
 msgid "Excerpt:"
 msgstr ""
@@ -4973,7 +5038,9 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:140
 #: integrations/wordpress/actions/create-post.php:433
-#: integrations/wordpress/actions/update-post.php:159
+#: integrations/wordpress/actions/update-multiple-posts.php:213
+#: integrations/wordpress/actions/update-multiple-posts.php:605
+#: integrations/wordpress/actions/update-post.php:140
 #: integrations/wordpress/actions/update-post.php:448
 msgid "Parent:"
 msgstr ""
@@ -4984,7 +5051,9 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:146
 #: integrations/wordpress/actions/create-post.php:439
-#: integrations/wordpress/actions/update-post.php:166
+#: integrations/wordpress/actions/update-multiple-posts.php:220
+#: integrations/wordpress/actions/update-multiple-posts.php:611
+#: integrations/wordpress/actions/update-post.php:147
 #: integrations/wordpress/actions/update-post.php:454
 msgid "Menu order:"
 msgstr ""
@@ -4999,14 +5068,18 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:158
 #: integrations/wordpress/actions/create-post.php:451
-#: integrations/wordpress/actions/update-post.php:180
+#: integrations/wordpress/actions/update-multiple-posts.php:234
+#: integrations/wordpress/actions/update-multiple-posts.php:623
+#: integrations/wordpress/actions/update-post.php:161
 #: integrations/wordpress/actions/update-post.php:466
 msgid "Post Meta:"
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:159
 #: integrations/wordpress/actions/create-post.php:452
-#: integrations/wordpress/actions/update-post.php:181
+#: integrations/wordpress/actions/update-multiple-posts.php:235
+#: integrations/wordpress/actions/update-multiple-posts.php:624
+#: integrations/wordpress/actions/update-post.php:162
 #: integrations/wordpress/actions/update-post.php:467
 msgid "The post meta values keyed by their post meta key."
 msgstr ""
@@ -5030,59 +5103,77 @@ msgid "Information about the post created."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:392
+#: integrations/wordpress/actions/update-multiple-posts.php:564
 #: integrations/wordpress/actions/update-post.php:407
 msgid "The post URL slug."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:398
-#: integrations/wordpress/actions/update-post.php:116
+#: integrations/wordpress/actions/update-multiple-posts.php:170
+#: integrations/wordpress/actions/update-multiple-posts.php:570
+#: integrations/wordpress/actions/update-post.php:97
 #: integrations/wordpress/actions/update-post.php:413
 msgid "The post type."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:404
-#: integrations/wordpress/actions/update-post.php:124
+#: integrations/wordpress/actions/update-multiple-posts.php:178
+#: integrations/wordpress/actions/update-multiple-posts.php:576
+#: integrations/wordpress/actions/update-post.php:105
 #: integrations/wordpress/actions/update-post.php:419
 msgid "The post status."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:410
+#: integrations/wordpress/actions/update-multiple-posts.php:582
 #: integrations/wordpress/actions/update-post.php:425
 msgid "The date of the post."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:416
-#: integrations/wordpress/actions/update-post.php:139
+#: integrations/wordpress/actions/update-multiple-posts.php:193
+#: integrations/wordpress/actions/update-multiple-posts.php:588
+#: integrations/wordpress/actions/update-post.php:120
 #: integrations/wordpress/actions/update-post.php:431
 msgid "The ID of the user who added this post."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:422
-#: integrations/wordpress/actions/update-post.php:146
+#: integrations/wordpress/actions/update-multiple-posts.php:200
+#: integrations/wordpress/actions/update-multiple-posts.php:594
+#: integrations/wordpress/actions/update-post.php:127
 #: integrations/wordpress/actions/update-post.php:437
 msgid "The post content."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:428
-#: integrations/wordpress/actions/update-post.php:153
+#: integrations/wordpress/actions/update-multiple-posts.php:207
+#: integrations/wordpress/actions/update-multiple-posts.php:600
+#: integrations/wordpress/actions/update-post.php:134
 #: integrations/wordpress/actions/update-post.php:443
 msgid "The post excerpt."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:434
-#: integrations/wordpress/actions/update-post.php:160
+#: integrations/wordpress/actions/update-multiple-posts.php:214
+#: integrations/wordpress/actions/update-multiple-posts.php:606
+#: integrations/wordpress/actions/update-post.php:141
 #: integrations/wordpress/actions/update-post.php:449
 msgid "The post parent."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:440
-#: integrations/wordpress/actions/update-post.php:167
+#: integrations/wordpress/actions/update-multiple-posts.php:221
+#: integrations/wordpress/actions/update-multiple-posts.php:612
+#: integrations/wordpress/actions/update-post.php:148
 #: integrations/wordpress/actions/update-post.php:455
 msgid "The post menu order."
 msgstr ""
 
 #: integrations/wordpress/actions/create-post.php:446
-#: integrations/wordpress/actions/update-post.php:174
+#: integrations/wordpress/actions/update-multiple-posts.php:228
+#: integrations/wordpress/actions/update-multiple-posts.php:618
+#: integrations/wordpress/actions/update-post.php:155
 #: integrations/wordpress/actions/update-post.php:461
 msgid "The password to access this post."
 msgstr ""
@@ -5102,6 +5193,166 @@ msgstr ""
 
 #: integrations/wordpress/actions/create-user.php:292
 msgid "User created correctly"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:76
+msgid "Delete multiple posts"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:77
+msgid "Delete <strong>multiple posts</strong>"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:79
+#: integrations/wordpress/actions/delete-multiple-posts.php:81
+#: integrations/wordpress/actions/delete-post.php:29
+#: integrations/wordpress/actions/delete-post.php:31
+#, php-format
+msgid "Delete %1$s"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:84
+#: integrations/wordpress/actions/update-multiple-posts.php:84
+msgid "multiple posts"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:87
+#: integrations/wordpress/actions/update-multiple-posts.php:87
+msgid "Field Conditions:"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:88
+#: integrations/wordpress/actions/update-multiple-posts.php:88
+msgid "Set conditions to filter posts to update by post fields."
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:92
+#: integrations/wordpress/actions/delete-multiple-posts.php:131
+#: integrations/wordpress/actions/update-multiple-posts.php:92
+#: integrations/wordpress/actions/update-multiple-posts.php:131
+msgid "Add condition"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:97
+#: integrations/wordpress/actions/update-multiple-posts.php:97
+#: integrations/wordpress/filters/user-exists.php:38
+#: integrations/wordpress/filters/user-field.php:38
+msgid "Field:"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:100
+#: integrations/wordpress/actions/update-multiple-posts.php:100
+msgid "Choose a field"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:103
+#: integrations/wordpress/actions/update-multiple-posts.php:103
+msgid "Slug"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:107
+#: integrations/wordpress/actions/update-multiple-posts.php:107
+msgid "Date Modified"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:109
+#: integrations/wordpress/actions/update-multiple-posts.php:109
+msgid "Content"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:110
+#: integrations/wordpress/actions/update-multiple-posts.php:110
+msgid "Excerpt"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:111
+#: integrations/wordpress/actions/update-multiple-posts.php:111
+msgid "Parent"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:112
+#: integrations/wordpress/actions/update-multiple-posts.php:112
+msgid "Order"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:113
+#: integrations/wordpress/actions/update-multiple-posts.php:113
+#: integrations/wordpress/triggers/user-field-update.php:50
+#: integrations/wordpress/triggers/user-field-update.php:265
+msgid "Password"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:126
+#: integrations/wordpress/actions/update-multiple-posts.php:126
+msgid "Meta Conditions:"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:127
+#: integrations/wordpress/actions/update-multiple-posts.php:127
+msgid "Set conditions to filter posts to update by post metas."
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:242
+msgid "No posts found to be deleted."
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:253
+#, php-format
+msgid "%d posts deleted."
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:346
+#: integrations/wordpress/actions/update-multiple-posts.php:530
+msgid "Posts Filtered"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:347
+#: integrations/wordpress/actions/update-multiple-posts.php:531
+msgid "Information about the filters applied and the posts found."
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:352
+#: integrations/wordpress/actions/update-multiple-posts.php:536
+msgid "Field conditions:"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-multiple-posts.php:357
+#: integrations/wordpress/actions/update-multiple-posts.php:541
+msgid "Meta conditions:"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-post.php:26
+msgid "Delete a post"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-post.php:27
+msgid "Delete <strong>a post</strong>"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-user.php:26
+msgid "Delete a user"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-user.php:27
+msgid "Delete <strong>a user</strong>"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-user.php:29
+#: integrations/wordpress/actions/delete-user.php:31
+#, php-format
+msgid "Delete a %1$s"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-user.php:38
+msgid "The user's ID to delete. Leave empty to assign the user that completes the automation."
+msgstr ""
+
+#: integrations/wordpress/actions/delete-user.php:43
+msgid "User ID to reassign the content:"
+msgstr ""
+
+#: integrations/wordpress/actions/delete-user.php:44
+msgid "The user's ID to reassign the content owned by the user that will get deleted. Leave empty to do not reassign the content."
 msgstr ""
 
 #: integrations/wordpress/actions/post-meta.php:35
@@ -5339,40 +5590,46 @@ msgstr ""
 msgid "If sending result is \"Not sent\" you need to check if your server's wp_mail() function is correctly configured."
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:77
-msgid "Update a post"
+#: integrations/wordpress/actions/update-multiple-posts.php:76
+msgid "Update multiple posts"
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:78
-msgid "Update <strong>a post</strong>"
+#: integrations/wordpress/actions/update-multiple-posts.php:77
+msgid "Update <strong>multiple posts</strong>"
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:80
-#: integrations/wordpress/actions/update-post.php:82
+#: integrations/wordpress/actions/update-multiple-posts.php:79
+#: integrations/wordpress/actions/update-multiple-posts.php:81
 #, php-format
-msgid "Update %1$s"
+msgid "Update %1$s with %2$s"
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:85
-#: integrations/wordpress/actions/update-post.php:92
-msgid "a post"
+#: integrations/wordpress/actions/update-multiple-posts.php:151
+msgid "data"
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:89
-msgid "Post to update:"
-msgstr ""
-
-#: integrations/wordpress/actions/update-post.php:102
-#: integrations/wordpress/actions/update-post.php:109
-#: integrations/wordpress/actions/update-post.php:117
-#: integrations/wordpress/actions/update-post.php:125
-#: integrations/wordpress/actions/update-post.php:133
-#: integrations/wordpress/actions/update-post.php:140
-#: integrations/wordpress/actions/update-post.php:147
-#: integrations/wordpress/actions/update-post.php:154
-#: integrations/wordpress/actions/update-post.php:161
-#: integrations/wordpress/actions/update-post.php:168
-#: integrations/wordpress/actions/update-post.php:175
+#: integrations/wordpress/actions/update-multiple-posts.php:156
+#: integrations/wordpress/actions/update-multiple-posts.php:163
+#: integrations/wordpress/actions/update-multiple-posts.php:171
+#: integrations/wordpress/actions/update-multiple-posts.php:179
+#: integrations/wordpress/actions/update-multiple-posts.php:187
+#: integrations/wordpress/actions/update-multiple-posts.php:194
+#: integrations/wordpress/actions/update-multiple-posts.php:201
+#: integrations/wordpress/actions/update-multiple-posts.php:208
+#: integrations/wordpress/actions/update-multiple-posts.php:215
+#: integrations/wordpress/actions/update-multiple-posts.php:222
+#: integrations/wordpress/actions/update-multiple-posts.php:229
+#: integrations/wordpress/actions/update-post.php:83
+#: integrations/wordpress/actions/update-post.php:90
+#: integrations/wordpress/actions/update-post.php:98
+#: integrations/wordpress/actions/update-post.php:106
+#: integrations/wordpress/actions/update-post.php:114
+#: integrations/wordpress/actions/update-post.php:121
+#: integrations/wordpress/actions/update-post.php:128
+#: integrations/wordpress/actions/update-post.php:135
+#: integrations/wordpress/actions/update-post.php:142
+#: integrations/wordpress/actions/update-post.php:149
+#: integrations/wordpress/actions/update-post.php:156
 #: integrations/wordpress/actions/update-user.php:81
 #: integrations/wordpress/actions/update-user.php:88
 #: integrations/wordpress/actions/update-user.php:95
@@ -5383,12 +5640,54 @@ msgstr ""
 msgid "Leave empty to no update this field."
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:108
+#: integrations/wordpress/actions/update-multiple-posts.php:162
+#: integrations/wordpress/actions/update-post.php:89
 msgid "The last part of the URL."
 msgstr ""
 
-#: integrations/wordpress/actions/update-post.php:132
+#: integrations/wordpress/actions/update-multiple-posts.php:186
+#: integrations/wordpress/actions/update-post.php:113
 msgid "The date of the post. Supports \"YYYY-MM-DD HH:MM:SS\" and \"YYYY-MM-DD\" formats."
+msgstr ""
+
+#: integrations/wordpress/actions/update-multiple-posts.php:349
+msgid "No posts found to be updated."
+msgstr ""
+
+#: integrations/wordpress/actions/update-multiple-posts.php:415
+#, php-format
+msgid "%d posts updated."
+msgstr ""
+
+#: integrations/wordpress/actions/update-multiple-posts.php:551
+msgid "Data Updated"
+msgstr ""
+
+#: integrations/wordpress/actions/update-multiple-posts.php:552
+msgid "Information about the data updated to all posts found."
+msgstr ""
+
+#: integrations/wordpress/actions/update-post.php:58
+msgid "Update a post"
+msgstr ""
+
+#: integrations/wordpress/actions/update-post.php:59
+msgid "Update <strong>a post</strong>"
+msgstr ""
+
+#: integrations/wordpress/actions/update-post.php:61
+#: integrations/wordpress/actions/update-post.php:63
+#, php-format
+msgid "Update %1$s"
+msgstr ""
+
+#: integrations/wordpress/actions/update-post.php:66
+#: integrations/wordpress/actions/update-post.php:73
+msgid "a post"
+msgstr ""
+
+#: integrations/wordpress/actions/update-post.php:70
+msgid "Post to update:"
 msgstr ""
 
 #: integrations/wordpress/actions/update-post.php:360
@@ -5522,11 +5821,6 @@ msgstr ""
 #: integrations/wordpress/filters/user-exists.php:35
 #: integrations/wordpress/filters/user-field.php:35
 msgid "field"
-msgstr ""
-
-#: integrations/wordpress/filters/user-exists.php:38
-#: integrations/wordpress/filters/user-field.php:38
-msgid "Field:"
 msgstr ""
 
 #: integrations/wordpress/filters/user-exists.php:61
@@ -6159,6 +6453,24 @@ msgstr ""
 msgid "User gets <strong>removed</strong> from role"
 msgstr ""
 
+#: integrations/wordpress/triggers/set-role-from-to.php:26
+msgid "User role changes from role to role"
+msgstr ""
+
+#: integrations/wordpress/triggers/set-role-from-to.php:27
+msgid "User role <strong>changes</strong> from role to role"
+msgstr ""
+
+#: integrations/wordpress/triggers/set-role-from-to.php:29
+#, php-format
+msgid "User role changes from %1$s to %2$s %3$s time(s)"
+msgstr ""
+
+#: integrations/wordpress/triggers/set-role-from-to.php:31
+#, php-format
+msgid "User role changes from %1$s to %2$s"
+msgstr ""
+
 #: integrations/wordpress/triggers/set-role.php:26
 msgid "User role changes to role"
 msgstr ""
@@ -6175,6 +6487,16 @@ msgstr ""
 #: integrations/wordpress/triggers/set-role.php:31
 #, php-format
 msgid "User role changes to %1$s"
+msgstr ""
+
+#: integrations/wordpress/triggers/user-deleted.php:26
+#: integrations/wordpress/triggers/user-deleted.php:29
+#: integrations/wordpress/triggers/user-deleted.php:30
+msgid "User gets deleted"
+msgstr ""
+
+#: integrations/wordpress/triggers/user-deleted.php:27
+msgid "User gets <strong>deleted</strong>"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:26
@@ -6208,46 +6530,46 @@ msgid "any profile field"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:49
-#: integrations/wordpress/triggers/user-field-update.php:260
-msgid "Password"
+#: integrations/wordpress/triggers/user-field-update.php:264
+msgid "Nicename"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:50
-#: integrations/wordpress/triggers/user-field-update.php:261
+#: integrations/wordpress/triggers/user-field-update.php:51
+#: integrations/wordpress/triggers/user-field-update.php:266
 msgid "Website"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:61
-#: integrations/wordpress/triggers/user-field-update.php:266
+#: integrations/wordpress/triggers/user-field-update.php:62
+#: integrations/wordpress/triggers/user-field-update.php:271
 msgid "New field value"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:63
+#: integrations/wordpress/triggers/user-field-update.php:64
 msgid "New value of the updated field"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:66
-#: integrations/wordpress/triggers/user-field-update.php:272
+#: integrations/wordpress/triggers/user-field-update.php:67
+#: integrations/wordpress/triggers/user-field-update.php:277
 msgid "Old field value"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:68
+#: integrations/wordpress/triggers/user-field-update.php:69
 msgid "Old value of the updated field"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:253
+#: integrations/wordpress/triggers/user-field-update.php:257
 msgid "Profile field"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:254
+#: integrations/wordpress/triggers/user-field-update.php:258
 msgid "Profile field updated."
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:267
+#: integrations/wordpress/triggers/user-field-update.php:272
 msgid "New value of the updated field."
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:273
+#: integrations/wordpress/triggers/user-field-update.php:278
 msgid "Old value of the updated field."
 msgstr ""
 
@@ -6777,87 +7099,104 @@ msgstr ""
 msgid "any unit"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:89
+#: integrations/zoom/includes/actions/add-user-meeting.php:98
 msgid "Add user to meeting"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:90
+#: integrations/zoom/includes/actions/add-user-meeting.php:99
 msgid "Add user to <strong>meeting</strong>"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:98
+#: integrations/zoom/includes/actions/add-user-meeting.php:107
+#: integrations/zoom/includes/actions/add-user-meeting.php:111
 msgid "meeting"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:99
+#: integrations/zoom/includes/actions/add-user-meeting.php:112
 msgid "Select a meeting"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:100
+#: integrations/zoom/includes/actions/add-user-meeting.php:113
 msgid "Meeting:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:137
+#: integrations/zoom/includes/actions/add-user-meeting.php:120
+msgid "The registrant status."
+msgstr ""
+
+#: integrations/zoom/includes/actions/add-user-meeting.php:123
+msgid "Approved"
+msgstr ""
+
+#: integrations/zoom/includes/actions/add-user-meeting.php:124
+msgid "Denied"
+msgstr ""
+
+#: integrations/zoom/includes/actions/add-user-meeting.php:163
 msgid "Could not add registrant to meeting, missing meeting"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:145
+#: integrations/zoom/includes/actions/add-user-meeting.php:171
 msgid "Could not add registrant to meeting, Zoom authentication failed"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:168
-#: integrations/zoom/includes/actions/add-user-meeting.php:191
+#: integrations/zoom/includes/actions/add-user-meeting.php:208
+#: integrations/zoom/includes/actions/add-user-meeting.php:231
 #, php-format
 msgid "Could not add registrant to meeting, error received: %1$s"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:188
+#: integrations/zoom/includes/actions/add-user-meeting.php:228
 msgid "Registrant successfully registered"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:236
+#: integrations/zoom/includes/actions/add-user-meeting.php:280
 #, php-format
 msgid "You need to configure the <a href=\"%s\" target=\"_blank\">Zoom Meetings settings</a> to get this action to work."
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:240
+#: integrations/zoom/includes/actions/add-user-meeting.php:284
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Documentation</a>"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:304
+#: integrations/zoom/includes/actions/add-user-meeting.php:349
 msgid "Registrant First Name:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:309
+#: integrations/zoom/includes/actions/add-user-meeting.php:354
 msgid "Registrant Last Name:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:314
+#: integrations/zoom/includes/actions/add-user-meeting.php:359
 msgid "Registrant Email:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:319
+#: integrations/zoom/includes/actions/add-user-meeting.php:364
+msgid "Registrant Status:"
+msgstr ""
+
+#: integrations/zoom/includes/actions/add-user-meeting.php:369
 msgid "Meeting ID:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:320
+#: integrations/zoom/includes/actions/add-user-meeting.php:370
 msgid "Unique identifier for the meeting."
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:325
+#: integrations/zoom/includes/actions/add-user-meeting.php:375
 msgid "Registrant ID:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:326
+#: integrations/zoom/includes/actions/add-user-meeting.php:376
 msgid "Unique identifier assigned to the registrant."
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:331
+#: integrations/zoom/includes/actions/add-user-meeting.php:381
 msgid "Join URL:"
 msgstr ""
 
-#: integrations/zoom/includes/actions/add-user-meeting.php:332
+#: integrations/zoom/includes/actions/add-user-meeting.php:382
 msgid "Unique URL for this registrant to join the meeting."
 msgstr ""
 

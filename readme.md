@@ -98,6 +98,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Elementor](https://automatorwp.com/add-ons/elementor-forms/)
 * [Favorites](https://automatorwp.com/add-ons/favorites/)
 * [FluentCRM](https://automatorwp.com/add-ons/fluentcrm/)
+* [Fluent Support](https://automatorwp.com/add-ons/fluent-support/)
 * [Formidable Forms](https://automatorwp.com/add-ons/formidable-forms/)
 * [Forminator](https://automatorwp.com/add-ons/forminator/)
 * [GamiPress](https://automatorwp.com/add-ons/gamipress/)
@@ -260,6 +261,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.9.5 ###
+
+* **New Features**
+* New integration: Fluent Support.
+* Fluent Support: New trigger: Agent opens a ticket.
+* Fluent Support: New trigger: Client opens a ticket.
+* **Improvements**
+* Zoom: Force auto approval if registrant status is set to approve.
 
 ### 1.9.4 ###
 
