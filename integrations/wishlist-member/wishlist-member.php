@@ -81,6 +81,9 @@ final class AutomatorWP_Integration_WishList_Member {
 
         if( $this->meets_requirements() ) {
 
+            // Includes
+            require_once AUTOMATORWP_WISHLIST_MEMBER_DIR . 'includes/functions.php';
+
             // Triggers
             require_once AUTOMATORWP_WISHLIST_MEMBER_DIR . 'includes/triggers/add-level.php';
             require_once AUTOMATORWP_WISHLIST_MEMBER_DIR . 'includes/triggers/remove-level.php';

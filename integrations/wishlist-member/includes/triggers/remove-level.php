@@ -40,7 +40,7 @@ class AutomatorWP_WishList_Member_Remove_Level extends AutomatorWP_Integration_T
                         'level' => array(
                             'name' => __( 'Level:', 'automatorwp' ),
                             'type' => 'select',
-                            'options_cb' => array( $this, 'options_cb_levels' ),
+                            'options_cb' => 'automatorwp_wishlist_member_levels_options_cb',
                             'default' => 'any'
                         )
                     )
@@ -51,35 +51,6 @@ class AutomatorWP_WishList_Member_Remove_Level extends AutomatorWP_Integration_T
                 automatorwp_utilities_times_tag()
             )
         ) );
-
-    }
-
-    /**
-     * Options callback for levels options
-     *
-     * @since 1.0.0
-     *
-     * @param stdClass $field
-     *
-     * @return array
-     */
-    public function options_cb_levels( $field ) {
-
-        global $WishListMemberInstance;
-
-        $options = array(
-            'any' => __( 'any level', 'automatorwp' ),
-        );
-
-        $levels = $WishListMemberInstance->GetOption( 'wpm_levels' );
-
-        if( is_array( $levels ) ) {
-            foreach( $levels as $level ) {
-                $options[$level['id']] = $level['name'];
-            }
-        }
-
-        return $options;
 
     }
 

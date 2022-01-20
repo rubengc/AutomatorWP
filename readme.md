@@ -262,6 +262,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.6 ###
+
+* **Bug Fixes**
+* WishList Member: Prevent to render levels without ID on membership levels option fields.
+
 ### 1.9.5 ###
 
 * **New Features**
