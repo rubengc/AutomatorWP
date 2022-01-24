@@ -85,8 +85,6 @@ class AutomatorWP_WordPress_User_Field_Update extends AutomatorWP_Integration_Tr
      */
     public function listener( $user_id, $old_user_data ) {
 
-        wp_update_user();
-
         // Setup vars
         $user_fields = array(
             'user_login',

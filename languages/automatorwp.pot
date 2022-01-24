@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-01-18 10:00+0100\n"
+"POT-Creation-Date: 2022-01-24 10:50+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -951,7 +951,7 @@ msgstr ""
 #: integrations/wordpress/filters/user-exists.php:42
 #: integrations/wordpress/filters/user-field.php:42
 #: integrations/wordpress/triggers/user-field-update.php:46
-#: integrations/wordpress/triggers/user-field-update.php:261
+#: integrations/wordpress/triggers/user-field-update.php:259
 msgid "Username"
 msgstr ""
 
@@ -961,13 +961,13 @@ msgstr ""
 #: integrations/wordpress/filters/user-exists.php:41
 #: integrations/wordpress/filters/user-field.php:43
 #: integrations/wordpress/triggers/user-field-update.php:47
-#: integrations/wordpress/triggers/user-field-update.php:262
+#: integrations/wordpress/triggers/user-field-update.php:260
 msgid "Email"
 msgstr ""
 
 #: includes/tags.php:76 integrations/wordpress/filters/user-field.php:46
 #: integrations/wordpress/triggers/user-field-update.php:48
-#: integrations/wordpress/triggers/user-field-update.php:263
+#: integrations/wordpress/triggers/user-field-update.php:261
 msgid "Display name"
 msgstr ""
 
@@ -4607,6 +4607,10 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
+#: integrations/wishlist-member/includes/functions.php:24
+msgid "any level"
+msgstr ""
+
 #: integrations/wishlist-member/includes/triggers/add-level.php:26
 msgid "User gets added to a level"
 msgstr ""
@@ -4618,11 +4622,6 @@ msgstr ""
 #: integrations/wishlist-member/includes/triggers/add-level.php:41
 #: integrations/wishlist-member/includes/triggers/remove-level.php:41
 msgid "Level:"
-msgstr ""
-
-#: integrations/wishlist-member/includes/triggers/add-level.php:71
-#: integrations/wishlist-member/includes/triggers/remove-level.php:71
-msgid "any level"
 msgstr ""
 
 #: integrations/wishlist-member/includes/triggers/remove-level.php:26
@@ -5278,7 +5277,7 @@ msgstr ""
 #: integrations/wordpress/actions/delete-multiple-posts.php:113
 #: integrations/wordpress/actions/update-multiple-posts.php:113
 #: integrations/wordpress/triggers/user-field-update.php:50
-#: integrations/wordpress/triggers/user-field-update.php:265
+#: integrations/wordpress/triggers/user-field-update.php:263
 msgid "Password"
 msgstr ""
 
@@ -6530,17 +6529,17 @@ msgid "any profile field"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:49
-#: integrations/wordpress/triggers/user-field-update.php:264
+#: integrations/wordpress/triggers/user-field-update.php:262
 msgid "Nicename"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:51
-#: integrations/wordpress/triggers/user-field-update.php:266
+#: integrations/wordpress/triggers/user-field-update.php:264
 msgid "Website"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:62
-#: integrations/wordpress/triggers/user-field-update.php:271
+#: integrations/wordpress/triggers/user-field-update.php:269
 msgid "New field value"
 msgstr ""
 
@@ -6549,7 +6548,7 @@ msgid "New value of the updated field"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:67
-#: integrations/wordpress/triggers/user-field-update.php:277
+#: integrations/wordpress/triggers/user-field-update.php:275
 msgid "Old field value"
 msgstr ""
 
@@ -6557,19 +6556,19 @@ msgstr ""
 msgid "Old value of the updated field"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:257
+#: integrations/wordpress/triggers/user-field-update.php:255
 msgid "Profile field"
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:258
+#: integrations/wordpress/triggers/user-field-update.php:256
 msgid "Profile field updated."
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:272
+#: integrations/wordpress/triggers/user-field-update.php:270
 msgid "New value of the updated field."
 msgstr ""
 
-#: integrations/wordpress/triggers/user-field-update.php:278
+#: integrations/wordpress/triggers/user-field-update.php:276
 msgid "Old value of the updated field."
 msgstr ""
 

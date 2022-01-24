@@ -262,6 +262,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 1.9.7 ###
+
+* **Bug Fixes**
+* Fixed incorrect call of the wp_update_user() function.
+* **Developer Notes**
+* Tested with WordPress 5.9.
+
 ### 1.9.6 ###
 
 * **Bug Fixes**
