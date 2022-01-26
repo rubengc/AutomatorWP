@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 1.9.7
+Stable tag: 1.9.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -156,7 +156,9 @@ AutomatorWP works with different WordPress plugins, including:
 AutomatorWP can also work with external platforms, furthermore WordPress plugins, like these below:
 
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
+* [IFTTT](https://automatorwp.com/add-ons/ifttt/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
+* [Notion](https://automatorwp.com/add-ons/notion/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 * [Zoom](https://automatorwp.com/add-ons/zoom/)
@@ -259,6 +261,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.9.8 =
+
+* **New Features**
+* WooCommerce: Added the order customer note tag.
+* **Improvements**
+* LearnPress: Updated enroll user to course action to match with the latest LearnPress version.
+* Reorder the integrations list alphabetically in the edit automation screen.
 
 = 1.9.7 =
 

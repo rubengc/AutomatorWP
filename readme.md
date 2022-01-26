@@ -149,7 +149,9 @@ AutomatorWP works with different WordPress plugins, including:
 AutomatorWP can also work with external platforms, furthermore WordPress plugins, like these below:
 
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
+* [IFTTT](https://automatorwp.com/add-ons/ifttt/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
+* [Notion](https://automatorwp.com/add-ons/notion/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 * [Zoom](https://automatorwp.com/add-ons/zoom/)

@@ -296,6 +296,10 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
         $choices_filters['anonymous'] = (bool) ( $automation->type === 'anonymous' );
     }
 
+    // Sort integrations
+    $integrations = AutomatorWP()->integrations;
+    ksort( $integrations );
+
     ?>
 
     <div class="automatorwp-add-item-form" style="display: none;">
@@ -323,7 +327,7 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
 
                 <div class="automatorwp-integrations">
 
-                    <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
+                    <?php foreach( $integrations as $integration => $args ) : ?>
 
                         <?php // Skip filters
                         if( $integration === 'filter' ) continue; ?>
@@ -380,7 +384,7 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
 
                     <div class="automatorwp-select-trigger-label"><?php _e( 'Select a trigger', 'automatorwp' ); ?></div>
 
-                    <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
+                    <?php foreach( $integrations as $integration => $args ) : ?>
 
                         <?php // Skip filters
                         if( $integration === 'filter' ) continue; ?>
@@ -421,7 +425,7 @@ function automatorwp_automation_ui_add_item_form( $automation, $item_type ) {
 
                     <div class="automatorwp-select-action-label"><?php _e( 'Select an action', 'automatorwp' ); ?></div>
 
-                    <?php foreach( AutomatorWP()->integrations as $integration => $args ) : ?>
+                    <?php foreach( $integrations as $integration => $args ) : ?>
 
                         <select class="automatorwp-integration-choices"
                                 data-integration="<?php echo esc_attr( $integration ); ?>"

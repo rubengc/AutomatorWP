@@ -184,6 +184,11 @@ function automatorwp_woocommerce_order_tags() {
             'type'      => 'text',
             'preview'   => '255.255.255.255',
         ),
+        'woocommerce_order_customer_note' => array(
+            'label'     => __( 'Order Customer Note', 'automatorwp' ),
+            'type'      => 'text',
+            'preview'   => __( 'The customer note entered at checkout', 'automatorwp' ),
+        ),
         'woocommerce_order_coupon_codes' => array(
             'label'     => __( 'Order Coupon Codes', 'automatorwp' ),
             'type'      => 'text',
