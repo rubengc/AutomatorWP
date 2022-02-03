@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-01-24 10:50+0100\n"
+"POT-Creation-Date: 2022-02-03 13:17+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -195,12 +195,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1398 includes/automation-ui.php:1410
+#: includes/automation-ui.php:1402 includes/automation-ui.php:1414
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1400
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1404
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -383,7 +383,7 @@ msgid "Confirm"
 msgstr ""
 
 #: includes/automation-ui.php:54 includes/automation-ui.php:115
-#: includes/automation-ui.php:459 includes/automation-ui.php:723
+#: includes/automation-ui.php:463 includes/automation-ui.php:727
 msgid "Cancel"
 msgstr ""
 
@@ -462,7 +462,7 @@ msgid "Add Filter"
 msgstr ""
 
 #: includes/automation-ui.php:234 includes/automation-ui.php:278
-#: includes/automation-ui.php:463 includes/automation-ui.php:727
+#: includes/automation-ui.php:467 includes/automation-ui.php:731
 msgid "Saving..."
 msgstr ""
 
@@ -474,35 +474,35 @@ msgstr ""
 msgid "Add Action"
 msgstr ""
 
-#: includes/automation-ui.php:322
+#: includes/automation-ui.php:326
 msgid "Select an integration"
 msgstr ""
 
-#: includes/automation-ui.php:381
+#: includes/automation-ui.php:385
 msgid "Select a trigger"
 msgstr ""
 
-#: includes/automation-ui.php:390
+#: includes/automation-ui.php:394
 msgid "Search for triggers"
 msgstr ""
 
-#: includes/automation-ui.php:422
+#: includes/automation-ui.php:426
 msgid "Select an action"
 msgstr ""
 
-#: includes/automation-ui.php:428
+#: includes/automation-ui.php:432
 msgid "Search for actions"
 msgstr ""
 
-#: includes/automation-ui.php:574
+#: includes/automation-ui.php:578
 msgid "Move up"
 msgstr ""
 
-#: includes/automation-ui.php:578
+#: includes/automation-ui.php:582
 msgid "Move down"
 msgstr ""
 
-#: includes/automation-ui.php:582 includes/automation-ui.php:833
+#: includes/automation-ui.php:586 includes/automation-ui.php:837
 #: includes/custom-tables/automations.php:379
 #: includes/custom-tables/automations.php:380
 #: includes/custom-tables/automations.php:792
@@ -510,7 +510,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: includes/automation-ui.php:722 includes/custom-tables/automations.php:611
+#: includes/automation-ui.php:726 includes/custom-tables/automations.php:611
 #: includes/custom-tables/automations.php:630
 #: includes/custom-tables/automations.php:645
 #: includes/custom-tables/automations.php:658
@@ -518,36 +518,36 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: includes/automation-ui.php:775
+#: includes/automation-ui.php:779
 #: integrations/automatorwp/actions/anonymous-user.php:82
 #: integrations/automatorwp/actions/anonymous-user.php:84
 #, php-format
 msgid "Actions will be run on %1$s"
 msgstr ""
 
-#: includes/automation-ui.php:815
+#: includes/automation-ui.php:819
 msgid "Trigger disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this trigger."
 msgstr ""
 
-#: includes/automation-ui.php:817
+#: includes/automation-ui.php:821
 msgid "Action disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this action."
 msgstr ""
 
-#: includes/automation-ui.php:826 includes/automation-ui.php:836
+#: includes/automation-ui.php:830 includes/automation-ui.php:840
 #: includes/custom-tables/automations.php:235 includes/logs.php:180
 #: includes/logs.php:267
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:1313
+#: includes/automation-ui.php:1317
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:1313
+#: includes/automation-ui.php:1317
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:1314
+#: includes/automation-ui.php:1318
 msgid "View all add-ons"
 msgstr ""
 
@@ -2685,6 +2685,8 @@ msgstr ""
 #: integrations/caldera-forms/includes/triggers/submit-form.php:41
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:40
 #: integrations/contact-form-7/includes/triggers/submit-form.php:39
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:40
+#: integrations/divi/includes/triggers/submit-form.php:39
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:40
 #: integrations/elementor/includes/triggers/submit-form.php:39
 #: integrations/fluentform/includes/functions.php:25
@@ -2717,6 +2719,7 @@ msgstr ""
 
 #: integrations/caldera-forms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:27
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:27
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:27
 #: integrations/fluentform/includes/triggers/anonymous-submit-form.php:27
 #: integrations/formidable-forms/includes/triggers/anonymous-submit-form.php:27
@@ -2731,6 +2734,7 @@ msgstr ""
 
 #: integrations/caldera-forms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:28
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:28
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:28
 #: integrations/fluentform/includes/triggers/anonymous-submit-form.php:28
 #: integrations/formidable-forms/includes/triggers/anonymous-submit-form.php:28
@@ -2747,6 +2751,8 @@ msgstr ""
 #: integrations/caldera-forms/includes/triggers/anonymous-submit-form.php:32
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:30
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:32
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:30
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:32
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:30
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:32
 #: integrations/fluentform/includes/triggers/anonymous-submit-form.php:30
@@ -2797,6 +2803,8 @@ msgstr ""
 #: integrations/caldera-forms/includes/triggers/submit-form.php:51
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:48
 #: integrations/contact-form-7/includes/triggers/submit-form.php:47
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:54
+#: integrations/divi/includes/triggers/submit-form.php:53
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:54
 #: integrations/elementor/includes/triggers/submit-form.php:53
 #: integrations/fluentform/includes/triggers/anonymous-submit-form.php:52
@@ -2839,6 +2847,8 @@ msgstr ""
 #: integrations/caldera-forms/includes/triggers/submit-form.php:190
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:204
 #: integrations/contact-form-7/includes/triggers/submit-form.php:205
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:203
+#: integrations/divi/includes/triggers/submit-form.php:204
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:190
 #: integrations/elementor/includes/triggers/submit-form.php:191
 #: integrations/fluentform/includes/triggers/anonymous-submit-form.php:189
@@ -2864,6 +2874,8 @@ msgstr ""
 #: integrations/caldera-forms/includes/triggers/submit-form.php:191
 #: integrations/contact-form-7/includes/triggers/anonymous-submit-form.php:205
 #: integrations/contact-form-7/includes/triggers/submit-form.php:206
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:204
+#: integrations/divi/includes/triggers/submit-form.php:205
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:191
 #: integrations/elementor/includes/triggers/submit-form.php:192
 #: integrations/fluentform/includes/triggers/anonymous-submit-form.php:190
@@ -2887,6 +2899,7 @@ msgstr ""
 
 #: integrations/caldera-forms/includes/triggers/submit-form.php:26
 #: integrations/contact-form-7/includes/triggers/submit-form.php:26
+#: integrations/divi/includes/triggers/submit-form.php:26
 #: integrations/elementor/includes/triggers/submit-form.php:26
 #: integrations/fluentform/includes/triggers/submit-form.php:26
 #: integrations/formidable-forms/includes/triggers/submit-form.php:26
@@ -2901,6 +2914,7 @@ msgstr ""
 
 #: integrations/caldera-forms/includes/triggers/submit-form.php:27
 #: integrations/contact-form-7/includes/triggers/submit-form.php:27
+#: integrations/divi/includes/triggers/submit-form.php:27
 #: integrations/elementor/includes/triggers/submit-form.php:27
 #: integrations/fluentform/includes/triggers/submit-form.php:27
 #: integrations/formidable-forms/includes/triggers/submit-form.php:27
@@ -2915,6 +2929,7 @@ msgstr ""
 
 #: integrations/caldera-forms/includes/triggers/submit-form.php:29
 #: integrations/contact-form-7/includes/triggers/submit-form.php:29
+#: integrations/divi/includes/triggers/submit-form.php:29
 #: integrations/elementor/includes/triggers/submit-form.php:29
 #: integrations/fluentform/includes/triggers/submit-form.php:29
 #: integrations/formidable-forms/includes/triggers/submit-form.php:29
@@ -2930,6 +2945,7 @@ msgstr ""
 
 #: integrations/caldera-forms/includes/triggers/submit-form.php:31
 #: integrations/contact-form-7/includes/triggers/submit-form.php:31
+#: integrations/divi/includes/triggers/submit-form.php:31
 #: integrations/elementor/includes/triggers/submit-form.php:31
 #: integrations/fluentform/includes/triggers/submit-form.php:31
 #: integrations/formidable-forms/includes/triggers/submit-form.php:31
@@ -2996,6 +3012,18 @@ msgstr ""
 msgid "Product:"
 msgstr ""
 
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:43
+#: integrations/divi/includes/triggers/submit-form.php:42
+msgid "Form ID:"
+msgstr ""
+
+#: integrations/divi/includes/triggers/anonymous-submit-form.php:56
+#: integrations/divi/includes/triggers/submit-form.php:55
+#: integrations/elementor/includes/triggers/anonymous-submit-form.php:56
+#: integrations/elementor/includes/triggers/submit-form.php:55
+msgid "Form field value, replace \"FIELD_ID\" by the field id"
+msgstr ""
+
 #: integrations/easy-digital-downloads/includes/triggers/purchase-download.php:26
 msgid "User purchases a download"
 msgstr ""
@@ -3056,11 +3084,6 @@ msgstr ""
 #: integrations/elementor/includes/triggers/anonymous-submit-form.php:43
 #: integrations/elementor/includes/triggers/submit-form.php:42
 msgid "Form name:"
-msgstr ""
-
-#: integrations/elementor/includes/triggers/anonymous-submit-form.php:56
-#: integrations/elementor/includes/triggers/submit-form.php:55
-msgid "Form field value, replace \"FIELD_ID\" by the field id"
 msgstr ""
 
 #: integrations/favorites/includes/triggers/favorite-post.php:26
@@ -4038,7 +4061,7 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: integrations/learnpress/includes/actions/user-course.php:118
+#: integrations/learnpress/includes/actions/user-course.php:117
 msgid "Order created by AutomatorWP"
 msgstr ""
 
@@ -4757,39 +4780,47 @@ msgid "Order Customer IP Address"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:188
-msgid "Order Coupon Codes"
+msgid "Order Customer Note"
+msgstr ""
+
+#: integrations/woocommerce/includes/tags.php:190
+msgid "The customer note entered at checkout"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:193
-msgid "Order Subtotal"
+msgid "Order Coupon Codes"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:198
-msgid "Order Discount"
+msgid "Order Subtotal"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:203
-msgid "Order Tax"
+msgid "Order Discount"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:208
-msgid "Order Total"
+msgid "Order Tax"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:213
+msgid "Order Total"
+msgstr ""
+
+#: integrations/woocommerce/includes/tags.php:218
 msgid "Order Meta"
 msgstr ""
 
-#: integrations/woocommerce/includes/tags.php:215
+#: integrations/woocommerce/includes/tags.php:220
 msgid "Order meta value, replace \"META_KEY\" by the order meta key"
 msgstr ""
 
-#: integrations/woocommerce/includes/tags.php:222
+#: integrations/woocommerce/includes/tags.php:227
 #, php-format
 msgid "Billing %s"
 msgstr ""
 
-#: integrations/woocommerce/includes/tags.php:232
+#: integrations/woocommerce/includes/tags.php:237
 #, php-format
 msgid "Shipping %s"
 msgstr ""

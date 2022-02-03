@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 1.9.8
+Stable tag: 1.9.9
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -101,6 +101,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Caldera Forms](https://automatorwp.com/add-ons/caldera-forms/)
 * [Contact Form 7](https://automatorwp.com/add-ons/contact-form-7/)
 * [DigiMember](https://automatorwp.com/add-ons/digimember/)
+* [Divi](https://automatorwp.com/add-ons/divi/)
 * [Easy Digital Downloads](https://automatorwp.com/add-ons/easy-digital-downloads/)
 * [Elementor](https://automatorwp.com/add-ons/elementor-forms/)
 * [Favorites](https://automatorwp.com/add-ons/favorites/)
@@ -157,6 +158,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [IFTTT](https://automatorwp.com/add-ons/ifttt/)
+* [Integrately](https://automatorwp.com/add-ons/integrately/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
 * [Notion](https://automatorwp.com/add-ons/notion/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
@@ -261,6 +263,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 1.9.9 =
+
+* **New Features**
+* New Integration: Divi.
+* Divi: New Trigger: User submits a form.
+* Divi: New Anonymous Trigger: Guest submits a form.
 
 = 1.9.8 =
 

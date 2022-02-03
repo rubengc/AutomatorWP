@@ -94,6 +94,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Caldera Forms](https://automatorwp.com/add-ons/caldera-forms/)
 * [Contact Form 7](https://automatorwp.com/add-ons/contact-form-7/)
 * [DigiMember](https://automatorwp.com/add-ons/digimember/)
+* [Divi](https://automatorwp.com/add-ons/divi/)
 * [Easy Digital Downloads](https://automatorwp.com/add-ons/easy-digital-downloads/)
 * [Elementor](https://automatorwp.com/add-ons/elementor-forms/)
 * [Favorites](https://automatorwp.com/add-ons/favorites/)
@@ -263,6 +264,21 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 1.9.9 ###
+
+* **New Features**
+* New Integration: Divi.
+* Divi: New Trigger: User submits a form.
+* Divi: New Anonymous Trigger: Guest submits a form.
+
+### 1.9.8 ###
+
+* **New Features**
+* WooCommerce: Added the order customer note tag.
+* **Improvements**
+* LearnPress: Updated enroll user to course action to match with the latest LearnPress version.
+* Reorder the integrations list alphabetically in the edit automation screen.
 
 ### 1.9.7 ###
 
