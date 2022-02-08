@@ -157,6 +157,7 @@ AutomatorWP works with different WordPress plugins, including:
 AutomatorWP can also work with external platforms, furthermore WordPress plugins, like these below:
 
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
+* [Google Sheets](https://automatorwp.com/add-ons/google-sheets/)
 * [IFTTT](https://automatorwp.com/add-ons/ifttt/)
 * [Integrately](https://automatorwp.com/add-ons/integrately/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
