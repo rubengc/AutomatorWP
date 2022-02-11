@@ -101,6 +101,10 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
 
         $user = get_userdata( $user_id );
 
+        if( ! $user ) {
+            return;
+        }
+
         switch ( $operation ) {
             case 'add':
                 // Add the role to the user

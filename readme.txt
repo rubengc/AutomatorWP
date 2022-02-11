@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 1.9.9
+Stable tag: 2.0.0
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -265,89 +265,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 == Changelog ==
 
-= 1.9.9 =
+= 2.0.0 =
 
 * **New Features**
-* New Integration: Divi.
-* Divi: New Trigger: User submits a form.
-* Divi: New Anonymous Trigger: Guest submits a form.
-
-= 1.9.8 =
-
-* **New Features**
-* WooCommerce: Added the order customer note tag.
+* Added the "Dashboard" page.
+* New tag: Added the {date} tag to render the current date & time with support for custom formats using the is as {date:FORMAT}.
+* New tag: Added the {timestamp} tag to render the current timestamp.
 * **Improvements**
-* LearnPress: Updated enroll user to course action to match with the latest LearnPress version.
-* Reorder the integrations list alphabetically in the edit automation screen.
-
-= 1.9.7 =
-
-* **Bug Fixes**
-* Fixed incorrect call of the wp_update_user() function.
-* **Developer Notes**
-* Tested with WordPress 5.9.
-
-= 1.9.6 =
-
-* **Bug Fixes**
-* WishList Member: Prevent to render levels without ID on membership levels option fields.
-
-= 1.9.5 =
-
-* **New Features**
-* New integration: Fluent Support.
-* Fluent Support: New trigger: Agent opens a ticket.
-* Fluent Support: New trigger: Client opens a ticket.
-* **Improvements**
-* Zoom: Force auto approval if registrant status is set to approve.
-
-= 1.9.4 =
-
-* **Developer Notes**
-* Added support for CMB2 fields data removal if field has "multiple" set to "true".
-
-= 1.9.3 =
-
-* **New Features**
-* New trigger: User gets deleted.
-* New trigger: User role changes from role to role.
-* New Action: Update multiple posts.
-* New Action: Delete a post.
-* New Action: Delete multiple posts.
-* New Action: Delete a user.
-* **Improvements**
-* WishList Member: Updated class check to correctly detect if WishList Member is active.
-* Zoom: Added the ability to register registrants with a custom status (approved, denied or pending).
-* WordPress: Added support to the user nicename in the trigger "User field gets updated".
-* **Developer Notes**
-* Make use of the min() function when defining length of the table keys (thanks to @mholubowski).
-
-= 1.9.2 =
-
-* **New Features**
-* FluentCRM: New trigger: User gets added.
-* FluentCRM: New trigger: User status change to a status.
-* FluentCRM: New anonymous trigger: A tag added to a contact.
-* FluentCRM: New anonymous trigger: Contact gets added to a list.
-* FluentCRM: New anonymous trigger: Contact status change to a status.
-* FluentCRM: New tags: Contact field and custom field tags.
-
-= 1.9.1.1 =
-
-* **New Features**
-* Make the post type selector more flexible and with support to private post types.
-
-= 1.9.1 =
-
-* **Improvements**
-* LearnDash: Update quiz listener to match with LearnDash 3.0.0 changes.
-* **Developer Notes**
-* Quote all fields and indexes during database creation to improve compatibility with some database servers.
-
-= 1.9.0 =
-
-* **Improvements**
-* Store the "Call a function" action result to meet the function return.
-* Ensure to pass all tags on filter logs entries.
+* WooCommerce: Added support to detect manual memberships assignations.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.

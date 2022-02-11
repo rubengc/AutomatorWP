@@ -75,7 +75,7 @@ function automatorwp_woocommerce_get_address_field_label( $field ) {
 function automatorwp_woocommerce_get_address_field_preview( $field ) {
 
     $previews = array(
-        'first_name' => __( 'AutomatorWP', 'automatorwp' ),
+        'first_name' => 'AutomatorWP',
         'last_name' => __( 'Plugin', 'automatorwp' ),
         'company' => __( 'AutomatorWP Ltd.', 'automatorwp' ),
         'address_1' => __( 'False Street, 123', 'automatorwp' ),

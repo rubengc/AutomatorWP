@@ -88,6 +88,11 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
             return;
         }
 
+        // Try to recover the membership plan if not found
+        if( ! $membership_plan instanceof WC_Memberships_Membership_Plan ) {
+            $membership_plan = $user_membership->get_plan();
+        }
+
         // Get the order ID
         $order_id = 0;
         $access_method = get_post_meta( $membership_plan->id, '_access_method', true );
@@ -100,6 +105,48 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
             'trigger'       => $this->trigger,
             'user_id'       => $user_id,
             'post_id'       => $membership_plan->id,
+            'order_id'      => $order_id,
+        ) );
+
+    }
+
+    /**
+     * Admin trigger listener for manual assignations
+     *
+     * @since 1.0.0
+     *
+     * @param string    $new_status
+     * @param string    $old_status
+     * @param WP_Post   $post
+     */
+    public function admin_listener( $new_status, $old_status, $post ) {
+
+        // Bail if not is a WC Membership
+        if( $post->post_type !== 'wc_user_membership' ) {
+            return;
+        }
+
+        if( $old_status === 'auto-draft' ) {
+            return;
+        }
+
+        $user_membership = wc_memberships_get_user_membership( $post->ID );
+
+        if( ! $user_membership ) {
+            return;
+        }
+
+        $order_id = 0;
+        $access_method = get_post_meta( $post->ID, '_access_method', true );
+
+        if ( $access_method === 'purchase' ) {
+            $order_id = get_post_meta( $post->ID, '_order_id', true );
+        }
+
+        automatorwp_trigger_event( array(
+            'trigger'       => $this->trigger,
+            'user_id'       => $user_membership->get_user_id(),
+            'post_id'       => $user_membership->get_plan_id(),
             'order_id'      => $order_id,
         ) );
 
@@ -144,6 +191,9 @@ class AutomatorWP_WooCommerce_Membership_Created extends AutomatorWP_Integration
 
         // Log meta data
         add_filter( 'automatorwp_user_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 6 );
+
+        // admin listener
+        add_action( 'transition_post_status', array( $this, 'admin_listener' ), 999, 3 );
 
         parent::hooks();
     }

@@ -13,6 +13,7 @@ if( !defined( 'ABSPATH' ) ) exit;
 require_once AUTOMATORWP_DIR . 'includes/admin/notices.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/upgrades.php';
 // Admin pages
+require_once AUTOMATORWP_DIR . 'includes/admin/pages/dashboard.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/add-ons.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/import-automation.php';
 require_once AUTOMATORWP_DIR . 'includes/admin/pages/licenses.php';
@@ -48,33 +49,13 @@ function automatorwp_admin_menu() {
     $minimum_role = automatorwp_get_manager_capability();
 
     // AutomatorWP menu
-    add_menu_page( __( 'AutomatorWP', 'automatorwp' ), __( 'AutomatorWP', 'automatorwp' ), $minimum_role, 'automatorwp', '', 'dashicons-automatorwp', 50 );
+    add_menu_page( 'AutomatorWP', 'AutomatorWP', $minimum_role, 'automatorwp', '', 'dashicons-automatorwp', 50 );
+
+    // Dashboard submenu
+    add_submenu_page( 'automatorwp', __( 'Dashboard', 'automatorwp' ), __( 'Dashboard', 'automatorwp' ), $minimum_role, 'automatorwp', 'automatorwp_dashboard_page' );
 
 }
 add_action( 'admin_menu', 'automatorwp_admin_menu' );
-
-/**
- * Remove first AutomatorWP admin submenu since is empty
- * By default, WordPress assigns the first submenu item the same slug as parent, in this case, there isn't such page yet
- *
- * @since 1.0.0
- *
- * @param string $parent_file The parent file.
- *
- * @return string
- */
-function automatorwp_admin_menu_fix( $parent_file ) {
-
-    global $submenu;
-
-    if( isset( $submenu['automatorwp'] ) && isset( $submenu['automatorwp'][0] ) ) {
-        unset( $submenu['automatorwp'][0] );
-    }
-
-    return $parent_file;
-
-}
-add_filter( 'parent_file', 'automatorwp_admin_menu_fix' );
 
 /**
  * Admin submenus
@@ -85,8 +66,10 @@ function automatorwp_admin_submenu() {
 
     $minimum_role = automatorwp_get_manager_capability();
 
-    // AutomatorWP sub menus
+    // Add-ons submenu
     add_submenu_page( 'automatorwp', __( 'Add-ons', 'automatorwp' ), __( 'Add-ons', 'automatorwp' ), $minimum_role, 'automatorwp_add_ons', 'automatorwp_add_ons_page' );
+
+    // Import Automation submenu (hidden)
     add_submenu_page( 'automatorwp', __( 'Import Automation', 'automatorwp' ), __( 'Import Automation', 'automatorwp' ), $minimum_role, 'automatorwp_import_automation', 'automatorwp_import_automation_page' );
 
 }
@@ -114,8 +97,16 @@ function automatorwp_admin_bar_menu( $wp_admin_bar ) {
     // AutomatorWP
     $wp_admin_bar->add_node( array(
         'id'    => 'automatorwp',
-        'title'	=>	'<span class="ab-icon"></span>' . __( 'AutomatorWP', 'automatorwp' ),
+        'title'	=>	'<span class="ab-icon"></span>' . 'AutomatorWP',
         'meta'  => array( 'class' => 'automatorwp' ),
+    ) );
+
+    // Dashboard
+    $wp_admin_bar->add_node( array(
+        'id'     => 'automatorwp-dashboard',
+        'title'  => __( 'Dashboard', 'automatorwp' ),
+        'parent' => 'automatorwp',
+        'href'   => admin_url( 'admin.php?page=automatorwp' )
     ) );
 
     // Automations

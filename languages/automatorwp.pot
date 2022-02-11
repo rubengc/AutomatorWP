@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-02-03 13:17+0100\n"
+"POT-Creation-Date: 2022-02-11 12:09+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,35 +47,35 @@ msgstr ""
 msgid "Possible action duplication with the key \"%s\""
 msgstr ""
 
-#: includes/admin.php:51 includes/admin.php:117
-#: integrations/woocommerce/includes/functions.php:78
-msgid "AutomatorWP"
+#: includes/admin.php:55 includes/admin.php:107
+#: includes/admin/pages/dashboard.php:22
+msgid "Dashboard"
 msgstr ""
 
-#: includes/admin.php:89 includes/admin.php:160
+#: includes/admin.php:70 includes/admin.php:151
 msgid "Add-ons"
 msgstr ""
 
-#: includes/admin.php:90
+#: includes/admin.php:73
 msgid "Import Automation"
 msgstr ""
 
-#: includes/admin.php:124 includes/custom-tables.php:30
-#: includes/custom-tables.php:39
+#: includes/admin.php:115 includes/admin/pages/dashboard.php:226
+#: includes/custom-tables.php:30 includes/custom-tables.php:39
 msgid "Automations"
 msgstr ""
 
-#: includes/admin.php:132 includes/custom-tables.php:178
-#: includes/custom-tables.php:187
+#: includes/admin.php:123 includes/admin/pages/dashboard.php:232
+#: includes/custom-tables.php:178 includes/custom-tables.php:187
 msgid "Logs"
 msgstr ""
 
-#: includes/admin.php:168 includes/admin/pages/licenses.php:255
+#: includes/admin.php:159 includes/admin/pages/licenses.php:255
 #: includes/admin/pages/licenses.php:262
 msgid "Licenses"
 msgstr ""
 
-#: includes/admin.php:176 includes/admin/pages/settings.php:136
+#: includes/admin.php:167 includes/admin/pages/settings.php:136
 #: includes/admin/pages/settings.php:142 includes/admin/pages/settings.php:167
 msgid "Settings"
 msgstr ""
@@ -202,6 +202,144 @@ msgstr ""
 
 #: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1404
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:39
+msgid "Welcome to AutomatorWP"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:51
+msgid "Getting started"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:64
+msgid "Advanced features"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:77
+msgid "Meet the team"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:90
+msgid "Follow us"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:154
+msgid "More videos"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:197
+msgid "View all videos"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:202
+msgid "AutomatorWP is a free and open-source plugin accessible to everyone just like WordPress. There are many ways you can help support AutomatorWP"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:204
+msgid "Get involved with AutomatorWP development."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:205
+msgid "Translate AutomatorWP into your language."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:206
+msgid "Review AutomatorWP on WordPress.org."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:208
+msgid "Pro add-ons help to maintain the project and offer the most advanced features."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:210
+msgid "View plans and pricing"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:225
+msgid "What is AutomatorWP?"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:227
+msgid "Anonymous Automations"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:228 includes/automation-ui.php:176
+#: includes/automation-ui.php:200 includes/custom-tables.php:90
+#: includes/custom-tables/automations.php:152
+msgid "Triggers"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:229 includes/automation-ui.php:177
+#: includes/automation-ui.php:253 includes/custom-tables.php:134
+#: includes/custom-tables/automations.php:153
+msgid "Actions"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:230
+msgid "Filters"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:231
+msgid "Tags"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:246
+msgid "Features"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:248
+msgid "Sequential triggers"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:249
+msgid "Redirect users"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:250
+msgid "Import & Export automations through URL"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:254
+msgid "Special Actions"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:256
+#: integrations/automatorwp/actions/call-function.php:35
+msgid "Call a function"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:257
+#: integrations/automatorwp/actions/do-action.php:35
+msgid "Run a WordPress hook"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:258
+msgid "Multiple posts actions"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:314
+msgid "Follow us in your favorite social network!"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:316
+msgid "Subscribe to our YouTube channel."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:317
+msgid "Follow us on Facebook."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:318
+msgid "Join our Facebook community."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:319
+msgid "Follow @AutomatorWP on Twitter."
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:320
+msgid "Follow us on LinkedIn."
 msgstr ""
 
 #: includes/admin/pages/import-automation.php:32
@@ -425,16 +563,6 @@ msgstr ""
 
 #: includes/automation-ui.php:113
 msgid "Done"
-msgstr ""
-
-#: includes/automation-ui.php:176 includes/automation-ui.php:200
-#: includes/custom-tables.php:90 includes/custom-tables/automations.php:152
-msgid "Triggers"
-msgstr ""
-
-#: includes/automation-ui.php:177 includes/automation-ui.php:253
-#: includes/custom-tables.php:134 includes/custom-tables/automations.php:153
-msgid "Actions"
 msgstr ""
 
 #: includes/automation-ui.php:201
@@ -750,7 +878,7 @@ msgstr ""
 msgid "Save &amp; Activate"
 msgstr ""
 
-#: includes/custom-tables/logs.php:159 includes/tags.php:52
+#: includes/custom-tables/logs.php:159 includes/tags.php:58
 msgid "User"
 msgstr ""
 
@@ -921,23 +1049,23 @@ msgstr ""
 msgid "Select an item"
 msgstr ""
 
-#: includes/tags.php:27
+#: includes/tags.php:30
 msgid "Site"
 msgstr ""
 
-#: includes/tags.php:33
+#: includes/tags.php:36
 msgid "Site name"
 msgstr ""
 
-#: includes/tags.php:39
+#: includes/tags.php:42
 msgid "Site URL"
 msgstr ""
 
-#: includes/tags.php:45
+#: includes/tags.php:48
 msgid "Admin email"
 msgstr ""
 
-#: includes/tags.php:58 integrations/automatorwp/actions/anonymous-user.php:109
+#: includes/tags.php:64 integrations/automatorwp/actions/anonymous-user.php:109
 #: integrations/automatorwp/actions/anonymous-user.php:283
 #: integrations/wordpress/actions/delete-multiple-posts.php:101
 #: integrations/wordpress/actions/update-multiple-posts.php:101
@@ -946,7 +1074,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: includes/tags.php:64 integrations/automatorwp/actions/anonymous-user.php:111
+#: includes/tags.php:70 integrations/automatorwp/actions/anonymous-user.php:111
 #: integrations/automatorwp/actions/anonymous-user.php:225
 #: integrations/wordpress/filters/user-exists.php:42
 #: integrations/wordpress/filters/user-field.php:42
@@ -955,7 +1083,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: includes/tags.php:70 integrations/automatorwp/actions/anonymous-user.php:110
+#: includes/tags.php:76 integrations/automatorwp/actions/anonymous-user.php:110
 #: integrations/automatorwp/actions/anonymous-user.php:224
 #: integrations/woocommerce/includes/functions.php:59
 #: integrations/wordpress/filters/user-exists.php:41
@@ -965,58 +1093,74 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: includes/tags.php:76 integrations/wordpress/filters/user-field.php:46
+#: includes/tags.php:82 integrations/wordpress/filters/user-field.php:46
 #: integrations/wordpress/triggers/user-field-update.php:48
 #: integrations/wordpress/triggers/user-field-update.php:261
 msgid "Display name"
 msgstr ""
 
-#: includes/tags.php:78
+#: includes/tags.php:84
 msgid "AutomatorWP Plugin"
 msgstr ""
 
-#: includes/tags.php:82 integrations/woocommerce/includes/functions.php:49
+#: includes/tags.php:88 integrations/woocommerce/includes/functions.php:49
 msgid "First name"
 msgstr ""
 
-#: includes/tags.php:88 integrations/woocommerce/includes/functions.php:50
+#: includes/tags.php:94 integrations/woocommerce/includes/functions.php:50
 msgid "Last name"
 msgstr ""
 
-#: includes/tags.php:90 integrations/woocommerce/includes/functions.php:79
+#: includes/tags.php:96 integrations/woocommerce/includes/functions.php:79
 msgid "Plugin"
 msgstr ""
 
-#: includes/tags.php:94
+#: includes/tags.php:100
 msgid "User's website URL"
 msgstr ""
 
-#: includes/tags.php:100
+#: includes/tags.php:106
 msgid "Avatar"
 msgstr ""
 
-#: includes/tags.php:106
+#: includes/tags.php:112
 msgid "Avatar URL"
 msgstr ""
 
-#: includes/tags.php:112
+#: includes/tags.php:118
 msgid "Reset password URL"
 msgstr ""
 
-#: includes/tags.php:118
+#: includes/tags.php:124
 msgid "Reset password link"
 msgstr ""
 
-#: includes/tags.php:120 includes/tags.php:514
+#: includes/tags.php:126 includes/tags.php:547
 msgid "Click here to reset your password"
 msgstr ""
 
-#: includes/tags.php:124
+#: includes/tags.php:130
 msgid "User Meta"
 msgstr ""
 
-#: includes/tags.php:126
-msgid "User meta value, replace \"META_KEY\" by the user meta key"
+#: includes/tags.php:132
+msgid "User meta value, replace \"META_KEY\" by the user meta key."
+msgstr ""
+
+#: includes/tags.php:140 includes/tags.php:146
+msgid "Date and time"
+msgstr ""
+
+#: includes/tags.php:148
+msgid "The current date and time, replace \"FORMAT\" by the date format. Default format is \"Y-m-d H:i:s\"."
+msgstr ""
+
+#: includes/tags.php:152
+msgid "Timestamp"
+msgstr ""
+
+#: includes/tags.php:154
+msgid "The current timestamp."
 msgstr ""
 
 #: includes/triggers.php:54
@@ -1911,10 +2055,6 @@ msgstr ""
 msgid "The user's role."
 msgstr ""
 
-#: integrations/automatorwp/actions/call-function.php:35
-msgid "Call a function"
-msgstr ""
-
 #: integrations/automatorwp/actions/call-function.php:36
 msgid "Call a <strong>function</strong>"
 msgstr ""
@@ -1982,10 +2122,6 @@ msgstr ""
 #: integrations/automatorwp/actions/call-function.php:125
 #, php-format
 msgid "Function \"%s\" throw the error: %s"
-msgstr ""
-
-#: integrations/automatorwp/actions/do-action.php:35
-msgid "Run a WordPress hook"
 msgstr ""
 
 #: integrations/automatorwp/actions/do-action.php:36

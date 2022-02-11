@@ -1045,7 +1045,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 
 .automatorwp-tags-select2 .select2-dropdown li[role="group"] > ul li strong {
     display: inline-block;
-    min-width: 100px;
+    min-width: 130px;
 }
 
 .automatorwp-tags-select2 .select2-dropdown li[role="group"] > ul li span {
@@ -1846,6 +1846,154 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     border-right: 8px solid transparent;
     bottom: -7px;
     left: 44%;
+}
+
+/* -------------------------------------------
+    Dashboard
+   ------------------------------------------- */
+
+.automatorwp-dashboard .wp-heading-inline {
+    display: none !important;
+}
+
+.automatorwp-dashboard .postbox .inside,
+.automatorwp-dashboard .postbox .inside p {
+    font-size: 14px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-logo {
+    margin-bottom: 10px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-logo img {
+    width: 230px;
+    vertical-align: middle;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-logo .autoamtorwp-dashboard-version {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.automatorwp-dashboard h3 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.automatorwp-dashboard li {
+    margin-bottom: 10px;
+}
+
+.automatorwp-dashboard li h3 {
+    margin-top: 10px !important;
+}
+
+.automatorwp-dashboard li .dashicons {
+    color: #82878c;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-video a {
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: 1fr 3fr;
+    margin-bottom: 3px;
+    text-decoration: none;
+    color: #3c434a;
+    opacity: 0.8;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-video a:hover {
+    opacity: 1;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-video .automatorwp-dashboard-video-image {
+    height: 62px;
+    overflow: hidden;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-video .automatorwp-dashboard-video-image img {
+    margin-top: -13px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-video .automatorwp-dashboard-video-details .automatorwp-dashboard-video-title {
+    font-size: 16px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-video .automatorwp-dashboard-video-details .automatorwp-dashboard-video-duration {
+    font-size: 13px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-get-involved p,
+.automatorwp-dashboard .automatorwp-dashboard-get-involved ul {
+    margin-bottom: 20px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-pricing-button {
+    text-align: center;
+    margin-top: 28px;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-pricing-button a {
+    padding: 8px 18px;
+}
+
+.automatorwp-dashboard-more-videos {
+    text-align: center;
+}
+
+.automatorwp-dashboard-more-videos a {
+    text-decoration: none;
+}
+
+.automatorwp-dashboard .contributors-list {
+    text-align: center;
+}
+
+.automatorwp-dashboard .contributors-list img {
+    border-radius: 50%;
+}
+
+.automatorwp-dashboard .contributors-list span {
+    display: block;
+}
+
+.automatorwp-dashboard .automatorwp-dashboard-social-list li {
+    margin-bottom: 16px;
+}
+
+.automatorwp-dashboard .dashicons-youtube {
+    color: #e90000 !important;
+}
+
+.automatorwp-dashboard .dashicons-facebook {
+    color: #4766a9 !important;
+}
+
+.automatorwp-dashboard .dashicons-twitter {
+    color: #139ae7 !important;
+}
+
+.automatorwp-dashboard .dashicons-linkedin {
+    color: #0074b3 !important;
+}
+
+@media screen and (min-width: 1200px) {
+
+    .automatorwp-dashboard .postbox .inside {
+        min-height: 245px;
+    }
+
+    .automatorwp-dashboard .automatorwp-dashboard-columns {
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .automatorwp-dashboard .contributors-list {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 /* -------------------------------------------

@@ -22,7 +22,10 @@ function automatorwp_get_tags() {
 
     $tags = array();
 
+    // ---------------------------------
     // Site tags
+    // ---------------------------------
+
     $tags['site'] = array(
         'label' => __( 'Site', 'automatorwp' ),
         'tags'  => array(),
@@ -47,7 +50,10 @@ function automatorwp_get_tags() {
         'preview'   => get_bloginfo( 'admin_email' ),
     );
 
+    // ---------------------------------
     // User tags
+    // ---------------------------------
+
     $tags['user'] = array(
         'label' => __( 'User', 'automatorwp' ),
         'tags'  => array(),
@@ -123,7 +129,29 @@ function automatorwp_get_tags() {
     $tags['user']['tags']['user_meta:META_KEY'] = array(
         'label'     => __( 'User Meta', 'automatorwp' ),
         'type'      => 'text',
-        'preview'   => __( 'User meta value, replace "META_KEY" by the user meta key', 'automatorwp' ),
+        'preview'   => __( 'User meta value, replace "META_KEY" by the user meta key.', 'automatorwp' ),
+    );
+
+    // ---------------------------------
+    // Date and time tags
+    // ---------------------------------
+
+    $tags['date'] = array(
+        'label' => __( 'Date and time', 'automatorwp' ),
+        'tags'  => array(),
+        'icon'  => AUTOMATORWP_URL . 'assets/img/integration-default.svg',
+    );
+
+    $tags['date']['tags']['date:FORMAT'] = array(
+        'label'     => __( 'Date and time', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => __( 'The current date and time, replace "FORMAT" by the date format. Default format is "Y-m-d H:i:s".', 'automatorwp' ),
+    );
+
+    $tags['date']['tags']['timestamp'] = array(
+        'label'     => __( 'Timestamp', 'automatorwp' ),
+        'type'      => 'int',
+        'preview'   => __( 'The current timestamp.', 'automatorwp' ),
     );
 
     /**
@@ -361,6 +389,9 @@ function automatorwp_parse_automation_tags( $automation_id = 0, $user_id = 0, $c
     // Parse user meta tags (required here since user meta tags are based on the content)
     $parsed_content = automatorwp_parse_user_meta_tags( $user_id, $parsed_content );
 
+    // Parse date tags
+    $parsed_content = automatorwp_parse_date_tags( $parsed_content );
+
     // Parse post meta tags (required here since post meta tags are based on the content)
     $parsed_content = automatorwp_parse_post_meta_tags( $automation_id, $user_id, $parsed_content );
 
@@ -463,6 +494,7 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
     $user = get_userdata( $user_id );
 
     switch( $tag_name ) {
+        // Site tags
         case 'site_name':
             $replacement = get_bloginfo( 'name' );
             break;
@@ -472,6 +504,7 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
         case 'admin_email':
             $replacement = get_bloginfo( 'admin_email' );
             break;
+        // User tags
         case 'user_id':
             $replacement = ( $user ? $user->ID : '' );
             break;
@@ -513,6 +546,12 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
             if( $tag_name === 'reset_password_link' ) {
                 $replacement = '<a href="' . $url . '">' . __( 'Click here to reset your password', 'automatorwp' ) . '</a>';
             }
+        // Date and time tags
+        case 'date':
+            $replacement = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
+            break;
+        case 'timestamp':
+            $replacement = current_time( 'timestamp' );
             break;
     }
 
@@ -822,6 +861,84 @@ function automatorwp_parse_user_meta_tags( $user_id = 0, $content = '' ) {
      * @return string
      */
     return apply_filters( 'automatorwp_parse_user_meta_tags', $parsed_content, $replacements, $user_id, $content );
+
+}
+
+/**
+ * Get the user meta tags replacements
+ *
+ * @since 2.0.0
+ *
+ * @param string    $content The content to parse
+ *
+ * @return array
+ */
+function automatorwp_get_date_tags_replacements( $content = '' ) {
+
+    $replacements = array();
+
+    // Look for user meta tags
+    preg_match_all( "/\{date:\s*(.*?)\s*\}/", $content, $matches );
+
+    if( is_array( $matches ) && isset( $matches[1] ) ) {
+
+        foreach( $matches[1] as $format ) {
+            $replacements['{date:' . $format . '}'] = date( ( $format === 'FORMAT' ? 'Y-m-d H:i:s' : $format ), current_time( 'timestamp' ) );
+        }
+
+    }
+
+    /**
+     * Filter to set custom date tags replacements
+     *
+     * @since 2.0.0
+     *
+     * @param array     $replacements   Replacements
+     * @param string    $content        The content to parse
+     *
+     * @return array
+     */
+    return apply_filters( 'automatorwp_get_date_tags_replacements', $replacements, $content );
+
+}
+
+/**
+ * Parse date tags replacements
+ *
+ * @since 2.0.0
+ *
+ * @param string    $content The content to replace
+ *
+ * @return string
+ */
+function automatorwp_parse_date_tags( $content = '' ) {
+
+    $parsed_content = $content;
+
+    // Get date tags replacements
+    $replacements = automatorwp_get_date_tags_replacements( $content );
+
+    if( $replacements ) {
+
+        $tags = array_keys( $replacements );
+
+        // Replace all tags by their replacements
+        $parsed_content = str_replace( $tags, $replacements, $content );
+
+    }
+
+    /**
+     * Filter to modify a content parsed with date tags
+     *
+     * @since 2.0.0
+     *
+     * @param string    $parsed_content Content parsed
+     * @param array     $replacements   Replacements
+     * @param string    $content        The content to parse
+     *
+     * @return string
+     */
+    return apply_filters( 'automatorwp_parse_date_tags', $parsed_content, $replacements, $content );
 
 }
 
