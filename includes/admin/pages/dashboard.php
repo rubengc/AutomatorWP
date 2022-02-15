@@ -251,11 +251,19 @@ function automatorwp_dashboard_advanced_box() {
             </ul>
         </li>
         <li>
-            <h3><?php _e( 'Special Actions', 'automatorwp' ); ?></h3>
+            <h3><?php _e( 'Special actions', 'automatorwp' ); ?></h3>
             <ul>
                 <li><a href="https://automatorwp.com/docs/special-actions/call-a-function/" target="_blank"><?php _e( 'Call a function', 'automatorwp' ); ?></a></li>
                 <li><a href="https://automatorwp.com/docs/special-actions/run-a-wordpress-hook/" target="_blank"><?php _e( 'Run a WordPress hook', 'automatorwp' ); ?></a></li>
                 <li><a href="https://automatorwp.com/docs/special-actions/multiple-posts-actions/" target="_blank"><?php _e( 'Multiple posts actions', 'automatorwp' ); ?></a></li>
+            </ul>
+        </li>
+        <li>
+            <h3><?php _e( 'Special tags', 'automatorwp' ); ?></h3>
+            <ul>
+                <li><a href="https://automatorwp.com/docs/special-tags/user-meta-tag/" target="_blank"><?php _e( 'User meta tag', 'automatorwp' ); ?></a></li>
+                <li><a href="https://automatorwp.com/docs/special-tags/post-meta-tag/" target="_blank"><?php _e( 'Post meta tag', 'automatorwp' ); ?></a></li>
+                <li><a href="https://automatorwp.com/docs/special-tags/date-tag/" target="_blank"><?php _e( 'Date tag', 'automatorwp' ); ?></a></li>
             </ul>
         </li>
     </ul>

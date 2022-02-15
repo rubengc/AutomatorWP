@@ -1980,7 +1980,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 @media screen and (min-width: 1200px) {
 
     .automatorwp-dashboard .postbox .inside {
-        min-height: 245px;
+        min-height: 240px;
     }
 
     .automatorwp-dashboard .automatorwp-dashboard-columns {

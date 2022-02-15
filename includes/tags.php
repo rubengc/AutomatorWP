@@ -546,6 +546,7 @@ function automatorwp_get_tag_replacement( $tag_name = '', $automation_id = 0, $u
             if( $tag_name === 'reset_password_link' ) {
                 $replacement = '<a href="' . $url . '">' . __( 'Click here to reset your password', 'automatorwp' ) . '</a>';
             }
+            break;
         // Date and time tags
         case 'date':
             $replacement = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );

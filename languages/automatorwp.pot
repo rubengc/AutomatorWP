@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-02-11 12:09+0100\n"
+"POT-Creation-Date: 2022-02-15 10:04+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -301,7 +301,7 @@ msgid "Import & Export automations through URL"
 msgstr ""
 
 #: includes/admin/pages/dashboard.php:254
-msgid "Special Actions"
+msgid "Special actions"
 msgstr ""
 
 #: includes/admin/pages/dashboard.php:256
@@ -318,27 +318,43 @@ msgstr ""
 msgid "Multiple posts actions"
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:314
+#: includes/admin/pages/dashboard.php:262
+msgid "Special tags"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:264
+msgid "User meta tag"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:265
+msgid "Post meta tag"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:266
+msgid "Date tag"
+msgstr ""
+
+#: includes/admin/pages/dashboard.php:322
 msgid "Follow us in your favorite social network!"
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:316
+#: includes/admin/pages/dashboard.php:324
 msgid "Subscribe to our YouTube channel."
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:317
+#: includes/admin/pages/dashboard.php:325
 msgid "Follow us on Facebook."
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:318
+#: includes/admin/pages/dashboard.php:326
 msgid "Join our Facebook community."
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:319
+#: includes/admin/pages/dashboard.php:327
 msgid "Follow @AutomatorWP on Twitter."
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:320
+#: includes/admin/pages/dashboard.php:328
 msgid "Follow us on LinkedIn."
 msgstr ""
 
