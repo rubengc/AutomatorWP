@@ -266,6 +266,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.0.2 ###
+
+* **Developer Notes**
+* Updated CMB2 library to 2.10.1.
+
 ### 2.0.1 ###
 
 * **Improvements**
