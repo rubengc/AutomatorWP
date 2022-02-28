@@ -130,7 +130,7 @@ final class AutomatorWP_Integration_WPLMS {
             return false;
         }
 
-        if ( ! defined( 'WPLMS_PLUGIN_VERSION' ) ) {
+        if ( ! class_exists( 'WPLMS_Init' ) ) {
             return false;
         }
 

@@ -94,13 +94,12 @@ class AutomatorWP_LearnPress_User_Course extends AutomatorWP_Integration_Action 
         // Enroll user in courses
         foreach( $courses as $course_id ) {
 
-            $course = learn_press_get_course( $course_id );
-            $order_id = 0;
-
             // Skip if user is already on this course
-            if( $user->has_course_status( $course_id, 'enrolled' ) ) {
+            if( $user->has_enrolled_course( $course_id ) ) {
                 continue;
             }
+
+            $course = learn_press_get_course( $course_id );
 
             // Skip if course not exists
             if( ! $course ) {
@@ -116,41 +115,43 @@ class AutomatorWP_LearnPress_User_Course extends AutomatorWP_Integration_Action 
             $order = new LP_Order();
             $order->set_customer_note( __( 'Order created by AutomatorWP', 'automatorwp' ) );
             $order->set_status( learn_press_default_order_status( 'lp-' ) );
-            $order->set_subtotal( 0 );
-            $order->set_total( 0 );
             $order->set_user_id( $user_id );
             $order->set_user_ip_address( learn_press_get_ip() );
             $order->set_user_agent( learn_press_get_user_agent() );
             $order->set_created_via( 'AutomatorWP' );
-            $order->set_user_id( $user_id );
+            $order->set_subtotal( 0 );
+            $order->set_total( 0 );
 
             // Save the order
-            $order->save();
+            $order_id = $order->save();
 
             // Add the course as order item
-            $order_item                     = array();
-            $order_item['order_item_name']  = $course->get_title();
-            $order_item['item_id']          = $course_id;
-            $order_item['quantity']         = 1;
-            $order_item['subtotal']         = 0;
-            $order_item['total']            = 0;
-            $order->add_item( $order_item, 1 );
+            $order_item = array(
+                'order_item_name'  => $course->get_title(),
+                'item_id'          => $course_id,
+                'quantity'         => 1,
+                'subtotal'         => 0,
+                'total'            => 0,
+            );
+
+            // Save the order item
+            $item_id = $order->add_item( $order_item, 1 );
 
             // Force the order status update
             $order->update_status( 'completed' );
 
             // Create a new user item
-            learn_press_update_user_item_field( array(
-                'user_id'    => $user->get_id(),
-                'item_id'    => $course->get_id(),
-                'start_time' => current_time( 'mysql' ),
-                'status'     => 'enrolled',
-                'end_time'   => '0000-00-00 00:00:00',
-                'ref_id'     => $order->get_id(),
-                'item_type'  => 'lp_course',
-                'ref_type'   => 'lp_order',
-                'parent_id'  => $user->get_course_history_id( $course->get_id() )
-            ) );
+            $user_item_data = array(
+                'user_id' => $user->get_id(),
+                'item_id' => $course_id,
+                'ref_id'  => $order_id,
+                'status'  => LP_COURSE_ENROLLED,
+            );
+
+            $user_item_new = new LP_User_Item_Course( $user_item_data );
+
+            // Save the user item
+            $user_item_new->update();
                     
         }
 

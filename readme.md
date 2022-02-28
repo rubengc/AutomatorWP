@@ -267,6 +267,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.0.3 ###
+
+* **Improvements**
+* LearnPress: Updated enroll user to course action to match with the latest LearnPress version.
+* WPLMS: Updated check to meet if WPLMS is installed to match latest WPLMS v4.3.
+
 ### 2.0.2 ###
 
 * **Developer Notes**
