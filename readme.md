@@ -155,6 +155,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
 * [Notion](https://automatorwp.com/add-ons/notion/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
+* [Twitter](https://automatorwp.com/add-ons/twitter/)
 * [Zapier](https://automatorwp.com/add-ons/zapier/)
 * [Zoom](https://automatorwp.com/add-ons/zoom/)
 
