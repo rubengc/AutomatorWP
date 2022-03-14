@@ -267,6 +267,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.0.4 ###
+
+* **Improvements**
+* Added support to render options with multiples values in triggers or actions labels.
+
 ### 2.0.3 ###
 
 * **Improvements**

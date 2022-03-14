@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-02-15 10:04+0100\n"
+"POT-Creation-Date: 2022-03-14 14:38+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -195,12 +195,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1402 includes/automation-ui.php:1414
+#: includes/automation-ui.php:1418 includes/automation-ui.php:1430
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1404
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1420
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -683,15 +683,19 @@ msgstr ""
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:1317
+#: includes/automation-ui.php:1102
+msgid "&"
+msgstr ""
+
+#: includes/automation-ui.php:1333
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:1317
+#: includes/automation-ui.php:1333
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:1318
+#: includes/automation-ui.php:1334
 msgid "View all add-ons"
 msgstr ""
 
@@ -4213,7 +4217,7 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: integrations/learnpress/includes/actions/user-course.php:117
+#: integrations/learnpress/includes/actions/user-course.php:116
 msgid "Order created by AutomatorWP"
 msgstr ""
 

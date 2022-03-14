@@ -1553,3 +1553,25 @@ function automatorwp_utilities_parse_condition_to_sql( $field, $condition, $valu
     return "{$field} {$operator} {$value}";
 
 }
+
+/**
+ * Helper function to implode array elements with a special glue for the last item
+ * Example: array( 1, 2, 3 ) imploded to "1, 2 and 3"
+ *
+ * @since 2.0.4
+ *
+ * @param string    $glue               Glue to join array items
+ * @param string    $glue_for_last_item Glue to join the last item
+ * @param array     $array              The array to implode
+ *
+ * @return string
+ */
+function automatorwp_implode_array( $glue = '', $glue_for_last_item = '', $array = array() ) {
+
+    $last  = array_slice( $array, -1 );
+    $first = join( $glue, array_slice( $array, 0, -1 ) );
+    $both  = array_filter( array_merge( array( $first ), $last ), 'strlen' );
+
+    return join( $glue_for_last_item, $both );
+
+}

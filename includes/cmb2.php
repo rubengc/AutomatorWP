@@ -549,3 +549,38 @@ function automatorwp_textarea_sanitization_cb( $value, $field_args, $field ) {
     return wp_kses( $value, 'post', $allowed_protocols );
 
 }
+
+/**
+ * Helper function to get a field options from the "options" or "options_cb"
+ *
+ * @since 2.0.4
+ *
+ * @param array $field The field configuration
+ *
+ * @return array
+ */
+function automatorwp_get_field_options( $field ) {
+
+    // Get the field options
+    $field_options = array();
+
+    // Try to get the field options from field args
+    if( isset( $field['options'] ) ) {
+
+        $field_options = $field['options'];
+
+    } else if( isset( $field['options_cb'] ) && is_callable( $field['options_cb'] ) ) {
+
+        $value = ( isset( $field['value'] ) ? $field['value'] : '' );
+
+        $field['value'] = $value;
+        $field['escaped_value'] = $value;
+        $field['args'] = $field;
+
+        $field_options = call_user_func( $field['options_cb'], (object) $field );
+
+    }
+
+    return $field_options;
+
+}
