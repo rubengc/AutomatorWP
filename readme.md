@@ -267,6 +267,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.0.5 ###
+
+* **Developer Notes**
+* Added the object_id parameter when parsing the automation item label.
+
 ### 2.0.4 ###
 
 * **Improvements**

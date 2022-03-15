@@ -1063,6 +1063,7 @@ function automatorwp_get_automation_item_option_replacement( $object, $item_type
         }
 
         // Ensure the field value and escaped_value keys
+        $field['object_id'] = $object->id;
         $field['value'] = $value;
         $field['escaped_value'] = $value;
 
