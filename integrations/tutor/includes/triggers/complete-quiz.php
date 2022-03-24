@@ -70,7 +70,7 @@ class AutomatorWP_Tutor_LMS_Complete_Quiz extends AutomatorWP_Integration_Trigge
         }
 
         // Bail if attempt isn't finished yet
-        if ( 'attempt_ended' !== $attempt->attempt_status ) {
+        if ( ! in_array( $attempt->attempt_status, array( 'attempt_ended', 'review_required' ) ) ) {
             return;
         }
 

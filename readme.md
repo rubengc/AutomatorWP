@@ -149,6 +149,7 @@ AutomatorWP works with different WordPress plugins, including:
 
 AutomatorWP can also work with external platforms, furthermore WordPress plugins, like these below:
 
+* [ActiveCampaign](https://automatorwp.com/add-ons/activecampaign/)
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [Google Sheets](https://automatorwp.com/add-ons/google-sheets/)
 * [IFTTT](https://automatorwp.com/add-ons/ifttt/)
@@ -266,6 +267,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.0.6 ###
+
+* **New Features**
+* New integration: ActiveCampaign.
+* ActiveCampaign: New trigger: User added to ActiveCampaign.
+* ActiveCampaign: New trigger: Tag added to user.
+* ActiveCampaign: New action: Add user to ActiveCampaign.
+* ActiveCampaign: New action: Add tag to user.
+* **Improvements**
+* Update code to prevent PHP warnings caused by old PHP versions.
+* TutorLMS: Updated code to match with TutorLMS 2.0.
 
 ### 2.0.5 ###
 

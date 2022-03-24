@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="178.71786"
+   height="178.71786"
+   viewBox="0 0 47.285766 47.28577"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="dashicon-active-campaign.svg">
+  <defs
+     id="defs2">
+    <inkscape:perspective
+       id="perspective857"
+       inkscape:persp3d-origin="66.14583 : 44.097223 : 1"
+       inkscape:vp_z="132.29166 : 66.145836 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 66.145836 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#a52828"
+     borderopacity="1"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="22.8832"
+     inkscape:cy="101.23408"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     borderlayer="false"
+     inkscape:pagecheckerboard="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:measure-start="249.821,63.0357"
+     inkscape:measure-end="249.821,0">
+    <sodipodi:guide
+       position="91.281245,132.29167"
+       orientation="0,1"
+       id="guide865"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="23.643,47.284971"
+       orientation="1,0"
+       id="guide854"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="47.400722,23.643002"
+       orientation="0,1"
+       id="guide856"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-249.71422)">
+    <g
+       transform="matrix(0.4473684,0,0,0.4473684,-5.9461664,169.91063)"
+       id="g833"
+       style="fill:#0e0e0e;fill-opacity:1;stroke-width:2.2352941">
+      <path
+         inkscape:export-ydpi="731.58966"
+         inkscape:export-xdpi="731.58966"
+         style="fill:#0e0e0e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.59142154"
+         inkscape:connector-curvature="0"
+         id="path20"
+         d="m 95.722853,224.27955 c -1.41608,-1.21379 -59.070857,-41.47096 -61.70072,-43.08931 l -0.809191,-0.60692 v 9.91262 c 0,3.23669 1.618376,4.24818 3.641356,5.86658 l 0.404615,0.20213 c 2.832159,2.02302 43.89854,30.54692 49.36057,34.39054 -5.46203,3.84373 -47.135299,32.77225 -49.765162,34.3906 -3.236763,2.02296 -3.439065,3.43905 -3.439065,6.27119 v 9.50801 c 0,0 61.296137,-42.68476 62.509917,-43.69624 v 0 c 2.83216,-2.02296 3.43906,-4.65285 3.43906,-6.27125 v -1.21379 c 0,-2.0229 -1.21379,-4.04593 -3.64136,-5.66433 z" />
+      <path
+         inkscape:export-ydpi="731.58966"
+         inkscape:export-xdpi="731.58966"
+         style="fill:#0e0e0e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.59142154"
+         inkscape:connector-curvature="0"
+         id="path22"
+         d="m 59.713903,235.40596 c 1.61838,0 3.23676,-0.60686 4.85514,-1.82071 2.02298,-1.41604 3.84365,-2.62989 3.84365,-2.62989 l 0.60689,-0.40484 -0.60689,-0.40485 c -0.20231,-0.20155 -27.10786,-18.81312 -29.940025,-20.63384 -1.213778,-1.01148 -2.832159,-1.21378 -3.843647,-0.60686 -1.011487,0.60686 -1.820677,1.6184 -1.820677,3.23675 v 6.27125 l 0.202307,0.20214 c 0.202308,0.20213 18.611371,12.947 22.252722,15.37458 1.61838,1.01148 3.03446,1.4161 4.45054,1.4161 z" />
+    </g>
+  </g>
+</svg>

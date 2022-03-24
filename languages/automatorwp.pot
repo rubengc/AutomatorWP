@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-03-15 10:48+0100\n"
+"POT-Creation-Date: 2022-03-24 14:31+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,6 +21,10 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: libraries\n"
 
 #: classes/integration-filter.php:336
+#: integrations/activecampaign/includes/actions/add-user-tag.php:203
+#: integrations/activecampaign/includes/actions/add-user.php:184
+#: integrations/activecampaign/includes/triggers/user-added.php:174
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:237
 #: integrations/automatorwp/actions/anonymous-user.php:870
 #: integrations/automatorwp/actions/anonymous-user.php:896
 #: integrations/automatorwp/actions/call-function.php:195
@@ -930,6 +934,8 @@ msgid "User:"
 msgstr ""
 
 #: includes/custom-tables/logs.php:408
+#: integrations/activecampaign/includes/triggers/user-added.php:188
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:251
 #: integrations/wordpress/actions/create-post.php:116
 #: integrations/wordpress/actions/create-post.php:409
 #: integrations/wordpress/actions/update-multiple-posts.php:185
@@ -1103,7 +1109,8 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: includes/tags.php:76 integrations/automatorwp/actions/anonymous-user.php:110
+#: includes/tags.php:76 integrations/activecampaign/includes/tags.php:37
+#: integrations/automatorwp/actions/anonymous-user.php:110
 #: integrations/automatorwp/actions/anonymous-user.php:224
 #: integrations/woocommerce/includes/functions.php:59
 #: integrations/wordpress/filters/user-exists.php:41
@@ -1123,11 +1130,13 @@ msgstr ""
 msgid "AutomatorWP Plugin"
 msgstr ""
 
-#: includes/tags.php:88 integrations/woocommerce/includes/functions.php:49
+#: includes/tags.php:88 integrations/activecampaign/includes/tags.php:42
+#: integrations/woocommerce/includes/functions.php:49
 msgid "First name"
 msgstr ""
 
-#: includes/tags.php:94 integrations/woocommerce/includes/functions.php:50
+#: includes/tags.php:94 integrations/activecampaign/includes/tags.php:47
+#: integrations/woocommerce/includes/functions.php:50
 msgid "Last name"
 msgstr ""
 
@@ -1502,18 +1511,19 @@ msgstr ""
 msgid "Hide options"
 msgstr ""
 
+#: integrations/activecampaign/includes/actions/add-user-tag.php:26
 #: integrations/activemember360/includes/actions/user-tag.php:26
 #: integrations/fluentcrm/includes/actions/user-tag.php:27
 #: integrations/groundhogg/includes/actions/user-tag.php:26
 msgid "Add tag to user"
 msgstr ""
 
-#: integrations/activemember360/includes/actions/user-tag.php:27
-#: integrations/fluentcrm/includes/actions/user-tag.php:28
-#: integrations/groundhogg/includes/actions/user-tag.php:27
-msgid "Add <strong>tag</strong> to user"
+#: integrations/activecampaign/includes/actions/add-user-tag.php:27
+msgid "Add <strong>tag</strong> to <strong>user</strong>"
 msgstr ""
 
+#: integrations/activecampaign/includes/actions/add-user-tag.php:29
+#: integrations/activecampaign/includes/actions/add-user-tag.php:31
 #: integrations/activemember360/includes/actions/user-tag.php:29
 #: integrations/activemember360/includes/actions/user-tag.php:31
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:29
@@ -1522,6 +1532,14 @@ msgstr ""
 msgid "Add %1$s to user"
 msgstr ""
 
+#: integrations/activecampaign/includes/actions/add-user-tag.php:35
+#: integrations/fluentcrm/includes/actions/user-tag.php:36
+#: integrations/groundhogg/includes/actions/user-tag.php:35
+msgid "Select a tag"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user-tag.php:36
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:39
 #: integrations/activemember360/includes/actions/user-tag.php:37
 #: integrations/activemember360/includes/triggers/contact-tag.php:41
 #: integrations/fluentcrm/includes/actions/user-tag.php:37
@@ -1537,6 +1555,271 @@ msgstr ""
 #: integrations/wordpress/triggers/view-post-tag.php:38
 #: integrations/wp-fusion/includes/triggers/add-tag.php:41
 msgid "Tag:"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user-tag.php:74
+#: integrations/activecampaign/includes/actions/add-user.php:53
+msgid "ActiveCampaign integration not configured in AutomatorWP settings."
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user-tag.php:83
+#, php-format
+msgid "%s is not a contact in ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user-tag.php:95
+#, php-format
+msgid "Tag added to %s"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user-tag.php:141
+#: integrations/activecampaign/includes/actions/add-user.php:122
+#, php-format
+msgid "You need to configure the <a href=\"%s\" target=\"_blank\">ActiveCampaign settings</a> to get this action to work."
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user-tag.php:145
+#: integrations/activecampaign/includes/actions/add-user.php:126
+#: integrations/activecampaign/includes/functions.php:117
+#: integrations/zoom/includes/actions/add-user-meeting.php:284
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Documentation</a>"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user.php:26
+#: integrations/activecampaign/includes/actions/add-user.php:28
+#: integrations/activecampaign/includes/actions/add-user.php:29
+msgid "Add user to ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user.php:27
+msgid "Add <strong>user</strong> to ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user.php:62
+#, php-format
+msgid "%s is already a contact in ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/actions/add-user.php:75
+#, php-format
+msgid "%s added to ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:39
+#: integrations/activecampaign/includes/admin.php:60
+msgid "ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:63
+msgid "API URL:"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:64
+msgid "Your ActiveCampaign url."
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:68
+msgid "API key:"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:69
+msgid "Your ActiveCampaign API key."
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:103
+#: integrations/activecampaign/includes/triggers/user-added.php:179
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:242
+msgid "Webhook URL:"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:107
+msgid "Regenerate URL"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:108
+msgid "Copy this URL and place it on your ActiveCampaign account."
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:134
+msgid "Connect with ActiveCampaign:"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:137
+msgid "Save credentials"
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:138
+msgid "Add you ActiveCampaign API key and URL fields and click on \"Authorize\" to connect."
+msgstr ""
+
+#: integrations/activecampaign/includes/admin.php:140
+msgid "Site connected with ActiveCampaign successfully."
+msgstr ""
+
+#: integrations/activecampaign/includes/ajax-functions.php:27
+msgid "All fields are required to connect with ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/ajax-functions.php:43
+msgid "Please, check your credentials"
+msgstr ""
+
+#: integrations/activecampaign/includes/ajax-functions.php:58
+msgid "Correct data to connect with ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/ajax-functions.php:91
+msgid "Webhook URL refreshed"
+msgstr ""
+
+#: integrations/activecampaign/includes/functions.php:113
+msgid "It is required to configure a webhook in your ActiveCampaign account to make this trigger work."
+msgstr ""
+
+#: integrations/activecampaign/includes/functions.php:120
+msgid "<a href=\"#\" class=\"automatorwp-view-webhook\">View Webhook</a>"
+msgstr ""
+
+#: integrations/activecampaign/includes/functions.php:128
+#: integrations/automatorwp/actions/redirect-user.php:47
+#: integrations/automatorwp/actions/redirect-user.php:194
+msgid "URL:"
+msgstr ""
+
+#: integrations/activecampaign/includes/functions.php:132
+msgid "Copy this URL in your ActiveCampaign account."
+msgstr ""
+
+#: integrations/activecampaign/includes/functions.php:137
+msgid "Hide Webhook"
+msgstr ""
+
+#: integrations/activecampaign/includes/functions.php:221
+#: integrations/activemember360/includes/triggers/contact-tag.php:68
+#: integrations/fluentcrm/includes/functions.php:77
+#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:42
+#: integrations/fluentcrm/includes/triggers/tag-added.php:41
+#: integrations/groundhogg/includes/functions.php:25
+#: integrations/groundhogg/includes/triggers/tag-added.php:41
+#: integrations/imember360/includes/triggers/contact-tag.php:70
+#: integrations/woocommerce/includes/triggers/anonymous-purchase-product-tag.php:40
+#: integrations/woocommerce/includes/triggers/purchase-product-tag.php:39
+#: integrations/wordpress/triggers/comment-post-tag.php:43
+#: integrations/wordpress/triggers/publish-post-tag.php:39
+#: integrations/wordpress/triggers/view-post-tag.php:39
+msgid "any tag"
+msgstr ""
+
+#: integrations/activecampaign/includes/rest-api.php:43
+msgid "No parameters received"
+msgstr ""
+
+#: integrations/activecampaign/includes/tags.php:22
+msgid "Webhook URL"
+msgstr ""
+
+#: integrations/activecampaign/includes/tags.php:27
+msgid "Action type"
+msgstr ""
+
+#: integrations/activecampaign/includes/tags.php:32
+msgid "Datetime"
+msgstr ""
+
+#: integrations/activecampaign/includes/tags.php:52
+msgid "Tag"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:26
+#: integrations/activecampaign/includes/triggers/user-added.php:28
+#: integrations/activecampaign/includes/triggers/user-added.php:29
+msgid "User added to ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:27
+msgid "<strong>User</strong> added to ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:63
+#, php-format
+msgid "%1$s was added to ActiveCampaign"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:183
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:246
+msgid "Action type:"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:193
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:256
+msgid "Email contact:"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:198
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:261
+#: integrations/automatorwp/actions/anonymous-user.php:150
+#: integrations/automatorwp/actions/anonymous-user.php:828
+#: integrations/wordpress/actions/create-user.php:77
+#: integrations/wordpress/actions/create-user.php:345
+#: integrations/wordpress/actions/update-user.php:93
+#: integrations/wordpress/actions/update-user.php:390
+msgid "First Name:"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-added.php:203
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:266
+msgid "Last_name:"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:26
+#: integrations/fluentcrm/includes/triggers/tag-added.php:26
+#: integrations/groundhogg/includes/triggers/tag-added.php:26
+#: integrations/wp-fusion/includes/triggers/add-tag.php:26
+msgid "Tag added to user"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:27
+#: integrations/fluentcrm/includes/triggers/tag-added.php:27
+#: integrations/groundhogg/includes/triggers/tag-added.php:27
+#: integrations/wp-fusion/includes/triggers/add-tag.php:27
+msgid "<strong>Tag</strong> added to user"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:29
+#: integrations/fluentcrm/includes/triggers/tag-added.php:29
+#: integrations/groundhogg/includes/triggers/tag-added.php:29
+#: integrations/wp-fusion/includes/triggers/add-tag.php:29
+#, php-format
+msgid "%1$s added to user %2$s time(s)"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:31
+#: integrations/fluentcrm/includes/triggers/tag-added.php:31
+#: integrations/groundhogg/includes/triggers/tag-added.php:31
+#: integrations/wp-fusion/includes/triggers/add-tag.php:31
+#, php-format
+msgid "%1$s added to user"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:41
+#: integrations/wp-fusion/includes/triggers/add-tag.php:69
+msgid "Any tag"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:90
+#, php-format
+msgid "%1$s was added to %2$s"
+msgstr ""
+
+#: integrations/activecampaign/includes/triggers/user-tag-added.php:271
+msgid "Tag added:"
+msgstr ""
+
+#: integrations/activemember360/includes/actions/user-tag.php:27
+#: integrations/fluentcrm/includes/actions/user-tag.php:28
+#: integrations/groundhogg/includes/actions/user-tag.php:27
+msgid "Add <strong>tag</strong> to user"
 msgstr ""
 
 #: integrations/activemember360/includes/actions/user-tag.php:60
@@ -1563,21 +1846,6 @@ msgstr ""
 #: integrations/imember360/includes/triggers/contact-tag.php:31
 #, php-format
 msgid "User has %1$s"
-msgstr ""
-
-#: integrations/activemember360/includes/triggers/contact-tag.php:68
-#: integrations/fluentcrm/includes/functions.php:77
-#: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:42
-#: integrations/fluentcrm/includes/triggers/tag-added.php:41
-#: integrations/groundhogg/includes/functions.php:25
-#: integrations/groundhogg/includes/triggers/tag-added.php:41
-#: integrations/imember360/includes/triggers/contact-tag.php:70
-#: integrations/woocommerce/includes/triggers/anonymous-purchase-product-tag.php:40
-#: integrations/woocommerce/includes/triggers/purchase-product-tag.php:39
-#: integrations/wordpress/triggers/comment-post-tag.php:43
-#: integrations/wordpress/triggers/publish-post-tag.php:39
-#: integrations/wordpress/triggers/view-post-tag.php:39
-msgid "any tag"
 msgstr ""
 
 #: integrations/advanced-ads/includes/triggers/ad-expired.php:26
@@ -1782,15 +2050,6 @@ msgstr ""
 #: integrations/wordpress/actions/update-user.php:87
 #: integrations/wordpress/actions/update-user.php:384
 msgid "The user email address."
-msgstr ""
-
-#: integrations/automatorwp/actions/anonymous-user.php:150
-#: integrations/automatorwp/actions/anonymous-user.php:828
-#: integrations/wordpress/actions/create-user.php:77
-#: integrations/wordpress/actions/create-user.php:345
-#: integrations/wordpress/actions/update-user.php:93
-#: integrations/wordpress/actions/update-user.php:390
-msgid "First Name:"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:151
@@ -2200,11 +2459,6 @@ msgstr ""
 
 #: integrations/automatorwp/actions/redirect-user.php:44
 msgid "url"
-msgstr ""
-
-#: integrations/automatorwp/actions/redirect-user.php:47
-#: integrations/automatorwp/actions/redirect-user.php:194
-msgid "URL:"
 msgstr ""
 
 #: integrations/automatorwp/actions/redirect-user.php:48
@@ -3326,11 +3580,6 @@ msgstr ""
 msgid "Add tag %1$s"
 msgstr ""
 
-#: integrations/fluentcrm/includes/actions/user-tag.php:36
-#: integrations/groundhogg/includes/actions/user-tag.php:35
-msgid "Select a tag"
-msgstr ""
-
 #: integrations/fluentcrm/includes/actions/user-tag.php:39
 #: integrations/groundhogg/includes/actions/user-tag.php:38
 msgid "Tag ID"
@@ -3525,32 +3774,6 @@ msgstr ""
 #: integrations/fluentcrm/includes/triggers/status-change.php:31
 #, php-format
 msgid "User status changes to %1$s"
-msgstr ""
-
-#: integrations/fluentcrm/includes/triggers/tag-added.php:26
-#: integrations/groundhogg/includes/triggers/tag-added.php:26
-#: integrations/wp-fusion/includes/triggers/add-tag.php:26
-msgid "Tag added to user"
-msgstr ""
-
-#: integrations/fluentcrm/includes/triggers/tag-added.php:27
-#: integrations/groundhogg/includes/triggers/tag-added.php:27
-#: integrations/wp-fusion/includes/triggers/add-tag.php:27
-msgid "<strong>Tag</strong> added to user"
-msgstr ""
-
-#: integrations/fluentcrm/includes/triggers/tag-added.php:29
-#: integrations/groundhogg/includes/triggers/tag-added.php:29
-#: integrations/wp-fusion/includes/triggers/add-tag.php:29
-#, php-format
-msgid "%1$s added to user %2$s time(s)"
-msgstr ""
-
-#: integrations/fluentcrm/includes/triggers/tag-added.php:31
-#: integrations/groundhogg/includes/triggers/tag-added.php:31
-#: integrations/wp-fusion/includes/triggers/add-tag.php:31
-#, php-format
-msgid "%1$s added to user"
 msgstr ""
 
 #: integrations/formidable-forms/includes/triggers/anonymous-submit-form.php:54
@@ -6867,10 +7090,6 @@ msgstr ""
 msgid "User daily visits the site %1$s time(s)"
 msgstr ""
 
-#: integrations/wp-fusion/includes/triggers/add-tag.php:69
-msgid "Any tag"
-msgstr ""
-
 #: integrations/wp-job-manager/includes/triggers/publish-job.php:26
 msgid "User publishes a job of a type"
 msgstr ""
@@ -7339,11 +7558,6 @@ msgstr ""
 #: integrations/zoom/includes/actions/add-user-meeting.php:280
 #, php-format
 msgid "You need to configure the <a href=\"%s\" target=\"_blank\">Zoom Meetings settings</a> to get this action to work."
-msgstr ""
-
-#: integrations/zoom/includes/actions/add-user-meeting.php:284
-#, php-format
-msgid "<a href=\"%s\" target=\"_blank\">Documentation</a>"
 msgstr ""
 
 #: integrations/zoom/includes/actions/add-user-meeting.php:349

@@ -460,7 +460,7 @@ class AutomatorWP_WordPress_Update_Multiple_Posts extends AutomatorWP_Integratio
             $log_meta['field_conditions_parsed'] .= sprintf( '%s %s %s',
                 $condition['field'],
                 automatorwp_utilities_get_condition_label( $condition['condition'] ),
-                $condition['value'],
+                $condition['value']
             ) . "<br>";
         }
 
@@ -471,7 +471,7 @@ class AutomatorWP_WordPress_Update_Multiple_Posts extends AutomatorWP_Integratio
             $log_meta['meta_conditions_parsed'] .= sprintf( '%s %s %s',
                 $condition['meta_key'],
                 automatorwp_utilities_get_condition_label( $condition['condition'] ),
-                $condition['meta_value'],
+                $condition['meta_value']
             ) . "<br>";
         }
 
