@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -93,6 +93,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
 * [Advanced Ads](https://automatorwp.com/add-ons/advanced-ads/)
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
+* [Amelia](https://automatorwp.com/add-ons/ameliabooking/)
 * [AnsPress](https://automatorwp.com/add-ons/anspress/)
 * [Awesome Support](https://automatorwp.com/add-ons/awesome-support/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
@@ -266,6 +267,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.0.7 =
+
+* **New Features**
+* New Integration: Amelia.
+* Amelia: New trigger: User books an appointment.
+* Amelia: New anonymous trigger: Guest books an appointment.
+* **Improvements**
+* Added support for datetime fields.
 
 = 2.0.6 =
 

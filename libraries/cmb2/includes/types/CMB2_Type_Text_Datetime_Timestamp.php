@@ -55,7 +55,7 @@ class CMB2_Type_Text_Datetime_Timestamp extends CMB2_Type_Picker_Base {
 
 		$date_args['rendered'] = true;
 
-		// Let's get the date-format, and set it up as a data attr for the field.
+        // Let's get the date-format, and set it up as a data attr for the field.
 		return $this->parse_picker_options( 'date', $date_args );
 	}
 

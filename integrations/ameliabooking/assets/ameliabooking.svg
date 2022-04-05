@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ameliabooking.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#a52828"
+     borderopacity="1"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="148.89093"
+     inkscape:cy="203.77405"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     borderlayer="false"
+     inkscape:pagecheckerboard="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:measure-start="249.821,63.0357"
+     inkscape:measure-end="249.821,0">
+    <sodipodi:guide
+       position="9.5882942,66.182616"
+       orientation="0,1"
+       id="guide859"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="66.145833,14.717448"
+       orientation="1,0"
+       id="guide863"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="91.281245,132.29167"
+       orientation="0,1"
+       id="guide865"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="4.943e-007,86.758659"
+       orientation="1,0"
+       id="guide867"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-164.70832)">
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.41420996;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 0,164.70832 V 296.99998 H 132.29167 V 164.70832 Z"
+       id="rect815"
+       inkscape:connector-curvature="0" />
+    <g
+       style="clip-rule:evenodd"
+       id="g848"
+       transform="matrix(0.41660429,0,0,0.41660429,13.425854,177.58186)">
+      <g
+         id="g830">
+        <title
+           id="title822">Layer 1</title>
+        <g
+           id="svg_1">
+          <path
+             d="m 94.5,7.5 c 7.512,-1.10609 14.012,0.89391 19.5,6 1.861,2.3877 3.194,5.0544 4,8 0.969,30.3814 0.635,60.7148 -1,91 -2.5,3.833 -5.667,7 -9.5,9.5 -19.83,11.081 -39.4967,22.414 -59,34 -4.4447,2.557 -9.1113,4.557 -14,6 -9.4664,0.868 -16.2997,-2.965 -20.5,-11.5 -0.6667,-30.667 -0.6667,-61.3333 0,-92 1.3999,-3.4024 3.5665,-6.2357 6.5,-8.5 24.8549,-14.0627 49.5216,-28.2294 74,-42.5 z"
+             id="svg_2"
+             inkscape:connector-curvature="0"
+             style="opacity:0.975;fill:#1a83ee" />
+        </g>
+        <g
+           id="svg_3">
+          <path
+             d="m 148.5,7.5 c 5.242,-0.47728 10.242,0.35605 15,2.5 23.214,13.5843 46.547,27.0843 70,40.5 1.315,1.8159 2.815,3.4825 4.5,5 1.651,31.581 1.985,63.248 1,95 -6.221,11.191 -15.388,14.358 -27.5,9.5 -21.968,-12.653 -43.968,-25.32 -66,-38 -5.827,-3.158 -9.327,-7.992 -10.5,-14.5 -0.667,-28 -0.667,-56 0,-84 1.467,-7.9552 5.967,-13.2885 13.5,-16 z"
+             id="svg_4"
+             inkscape:connector-curvature="0"
+             style="opacity:0.9729996;fill:#0059ee" />
+        </g>
+        <g
+           id="svg_5">
+          <path
+             d="m 122.5,132.5 c 4.082,-0.156 8.082,0.344 12,1.5 23.481,13.776 47.148,27.276 71,40.5 8.386,7.166 10.219,15.832 5.5,26 -1.597,2.719 -3.763,4.886 -6.5,6.5 -23.709,14.011 -47.709,27.677 -72,41 -7.254,1.405 -13.921,0.072 -20,-4 -21.3655,-12.347 -42.6988,-24.68 -64,-37 -11.9811,-11.093 -11.9811,-22.093 0,-33 24.5779,-14.119 49.2446,-27.952 74,-41.5 z"
+             id="svg_6"
+             inkscape:connector-curvature="0"
+             style="opacity:0.969;fill:#3ba6ff" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

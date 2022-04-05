@@ -505,6 +505,11 @@
     color: #72777c;
 }
 
+/* Prevent to show the "Now" button in time pickers */
+.admin_page_edit_automatorwp_automations #ui-datepicker-div .ui-datepicker-buttonpane button.ui-datepicker-current {
+    display: none;
+}
+
 /* -------------------------------------------
     Anonymous Automations
    ------------------------------------------- */
