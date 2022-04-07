@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -163,6 +163,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 * [IFTTT](https://automatorwp.com/add-ons/ifttt/)
 * [Integrately](https://automatorwp.com/add-ons/integrately/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
+* [Mailchimp](https://automatorwp.com/add-ons/mailchimp/)
 * [Notion](https://automatorwp.com/add-ons/notion/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Twitter](https://automatorwp.com/add-ons/twitter/)
@@ -267,6 +268,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.0.8 =
+
+* **New Features**
+* Mailchimp: New action: New Integration: Mailchimp.
+* Mailchimp: New action: Add tag to user.
+* Mailchimp: New action: Subscribe user to an audience.
+* Mailchimp: New action: Add note to user.
 
 = 2.0.7 =
 
