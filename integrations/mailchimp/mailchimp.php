@@ -39,7 +39,6 @@ final class AutomatorWP_Integration_Mailchimp {
             if( ! self::$instance->pro_installed() ) {
 
                 self::$instance->constants();
-                self::$instance->libraries();
                 self::$instance->includes();
 
             }
@@ -69,20 +68,6 @@ final class AutomatorWP_Integration_Mailchimp {
 
         // Plugin URL
         define( 'AUTOMATORWP_MAILCHIMP_URL', plugin_dir_url( __FILE__ ) );
-    }
-
-    /**
-     * Include plugin libraries
-     *
-     * @access      private
-     * @since       1.0.0
-     * @return      void
-     */
-    private function libraries() {
-
-        // Mailchimp API
-        require_once AUTOMATORWP_MAILCHIMP_DIR . 'vendor/autoload.php';
-
     }
 
     /**

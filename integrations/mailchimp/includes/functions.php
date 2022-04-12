@@ -13,7 +13,7 @@ if( !defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0.0
  *
- * @return array
+ * @return MailchimpMarketing\ApiClient|false
  */
 function automatorwp_mailchimp_get_authorization( ) {
 
@@ -23,6 +23,9 @@ function automatorwp_mailchimp_get_authorization( ) {
     if( empty( $api_key ) || empty( $server_prefix ) ) {
         return false;
     }
+
+    // Mailchimp API
+    require_once AUTOMATORWP_MAILCHIMP_DIR . 'vendor/autoload.php';
 
     $mailchimp = new MailchimpMarketing\ApiClient();
         

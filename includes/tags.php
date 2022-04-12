@@ -679,6 +679,10 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
             case 'post_type':
                 $replacement = (  $post ? $post->post_type : '' );
                 break;
+            case 'post_type_label':
+                $post_type = (  $post ? get_post_type_object( $post->post_type ) : false );
+                $replacement = (  $post_type ? $post_type->labels->singular_name : '' );
+                break;
             case 'post_author':
                 $replacement = (  $post ? $post->post_author : '' );
                 break;

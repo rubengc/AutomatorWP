@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-03-24 14:31+0100\n"
+"POT-Creation-Date: 2022-04-12 10:13+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,6 +30,9 @@ msgstr ""
 #: integrations/automatorwp/actions/call-function.php:195
 #: integrations/automatorwp/actions/do-action.php:185
 #: integrations/automatorwp/actions/redirect-user.php:200
+#: integrations/mailchimp/includes/actions/user-add-note.php:209
+#: integrations/mailchimp/includes/actions/user-add-tag.php:217
+#: integrations/mailchimp/includes/actions/user-subscribe.php:202
 #: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:164
 #: integrations/wordpress/actions/create-post.php:457
 #: integrations/wordpress/actions/create-user.php:385
@@ -1282,7 +1285,7 @@ msgstr ""
 msgid "Number of times"
 msgstr ""
 
-#: includes/utilities.php:590 includes/utilities.php:714
+#: includes/utilities.php:590 includes/utilities.php:720
 #, php-format
 msgid "%s ID"
 msgstr ""
@@ -1306,208 +1309,213 @@ msgstr ""
 msgid "%s Link"
 msgstr ""
 
-#: includes/utilities.php:615 includes/utilities.php:768
+#: includes/utilities.php:615 includes/utilities.php:774
 #, php-format
 msgid "%s Type"
 msgstr ""
 
 #: includes/utilities.php:621
 #, php-format
+msgid "%s Type Label"
+msgstr ""
+
+#: includes/utilities.php:627
+#, php-format
 msgid "%s Author ID"
 msgstr ""
 
-#: includes/utilities.php:627 includes/utilities.php:744
+#: includes/utilities.php:633 includes/utilities.php:750
 #, php-format
 msgid "%s Author Email"
 msgstr ""
 
-#: includes/utilities.php:633 includes/utilities.php:762
+#: includes/utilities.php:639 includes/utilities.php:768
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: includes/utilities.php:635 includes/utilities.php:764
+#: includes/utilities.php:641 includes/utilities.php:770
 msgid "The content"
-msgstr ""
-
-#: includes/utilities.php:639
-#, php-format
-msgid "%s Excerpt"
-msgstr ""
-
-#: includes/utilities.php:641
-msgid "The excerpt"
 msgstr ""
 
 #: includes/utilities.php:645
 #, php-format
-msgid "%s Featured Image"
+msgid "%s Excerpt"
+msgstr ""
+
+#: includes/utilities.php:647
+msgid "The excerpt"
 msgstr ""
 
 #: includes/utilities.php:651
 #, php-format
-msgid "%s Featured Image ID"
+msgid "%s Featured Image"
 msgstr ""
 
 #: includes/utilities.php:657
 #, php-format
-msgid "%s Featured Image URL"
+msgid "%s Featured Image ID"
 msgstr ""
 
 #: includes/utilities.php:663
 #, php-format
-msgid "%s Status"
+msgid "%s Featured Image URL"
 msgstr ""
 
 #: includes/utilities.php:669
 #, php-format
-msgid "%s Parent ID"
+msgid "%s Status"
 msgstr ""
 
 #: includes/utilities.php:675
 #, php-format
-msgid "%s Menu Order"
+msgid "%s Parent ID"
 msgstr ""
 
 #: includes/utilities.php:681
 #, php-format
+msgid "%s Menu Order"
+msgstr ""
+
+#: includes/utilities.php:687
+#, php-format
 msgid "%s Meta"
 msgstr ""
 
-#: includes/utilities.php:683
+#: includes/utilities.php:689
 #, php-format
 msgid "%s meta value, replace \"META_KEY\" by the %s meta key"
 msgstr ""
 
-#: includes/utilities.php:699
+#: includes/utilities.php:705
 msgid "Comment"
-msgstr ""
-
-#: includes/utilities.php:720
-#, php-format
-msgid "%s Post ID"
 msgstr ""
 
 #: includes/utilities.php:726
 #, php-format
-msgid "%s Post Title"
-msgstr ""
-
-#: includes/utilities.php:728
-msgid "The post title"
+msgid "%s Post ID"
 msgstr ""
 
 #: includes/utilities.php:732
 #, php-format
-msgid "%s User ID"
+msgid "%s Post Title"
+msgstr ""
+
+#: includes/utilities.php:734
+msgid "The post title"
 msgstr ""
 
 #: includes/utilities.php:738
 #, php-format
-msgid "%s Author Name"
+msgid "%s User ID"
 msgstr ""
 
-#: includes/utilities.php:750
+#: includes/utilities.php:744
 #, php-format
-msgid "%s Author URL"
+msgid "%s Author Name"
 msgstr ""
 
 #: includes/utilities.php:756
 #, php-format
+msgid "%s Author URL"
+msgstr ""
+
+#: includes/utilities.php:762
+#, php-format
 msgid "%s Author IP"
 msgstr ""
 
-#: includes/utilities.php:801 includes/utilities.php:846
-#: includes/utilities.php:885 integrations/wordpress/filters/user-exists.php:64
+#: includes/utilities.php:807 includes/utilities.php:852
+#: includes/utilities.php:891 integrations/wordpress/filters/user-exists.php:64
 #: integrations/wordpress/filters/user-role.php:37
 msgid "Condition:"
 msgstr ""
 
-#: includes/utilities.php:804 includes/utilities.php:888
-#: includes/utilities.php:913 integrations/wordpress/filters/user-role.php:40
+#: includes/utilities.php:810 includes/utilities.php:894
+#: includes/utilities.php:919 integrations/wordpress/filters/user-role.php:40
 msgid "is equal to"
 msgstr ""
 
-#: includes/utilities.php:805 includes/utilities.php:889
-#: includes/utilities.php:914 integrations/wordpress/filters/user-role.php:41
+#: includes/utilities.php:811 includes/utilities.php:895
+#: includes/utilities.php:920 integrations/wordpress/filters/user-role.php:41
 msgid "is not equal to"
 msgstr ""
 
-#: includes/utilities.php:806 includes/utilities.php:890
-#: includes/utilities.php:915 integrations/wordpress/filters/user-role.php:42
+#: includes/utilities.php:812 includes/utilities.php:896
+#: includes/utilities.php:921 integrations/wordpress/filters/user-role.php:42
 msgid "contains"
 msgstr ""
 
-#: includes/utilities.php:807 includes/utilities.php:891
-#: includes/utilities.php:916 integrations/wordpress/filters/user-role.php:43
+#: includes/utilities.php:813 includes/utilities.php:897
+#: includes/utilities.php:922 integrations/wordpress/filters/user-role.php:43
 msgid "does not contains"
 msgstr ""
 
-#: includes/utilities.php:808 includes/utilities.php:892
-#: includes/utilities.php:917
+#: includes/utilities.php:814 includes/utilities.php:898
+#: includes/utilities.php:923
 msgid "starts with"
 msgstr ""
 
-#: includes/utilities.php:809 includes/utilities.php:893
-#: includes/utilities.php:918
+#: includes/utilities.php:815 includes/utilities.php:899
+#: includes/utilities.php:924
 msgid "does not starts with"
 msgstr ""
 
-#: includes/utilities.php:810 includes/utilities.php:894
-#: includes/utilities.php:919
+#: includes/utilities.php:816 includes/utilities.php:900
+#: includes/utilities.php:925
 msgid "ends with"
 msgstr ""
 
-#: includes/utilities.php:811 includes/utilities.php:895
-#: includes/utilities.php:920
+#: includes/utilities.php:817 includes/utilities.php:901
+#: includes/utilities.php:926
 msgid "does not ends with"
 msgstr ""
 
-#: includes/utilities.php:812 includes/utilities.php:922
+#: includes/utilities.php:818 includes/utilities.php:928
 msgid "is less than"
 msgstr ""
 
-#: includes/utilities.php:813 includes/utilities.php:923
+#: includes/utilities.php:819 includes/utilities.php:929
 msgid "is greater than"
 msgstr ""
 
-#: includes/utilities.php:814 includes/utilities.php:924
+#: includes/utilities.php:820 includes/utilities.php:930
 msgid "is less or equal to"
 msgstr ""
 
-#: includes/utilities.php:815 includes/utilities.php:925
+#: includes/utilities.php:821 includes/utilities.php:931
 msgid "is greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:849
+#: includes/utilities.php:855
 msgid "equal to"
 msgstr ""
 
-#: includes/utilities.php:850
+#: includes/utilities.php:856
 msgid "not equal to"
 msgstr ""
 
-#: includes/utilities.php:851
+#: includes/utilities.php:857
 msgid "less than"
 msgstr ""
 
-#: includes/utilities.php:852
+#: includes/utilities.php:858
 msgid "greater than"
 msgstr ""
 
-#: includes/utilities.php:853
+#: includes/utilities.php:859
 msgid "less or equal to"
 msgstr ""
 
-#: includes/utilities.php:854
+#: includes/utilities.php:860
 msgid "greater or equal to"
 msgstr ""
 
-#: includes/utilities.php:1208
+#: includes/utilities.php:1214
 msgid "Show options"
 msgstr ""
 
-#: includes/utilities.php:1209
+#: includes/utilities.php:1215
 msgid "Hide options"
 msgstr ""
 
@@ -1515,10 +1523,12 @@ msgstr ""
 #: integrations/activemember360/includes/actions/user-tag.php:26
 #: integrations/fluentcrm/includes/actions/user-tag.php:27
 #: integrations/groundhogg/includes/actions/user-tag.php:26
+#: integrations/mailchimp/includes/actions/user-add-tag.php:26
 msgid "Add tag to user"
 msgstr ""
 
 #: integrations/activecampaign/includes/actions/add-user-tag.php:27
+#: integrations/mailchimp/includes/actions/user-add-tag.php:27
 msgid "Add <strong>tag</strong> to <strong>user</strong>"
 msgstr ""
 
@@ -1526,6 +1536,8 @@ msgstr ""
 #: integrations/activecampaign/includes/actions/add-user-tag.php:31
 #: integrations/activemember360/includes/actions/user-tag.php:29
 #: integrations/activemember360/includes/actions/user-tag.php:31
+#: integrations/mailchimp/includes/actions/user-add-tag.php:29
+#: integrations/mailchimp/includes/actions/user-add-tag.php:31
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:29
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:31
 #, php-format
@@ -1535,6 +1547,7 @@ msgstr ""
 #: integrations/activecampaign/includes/actions/add-user-tag.php:35
 #: integrations/fluentcrm/includes/actions/user-tag.php:36
 #: integrations/groundhogg/includes/actions/user-tag.php:35
+#: integrations/mailchimp/includes/actions/user-add-tag.php:49
 msgid "Select a tag"
 msgstr ""
 
@@ -1581,6 +1594,9 @@ msgstr ""
 #: integrations/activecampaign/includes/actions/add-user-tag.php:145
 #: integrations/activecampaign/includes/actions/add-user.php:126
 #: integrations/activecampaign/includes/functions.php:117
+#: integrations/mailchimp/includes/actions/user-add-note.php:151
+#: integrations/mailchimp/includes/actions/user-add-tag.php:159
+#: integrations/mailchimp/includes/actions/user-subscribe.php:144
 #: integrations/zoom/includes/actions/add-user-meeting.php:284
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Documentation</a>"
@@ -1703,6 +1719,7 @@ msgstr ""
 #: integrations/groundhogg/includes/functions.php:25
 #: integrations/groundhogg/includes/triggers/tag-added.php:41
 #: integrations/imember360/includes/triggers/contact-tag.php:70
+#: integrations/mailchimp/includes/functions.php:152
 #: integrations/woocommerce/includes/triggers/anonymous-purchase-product-tag.php:40
 #: integrations/woocommerce/includes/triggers/purchase-product-tag.php:39
 #: integrations/wordpress/triggers/comment-post-tag.php:43
@@ -1902,6 +1919,90 @@ msgstr ""
 #: integrations/affiliatewp/includes/triggers/become-affiliate.php:27
 #: integrations/slicewp/includes/triggers/become-affiliate.php:27
 msgid "User <strong>becomes</strong> an affiliate"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:22
+msgid "Appointment ID"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:27
+msgid "Appointment booking start"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:32
+msgid "Appointment booking end"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:37
+msgid "Appointment status"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:42
+msgid "Appointment service ID"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:108
+msgid "Booking ID"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:113
+msgid "Booking status"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:118
+msgid "Booking persons"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:123
+msgid "Booking price"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:186
+msgid "Customer ID"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:191
+msgid "Customer first name"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:196
+msgid "Customer last name"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:201
+msgid "Customer email"
+msgstr ""
+
+#: integrations/ameliabooking/includes/tags.php:206
+msgid "Customer phone"
+msgstr ""
+
+#: integrations/ameliabooking/includes/triggers/anonymous-books-appointment.php:27
+#: integrations/ameliabooking/includes/triggers/anonymous-books-appointment.php:31
+msgid "Guest books an appointment"
+msgstr ""
+
+#: integrations/ameliabooking/includes/triggers/anonymous-books-appointment.php:28
+msgid "Guest books an <strong>appointment</strong>"
+msgstr ""
+
+#: integrations/ameliabooking/includes/triggers/anonymous-books-appointment.php:30
+#, php-format
+msgid "Guest books an appointment %1$s time(s)"
+msgstr ""
+
+#: integrations/ameliabooking/includes/triggers/user-books-appointment.php:26
+#: integrations/ameliabooking/includes/triggers/user-books-appointment.php:30
+msgid "User books an appointment"
+msgstr ""
+
+#: integrations/ameliabooking/includes/triggers/user-books-appointment.php:27
+msgid "User books an <strong>appointment</strong>"
+msgstr ""
+
+#: integrations/ameliabooking/includes/triggers/user-books-appointment.php:29
+#, php-format
+msgid "User books an appointment %1$s time(s)"
 msgstr ""
 
 #: integrations/anspress/includes/triggers/answer-question.php:26
@@ -3588,6 +3689,7 @@ msgstr ""
 #: integrations/fluentcrm/includes/functions.php:139
 #: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:42
 #: integrations/fluentcrm/includes/triggers/list-added.php:41
+#: integrations/mailchimp/includes/functions.php:56
 #: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:77
 msgid "any list"
 msgstr ""
@@ -4506,6 +4608,125 @@ msgstr ""
 
 #: integrations/lifterlms/includes/triggers/complete-section.php:39
 msgid "any section"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:26
+msgid "Add note to user"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:27
+msgid "Add <strong>note</strong> to <strong>user</strong>"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:29
+#: integrations/mailchimp/includes/actions/user-add-note.php:31
+#, php-format
+msgid "Add note to user in %1$s"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:35
+msgid "audience"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:40
+#: integrations/mailchimp/includes/actions/user-add-tag.php:40
+msgid "Select an audience"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:41
+#: integrations/mailchimp/includes/actions/user-add-tag.php:41
+#: integrations/mailchimp/includes/actions/user-subscribe.php:36
+msgid "Audience:"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:47
+msgid "Write a note"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:48
+msgid "Note:"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:49
+msgid "Note to publish in contact profile"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:90
+msgid "Note added"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-note.php:147
+#: integrations/mailchimp/includes/actions/user-add-tag.php:155
+#: integrations/mailchimp/includes/actions/user-subscribe.php:140
+#, php-format
+msgid "You need to configure the <a href=\"%s\" target=\"_blank\">Mailchimp settings</a> to get this action to work."
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-tag.php:35
+msgid "tag"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-tag.php:50
+msgid "Tags:"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-add-tag.php:98
+msgid "Tag added"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-subscribe.php:26
+msgid "Subscribe user to an audience"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-subscribe.php:27
+msgid "Subscribe <strong>user</strong> to an <strong>audience</strong>"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-subscribe.php:29
+#: integrations/mailchimp/includes/actions/user-subscribe.php:31
+#, php-format
+msgid "Subscribe user to %1$s"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-subscribe.php:35
+msgid "an audience"
+msgstr ""
+
+#: integrations/mailchimp/includes/actions/user-subscribe.php:83
+msgid "User added"
+msgstr ""
+
+#: integrations/mailchimp/includes/admin.php:39
+#: integrations/mailchimp/includes/admin.php:60
+msgid "Mailchimp"
+msgstr ""
+
+#: integrations/mailchimp/includes/admin.php:63
+msgid "API Key:"
+msgstr ""
+
+#: integrations/mailchimp/includes/admin.php:64
+msgid "Your Mailchimp API key."
+msgstr ""
+
+#: integrations/mailchimp/includes/admin.php:68
+msgid "Server prefix:"
+msgstr ""
+
+#: integrations/mailchimp/includes/admin.php:69
+msgid "Your Mailchimp server prefix."
+msgstr ""
+
+#: integrations/mailchimp/includes/admin.php:100
+msgid "Connect with Mailchimp:"
+msgstr ""
+
+#: integrations/mailchimp/includes/functions.php:254
+msgid "any campaign"
+msgstr ""
+
+#: integrations/mailchimp/includes/functions.php:347
+msgid "any template"
 msgstr ""
 
 #: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:26

@@ -270,6 +270,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.0.9 ###
+
+* **New Features**
+* Added the "Post Type Label" tag to display the post type label.
+* **Improvements**
+* Mailchimp: Only load Mailchimp libraries when needed.
+
 ### 2.0.8 ###
 
 * **New Features**

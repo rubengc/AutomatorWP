@@ -611,8 +611,14 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'preview'   => '<a href="' . $site_url . '/sample-' . strtolower( $post_label ) . '">' . sprintf( __( '%s Title', 'automatorwp' ), $post_label ) . '</a>',
         ),
         'post_type'  => array(
-            /* translators: %s: Post label (by default: Post). */
+            /* translators: %s: Post type (by default: post). */
             'label'     => sprintf( __( '%s Type', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => 'post',
+        ),
+        'post_type_label'  => array(
+            /* translators: %s: Post type label (by default: Post). */
+            'label'     => sprintf( __( '%s Type Label', 'automatorwp' ), $post_label ),
             'type'      => 'text',
             'preview'   => 'post',
         ),
