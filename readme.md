@@ -270,6 +270,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.0 ###
+
+* **New Features**
+* BuddyBoss: Added the activity author ID tag.
+* BuddyPress: Added the activity author ID tag.
+* **Improvements**
+* WooCommerce: Added a link to the order on logs entries where an order is assigned.
+* **Bug Fixes**
+* Mailchimp: Fixed a small bug that caused credentials not getting saved correctly.
+
 ### 2.0.9 ###
 
 * **New Features**

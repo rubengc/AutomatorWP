@@ -54,12 +54,15 @@ class AutomatorWP_BuddyBoss_Publish_Activity extends AutomatorWP_Integration_Tri
      */
     public function listener( $content, $user_id, $activity_id ) {
 
+        $activity = new BP_Activity_Activity( $activity_id );
+
         // Trigger the publish an activity
         automatorwp_trigger_event( array(
             'trigger'           => $this->trigger,
             'user_id'           => $user_id,
             'activity_id'       => $activity_id,
             'activity_content'  => $content,
+            'activity_author_id'    => $activity->user_id,
         ) );
 
     }
@@ -103,6 +106,7 @@ class AutomatorWP_BuddyBoss_Publish_Activity extends AutomatorWP_Integration_Tri
 
         $log_meta['activity_id'] = ( isset( $event['activity_id'] ) ? $event['activity_id'] : '' );
         $log_meta['activity_content'] = ( isset( $event['activity_content'] ) ? $event['activity_content'] : '' );
+        $log_meta['activity_author_id'] = ( isset( $event['activity_author_id'] ) ? $event['activity_author_id'] : '' );
 
         return $log_meta;
 

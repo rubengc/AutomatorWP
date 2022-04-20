@@ -31,6 +31,9 @@ function automatorwp_mailchimp_ajax_save_oauth_credentials() {
         wp_send_json_error();
     } else {
         try {
+
+            // Mailchimp API
+            require_once AUTOMATORWP_MAILCHIMP_DIR . 'vendor/autoload.php';
             
             $mailchimp = new MailchimpMarketing\ApiClient();
 

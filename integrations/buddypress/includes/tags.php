@@ -20,7 +20,7 @@ function automatorwp_buddypress_get_activity_tags() {
     return array(
         'activity_id' => array(
             'label'     => __( 'Activity ID', 'automatorwp' ),
-            'type'      => 'text',
+            'type'      => 'integer',
             'preview'   => 'The activity ID',
         ),
         'activity_url' => array(
@@ -32,6 +32,11 @@ function automatorwp_buddypress_get_activity_tags() {
             'label'     => __( 'Activity content', 'automatorwp' ),
             'type'      => 'text',
             'preview'   => 'The activity content',
+        ),
+        'activity_author_id' => array(
+            'label'     => __( 'Activity Author ID', 'automatorwp' ),
+            'type'      => 'integer',
+            'preview'   => 'The activity author ID',
         ),
     );
 
@@ -72,6 +77,9 @@ function automatorwp_buddypress_get_trigger_activity_tag_replacement( $replaceme
             break;
         case 'activity_content':
             $replacement = automatorwp_get_log_meta( $log->id, 'activity_content', true );
+            break;
+        case 'activity_author_id':
+            $replacement = automatorwp_get_log_meta( $log->id, 'activity_author_id', true );
             break;
         case 'activity_comment_content':
             $replacement = automatorwp_get_log_meta( $log->id, 'activity_comment_content', true );

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-04-12 10:13+0200\n"
+"POT-Creation-Date: 2022-04-20 12:29+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2934,9 +2934,9 @@ msgid "Group:"
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:39
-#: integrations/buddyboss/includes/tags.php:103
+#: integrations/buddyboss/includes/tags.php:111
 #: integrations/buddypress/includes/actions/add-user-group.php:39
-#: integrations/buddypress/includes/tags.php:103
+#: integrations/buddypress/includes/tags.php:111
 #: integrations/learndash/includes/actions/user-group-leader.php:40
 #: integrations/learndash/includes/actions/user-group-leader.php:46
 #: integrations/learndash/includes/actions/user-group.php:37
@@ -3009,35 +3009,40 @@ msgstr ""
 msgid "Activity content"
 msgstr ""
 
-#: integrations/buddyboss/includes/tags.php:108
-#: integrations/buddypress/includes/tags.php:108
+#: integrations/buddyboss/includes/tags.php:37
+#: integrations/buddypress/includes/tags.php:37
+msgid "Activity Author ID"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:116
+#: integrations/buddypress/includes/tags.php:116
 msgid "Group name"
 msgstr ""
 
-#: integrations/buddyboss/includes/tags.php:110
-#: integrations/buddyboss/includes/tags.php:125
-#: integrations/buddypress/includes/tags.php:110
-#: integrations/buddypress/includes/tags.php:125
+#: integrations/buddyboss/includes/tags.php:118
+#: integrations/buddyboss/includes/tags.php:133
+#: integrations/buddypress/includes/tags.php:118
+#: integrations/buddypress/includes/tags.php:133
 msgid "My group"
 msgstr ""
 
-#: integrations/buddyboss/includes/tags.php:113
-#: integrations/buddypress/includes/tags.php:113
+#: integrations/buddyboss/includes/tags.php:121
+#: integrations/buddypress/includes/tags.php:121
 msgid "Group description"
-msgstr ""
-
-#: integrations/buddyboss/includes/tags.php:115
-#: integrations/buddypress/includes/tags.php:115
-msgid "My group description"
-msgstr ""
-
-#: integrations/buddyboss/includes/tags.php:118
-#: integrations/buddypress/includes/tags.php:118
-msgid "Group URL"
 msgstr ""
 
 #: integrations/buddyboss/includes/tags.php:123
 #: integrations/buddypress/includes/tags.php:123
+msgid "My group description"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:126
+#: integrations/buddypress/includes/tags.php:126
+msgid "Group URL"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:131
+#: integrations/buddypress/includes/tags.php:131
 msgid "Group link"
 msgstr ""
 
@@ -3099,13 +3104,13 @@ msgstr ""
 msgid "User writes an activity stream message %1$s time(s)"
 msgstr ""
 
-#: integrations/buddyboss/includes/triggers/publish-activity.php:135
-#: integrations/buddypress/includes/triggers/publish-activity.php:132
+#: integrations/buddyboss/includes/triggers/publish-activity.php:139
+#: integrations/buddypress/includes/triggers/publish-activity.php:136
 msgid "Activity Content"
 msgstr ""
 
-#: integrations/buddyboss/includes/triggers/publish-activity.php:136
-#: integrations/buddypress/includes/triggers/publish-activity.php:133
+#: integrations/buddyboss/includes/triggers/publish-activity.php:140
+#: integrations/buddypress/includes/triggers/publish-activity.php:137
 msgid "The activity content."
 msgstr ""
 
@@ -5301,6 +5306,11 @@ msgstr ""
 
 #: integrations/woocommerce/includes/actions/add-user-to-coupon.php:37
 msgid "Coupon ID"
+msgstr ""
+
+#: integrations/woocommerce/includes/filters.php:64
+#, php-format
+msgid "Order #%s"
 msgstr ""
 
 #: integrations/woocommerce/includes/functions.php:51

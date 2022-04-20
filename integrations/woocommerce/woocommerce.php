@@ -84,6 +84,7 @@ final class AutomatorWP_Integration_WooCommerce {
         if( $this->meets_requirements() ) {
 
             // Includes
+            require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/filters.php';
             require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/functions.php';
             require_once AUTOMATORWP_WOOCOMMERCE_DIR . 'includes/tags.php';
 

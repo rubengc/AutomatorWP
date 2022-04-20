@@ -53,6 +53,8 @@ class AutomatorWP_BuddyPress_Publish_Activity extends AutomatorWP_Integration_Tr
      */
     public function listener( $content, $user_id, $activity_id ) {
 
+        $activity = new BP_Activity_Activity( $activity_id );
+
         // Trigger the publish an activity
         automatorwp_trigger_event( array(
             'trigger'           => $this->trigger,
@@ -99,7 +101,9 @@ class AutomatorWP_BuddyPress_Publish_Activity extends AutomatorWP_Integration_Tr
             return $log_meta;
         }
 
+        $log_meta['activity_id'] = ( isset( $event['activity_id'] ) ? $event['activity_id'] : '' );
         $log_meta['activity_content'] = ( isset( $event['activity_content'] ) ? $event['activity_content'] : '' );
+        $log_meta['activity_author_id'] = ( isset( $event['activity_author_id'] ) ? $event['activity_author_id'] : '' );
 
         return $log_meta;
 
