@@ -184,48 +184,47 @@ function automatorwp_mailchimp_options_cb_tags( $field ) {
  */
 function automatorwp_mailchimp_get_tags( $list_id ) {
 
-    $mc_tags = array();
+    $tags = array();
     $mailchimp = automatorwp_mailchimp_get_authorization();
 
     // Bail if no authorization
     if ( ! $mailchimp ) {
-        return;
+        return array();
     }
 
-    $all_tags = $mailchimp->lists->tagSearch( $list_id );
-        
-    foreach ( $all_tags->tags as $tag ){
-        $mc_tags[] = array(
+    $all_tags = $mailchimp->lists->listSegments( $list_id, $fields = null, $exclude_fields = null, $count = '1000', $offset = '0', $type = 'static' );
+
+    foreach ( $all_tags->segments as $tag ){
+        $tags[] = array(
             'id' => $tag->id,
             'name' => $tag->name,
         );
     }
-    
-    return $mc_tags;
+
+    return $tags;
 }
 
 /**
  * Get the tag names
  *
  * @since 1.0.0
- * 
+ *
  * @param string $list_id
  *
- * @return array
+ * @return string
  */
 function automatorwp_mailchimp_get_tag_name( $list_id, $tag_id ) {
 
-    $mc_tags = array();
     $mailchimp = automatorwp_mailchimp_get_authorization();
 
     // Bail if no authorization
     if ( ! $mailchimp ){
-        return;
+        return '';
     }
 
-    $all_tags = $mailchimp->lists->tagSearch( $list_id );
-        
-    foreach ( $all_tags->tags as $tag ){
+    $all_tags = $mailchimp->lists->listSegments( $list_id, $fields = null, $exclude_fields = null, $count = '1000', $offset = '0', $type = 'static' );
+
+    foreach ( $all_tags->segments as $tag ){
 
         if ( $tag_id == $tag->id ){
             $tag_name = $tag->name;

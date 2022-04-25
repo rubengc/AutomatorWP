@@ -270,6 +270,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.1 ###
+
+* **Improvements**
+* Mailchimp: Make tags selector be able to query all tags in the account.
+
 ### 2.1.0 ###
 
 * **New Features**
