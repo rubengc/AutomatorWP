@@ -127,6 +127,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Sensei LMS](https://automatorwp.com/add-ons/sensei-lms/)
 * [SliceWP](https://automatorwp.com/add-ons/slicewp/)
 * [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
+* [Thrive Apprentice](https://automatorwp.com/add-ons/thrive-apprentice/)
 * [Tutor LMS](https://automatorwp.com/add-ons/tutor/)
 * [Ultimate Member](https://automatorwp.com/add-ons/ultimate-member/)
 * [Upsell Plugin](https://automatorwp.com/add-ons/upsell-plugin/)
@@ -269,6 +270,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.1.2 ###
+
+* **New Features**
+* New integration: Thrive Apprentice.
+* Thrive Apprentice: New trigger: User completes a course.
+* Thrive Apprentice: New action: Enroll user to a product.
 
 ### 2.1.1 ###
 
