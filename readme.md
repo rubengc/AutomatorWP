@@ -271,6 +271,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.3 ###
+
+* **New Features**
+* WordPress: New trigger: User updates a post.
+* WordPress: New trigger: User updates a post of a type.
+* WordPress: New trigger: User updates a post of a taxonomy.
+* WordPress: New trigger: User updates a field of a post.
+* **Improvements**
+* Prevent to display revisions from on post selector fields.
+
 ### 2.1.2 ###
 
 * **New Features**

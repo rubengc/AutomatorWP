@@ -332,6 +332,65 @@ function automatorwp_options_cb_post_status( $field ) {
 }
 
 /**
+ * Options callback for post fields
+ *
+ * @since 1.0.0
+ *
+ * @param stdClass $field
+ *
+ * @return array
+ */
+function automatorwp_options_cb_post_fields( $field ) {
+
+    // Option none
+    $none_value = 'any';
+    $none_label = __( 'any field', 'automatorwp' );
+    $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
+
+    $post_fields = array(
+        'ID'                        => __( 'ID', 'automatorwp' ),
+        'post_title'                => __( 'Title', 'automatorwp' ),
+        'post_name'                 => __( 'Slug', 'automatorwp' ),
+        'post_type'                 => __( 'Type', 'automatorwp' ),
+        'post_status'               => __( 'Status', 'automatorwp' ),
+        'post_date'                 => __( 'Date', 'automatorwp' ),
+        'post_date_gmt'             => __( 'Date (GMT)', 'automatorwp' ),
+        'post_date_modified'        => __( 'Date Modified', 'automatorwp' ),
+        'post_date_modified_gmt'    => __( 'Date Modified (GMT)', 'automatorwp' ),
+        'post_author'               => __( 'Author', 'automatorwp' ),
+        'post_content'              => __( 'Content', 'automatorwp' ),
+        'post_excerpt'              => __( 'Excerpt', 'automatorwp' ),
+        'post_parent'               => __( 'Parent', 'automatorwp' ),
+        'menu_order'                => __( 'Order', 'automatorwp' ),
+        'post_password'             => __( 'Password', 'automatorwp' ),
+    );
+
+    $post_fields = apply_filters( 'automatorwp_get_post_fields', $post_fields );
+
+    // Excluded roles
+    $field->args['excluded_post_fields'] = ( isset( $field->args['excluded_post_fields'] ) ? $field->args['excluded_post_fields'] : array() );
+
+    // Ensure excluded roles as array
+    if( ! is_array( $field->args['excluded_post_fields'] ) ) {
+        $field->args['excluded_post_fields'] = array( $field->args['excluded_post_fields'] );
+    }
+
+    foreach ( $post_fields as $post_field => $post_field_label ) {
+
+        // Skip excluded roles
+        if( in_array( $post_field, $field->args['excluded_post_fields'] ) ) {
+            continue;
+        }
+
+        $options[$post_field] = $post_field_label;
+
+    }
+
+    return $options;
+
+}
+
+/**
  * Options callback for WordPress roles
  *
  * @since 1.0.0

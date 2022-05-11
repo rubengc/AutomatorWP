@@ -450,6 +450,8 @@ function automatorwp_ajax_get_posts() {
 
     }
 
+    $post_type_any = false;
+
     if ( is_array( $post_type ) ) {
 
         // Support for any post type
@@ -462,6 +464,8 @@ function automatorwp_ajax_get_posts() {
 
             $where .= sprintf( ' AND p.post_type IN(\'%s\')', implode( "','", $post_type ) );
 
+        } else {
+            $post_type_any = true;
         }
 
     } else {
@@ -473,7 +477,25 @@ function automatorwp_ajax_get_posts() {
             $post_type = sanitize_text_field( $post_type );
 
             $where .= sprintf( ' AND p.post_type = \'%s\'', $post_type );
+        } else {
+            $post_type_any = true;
         }
+    }
+
+    // Exclude some undesired post types if showing all posts types
+    if( $post_type_any ) {
+        $post_types_excluded = array(
+            'revision',
+            'nav_menu_item',
+            'custom_css',
+            'customize_changeset',
+            'user_request',
+            'oembed_cache',
+            'wp_block',
+            'wp_template',
+        );
+
+        $where .= sprintf( ' AND p.post_type NOT IN(\'%s\')', implode( "','", $post_types_excluded ) );
     }
 
     // Post title conditional
