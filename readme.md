@@ -271,6 +271,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.4 ###
+
+* **New Features**
+* WordPress: Added the ability to select a different user in the action "Add, change or remove role to user".
+* **Improvements**
+* GamiPress: Check if user to reward on actions exists.
+* Tested with WordPress 6.0.
+
 ### 2.1.3 ###
 
 * **New Features**

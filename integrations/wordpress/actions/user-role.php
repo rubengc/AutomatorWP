@@ -33,10 +33,10 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
             'integration'       => $this->integration,
             'label'             => __( 'Add, change or remove role to user', 'automatorwp' ),
             'select_option'     => __( 'Add, change or remove <strong>role</strong> to user', 'automatorwp' ),
-            /* translators: %1$s: Operation (add, change or remove). %2$s: Role. */
-            'edit_label'        => sprintf( __( '%1$s role %2$s', 'automatorwp' ), '{operation}', '{role}' ),
-            /* translators: %1$s: Operation (add, change or remove). %2$s: Role. */
-            'log_label'         => sprintf( __( '%1$s role %2$s', 'automatorwp' ), '{operation}', '{role}' ),
+            /* translators: %1$s: Operation (add, change or remove). %2$s: Role. %3$s: User. */
+            'edit_label'        => sprintf( __( '%1$s role %2$s to %3$s', 'automatorwp' ), '{operation}', '{role}', '{user}' ),
+            /* translators: %1$s: Operation (add, change or remove). %2$s: Role. %3$s: User. */
+            'log_label'         => sprintf( __( '%1$s role %2$s to %3$s', 'automatorwp' ), '{operation}', '{role}', '{user}' ),
             'options'           => array(
                 'operation' => array(
                     'from' => 'operation',
@@ -60,7 +60,18 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
                     'option_custom_desc'    => __( 'Role name.', 'automatorwp' )
                         . ' ' . automatorwp_toggleable_options_list( $role_options ),
                     'default'           => ''
-                ) )
+                ) ),
+                'user' => array(
+                    'default' => __ ( 'user', 'automatorwp' ),
+                    'fields' => array(
+                        'user_id' => array(
+                            'name' => __( 'User ID:', 'automatorwp' ),
+                            'desc' => __( 'The user\'s ID to update their role. Leave empty to assign the user that completes the automation.', 'automatorwp' ),
+                            'type' => 'text',
+                            'default' => ''
+                        ),
+                    ),
+                ),
             ),
         ) );
 
@@ -81,6 +92,11 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
         // Shorthand
         $operation = $action_options['operation'];
         $role = $action_options['role'];
+        $user_id_target = absint( $action_options['user_id'] );
+
+        if( $user_id_target === 0 ) {
+            $user_id_target = $user_id;
+        }
 
         // Ensure operation default value
         if( empty( $operation ) ) {
@@ -99,8 +115,9 @@ class AutomatorWP_WordPress_User_Role extends AutomatorWP_Integration_Action {
             return;
         }
 
-        $user = get_userdata( $user_id );
+        $user = get_userdata( $user_id_target );
 
+        // Bail if user does not exists
         if( ! $user ) {
             return;
         }

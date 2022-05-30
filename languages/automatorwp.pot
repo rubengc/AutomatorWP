@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-05-11 21:08+0200\n"
+"POT-Creation-Date: 2022-05-30 10:45+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3961,6 +3961,7 @@ msgstr ""
 #: integrations/wordpress/actions/delete-user.php:34
 #: integrations/wordpress/actions/send-email.php:60
 #: integrations/wordpress/actions/update-user.php:69
+#: integrations/wordpress/actions/user-role.php:65
 msgid "user"
 msgstr ""
 
@@ -3970,6 +3971,7 @@ msgstr ""
 #: integrations/wordpress/actions/delete-user.php:37
 #: integrations/wordpress/actions/update-user.php:72
 #: integrations/wordpress/actions/update-user.php:371
+#: integrations/wordpress/actions/user-role.php:68
 msgid "User ID:"
 msgstr ""
 
@@ -6457,7 +6459,7 @@ msgstr ""
 #: integrations/wordpress/actions/user-role.php:37
 #: integrations/wordpress/actions/user-role.php:39
 #, php-format
-msgid "%1$s role %2$s"
+msgid "%1$s role %2$s to %3$s"
 msgstr ""
 
 #: integrations/wordpress/actions/user-role.php:48
@@ -6470,6 +6472,10 @@ msgstr ""
 
 #: integrations/wordpress/actions/user-role.php:58
 msgid "another role"
+msgstr ""
+
+#: integrations/wordpress/actions/user-role.php:69
+msgid "The user's ID to update their role. Leave empty to assign the user that completes the automation."
 msgstr ""
 
 #: integrations/wordpress/filters/user-exists.php:26

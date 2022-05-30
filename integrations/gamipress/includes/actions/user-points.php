@@ -97,6 +97,13 @@ class AutomatorWP_GamiPress_User_Points extends AutomatorWP_Integration_Action {
             $user_id_to_award = $user_id;
         }
 
+        $user = get_userdata( $user_id_to_award );
+
+        // Bail if user does not exists
+        if( ! $user ) {
+            return;
+        }
+
         // Bail if no points to award
         if( $points === 0 ) {
             return;

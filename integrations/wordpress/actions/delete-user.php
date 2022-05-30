@@ -31,7 +31,7 @@ class AutomatorWP_WordPress_Delete_User extends AutomatorWP_Integration_Action {
             'log_label'         => sprintf( __( 'Delete a %1$s', 'automatorwp' ), '{user}' ),
             'options'           => array(
                 'user' => array(
-                    'default' => __ ('user', 'automatorwp'),
+                    'default' => __ ( 'user', 'automatorwp' ),
                     'fields' => array(
                         'user_id' => array(
                             'name' => __( 'User ID:', 'automatorwp' ),

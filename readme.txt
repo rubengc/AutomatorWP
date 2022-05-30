@@ -2,8 +2,8 @@
 Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
-Tested up to: 5.9
-Stable tag: 2.1.3
+Tested up to: 6.0
+Stable tag: 2.1.4
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -269,6 +269,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.1.4 =
+
+* **New Features**
+* WordPress: Added the ability to select a different user in the action "Add, change or remove role to user".
+* **Improvements**
+* GamiPress: Check if user to reward on actions exists.
+* Tested with WordPress 6.0.
 
 = 2.1.3 =
 
