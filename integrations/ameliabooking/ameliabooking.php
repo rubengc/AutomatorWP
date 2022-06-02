@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Amelia integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-ameliabooking-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/ameliabooking/
  * Description:           Connect AutomatorWP with Amelia.
  * Version:               1.0.0
  * Author:                AutomatorWP

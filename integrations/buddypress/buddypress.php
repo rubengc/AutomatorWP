@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - BuddyPress integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-buddypress-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/buddypress/
  * Description:           Connect AutomatorWP with BuddyPress.
  * Version:               1.1.1
  * Author:                AutomatorWP

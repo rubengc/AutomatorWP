@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-05-30 10:45+0200\n"
+"POT-Creation-Date: 2022-06-01 10:37+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2681,6 +2681,7 @@ msgstr ""
 #: integrations/sensei-lms/includes/triggers/complete-course.php:29
 #: integrations/sensei-lms/includes/triggers/complete-lesson.php:29
 #: integrations/thrive-apprentice/includes/triggers/complete-course.php:29
+#: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:29
 #: integrations/tutor/includes/triggers/complete-course.php:29
 #: integrations/tutor/includes/triggers/complete-lesson.php:29
 #: integrations/wplms/includes/triggers/complete-assignment.php:29
@@ -2706,6 +2707,7 @@ msgstr ""
 #: integrations/sensei-lms/includes/triggers/complete-course.php:31
 #: integrations/sensei-lms/includes/triggers/complete-lesson.php:31
 #: integrations/thrive-apprentice/includes/triggers/complete-course.php:31
+#: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:31
 #: integrations/tutor/includes/triggers/complete-course.php:31
 #: integrations/tutor/includes/triggers/complete-lesson.php:31
 #: integrations/wplms/includes/triggers/complete-assignment.php:31
@@ -4453,6 +4455,7 @@ msgstr ""
 #: integrations/lifterlms/includes/triggers/complete-quiz.php:38
 #: integrations/masterstudy-lms/includes/triggers/complete-quiz.php:41
 #: integrations/sensei-lms/includes/triggers/complete-quiz.php:38
+#: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:38
 #: integrations/tutor/includes/triggers/complete-quiz.php:38
 #: integrations/wplms/includes/triggers/complete-quiz.php:38
 msgid "Quiz:"
@@ -4465,6 +4468,7 @@ msgstr ""
 #: integrations/lifterlms/includes/triggers/complete-quiz.php:39
 #: integrations/masterstudy-lms/includes/triggers/complete-quiz.php:42
 #: integrations/sensei-lms/includes/triggers/complete-quiz.php:39
+#: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:39
 #: integrations/tutor/includes/triggers/complete-quiz.php:39
 #: integrations/wplms/includes/triggers/complete-quiz.php:39
 msgid "any quiz"
@@ -5255,6 +5259,16 @@ msgstr ""
 msgid "Course name"
 msgstr ""
 
+#: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:26
+#: integrations/wplms/includes/triggers/complete-quiz.php:26
+msgid "User completes a quiz"
+msgstr ""
+
+#: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:27
+#: integrations/wplms/includes/triggers/complete-quiz.php:27
+msgid "User <strong>completes</strong> a quiz"
+msgstr ""
+
 #: integrations/tutor/includes/actions/user-course.php:26
 msgid "Enroll user to a course"
 msgstr ""
@@ -5469,35 +5483,43 @@ msgid "Order Coupon Codes"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:198
-msgid "Order Subtotal"
+msgid "Order Currency"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:203
-msgid "Order Discount"
+msgid "Order Currency Symbol"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:208
-msgid "Order Tax"
+msgid "Order Subtotal"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:213
-msgid "Order Total"
+msgid "Order Discount"
 msgstr ""
 
 #: integrations/woocommerce/includes/tags.php:218
+msgid "Order Tax"
+msgstr ""
+
+#: integrations/woocommerce/includes/tags.php:223
+msgid "Order Total"
+msgstr ""
+
+#: integrations/woocommerce/includes/tags.php:228
 msgid "Order Meta"
 msgstr ""
 
-#: integrations/woocommerce/includes/tags.php:220
+#: integrations/woocommerce/includes/tags.php:230
 msgid "Order meta value, replace \"META_KEY\" by the order meta key"
 msgstr ""
 
-#: integrations/woocommerce/includes/tags.php:227
+#: integrations/woocommerce/includes/tags.php:237
 #, php-format
 msgid "Billing %s"
 msgstr ""
 
-#: integrations/woocommerce/includes/tags.php:237
+#: integrations/woocommerce/includes/tags.php:247
 #, php-format
 msgid "Shipping %s"
 msgstr ""
@@ -7812,14 +7834,6 @@ msgstr ""
 
 #: integrations/wplms/includes/triggers/complete-course.php:27
 msgid "User <strong>completes</strong> a course"
-msgstr ""
-
-#: integrations/wplms/includes/triggers/complete-quiz.php:26
-msgid "User completes a quiz"
-msgstr ""
-
-#: integrations/wplms/includes/triggers/complete-quiz.php:27
-msgid "User <strong>completes</strong> a quiz"
 msgstr ""
 
 #: integrations/wplms/includes/triggers/complete-unit.php:26

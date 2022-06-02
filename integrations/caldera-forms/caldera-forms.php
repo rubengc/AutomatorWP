@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Caldera Forms integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-caldera-forms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/caldera-forms/
  * Description:           Connect AutomatorWP with Caldera Forms.
  * Version:               1.0.5
  * Author:                AutomatorWP

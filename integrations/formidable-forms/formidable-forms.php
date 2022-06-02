@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Formidable Forms integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-formidable-forms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/formidable-forms/
  * Description:           Connect AutomatorWP with Formidable Forms.
  * Version:               1.0.6
  * Author:                AutomatorWP

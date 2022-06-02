@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WP User Manager integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wp-user-manager-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wp-user-manager/
  * Description:           Connect AutomatorWP with WP User Manager.
  * Version:               1.0.1
  * Author:                AutomatorWP

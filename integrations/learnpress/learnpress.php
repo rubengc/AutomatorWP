@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - LearnPress integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-learnpress-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/learnpress/
  * Description:           Connect AutomatorWP with LearnPress.
  * Version:               1.0.4
  * Author:                AutomatorWP

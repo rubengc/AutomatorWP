@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - AffiliateWP integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-affiliatewp-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/affiliatewp/
  * Description:           Connect AutomatorWP with AffiliateWP.
  * Version:               1.0.0
  * Author:                AutomatorWP

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Easy Digital Downloads integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-easy-digital-downloads-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/easy-digital-downloads/
  * Description:           Connect AutomatorWP with Easy Digital Downloads.
  * Version:               1.0.1
  * Author:                AutomatorWP

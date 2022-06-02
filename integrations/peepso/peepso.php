@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - PeepSo integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-peepso-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/peepso/
  * Description:           Connect AutomatorWP with PeepSo.
  * Version:               1.0.0
  * Author:                AutomatorWP

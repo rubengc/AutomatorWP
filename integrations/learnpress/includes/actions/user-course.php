@@ -146,6 +146,7 @@ class AutomatorWP_LearnPress_User_Course extends AutomatorWP_Integration_Action 
                 'item_id' => $course_id,
                 'ref_id'  => $order_id,
                 'status'  => LP_COURSE_ENROLLED,
+                'graduation' => LP_COURSE_GRADUATION_IN_PROGRESS,
             );
 
             $user_item_new = new LP_User_Item_Course( $user_item_data );

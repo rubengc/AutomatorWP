@@ -46,6 +46,12 @@ class AutomatorWP_BuddyBoss_Add_User_Activity extends AutomatorWP_Integration_Ac
                             'type' => 'wysiwyg',
                             'default' => ''
                         ),
+                        'link_preview' => array(
+                            'name' => __( 'Link Preview (Optional):', 'automatorwp' ),
+                            'desc' => __( 'URL link to show as preview with the activity.', 'automatorwp' ),
+                            'type' => 'text',
+                            'default' => ''
+                        ),
                         'link' => array(
                             'name' => __( 'Link:', 'automatorwp' ),
                             'desc' => __( 'URL link associated to the activity.', 'automatorwp' ),
@@ -84,11 +90,12 @@ class AutomatorWP_BuddyBoss_Add_User_Activity extends AutomatorWP_Integration_Ac
         // Shorthand
         $activity_action    = $action_options['activity_action'];
         $content            = $action_options['content'];
+        $link_preview       = $action_options['link_preview'];
         $link               = $action_options['link'];
         $hide               = $action_options['hide_sitewide'];
 
         // Add the activity to the user
-        bp_activity_add( array(
+        $activity_id = bp_activity_add( array(
             'action'            => $activity_action,
             'content'           => $content,
             'component'         => 'automatorwp',
@@ -99,6 +106,17 @@ class AutomatorWP_BuddyBoss_Add_User_Activity extends AutomatorWP_Integration_Ac
             'secondary_item_id' => false,
             'hide_sitewide'     => (bool) $hide,
         ) );
+
+        // Activity link preview
+        if( $activity_id && ! empty( $link_preview ) ) {
+
+            $preview_data = automatorwp_buddyboss_get_link_preview( $link_preview );
+
+            if( $preview_data !== false ) {
+                bp_activity_update_meta( $activity_id, '_link_embed', '1' );
+                bp_activity_update_meta( $activity_id, '_link_preview_data', $preview_data );
+            }
+        }
 
     }
 

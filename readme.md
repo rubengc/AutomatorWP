@@ -128,6 +128,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [SliceWP](https://automatorwp.com/add-ons/slicewp/)
 * [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
 * [Thrive Apprentice](https://automatorwp.com/add-ons/thrive-apprentice/)
+* [Thrive Quiz Builder](https://automatorwp.com/add-ons/thrive-quiz-builder/)
 * [Tutor LMS](https://automatorwp.com/add-ons/tutor/)
 * [Ultimate Member](https://automatorwp.com/add-ons/ultimate-member/)
 * [Upsell Plugin](https://automatorwp.com/add-ons/upsell-plugin/)
@@ -270,6 +271,17 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.1.5 ###
+
+* **New Features**
+* New integration: Thrive Quiz Builder.
+* Thrive Quiz Builder: New trigger: User completes a quiz.
+* BuddyBoss: Added the ability to add a link preview to the "Add an activity to user" action.
+* WooCommerce: New tag: Order Currency.
+* WooCommerce: New tag: Order Currency Symbol.
+* **Bug Fixes**
+* LearnPress: Fixed hidden button "Continue" in lessons.
 
 ### 2.1.4 ###
 

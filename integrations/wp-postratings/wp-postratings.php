@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WP PostRatings integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wp-postratings-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wp-postratings/
  * Description:           Connect AutomatorWP with WP PostRatings.
  * Version:               1.0.0
  * Author:                AutomatorWP

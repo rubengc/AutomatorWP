@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Fluent Support integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-fluent-support-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/fluent-support/
  * Description:           Connect AutomatorWP with Fluent Support.
  * Version:               1.0.0
  * Author:                AutomatorWP

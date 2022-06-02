@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - MemberPress integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-memberpress-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/memberpress/
  * Description:           Connect AutomatorWP with MemberPress.
  * Version:               1.0.2
  * Author:                AutomatorWP

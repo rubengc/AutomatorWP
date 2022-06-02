@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - MailPoet integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-mailpoet-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/mailpoet/
  * Description:           Connect AutomatorWP with MailPoet.
  * Version:               1.0.1
  * Author:                AutomatorWP

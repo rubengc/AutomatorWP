@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - ActiveCampaign integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-activecampaign-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/activecampaign/
  * Description:           Connect AutomatorWP with ActiveCampaign.
  * Version:               1.0.0
  * Author:                AutomatorWP

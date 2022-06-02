@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - GamiPress integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-gamipress-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/gamipress/
  * Description:           Connect AutomatorWP with GamiPress.
  * Version:               1.0.8
  * Author:                AutomatorWP

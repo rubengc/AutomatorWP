@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - wpDiscuz integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wpdiscuz-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wpdiscuz/
  * Description:           Connect AutomatorWP with wpDiscuz.
  * Version:               1.0.4
  * Author:                AutomatorWP

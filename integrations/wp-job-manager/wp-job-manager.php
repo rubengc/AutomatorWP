@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WP Job Manager integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wp-job-manager-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wp-job-manager/
  * Description:           Connect AutomatorWP with WP Job Manager.
  * Version:               1.0.0
  * Author:                AutomatorWP

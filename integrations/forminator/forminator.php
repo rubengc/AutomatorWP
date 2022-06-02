@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Forminator integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-forminator-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/forminator/
  * Description:           Connect AutomatorWP with Forminator.
  * Version:               1.0.7
  * Author:                AutomatorWP

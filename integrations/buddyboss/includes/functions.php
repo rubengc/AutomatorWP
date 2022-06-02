@@ -91,3 +91,91 @@ function automatorwp_buddyboss_member_types_options_cb( $field ) {
     return $options;
 
 }
+
+/**
+ * Helper function to get the preview from a URL
+ *
+ * @since 1.5.0
+ *
+ * @param string $link
+ *
+ * @return array|false
+ */
+function automatorwp_buddyboss_get_link_preview( $link ) {
+
+    // Bail if not is a valid URL
+    if ( ! filter_var( $link, FILTER_VALIDATE_URL ) ) {
+        return false;
+    }
+
+    // Extract HTML using curl
+    $ch = curl_init();
+
+    curl_setopt( $ch, CURLOPT_HEADER, 0 );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt( $ch, CURLOPT_URL, $link );
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
+
+    $data = curl_exec( $ch );
+    curl_close( $ch );
+
+    // Load HTML to DOM Object
+    $dom = new DOMDocument();
+    @$dom->loadHTML( $data );
+
+    $title = '';
+    $description = '';
+    $image_url = '';
+
+    // Parse DOM to get Title
+    $nodes = $dom->getElementsByTagName('title');
+    $title = $nodes->item(0)->nodeValue;
+
+    // Parse DOM to get Meta Description
+    $metas = $dom->getElementsByTagName('meta');
+
+    for ($i = 0; $i < $metas->length; $i ++) {
+        $meta = $metas->item( $i );
+
+        // Description meta
+        if ( $meta->getAttribute('name') == 'description' && empty( $description ) ) {
+            $description = $meta->getAttribute('content');
+        }
+
+        // OG Metas
+        if ( $meta->getAttribute('property') == 'og:title' ) {
+            $title = $meta->getAttribute('content');
+        }
+
+        if ( $meta->getAttribute('property') == 'og:description' ) {
+            $description = $meta->getAttribute('content');
+        }
+
+        if ( $meta->getAttribute('property') == 'og:image' ) {
+            $image_url = $meta->getAttribute('content');
+        }
+    }
+
+    // Parse DOM to get Images
+    if( empty( $image_url ) ) {
+        $images = $dom->getElementsByTagName('img');
+
+        for ( $i = 0; $i < $images->length; $i ++) {
+            $image = $images->item( $i );
+            $src = $image->getAttribute( 'src' );
+
+            if( filter_var( $src, FILTER_VALIDATE_URL ) ) {
+                $image_url = $src;
+                break;
+            }
+        }
+    }
+
+    return array(
+        'url' => $link,
+        'title' => $title,
+        'description' => $description,
+        'image_url' => $image_url
+    );
+
+}

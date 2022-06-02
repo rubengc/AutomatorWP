@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Elementor integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-elementor-forms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/elementor-forms/
  * Description:           Connect AutomatorWP with Elementor Forms.
  * Version:               1.0.5
  * Author:                AutomatorWP

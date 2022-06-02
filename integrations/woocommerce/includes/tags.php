@@ -194,6 +194,16 @@ function automatorwp_woocommerce_order_tags() {
             'type'      => 'text',
             'preview'   => 'CODE01, CODE02',
         ),
+        'woocommerce_order_currency' => array(
+            'label'     => __( 'Order Currency', 'automatorwp' ),
+            'type'      => 'text',
+            'preview'   => 'USD',
+        ),
+        'woocommerce_order_currency_symbol' => array(
+            'label'     => __( 'Order Currency Symbol', 'automatorwp' ),
+            'type'      => 'text',
+            'preview'   => '$',
+        ),
         'woocommerce_order_subtotal' => array(
             'label'     => __( 'Order Subtotal', 'automatorwp' ),
             'type'      => 'float',
@@ -321,6 +331,9 @@ function automatorwp_woocommerce_get_trigger_tag_replacement( $replacement, $tag
             break;
         case 'woocommerce_order_coupon_codes':
             $replacement = implode( ', ', $replacement );
+            break;
+        case 'woocommerce_order_currency_symbol':
+            $replacement = get_woocommerce_currency_symbol( $order->get_currency() );
             break;
         case 'woocommerce_order_billing_country':
         case 'woocommerce_order_shipping_country':

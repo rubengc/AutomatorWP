@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Ultimate Member integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-ultimate-member-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/ultimate-member/
  * Description:           Connect AutomatorWP with Ultimate Member.
  * Version:               1.0.1
  * Author:                AutomatorWP

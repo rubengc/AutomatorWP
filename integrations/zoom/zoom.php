@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Zoom integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-zoom-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/zoom/
  * Description:           Connect AutomatorWP with Zoom.
  * Version:               1.0.3
  * Author:                AutomatorWP

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - H5P integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-h5p-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/h5p/
  * Description:           Connect AutomatorWP with H5P.
  * Version:               1.0.1
  * Author:                AutomatorWP

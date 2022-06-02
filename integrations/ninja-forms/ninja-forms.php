@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Ninja Forms integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-ninja-forms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/ninja-forms/
  * Description:           Connect AutomatorWP with Ninja Forms.
  * Version:               1.0.6
  * Author:                AutomatorWP

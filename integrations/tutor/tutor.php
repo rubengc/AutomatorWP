@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Tutor LMS integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-tutor-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/tutor/
  * Description:           Connect AutomatorWP with Tutor LMS.
  * Version:               1.0.2
  * Author:                AutomatorWP

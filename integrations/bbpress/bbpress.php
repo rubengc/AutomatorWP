@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - bbPress integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-bbpress-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/bbpress/
  * Description:           Connect AutomatorWP with bbPress.
  * Version:               1.0.2
  * Author:                AutomatorWP

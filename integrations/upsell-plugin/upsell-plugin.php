@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Upsell Plugin integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-upsell-plugin-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/upsell-plugin/
  * Description:           Connect AutomatorWP with Upsell Plugin.
  * Version:               1.0.0
  * Author:                AutomatorWP

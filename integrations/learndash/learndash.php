@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - LearnDash integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-learndash-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/learndash/
  * Description:           Connect AutomatorWP with LearnDash.
  * Version:               1.0.4
  * Author:                AutomatorWP

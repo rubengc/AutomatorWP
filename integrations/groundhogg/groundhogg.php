@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Groundhogg integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-groundhogg-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/groundhogg/
  * Description:           Connect AutomatorWP with Groundhogg.
  * Version:               1.0.2
  * Author:                AutomatorWP

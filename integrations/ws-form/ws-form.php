@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WS Form integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-ws-form-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/ws-form/
  * Description:           Connect AutomatorWP with WS Form.
  * Version:               1.0.0
  * Author:                AutomatorWP

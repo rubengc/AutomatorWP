@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Sensei LMS integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-sensei-lms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/sensei-lms/
  * Description:           Connect AutomatorWP with Sensei LMS.
  * Version:               1.0.0
  * Author:                AutomatorWP

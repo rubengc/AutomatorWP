@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Newsletter integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-newsletter-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/newsletter/
  * Description:           Connect AutomatorWP with Newsletter.
  * Version:               1.0.0
  * Author:                AutomatorWP

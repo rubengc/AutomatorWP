@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Advanced Ads
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-advanced-ads-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/advanced-ads/
  * Description:           Connect AutomatorWP with Advanced Ads.
  * Version:               1.0.0
  * Author:                AutomatorWP

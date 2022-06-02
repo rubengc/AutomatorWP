@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Digimember integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-digimember-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/digimember/
  * Description:           Connect AutomatorWP with Digimember.
  * Version:               1.0.0
  * Author:                AutomatorWP

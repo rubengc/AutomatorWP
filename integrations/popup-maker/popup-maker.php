@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Popup Maker integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-popup-maker-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/popup-maker/
  * Description:           Connect AutomatorWP with Popup Maker.
  * Version:               1.0.3
  * Author:                AutomatorWP

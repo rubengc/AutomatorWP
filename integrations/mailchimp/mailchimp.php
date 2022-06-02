@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Mailchimp integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-mailchimp-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/mailchimp/
  * Description:           Connect AutomatorWP with Mailchimp.
  * Version:               1.0.0
  * Author:                AutomatorWP

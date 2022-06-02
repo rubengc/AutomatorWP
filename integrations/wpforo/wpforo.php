@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - wpForo integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wpforo-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wpforo/
  * Description:           Connect AutomatorWP with wpForo.
  * Version:               1.0.0
  * Author:                AutomatorWP

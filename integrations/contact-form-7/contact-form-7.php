@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Contact Form 7 integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-contact-form-7-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/contact-form-7/
  * Description:           Connect AutomatorWP with Contact Form 7.
  * Version:               1.0.5
  * Author:                AutomatorWP

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - MasterStudy LMS integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-masterstudy-lms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/masterstudy-lms/
  * Description:           Connect AutomatorWP with MasterStudy LMS.
  * Version:               1.0.1
  * Author:                AutomatorWP

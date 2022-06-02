@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - LifterLMS integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-lifterlms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/lifterlms/
  * Description:           Connect AutomatorWP with LifterLMS.
  * Version:               1.0.3
  * Author:                AutomatorWP

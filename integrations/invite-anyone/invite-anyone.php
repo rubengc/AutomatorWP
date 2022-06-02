@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Invite Anyone integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-invite-anyone-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/invite-anyone/
  * Description:           Connect AutomatorWP with Invite Anyone.
  * Version:               1.0.0
  * Author:                AutomatorWP

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Modern Events Calendar integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-modern-events-calendar-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/modern-events-calendar/
  * Description:           Connect AutomatorWP with Modern Events Calendar.
  * Version:               1.0.0
  * Author:                AutomatorWP

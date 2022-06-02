@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Thrive Apprentice integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-thrive-apprentice-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/thrive-apprentice/
  * Description:           Connect AutomatorWP with Thrive Apprentice.
  * Version:               1.0.0
  * Author:                AutomatorWP

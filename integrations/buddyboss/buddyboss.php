@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - BuddyBoss integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-buddyboss-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/buddyboss/
  * Description:           Connect AutomatorWP with BuddyBoss.
  * Version:               1.1.2
  * Author:                AutomatorWP

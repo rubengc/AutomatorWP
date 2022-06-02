@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WP Polls integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wp-polls-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wp-polls/
  * Description:           Connect AutomatorWP with WP Polls.
  * Version:               1.0.1
  * Author:                AutomatorWP

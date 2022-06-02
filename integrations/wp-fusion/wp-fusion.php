@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WP Fusion integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wp-fusion-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wp-fusion/
  * Description:           Connect AutomatorWP with WP Fusion.
  * Version:               1.0.0
  * Author:                AutomatorWP

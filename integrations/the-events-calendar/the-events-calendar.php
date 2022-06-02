@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - The Events Calendar integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-the-events-calendar-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/the-events-calendar/
  * Description:           Connect AutomatorWP with The Events Calendar.
  * Version:               1.0.1
  * Author:                AutomatorWP

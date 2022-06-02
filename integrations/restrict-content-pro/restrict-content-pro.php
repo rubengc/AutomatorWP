@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Restrict Content Pro integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-restrict-content-pro-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/restrict-content-pro/
  * Description:           Connect AutomatorWP with Restrict Content Pro.
  * Version:               1.0.4
  * Author:                AutomatorWP

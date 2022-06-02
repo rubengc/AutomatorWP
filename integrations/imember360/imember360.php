@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - iMember360 integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-imember360-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/imember360/
  * Description:           Connect AutomatorWP with iMember360.
  * Version:               1.0.0
  * Author:                AutomatorWP

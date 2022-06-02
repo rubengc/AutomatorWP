@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WPLMS integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wplms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wplms/
  * Description:           Connect AutomatorWP with WPLMS.
  * Version:               1.0.2
  * Author:                AutomatorWP

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - ActiveMember360 integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-activemember360-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/activemember360/
  * Description:           Connect AutomatorWP with ActiveMember360.
  * Version:               1.0.0
  * Author:                AutomatorWP

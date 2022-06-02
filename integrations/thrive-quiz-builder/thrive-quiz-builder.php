@@ -1,26 +1,26 @@
 <?php
 /**
- * Plugin Name:           AutomatorWP - WP Ulike integration
- * Plugin URI:            https://automatorwp.com/add-ons/wp-ulike/
- * Description:           Connect AutomatorWP with WP Ulike.
- * Version:               1.0.1
+ * Plugin Name:           AutomatorWP - Thrive Quiz Builder integration
+ * Plugin URI:            https://automatorwp.com/add-ons/thrive-quiz-builder/
+ * Description:           Connect AutomatorWP with Thrive Quiz Builder.
+ * Version:               1.0.0
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
- * Text Domain:           automatorwp-wp-ulike-integration
+ * Text Domain:           automatorwp-thrive-quiz-builder-integration
  * Domain Path:           /languages/
  * Requires at least:     4.4
- * Tested up to:          5.7
+ * Tested up to:          5.9
  * License:               GNU AGPL v3.0 (http://www.gnu.org/licenses/agpl.txt)
  *
- * @package               AutomatorWP\WP_Ulike
+ * @package               AutomatorWP\Thrive_Quiz_Builder
  * @author                AutomatorWP
  * @copyright             Copyright (c) AutomatorWP
  */
 
-final class AutomatorWP_Integration_WP_Ulike {
+final class AutomatorWP_Integration_Thrive_Quiz_Builder {
 
     /**
-     * @var         AutomatorWP_Integration_WP_Ulike $instance The one true AutomatorWP_Integration_WP_Ulike
+     * @var         AutomatorWP_Integration_Thrive_Quiz_Builder $instance The one true AutomatorWP_Integration_Thrive_Quiz_Builder
      * @since       1.0.0
      */
     private static $instance;
@@ -30,11 +30,11 @@ final class AutomatorWP_Integration_WP_Ulike {
      *
      * @access      public
      * @since       1.0.0
-     * @return      AutomatorWP_Integration_WP_Ulike self::$instance The one true AutomatorWP_Integration_WP_Ulike
+     * @return      AutomatorWP_Integration_Thrive_Quiz_Builder self::$instance The one true AutomatorWP_Integration_Thrive_Quiz_Builder
      */
     public static function instance() {
         if( !self::$instance ) {
-            self::$instance = new AutomatorWP_Integration_WP_Ulike();
+            self::$instance = new AutomatorWP_Integration_Thrive_Quiz_Builder();
             
             if( ! self::$instance->pro_installed() ) {
 
@@ -58,16 +58,16 @@ final class AutomatorWP_Integration_WP_Ulike {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_WP_ULIKE_VER', '1.0.1' );
+        define( 'AUTOMATORWP_THRIVE_QUIZ_BUILDER_VER', '1.0.0' );
 
         // Plugin file
-        define( 'AUTOMATORWP_WP_ULIKE_FILE', __FILE__ );
+        define( 'AUTOMATORWP_THRIVE_QUIZ_BUILDER_FILE', __FILE__ );
 
         // Plugin path
-        define( 'AUTOMATORWP_WP_ULIKE_DIR', plugin_dir_path( __FILE__ ) );
+        define( 'AUTOMATORWP_THRIVE_QUIZ_BUILDER_DIR', plugin_dir_path( __FILE__ ) );
 
         // Plugin URL
-        define( 'AUTOMATORWP_WP_ULIKE_URL', plugin_dir_url( __FILE__ ) );
+        define( 'AUTOMATORWP_THRIVE_QUIZ_BUILDER_URL', plugin_dir_url( __FILE__ ) );
     }
 
     /**
@@ -82,8 +82,7 @@ final class AutomatorWP_Integration_WP_Ulike {
         if( $this->meets_requirements() ) {
 
             // Triggers
-            require_once AUTOMATORWP_WP_ULIKE_DIR . 'includes/triggers/like-post.php';
-            require_once AUTOMATORWP_WP_ULIKE_DIR . 'includes/triggers/like-comment.php';
+            require_once AUTOMATORWP_THRIVE_QUIZ_BUILDER_DIR . 'includes/triggers/complete-quiz.php';
 
         }
     }
@@ -108,9 +107,9 @@ final class AutomatorWP_Integration_WP_Ulike {
      */
     function register_integration() {
 
-        automatorwp_register_integration( 'wp_ulike', array(
-            'label' => 'WP Ulike',
-            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/wp-ulike.svg',
+        automatorwp_register_integration( 'thrive_quiz_builder', array(
+            'label' => 'Thrive Quiz Builder',
+            'icon'  => plugin_dir_url( __FILE__ ) . 'assets/thrive-quiz-builder.svg',
         ) );
 
     }
@@ -128,7 +127,7 @@ final class AutomatorWP_Integration_WP_Ulike {
             return false;
         }
 
-        if ( ! class_exists( 'WpUlikeInit' ) ) {
+        if ( ! class_exists( 'Thrive_Quiz_Builder' ) ) {
             return false;
         }
 
@@ -145,7 +144,7 @@ final class AutomatorWP_Integration_WP_Ulike {
      */
     private function pro_installed() {
 
-        if ( ! class_exists( 'AutomatorWP_WP_Ulike' ) ) {
+        if ( ! class_exists( 'AutomatorWP_Thrive_Quiz_Builder' ) ) {
             return false;
         }
 
@@ -156,12 +155,12 @@ final class AutomatorWP_Integration_WP_Ulike {
 }
 
 /**
- * The main function responsible for returning the one true AutomatorWP_Integration_WP_Ulike instance to functions everywhere
+ * The main function responsible for returning the one true AutomatorWP_Integration_Thrive_Quiz_Builder instance to functions everywhere
  *
  * @since       1.0.0
- * @return      \AutomatorWP_Integration_WP_Ulike The one true AutomatorWP_Integration_WP_Ulike
+ * @return      \AutomatorWP_Integration_Thrive_Quiz_Builder The one true AutomatorWP_Integration_Thrive_Quiz_Builder
  */
-function AutomatorWP_Integration_WP_Ulike() {
-    return AutomatorWP_Integration_WP_Ulike::instance();
+function AutomatorWP_Integration_Thrive_Quiz_Builder() {
+    return AutomatorWP_Integration_Thrive_Quiz_Builder::instance();
 }
-add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_WP_Ulike' );
+add_action( 'automatorwp_pre_init', 'AutomatorWP_Integration_Thrive_Quiz_Builder' );

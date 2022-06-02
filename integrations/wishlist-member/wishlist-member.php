@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WishList Member integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wishlist-member-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wishlist-member/
  * Description:           Connect AutomatorWP with WishList Member.
  * Version:               1.0.0
  * Author:                AutomatorWP

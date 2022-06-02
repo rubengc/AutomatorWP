@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Favorites integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-favorites-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/favorites/
  * Description:           Connect AutomatorWP with Favorites.
  * Version:               1.0.0
  * Author:                AutomatorWP

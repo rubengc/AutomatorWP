@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Gravity Forms integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-gravity-forms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/gravity-forms/
  * Description:           Connect AutomatorWP with Gravity Forms.
  * Version:               1.0.7
  * Author:                AutomatorWP

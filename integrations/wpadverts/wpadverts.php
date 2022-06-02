@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WPAdverts integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wpadverts-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wpadverts/
  * Description:           Connect AutomatorWP with WPAdverts.
  * Version:               1.0.0
  * Author:                AutomatorWP

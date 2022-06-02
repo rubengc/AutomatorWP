@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - FluentCRM integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-fluentcrm-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/fluentcrm/
  * Description:           Connect AutomatorWP with FluentCRM.
  * Version:               1.0.1
  * Author:                AutomatorWP

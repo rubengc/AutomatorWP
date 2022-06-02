@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Divi integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-divi-forms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/divi-forms/
  * Description:           Connect AutomatorWP with Divi Forms.
  * Version:               1.0.0
  * Author:                AutomatorWP

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Awesome Support integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-awesome-support-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/awesome-support/
  * Description:           Connect AutomatorWP with Awesome Support.
  * Version:               1.0.0
  * Author:                AutomatorWP

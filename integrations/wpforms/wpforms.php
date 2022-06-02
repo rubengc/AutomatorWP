@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - WPForms integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-wpforms-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/wpforms/
  * Description:           Connect AutomatorWP with WPForms.
  * Version:               1.0.5
  * Author:                AutomatorWP

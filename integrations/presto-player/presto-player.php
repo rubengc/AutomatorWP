@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Presto Player integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-presto-player-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/presto-player/
  * Description:           Connect AutomatorWP with Presto Player.
  * Version:               1.0.0
  * Author:                AutomatorWP

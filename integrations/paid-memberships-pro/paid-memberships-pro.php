@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - Paid Memberships Pro integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-paid-memberships-pro-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/paid-memberships-pro/
  * Description:           Connect AutomatorWP with Paid Memberships Pro.
  * Version:               1.0.2
  * Author:                AutomatorWP

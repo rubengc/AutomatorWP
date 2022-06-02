@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:           AutomatorWP - AnsPress integration
- * Plugin URI:            https://wordpress.org/plugins/automatorwp-anspress-integration/
+ * Plugin URI:            https://automatorwp.com/add-ons/anspress/
  * Description:           Connect AutomatorWP with AnsPress.
  * Version:               1.0.0
  * Author:                AutomatorWP
