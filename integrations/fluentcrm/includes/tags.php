@@ -18,47 +18,57 @@ if( !defined( 'ABSPATH' ) ) exit;
  */
 function automatorwp_fluentcrm_contact_tags() {
 
-    $contact_tags = array(
-        'fluentcrm_contact_field:status' => array(
-            'label'     => __( 'Subscription status', 'automatorwp' ),
-            'type'      => 'text',
-            'preview'   => __( 'Subscribed', 'automatorwp' ),
-        ),
-    );
+    global $automatorwp_fluentcrm_contact_tags;
 
-    // Standard fields
-    $fields = \FluentCrm\App\Models\Subscriber::mappables();
+    if( ! is_array( $automatorwp_fluentcrm_contact_tags ) ) {
 
-    foreach( $fields as $field_id => $field_label ) {
-        $contact_tags['fluentcrm_contact_field:' . $field_id] = array(
-            'label'     => $field_label,
-            'type'      => 'text',
-            'preview'   => automatorwp_fluentcrm_get_contact_tag_preview( $field_id, $field_label ),
+        $contact_tags = array(
+            'fluentcrm_contact_field:status' => array(
+                'label'     => __( 'Subscription status', 'automatorwp' ),
+                'type'      => 'text',
+                'preview'   => __( 'Subscribed', 'automatorwp' ),
+            ),
         );
+
+        // Standard fields
+        $fields = \FluentCrm\App\Models\Subscriber::mappables();
+
+        foreach( $fields as $field_id => $field_label ) {
+            $contact_tags['fluentcrm_contact_field:' . $field_id] = array(
+                'label'     => $field_label,
+                'type'      => 'text',
+                'preview'   => automatorwp_fluentcrm_get_contact_tag_preview( $field_id, $field_label ),
+            );
+        }
+
+        // Custom fields
+        $custom_fields = new \FluentCrm\App\Models\CustomContactField();
+        $custom_fields = $custom_fields->getGlobalFields()['fields'];
+
+        foreach( $custom_fields as $custom_field ) {
+            $contact_tags['fluentcrm_contact_field:' . $custom_field['slug']] = array(
+                'label'     => $custom_field['label'],
+                'type'      => 'text',
+                'preview'   => sprintf( __( 'The contact %s field', 'automatorwp' ), strtolower( $custom_field['label'] ) ),
+            );
+        }
+
+        /**
+         * Filter contact tags
+         *
+         * @since 1.0.0
+         *
+         * @param array $tags
+         *
+         * @return array
+         */
+        $contact_tags = apply_filters( 'automatorwp_fluentcrm_contact_tags', $contact_tags );
+
+        $automatorwp_fluentcrm_contact_tags = $contact_tags;
+
     }
 
-    // Custom fields
-    $custom_fields = new \FluentCrm\App\Models\CustomContactField();
-    $custom_fields = $custom_fields->getGlobalFields()['fields'];
-
-    foreach( $custom_fields as $custom_field ) {
-        $contact_tags['fluentcrm_contact_field:' . $custom_field['slug']] = array(
-            'label'     => $custom_field['label'],
-            'type'      => 'text',
-            'preview'   => sprintf( __( 'The contact %s field', 'automatorwp' ), strtolower( $custom_field['label'] ) ),
-        );
-    }
-
-    /**
-     * Filter contact tags
-     *
-     * @since 1.0.0
-     *
-     * @param array $tags
-     *
-     * @return array
-     */
-    return apply_filters( 'automatorwp_fluentcrm_contact_tags', $contact_tags );
+    return $automatorwp_fluentcrm_contact_tags;
 
 }
 

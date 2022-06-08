@@ -338,7 +338,7 @@ function automatorwp_get_actions_in_use() {
     $ct_table = ct_setup_table( 'automatorwp_actions' );
 
     // Check if table exists, just to avoid issues on first install
-    if( ! automatorwp_database_table_exists( $ct_table->db->table_name ) ) {
+    if( ! $ct_table->db->exists() ) {
         ct_reset_setup_table();
         return array();
     }

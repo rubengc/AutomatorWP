@@ -272,6 +272,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.7 ###
+
+* **Improvements**
+* Performance improvement reducing the database queries to check if a table exists.
+* FluentCRM: Performance improvement reducing the database queries to build the contact tags.
+
 ### 2.1.6 ###
 
 * **Bug Fixes**
