@@ -272,6 +272,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.6 ###
+
+* **Bug Fixes**
+* Tutor LMS: Fixed a bug on the "Enroll user to course" action for paid courses.
+
 ### 2.1.5 ###
 
 * **New Features**
