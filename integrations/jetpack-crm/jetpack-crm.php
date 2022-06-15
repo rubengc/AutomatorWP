@@ -134,7 +134,7 @@ final class AutomatorWP_Integration_Jetpack_CRM {
             return false;
         }
 
-        if ( ! defined( 'STM_LMS_FILE' ) ) {
+        if ( ! class_exists( 'ZeroBSCRM' ) ) {
             return false;
         }
 
