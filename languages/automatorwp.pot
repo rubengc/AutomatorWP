@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-06-08 12:47+0200\n"
+"POT-Creation-Date: 2022-06-15 09:16+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1596,6 +1596,8 @@ msgstr ""
 #: integrations/groundhogg/includes/actions/user-tag.php:36
 #: integrations/groundhogg/includes/triggers/tag-added.php:39
 #: integrations/imember360/includes/triggers/contact-tag.php:41
+#: integrations/jetpack-crm/includes/triggers/company-tag-added.php:39
+#: integrations/jetpack-crm/includes/triggers/contact-tag-added.php:39
 #: integrations/woocommerce/includes/triggers/anonymous-purchase-product-tag.php:39
 #: integrations/woocommerce/includes/triggers/purchase-product-tag.php:38
 #: integrations/wordpress/triggers/comment-post-tag.php:42
@@ -1754,6 +1756,9 @@ msgstr ""
 #: integrations/groundhogg/includes/functions.php:25
 #: integrations/groundhogg/includes/triggers/tag-added.php:41
 #: integrations/imember360/includes/triggers/contact-tag.php:70
+#: integrations/jetpack-crm/includes/functions.php:25
+#: integrations/jetpack-crm/includes/triggers/company-tag-added.php:41
+#: integrations/jetpack-crm/includes/triggers/contact-tag-added.php:41
 #: integrations/mailchimp/includes/functions.php:152
 #: integrations/woocommerce/includes/triggers/anonymous-purchase-product-tag.php:40
 #: integrations/woocommerce/includes/triggers/purchase-product-tag.php:39
@@ -3874,19 +3879,23 @@ msgid "Complained"
 msgstr ""
 
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:27
+#: integrations/jetpack-crm/includes/triggers/contact-tag-added.php:26
 msgid "Tag added to contact"
 msgstr ""
 
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:28
+#: integrations/jetpack-crm/includes/triggers/contact-tag-added.php:27
 msgid "<strong>Tag</strong> added to contact"
 msgstr ""
 
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:30
+#: integrations/jetpack-crm/includes/triggers/contact-tag-added.php:29
 #, php-format
 msgid "%1$s added to contact %2$s time(s)"
 msgstr ""
 
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:32
+#: integrations/jetpack-crm/includes/triggers/contact-tag-added.php:31
 #, php-format
 msgid "%1$s added to contact"
 msgstr ""
@@ -4170,6 +4179,52 @@ msgstr ""
 #: integrations/invite-anyone/includes/triggers/send-invite.php:29
 #, php-format
 msgid "User sends an invitation %1$s time(s)"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-added.php:26
+#: integrations/jetpack-crm/includes/triggers/company-added.php:30
+msgid "New company is added"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-added.php:27
+msgid "New company is <strong>added</strong>"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-added.php:29
+#, php-format
+msgid "New company is added %1$s time(s)"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-tag-added.php:26
+msgid "Tag added to company"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-tag-added.php:27
+msgid "<strong>Tag</strong> added to company"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-tag-added.php:29
+#, php-format
+msgid "%1$s added to company %2$s time(s)"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/company-tag-added.php:31
+#, php-format
+msgid "%1$s added to company"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/contact-added.php:26
+#: integrations/jetpack-crm/includes/triggers/contact-added.php:31
+msgid "New contact is added"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/contact-added.php:27
+msgid "New contact is <strong>added</strong>"
+msgstr ""
+
+#: integrations/jetpack-crm/includes/triggers/contact-added.php:29
+#, php-format
+msgid "New contact is added %1$s time(s)"
 msgstr ""
 
 #: integrations/learndash/includes/actions/create-group.php:26

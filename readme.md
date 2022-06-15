@@ -110,6 +110,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [HappyForms](https://automatorwp.com/add-ons/happyforms/)
 * [iMember360](https://automatorwp.com/add-ons/imember360/)
 * [Invite Anyone](https://automatorwp.com/add-ons/invite-anyone/)
+* [Jetpack CRM](https://automatorwp.com/add-ons/jetpack-crm/)
 * [LearnDash](https://automatorwp.com/add-ons/learndash/)
 * [LearnPress](https://automatorwp.com/add-ons/learnpress/)
 * [LifterLMS](https://automatorwp.com/add-ons/lifterlms/)
@@ -271,6 +272,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.1.8 ###
+
+* New integration: Jetpack CRM.
+* Jetpack CRM: New trigger: New company added.
+* Jetpack CRM: New trigger: New contact added.
+* Jetpack CRM: New trigger: Tag added to company.
+* Jetpack CRM: New trigger: Tag added to contact.
 
 ### 2.1.7 ###
 
