@@ -273,6 +273,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.1.9 ###
+
+* **Bug Fixes**
+* Prevent PHP warnings during activation caused by checking the existent database tables during activation.
+
 ### 2.1.8 ###
 
 * New integration: Jetpack CRM.
