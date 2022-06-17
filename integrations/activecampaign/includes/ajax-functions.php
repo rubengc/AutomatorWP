@@ -109,19 +109,14 @@ function automatorwp_activecampaign_ajax_get_tags() {
 
     // Pull back the search string
     $search = isset( $_REQUEST['q'] ) ? $wpdb->esc_like( $_REQUEST['q'] ) : '';
+    $page = isset( $_REQUEST['page'] ) ? absint( $_REQUEST['page'] ) : 1;
 
-    $tags = automatorwp_activecampaign_get_tags( );
+    $tags = automatorwp_activecampaign_get_tags( $search, $page );
 
     $results = array();
 
     // Parse tag results to match select2 results
     foreach ( $tags as $tag ) {
-
-        if( ! empty( $search ) ) {
-            if( strpos( strtolower( $tag['name'] ), strtolower( $search ) ) === false ) {
-                continue;
-            }
-        }
         
         $results[] = array(
             'id' => $tag['id'],
@@ -132,8 +127,13 @@ function automatorwp_activecampaign_ajax_get_tags() {
     // Prepend option none
     $results = automatorwp_ajax_parse_extra_options( $results );
 
+    $response = array(
+        'results' => $results,
+        'more_results' => count( $results ),
+    );
+
     // Return our results
-    wp_send_json_success( $results );
+    wp_send_json_success( $response );
     die;
 
 }
