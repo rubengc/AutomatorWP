@@ -88,6 +88,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
 * [Amelia](https://automatorwp.com/add-ons/ameliabooking/)
 * [AnsPress](https://automatorwp.com/add-ons/anspress/)
+* [Autonami](https://automatorwp.com/add-ons/autonami/)
 * [Awesome Support](https://automatorwp.com/add-ons/awesome-support/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
 * [BuddyBoss](https://automatorwp.com/add-ons/buddyboss/)
@@ -272,6 +273,19 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.2.1 ###
+
+* **New Features**
+* New integration: Autonami.
+* Autonami: New trigger: User added to list.
+* Autonami: New trigger: Tag added to user.
+* Autonami: New anonymous trigger: Contact added to list.
+* Autonami: New anonymous trigger: Tag added to contact.
+* Autonami: New action: Add a tag to the user.
+* Autonami: New action: Add a tag to a contact.
+* **Improvements**
+* Style improvements to table fields display.
 
 ### 2.2.0 ###
 

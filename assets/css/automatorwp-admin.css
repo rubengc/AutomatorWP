@@ -1563,6 +1563,10 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     margin: 0;
 }
 
+.automatorwp-fields-table .cmb-repeatable-grouping .cmb-field-list .cmb-th {
+    width: auto;
+}
+
 .automatorwp-fields-table .cmb-repeatable-grouping:not(:nth-child(2)) .cmb-field-list .cmb-th {
     display: none;
 }
@@ -1634,6 +1638,10 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     height: 100%;
     width: 100%;
     z-index: 99999;
+}
+
+.automatorwp-dialog .ui-widget-content {
+    border: none;
 }
 
 .automatorwp-dialog .ui-dialog-titlebar {
