@@ -5,12 +5,13 @@
  *
  * GamiPress Team updates:
  *
- * Support to CMB2 2.7.0 by renaming CMB2_hookup instances to CMB2_Hookup
+ * Removed Javascript file checking by using the get_headers() function.
+ * Support to CMB2 2.7.0 by renaming CMB2_hookup instances to CMB2_Hookup.
  * Support for PHP 5.6:
- * - Moved auto-generated id into a object var
- * - Removed all usages of [] to instantiate arrays
- * - Moved all direct callbacks into a reference calls
- * On multisite installs, fixed undefined 'hook' index
+ * - Moved auto-generated id into a object var.
+ * - Removed all usages of [] to instantiate arrays.
+ * - Moved all direct callbacks into a reference calls.
+ * On multisite installs, fixed undefined 'hook' index.
  *
  * General Notes
  *
@@ -173,7 +174,7 @@ class Cmb2_Metatabs_Options {
 	 * @since 1.0.0
 	 */
 	public function __construct( $args ) {
-		
+
 		// require CMB2
 		if ( ! class_exists( 'CMB2' ) ) {
 			throw new Exception( 'CMB2_Metatabs_Options: CMB2 is required to use this class.' );
@@ -311,7 +312,7 @@ class Cmb2_Metatabs_Options {
 		
 		// Allow multisite network menu pages
 		$net = ( is_multisite() && self::$props[ $this->id ]['menuargs']['network'] === TRUE ) ? 'network_' : '';
-		
+
 		// Adds page to admin
 		add_action(
 			$net . 'admin_menu',
@@ -399,7 +400,7 @@ class Cmb2_Metatabs_Options {
 		
 		// build arguments
 		$args = $this->build_menu_args( $this->id );
-		
+
 		// this is kind of ugly, but so is the WP function!
 		self::$props[ $this->id ]['hook'] =
 			$args['cb']( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6] );
@@ -409,7 +410,7 @@ class Cmb2_Metatabs_Options {
 			'admin_print_styles-' . self::$props[ $this->id ]['hook'],
 			array( 'CMB2_Hookup', 'enqueue_cmb_css' )
 		);
-		
+
 		// Adds existing metaboxes, see note in function, called here as we need the screen ID
 		add_action(
 			'add_meta_boxes_' . self::$props[ $this->id ]['hook'],
@@ -543,12 +544,6 @@ class Cmb2_Metatabs_Options {
 			throw new Exception( 'CMB2_Metatabs_Options: Tabs included but JS file not specified.' );
 		}
 		
-		// check to see if file exists, throws exception if it does not
-		$headers = @get_headers( self::$props[ $this->id ]['jsuri'] );
-		if ( $headers[0] == 'HTTP/1.1 404 Not Found' ) {
-			throw new Exception( 'CMB2_Metatabs_Options: Passed Javascript file missing.' );
-		}
-		
 		// enqueue the script
 		wp_enqueue_script(
 			self::$props[ $this->id ]['page'] . '-admin',
@@ -637,7 +632,7 @@ class Cmb2_Metatabs_Options {
 		
 		// get the metaboxes
 		self::$props[ $this->id ]['boxes'] = $this->cmb2_metaboxes( $this->id );
-		
+
 		// exit this method if no metaboxes are present
 		if ( empty( self::$props[ $this->id ]['boxes'] ) ) {
 			return;

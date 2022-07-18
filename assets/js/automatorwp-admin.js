@@ -489,7 +489,7 @@
 
         var item = $(this).closest('.automatorwp-automation-item');
         var items_list = item.closest('.automatorwp-automation-items');
-        var automation_id = $('#object_id').val();
+        var automation_id = $('input#object_id').val();
         var type = $(this).val();
         var item_type = item.hasClass('automatorwp-trigger') ? 'trigger' : 'action';
 
@@ -606,7 +606,7 @@
         var button = $(this);
         var box = button.closest('.postbox');
         var items_list = box.find('.automatorwp-automation-items');
-        var automation_id = $('#object_id').val();
+        var automation_id = $('input#object_id').val();
         var item_type = ( box.attr('id') === 'automatorwp_triggers' ? 'trigger' : 'action' );
         var type = 'filter';
 
@@ -1223,7 +1223,6 @@
             url = 'https://' + url;
         }
 
-
         button.prop( 'disabled', true );
 
         // Update confirm button label
@@ -1300,6 +1299,163 @@
 
         $(this).find('.automatorwp-automation-url-export-dialog-url-copy-text-copy').hide();
         $(this).find('.automatorwp-automation-url-export-dialog-url-copy-text-copied').show();
+    });
+
+    // -----------------------------------------------
+    // All users automation
+    // -----------------------------------------------
+
+    // Toggle visibility on schedule run checkbox change
+    $('body').on('change', '#automatorwp-automations-execution-options input#schedule_run', function(e) {
+        var form = $(this).closest('.cmb2-metabox');
+        var target = form.find('.cmb2-id-schedule-run-datetime');
+
+        if( $(this).prop('checked') ) {
+            // Force uncheck recurring run checkbox
+            if( form.find('.cmb2-id-recurring-run input').prop('checked') ) {
+                form.find('.cmb2-id-recurring-run input').prop( 'checked', false ).trigger('change');
+            }
+
+            target.slideDown('fast');
+        } else {
+            target.slideUp('fast');
+        }
+    });
+
+    if( ! $('#automatorwp-automations-execution-options input#schedule_run').prop('checked') ) {
+        $('#automatorwp-automations-execution-options .cmb2-id-schedule-run-datetime').hide();
+    }
+
+    // Toggle visibility on recurring run checkbox change
+    $('body').on('change', '#automatorwp-automations-execution-options input#recurring_run', function(e) {
+        var form = $(this).closest('.cmb2-metabox');
+        var target = form.find('.automatorwp-recurring-run-day-label, .cmb2-id-recurring-run-period, .cmb2-id-recurring-run-time');
+
+        form.find('.cmb2-id-recurring-run-period select').trigger('change');
+
+        if( $(this).prop('checked') ) {
+            // Force uncheck schedule run checkbox
+            if( form.find('.cmb2-id-schedule-run input').prop('checked') ) {
+                form.find('.cmb2-id-schedule-run input').prop( 'checked', false ).trigger('change');
+            }
+
+            target.slideDown('fast');
+        } else {
+            target.slideUp('fast');
+        }
+    });
+
+    if( ! $('#automatorwp-automations-execution-options input#recurring_run').prop('checked') ) {
+        $('#automatorwp-automations-execution-options').find('.automatorwp-recurring-run-day-label, .cmb2-id-recurring-run-period, .cmb2-id-recurring-run-time').hide();
+    }
+
+    // Toggle visibility on recurring run period change
+    $('body').on('change', '#automatorwp-automations-execution-options select#recurring_run_period', function(e) {
+        var form = $(this).closest('.cmb2-metabox');
+        var target = form.find('.cmb2-id-recurring-run-day');
+
+        // Bail if recurring run not checked
+        if( ! form.find('input#recurring_run').prop('checked') ) {
+            target.slideUp('fast');
+            return;
+        }
+
+        if( $(this).val() !== 'day' ) {
+            target.slideDown('fast');
+        } else {
+            target.slideUp('fast');
+        }
+
+        // Update maximum allowed values for the day input
+        var day_input = form.find('.cmb2-id-recurring-run-day input#recurring_run_day')
+        var max_day = 365;
+
+        switch( $(this).val() ) {
+            case 'week':
+                max_day = 7;
+                break;
+            case 'month':
+                max_day = 31;
+                break;
+            case 'year':
+            default:
+                max_day = 365;
+                break;
+        }
+
+        if( parseInt( day_input.val() ) > max_day ) {
+            day_input.val( max_day );
+        }
+
+        day_input.attr( 'max', max_day );
+    });
+
+    if( $('#automatorwp-automations-execution-options select#recurring_run_period').val() === 'day' ) {
+        $('#automatorwp-automations-execution-options .cmb2-id-recurring-run-day').hide();
+    }
+
+    $('#automatorwp-automations-execution-options select#recurring_run_period').trigger('change');
+
+    // Run automation button
+    $('body').on('click', '.automatorwp-run-automation button', function(e) {
+
+        var $this = $(this);
+
+        if ( $this.prop('disabled') ) {
+            return;
+        }
+
+        var automation_id = $('input#object_id').val();
+        var users_per_loop = $('input#users_per_loop').val();
+
+        // Disable the button and switch labels
+        $this.prop('disabled', true);
+        $this.find('.automatorwp-run-automation-run-label').hide();
+        $this.find('.automatorwp-run-automation-running-label').show();
+        $('.automatorwp-run-automation').addClass('automatorwp-is-running');
+
+        // Show the cancel button
+        $('.automatorwp-cancel-automation-run').show();
+        // Update the cancel automation run flag
+        automatorwp_cancel_automation_run = false;
+
+        // Remove any error notice
+        $this.closest('#major-publishing-actions').find('.automatorwp-notice-error').remove();
+
+        // Reset the progress
+        $('.automatorwp-run-automation-progress').removeClass('automatorwp-run-automation-progress-completed');
+        $('.automatorwp-run-automation-progress .automatorwp-run-automation-progress-current-progress').css({ width: '0%' });
+        $('.automatorwp-run-automation-progress-text').text('0/0');
+
+        // Show the progress
+        $('.automatorwp-run-automation-progress').slideDown('fast');
+
+        automatorwp_run_automation( automation_id, users_per_loop );
+    });
+
+    if( $('.automatorwp-run-automation.automatorwp-is-running').length ) {
+        var automation_id = $('input#object_id').val();
+        var users_per_loop = $('input#users_per_loop').val();
+
+        automatorwp_run_automation( automation_id, users_per_loop );
+    }
+
+    // Cancel automation run button
+    $('body').on('click', '.automatorwp-cancel-automation-run button', function(e) {
+
+        var $this = $(this);
+
+        if ( $this.prop('disabled') ) {
+            return;
+        }
+
+        // Disable the button and switch labels
+        $this.prop('disabled', true);
+        $this.find('.automatorwp-cancel-automation-run-cancel-label').hide();
+        $this.find('.automatorwp-cancel-automation-run-cancelling-label').show();
+
+        automatorwp_cancel_automation_run = true;
+
     });
 
 })( jQuery );
@@ -1708,5 +1864,158 @@ function automatorwp_initialize_wysiwyg_editor( textarea_id ) {
             buttons: 'strong,em,link,block,del,ins,img,ul,ol,li,,code,more,close'
         }
     });
+
+}
+
+var automatorwp_original_automation_status = '';
+var automatorwp_cancel_automation_run = false;
+
+/**
+ * Run an automation through ajax
+ *
+ * @since 1.0.0
+ *
+ * @param {int} automation_id
+ * @param {int} users_per_loop
+ */
+function automatorwp_run_automation( automation_id, users_per_loop ) {
+
+    var $ = $ || jQuery;
+
+    if( automatorwp_original_automation_status === '' ) {
+        automatorwp_original_automation_status = $('select#status').val();
+
+        if( automatorwp_original_automation_status === 'in-progress' ) {
+            automatorwp_original_automation_status = $('.automatorwp-run-automation').data('original-status');
+        }
+
+        // Switch status to in-progress
+        $('select#status').val('in-progress').trigger('change');
+        $('#cmb-field-js-controls-status-value .cmb2-id-status').html($('select#status option[value="in-progress"]').html());
+    }
+
+    $.ajax({
+        url: ajaxurl,
+        method: 'POST',
+        data: {
+            action: 'automatorwp_run_automation',
+            nonce: automatorwp_admin.nonce,
+            automation_id: automation_id,
+            users_per_loop: users_per_loop,
+        },
+        success: function( response ) {
+
+            if( response.success ) {
+
+                if( automatorwp_cancel_automation_run === true ) {
+
+                    // Send an ajax request to cancel run
+                    $.ajax({
+                        url: ajaxurl,
+                        method: 'POST',
+                        data: {
+                            action: 'automatorwp_cancel_automation_run',
+                            nonce: automatorwp_admin.nonce,
+                            automation_id: automation_id,
+                        },
+                        success: function( response ) {
+                            // Show cancel done text
+                            $('.automatorwp-cancel-automation-run button .automatorwp-cancel-automation-run-cancelling-label').hide();
+                            $('.automatorwp-cancel-automation-run button .automatorwp-cancel-automation-run-done-label').show();
+
+                            // Update the cancel automation run flag
+                            automatorwp_cancel_automation_run = false;
+
+                            setTimeout(function() {
+                                // Restore the run automation elements
+                                automatorwp_restore_run_automation_elements( response );
+                            }, 2000);
+                        },
+                        error: function( response ) {
+                            // Restore the run automation elements
+                            automatorwp_restore_run_automation_elements( response );
+                        }
+                    });
+
+                    return;
+                }
+
+                // Update progress
+                $('.automatorwp-run-automation-progress .automatorwp-run-automation-progress-current-progress').css({ width: response.data.percentage + '%' });
+                $('.automatorwp-run-automation-progress-text').text(response.data.processed + '/' + response.data.count);
+
+                if( response.data.percentage === 100 ) {
+                    $('.automatorwp-run-automation-progress').addClass('automatorwp-run-automation-progress-completed');
+                }
+
+                if( response.data.run_again ) {
+                    // Get the details
+                    automatorwp_run_automation( automation_id, users_per_loop );
+                } else {
+
+                    // Show run automation done text
+                    $('.automatorwp-run-automation button .automatorwp-run-automation-running-label').hide();
+                    $('.automatorwp-run-automation button .automatorwp-run-automation-done-label').show();
+
+                    // Hide the cancel button
+                    $('.automatorwp-cancel-automation-run').hide();
+
+                    setTimeout(function() {
+                        // Restore the run automation elements
+                        automatorwp_restore_run_automation_elements( response );
+                    }, 2000);
+                }
+
+            } else {
+                // Restore the run automation elements
+                automatorwp_restore_run_automation_elements( response );
+            }
+        },
+        error: function( response ) {
+            // Restore the run automation elements
+            automatorwp_restore_run_automation_elements( response );
+        }
+    });
+
+}
+
+/**
+ * Helper fuction to restore the elements disabled or hidden during the run automation process
+ *
+ * @since 1.0.0
+ *
+ * @param {Object} response
+ */
+function automatorwp_restore_run_automation_elements( response ) {
+
+    var $ = $ || jQuery;
+
+    // Enable run automation button, switch labels and restore status
+    $('.automatorwp-run-automation button').prop('disabled', false);
+    $('.automatorwp-run-automation button .automatorwp-run-automation-run-label').show();
+    $('.automatorwp-run-automation button .automatorwp-run-automation-running-label').hide();
+    $('.automatorwp-run-automation button .automatorwp-run-automation-done-label').hide();
+    $('.automatorwp-run-automation').removeClass('automatorwp-is-running');
+    $('select#status').val(automatorwp_original_automation_status).trigger('change');
+    $('#cmb-field-js-controls-status-value .cmb2-id-status').html($('select#status option[value="' + automatorwp_original_automation_status + '"]').html());
+
+    // Hide the progress
+    $('.automatorwp-run-automation-progress').slideUp('fast');
+
+    // Restore the cancel button
+    $('.automatorwp-cancel-automation-run').hide();
+    $('.automatorwp-cancel-automation-run button').prop('disabled', false);
+    $('.automatorwp-cancel-automation-run button .automatorwp-cancel-automation-run-cancel-label').show();
+    $('.automatorwp-cancel-automation-run button .automatorwp-cancel-automation-run-cancelling-label').hide();
+    $('.automatorwp-cancel-automation-run button .automatorwp-cancel-automation-run-done-label').hide();
+
+    // Update the cancel automation run flag
+    automatorwp_cancel_automation_run = false;
+
+    // Show a message if required
+    if( response !== undefined && response.data !== undefined && response.data.message !== undefined ) {
+        $('.automatorwp-run-automation button').closest('#major-publishing-actions').append('<div class="automatorwp-notice-error" style="display: none;">' + response.data.message + '</div>');
+        $('.automatorwp-run-automation button').closest('#major-publishing-actions').find('.automatorwp-notice-error').slideDown('fast');
+    }
 
 }

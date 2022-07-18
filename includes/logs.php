@@ -167,6 +167,10 @@ function automatorwp_get_log_integration_icon( $log ) {
 
                 if( $log->type === 'action' && $object->type === 'automatorwp_anonymous_user' ) {
                     $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
+                }
+
+                if( $log->type === 'trigger' && $object->type === 'automatorwp_all_users' ) {
+                    $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-users.svg';
                 } ?>
 
                 <div class="automatorwp-integration-icon">

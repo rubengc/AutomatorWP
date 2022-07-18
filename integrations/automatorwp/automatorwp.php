@@ -13,6 +13,7 @@ if( !defined( 'ABSPATH' ) ) exit;
 require_once plugin_dir_path( __FILE__ ) . 'triggers/complete-automation.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/user-created.php';
 require_once plugin_dir_path( __FILE__ ) . 'triggers/post-created.php';
+require_once plugin_dir_path( __FILE__ ) . 'triggers/all-users.php';
 // Actions
 require_once plugin_dir_path( __FILE__ ) . 'actions/anonymous-user.php';
 require_once plugin_dir_path( __FILE__ ) . 'actions/redirect-user.php';

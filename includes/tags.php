@@ -651,7 +651,11 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
 
     switch( $tag_name ) {
         case 'times':
-            $replacement = automatorwp_get_user_completion_times( $trigger->id, $user_id, 'trigger' );
+            if( $trigger->type === 'automatorwp_all_users' ) {
+                $replacement = automatorwp_get_object_completion_times( $trigger->id, 'trigger' );
+            } else {
+                $replacement = automatorwp_get_user_completion_times( $trigger->id, $user_id, 'trigger' );
+            }
             break;
     }
 

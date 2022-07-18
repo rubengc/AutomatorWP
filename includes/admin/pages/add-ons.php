@@ -185,7 +185,7 @@ function automatorwp_render_plugin_card( $plugin ) {
                     if( $field ) {
                         $license_key = $field->escaped_value();
 
-                        $license = cmb2_edd_license_data( $license_key );
+                        $license = rgc_cmb2_edd_license_data( $license_key );
                         $license_status = ( $license !== false ) ? $license->license : false;
 
                         if( $license_status !== 'valid' ) {

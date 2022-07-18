@@ -1,13 +1,13 @@
-=== AutomatorWP ===
+=== AutomatorWP - The most flexible and powerful no-code automation plugin for WordPress ===
 Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
-Connect your WordPress plugins together and create automated workflows with no code!
+Automate and connect your WordPress plugins, sites and apps together to create automated workflows with no-code automations!
 
 == Description ==
 
@@ -67,6 +67,9 @@ Configure as many triggers and actions per automation as you want.
 
 **Logged-in and anonymous automations:**
 Create automations for logged-in users or for not logged-in visitors.
+
+**Scheduled and recurring automations:**
+Create automations to run actions on all or on a filtered group of users manually, on a specific date or on a recurring basis.
 
 **Filters:**
 Filter any trigger or action with the conditions of your choice.
@@ -253,11 +256,11 @@ The most recommended is remove first all triggers and actions from this plugin i
 
 = Will AutomatorWP slow down my website? =
 
-This depends heavily on how you use AutomatorWP.
+No, AutomatorWP is well optimized and maintained by a professional team with years of experience in the WordPress ecosystem.
 
-You shouldn't notice any performance impact while using AutomatorWP but, if you have dozens of automations, thousands of users, and your automations are configured with many triggers and actions, then yes, there could be a performance hit.
+We tested AutomatorWP performance in different environments with different amount of resources and we have tuned it so that even servers with fewer resources can use AutomatorWP without noticing any slowdowns.
 
-Try to configure automations only for real needs, for example, we discourage using AutomatorWP as an analytics tool (setting up automations to track page visits).
+AutomatorWP includes a built-in caching and performance oriented workflows that will perform any automation execution in no time.
 
 = Is AutomatorWP compatible with any theme? =
 
@@ -272,6 +275,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.2.2 =
+
+* **New Features**
+* Added the "All users" automation, an automation to run actions on all or on a filtered group of users manually, on a specific date or on a recurring basis.
+* **Improvements**
+* Improved the redirect URL action to work even when other plugins do a redirect.
+* Removed a non required check of a Javascript file exists in AutomatorWP > Settings screen.
+* Prevent PHP warnings during activation caused by CMB2 library.
 
 = 2.2.1 =
 

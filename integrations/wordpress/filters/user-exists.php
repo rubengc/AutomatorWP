@@ -26,9 +26,9 @@ class AutomatorWP_WordPress_User_Exists_Filter extends AutomatorWP_Integration_F
             'label'             => __( 'User with field exists or does not exists', 'automatorwp' ),
             'select_option'     => __( 'User with field <strong>exists</strong> or <strong>does not exists</strong>', 'automatorwp' ),
             /* translators: %1$s: Field name. %2$s: Field value. %3$s: Operator. */
-            'edit_label'        => sprintf( __( 'User with %1$s %2$s %3$s', 'automatorwp' ), '{field_name}', '{field_value}', '{operator}'  ),
+            'edit_label'        => sprintf( __( 'User with %1$s %2$s %3$s', 'automatorwp' ), '{field_name}', '{field_value}', '{condition}'  ),
             /* translators: %1$s: Field name. %2$s: Field value. %3$s: Operator. */
-            'log_label'         => sprintf( __( 'User with %1$s %2$s %3$s', 'automatorwp' ), '{field_name}', '{field_value}', '{operator}' ),
+            'log_label'         => sprintf( __( 'User with %1$s %2$s %3$s', 'automatorwp' ), '{field_name}', '{field_value}', '{condition}' ),
             'options'           => array(
                 'field_name' => array(
                     'from' => 'field_name',

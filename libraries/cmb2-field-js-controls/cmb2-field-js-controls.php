@@ -1,7 +1,7 @@
 <?php
 /**
- * @package      CMB2\Field_JS_Controls
- * @author       Tsunoa
+ * @package      RGC\CMB2\Field_JS_Controls
+ * @author       Ruben Garcia (RubenGC) <rubengcdev@gmail.com>, GamiPress <contact@gamipress.com>
  * @copyright    Copyright (c) Tsunoa
  *
  * Plugin Name: CMB2 Field JS Controls
@@ -13,17 +13,16 @@
  * Author URI: https://tsunoa.com/
  * License: GPLv2+
  */
-
-
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-if( !class_exists( 'CMB2_Field_JS_Controls' ) ) {
+// Prevent CMB2 autoload adding "RGC_" at start
+if( !class_exists( 'RGC_CMB2_Field_JS_Controls' ) ) {
 
     /**
-     * Class CMB2_Field_JS_Controls
+     * Class RGC_CMB2_Field_JS_Controls
      */
-    class CMB2_Field_JS_Controls {
+    class RGC_CMB2_Field_JS_Controls {
 
         /**
          * Current version number
@@ -133,20 +132,20 @@ if( !class_exists( 'CMB2_Field_JS_Controls' ) ) {
 
     }
 
-    //$cmb2_field_js_controls = new CMB2_Field_JS_Controls();
+    //$cmb2_field_js_controls = new RGC_CMB2_Field_JS_Controls();
 
     // TODO: Temporal solution to output html content
     function js_controls_before( $field_args, $field ) {
-        $cmb2_field_js_controls = new CMB2_Field_JS_Controls();
+        $cmb2_field_js_controls = new RGC_CMB2_Field_JS_Controls();
 
         $cmb2_field_js_controls->before_row( $field_args, $field );
     }
 
     function js_controls_after( $field_args, $field ) {
-        $cmb2_field_js_controls = new CMB2_Field_JS_Controls();
+        $cmb2_field_js_controls = new RGC_CMB2_Field_JS_Controls();
 
         $cmb2_field_js_controls->after_row( $field_args, $field );
     }
 
-    $cmb2_field_js_controls = new CMB2_Field_JS_Controls();
+    $cmb2_field_js_controls = new RGC_CMB2_Field_JS_Controls();
 }

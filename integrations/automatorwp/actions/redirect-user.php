@@ -15,6 +15,15 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
     public $action = 'automatorwp_redirect_user';
 
     /**
+     * URL to redirect
+     *
+     * @since 1.0.0
+     *
+     * @var string $url
+     */
+    public $url = '';
+
+    /**
      * The action result
      *
      * @since 1.0.0
@@ -72,22 +81,46 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
      */
     public function execute( $action, $user_id, $action_options, $automation ) {
 
-        // Setup user fields
-        $url = esc_url( $action_options['url'] );
+        // Setup URL
+        $this->url = esc_url( $action_options['url'] );
 
-        if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
-            $this->result = sprintf( __( '%s is not a valid URL.', 'automatorwp' ), $url );
+        if ( ! filter_var( $this->url, FILTER_VALIDATE_URL ) ) {
+            $this->result = sprintf( __( '%s is not a valid URL.', 'automatorwp' ), $this->url );
+            $this->url = '';
             return;
         }
 
-        if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+        // Override others wp_redirect() calls
+        add_filter( 'wp_redirect', array( $this, 'wp_redirect' ), 10, 2 );
+
+        if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
             // If doing an ajax or rest request, update an internal option for this user
-            update_option( 'automatorwp_redirect_url_' . $user_id, $url, false );
+            update_option( 'automatorwp_redirect_url_' . $user_id, $this->url, false );
         } else { ?>
-            <script type="text/javascript">document.location.href = '<?php echo $url ?>';</script>
+            <script type="text/javascript">document.location.href = '<?php echo $this->url ?>';</script>
         <?php }
 
         $this->result = __( 'User redirected successfully.', 'automatorwp' );
+
+    }
+
+    /**
+     * Override others wp_redirect() calls
+     *
+     * @since 1.0.0
+     *
+     * @param string $location The path or URL to redirect to.
+     * @param int    $status   The HTTP response status code to use.
+     *
+     * @return string
+     */
+    public function wp_redirect( $location, $status ) {
+
+        if( ! empty( $this->url ) && filter_var( $this->url, FILTER_VALIDATE_URL ) ) {
+            $location = $this->url;
+        }
+
+        return $location;
 
     }
 

@@ -150,3 +150,78 @@ function automatorwp_send_email( $args = array() ) {
 function automatorwp_set_html_content_type( $content_type = 'text/html' ) {
     return 'text/html';
 }
+
+/**
+ * Helper function to get the date format
+ *
+ * @since 1.0.0
+ *
+ * @param array $allowed_formats
+ *
+ * @return string
+ */
+function automatorwp_get_date_format( $allowed_formats = array() ) {
+
+    $format = 'Y-m-d';
+
+    $option = get_option( 'date_format' );
+
+    if( empty( $allowed_formats ) ) {
+        $allowed_formats = array( 'Y-m-d', 'm/d/Y', 'd/m/Y' );
+    }
+
+    if( in_array( $option, $allowed_formats ) ) {
+        $format = $option;
+    }
+
+    return $format;
+
+}
+
+/**
+ * Helper function to get the time format
+ *
+ * @since 1.0.0
+ *
+ * @param array $allowed_formats
+ *
+ * @return string
+ */
+function automatorwp_get_time_format( $allowed_formats = array() ) {
+
+    $format = 'H:i';
+
+    $option = get_option( 'time_format' );
+
+    if( empty( $allowed_formats ) ) {
+        $allowed_formats = array( 'g:i a', 'g:i A', 'H:i' );
+    }
+
+    if( in_array( $option, $allowed_formats ) ) {
+        $format = $option;
+    }
+
+    return $format;
+
+}
+
+/**
+ * Get timestamp from text date
+ *
+ * @since  2.2.2
+ *
+ * @param  string $value    Date value.
+ * @param  string $format   Expected date format.
+ *
+ * @return mixed            Unix timestamp representing the date.
+ */
+function automatorwp_get_timestamp_from_value( $value, $format = 'Y-m-d' ) {
+
+    $timestamp = CMB2_Utils::get_timestamp_from_value( $value, $format );
+
+    if ( empty( $timestamp ) && CMB2_Utils::is_valid_date( $value ) ) {
+        $timestamp = CMB2_Utils::make_valid_time_stamp( $value );
+    }
+
+    return $timestamp;
+}

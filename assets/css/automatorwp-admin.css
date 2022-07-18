@@ -91,6 +91,7 @@
 #post-body.columns-2 #postbox-container-1 .automatorwp-box-form .cmb-type-text-datetime-timestamp input.cmb2-timepicker {
     display: inline;
     max-width: 100px;
+    margin-top: 0;
 }
 
 #post-body.columns-2 #postbox-container-1 .automatorwp-box-form .cmb-th,
@@ -119,7 +120,8 @@
 }
 
 /* Publishing actions */
-#automatorwp-automations-save-changes #major-publishing-actions {
+#automatorwp-automations-save-changes #major-publishing-actions,
+#automatorwp-automations-execution-options #major-publishing-actions {
     margin: 20px -12px -12px -12px;
 }
 
@@ -622,6 +624,171 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     border-radius: 3px;
     font-size: 14px;
     cursor: pointer;
+}
+
+/* -------------------------------------------
+    All Users Automations
+   ------------------------------------------- */
+
+body.edit-all-users-automation .automatorwp-sequential-field,
+body.edit-all-users-automation #automatorwp_triggers .automatorwp-add-trigger,
+body.edit-all-users-automation #cmb-field-js-controls-times_per_user-before,
+body.edit-all-users-automation .cmb2-id-times-per-user,
+body.edit-all-users-automation #cmb-field-js-controls-times_per_user-after {
+    display: none;
+}
+
+/* Execution options box */
+#automatorwp-automations-execution-options .cmb2-id-schedule-run,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run {
+    padding-top: 0 !important;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-schedule-run .cmb-th,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run .cmb-th {
+    float: left;
+    width: auto;
+    margin-right: 6px;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-schedule-run .cmb-th label,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run .cmb-th label {
+    font-weight: 400;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-schedule-run .dashicons,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run .dashicons {
+    color: #82878c;
+    margin-right: 4px;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-schedule-run .cmb-td,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run .cmb-td {
+    float: left !important;
+    width: auto !important;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-schedule-run-datetime {
+    padding: 4px 0 12px 0 !important;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-day,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-period {
+    float: left;
+    padding-top: 10px !important;
+    padding-bottom: 12px !important;
+}
+
+#automatorwp-automations-execution-options label[for="recurring_run_day"] {
+    color: #222222;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-period {
+    width: 114px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-day .cmb2-metabox-description {
+    display: inline-block !important;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-day input {
+    width: 65px !important;
+    margin-left: 4px;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-day .cmb-th,
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-period .cmb-th {
+    display: none;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-time {
+    margin-bottom: 10px;
+    padding-top: 10px !important;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-time .cmb-th {
+    float: left !important;
+    width: auto !important;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-time .cmb-td {
+    float: left !important;
+    width: 90px !important;
+    margin-left: 4px;
+}
+
+#automatorwp-automations-execution-options .cmb2-id-recurring-run-time .cmb-th label {
+    font-weight: 400;
+    padding-top: 8px;
+    color: #666;
+}
+
+#automatorwp-automations-execution-options .automatorwp-next-run-date .dashicons {
+    color: #82878c;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation button {
+    display: block;
+    margin: 0 auto 0 0;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation button .dashicons {
+    vertical-align: middle;
+    opacity: 0.8;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation button .dashicons.dashicons-controls-play {
+    margin-top: -4px;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation button .dashicons.dashicons-update {
+    -webkit-animation: rotation 2s linear infinite;
+    -moz-animation: rotation 2s linear infinite;
+    animation: rotation 2s linear infinite;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation.automatorwp-is-running,
+#automatorwp-automations-execution-options .automatorwp-cancel-automation-run {
+    float: left;
+    width: 50%;
+}
+
+#automatorwp-automations-execution-options .automatorwp-cancel-automation-run button {
+    display: block;
+    margin: 0 0 0 auto;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation-progress {
+    margin-top: 12px;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation-progress .automatorwp-run-automation-progress-bar {
+    height: 12px;
+    background: rgba(0,0,0,0.1);
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation-progress .automatorwp-run-automation-progress-bar .automatorwp-run-automation-progress-current-progress {
+    height: 12px;
+    width: 0;
+    background-color: #2271b1;
+    background-color: #2d8bd7;
+    transition: width 0.5s ease-out;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation-progress-completed .automatorwp-run-automation-progress-bar .automatorwp-run-automation-progress-current-progress {
+    background-color: #269630;
+    background-color: #30c03c;
+}
+
+#automatorwp-automations-execution-options .automatorwp-run-automation-progress .automatorwp-run-automation-progress-text {
+    font-size: 13px;
+    color: #666;
+}
+
+#automatorwp-automations-execution-options .automatorwp-notice-error {
+    margin: 14px 0 6px 0;
 }
 
 /* -------------------------------------------
@@ -1735,15 +1902,15 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 
 .automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type {
     position: relative;
-    width: 42%;
-    text-align: center;
-    padding: 1em;
+    width: 28%;
+    padding: 1em 0.5em;
     border: 2px solid #efefef;
     border-radius: 8px;
     cursor: pointer;
     margin-left: 6px;
     margin-right: 6px;
     margin-bottom: 12px;
+    text-align: center;
 }
 
 .automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type:hover {
@@ -1757,7 +1924,7 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
 }
 
 .automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type img {
-    width: 40%;
+    width: 58%;
     margin-bottom: 6px;
 }
 
@@ -1765,6 +1932,16 @@ body:not(.edit-anonymous-automation) .automatorwp-automation-ui-anonymous-notice
     display: block;
     font-size: 16px;
     margin-bottom: 8px;
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type .automatorwp-automation-type-description {
+
+}
+
+.automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type .automatorwp-automation-type-info {
+    color: #72777c;
+    font-size: 12px;
+    margin-top: 6px;
 }
 
 /* -------------------------------------------

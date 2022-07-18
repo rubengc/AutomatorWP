@@ -222,6 +222,10 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
                 if( $type_args ) {
                     $integration = automatorwp_get_integration( $type_args['integration'] );
 
+                    if( $trigger->type === 'automatorwp_all_users' ) {
+                        $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-users.svg';
+                    }
+
                     if( $integration ) : ?>
 
                         <div class="automatorwp-integration-icon">
@@ -499,6 +503,7 @@ add_action( 'admin_notices', 'automatorwp_automations_admin_notices' );
  */
 function automatorwp_automations_default_data( $default_data = array() ) {
 
+    // Handle the type during creation
     $types = automatorwp_get_automation_types();
     $type = ( isset( $_GET['type'] ) ? sanitize_text_field( $_GET['type'] ) : 'user' );
 
@@ -551,6 +556,83 @@ function automatorwp_automations_insert_automation_data( $object_data, $original
 add_filter( 'ct_insert_object_data', 'automatorwp_automations_insert_automation_data', 10, 2 );
 
 /**
+ * Handler when a new automation is getting created
+ *
+ * @since 1.0.0
+ *
+ * @param int       $object_id    Object ID.
+ * @param stdClass  $object       Object.
+ * @param bool      $update       Whether this is an existing object being updated or not.
+ */
+function automatorwp_automations_on_insert_automation( $object_id, $object, $update ) {
+
+    global $ct_table;
+
+    // If not is our custom table, return
+    if( $ct_table->name !== 'automatorwp_automations' ) {
+        return;
+    }
+
+    // Bail if updating
+    if( $update ) {
+        return;
+    }
+
+    // Check if is an all users automation
+    if( $object->type === 'all-users' ) {
+
+        /**
+         * Filter available to define the default users per loop option
+         *
+         * @since 1.0.0
+         *
+         * @param int $users_per_loop
+         *
+         * @return int
+         */
+        $users_per_loop = apply_filters( 'automatorwp_default_users_per_loop', 200 );
+
+        // Update the users per loop meta
+        ct_update_object_meta( $object_id, 'users_per_loop', $users_per_loop );
+    }
+
+}
+add_action( 'ct_insert_object', 'automatorwp_automations_on_insert_automation', 10, 3 );
+
+/**
+ * Handler when an automation is getting updated
+ *
+ * @since 1.0.0
+ *
+ * @param int       $object_id    Object ID.
+ * @param stdClass  $object       Object.
+ * @param bool      $update       Whether this is an existing object being updated or not.
+ */
+function automatorwp_automations_on_update_automation( $object_id, $object, $update ) {
+
+    global $ct_table;
+
+    // If not is our custom table, return
+    if( $ct_table->name !== 'automatorwp_automations' ) {
+        return;
+    }
+
+    // Bail if not updating
+    if( ! $update ) {
+        return;
+    }
+
+    // Check if is an all users automation
+    if( $object->type === 'all-users' ) {
+
+        // Calculate the next run date based on settings submitted
+        automatorwp_update_automation_next_run_date( $object_id, true );
+
+    }
+}
+add_action( 'ct_insert_object', 'automatorwp_automations_on_update_automation', 10, 3 );
+
+/**
  * Register custom CMB2 meta boxes
  *
  * @since  1.0.0
@@ -574,6 +656,90 @@ function automatorwp_automations_meta_boxes( ) {
         ),
         array(
             'priority' => 'core',
+        )
+    );
+
+    // Execution Options
+    $default_datetime = strtotime( date( 'Y-m-d 00:00:00', current_time( 'timestamp' ) ) );
+
+    automatorwp_add_meta_box(
+        'automatorwp-automations-execution-options',
+        __( 'Execution Options', 'automatorwp' ),
+        'automatorwp_automations',
+        array(
+            'users_per_loop' => array(
+                'name' 	=> __( 'Users per loop', 'automatorwp' ),
+                'desc' 	=> __( 'Number of users on which to run the automation per loop. Adjust this option depending of your server resources.', 'automatorwp' ),
+                'type' 	=> 'input',
+                'default' 	=> '200',
+                'attributes' => array(
+                    'type' => 'number',
+                    'min' => '1',
+                ),
+                'classes' => 'automatorwp-has-tooltip',
+                'after_field' => 'automatorwp_tooltip_cb',
+                'js_controls' => array(
+                    'icon' => 'dashicons-filter',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
+            ),
+            'schedule_run' => array(
+                'name' 	=> '<div class="dashicons dashicons-calendar-alt"></div>' . __( 'Schedule execution:', 'automatorwp' ),
+                'type' 	=> 'checkbox',
+                'classes' => 'cmb2-switch',
+            ),
+            'schedule_run_datetime' => array(
+                'name' => __( 'Execute this automation on:', 'automatorwp' ),
+                'type' => 'text_datetime_timestamp',
+                'date_format' =>  automatorwp_get_date_format( array( 'Y-m-d', 'm/d/Y' ) ),
+                'time_format' =>  automatorwp_get_time_format(),
+                'default' => $default_datetime,
+            ),
+            'recurring_run' => array(
+                'name' 	=> '<div class="dashicons dashicons-backup"></div>' . __( 'Recurring execution:', 'automatorwp' ),
+                'type' 	=> 'checkbox',
+                'classes' => 'cmb2-switch',
+            ),
+            'recurring_run_day' => array(
+                'name' 	=> __( 'Execute this automation:', 'automatorwp' ),
+                'desc' 	=> __( 'of', 'automatorwp' ),
+                'type' 	=> 'input',
+                'default' 	=> '1',
+                'attributes' => array(
+                    'type' => 'number',
+                    'min' => '1',
+                    'max' => '365',
+                ),
+                'before_row' 	=> 'automatorwp_recurring_run_day_before_row',
+                'before_field' 	=> 'automatorwp_recurring_run_day_before_field',
+            ),
+            'recurring_run_period' => array(
+                'name' 	=> __( 'Period:', 'automatorwp' ),
+                'type' 	=> 'select',
+                'default' 	=> 'day',
+                'options' => array(
+                    'day'   => __( 'Every day', 'automatorwp' ),
+                    'week'  => __( 'every week', 'automatorwp' ),
+                    'month' => __( 'every month', 'automatorwp' ),
+                    'year'  => __( 'every year', 'automatorwp' ),
+                )
+            ),
+            'recurring_run_time' => array(
+                'name' => __( 'at', 'automatorwp' ),
+                'type' => 'text_time',
+                'time_format' =>  automatorwp_get_time_format(),
+                'default' =>  date( automatorwp_get_time_format(), $default_datetime ),
+                'after_row' => 'automatorwp_automations_execute_options_actions',
+            ),
+        ),
+        array(
+            'priority' => 'default',
+            'context' => 'side',
+            'show_on_cb' => 'automatorwp_automations_execution_options_box_show_cb',
         )
     );
 
@@ -652,7 +818,7 @@ function automatorwp_automations_meta_boxes( ) {
             'status' => array(
                 'name' 	=> __( 'Status', 'automatorwp' ),
                 'type' 	=> 'select',
-                'options' => automatorwp_get_automation_statuses(),
+                'options_cb' => 'automatorwp_options_cb_automation_statuses',
                 'js_controls' => array(
                     'icon' => 'dashicons-post-status',
                     'save_button'   => __( 'Save', 'automatorwp' ),
@@ -709,6 +875,7 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
         return;
     }
 
+    // The JS controls after of the date field
     js_controls_after( $field_args, $field );
 
     $primary_key = $ct_table->db->primary_key;
@@ -764,7 +931,7 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
         <?php if( $automation->status === 'inactive' ) : ?>
 
             <div class="automatorwp-save-and-activate">
-                <?php submit_button( __( 'Save &amp; Activate' ), ' primary large', 'automatorwp-save-and-activate', false ); ?>
+                <?php submit_button( __( 'Save &amp; Activate', 'automatorwp' ), ' primary large', 'automatorwp-save-and-activate', false ); ?>
             </div>
 
             <div id="publishing-action">
@@ -803,12 +970,154 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
 }
 
 /**
+ * Execution options box show callback
+ *
+ * @since 1.0.0
+ *
+ * @param object $cmb CMB2 object
+ *
+ * @return bool        True/false whether to show the metabox
+ */
+function automatorwp_automations_execution_options_box_show_cb( $cmb ) {
+    $object_id = $cmb->object_id();
+
+    $object = ct_get_object( $object_id );
+
+    return ( $object->type === 'all-users' );
+}
+
+/**
+ * Before recurring run day row
+ *
+ * @since 1.0.0
+ */
+function automatorwp_recurring_run_day_before_row() {
+    ?><label for="recurring_run_day" class="automatorwp-recurring-run-day-label"><?php _e( 'Execute this automation:', 'automatorwp' ); ?></label><?php
+}
+
+/**
+ * Before recurring run day field
+ *
+ * @since 1.0.0
+ */
+function automatorwp_recurring_run_day_before_field() {
+   ?><p class="cmb2-metabox-description"><?php _e( 'The day', 'automatorwp' ); ?></p><?php
+}
+
+/**
+ * Execute options actions
+ *
+ * @since 1.0.0
+ */
+function automatorwp_automations_execute_options_actions() {
+
+    global $ct_table;
+
+    if( ! $ct_table ) {
+        return;
+    }
+
+    if( $ct_table->name !== 'automatorwp_automations' ) {
+        return;
+    }
+
+    $primary_key = $ct_table->db->primary_key;
+    $object_id = isset( $_GET[$primary_key] ) ? absint( $_GET[$primary_key] ) : 0;
+
+    $automation = ct_get_object( $object_id );
+
+    // Bail if automation doesn't exists
+    if( ! $automation ) {
+        return;
+    }
+
+    // Check if automation has been scheduled to show the next run date
+    $schedule_run = (bool) automatorwp_get_automation_meta( $automation->id, 'schedule_run', true );
+    $recurring_run = (bool) automatorwp_get_automation_meta( $automation->id, 'recurring_run', true );
+    $next_run_date = automatorwp_get_automation_meta( $automation->id, 'next_run_date', true );
+
+    if( ( $schedule_run || $recurring_run ) && ! empty( $next_run_date ) ) :
+        $date_format = automatorwp_get_date_format();
+        $time_format = automatorwp_get_time_format(); ?>
+        <div class="automatorwp-next-run-date">
+            <span class="dashicons dashicons-controls-play"></span>
+            <?php _e( 'Next run:', 'automatorwp' ); ?>
+            <strong><?php echo date( $date_format . ' ' . $time_format, strtotime( $next_run_date ) ); ?></strong>
+        </div>
+    <?php endif;
+
+    // Setup vars for an automation in progress
+    if( $automation->status === 'in-progress' ) {
+        $original_status = automatorwp_get_automation_meta( $automation->id, 'original_status', true );
+        $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+        $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
+        $count = automatorwp_get_all_users_automation_users_count( $automation );
+        $processed = ($loop * $users_per_loop) + $users_per_loop;
+        $processed = min( $processed, $count );
+        $percentage = ( $processed / $count ) * 100;
+    }
+
+    ?>
+    <div id="major-publishing-actions">
+
+        <div class="automatorwp-run-automation <?php if( $automation->status === 'in-progress' ) : ?>automatorwp-is-running<?php endif; ?>" <?php if( $automation->status === 'in-progress' ) : ?>data-original-status="<?php echo esc_attr( $original_status ); ?>"<?php endif; ?>>
+            <button type="button" class="button button-primary button-large" <?php if( $automation->status === 'in-progress' ) : ?>disabled<?php endif; ?>>
+                <div class="automatorwp-run-automation-run-label" <?php if( $automation->status === 'in-progress' ) : ?>style="display: none;"<?php endif; ?>>
+                    <span class="dashicons dashicons-controls-play"></span> <?php _e( 'Run automation', 'automatorwp' ); ?>
+                </div>
+                <div class="automatorwp-run-automation-running-label" <?php if( $automation->status !== 'in-progress' ) : ?>style="display: none;"<?php endif; ?>>
+                    <span class="dashicons dashicons-update"></span> <?php _e( 'Running...', 'automatorwp' ); ?>
+                </div>
+                <div class="automatorwp-run-automation-done-label" style="display: none;">
+                    <span class="dashicons dashicons-yes"></span> <?php _e( 'Done!', 'automatorwp' ); ?>
+                </div>
+            </button>
+        </div>
+
+        <div class="automatorwp-cancel-automation-run" <?php if( $automation->status !== 'in-progress' ) : ?>style="display: none;"<?php endif; ?>>
+            <button type="button" class="button automatorwp-button-danger button-large">
+                <div class="automatorwp-cancel-automation-run-cancel-label">
+                    <?php _e( 'Cancel', 'automatorwp' ); ?>
+                </div>
+                <div class="automatorwp-cancel-automation-run-cancelling-label" style="display: none;">
+                    <?php _e( 'Cancelling...', 'automatorwp' ); ?>
+                </div>
+                <div class="automatorwp-cancel-automation-run-done-label" style="display: none;">
+                    <?php _e( 'Cancelled', 'automatorwp' ); ?>
+                </div>
+            </button>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="automatorwp-run-automation-progress" <?php if( $automation->status !== 'in-progress' ) : ?>style="display: none;"<?php endif; ?>>
+            <div class="automatorwp-run-automation-progress-bar">
+                <?php if( $automation->status === 'in-progress' ) : ?>
+                    <div class="automatorwp-run-automation-progress-current-progress" style="width: <?php echo $percentage; ?>%"></div>
+                <?php else : ?>
+                    <div class="automatorwp-run-automation-progress-current-progress"></div>
+                <?php endif; ?>
+            </div>
+            <?php if( $automation->status === 'in-progress' ) : ?>
+                <div class="automatorwp-run-automation-progress-text"><?php echo $processed . '/' . $count; ?></div>
+            <?php else : ?>
+                <div class="automatorwp-run-automation-progress-text">0/0</div>
+            <?php endif; ?>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <?php
+}
+
+/**
  * Remove meta boxes
  *
  * @since  1.0.0
  */
 function automatorwp_automations_remove_meta_boxes() {
-
     // Removes submitdiv box
     remove_meta_box( 'submitdiv', 'automatorwp_automations', 'side' );
 }

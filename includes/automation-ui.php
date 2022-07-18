@@ -38,10 +38,15 @@ function automatorwp_render_automation_type_dialog() {
             <h2><?php _e( 'Automation type', 'automatorwp' ); ?></h2>
             <div class="automatorwp-automation-types">
                 <?php foreach( $types as $type => $args ) : ?>
-                    <div class="automatorwp-automation-type" data-type="<?php echo $type; ?>">
+                    <div class="automatorwp-automation-type automatorwp-automation-type-<?php echo $type; ?>" data-type="<?php echo $type; ?>">
                         <img src="<?php echo $args['image']; ?>" alt="<?php echo $args['label']; ?>">
-                        <strong><?php echo $args['label']; ?></strong>
-                        <span><?php echo $args['desc']; ?></span>
+                        <div class="automatorwp-automation-type-description">
+                            <strong><?php echo $args['label']; ?></strong>
+                            <span><?php echo $args['desc']; ?></span>
+                        </div>
+                        <?php if ( isset( $args['info'] ) && ! empty( $args['info'] ) ) : ?>
+                            <div class="automatorwp-automation-type-info"><?php echo $args['info']; ?></div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -159,7 +164,7 @@ function automatorwp_automation_ui_admin_body_class( $classes ) {
     $automation_id = (int) $_GET[$primary_key];
     $automation = $ct_table->db->get( $automation_id );
 
-    $classes .= ' edit-' . $automation->type . '-automation';
+    $classes .= ' edit-' . $automation->type . '-automation ';
 
     return $classes;
 
@@ -211,6 +216,8 @@ function automatorwp_automation_ui_triggers_meta_box( $automation, $type ) {
 
     <?php // Triggers ?>
     <div class="automatorwp-automation-items automatorwp-triggers">
+
+        <?php $triggers = automatorwp_check_all_users_trigger( $automation, $triggers ); ?>
 
         <?php foreach( $triggers as $trigger ) : ?>
 
@@ -561,6 +568,10 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
         $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
     }
 
+    if( $item_type === 'trigger' && $object->type === 'automatorwp_all_users' ) {
+        $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-users.svg';
+    }
+
     // Setup the item classes
     $classes = array(
         'automatorwp-automation-item',
@@ -594,6 +605,15 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
             unset( $actions['move-up'] );
             unset( $actions['move-down'] );
         } else if( $object->type === 'automatorwp_anonymous_user' ) {
+            $classes[] = 'automatorwp-no-grab';
+            unset( $actions['move-up'] );
+            unset( $actions['move-down'] );
+            unset( $actions['delete'] );
+        }
+    }
+
+    if( $automation->type === 'all-users' ) {
+        if( $object->type === 'automatorwp_all_users' ) {
             $classes[] = 'automatorwp-no-grab';
             unset( $actions['move-up'] );
             unset( $actions['move-down'] );
@@ -749,12 +769,73 @@ function automatorwp_automation_item_edit_html( $object, $item_type, $automation
 }
 
 /**
+ * Creates the all users triggers if not exists
+ *
+ * @since  2.2.2
+ *
+ * @param stdClass  $automation The automation object
+ * @param array     $triggers   The automation triggers
+ *
+ * @return array
+ */
+function automatorwp_check_all_users_trigger( $automation, $triggers ) {
+
+    if( $automation->type === 'all-users' ) {
+
+        $create_all_users_trigger = false;
+
+        // Check if the first action is the action required for anonymous automations
+        if( ! isset( $triggers[0] ) ) {
+            $create_all_users_trigger = true;
+        }
+
+        if( isset( $triggers[0] ) && $triggers[0]->type !== 'automatorwp_all_users' ) {
+            $create_all_users_trigger = true;
+        }
+
+        if( $create_all_users_trigger ) {
+            ct_setup_table( 'automatorwp_triggers' );
+
+            // Setup the trigger data
+            $trigger_data = array(
+                'automation_id' => $automation->id,
+                'title' => __( 'Run automation on all users', 'automatorwp' ),
+                'type' => 'automatorwp_all_users',
+                'status' => 'active',
+                'position' => 0,
+                'date' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+            );
+
+            // Insert the new trigger
+            $trigger_id = ct_insert_object( $trigger_data );
+
+            if( $trigger_id ) {
+                $trigger_data['id'] = $trigger_id;
+
+                $trigger_data = (object) $trigger_data;
+
+                // Prepend the new trigger at start of the triggers list
+                array_unshift( $triggers, $trigger_data );
+            }
+
+            ct_reset_setup_table();
+        }
+
+    }
+
+    return $triggers;
+
+}
+
+/**
  * Creates the anonymous user action if not exists
  *
  * @since  1.3.0
  *
  * @param stdClass  $automation The automation object
- * @param array     $actions The automation actions
+ * @param array     $actions    The automation actions
+ *
+ * @return array
  */
 function automatorwp_check_anonymous_user_action( $automation, $actions ) {
 

@@ -20,6 +20,7 @@ function automatorwp_get_automation_statuses() {
 
     return apply_filters( 'automatorwp_automation_statuses', array(
         'active' => __( 'Active', 'automatorwp' ),
+        'in-progress' => __( 'In Progress', 'automatorwp' ),
         'inactive' => __( 'Inactive', 'automatorwp' ),
     ) );
 
@@ -38,12 +39,21 @@ function automatorwp_get_automation_types() {
         'user' => array(
             'image' => AUTOMATORWP_URL . 'assets/img/automatorwp-logo.svg',
             'label' => __( 'Logged-in', 'automatorwp' ),
-            'desc'  => __( 'Automation for logged-in users. Designed to run actions on the user who has completed the triggers.', 'automatorwp' ),
+            'desc'  => __( 'Automation for logged-in users.', 'automatorwp' ),
+            'info'  => __( 'Designed to run actions on the user who has completed the triggers.', 'automatorwp' ),
+
         ),
         'anonymous' => array(
             'image' => AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous-logo.svg',
             'label' => __( 'Anonymous', 'automatorwp' ),
-            'desc'  => __( 'Automation for anonymous users. Ideal for creating new users or for modifying existing users.', 'automatorwp' ),
+            'desc'  => __( 'Automation for not logged-in users.', 'automatorwp' ),
+            'info'  => __( 'Ideal for creating new users or modifying existing users.', 'automatorwp' ),
+        ),
+        'all-users' => array(
+            'image' => AUTOMATORWP_URL . 'assets/img/automatorwp-all-users-logo.svg',
+            'label' => __( 'All users', 'automatorwp' ),
+            'desc'  => __( 'Automation to run actions on a filtered group of users.', 'automatorwp' ),
+            'info'  => __( 'This automation can be run <b>manually</b>, on a <b>specific date</b> or on a <b>recurring</b> basis.', 'automatorwp' ),
         ),
     ) );
 
@@ -91,7 +101,7 @@ function automatorwp_get_automation_object( $automation_id, $output = OBJECT ) {
 }
 
 /**
- * Get the automation object data
+ * Get the automation metadata
  *
  * @param int       $automation_id  The automation ID
  * @param string    $meta_key       Optional. The meta key to retrieve. By default, returns
@@ -103,12 +113,30 @@ function automatorwp_get_automation_object( $automation_id, $output = OBJECT ) {
 function automatorwp_get_automation_meta( $automation_id, $meta_key = '', $single = false ) {
 
     ct_setup_table( 'automatorwp_automations' );
-
     $meta_value = ct_get_object_meta( $automation_id, $meta_key, $single );
-
     ct_reset_setup_table();
 
     return $meta_value;
+
+}
+
+/**
+ * Update automation metadata
+ *
+ * @param int    $automation_id The automation ID.
+ * @param string $meta_key      Metadata key.
+ * @param mixed  $meta_value    Metadata value. Must be serializable if non-scalar.
+ * @param mixed  $prev_value    Optional. Previous value to check before removing. Default empty.
+ *
+ * @return int|bool         Meta ID if the key didn't exist, true on successful update, false on failure.
+ */
+function automatorwp_update_automation_meta( $automation_id, $meta_key, $meta_value, $prev_value = '' ) {
+
+    ct_setup_table( 'automatorwp_automations' );
+    $meta_id = ct_update_object_meta( $automation_id, $meta_key, $meta_value, $prev_value );
+    ct_reset_setup_table();
+
+    return $meta_id;
 
 }
 
@@ -220,6 +248,203 @@ function automatorwp_get_automation_actions( $automation_id, $output = OBJECT ) 
     }
 
     return $actions;
+
+}
+
+/**
+ * Calculate the next run date for an all users automation
+ *
+ * @since  1.0.0
+ *
+ * @param int   $automation_id  The automation ID
+ * @param bool  $is_saving      Flag to meet if the automation is being saved from the edit screen to handle the values from $_POST
+ */
+function automatorwp_update_automation_next_run_date( $automation_id, $is_saving = false ) {
+
+    // Setup vars
+    $args = automatorwp_setup_automation_next_run_date_args( $automation_id, $is_saving );
+    $current_time = current_time( 'timestamp' );
+    $date_format = automatorwp_get_date_format( array( 'Y-m-d', 'm/d/Y' ) );
+    $time_format = automatorwp_get_time_format();
+    $datetime_format = $date_format . ' ' . $time_format;
+    $timestamp = false;
+
+    if( $args['schedule_run'] === true ) {
+        // Schedule run
+
+        $schedule_run_datetime = $args['schedule_run_datetime'];
+
+        // Check if schedule run datetime is correctly setup (this only when saving)
+        if( is_array( $schedule_run_datetime ) && isset( $schedule_run_datetime['date'] ) && isset( $schedule_run_datetime['time'] ) ) {
+
+            $date = sanitize_text_field( $schedule_run_datetime['date'] );
+            $time = sanitize_text_field( $schedule_run_datetime['time'] );
+
+            $timestamp = automatorwp_get_timestamp_from_value( $date . ' ' . $time, $date_format );
+        } else if( ! empty( $schedule_run_datetime ) ) {
+            // Schedule run datetime is stored as a timestamp
+            $timestamp = $schedule_run_datetime;
+        }
+    } else if( $args['recurring_run'] === true ) {
+        // Recurring run
+
+        $day = $args['recurring_run_day'];
+        $period = $args['recurring_run_period'];
+        $time = $args['recurring_run_time'];
+
+        switch( $period ) {
+            case 'day':
+                $date = date( 'Y-m-d', strtotime(' +1 day', $current_time ) );
+                break;
+            case 'week':
+                $days_of_the_week = array( 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' );
+                $week_day = $day - 1;
+
+                // Get the current week timestamp
+                $week_timestamp = strtotime( $days_of_the_week[$week_day], strtotime( 'this week', $current_time ) );
+
+                // If lower than today, get the next week
+                if( $week_timestamp <= $current_time ) {
+                    $week_timestamp = strtotime( $days_of_the_week[$week_day], strtotime( 'next week', $current_time ) );
+                }
+
+                $date = date( 'Y-m-d', $week_timestamp );
+                break;
+            case 'month':
+                // Get the current month timestamp
+                $month = absint( date('m', $current_time) );
+
+                // Check the max day of this month
+                $max_day = absint( date( 't', $current_time ) );
+                $max_day = min( $day, $max_day );
+
+                $month_timestamp = strtotime( date( "{$max_day}-{$month}-Y", $current_time ) );
+
+                // If lower than today, get the next month
+                if( $month_timestamp <= $current_time ) {
+                    $next_month = strtotime( 'next month', $current_time );
+                    $month = absint( date('m', $next_month) );
+
+                    // Check the max day of next month
+                    $max_day = absint( date( 't', $next_month ) );
+                    $max_day = min( $day, $max_day );
+
+                    $month_timestamp = strtotime( date( "{$max_day}-{$month}-Y", $current_time ) );
+                }
+
+                $date = date( 'Y-m-d', $month_timestamp );
+                break;
+            case 'year':
+                $year = absint( date('Y', $current_time) );
+                $year_day = $day - 1;
+
+                // Check if is a leap year
+                if( $day === 365 && checkdate( 2, 29, $year ) ) {
+                    $year_day = 365;
+                }
+
+                // Get the current year timestamp
+
+                $date = DateTime::createFromFormat( 'Y z' , $year . ' ' . $year_day);
+                $year_timestamp = $date->getTimestamp();
+
+                // If lower than today, get the next year
+                if( $year_timestamp <= $current_time ) {
+                    // Increase year and restore the day to check if next year is leap
+                    $year += 1;
+                    $year_day = $day - 1;
+
+                    // Check if is a leap year
+                    if( $day === 365 && checkdate( 2, 29, $year ) ) {
+                        $year_day = 365;
+                    }
+
+                    $date = DateTime::createFromFormat( 'Y z' , $year . ' ' . $year_day);
+
+                    $year_timestamp = $date->getTimestamp();
+                }
+
+                $date = date( 'Y-m-d', $year_timestamp );
+                break;
+        }
+
+        $datetime = $date . ' ' . $time;
+        $timestamp = automatorwp_get_timestamp_from_value( $datetime, $datetime_format );
+
+    }
+
+    // Update the next run date meta
+    if( $timestamp && $timestamp > $current_time ) {
+        automatorwp_update_automation_meta( $automation_id, 'next_run_date', date( 'Y-m-d H:i:s', $timestamp ) );
+    } else {
+        automatorwp_update_automation_meta( $automation_id, 'next_run_date', '' );
+    }
+
+}
+
+/**
+ * Setup args for the next run date calculation
+ *
+ * @since  1.0.0
+ *
+ * @param int   $automation_id  The automation ID
+ * @param bool  $is_saving      Flag to meet if the automation is being saved from the edit screen to handle the values from $_POST
+ */
+function automatorwp_setup_automation_next_run_date_args( $automation_id, $is_saving = false ) {
+
+    $args = array();
+
+    // Schedule run
+    if( $is_saving ) {
+        $args['schedule_run'] = ( isset( $_POST['schedule_run'] ) ? true : false );
+    } else {
+        $args['schedule_run'] = (bool) automatorwp_get_automation_meta( $automation_id, 'schedule_run', true );
+    }
+
+    if( $args['schedule_run'] ) {
+
+        // Schedule run datetime
+        if( $is_saving ) {
+            $args['schedule_run_datetime'] = ( isset( $_POST['schedule_run_datetime'] ) ? $_POST['schedule_run_datetime'] : array() );
+        } else {
+            $args['schedule_run_datetime'] = automatorwp_get_automation_meta( $automation_id, 'schedule_run_datetime', true );
+        }
+
+    }
+
+    // Recurring run
+    if( $is_saving ) {
+        $args['recurring_run'] = ( isset( $_POST['recurring_run'] ) ? true : false );
+    } else {
+        $args['recurring_run'] = (bool) automatorwp_get_automation_meta( $automation_id, 'recurring_run', true );
+    }
+
+    if( $args['recurring_run'] ) {
+
+        // Recurring run day
+        if( $is_saving ) {
+            $args['recurring_run_day'] = absint( ( isset( $_POST['recurring_run_day'] ) ? $_POST['recurring_run_day'] : '1' ) );
+        } else {
+            $args['recurring_run_day'] = absint( automatorwp_get_automation_meta( $automation_id, 'recurring_run_day', true ) );
+        }
+
+        // Recurring run period
+        if( $is_saving ) {
+            $args['recurring_run_period'] = ( isset( $_POST['recurring_run_period'] ) ? sanitize_text_field( $_POST['recurring_run_period'] ) : 'day' );
+        } else {
+            $args['recurring_run_period'] = automatorwp_get_automation_meta( $automation_id, 'recurring_run_period', true );
+        }
+
+        // Recurring run time
+        if( $is_saving ) {
+            $args['recurring_run_time'] = ( isset( $_POST['recurring_run_time'] ) ? sanitize_text_field( $_POST['recurring_run_time'] ) : 'day' );
+        } else {
+            $args['recurring_run_time'] = automatorwp_get_automation_meta( $automation_id, 'recurring_run_time', true );
+        }
+
+    }
+
+    return $args;
 
 }
 

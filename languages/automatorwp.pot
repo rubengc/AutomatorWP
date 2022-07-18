@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-06-15 09:16+0200\n"
+"POT-Creation-Date: 2022-07-17 13:06+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,9 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:896
 #: integrations/automatorwp/actions/call-function.php:195
 #: integrations/automatorwp/actions/do-action.php:185
-#: integrations/automatorwp/actions/redirect-user.php:200
+#: integrations/automatorwp/actions/redirect-user.php:233
+#: integrations/autonami/includes/actions/add-contact-tag.php:175
+#: integrations/autonami/includes/actions/add-user-tag.php:164
 #: integrations/mailchimp/includes/actions/user-add-note.php:209
 #: integrations/mailchimp/includes/actions/user-add-tag.php:217
 #: integrations/mailchimp/includes/actions/user-subscribe.php:202
@@ -202,12 +204,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1419 includes/automation-ui.php:1431
+#: includes/automation-ui.php:1500 includes/automation-ui.php:1512
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1421
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1502
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -271,14 +273,14 @@ msgstr ""
 msgid "Anonymous Automations"
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:228 includes/automation-ui.php:176
-#: includes/automation-ui.php:200 includes/custom-tables.php:90
+#: includes/admin/pages/dashboard.php:228 includes/automation-ui.php:181
+#: includes/automation-ui.php:205 includes/custom-tables.php:90
 #: includes/custom-tables/automations.php:152
 msgid "Triggers"
 msgstr ""
 
-#: includes/admin/pages/dashboard.php:229 includes/automation-ui.php:177
-#: includes/automation-ui.php:253 includes/custom-tables.php:134
+#: includes/admin/pages/dashboard.php:229 includes/automation-ui.php:182
+#: includes/automation-ui.php:260 includes/custom-tables.php:134
 #: includes/custom-tables/automations.php:153
 msgid "Actions"
 msgstr ""
@@ -369,7 +371,8 @@ msgstr ""
 msgid "Importing automation..."
 msgstr ""
 
-#: includes/admin/pages/import-automation.php:61
+#: includes/admin/pages/import-automation.php:61 includes/events.php:1623
+#: includes/events.php:1767 includes/events.php:1985
 msgid "Invalid automation ID."
 msgstr ""
 
@@ -395,9 +398,9 @@ msgid "License"
 msgstr ""
 
 #: includes/admin/pages/licenses.php:265
-#: includes/custom-tables/automations.php:583
-#: includes/custom-tables/automations.php:771
-#: includes/custom-tables/automations.php:779
+#: includes/custom-tables/automations.php:749
+#: includes/custom-tables/automations.php:938
+#: includes/custom-tables/automations.php:946
 msgid "Save Changes"
 msgstr ""
 
@@ -440,7 +443,7 @@ msgstr ""
 
 #: includes/admin/settings/general.php:33 includes/cmb2.php:360
 #: includes/custom-tables/automations.php:154
-#: includes/custom-tables/automations.php:638
+#: includes/custom-tables/automations.php:804
 msgid "Author"
 msgstr ""
 
@@ -466,12 +469,15 @@ msgstr ""
 
 #: includes/ajax-functions.php:23 includes/ajax-functions.php:156
 #: includes/ajax-functions.php:195 includes/ajax-functions.php:255
-#: includes/ajax-functions.php:428 includes/ajax-functions.php:679
-#: includes/ajax-functions.php:759 includes/ajax-functions.php:820
+#: includes/ajax-functions.php:429 includes/ajax-functions.php:502
+#: includes/ajax-functions.php:541 includes/ajax-functions.php:792
+#: includes/ajax-functions.php:872 includes/ajax-functions.php:933
 msgid "You're not allowed to perform this action."
 msgstr ""
 
 #: includes/ajax-functions.php:34 includes/ajax-functions.php:40
+#: includes/events.php:1877 includes/events.php:1908 includes/events.php:2057
+#: includes/events.php:2108 includes/events.php:2145 includes/events.php:2183
 msgid "Invalid automation."
 msgstr ""
 
@@ -517,11 +523,22 @@ msgstr ""
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:832
+#: includes/ajax-functions.php:440 includes/ajax-functions.php:512
+#: includes/events.php:1632 includes/events.php:1776 includes/events.php:1994
+#, php-format
+msgid "Automation with ID %d not found."
+msgstr ""
+
+#: includes/ajax-functions.php:449 includes/events.php:1641
+#: includes/events.php:2195
+msgid "Users per loop need to be higher than 0."
+msgstr ""
+
+#: includes/ajax-functions.php:945
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:912 includes/cmb2.php:478
+#: includes/ajax-functions.php:1025 includes/cmb2.php:529
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
 #: includes/custom-tables/logs.php:345 includes/custom-tables/logs.php:772
@@ -533,199 +550,229 @@ msgstr ""
 msgid "Automation type"
 msgstr ""
 
-#: includes/automation-ui.php:49
+#: includes/automation-ui.php:54
 msgid "<strong>Note:</strong> Automation type cannot be changed later. "
 msgstr ""
 
-#: includes/automation-ui.php:53
+#: includes/automation-ui.php:58
 msgid "Confirm"
 msgstr ""
 
-#: includes/automation-ui.php:54 includes/automation-ui.php:115
-#: includes/automation-ui.php:463 includes/automation-ui.php:727
+#: includes/automation-ui.php:59 includes/automation-ui.php:120
+#: includes/automation-ui.php:470 includes/automation-ui.php:747
+#: includes/custom-tables/automations.php:1080
 msgid "Cancel"
 msgstr ""
 
-#: includes/automation-ui.php:90
+#: includes/automation-ui.php:95
 msgid "Export automation"
 msgstr ""
 
-#: includes/automation-ui.php:92
+#: includes/automation-ui.php:97
 msgid "Enter you website URL:"
 msgstr ""
 
-#: includes/automation-ui.php:94
+#: includes/automation-ui.php:99
 msgid "Please, enter a valid URL."
 msgstr ""
 
-#: includes/automation-ui.php:97
+#: includes/automation-ui.php:102
 msgid "Exportable URL:"
 msgstr ""
 
-#: includes/automation-ui.php:102
+#: includes/automation-ui.php:107
 msgid "Copy URL"
 msgstr ""
 
-#: includes/automation-ui.php:103
+#: includes/automation-ui.php:108
 msgid "Copied!"
 msgstr ""
 
-#: includes/automation-ui.php:106
+#: includes/automation-ui.php:111
 msgid "Copy this URL and place it on your browser to automatically import this automation on your website."
 msgstr ""
 
-#: includes/automation-ui.php:111
+#: includes/automation-ui.php:116
 msgid "Generate URL to export"
 msgstr ""
 
-#: includes/automation-ui.php:112
+#: includes/automation-ui.php:117
 msgid "Generating URL"
 msgstr ""
 
-#: includes/automation-ui.php:113
+#: includes/automation-ui.php:118
 msgid "Done"
 msgstr ""
 
-#: includes/automation-ui.php:201
+#: includes/automation-ui.php:206
 msgid "When this happens..."
 msgstr ""
 
-#: includes/automation-ui.php:205
+#: includes/automation-ui.php:210
 msgid "Sequential"
 msgstr ""
 
-#: includes/automation-ui.php:208
+#: includes/automation-ui.php:213
 msgid "Check this option to force users to complete triggers in order."
 msgstr ""
 
-#: includes/automation-ui.php:226
+#: includes/automation-ui.php:233
 msgid "Anonymous automations only support one trigger per automation."
 msgstr ""
 
-#: includes/automation-ui.php:228
+#: includes/automation-ui.php:235
 msgid "Add Trigger"
 msgstr ""
 
-#: includes/automation-ui.php:230 includes/automation-ui.php:274
+#: includes/automation-ui.php:237 includes/automation-ui.php:281
 msgid "Add Filter"
 msgstr ""
 
-#: includes/automation-ui.php:234 includes/automation-ui.php:278
-#: includes/automation-ui.php:467 includes/automation-ui.php:731
+#: includes/automation-ui.php:241 includes/automation-ui.php:285
+#: includes/automation-ui.php:474 includes/automation-ui.php:751
 msgid "Saving..."
 msgstr ""
 
-#: includes/automation-ui.php:254
+#: includes/automation-ui.php:261
 msgid "Do this..."
 msgstr ""
 
-#: includes/automation-ui.php:272
+#: includes/automation-ui.php:279
 msgid "Add Action"
 msgstr ""
 
-#: includes/automation-ui.php:326
+#: includes/automation-ui.php:333
 msgid "Select an integration"
 msgstr ""
 
-#: includes/automation-ui.php:385
+#: includes/automation-ui.php:392
 msgid "Select a trigger"
 msgstr ""
 
-#: includes/automation-ui.php:394
+#: includes/automation-ui.php:401
 msgid "Search for triggers"
 msgstr ""
 
-#: includes/automation-ui.php:426
+#: includes/automation-ui.php:433
 msgid "Select an action"
 msgstr ""
 
-#: includes/automation-ui.php:432
+#: includes/automation-ui.php:439
 msgid "Search for actions"
 msgstr ""
 
-#: includes/automation-ui.php:578
+#: includes/automation-ui.php:589
 msgid "Move up"
 msgstr ""
 
-#: includes/automation-ui.php:582
+#: includes/automation-ui.php:593
 msgid "Move down"
 msgstr ""
 
-#: includes/automation-ui.php:586 includes/automation-ui.php:837
-#: includes/custom-tables/automations.php:379
-#: includes/custom-tables/automations.php:380
-#: includes/custom-tables/automations.php:792
-#: includes/custom-tables/automations.php:793
+#: includes/automation-ui.php:597 includes/automation-ui.php:918
+#: includes/custom-tables/automations.php:383
+#: includes/custom-tables/automations.php:384
+#: includes/custom-tables/automations.php:959
+#: includes/custom-tables/automations.php:960
 msgid "Delete"
 msgstr ""
 
-#: includes/automation-ui.php:726 includes/custom-tables/automations.php:611
-#: includes/custom-tables/automations.php:630
-#: includes/custom-tables/automations.php:645
-#: includes/custom-tables/automations.php:658
-#: includes/custom-tables/automations.php:678 includes/scripts.php:203
+#: includes/automation-ui.php:746 includes/custom-tables/automations.php:683
+#: includes/custom-tables/automations.php:777
+#: includes/custom-tables/automations.php:796
+#: includes/custom-tables/automations.php:811
+#: includes/custom-tables/automations.php:824
+#: includes/custom-tables/automations.php:844 includes/scripts.php:203
 msgid "Save"
 msgstr ""
 
-#: includes/automation-ui.php:779
+#: includes/automation-ui.php:802
+msgid "Run automation on all users"
+msgstr ""
+
+#: includes/automation-ui.php:860
 #: integrations/automatorwp/actions/anonymous-user.php:82
 #: integrations/automatorwp/actions/anonymous-user.php:84
 #, php-format
 msgid "Actions will be run on %1$s"
 msgstr ""
 
-#: includes/automation-ui.php:819
+#: includes/automation-ui.php:900
 msgid "Trigger disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this trigger."
 msgstr ""
 
-#: includes/automation-ui.php:821
+#: includes/automation-ui.php:902
 msgid "Action disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this action."
 msgstr ""
 
-#: includes/automation-ui.php:830 includes/automation-ui.php:840
-#: includes/custom-tables/automations.php:235 includes/logs.php:180
-#: includes/logs.php:267
+#: includes/automation-ui.php:911 includes/automation-ui.php:921
+#: includes/custom-tables/automations.php:239 includes/logs.php:184
+#: includes/logs.php:271
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:1103
+#: includes/automation-ui.php:1184
 msgid "&"
 msgstr ""
 
-#: includes/automation-ui.php:1334
+#: includes/automation-ui.php:1415
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:1334
+#: includes/automation-ui.php:1415
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:1335
+#: includes/automation-ui.php:1416
 msgid "View all add-ons"
 msgstr ""
 
 #: includes/automations.php:23
+msgid "In Progress"
+msgstr ""
+
+#: includes/automations.php:24
 #: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:56
 msgid "Inactive"
 msgstr ""
 
-#: includes/automations.php:40
+#: includes/automations.php:41
 msgid "Logged-in"
 msgstr ""
 
-#: includes/automations.php:41
-msgid "Automation for logged-in users. Designed to run actions on the user who has completed the triggers."
+#: includes/automations.php:42
+msgid "Automation for logged-in users."
 msgstr ""
 
-#: includes/automations.php:45 includes/logs.php:23
+#: includes/automations.php:43
+msgid "Designed to run actions on the user who has completed the triggers."
+msgstr ""
+
+#: includes/automations.php:48 includes/logs.php:23
 msgid "Anonymous"
 msgstr ""
 
-#: includes/automations.php:46
-msgid "Automation for anonymous users. Ideal for creating new users or for modifying existing users."
+#: includes/automations.php:49
+msgid "Automation for not logged-in users."
 msgstr ""
 
-#: includes/automations.php:256
+#: includes/automations.php:50
+msgid "Ideal for creating new users or modifying existing users."
+msgstr ""
+
+#: includes/automations.php:54
+msgid "All users"
+msgstr ""
+
+#: includes/automations.php:55
+msgid "Automation to run actions on a filtered group of users."
+msgstr ""
+
+#: includes/automations.php:56
+msgid "This automation can be run <b>manually</b>, on a <b>specific date</b> or on a <b>recurring</b> basis."
+msgstr ""
+
+#: includes/automations.php:481
 msgid "(Cloned)"
 msgstr ""
 
@@ -763,11 +810,11 @@ msgstr ""
 msgid "any status"
 msgstr ""
 
-#: includes/cmb2.php:347
+#: includes/cmb2.php:347 includes/cmb2.php:406
 msgid "any field"
 msgstr ""
 
-#: includes/cmb2.php:351 includes/tags.php:64
+#: includes/cmb2.php:351 includes/cmb2.php:410 includes/tags.php:64
 #: integrations/automatorwp/actions/anonymous-user.php:109
 #: integrations/automatorwp/actions/anonymous-user.php:283
 #: integrations/wordpress/filters/user-field.php:41
@@ -776,8 +823,8 @@ msgid "ID"
 msgstr ""
 
 #: includes/cmb2.php:352 includes/custom-tables/automations.php:150
-#: includes/custom-tables/automations.php:563
-#: includes/custom-tables/automations.php:567
+#: includes/custom-tables/automations.php:645
+#: includes/custom-tables/automations.php:649
 #: includes/custom-tables/logs.php:156
 msgid "Title"
 msgstr ""
@@ -787,13 +834,13 @@ msgid "Slug"
 msgstr ""
 
 #: includes/cmb2.php:354 includes/custom-tables/automations.php:151
-#: includes/custom-tables/automations.php:587
+#: includes/custom-tables/automations.php:753
 #: includes/custom-tables/logs.php:157
 msgid "Type"
 msgstr ""
 
 #: includes/cmb2.php:355 includes/custom-tables/automations.php:156
-#: includes/custom-tables/automations.php:653
+#: includes/custom-tables/automations.php:819
 msgid "Status"
 msgstr ""
 
@@ -836,22 +883,72 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: includes/cmb2.php:406 includes/utilities.php:385 includes/utilities.php:420
+#: includes/cmb2.php:411 includes/tags.php:70
+#: integrations/automatorwp/actions/anonymous-user.php:111
+#: integrations/automatorwp/actions/anonymous-user.php:225
+#: integrations/wordpress/filters/user-exists.php:42
+#: integrations/wordpress/filters/user-field.php:42
+#: integrations/wordpress/triggers/user-field-update.php:46
+#: integrations/wordpress/triggers/user-field-update.php:259
+msgid "Username"
+msgstr ""
+
+#: includes/cmb2.php:412 includes/tags.php:76
+#: integrations/activecampaign/includes/tags.php:37
+#: integrations/automatorwp/actions/anonymous-user.php:110
+#: integrations/automatorwp/actions/anonymous-user.php:224
+#: integrations/autonami/includes/tags.php:77
+#: integrations/woocommerce/includes/functions.php:59
+#: integrations/wordpress/filters/user-exists.php:41
+#: integrations/wordpress/filters/user-field.php:43
+#: integrations/wordpress/triggers/user-field-update.php:47
+#: integrations/wordpress/triggers/user-field-update.php:260
+msgid "Email"
+msgstr ""
+
+#: includes/cmb2.php:413 includes/tags.php:82
+#: integrations/wordpress/filters/user-field.php:46
+#: integrations/wordpress/triggers/user-field-update.php:48
+#: integrations/wordpress/triggers/user-field-update.php:261
+msgid "Display name"
+msgstr ""
+
+#: includes/cmb2.php:414
+#: integrations/wordpress/triggers/user-field-update.php:49
+#: integrations/wordpress/triggers/user-field-update.php:262
+msgid "Nicename"
+msgstr ""
+
+#: includes/cmb2.php:415
+#: integrations/wordpress/triggers/user-field-update.php:51
+#: integrations/wordpress/triggers/user-field-update.php:264
+msgid "Website"
+msgstr ""
+
+#: includes/cmb2.php:416
+msgid "Registration Date"
+msgstr ""
+
+#: includes/cmb2.php:457 includes/utilities.php:385 includes/utilities.php:420
 msgid "any role"
 msgstr ""
 
-#: includes/cmb2.php:448
+#: includes/cmb2.php:499
 msgid "any item"
 msgstr ""
 
-#: includes/cmb2.php:503
+#: includes/cmb2.php:554
 msgid "Choose a filter"
 msgstr ""
 
-#: includes/cmb2.php:545 includes/utilities.php:490
+#: includes/cmb2.php:621 includes/utilities.php:490
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:45
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:54
 msgid "Use a custom value"
+msgstr ""
+
+#: includes/cron.php:28
+msgid "Every five minutes"
 msgstr ""
 
 #: includes/custom-tables.php:29 includes/custom-tables/logs.php:158
@@ -875,76 +972,162 @@ msgstr ""
 msgid "Completions"
 msgstr ""
 
-#: includes/custom-tables/automations.php:269
+#: includes/custom-tables/automations.php:273
 msgid "Missing integration"
 msgstr ""
 
-#: includes/custom-tables/automations.php:356
-#: includes/custom-tables/automations.php:357
-#: includes/custom-tables/automations.php:733
-#: includes/custom-tables/automations.php:734
+#: includes/custom-tables/automations.php:360
+#: includes/custom-tables/automations.php:361
+#: includes/custom-tables/automations.php:900
+#: includes/custom-tables/automations.php:901
 msgid "Clone"
 msgstr ""
 
-#: includes/custom-tables/automations.php:363
-#: includes/custom-tables/automations.php:364
-#: includes/custom-tables/automations.php:740
-#: includes/custom-tables/automations.php:741
+#: includes/custom-tables/automations.php:367
+#: includes/custom-tables/automations.php:368
+#: includes/custom-tables/automations.php:907
+#: includes/custom-tables/automations.php:908
 msgid "Export"
 msgstr ""
 
-#: includes/custom-tables/automations.php:377
-#: includes/custom-tables/automations.php:790
+#: includes/custom-tables/automations.php:381
+#: includes/custom-tables/automations.php:957
 msgid "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete."
 msgstr ""
 
-#: includes/custom-tables/automations.php:462
+#: includes/custom-tables/automations.php:466
 msgid "Automation cloned successfully."
 msgstr ""
 
-#: includes/custom-tables/automations.php:463
+#: includes/custom-tables/automations.php:467
 msgid "Automation could not be cloned."
 msgstr ""
 
-#: includes/custom-tables/automations.php:469
+#: includes/custom-tables/automations.php:473
 #, php-format
 msgid "Automation cloned successfully! <a href=\"%s\">Edit the new automation</a>."
 msgstr ""
 
-#: includes/custom-tables/automations.php:571
+#: includes/custom-tables/automations.php:653
 msgid "Enter title here"
 msgstr ""
 
-#: includes/custom-tables/automations.php:600
+#: includes/custom-tables/automations.php:667
+msgid "Execution Options"
+msgstr ""
+
+#: includes/custom-tables/automations.php:671
+msgid "Users per loop"
+msgstr ""
+
+#: includes/custom-tables/automations.php:672
+msgid "Number of users on which to run the automation per loop. Adjust this option depending of your server resources."
+msgstr ""
+
+#: includes/custom-tables/automations.php:691
+msgid "Schedule execution:"
+msgstr ""
+
+#: includes/custom-tables/automations.php:696
+msgid "Execute this automation on:"
+msgstr ""
+
+#: includes/custom-tables/automations.php:703
+msgid "Recurring execution:"
+msgstr ""
+
+#: includes/custom-tables/automations.php:708
+#: includes/custom-tables/automations.php:995
+msgid "Execute this automation:"
+msgstr ""
+
+#: includes/custom-tables/automations.php:709
+msgid "of"
+msgstr ""
+
+#: includes/custom-tables/automations.php:721
+msgid "Period:"
+msgstr ""
+
+#: includes/custom-tables/automations.php:725
+msgid "Every day"
+msgstr ""
+
+#: includes/custom-tables/automations.php:726
+msgid "every week"
+msgstr ""
+
+#: includes/custom-tables/automations.php:727
+msgid "every month"
+msgstr ""
+
+#: includes/custom-tables/automations.php:728
+msgid "every year"
+msgstr ""
+
+#: includes/custom-tables/automations.php:732
+msgid "at"
+msgstr ""
+
+#: includes/custom-tables/automations.php:766
 msgid "Times per user"
 msgstr ""
 
-#: includes/custom-tables/automations.php:601
+#: includes/custom-tables/automations.php:767
 msgid "Maximum number of times a user can complete this automation. Set it to 0 for unlimited."
 msgstr ""
 
-#: includes/custom-tables/automations.php:619
+#: includes/custom-tables/automations.php:785
 msgid "Total times"
 msgstr ""
 
-#: includes/custom-tables/automations.php:620
+#: includes/custom-tables/automations.php:786
 msgid "Maximum number of times this automation can be completed. Set it to 0 for unlimited."
 msgstr ""
 
-#: includes/custom-tables/automations.php:666
+#: includes/custom-tables/automations.php:832
 msgid "Created on"
 msgstr ""
 
-#: includes/custom-tables/automations.php:667
+#: includes/custom-tables/automations.php:833
 msgid "Automation will take effect based on this date. You can schedule <strong>future</strong> automations by setting this field with a future date."
 msgstr ""
 
-#: includes/custom-tables/automations.php:668
+#: includes/custom-tables/automations.php:834
 msgid "<strong>Note:</strong> For future automations, status need to be <strong>active</strong> because setting a future date won't update the status automatically."
 msgstr ""
 
-#: includes/custom-tables/automations.php:767
+#: includes/custom-tables/automations.php:934
 msgid "Save &amp; Activate"
+msgstr ""
+
+#: includes/custom-tables/automations.php:1004
+msgid "The day"
+msgstr ""
+
+#: includes/custom-tables/automations.php:1044
+msgid "Next run:"
+msgstr ""
+
+#: includes/custom-tables/automations.php:1066
+msgid "Run automation"
+msgstr ""
+
+#: includes/custom-tables/automations.php:1069
+msgid "Running..."
+msgstr ""
+
+#: includes/custom-tables/automations.php:1072
+msgid "Done!"
+msgstr ""
+
+#: includes/custom-tables/automations.php:1083
+msgid "Cancelling..."
+msgstr ""
+
+#: includes/custom-tables/automations.php:1086
+#: integrations/restrict-content-pro/includes/actions/add-membership.php:70
+msgid "Cancelled"
 msgstr ""
 
 #: includes/custom-tables/logs.php:159 includes/tags.php:58
@@ -1067,6 +1250,31 @@ msgstr ""
 msgid "(No post assigned)"
 msgstr ""
 
+#: includes/events.php:1647
+msgid "Invalid automation type."
+msgstr ""
+
+#: includes/events.php:1658
+msgid "Automation has been run the number of times allowed. Change the \"Total times\" setting for this automation to allow run it again."
+msgstr ""
+
+#: includes/events.php:1668 includes/events.php:2116 includes/events.php:2153
+msgid "Trigger configuration not found."
+msgstr ""
+
+#: includes/events.php:1781
+msgid "Automation run has been cancelled."
+msgstr ""
+
+#: includes/events.php:1999
+msgid "Can not cancel automation run because is not running."
+msgstr ""
+
+#: includes/events.php:2022
+#, php-format
+msgid "%s run cancelled by the user"
+msgstr ""
+
 #: includes/filters.php:47
 #, php-format
 msgid "Filter \"%s\" has the option key \"%s\" that is not allowed"
@@ -1086,7 +1294,7 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: includes/logs.php:259 includes/logs.php:269
+#: includes/logs.php:263 includes/logs.php:273
 msgid "Filter not passed"
 msgstr ""
 
@@ -1134,32 +1342,6 @@ msgstr ""
 
 #: includes/tags.php:48
 msgid "Admin email"
-msgstr ""
-
-#: includes/tags.php:70 integrations/automatorwp/actions/anonymous-user.php:111
-#: integrations/automatorwp/actions/anonymous-user.php:225
-#: integrations/wordpress/filters/user-exists.php:42
-#: integrations/wordpress/filters/user-field.php:42
-#: integrations/wordpress/triggers/user-field-update.php:46
-#: integrations/wordpress/triggers/user-field-update.php:259
-msgid "Username"
-msgstr ""
-
-#: includes/tags.php:76 integrations/activecampaign/includes/tags.php:37
-#: integrations/automatorwp/actions/anonymous-user.php:110
-#: integrations/automatorwp/actions/anonymous-user.php:224
-#: integrations/woocommerce/includes/functions.php:59
-#: integrations/wordpress/filters/user-exists.php:41
-#: integrations/wordpress/filters/user-field.php:43
-#: integrations/wordpress/triggers/user-field-update.php:47
-#: integrations/wordpress/triggers/user-field-update.php:260
-msgid "Email"
-msgstr ""
-
-#: includes/tags.php:82 integrations/wordpress/filters/user-field.php:46
-#: integrations/wordpress/triggers/user-field-update.php:48
-#: integrations/wordpress/triggers/user-field-update.php:261
-msgid "Display name"
 msgstr ""
 
 #: includes/tags.php:84
@@ -1580,6 +1762,10 @@ msgid "Add %1$s to user"
 msgstr ""
 
 #: integrations/activecampaign/includes/actions/add-user-tag.php:35
+#: integrations/autonami/includes/actions/add-contact-tag.php:36
+#: integrations/autonami/includes/actions/add-contact-tag.php:41
+#: integrations/autonami/includes/actions/add-user-tag.php:36
+#: integrations/autonami/includes/actions/add-user-tag.php:41
 #: integrations/fluentcrm/includes/actions/user-tag.php:36
 #: integrations/groundhogg/includes/actions/user-tag.php:35
 #: integrations/mailchimp/includes/actions/user-add-tag.php:49
@@ -1590,6 +1776,10 @@ msgstr ""
 #: integrations/activecampaign/includes/triggers/user-tag-added.php:39
 #: integrations/activemember360/includes/actions/user-tag.php:37
 #: integrations/activemember360/includes/triggers/contact-tag.php:41
+#: integrations/autonami/includes/actions/add-contact-tag.php:37
+#: integrations/autonami/includes/actions/add-user-tag.php:37
+#: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:40
+#: integrations/autonami/includes/triggers/user-tag-added.php:39
 #: integrations/fluentcrm/includes/actions/user-tag.php:37
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:40
 #: integrations/fluentcrm/includes/triggers/tag-added.php:39
@@ -1735,8 +1925,8 @@ msgid "<a href=\"#\" class=\"automatorwp-view-webhook\">View Webhook</a>"
 msgstr ""
 
 #: integrations/activecampaign/includes/functions.php:128
-#: integrations/automatorwp/actions/redirect-user.php:47
-#: integrations/automatorwp/actions/redirect-user.php:194
+#: integrations/automatorwp/actions/redirect-user.php:56
+#: integrations/automatorwp/actions/redirect-user.php:227
 msgid "URL:"
 msgstr ""
 
@@ -1750,6 +1940,9 @@ msgstr ""
 
 #: integrations/activecampaign/includes/functions.php:221
 #: integrations/activemember360/includes/triggers/contact-tag.php:68
+#: integrations/autonami/includes/functions.php:49
+#: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:42
+#: integrations/autonami/includes/triggers/user-tag-added.php:41
 #: integrations/fluentcrm/includes/functions.php:77
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:42
 #: integrations/fluentcrm/includes/triggers/tag-added.php:41
@@ -2299,6 +2492,7 @@ msgid "Add meta"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:197
+#: integrations/automatorwp/triggers/all-users.php:92
 #: integrations/wordpress/actions/create-post.php:168
 #: integrations/wordpress/actions/create-user.php:124
 #: integrations/wordpress/actions/delete-multiple-posts.php:124
@@ -2310,6 +2504,7 @@ msgid "Meta Key:"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:202
+#: integrations/automatorwp/triggers/all-users.php:98
 #: integrations/wordpress/actions/create-post.php:173
 #: integrations/wordpress/actions/create-user.php:129
 #: integrations/wordpress/actions/delete-multiple-posts.php:130
@@ -2513,6 +2708,7 @@ msgstr ""
 
 #: integrations/automatorwp/actions/call-function.php:63
 #: integrations/automatorwp/actions/do-action.php:63
+#: integrations/automatorwp/triggers/all-users.php:75
 #: integrations/wordpress/actions/delete-multiple-posts.php:107
 #: integrations/wordpress/actions/update-multiple-posts.php:107
 #: integrations/wordpress/filters/user-exists.php:53
@@ -2584,38 +2780,38 @@ msgstr ""
 msgid "Hook \"%s\" throw the error: %s"
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:35
+#: integrations/automatorwp/actions/redirect-user.php:44
 msgid "Redirect user to url"
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:36
+#: integrations/automatorwp/actions/redirect-user.php:45
 msgid "Redirect user to <strong>url</strong>"
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:38
-#: integrations/automatorwp/actions/redirect-user.php:40
+#: integrations/automatorwp/actions/redirect-user.php:47
+#: integrations/automatorwp/actions/redirect-user.php:49
 #, php-format
 msgid "Redirect user to %1$s"
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:44
+#: integrations/automatorwp/actions/redirect-user.php:53
 msgid "url"
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:48
+#: integrations/automatorwp/actions/redirect-user.php:57
 msgid "The url to redirect."
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:79
+#: integrations/automatorwp/actions/redirect-user.php:88
 #, php-format
 msgid "%s is not a valid URL."
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:90
+#: integrations/automatorwp/actions/redirect-user.php:103
 msgid "User redirected successfully."
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:195
+#: integrations/automatorwp/actions/redirect-user.php:228
 msgid "The url where user has been redirected."
 msgstr ""
 
@@ -2661,6 +2857,63 @@ msgstr ""
 #: integrations/automatorwp/filters/flat-condition.php:92
 #, php-format
 msgid "Filter passed. \"%1$s\" %2$s \"%3$s\"."
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:47
+#: integrations/automatorwp/triggers/all-users.php:49
+#, php-format
+msgid "Run automation on %1$s"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:52
+msgid "all users"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:55
+#: integrations/wordpress/actions/delete-multiple-posts.php:87
+#: integrations/wordpress/actions/update-multiple-posts.php:87
+msgid "Field Conditions:"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:56
+msgid "Set conditions to filter users by their fields."
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:60
+#: integrations/automatorwp/triggers/all-users.php:87
+#: integrations/wordpress/actions/delete-multiple-posts.php:92
+#: integrations/wordpress/actions/delete-multiple-posts.php:119
+#: integrations/wordpress/actions/update-multiple-posts.php:92
+#: integrations/wordpress/actions/update-multiple-posts.php:119
+msgid "Add condition"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:65
+#: integrations/wordpress/actions/delete-multiple-posts.php:97
+#: integrations/wordpress/actions/update-multiple-posts.php:97
+#: integrations/wordpress/filters/user-exists.php:38
+#: integrations/wordpress/filters/user-field.php:38
+msgid "Field:"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:70
+#: integrations/wordpress/actions/delete-multiple-posts.php:102
+#: integrations/wordpress/actions/update-multiple-posts.php:102
+msgid "Choose a field"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:82
+#: integrations/wordpress/actions/delete-multiple-posts.php:114
+#: integrations/wordpress/actions/update-multiple-posts.php:114
+msgid "Meta Conditions:"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:83
+msgid "Set conditions to filter users by their metas."
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:178
+msgid "some users"
 msgstr ""
 
 #: integrations/automatorwp/triggers/complete-automation.php:26
@@ -2757,6 +3010,172 @@ msgstr ""
 #: integrations/automatorwp/triggers/user-created.php:31
 #, php-format
 msgid "User gets created through %1$s"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:27
+msgid "Add a tag to contact"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:28
+msgid "Add a <strong>tag</strong> to contact"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:30
+#, php-format
+msgid "Add tag %1$s to %2$s"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:32
+#: integrations/autonami/includes/actions/add-user-tag.php:32
+#: integrations/fluentcrm/includes/actions/user-tag.php:30
+#: integrations/fluentcrm/includes/actions/user-tag.php:32
+#: integrations/groundhogg/includes/actions/user-tag.php:29
+#: integrations/groundhogg/includes/actions/user-tag.php:31
+#, php-format
+msgid "Add tag %1$s"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:46
+msgid "contact"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:49
+msgid "Contact Email:"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:50
+msgid "The contact email address."
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:100
+msgid "Contact already has the tag"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-contact-tag.php:103
+#: integrations/autonami/includes/actions/add-user-tag.php:92
+msgid "Tag added successfully"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-user-tag.php:27
+msgid "Add a tag to user"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-user-tag.php:28
+msgid "Add a <strong>tag</strong> to a user"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-user-tag.php:30
+#, php-format
+msgid "Add tag %1$s to user"
+msgstr ""
+
+#: integrations/autonami/includes/actions/add-user-tag.php:89
+msgid "User already has the tag"
+msgstr ""
+
+#: integrations/autonami/includes/functions.php:140
+#: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:42
+#: integrations/autonami/includes/triggers/user-added-list.php:41
+#: integrations/fluentcrm/includes/functions.php:139
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:42
+#: integrations/fluentcrm/includes/triggers/list-added.php:41
+#: integrations/mailchimp/includes/functions.php:56
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:77
+msgid "any list"
+msgstr ""
+
+#: integrations/autonami/includes/tags.php:23
+#: integrations/fluentcrm/includes/actions/user-tag.php:39
+#: integrations/groundhogg/includes/actions/user-tag.php:38
+msgid "Tag ID"
+msgstr ""
+
+#: integrations/autonami/includes/tags.php:131
+#: integrations/fluentcrm/includes/actions/user-list.php:39
+msgid "List ID"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:27
+msgid "Contact is added to list"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:28
+msgid "Contact is added to <strong>list</strong>"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:30
+#, php-format
+msgid "Contact is added to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:32
+#, php-format
+msgid "Contact is added to %1$s"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:40
+#: integrations/autonami/includes/triggers/user-added-list.php:39
+#: integrations/fluentcrm/includes/actions/user-list.php:37
+#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:40
+#: integrations/fluentcrm/includes/triggers/list-added.php:39
+#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:67
+#: integrations/mailpoet/includes/actions/add-user-to-list.php:37
+#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:42
+msgid "List:"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:27
+msgid "A tag is added to contact"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:28
+msgid "A <strong>Tag</strong> is added to contact"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:30
+#, php-format
+msgid "%1$s is added to contact %2$s time(s)"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:32
+#, php-format
+msgid "%1$s is added to contact"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-added-list.php:26
+msgid "User added to list"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-added-list.php:27
+msgid "User added to <strong>list</strong>"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-added-list.php:29
+#, php-format
+msgid "User added to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-added-list.php:31
+#, php-format
+msgid "User added to %1$s"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-tag-added.php:26
+msgid "A tag is added to user"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-tag-added.php:27
+msgid "A <strong>Tag</strong> is added to user"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-tag-added.php:29
+#, php-format
+msgid "%1$s is added to user %2$s time(s)"
+msgstr ""
+
+#: integrations/autonami/includes/triggers/user-tag-added.php:31
+#, php-format
+msgid "%1$s is added to user"
 msgstr ""
 
 #: integrations/awesome-support/includes/triggers/agent-open-ticket.php:26
@@ -3716,40 +4135,6 @@ msgstr ""
 
 #: integrations/fluentcrm/includes/actions/user-list.php:36
 msgid "Select a list"
-msgstr ""
-
-#: integrations/fluentcrm/includes/actions/user-list.php:37
-#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:40
-#: integrations/fluentcrm/includes/triggers/list-added.php:39
-#: integrations/mailpoet/includes/actions/add-subscriber-to-list.php:67
-#: integrations/mailpoet/includes/actions/add-user-to-list.php:37
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:42
-msgid "List:"
-msgstr ""
-
-#: integrations/fluentcrm/includes/actions/user-list.php:39
-msgid "List ID"
-msgstr ""
-
-#: integrations/fluentcrm/includes/actions/user-tag.php:30
-#: integrations/fluentcrm/includes/actions/user-tag.php:32
-#: integrations/groundhogg/includes/actions/user-tag.php:29
-#: integrations/groundhogg/includes/actions/user-tag.php:31
-#, php-format
-msgid "Add tag %1$s"
-msgstr ""
-
-#: integrations/fluentcrm/includes/actions/user-tag.php:39
-#: integrations/groundhogg/includes/actions/user-tag.php:38
-msgid "Tag ID"
-msgstr ""
-
-#: integrations/fluentcrm/includes/functions.php:139
-#: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:42
-#: integrations/fluentcrm/includes/triggers/list-added.php:41
-#: integrations/mailchimp/includes/functions.php:56
-#: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:77
-msgid "any list"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:27
@@ -5250,10 +5635,6 @@ msgstr ""
 msgid "Expired"
 msgstr ""
 
-#: integrations/restrict-content-pro/includes/actions/add-membership.php:70
-msgid "Cancelled"
-msgstr ""
-
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:75
 msgid "Expiration Date:"
 msgstr ""
@@ -6012,38 +6393,9 @@ msgstr ""
 msgid "multiple posts"
 msgstr ""
 
-#: integrations/wordpress/actions/delete-multiple-posts.php:87
-#: integrations/wordpress/actions/update-multiple-posts.php:87
-msgid "Field Conditions:"
-msgstr ""
-
 #: integrations/wordpress/actions/delete-multiple-posts.php:88
 #: integrations/wordpress/actions/update-multiple-posts.php:88
 msgid "Set conditions to filter posts to update by post fields."
-msgstr ""
-
-#: integrations/wordpress/actions/delete-multiple-posts.php:92
-#: integrations/wordpress/actions/delete-multiple-posts.php:119
-#: integrations/wordpress/actions/update-multiple-posts.php:92
-#: integrations/wordpress/actions/update-multiple-posts.php:119
-msgid "Add condition"
-msgstr ""
-
-#: integrations/wordpress/actions/delete-multiple-posts.php:97
-#: integrations/wordpress/actions/update-multiple-posts.php:97
-#: integrations/wordpress/filters/user-exists.php:38
-#: integrations/wordpress/filters/user-field.php:38
-msgid "Field:"
-msgstr ""
-
-#: integrations/wordpress/actions/delete-multiple-posts.php:102
-#: integrations/wordpress/actions/update-multiple-posts.php:102
-msgid "Choose a field"
-msgstr ""
-
-#: integrations/wordpress/actions/delete-multiple-posts.php:114
-#: integrations/wordpress/actions/update-multiple-posts.php:114
-msgid "Meta Conditions:"
 msgstr ""
 
 #: integrations/wordpress/actions/delete-multiple-posts.php:115
@@ -7359,16 +7711,6 @@ msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:45
 msgid "any profile field"
-msgstr ""
-
-#: integrations/wordpress/triggers/user-field-update.php:49
-#: integrations/wordpress/triggers/user-field-update.php:262
-msgid "Nicename"
-msgstr ""
-
-#: integrations/wordpress/triggers/user-field-update.php:51
-#: integrations/wordpress/triggers/user-field-update.php:264
-msgid "Website"
 msgstr ""
 
 #: integrations/wordpress/triggers/user-field-update.php:62

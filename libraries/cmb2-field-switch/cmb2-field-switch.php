@@ -1,7 +1,7 @@
 <?php
 /**
- * @package      CMB2\Field_Switch
- * @author       GamiPress
+ * @package      RGC\CMB2\Field_Switch
+ * @author       Ruben Garcia (RubenGC) <rubengcdev@gmail.com>, GamiPress <contact@gamipress.com>
  * @copyright    Copyright (c) GamiPress
  *
  * Plugin Name: CMB2 Field Type: Switch
@@ -13,15 +13,18 @@
  * Author URI: https://gamipress.com/
  * License: GPLv2+
  */
+// Exit if accessed directly
+if( !defined( 'ABSPATH' ) ) exit;
 
 global $cmb2_field_switch;
 
-if( ! class_exists( 'CMB2_Field_Switch' ) ) {
+// Prevent CMB2 autoload adding "RGC_" at start
+if( ! class_exists( 'RGC_CMB2_Field_Switch' ) ) {
 
     /**
-     * Class CMB2_Field_Switch
+     * Class RGC_CMB2_Field_Switch
      */
-    class CMB2_Field_Switch {
+    class RGC_CMB2_Field_Switch {
 
         /**
          * Current version number
@@ -49,6 +52,6 @@ if( ! class_exists( 'CMB2_Field_Switch' ) ) {
 
     }
 
-    $cmb2_field_switch = new CMB2_Field_Switch();
+    $cmb2_field_switch = new RGC_CMB2_Field_Switch();
 
 }

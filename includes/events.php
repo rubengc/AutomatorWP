@@ -1171,13 +1171,9 @@ function automatorwp_user_completed_automation( $automation = null, $user_id = 0
         'date'      => automatorwp_get_event_log_date(),
     ) );
 
-    ct_setup_table( 'automatorwp_automations' );
-
     // Increment the completions
-    $completions = absint( ct_get_object_meta( $automation->id, 'completions', true ) );
-    ct_update_object_meta( $automation->id, 'completions', $completions + 1 );
-
-    ct_reset_setup_table();
+    $completions = absint( automatorwp_get_automation_meta( $automation->id, 'completions', true ) );
+    automatorwp_update_automation_meta( $automation->id, 'completions', $completions + 1 );
 
     /**
      * Available action to hook on an automation completion
@@ -1599,6 +1595,648 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
     return $deserves_action_filters;
 }
 
+// -------------------------------------------
+// All users execution
+// -------------------------------------------
+
+/**
+ * Run an all users automation
+ *
+ * @since 2.2.2
+ *
+ * @param int $automation_id    The automation ID
+ *
+ * @return bool
+ */
+function automatorwp_run_automation( $automation_id ) {
+
+    global $automatorwp_run_automation_error;
+
+    // Initialize error
+    $automatorwp_run_automation_error = '';
+
+    // Sanitization
+    $automation_id = absint( $automation_id );
+
+    // Bail if automation id not provided
+    if( $automation_id === 0 ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation ID.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the automation
+    $automation = automatorwp_get_automation_object( $automation_id );
+
+    // Bail if automation not found
+    if( ! $automation ) {
+        $automatorwp_run_automation_error = sprintf( __( 'Automation with ID %d not found.', 'automatorwp' ), $automation_id );
+        return false;
+    }
+
+    // Get the users per loop
+    $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+
+    // Bail if users per loop not correctly configured
+    if( $users_per_loop <= 0 ) {
+        $automatorwp_run_automation_error = __( 'Users per loop need to be higher than 0.', 'automatorwp' );
+        return false;
+    }
+
+    // Only all users automations can be run here
+    if( $automation->type !== 'all-users' ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation type.', 'automatorwp' );
+        return false;
+    }
+
+    // Check if exceeded automation completion times
+    $times = absint( $automation->times );
+
+    if( $times > 0 ) {
+        $completion_times = automatorwp_get_object_completion_times( $automation->id, 'automation' );
+
+        if( $completion_times >= $times ) {
+            $automatorwp_run_automation_error = __( 'Automation has been run the number of times allowed. Change the "Total times" setting for this automation to allow run it again.', 'automatorwp' );
+            return false;
+        }
+    }
+
+    // Get the all users trigger
+    $trigger = automatorwp_get_all_users_trigger( $automation );
+
+    // Bail if trigger not found
+    if( ! $trigger ) {
+        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the trigger stored options
+    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
+
+    // Update automation status to in progress
+    if( $automation->status !== 'in-progress' ) {
+        // Call the automation run started function
+        automatorwp_run_automation_started( $automation, $trigger, $trigger_options );
+    }
+
+    // Get the users to apply the filters and run the actions
+    $users_ids = automatorwp_get_all_users_automation_users_ids( $automation );
+
+    if( $users_ids === false ) {
+        return false;
+    }
+
+    // Set up a false event since the following functions require it
+    $event = array();
+
+    foreach ( $users_ids as $user_id ) {
+
+        $user_id = absint( $user_id );
+
+        // Check if user deserves the trigger filters
+        if( ! automatorwp_user_deserves_trigger_filters( $trigger, $user_id, $event, $trigger_options, $automation ) ) {
+            continue;
+        }
+
+        // Execute all automation actions
+        automatorwp_execute_all_automation_actions( $automation, $user_id, $event );
+
+    }
+
+    // Check if run finished
+    if( automatorwp_maybe_run_automation_finished( $automation ) ) {
+        // Call the automation run finished function
+        automatorwp_run_automation_finished( $automation );
+    } else {
+        // Increase loop
+        $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
+        automatorwp_update_automation_meta( $automation->id, 'current_loop', $loop + 1 );
+
+        // Check if is a manual run
+        $manual_run = (bool) automatorwp_get_automation_meta( $automation->id, 'manual_run', true );
+
+        if( ! $manual_run ) {
+
+            /**
+             * Available filter to override the delay between runs
+             *
+             * @since 1.0.0
+             *
+             * @param int       $delay      By default, 60 (1 minute)
+             * @param stdClass  $automation The automation object
+             *
+             * @return int
+             */
+            $delay = apply_filters( 'automatorwp_run_automation_delay_between_runs', 60, $automation );
+
+            // if not is a manual run, schedule this function after a delay
+            if( function_exists( 'as_schedule_single_action' ) ) {
+                as_schedule_single_action( current_time( 'timestamp' ) + $delay, 'automatorwp_continue_automation_run', array( $automation->id ) );
+            } else {
+                wp_schedule_single_event( current_time( 'timestamp' ) + $delay, 'automatorwp_continue_automation_run', array( $automation->id ) );
+            }
+        }
+    }
+
+    return true;
+
+}
+add_action( 'automatorwp_run_automation', 'automatorwp_run_automation' );
+
+/**
+ * Continue an all users automation run (used to check if automation run has been cancelled)
+ * Note: This function is only called by the single action/event schedule function
+ *
+ * @since 2.2.2
+ *
+ * @param int $automation_id    The automation ID
+ *
+ * @return bool
+ */
+function automatorwp_continue_automation_run( $automation_id ) {
+
+    global $automatorwp_run_automation_error;
+
+    // Initialize error
+    $automatorwp_run_automation_error = '';
+
+    // Sanitization
+    $automation_id = absint( $automation_id );
+
+    // Bail if automation id not provided
+    if( $automation_id === 0 ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation ID.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the automation
+    $automation = automatorwp_get_automation_object( $automation_id );
+
+    // Bail if automation not found
+    if( ! $automation ) {
+        $automatorwp_run_automation_error = sprintf( __( 'Automation with ID %d not found.', 'automatorwp' ), $automation_id );
+        return false;
+    }
+
+    if( $automation->status !== 'in-progress' ) {
+        $automatorwp_run_automation_error = __( 'Automation run has been cancelled.', 'automatorwp' );
+        return false;
+    }
+
+    // Continue running the automation
+    automatorwp_run_automation( $automation->id );
+
+}
+add_action( 'automatorwp_continue_automation_run', 'automatorwp_continue_automation_run' );
+
+/**
+ * Automation run started
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass  $automation         The automation object
+ * @param stdClass  $trigger            The trigger object
+ * @param array     $trigger_options    The trigger stored option
+ */
+function automatorwp_run_automation_started( $automation, $trigger, $trigger_options ) {
+
+    global $automatorwp_completed_triggers;
+
+    // Initialize completed triggers count
+    if( ! is_array( $automatorwp_completed_triggers ) ) {
+        $automatorwp_completed_triggers = array();
+    }
+
+    if( ! is_object( $automation ) ) {
+        return;
+    }
+
+    // Store the original status
+    automatorwp_update_automation_meta( $automation->id, 'original_status', $automation->status );
+
+    $ct_table = ct_setup_table( 'automatorwp_automations' );
+
+    // Update the automation status
+    $ct_table->db->update(
+        array( 'status' => 'in-progress' ),
+        array( 'id' => $automation->id )
+    );
+
+    ct_reset_setup_table();
+
+    // Get the trigger completion times
+    $completion_times = automatorwp_get_object_completion_times( $trigger->id, 'trigger' );
+
+    $log_meta = array(
+        'times' => ( $completion_times + 1 )
+    );
+
+    /**
+     * Filter to add custom log meta to meet that user has completed this trigger
+     *
+     * @since 1.0.0
+     *
+     * @param array     $log_meta           Log meta data
+     * @param stdClass  $trigger            The trigger object
+     * @param int       $user_id            The user ID
+     * @param array     $event              Event information
+     * @param array     $trigger_options    The trigger's stored options
+     * @param stdClass  $automation         The trigger's automation object
+     *
+     * @return array
+     */
+    $log_meta = apply_filters( 'automatorwp_user_completed_trigger_log_meta', $log_meta, $trigger, 0, array(), $trigger_options, $automation );
+
+    // Insert a new log entry to register the trigger completion
+    automatorwp_insert_log( array(
+        'title'     => automatorwp_parse_automation_item_log_label( $trigger, 'trigger', 'view' ),
+        'type'      => 'trigger',
+        'object_id' => $trigger->id,
+        'user_id'   => 0,
+        'post_id'   => 0,
+        'date'      => automatorwp_get_event_log_date(),
+    ), $log_meta );
+
+    $automatorwp_completed_triggers[] = $trigger;
+
+}
+
+/**
+ * Check if automation run has been finished
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass $automation The automation object
+ *
+ * @return bool
+ */
+function automatorwp_maybe_run_automation_finished( $automation ) {
+
+    global $automatorwp_run_automation_error;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return false;
+    }
+
+    // Get required vars
+    $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+    $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
+    $users_count = automatorwp_get_all_users_automation_users_count( $automation );
+    $processed_users = ($loop * $users_per_loop) + $users_per_loop;
+
+    // Check if finished
+    if( $processed_users >= $users_count ) {
+        return true;
+    }
+
+    return false;
+
+}
+
+/**
+ * Automation run finished
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass $automation The automation object
+ */
+function automatorwp_run_automation_finished( $automation ) {
+
+    global $automatorwp_run_automation_error;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return;
+    }
+
+    // Restore automation status
+    $original_status = automatorwp_get_automation_meta( $automation->id, 'original_status', true );
+
+    if( empty( $original_status ) ) {
+        $original_status = 'active';
+    }
+
+    $ct_table = ct_setup_table( 'automatorwp_automations' );
+
+    // Update the automation status
+    $ct_table->db->update(
+        array( 'status' => $original_status ),
+        array( 'id' => $automation->id )
+    );
+
+    ct_reset_setup_table();
+
+    // Insert a new log entry to register the automation completion
+    automatorwp_insert_log( array(
+        'title'     => $automation->title,
+        'type'      => 'automation',
+        'object_id' => $automation->id,
+        'user_id'   => 0,
+        'post_id'   => 0,
+        'date'      => automatorwp_get_event_log_date(),
+    ) );
+
+    // Increment the completions
+    $completions = absint( automatorwp_get_automation_meta( $automation->id, 'completions', true ) );
+    automatorwp_update_automation_meta( $automation->id, 'completions', $completions + 1 );
+
+    // Restore loop
+    automatorwp_update_automation_meta( $automation->id, 'current_loop', 0 );
+
+    // Restore manual run flag
+    automatorwp_update_automation_meta( $automation->id, 'manual_run', '' );
+
+    // Get the automation maximum completion times
+    $times = absint( $automation->times );
+
+    // Prevent to update the next run date if automation already reached the total times allowed
+    if( $times > 0 ) {
+        if( $completions >= $times ) {
+            return;
+        }
+    }
+
+    // Update the next run date
+    automatorwp_update_automation_next_run_date( $automation->id );
+
+}
+
+/**
+ * Cancel an all users automation rum
+ *
+ * @since 2.2.2
+ *
+ * @param int $automation_id    The automation ID
+ *
+ * @return bool
+ */
+function automatorwp_cancel_automation_run( $automation_id ) {
+
+    global $automatorwp_run_automation_error;
+
+    // Initialize error
+    $automatorwp_run_automation_error = '';
+
+    // Sanitization
+    $automation_id = absint( $automation_id );
+
+    // Bail if automation id not provided
+    if( $automation_id === 0 ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation ID.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the automation
+    $automation = automatorwp_get_automation_object( $automation_id );
+
+    // Bail if automation not found
+    if( ! $automation ) {
+        $automatorwp_run_automation_error = sprintf( __( 'Automation with ID %d not found.', 'automatorwp' ), $automation_id );
+        return false;
+    }
+
+    if( $automation->status !== 'in-progress' ) {
+        $automatorwp_run_automation_error = __( 'Can not cancel automation run because is not running.', 'automatorwp' );
+        return false;
+    }
+
+    // Restore automation status
+    $original_status = automatorwp_get_automation_meta( $automation->id, 'original_status', true );
+
+    if( empty( $original_status ) ) {
+        $original_status = 'active';
+    }
+
+    $ct_table = ct_setup_table( 'automatorwp_automations' );
+
+    // Update the automation status
+    $ct_table->db->update(
+        array( 'status' => $original_status ),
+        array( 'id' => $automation->id )
+    );
+
+    ct_reset_setup_table();
+
+    // Insert a new log entry to register the automation completion
+    automatorwp_insert_log( array(
+        'title'     => sprintf( __( '%s run cancelled by the user', 'automatorwp' ), $automation->title ),
+        'type'      => 'automation',
+        'object_id' => $automation->id,
+        'user_id'   => get_current_user_id(),
+        'post_id'   => 0,
+        'date'      => automatorwp_get_event_log_date(),
+    ) );
+
+    // Restore loop
+    automatorwp_update_automation_meta( $automation->id, 'current_loop', 0 );
+
+    // Restore manual run flag
+    automatorwp_update_automation_meta( $automation->id, 'manual_run', '' );
+
+    // Update the next run date
+    automatorwp_update_automation_next_run_date( $automation->id );
+
+    return true;
+
+}
+
+/**
+ * Get the all users trigger from an automation
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass  $automation         The automation object.
+ *
+ * @return stdClass|null
+ */
+function automatorwp_get_all_users_trigger( $automation ) {
+
+    global $automatorwp_run_automation_error;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return null;
+    }
+
+    $cache = automatorwp_get_cache( 'automation_all_users_trigger', array(), false );
+
+    if( isset( $cache[$automation->id] ) ) {
+
+        // Use triggers already cached
+        $all_users_trigger = $cache[$automation->id];
+
+    } else {
+
+        $triggers = automatorwp_get_automation_triggers( $automation->id );
+        $all_users_trigger = null;
+
+        // Check if user has completed all automation trigger
+        foreach( $triggers as $trigger ) {
+
+            if( $trigger->type === 'automatorwp_all_users' ) {
+                $all_users_trigger = $trigger;
+                break;
+            }
+
+        }
+
+        // Cache triggers
+        $cache[$automation->id] = $all_users_trigger;
+
+        automatorwp_set_cache( 'automation_all_users_trigger', $cache );
+
+    }
+
+    return $all_users_trigger;
+
+}
+
+/**
+ * Get all users automation users IDs
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass  $automation         The automation object.
+ *
+ * @return array|false                  Array with all users IDs.
+ */
+function automatorwp_get_all_users_automation_users_ids( $automation ) {
+
+    global $automatorwp_run_automation_error, $wpdb;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return false;
+    }
+
+    $trigger = automatorwp_get_all_users_trigger( $automation );
+
+    // Bail if trigger not found
+    if( ! $trigger ) {
+        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the users SQL
+    $sql = automatorwp_get_all_users_automation_sql( $automation, $trigger, false );
+
+    if( ! $sql ) {
+        return false;
+    }
+
+    return $wpdb->get_col( $sql );
+
+}
+
+/**
+ * Get all users automation users count
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass  $automation         The automation object.
+ *
+ * @return int|false                    Number of users to process in this automation
+ */
+function automatorwp_get_all_users_automation_users_count( $automation ) {
+
+    global $automatorwp_run_automation_error, $wpdb;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return false;
+    }
+
+    $trigger = automatorwp_get_all_users_trigger( $automation );
+
+    // Prevent automations already in progress
+    if( ! $trigger ) {
+        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the users SQL
+    $sql = automatorwp_get_all_users_automation_sql( $automation, $trigger, true );
+
+    if( ! $sql ) {
+        return false;
+    }
+
+    return absint( $wpdb->get_var( $sql ) );
+
+}
+
+/**
+ * Get all users automation users SQL
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass  $automation         The automation object.
+ * @param stdClass  $trigger            The trigger object.
+ *
+ * @return string|false
+ */
+function automatorwp_get_all_users_automation_sql( $automation, $trigger, $count = false ) {
+
+    global $automatorwp_run_automation_error;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return false;
+    }
+
+    $loop = 0;
+    $users_per_loop = 0;
+
+    if( ! $count ) {
+        $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+
+        // Bail if users per loop not correctly configured
+        if( $users_per_loop <= 0 ) {
+            $automatorwp_run_automation_error = __( 'Users per loop need to be higher than 0.', 'automatorwp' );
+            return false;
+        }
+
+        // Get the loop stored in options to calculate the offset
+        $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
+    }
+
+    // Get the trigger stored options
+    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
+
+    $sql = false;
+
+    /**
+     * Available filter to override the all users automation SQL
+     *
+     * @since 2.2.2
+     *
+     * @param string    $sql                The SQL query
+     * @param stdClass  $automation         The automation object
+     * @param stdClass  $trigger            The trigger object
+     * @param bool      $count              True if is looking for the SQL to count the number of users
+     * @param array     $trigger_options    The trigger's stored options
+     * @param int       $users_per_loop     The automation users per loop option
+     * @param int       $loop               The current loop
+     */
+    $sql = apply_filters( 'automatorwp_get_all_users_automation_sql', $sql, $automation, $trigger, $count, $trigger_options, $users_per_loop, $loop );
+
+    return $sql;
+}
+
+/**
+ * Helper function to get the last error happened in the run automation function
+ *
+ * @since 2.2.2
+ *
+ * @return string|null
+ */
+function automatorwp_get_run_automation_error() {
+
+    global $automatorwp_run_automation_error;
+
+    return $automatorwp_run_automation_error;
+}
+
 /**
  * Helper function to get the current log date on the events engine
  *
@@ -1611,7 +2249,7 @@ function automatorwp_get_event_log_date() {
     global $automatorwp_completed_triggers;
 
     // The global $automatorwp_completed_triggers is used to increase log time by the number of loops perform
-    // This prevents unlimited completions when multiples triggers has been triggered
+    // This prevents unlimited completions when multiple triggers has been triggered
     if( ! is_array( $automatorwp_completed_triggers ) ) {
         $automatorwp_completed_triggers = array();
     }

@@ -238,6 +238,7 @@ function automatorwp_add_meta_box( $id, $title, $object_types, $fields, $args = 
         'tabs'      	=> array(),
         'context'      	=> 'normal',
         'priority'     	=> 'default',
+        'show_on_cb'    => '',
     ) );
 
     /**
@@ -269,6 +270,7 @@ function automatorwp_add_meta_box( $id, $title, $object_types, $fields, $args = 
         'vertical_tabs' => $args['vertical_tabs'],
         'context'      	=> $args['context'],
         'priority'     	=> $args['priority'],
+        'show_on_cb'    => $args['show_on_cb'],
         'classes'		=> 'automatorwp-form automatorwp-box-form',
         'fields' 		=> $fields
     );

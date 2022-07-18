@@ -10,6 +10,28 @@
 if( !defined( 'ABSPATH' ) ) exit;
 
 require_once AUTOMATORWP_DIR . 'includes/cron/auto-logs-cleanup.php';
+require_once AUTOMATORWP_DIR . 'includes/cron/run-scheduled-automations.php';
+
+/**
+ * Register custom cron schedules
+ *
+ * @since 1.0.0
+ *
+ * @param array $schedules
+ *
+ * @return array
+ */
+function automatorwp_cron_schedules( $schedules ) {
+
+    $schedules['five_minutes'] = array(
+        'interval' => 300,
+        'display'  => __( 'Every five minutes', 'automatorwp' ),
+    );
+
+    return $schedules;
+
+}
+add_filter( 'cron_schedules', 'automatorwp_cron_schedules' );
 
 /**
  * Register schedule events

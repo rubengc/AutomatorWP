@@ -243,7 +243,7 @@ add_action( 'wp_ajax_automatorwp_update_automation_items_order', 'automatorwp_aj
 /**
  * Update a trigger option through ajax
  *
- * @since   1.0.0
+ * @since 1.0.0
  */
 function automatorwp_ajax_update_item_option() {
 
@@ -413,6 +413,119 @@ function automatorwp_ajax_update_item_option() {
 
 }
 add_action( 'wp_ajax_automatorwp_update_item_option', 'automatorwp_ajax_update_item_option' );
+
+/**
+ * Run automation through ajax
+ *
+ * @since 2.2.2
+ */
+function automatorwp_ajax_run_automation() {
+
+    // Security check, forces to die if not security passed
+    check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
+
+    // Sanitize parameters
+    $automation_id = absint( $_POST['automation_id'] );
+    $users_per_loop = absint( $_POST['users_per_loop'] );
+
+    $automation = automatorwp_get_automation_object( $automation_id );
+
+    // Bail if automation not found
+    if( ! $automation ) {
+        wp_send_json_error( sprintf( __( 'Automation with ID %d not found.', 'automatorwp' ), $automation_id ) );
+    }
+
+    // Get the loop before gets updated
+    $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
+
+    // First loop checks
+    if( $loop === 0 ) {
+        if( $users_per_loop <= 0 ) {
+            wp_send_json_error( __( 'Users per loop need to be higher than 0.', 'automatorwp' ) );
+        }
+
+        // Update the users per loop
+        $original_users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+
+        if( $users_per_loop !== $original_users_per_loop ) {
+            automatorwp_update_automation_meta( $automation->id, 'users_per_loop', $users_per_loop );
+        }
+
+        // Update a flag to meet that is a manual run
+        automatorwp_update_automation_meta( $automation->id, 'manual_run', '1' );
+    }
+
+    // Run the automation
+    $result = automatorwp_run_automation( $automation_id );
+
+    if( $result ) {
+
+        $count = automatorwp_get_all_users_automation_users_count( $automation );
+        $processed = ($loop * $users_per_loop) + $users_per_loop;
+        $processed = min( $processed, $count );
+        $percentage = ( $processed / $count ) * 100;
+
+        wp_send_json_success( array(
+            'loop' => $loop,
+            'count' => $count,
+            'processed' => $processed,
+            'percentage' => $percentage,
+            'run_again' => ( $processed < $count ),
+        ) );
+    } else {
+        wp_send_json_error( array(
+            'message' => automatorwp_get_run_automation_error()
+        ) );
+    }
+
+
+}
+add_action( 'wp_ajax_automatorwp_run_automation', 'automatorwp_ajax_run_automation' );
+
+/**
+ * Cancel automation run through ajax
+ *
+ * @since 2.2.2
+ */
+function automatorwp_ajax_cancel_automation_run() {
+
+    // Security check, forces to die if not security passed
+    check_ajax_referer( 'automatorwp_admin', 'nonce' );
+
+    // Permissions check
+    if( ! current_user_can( automatorwp_get_manager_capability() ) ) {
+        wp_send_json_error( __( 'You\'re not allowed to perform this action.', 'automatorwp' ) );
+    }
+
+    // Sanitize parameters
+    $automation_id = absint( $_POST['automation_id'] );
+
+    $automation = automatorwp_get_automation_object( $automation_id );
+
+    // Bail if automation not found
+    if( ! $automation ) {
+        wp_send_json_error( sprintf( __( 'Automation with ID %d not found.', 'automatorwp' ), $automation_id ) );
+    }
+
+    // Cancel the automation run
+    $result = automatorwp_cancel_automation_run( $automation_id );
+
+    if( $result ) {
+
+        wp_send_json_success();
+    } else {
+        wp_send_json_error( array(
+            'message' => automatorwp_get_run_automation_error()
+        ) );
+    }
+
+}
+add_action( 'wp_ajax_automatorwp_cancel_automation_run', 'automatorwp_ajax_cancel_automation_run' );
 
 /**
  * AJAX Helper for selecting posts

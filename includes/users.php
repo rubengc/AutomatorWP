@@ -405,7 +405,20 @@ function automatorwp_has_user_completed_trigger( $trigger_id, $user_id ) {
     $required_times = automatorwp_get_trigger_required_times( $trigger->id );
 
     // If user has not completed this trigger the number of times required then break to finish this function
-    return ( $completion_times >= $required_times );
+    $completed = ( $completion_times >= $required_times );
+
+    /**
+     * Available filter to override if user has completed a trigger
+     *
+     * @since 1.0.0
+     *
+     * @param bool  $completed  True if user has completed the trigger
+     * @param int   $trigger_id The trigger ID
+     * @param int   $user_id    The user ID
+     *
+     * @return bool
+     */
+    return apply_filters( 'automatorwp_has_user_completed_trigger', $completed, $trigger_id, $user_id );
 
 }
 
@@ -520,6 +533,9 @@ function automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $conte
         if( $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
             // Get the last anonymous trigger log if is parsing tags for an anonymous user
             $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
+        } else if ( $trigger->type === 'automatorwp_all_users' ) {
+            // For all users automations, the log object is common to all users
+            $log = automatorwp_get_log_object( $trigger->id );
         } else {
             // Get the last trigger log (where data for tags replacement is)
             $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
