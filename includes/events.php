@@ -1596,11 +1596,11 @@ function automatorwp_user_deserves_action_filters( $action = null, $user_id = 0,
 }
 
 // -------------------------------------------
-// All users execution
+// Automation execution
 // -------------------------------------------
 
 /**
- * Run an all users automation
+ * Run an automation
  *
  * @since 2.2.2
  *
@@ -1633,17 +1633,8 @@ function automatorwp_run_automation( $automation_id ) {
         return false;
     }
 
-    // Get the users per loop
-    $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
-
-    // Bail if users per loop not correctly configured
-    if( $users_per_loop <= 0 ) {
-        $automatorwp_run_automation_error = __( 'Users per loop need to be higher than 0.', 'automatorwp' );
-        return false;
-    }
-
-    // Only all users automations can be run here
-    if( $automation->type !== 'all-users' ) {
+    // Only all users and all posts automations can be run here
+    if( ! in_array( $automation->type, array( 'all-users', 'all-posts' ) ) ) {
         $automatorwp_run_automation_error = __( 'Invalid automation type.', 'automatorwp' );
         return false;
     }
@@ -1660,46 +1651,17 @@ function automatorwp_run_automation( $automation_id ) {
         }
     }
 
-    // Get the all users trigger
-    $trigger = automatorwp_get_all_users_trigger( $automation );
+    if( $automation->type === 'all-users' ) {
+        // All users
+        $result = automatorwp_run_all_users_automation( $automation );
+    } else if( $automation->type === 'all-posts' ) {
+        // All posts
+        $result = automatorwp_run_all_posts_automation( $automation );
+    }
 
-    // Bail if trigger not found
-    if( ! $trigger ) {
-        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
+    // Bail if automation has not run correctly
+    if( ! $result ) {
         return false;
-    }
-
-    // Get the trigger stored options
-    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
-
-    // Update automation status to in progress
-    if( $automation->status !== 'in-progress' ) {
-        // Call the automation run started function
-        automatorwp_run_automation_started( $automation, $trigger, $trigger_options );
-    }
-
-    // Get the users to apply the filters and run the actions
-    $users_ids = automatorwp_get_all_users_automation_users_ids( $automation );
-
-    if( $users_ids === false ) {
-        return false;
-    }
-
-    // Set up a false event since the following functions require it
-    $event = array();
-
-    foreach ( $users_ids as $user_id ) {
-
-        $user_id = absint( $user_id );
-
-        // Check if user deserves the trigger filters
-        if( ! automatorwp_user_deserves_trigger_filters( $trigger, $user_id, $event, $trigger_options, $automation ) ) {
-            continue;
-        }
-
-        // Execute all automation actions
-        automatorwp_execute_all_automation_actions( $automation, $user_id, $event );
-
     }
 
     // Check if run finished
@@ -1737,10 +1699,160 @@ function automatorwp_run_automation( $automation_id ) {
         }
     }
 
-    return true;
+    return $result;
 
 }
 add_action( 'automatorwp_run_automation', 'automatorwp_run_automation' );
+
+/**
+ * Run all users automation
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass $automation The automation object
+ *
+ * @return bool
+ */
+function automatorwp_run_all_users_automation( $automation ) {
+
+    global $automatorwp_run_automation_error, $automatorwp_event;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the users per loop
+    $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+
+    // Bail if users per loop not correctly configured
+    if( $users_per_loop <= 0 ) {
+        $automatorwp_run_automation_error = __( 'Users per loop need to be higher than 0.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the all users trigger
+    $trigger = automatorwp_get_all_users_trigger( $automation );
+
+    // Bail if trigger not found
+    if( ! $trigger ) {
+        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the trigger stored options
+    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
+
+    // Update automation status to in progress
+    if( $automation->status !== 'in-progress' ) {
+        // Call the automation run started function
+        automatorwp_run_automation_started( $automation, $trigger, $trigger_options );
+    }
+
+    // Get the users to apply the filters and run the actions
+    $users_ids = automatorwp_get_all_users_automation_users_ids( $automation );
+
+    if( $users_ids === false ) {
+        return false;
+    }
+
+    // Set up a false event since the following functions require it
+    $automatorwp_event = array();
+
+    foreach ( $users_ids as $user_id ) {
+
+        $user_id = absint( $user_id );
+
+        // Check if user deserves the trigger filters
+        if( ! automatorwp_user_deserves_trigger_filters( $trigger, $user_id, $automatorwp_event, $trigger_options, $automation ) ) {
+            continue;
+        }
+
+        // Execute all automation actions
+        automatorwp_execute_all_automation_actions( $automation, $user_id, $automatorwp_event );
+
+    }
+
+    return true;
+
+}
+
+/**
+ * Run all posts automation
+ *
+ * @since 2.2.2
+ *
+ * @param stdClass $automation The automation object
+ *
+ * @return bool
+ */
+function automatorwp_run_all_posts_automation( $automation ) {
+
+    global $automatorwp_run_automation_error, $automatorwp_event;
+
+    if( ! is_object( $automation ) ) {
+        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the posts per loop
+    $posts_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'posts_per_loop', true ) );
+
+    // Bail if posts per loop not correctly configured
+    if( $posts_per_loop <= 0 ) {
+        $automatorwp_run_automation_error = __( 'Posts per loop need to be higher than 0.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the all posts trigger
+    $trigger = automatorwp_get_all_posts_trigger( $automation );
+
+    // Bail if trigger not found
+    if( ! $trigger ) {
+        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
+        return false;
+    }
+
+    // Get the trigger stored options
+    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
+
+    // Update automation status to in progress
+    if( $automation->status !== 'in-progress' ) {
+        // Call the automation run started function
+        automatorwp_run_automation_started( $automation, $trigger, $trigger_options );
+    }
+
+    // Get the posts to apply the filters and run the actions
+    $posts_ids = automatorwp_get_all_posts_automation_posts_ids( $automation );
+
+    if( $posts_ids === false ) {
+        return false;
+    }
+
+    // Set up a false event since the following functions require it
+    $automatorwp_event = array(
+        'post_id' => 0
+    );
+
+    foreach ( $posts_ids as $post_id ) {
+
+        $post_id = absint( $post_id );
+        $user_id = absint( get_post_field( 'post_author', $post_id ) );
+        $automatorwp_event['post_id'] = $post_id;
+
+        // Check if user deserves the trigger filters
+        if( ! automatorwp_user_deserves_trigger_filters( $trigger, $user_id, $automatorwp_event, $trigger_options, $automation ) ) {
+            continue;
+        }
+
+        // Execute all automation actions
+        automatorwp_execute_all_automation_actions( $automation, $user_id, $automatorwp_event );
+
+    }
+
+    return true;
+
+}
 
 /**
  * Continue an all users automation run (used to check if automation run has been cancelled)
@@ -1878,14 +1990,15 @@ function automatorwp_maybe_run_automation_finished( $automation ) {
         return false;
     }
 
-    // Get required vars
-    $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
-    $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
-    $users_count = automatorwp_get_all_users_automation_users_count( $automation );
-    $processed_users = ($loop * $users_per_loop) + $users_per_loop;
+    $details = automatorwp_get_automation_run_details( $automation );
+
+    if( ! $details ) {
+        $automatorwp_run_automation_error = __( 'Can not retrieve run details.', 'automatorwp' );
+        return false;
+    }
 
     // Check if finished
-    if( $processed_users >= $users_count ) {
+    if( $details['processed'] >= $details['count'] ) {
         return true;
     }
 
@@ -2038,189 +2151,6 @@ function automatorwp_cancel_automation_run( $automation_id ) {
 
     return true;
 
-}
-
-/**
- * Get the all users trigger from an automation
- *
- * @since 2.2.2
- *
- * @param stdClass  $automation         The automation object.
- *
- * @return stdClass|null
- */
-function automatorwp_get_all_users_trigger( $automation ) {
-
-    global $automatorwp_run_automation_error;
-
-    if( ! is_object( $automation ) ) {
-        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
-        return null;
-    }
-
-    $cache = automatorwp_get_cache( 'automation_all_users_trigger', array(), false );
-
-    if( isset( $cache[$automation->id] ) ) {
-
-        // Use triggers already cached
-        $all_users_trigger = $cache[$automation->id];
-
-    } else {
-
-        $triggers = automatorwp_get_automation_triggers( $automation->id );
-        $all_users_trigger = null;
-
-        // Check if user has completed all automation trigger
-        foreach( $triggers as $trigger ) {
-
-            if( $trigger->type === 'automatorwp_all_users' ) {
-                $all_users_trigger = $trigger;
-                break;
-            }
-
-        }
-
-        // Cache triggers
-        $cache[$automation->id] = $all_users_trigger;
-
-        automatorwp_set_cache( 'automation_all_users_trigger', $cache );
-
-    }
-
-    return $all_users_trigger;
-
-}
-
-/**
- * Get all users automation users IDs
- *
- * @since 2.2.2
- *
- * @param stdClass  $automation         The automation object.
- *
- * @return array|false                  Array with all users IDs.
- */
-function automatorwp_get_all_users_automation_users_ids( $automation ) {
-
-    global $automatorwp_run_automation_error, $wpdb;
-
-    if( ! is_object( $automation ) ) {
-        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
-        return false;
-    }
-
-    $trigger = automatorwp_get_all_users_trigger( $automation );
-
-    // Bail if trigger not found
-    if( ! $trigger ) {
-        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
-        return false;
-    }
-
-    // Get the users SQL
-    $sql = automatorwp_get_all_users_automation_sql( $automation, $trigger, false );
-
-    if( ! $sql ) {
-        return false;
-    }
-
-    return $wpdb->get_col( $sql );
-
-}
-
-/**
- * Get all users automation users count
- *
- * @since 2.2.2
- *
- * @param stdClass  $automation         The automation object.
- *
- * @return int|false                    Number of users to process in this automation
- */
-function automatorwp_get_all_users_automation_users_count( $automation ) {
-
-    global $automatorwp_run_automation_error, $wpdb;
-
-    if( ! is_object( $automation ) ) {
-        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
-        return false;
-    }
-
-    $trigger = automatorwp_get_all_users_trigger( $automation );
-
-    // Prevent automations already in progress
-    if( ! $trigger ) {
-        $automatorwp_run_automation_error = __( 'Trigger configuration not found.', 'automatorwp' );
-        return false;
-    }
-
-    // Get the users SQL
-    $sql = automatorwp_get_all_users_automation_sql( $automation, $trigger, true );
-
-    if( ! $sql ) {
-        return false;
-    }
-
-    return absint( $wpdb->get_var( $sql ) );
-
-}
-
-/**
- * Get all users automation users SQL
- *
- * @since 2.2.2
- *
- * @param stdClass  $automation         The automation object.
- * @param stdClass  $trigger            The trigger object.
- *
- * @return string|false
- */
-function automatorwp_get_all_users_automation_sql( $automation, $trigger, $count = false ) {
-
-    global $automatorwp_run_automation_error;
-
-    if( ! is_object( $automation ) ) {
-        $automatorwp_run_automation_error = __( 'Invalid automation.', 'automatorwp' );
-        return false;
-    }
-
-    $loop = 0;
-    $users_per_loop = 0;
-
-    if( ! $count ) {
-        $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
-
-        // Bail if users per loop not correctly configured
-        if( $users_per_loop <= 0 ) {
-            $automatorwp_run_automation_error = __( 'Users per loop need to be higher than 0.', 'automatorwp' );
-            return false;
-        }
-
-        // Get the loop stored in options to calculate the offset
-        $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
-    }
-
-    // Get the trigger stored options
-    $trigger_options = automatorwp_get_trigger_stored_options( $trigger->id );
-
-    $sql = false;
-
-    /**
-     * Available filter to override the all users automation SQL
-     *
-     * @since 2.2.2
-     *
-     * @param string    $sql                The SQL query
-     * @param stdClass  $automation         The automation object
-     * @param stdClass  $trigger            The trigger object
-     * @param bool      $count              True if is looking for the SQL to count the number of users
-     * @param array     $trigger_options    The trigger's stored options
-     * @param int       $users_per_loop     The automation users per loop option
-     * @param int       $loop               The current loop
-     */
-    $sql = apply_filters( 'automatorwp_get_all_users_automation_sql', $sql, $automation, $trigger, $count, $trigger_options, $users_per_loop, $loop );
-
-    return $sql;
 }
 
 /**

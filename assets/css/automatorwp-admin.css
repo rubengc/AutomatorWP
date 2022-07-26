@@ -634,7 +634,25 @@ body.edit-all-users-automation .automatorwp-sequential-field,
 body.edit-all-users-automation #automatorwp_triggers .automatorwp-add-trigger,
 body.edit-all-users-automation #cmb-field-js-controls-times_per_user-before,
 body.edit-all-users-automation .cmb2-id-times-per-user,
-body.edit-all-users-automation #cmb-field-js-controls-times_per_user-after {
+body.edit-all-users-automation #cmb-field-js-controls-times_per_user-after,
+body.edit-all-users-automation #cmb-field-js-controls-posts_per_loop-before,
+body.edit-all-users-automation .cmb2-id-posts-per-loop,
+body.edit-all-users-automation #cmb-field-js-controls-posts_per_loop-after {
+    display: none;
+}
+
+/* -------------------------------------------
+    All Posts Automations
+   ------------------------------------------- */
+
+body.edit-all-posts-automation .automatorwp-sequential-field,
+body.edit-all-posts-automation #automatorwp_triggers .automatorwp-add-trigger,
+body.edit-all-posts-automation #cmb-field-js-controls-times_per_user-before,
+body.edit-all-posts-automation .cmb2-id-times-per-user,
+body.edit-all-posts-automation #cmb-field-js-controls-times_per_user-after,
+body.edit-all-posts-automation #cmb-field-js-controls-users_per_loop-before,
+body.edit-all-posts-automation .cmb2-id-users-per-loop,
+body.edit-all-posts-automation #cmb-field-js-controls-users_per_loop-after{
     display: none;
 }
 
@@ -1902,7 +1920,7 @@ body.edit-all-users-automation #cmb-field-js-controls-times_per_user-after {
 
 .automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type {
     position: relative;
-    width: 28%;
+    width: 45%;
     padding: 1em 0.5em;
     border: 2px solid #efefef;
     border-radius: 8px;
@@ -1924,7 +1942,7 @@ body.edit-all-users-automation #cmb-field-js-controls-times_per_user-after {
 }
 
 .automatorwp-automation-type-dialog .automatorwp-automation-types .automatorwp-automation-type img {
-    width: 58%;
+    width: 38%;
     margin-bottom: 6px;
 }
 

@@ -510,7 +510,7 @@ function automatorwp_has_user_executed_all_automation_actions( $automation_id, $
  */
 function automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $content = '' ) {
 
-    global $automatorwp_last_anonymous_trigger_log_id;
+    global $automatorwp_last_anonymous_trigger_log_id, $automatorwp_event;
 
     $log = false;
 
@@ -531,14 +531,30 @@ function automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $conte
     if( ! $log ) {
 
         if( $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
-            // Get the last anonymous trigger log if is parsing tags for an anonymous user
+
+            // Get the last anonymous trigger log if parsing tags for an anonymous user
             $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
+
         } else if ( $trigger->type === 'automatorwp_all_users' ) {
+
             // For all users automations, the log object is common to all users
-            $log = automatorwp_get_log_object( $trigger->id );
+            $log = automatorwp_get_object_last_log( $trigger->id, 'trigger' );
+
+        } else if ( $trigger->type === 'automatorwp_all_posts' ) {
+
+            // For all posts automations, the log object is common to all users
+            $log = automatorwp_get_object_last_log( $trigger->id, 'trigger' );
+
+            // Update the post ID for tag parsing
+            if( is_array( $automatorwp_event ) && isset( $automatorwp_event['post_id'] ) ) {
+                $log->post_id = absint( $automatorwp_event['post_id'] );
+            }
+
         } else {
+
             // Get the last trigger log (where data for tags replacement is)
             $log = automatorwp_get_user_last_completion( $trigger->id, $user_id, 'trigger' );
+
         }
 
     }

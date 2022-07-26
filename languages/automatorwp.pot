@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-07-17 13:06+0200\n"
+"POT-Creation-Date: 2022-07-26 15:51+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:896
 #: integrations/automatorwp/actions/call-function.php:195
 #: integrations/automatorwp/actions/do-action.php:185
-#: integrations/automatorwp/actions/redirect-user.php:233
+#: integrations/automatorwp/actions/redirect-user.php:237
 #: integrations/autonami/includes/actions/add-contact-tag.php:175
 #: integrations/autonami/includes/actions/add-user-tag.php:164
 #: integrations/mailchimp/includes/actions/user-add-note.php:209
@@ -204,12 +204,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1500 includes/automation-ui.php:1512
+#: includes/automation-ui.php:1561 includes/automation-ui.php:1573
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1502
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1563
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgid "Importing automation..."
 msgstr ""
 
 #: includes/admin/pages/import-automation.php:61 includes/events.php:1623
-#: includes/events.php:1767 includes/events.php:1985
+#: includes/events.php:1879 includes/events.php:2098
 msgid "Invalid automation ID."
 msgstr ""
 
@@ -398,9 +398,9 @@ msgid "License"
 msgstr ""
 
 #: includes/admin/pages/licenses.php:265
-#: includes/custom-tables/automations.php:749
-#: includes/custom-tables/automations.php:938
-#: includes/custom-tables/automations.php:946
+#: includes/custom-tables/automations.php:791
+#: includes/custom-tables/automations.php:980
+#: includes/custom-tables/automations.php:988
 msgid "Save Changes"
 msgstr ""
 
@@ -443,7 +443,7 @@ msgstr ""
 
 #: includes/admin/settings/general.php:33 includes/cmb2.php:360
 #: includes/custom-tables/automations.php:154
-#: includes/custom-tables/automations.php:804
+#: includes/custom-tables/automations.php:846
 msgid "Author"
 msgstr ""
 
@@ -469,15 +469,19 @@ msgstr ""
 
 #: includes/ajax-functions.php:23 includes/ajax-functions.php:156
 #: includes/ajax-functions.php:195 includes/ajax-functions.php:255
-#: includes/ajax-functions.php:429 includes/ajax-functions.php:502
-#: includes/ajax-functions.php:541 includes/ajax-functions.php:792
-#: includes/ajax-functions.php:872 includes/ajax-functions.php:933
+#: includes/ajax-functions.php:429 includes/ajax-functions.php:507
+#: includes/ajax-functions.php:546 includes/ajax-functions.php:797
+#: includes/ajax-functions.php:877 includes/ajax-functions.php:938
 msgid "You're not allowed to perform this action."
 msgstr ""
 
 #: includes/ajax-functions.php:34 includes/ajax-functions.php:40
-#: includes/events.php:1877 includes/events.php:1908 includes/events.php:2057
-#: includes/events.php:2108 includes/events.php:2145 includes/events.php:2183
+#: includes/automations.php:274 includes/automations.php:325
+#: includes/automations.php:362 includes/automations.php:400
+#: includes/automations.php:457 includes/automations.php:508
+#: includes/automations.php:545 includes/automations.php:583
+#: includes/automations.php:640 includes/events.php:1721
+#: includes/events.php:1794 includes/events.php:1989 includes/events.php:2021
 msgid "Invalid automation."
 msgstr ""
 
@@ -523,22 +527,27 @@ msgstr ""
 msgid "Invalid option."
 msgstr ""
 
-#: includes/ajax-functions.php:440 includes/ajax-functions.php:512
-#: includes/events.php:1632 includes/events.php:1776 includes/events.php:1994
+#: includes/ajax-functions.php:440 includes/ajax-functions.php:517
+#: includes/events.php:1632 includes/events.php:1888 includes/events.php:2107
 #, php-format
 msgid "Automation with ID %d not found."
 msgstr ""
 
-#: includes/ajax-functions.php:449 includes/events.php:1641
-#: includes/events.php:2195
+#: includes/ajax-functions.php:452 includes/automations.php:412
+#: includes/events.php:1730
 msgid "Users per loop need to be higher than 0."
 msgstr ""
 
-#: includes/ajax-functions.php:945
+#: includes/ajax-functions.php:465 includes/automations.php:595
+#: includes/events.php:1803
+msgid "Posts per loop need to be higher than 0."
+msgstr ""
+
+#: includes/ajax-functions.php:950
 msgid "Table not found."
 msgstr ""
 
-#: includes/ajax-functions.php:1025 includes/cmb2.php:529
+#: includes/ajax-functions.php:1030 includes/cmb2.php:529
 #: includes/custom-tables/automations.php:200
 #: includes/custom-tables/logs.php:208 includes/custom-tables/logs.php:266
 #: includes/custom-tables/logs.php:345 includes/custom-tables/logs.php:772
@@ -559,8 +568,8 @@ msgid "Confirm"
 msgstr ""
 
 #: includes/automation-ui.php:59 includes/automation-ui.php:120
-#: includes/automation-ui.php:470 includes/automation-ui.php:747
-#: includes/custom-tables/automations.php:1080
+#: includes/automation-ui.php:470 includes/automation-ui.php:763
+#: includes/custom-tables/automations.php:1117
 msgid "Cancel"
 msgstr ""
 
@@ -629,7 +638,7 @@ msgid "Add Filter"
 msgstr ""
 
 #: includes/automation-ui.php:241 includes/automation-ui.php:285
-#: includes/automation-ui.php:474 includes/automation-ui.php:751
+#: includes/automation-ui.php:474 includes/automation-ui.php:767
 msgid "Saving..."
 msgstr ""
 
@@ -661,69 +670,74 @@ msgstr ""
 msgid "Search for actions"
 msgstr ""
 
-#: includes/automation-ui.php:589
+#: includes/automation-ui.php:593
 msgid "Move up"
 msgstr ""
 
-#: includes/automation-ui.php:593
+#: includes/automation-ui.php:597
 msgid "Move down"
 msgstr ""
 
-#: includes/automation-ui.php:597 includes/automation-ui.php:918
-#: includes/custom-tables/automations.php:383
-#: includes/custom-tables/automations.php:384
-#: includes/custom-tables/automations.php:959
-#: includes/custom-tables/automations.php:960
+#: includes/automation-ui.php:601 includes/automation-ui.php:979
+#: includes/custom-tables/automations.php:387
+#: includes/custom-tables/automations.php:388
+#: includes/custom-tables/automations.php:1001
+#: includes/custom-tables/automations.php:1002
 msgid "Delete"
 msgstr ""
 
-#: includes/automation-ui.php:746 includes/custom-tables/automations.php:683
-#: includes/custom-tables/automations.php:777
-#: includes/custom-tables/automations.php:796
-#: includes/custom-tables/automations.php:811
-#: includes/custom-tables/automations.php:824
-#: includes/custom-tables/automations.php:844 includes/scripts.php:203
+#: includes/automation-ui.php:762 includes/custom-tables/automations.php:705
+#: includes/custom-tables/automations.php:725
+#: includes/custom-tables/automations.php:819
+#: includes/custom-tables/automations.php:838
+#: includes/custom-tables/automations.php:853
+#: includes/custom-tables/automations.php:866
+#: includes/custom-tables/automations.php:886 includes/scripts.php:203
 msgid "Save"
 msgstr ""
 
-#: includes/automation-ui.php:802
+#: includes/automation-ui.php:819
 msgid "Run automation on all users"
 msgstr ""
 
-#: includes/automation-ui.php:860
+#: includes/automation-ui.php:863
+msgid "Run automation on all posts"
+msgstr ""
+
+#: includes/automation-ui.php:921
 #: integrations/automatorwp/actions/anonymous-user.php:82
 #: integrations/automatorwp/actions/anonymous-user.php:84
 #, php-format
 msgid "Actions will be run on %1$s"
 msgstr ""
 
-#: includes/automation-ui.php:900
+#: includes/automation-ui.php:961
 msgid "Trigger disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this trigger."
 msgstr ""
 
-#: includes/automation-ui.php:902
+#: includes/automation-ui.php:963
 msgid "Action disabled because plugin associated couldn't be found. Please, re-install the plugin associated or remove this action."
 msgstr ""
 
-#: includes/automation-ui.php:911 includes/automation-ui.php:921
-#: includes/custom-tables/automations.php:239 includes/logs.php:184
+#: includes/automation-ui.php:972 includes/automation-ui.php:982
+#: includes/custom-tables/automations.php:243 includes/logs.php:184
 #: includes/logs.php:271
 msgid "Missing plugin"
 msgstr ""
 
-#: includes/automation-ui.php:1184
+#: includes/automation-ui.php:1245
 msgid "&"
 msgstr ""
 
-#: includes/automation-ui.php:1415
+#: includes/automation-ui.php:1476
 msgid "Looking for more triggers?"
 msgstr ""
 
-#: includes/automation-ui.php:1415
+#: includes/automation-ui.php:1476
 msgid "Looking for more actions?"
 msgstr ""
 
-#: includes/automation-ui.php:1416
+#: includes/automation-ui.php:1477
 msgid "View all add-ons"
 msgstr ""
 
@@ -768,11 +782,25 @@ msgstr ""
 msgid "Automation to run actions on a filtered group of users."
 msgstr ""
 
-#: includes/automations.php:56
+#: includes/automations.php:56 includes/automations.php:62
 msgid "This automation can be run <b>manually</b>, on a <b>specific date</b> or on a <b>recurring</b> basis."
 msgstr ""
 
-#: includes/automations.php:481
+#: includes/automations.php:60
+msgid "All posts"
+msgstr ""
+
+#: includes/automations.php:61
+msgid "Automation to run actions on a filtered group of posts."
+msgstr ""
+
+#: includes/automations.php:333 includes/automations.php:370
+#: includes/automations.php:516 includes/automations.php:553
+#: includes/events.php:1739 includes/events.php:1812
+msgid "Trigger configuration not found."
+msgstr ""
+
+#: includes/automations.php:897
 msgid "(Cloned)"
 msgstr ""
 
@@ -823,8 +851,8 @@ msgid "ID"
 msgstr ""
 
 #: includes/cmb2.php:352 includes/custom-tables/automations.php:150
-#: includes/custom-tables/automations.php:645
-#: includes/custom-tables/automations.php:649
+#: includes/custom-tables/automations.php:667
+#: includes/custom-tables/automations.php:671
 #: includes/custom-tables/logs.php:156
 msgid "Title"
 msgstr ""
@@ -834,13 +862,13 @@ msgid "Slug"
 msgstr ""
 
 #: includes/cmb2.php:354 includes/custom-tables/automations.php:151
-#: includes/custom-tables/automations.php:753
+#: includes/custom-tables/automations.php:795
 #: includes/custom-tables/logs.php:157
 msgid "Type"
 msgstr ""
 
 #: includes/cmb2.php:355 includes/custom-tables/automations.php:156
-#: includes/custom-tables/automations.php:819
+#: includes/custom-tables/automations.php:861
 msgid "Status"
 msgstr ""
 
@@ -972,160 +1000,168 @@ msgstr ""
 msgid "Completions"
 msgstr ""
 
-#: includes/custom-tables/automations.php:273
+#: includes/custom-tables/automations.php:277
 msgid "Missing integration"
 msgstr ""
 
-#: includes/custom-tables/automations.php:360
-#: includes/custom-tables/automations.php:361
-#: includes/custom-tables/automations.php:900
-#: includes/custom-tables/automations.php:901
+#: includes/custom-tables/automations.php:364
+#: includes/custom-tables/automations.php:365
+#: includes/custom-tables/automations.php:942
+#: includes/custom-tables/automations.php:943
 msgid "Clone"
 msgstr ""
 
-#: includes/custom-tables/automations.php:367
-#: includes/custom-tables/automations.php:368
-#: includes/custom-tables/automations.php:907
-#: includes/custom-tables/automations.php:908
+#: includes/custom-tables/automations.php:371
+#: includes/custom-tables/automations.php:372
+#: includes/custom-tables/automations.php:949
+#: includes/custom-tables/automations.php:950
 msgid "Export"
 msgstr ""
 
-#: includes/custom-tables/automations.php:381
-#: includes/custom-tables/automations.php:957
+#: includes/custom-tables/automations.php:385
+#: includes/custom-tables/automations.php:999
 msgid "Are you sure you want to delete this automation?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the delete."
 msgstr ""
 
-#: includes/custom-tables/automations.php:466
+#: includes/custom-tables/automations.php:470
 msgid "Automation cloned successfully."
 msgstr ""
 
-#: includes/custom-tables/automations.php:467
+#: includes/custom-tables/automations.php:471
 msgid "Automation could not be cloned."
 msgstr ""
 
-#: includes/custom-tables/automations.php:473
+#: includes/custom-tables/automations.php:477
 #, php-format
 msgid "Automation cloned successfully! <a href=\"%s\">Edit the new automation</a>."
 msgstr ""
 
-#: includes/custom-tables/automations.php:653
+#: includes/custom-tables/automations.php:675
 msgid "Enter title here"
 msgstr ""
 
-#: includes/custom-tables/automations.php:667
+#: includes/custom-tables/automations.php:689
 msgid "Execution Options"
 msgstr ""
 
-#: includes/custom-tables/automations.php:671
+#: includes/custom-tables/automations.php:693
 msgid "Users per loop"
 msgstr ""
 
-#: includes/custom-tables/automations.php:672
-msgid "Number of users on which to run the automation per loop. Adjust this option depending of your server resources."
+#: includes/custom-tables/automations.php:694
+msgid "Number of users on which run the automation per loop. Adjust this option depending of your server resources."
 msgstr ""
 
-#: includes/custom-tables/automations.php:691
+#: includes/custom-tables/automations.php:713
+msgid "Posts per loop"
+msgstr ""
+
+#: includes/custom-tables/automations.php:714
+msgid "Number of posts on which run the automation per loop. Adjust this option depending of your server resources."
+msgstr ""
+
+#: includes/custom-tables/automations.php:733
 msgid "Schedule execution:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:696
+#: includes/custom-tables/automations.php:738
 msgid "Execute this automation on:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:703
+#: includes/custom-tables/automations.php:745
 msgid "Recurring execution:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:708
-#: includes/custom-tables/automations.php:995
+#: includes/custom-tables/automations.php:750
+#: includes/custom-tables/automations.php:1037
 msgid "Execute this automation:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:709
+#: includes/custom-tables/automations.php:751
 msgid "of"
 msgstr ""
 
-#: includes/custom-tables/automations.php:721
+#: includes/custom-tables/automations.php:763
 msgid "Period:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:725
+#: includes/custom-tables/automations.php:767
 msgid "Every day"
 msgstr ""
 
-#: includes/custom-tables/automations.php:726
+#: includes/custom-tables/automations.php:768
 msgid "every week"
 msgstr ""
 
-#: includes/custom-tables/automations.php:727
+#: includes/custom-tables/automations.php:769
 msgid "every month"
 msgstr ""
 
-#: includes/custom-tables/automations.php:728
+#: includes/custom-tables/automations.php:770
 msgid "every year"
 msgstr ""
 
-#: includes/custom-tables/automations.php:732
+#: includes/custom-tables/automations.php:774
 msgid "at"
 msgstr ""
 
-#: includes/custom-tables/automations.php:766
+#: includes/custom-tables/automations.php:808
 msgid "Times per user"
 msgstr ""
 
-#: includes/custom-tables/automations.php:767
+#: includes/custom-tables/automations.php:809
 msgid "Maximum number of times a user can complete this automation. Set it to 0 for unlimited."
 msgstr ""
 
-#: includes/custom-tables/automations.php:785
+#: includes/custom-tables/automations.php:827
 msgid "Total times"
 msgstr ""
 
-#: includes/custom-tables/automations.php:786
+#: includes/custom-tables/automations.php:828
 msgid "Maximum number of times this automation can be completed. Set it to 0 for unlimited."
 msgstr ""
 
-#: includes/custom-tables/automations.php:832
+#: includes/custom-tables/automations.php:874
 msgid "Created on"
 msgstr ""
 
-#: includes/custom-tables/automations.php:833
+#: includes/custom-tables/automations.php:875
 msgid "Automation will take effect based on this date. You can schedule <strong>future</strong> automations by setting this field with a future date."
 msgstr ""
 
-#: includes/custom-tables/automations.php:834
+#: includes/custom-tables/automations.php:876
 msgid "<strong>Note:</strong> For future automations, status need to be <strong>active</strong> because setting a future date won't update the status automatically."
 msgstr ""
 
-#: includes/custom-tables/automations.php:934
+#: includes/custom-tables/automations.php:976
 msgid "Save &amp; Activate"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1004
+#: includes/custom-tables/automations.php:1046
 msgid "The day"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1044
+#: includes/custom-tables/automations.php:1086
 msgid "Next run:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1066
+#: includes/custom-tables/automations.php:1103
 msgid "Run automation"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1069
+#: includes/custom-tables/automations.php:1106
 msgid "Running..."
 msgstr ""
 
-#: includes/custom-tables/automations.php:1072
+#: includes/custom-tables/automations.php:1109
 msgid "Done!"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1083
+#: includes/custom-tables/automations.php:1120
 msgid "Cancelling..."
 msgstr ""
 
-#: includes/custom-tables/automations.php:1086
+#: includes/custom-tables/automations.php:1123
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:70
 msgid "Cancelled"
 msgstr ""
@@ -1250,27 +1286,27 @@ msgstr ""
 msgid "(No post assigned)"
 msgstr ""
 
-#: includes/events.php:1647
+#: includes/events.php:1638
 msgid "Invalid automation type."
 msgstr ""
 
-#: includes/events.php:1658
+#: includes/events.php:1649
 msgid "Automation has been run the number of times allowed. Change the \"Total times\" setting for this automation to allow run it again."
 msgstr ""
 
-#: includes/events.php:1668 includes/events.php:2116 includes/events.php:2153
-msgid "Trigger configuration not found."
-msgstr ""
-
-#: includes/events.php:1781
+#: includes/events.php:1893
 msgid "Automation run has been cancelled."
 msgstr ""
 
-#: includes/events.php:1999
+#: includes/events.php:1996
+msgid "Can not retrieve run details."
+msgstr ""
+
+#: includes/events.php:2112
 msgid "Can not cancel automation run because is not running."
 msgstr ""
 
-#: includes/events.php:2022
+#: includes/events.php:2135
 #, php-format
 msgid "%s run cancelled by the user"
 msgstr ""
@@ -1926,7 +1962,7 @@ msgstr ""
 
 #: integrations/activecampaign/includes/functions.php:128
 #: integrations/automatorwp/actions/redirect-user.php:56
-#: integrations/automatorwp/actions/redirect-user.php:227
+#: integrations/automatorwp/actions/redirect-user.php:231
 msgid "URL:"
 msgstr ""
 
@@ -2492,6 +2528,7 @@ msgid "Add meta"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:197
+#: integrations/automatorwp/triggers/all-posts.php:92
 #: integrations/automatorwp/triggers/all-users.php:92
 #: integrations/wordpress/actions/create-post.php:168
 #: integrations/wordpress/actions/create-user.php:124
@@ -2504,6 +2541,7 @@ msgid "Meta Key:"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:202
+#: integrations/automatorwp/triggers/all-posts.php:98
 #: integrations/automatorwp/triggers/all-users.php:98
 #: integrations/wordpress/actions/create-post.php:173
 #: integrations/wordpress/actions/create-user.php:129
@@ -2708,6 +2746,7 @@ msgstr ""
 
 #: integrations/automatorwp/actions/call-function.php:63
 #: integrations/automatorwp/actions/do-action.php:63
+#: integrations/automatorwp/triggers/all-posts.php:75
 #: integrations/automatorwp/triggers/all-users.php:75
 #: integrations/wordpress/actions/delete-multiple-posts.php:107
 #: integrations/wordpress/actions/update-multiple-posts.php:107
@@ -2807,11 +2846,11 @@ msgstr ""
 msgid "%s is not a valid URL."
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:103
+#: integrations/automatorwp/actions/redirect-user.php:107
 msgid "User redirected successfully."
 msgstr ""
 
-#: integrations/automatorwp/actions/redirect-user.php:228
+#: integrations/automatorwp/actions/redirect-user.php:232
 msgid "The url where user has been redirected."
 msgstr ""
 
@@ -2859,26 +2898,31 @@ msgstr ""
 msgid "Filter passed. \"%1$s\" %2$s \"%3$s\"."
 msgstr ""
 
+#: integrations/automatorwp/triggers/all-posts.php:47
+#: integrations/automatorwp/triggers/all-posts.php:49
 #: integrations/automatorwp/triggers/all-users.php:47
 #: integrations/automatorwp/triggers/all-users.php:49
 #, php-format
 msgid "Run automation on %1$s"
 msgstr ""
 
-#: integrations/automatorwp/triggers/all-users.php:52
-msgid "all users"
+#: integrations/automatorwp/triggers/all-posts.php:52
+msgid "all posts"
 msgstr ""
 
+#: integrations/automatorwp/triggers/all-posts.php:55
 #: integrations/automatorwp/triggers/all-users.php:55
 #: integrations/wordpress/actions/delete-multiple-posts.php:87
 #: integrations/wordpress/actions/update-multiple-posts.php:87
 msgid "Field Conditions:"
 msgstr ""
 
-#: integrations/automatorwp/triggers/all-users.php:56
-msgid "Set conditions to filter users by their fields."
+#: integrations/automatorwp/triggers/all-posts.php:56
+msgid "Set conditions to filter posts by their fields."
 msgstr ""
 
+#: integrations/automatorwp/triggers/all-posts.php:60
+#: integrations/automatorwp/triggers/all-posts.php:87
 #: integrations/automatorwp/triggers/all-users.php:60
 #: integrations/automatorwp/triggers/all-users.php:87
 #: integrations/wordpress/actions/delete-multiple-posts.php:92
@@ -2888,6 +2932,7 @@ msgstr ""
 msgid "Add condition"
 msgstr ""
 
+#: integrations/automatorwp/triggers/all-posts.php:65
 #: integrations/automatorwp/triggers/all-users.php:65
 #: integrations/wordpress/actions/delete-multiple-posts.php:97
 #: integrations/wordpress/actions/update-multiple-posts.php:97
@@ -2896,16 +2941,34 @@ msgstr ""
 msgid "Field:"
 msgstr ""
 
+#: integrations/automatorwp/triggers/all-posts.php:70
 #: integrations/automatorwp/triggers/all-users.php:70
 #: integrations/wordpress/actions/delete-multiple-posts.php:102
 #: integrations/wordpress/actions/update-multiple-posts.php:102
 msgid "Choose a field"
 msgstr ""
 
+#: integrations/automatorwp/triggers/all-posts.php:82
 #: integrations/automatorwp/triggers/all-users.php:82
 #: integrations/wordpress/actions/delete-multiple-posts.php:114
 #: integrations/wordpress/actions/update-multiple-posts.php:114
 msgid "Meta Conditions:"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-posts.php:83
+msgid "Set conditions to filter posts by their metas."
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-posts.php:179
+msgid "some posts"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:52
+msgid "all users"
+msgstr ""
+
+#: integrations/automatorwp/triggers/all-users.php:56
+msgid "Set conditions to filter users by their fields."
 msgstr ""
 
 #: integrations/automatorwp/triggers/all-users.php:83

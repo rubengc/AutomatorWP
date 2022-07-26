@@ -61,6 +61,12 @@ Configure as many triggers and actions per automation as you want.
 **Logged-in and anonymous automations:**
 Create automations for logged-in users or for not logged-in visitors.
 
+**Scheduled and recurring automations:**
+Automations to run actions on all or on a filtered group of users manually, on a specific date or on a recurring basis.
+
+**All posts automations:**
+Create automated tasks that check your site posts and process actions on them like clean up the older posts or email administrators about pending ones.
+
 **Filters:**
 Filter any trigger or action with the conditions of your choice.
 
@@ -273,6 +279,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.2.3 ###
+
+* **New Features**
+* Added the "All posts" automation, an automation to run actions on all or on a filtered group of posts manually, on a specific date or on a recurring basis (Ideal for automate maintenance tasks on your site posts like clean up the older posts or email administrators about pending ones).
+* **Improvements**
+* Improved the redirect URL Javascript checks.
 
 ### 2.2.2 ###
 

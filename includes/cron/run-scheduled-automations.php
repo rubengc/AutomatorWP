@@ -65,7 +65,7 @@ function automatorwp_run_scheduled_automations() {
         LEFT JOIN {$automations_meta} AS am1 ON ( am1.id = a.id AND am1.meta_key = 'schedule_run' )
         LEFT JOIN {$automations_meta} AS am2 ON ( am2.id = a.id AND am2.meta_key = 'recurring_run' )
         LEFT JOIN {$automations_meta} AS am3 ON ( am3.id = a.id AND am3.meta_key = 'next_run_date' )
-        WHERE a.type = 'all-users' 
+        WHERE a.type IN ( 'all-users', 'all-posts' ) 
         AND a.status = 'active' 
         AND ( am1.meta_value = 'on' OR am2.meta_value = 'on' )
         AND am3.meta_value <= '{$datetime}'" );

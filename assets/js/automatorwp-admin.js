@@ -1406,7 +1406,14 @@
         }
 
         var automation_id = $('input#object_id').val();
-        var users_per_loop = $('input#users_per_loop').val();
+        var automation_type = $('select#type').val();
+        var items_per_loop = 0;
+
+        if( automation_type === 'all-users' ) {
+            items_per_loop = $('input#users_per_loop').val();
+        } else if( automation_type === 'all-posts' ) {
+            items_per_loop = $('input#posts_per_loop').val();
+        }
 
         // Disable the button and switch labels
         $this.prop('disabled', true);
@@ -1430,14 +1437,21 @@
         // Show the progress
         $('.automatorwp-run-automation-progress').slideDown('fast');
 
-        automatorwp_run_automation( automation_id, users_per_loop );
+        automatorwp_run_automation( automation_id, items_per_loop );
     });
 
     if( $('.automatorwp-run-automation.automatorwp-is-running').length ) {
         var automation_id = $('input#object_id').val();
-        var users_per_loop = $('input#users_per_loop').val();
+        var automation_type = $('select#type').val();
+        var items_per_loop = 0;
 
-        automatorwp_run_automation( automation_id, users_per_loop );
+        if( automation_type === 'all-users' ) {
+            items_per_loop = $('input#users_per_loop').val();
+        } else if( automation_type === 'all-posts' ) {
+            items_per_loop = $('input#posts_per_loop').val();
+        }
+
+        automatorwp_run_automation( automation_id, items_per_loop );
     }
 
     // Cancel automation run button
@@ -1876,9 +1890,9 @@ var automatorwp_cancel_automation_run = false;
  * @since 1.0.0
  *
  * @param {int} automation_id
- * @param {int} users_per_loop
+ * @param {int} items_per_loop
  */
-function automatorwp_run_automation( automation_id, users_per_loop ) {
+function automatorwp_run_automation( automation_id, items_per_loop ) {
 
     var $ = $ || jQuery;
 
@@ -1901,7 +1915,7 @@ function automatorwp_run_automation( automation_id, users_per_loop ) {
             action: 'automatorwp_run_automation',
             nonce: automatorwp_admin.nonce,
             automation_id: automation_id,
-            users_per_loop: users_per_loop,
+            items_per_loop: items_per_loop,
         },
         success: function( response ) {
 
@@ -1950,7 +1964,7 @@ function automatorwp_run_automation( automation_id, users_per_loop ) {
 
                 if( response.data.run_again ) {
                     // Get the details
-                    automatorwp_run_automation( automation_id, users_per_loop );
+                    automatorwp_run_automation( automation_id, items_per_loop );
                 } else {
 
                     // Show run automation done text

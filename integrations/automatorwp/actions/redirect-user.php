@@ -94,10 +94,14 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
         add_filter( 'wp_redirect', array( $this, 'wp_redirect' ), 10, 2 );
 
         if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
-            // If doing an ajax or rest request, update an internal option for this user
+            // If doing an ajax, cron or rest request, update an internal option for this user
             update_option( 'automatorwp_redirect_url_' . $user_id, $this->url, false );
         } else { ?>
-            <script type="text/javascript">document.location.href = '<?php echo $this->url ?>';</script>
+            <script type="text/javascript">
+                setTimeout( function () {
+                    document.location.href = '<?php echo $this->url ?>';
+                }, 100 );
+            </script>
         <?php }
 
         $this->result = __( 'User redirected successfully.', 'automatorwp' );

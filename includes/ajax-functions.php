@@ -431,7 +431,7 @@ function automatorwp_ajax_run_automation() {
 
     // Sanitize parameters
     $automation_id = absint( $_POST['automation_id'] );
-    $users_per_loop = absint( $_POST['users_per_loop'] );
+    $items_per_loop = ( isset( $_POST['items_per_loop'] ) ? absint( $_POST['items_per_loop'] ) : 0 );
 
     $automation = automatorwp_get_automation_object( $automation_id );
 
@@ -445,15 +445,32 @@ function automatorwp_ajax_run_automation() {
 
     // First loop checks
     if( $loop === 0 ) {
-        if( $users_per_loop <= 0 ) {
-            wp_send_json_error( __( 'Users per loop need to be higher than 0.', 'automatorwp' ) );
-        }
+        if( $automation->type === 'all-users' ) {
+            // All users
 
-        // Update the users per loop
-        $original_users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+            if( $items_per_loop <= 0 ) {
+                wp_send_json_error( __( 'Users per loop need to be higher than 0.', 'automatorwp' ) );
+            }
 
-        if( $users_per_loop !== $original_users_per_loop ) {
-            automatorwp_update_automation_meta( $automation->id, 'users_per_loop', $users_per_loop );
+            // Update the users per loop
+            $original_users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
+
+            if( $items_per_loop !== $original_users_per_loop ) {
+                automatorwp_update_automation_meta( $automation->id, 'users_per_loop', $items_per_loop );
+            }
+        } else if( $automation->type === 'all-posts' ) {
+            // All posts
+
+            if( $items_per_loop <= 0 ) {
+                wp_send_json_error( __( 'Posts per loop need to be higher than 0.', 'automatorwp' ) );
+            }
+
+            // Update the posts per loop
+            $original_posts_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'posts_per_loop', true ) );
+
+            if( $items_per_loop !== $original_posts_per_loop ) {
+                automatorwp_update_automation_meta( $automation->id, 'posts_per_loop', $items_per_loop );
+            }
         }
 
         // Update a flag to meet that is a manual run
@@ -464,19 +481,7 @@ function automatorwp_ajax_run_automation() {
     $result = automatorwp_run_automation( $automation_id );
 
     if( $result ) {
-
-        $count = automatorwp_get_all_users_automation_users_count( $automation );
-        $processed = ($loop * $users_per_loop) + $users_per_loop;
-        $processed = min( $processed, $count );
-        $percentage = ( $processed / $count ) * 100;
-
-        wp_send_json_success( array(
-            'loop' => $loop,
-            'count' => $count,
-            'processed' => $processed,
-            'percentage' => $percentage,
-            'run_again' => ( $processed < $count ),
-        ) );
+        wp_send_json_success( automatorwp_get_automation_run_details( $automation ) );
     } else {
         wp_send_json_error( array(
             'message' => automatorwp_get_run_automation_error()

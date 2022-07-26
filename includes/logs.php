@@ -165,12 +165,12 @@ function automatorwp_get_log_integration_icon( $log ) {
 
             if( $integration ) :
 
-                if( $log->type === 'action' && $object->type === 'automatorwp_anonymous_user' ) {
-                    $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
+                if( $log->type === 'trigger' && $object->type === 'automatorwp_all_posts' ) {
+                    $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-posts.svg';
                 }
 
-                if( $log->type === 'trigger' && $object->type === 'automatorwp_all_users' ) {
-                    $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-users.svg';
+                if( $log->type === 'action' && $object->type === 'automatorwp_anonymous_user' ) {
+                    $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-anonymous.svg';
                 } ?>
 
                 <div class="automatorwp-integration-icon">
@@ -277,5 +277,63 @@ function automatorwp_get_log_filter_icon( $log, $item_type, $class ) {
         <?php }
 
     }
+
+}
+
+/**
+ * Get the last object log
+ *
+ * @since 1.0.0
+ *
+ * @param int       $object_id  The object ID
+ * @param string    $type       The object type
+ *
+ * @return stdClass|false
+ */
+function automatorwp_get_object_last_log( $object_id, $type ) {
+
+    global $wpdb;
+
+    $object_id = absint( $object_id );
+
+    // Check the object ID
+    if( $object_id === 0 ) {
+        return false;
+    }
+
+    $types = automatorwp_get_log_types();
+
+    // Check the type
+    if( ! isset( $types[$type] ) ) {
+        return false;
+    }
+
+    $cache = automatorwp_get_cache( 'object_last_log', array(), false );
+
+    // If result already cached, return it
+    if( isset( $cache[$type] )
+        && isset( $cache[$type][$object_id] ) ) {
+        return $cache[$type][$object_id];
+    }
+
+    $ct_table = ct_setup_table( 'automatorwp_logs' );
+
+    $log = $wpdb->get_row(
+        "SELECT *
+        FROM {$ct_table->db->table_name} AS l
+        WHERE 1=1 
+        AND l.object_id = {$object_id}
+        AND l.type = '{$type}'
+        ORDER BY l.date DESC
+        LIMIT 1"
+    );
+
+    ct_reset_setup_table();
+
+    $cache[$type][$object_id] = $log;
+
+    automatorwp_set_cache( 'object_last_log', $cache );
+
+    return $log;
 
 }

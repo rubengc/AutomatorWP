@@ -222,6 +222,10 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
                 if( $type_args ) {
                     $integration = automatorwp_get_integration( $type_args['integration'] );
 
+                    if( $trigger->type === 'automatorwp_all_posts' ) {
+                        $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-posts.svg';
+                    }
+
                     if( $trigger->type === 'automatorwp_all_users' ) {
                         $integration['icon'] = AUTOMATORWP_URL . 'assets/img/automatorwp-all-users.svg';
                     }
@@ -596,6 +600,24 @@ function automatorwp_automations_on_insert_automation( $object_id, $object, $upd
         ct_update_object_meta( $object_id, 'users_per_loop', $users_per_loop );
     }
 
+    // Check if is an all posts automation
+    if( $object->type === 'all-posts' ) {
+
+        /**
+         * Filter available to define the default posts per loop option
+         *
+         * @since 1.0.0
+         *
+         * @param int $posts_per_loop
+         *
+         * @return int
+         */
+        $posts_per_loop = apply_filters( 'automatorwp_default_posts_per_loop', 200 );
+
+        // Update the posts per loop meta
+        ct_update_object_meta( $object_id, 'posts_per_loop', $posts_per_loop );
+    }
+
 }
 add_action( 'ct_insert_object', 'automatorwp_automations_on_insert_automation', 10, 3 );
 
@@ -623,7 +645,7 @@ function automatorwp_automations_on_update_automation( $object_id, $object, $upd
     }
 
     // Check if is an all users automation
-    if( $object->type === 'all-users' ) {
+    if( in_array( $object->type, array( 'all-users', 'all-posts' ) ) ) {
 
         // Calculate the next run date based on settings submitted
         automatorwp_update_automation_next_run_date( $object_id, true );
@@ -669,7 +691,27 @@ function automatorwp_automations_meta_boxes( ) {
         array(
             'users_per_loop' => array(
                 'name' 	=> __( 'Users per loop', 'automatorwp' ),
-                'desc' 	=> __( 'Number of users on which to run the automation per loop. Adjust this option depending of your server resources.', 'automatorwp' ),
+                'desc' 	=> __( 'Number of users on which run the automation per loop. Adjust this option depending of your server resources.', 'automatorwp' ),
+                'type' 	=> 'input',
+                'default' 	=> '200',
+                'attributes' => array(
+                    'type' => 'number',
+                    'min' => '1',
+                ),
+                'classes' => 'automatorwp-has-tooltip',
+                'after_field' => 'automatorwp_tooltip_cb',
+                'js_controls' => array(
+                    'icon' => 'dashicons-filter',
+                    'save_button'   => __( 'Save', 'automatorwp' ),
+                    'save_button_classes' => 'button button-primary',
+                    'cancel_button_classes' => 'button automatorwp-button-danger',
+                ),
+                'before_row' => 'js_controls_before',
+                'after_row' => 'js_controls_after',
+            ),
+            'posts_per_loop' => array(
+                'name' 	=> __( 'Posts per loop', 'automatorwp' ),
+                'desc' 	=> __( 'Number of posts on which run the automation per loop. Adjust this option depending of your server resources.', 'automatorwp' ),
                 'type' 	=> 'input',
                 'default' 	=> '200',
                 'attributes' => array(
@@ -983,7 +1025,7 @@ function automatorwp_automations_execution_options_box_show_cb( $cmb ) {
 
     $object = ct_get_object( $object_id );
 
-    return ( $object->type === 'all-users' );
+    return ( in_array( $object->type, array( 'all-users', 'all-posts' ) ) );
 }
 
 /**
@@ -1049,12 +1091,7 @@ function automatorwp_automations_execute_options_actions() {
     // Setup vars for an automation in progress
     if( $automation->status === 'in-progress' ) {
         $original_status = automatorwp_get_automation_meta( $automation->id, 'original_status', true );
-        $users_per_loop = absint( automatorwp_get_automation_meta( $automation->id, 'users_per_loop', true ) );
-        $loop = absint( automatorwp_get_automation_meta( $automation->id, 'current_loop', true ) );
-        $count = automatorwp_get_all_users_automation_users_count( $automation );
-        $processed = ($loop * $users_per_loop) + $users_per_loop;
-        $processed = min( $processed, $count );
-        $percentage = ( $processed / $count ) * 100;
+        $details = automatorwp_get_automation_run_details( $automation );
     }
 
     ?>
@@ -1093,13 +1130,13 @@ function automatorwp_automations_execute_options_actions() {
         <div class="automatorwp-run-automation-progress" <?php if( $automation->status !== 'in-progress' ) : ?>style="display: none;"<?php endif; ?>>
             <div class="automatorwp-run-automation-progress-bar">
                 <?php if( $automation->status === 'in-progress' ) : ?>
-                    <div class="automatorwp-run-automation-progress-current-progress" style="width: <?php echo $percentage; ?>%"></div>
+                    <div class="automatorwp-run-automation-progress-current-progress" style="width: <?php echo $details['percentage']; ?>%"></div>
                 <?php else : ?>
                     <div class="automatorwp-run-automation-progress-current-progress"></div>
                 <?php endif; ?>
             </div>
             <?php if( $automation->status === 'in-progress' ) : ?>
-                <div class="automatorwp-run-automation-progress-text"><?php echo $processed . '/' . $count; ?></div>
+                <div class="automatorwp-run-automation-progress-text"><?php echo $details['processed'] . '/' . $details['count']; ?></div>
             <?php else : ?>
                 <div class="automatorwp-run-automation-progress-text">0/0</div>
             <?php endif; ?>
