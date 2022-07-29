@@ -280,6 +280,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.2.4 ###
+
+* **Bug Fixes**
+* ActiveCampaign: Fixed a bug that causes contact is not detected in ActiveCampaign if email contains special characters.
+
 ### 2.2.3 ###
 
 * **New Features**

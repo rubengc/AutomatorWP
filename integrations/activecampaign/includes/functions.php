@@ -190,6 +190,9 @@ function automatorwp_activecampaign_get_contact( $email ) {
         return array( 'contacts' => array() );
     }
 
+    // To manage special characters in email;
+    $email = urlencode( $email );
+
     $response = wp_remote_get( $api['url'] . '/api/3/contacts?email=' . $email, array(
         'headers' => array(
             'Accept' => 'application/json',
