@@ -99,14 +99,14 @@ function automatorwp_redirect_is_url_excluded( url, data ) {
     }
 
     if( data === undefined ) {
-        data = '';
+        data = url;
     }
 
     // Check for excluded urls
     var excluded_url = false;
 
     automatorwp_redirect.excluded_urls.forEach( function ( to_match ) {
-        if( url !== undefined && url.includes( to_match ) ) {
+        if( url !== undefined && url.includes( to_match ) || url === to_match ) {
             excluded_url = true;
         }
     } );
@@ -135,6 +135,10 @@ function automatorwp_redirect_is_url_excluded( url, data ) {
 
         automatorwp_redirect.excluded_ajax_actions.forEach( function ( to_match ) {
             if( data !== undefined && data.includes( 'action=' + to_match ) ) {
+                excluded_action = true;
+            }
+
+            if( url !== undefined && url.includes( 'action=' + to_match ) ) {
                 excluded_action = true;
             }
         } );

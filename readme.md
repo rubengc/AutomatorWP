@@ -280,6 +280,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.2.5 ###
+
+* **Improvements**
+* ActiveMember360: All actions adapted to last version of ActiveMember360.
+* **Bug Fixes**
+* wpForo: Updated wpForo install check to meet wpForo main class change in 2.0.0.
+* Fixed parameters check when excluding URLs.
+
 ### 2.2.4 ###
 
 * **Bug Fixes**

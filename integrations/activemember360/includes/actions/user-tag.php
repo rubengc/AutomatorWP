@@ -89,9 +89,13 @@ class AutomatorWP_ActiveMember360_User_Tag extends AutomatorWP_Integration_Actio
         $tag_id = $action_options['tag'];
 
         // Get the user contact email
-        $user_email = mbr_get_contact_field( 'email' );
+        $user = get_user_by('id', $user_id);
+        $user_email = $user->user_email;
 
-        if ( empty( $user_email ) )  {
+        // Check if user is a contact in ActiveCampaign
+        $user_am360 = mbr_get_contact_by_email( $user_email );
+
+        if ( empty( $user_am360 ) )  {
             return;
         }
 
@@ -107,7 +111,7 @@ class AutomatorWP_ActiveMember360_User_Tag extends AutomatorWP_Integration_Actio
         // Setup the data to sync
         $data = array(
             'contact_data' => array(
-                'email' => $user_email
+                'email' => $user_am360['email']
             )
         );
 

@@ -3,13 +3,13 @@
  * Plugin Name:           AutomatorWP - wpForo integration
  * Plugin URI:            https://automatorwp.com/add-ons/wpforo/
  * Description:           Connect AutomatorWP with wpForo.
- * Version:               1.0.0
+ * Version:               1.0.1
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
  * Text Domain:           automatorwp-wpforo-integration-integration
  * Domain Path:           /languages/
  * Requires at least:     4.4
- * Tested up to:          5.7
+ * Tested up to:          6.0
  * License:               GNU AGPL v3.0 (http://www.gnu.org/licenses/agpl.txt)
  *
  * @package               AutomatorWP\wpForo
@@ -58,7 +58,7 @@ final class AutomatorWP_Integration_wpForo {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_WPFORO_VER', '1.0.0' );
+        define( 'AUTOMATORWP_WPFORO_VER', '1.0.1' );
 
         // Plugin file
         define( 'AUTOMATORWP_WPFORO_FILE', __FILE__ );
@@ -133,8 +133,10 @@ final class AutomatorWP_Integration_wpForo {
             return false;
         }
 
-        if ( ! class_exists( 'wpForo' ) ) {
-            return false;
+        if ( ! class_exists( 'wpforo\\wpforo' ) ) { // > 2.0.0
+            if ( ! class_exists ( 'wpForo' ) ) { // < 2.0.0
+                return false;
+            }
         }
 
         return true;
