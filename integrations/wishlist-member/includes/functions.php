@@ -21,7 +21,7 @@ if( !defined( 'ABSPATH' ) ) exit;
 function automatorwp_wishlist_member_levels_options_cb( $field ) {
 
     $options = array(
-        'any' => __( 'any level', 'automatorwp-wishlist-member' ),
+        'any' => __( 'any level', 'automatorwp' ),
     );
 
     if( function_exists( 'wlmapi_get_levels' ) ) {

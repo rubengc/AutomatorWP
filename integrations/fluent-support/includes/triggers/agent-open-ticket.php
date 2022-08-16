@@ -23,11 +23,11 @@ class AutomatorWP_Fluent_Support_Agent_Open_Ticket extends AutomatorWP_Integrati
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Agent opens a ticket', 'automatorwp-pro' ),
-            'select_option'     => __( 'Agent <strong>opens</strong> a ticket', 'automatorwp-pro' ),
+            'label'             => __( 'Agent opens a ticket', 'automatorwp' ),
+            'select_option'     => __( 'Agent <strong>opens</strong> a ticket', 'automatorwp' ),
             /* translators: %1$s: Number of times. */
-            'edit_label'        => sprintf( __( 'Agent opens a ticket %1$s time(s)', 'automatorwp-pro' ), '{times}' ),
-            'log_label'         => __( 'Agent opens a ticket', 'automatorwp-pro' ),
+            'edit_label'        => sprintf( __( 'Agent opens a ticket %1$s time(s)', 'automatorwp' ), '{times}' ),
+            'log_label'         => __( 'Agent opens a ticket', 'automatorwp' ),
             'action'            => 'fluent_support/ticket_created',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
@@ -36,7 +36,7 @@ class AutomatorWP_Fluent_Support_Agent_Open_Ticket extends AutomatorWP_Integrati
                 'times' => automatorwp_utilities_times_option()
             ),
             'tags' => array(
-                automatorwp_utilities_post_tags( __( 'Ticket', 'automatorwp-pro' ) ),
+                automatorwp_utilities_post_tags( __( 'Ticket', 'automatorwp' ) ),
                 'times' => automatorwp_utilities_times_tag( true )
             )
         ) );

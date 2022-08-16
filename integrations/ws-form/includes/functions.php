@@ -22,7 +22,7 @@ function automatorwp_ws_form_options_cb_form( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any form', 'automatorwp-ws-form' );
+    $none_label = __( 'any form', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     if( ! empty( $value ) ) {

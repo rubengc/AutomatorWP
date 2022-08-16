@@ -23,11 +23,11 @@ class AutomatorWP_Fluent_Support_Client_Open_Ticket extends AutomatorWP_Integrat
 
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Client opens a ticket', 'automatorwp-pro' ),
-            'select_option'     => __( 'Client <strong>opens</strong> a ticket', 'automatorwp-pro' ),
+            'label'             => __( 'Client opens a ticket', 'automatorwp' ),
+            'select_option'     => __( 'Client <strong>opens</strong> a ticket', 'automatorwp' ),
             /* translators: %1$s: Number of times. */
-            'edit_label'        => sprintf( __( 'Client opens a ticket %1$s time(s)', 'automatorwp-pro' ), '{times}' ),
-            'log_label'         => __( 'Client opens a ticket', 'automatorwp-pro' ),
+            'edit_label'        => sprintf( __( 'Client opens a ticket %1$s time(s)', 'automatorwp' ), '{times}' ),
+            'log_label'         => __( 'Client opens a ticket', 'automatorwp' ),
             'action'            => 'fluent_support/ticket_created',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,

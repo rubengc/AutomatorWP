@@ -23,30 +23,30 @@ class AutomatorWP_Mailchimp_User_Add_Note extends AutomatorWP_Integration_Action
 
         automatorwp_register_action( $this->action, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Add note to user', 'automatorwp-mailchimp' ),
-            'select_option'     => __( 'Add <strong>note</strong> to <strong>user</strong>', 'automatorwp-mailchimp' ),
+            'label'             => __( 'Add note to user', 'automatorwp' ),
+            'select_option'     => __( 'Add <strong>note</strong> to <strong>user</strong>', 'automatorwp' ),
             /* translators: %1$s: Tag. */
-            'edit_label'        => sprintf( __( 'Add note to user in %1$s', 'automatorwp-mailchimp' ), '{note}' ),
+            'edit_label'        => sprintf( __( 'Add note to user in %1$s', 'automatorwp' ), '{note}' ),
             /* translators: %1$s: Tag. */
-            'log_label'         => sprintf( __( 'Add note to user in %1$s', 'automatorwp-mailchimp' ), '{note}' ),
+            'log_label'         => sprintf( __( 'Add note to user in %1$s', 'automatorwp' ), '{note}' ),
             'options'           => array(
                 'note' => array(
                     'from' => 'list',
-                    'default' => __( 'audience', 'automatorwp-mailchimp' ),
+                    'default' => __( 'audience', 'automatorwp' ),
                     'fields' => array(
                         'audience' => automatorwp_utilities_ajax_selector_field( array(
                             'option_none'       => false,
                             'option_custom'     => false,
-                            'placeholder'       => __( 'Select an audience', 'automatorwp-mailchimp' ),
-                            'name'              => __( 'Audience:', 'automatorwp-mailchimp' ),
+                            'placeholder'       => __( 'Select an audience', 'automatorwp' ),
+                            'name'              => __( 'Audience:', 'automatorwp' ),
                             'action_cb'         => 'automatorwp_mailchimp_get_lists',
                             'options_cb'        => 'automatorwp_mailchimp_options_cb_lists',
                             'default'           => ''
                         ) ),
                         'note' => array(
-                            'placeholder'       => __( 'Write a note', 'automatorwp-mailchimp' ),
-                            'name'              => __( 'Note:', 'automatorwp-mailchimp' ),
-                            'desc'              => __( 'Note to publish in contact profile', 'automatorwp-mailchimp' ),
+                            'placeholder'       => __( 'Write a note', 'automatorwp' ),
+                            'name'              => __( 'Note:', 'automatorwp' ),
+                            'desc'              => __( 'Note to publish in contact profile', 'automatorwp' ),
                             'type'              => 'textarea_small'
                         ),
                     ),
@@ -87,7 +87,7 @@ class AutomatorWP_Mailchimp_User_Add_Note extends AutomatorWP_Integration_Action
 
             $response = $mailchimp->lists->createListMemberNote( $list_id, $user->user_email, ['note' => $note] );
 
-            $this->result = __( 'Note added', 'automatorwp-mailchimp' );
+            $this->result = __( 'Note added', 'automatorwp' );
             
         } catch (\GuzzleHttp\Exception\ClientException $e) {
 
@@ -144,11 +144,11 @@ class AutomatorWP_Mailchimp_User_Add_Note extends AutomatorWP_Integration_Action
         if( ! automatorwp_mailchimp_get_authorization() ) : ?>
             <div class="automatorwp-notice-warning" style="margin-top: 10px; margin-bottom: 0;">
                 <?php echo sprintf(
-                    __( 'You need to configure the <a href="%s" target="_blank">Mailchimp settings</a> to get this action to work.', 'automatorwp-mailchimp' ),
+                    __( 'You need to configure the <a href="%s" target="_blank">Mailchimp settings</a> to get this action to work.', 'automatorwp' ),
                     get_admin_url() . 'admin.php?page=automatorwp_settings&tab=opt-tab-mailchimp'
                 ); ?>
                 <?php echo sprintf(
-                    __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp-mailchimp' ),
+                    __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp' ),
                     'https://automatorwp.com/docs/mailchimp/'
                 ); ?>
             </div>
@@ -206,7 +206,7 @@ class AutomatorWP_Mailchimp_User_Add_Note extends AutomatorWP_Integration_Action
         }
 
         $log_fields['result'] = array(
-            'name' => __( 'Result:', 'automatorwp-mailchimp' ),
+            'name' => __( 'Result:', 'automatorwp' ),
             'type' => 'text',
         );
 

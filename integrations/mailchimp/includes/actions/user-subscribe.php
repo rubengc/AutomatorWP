@@ -23,17 +23,17 @@ class AutomatorWP_Mailchimp_User_Subscribe extends AutomatorWP_Integration_Actio
 
         automatorwp_register_action( $this->action, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Subscribe user to an audience', 'automatorwp-mailchimp' ),
-            'select_option'     => __( 'Subscribe <strong>user</strong> to an <strong>audience</strong>', 'automatorwp-mailchimp' ),
+            'label'             => __( 'Subscribe user to an audience', 'automatorwp' ),
+            'select_option'     => __( 'Subscribe <strong>user</strong> to an <strong>audience</strong>', 'automatorwp' ),
             /* translators: %1$s: Audience. */
-            'edit_label'        => sprintf( __( 'Subscribe user to %1$s', 'automatorwp-mailchimp' ), '{audience}' ),
+            'edit_label'        => sprintf( __( 'Subscribe user to %1$s', 'automatorwp' ), '{audience}' ),
             /* translators: %1$s: Audience. */
-            'log_label'         => sprintf( __( 'Subscribe user to %1$s', 'automatorwp-mailchimp' ), '{audience}' ),
+            'log_label'         => sprintf( __( 'Subscribe user to %1$s', 'automatorwp' ), '{audience}' ),
             'options'           => array(
                 'audience' => automatorwp_utilities_ajax_selector_option( array(
                     'field'             => 'audience',
-                    'option_default'    => __( 'an audience', 'automatorwp-mailchimp' ),
-                    'name'              => __( 'Audience:', 'automatorwp-mailchimp' ),
+                    'option_default'    => __( 'an audience', 'automatorwp' ),
+                    'name'              => __( 'Audience:', 'automatorwp' ),
                     'action_cb'         => 'automatorwp_mailchimp_get_lists',
                     'options_cb'        => 'automatorwp_mailchimp_options_cb_lists',
                     'default'           => ''
@@ -80,7 +80,7 @@ class AutomatorWP_Mailchimp_User_Subscribe extends AutomatorWP_Integration_Actio
                 ]
             ]);
 
-            $this->result = __( 'User added', 'automatorwp-mailchimp' );
+            $this->result = __( 'User added', 'automatorwp' );
             
         } catch (\GuzzleHttp\Exception\ClientException $e) {
 
@@ -137,11 +137,11 @@ class AutomatorWP_Mailchimp_User_Subscribe extends AutomatorWP_Integration_Actio
         if( ! automatorwp_mailchimp_get_authorization() ) : ?>
             <div class="automatorwp-notice-warning" style="margin-top: 10px; margin-bottom: 0;">
                 <?php echo sprintf(
-                    __( 'You need to configure the <a href="%s" target="_blank">Mailchimp settings</a> to get this action to work.', 'automatorwp-mailchimp' ),
+                    __( 'You need to configure the <a href="%s" target="_blank">Mailchimp settings</a> to get this action to work.', 'automatorwp' ),
                     get_admin_url() . 'admin.php?page=automatorwp_settings&tab=opt-tab-mailchimp'
                 ); ?>
                 <?php echo sprintf(
-                    __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp-mailchimp' ),
+                    __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp' ),
                     'https://automatorwp.com/docs/mailchimp/'
                 ); ?>
             </div>
@@ -199,7 +199,7 @@ class AutomatorWP_Mailchimp_User_Subscribe extends AutomatorWP_Integration_Actio
         }
 
         $log_fields['result'] = array(
-            'name' => __( 'Result:', 'automatorwp-mailchimp' ),
+            'name' => __( 'Result:', 'automatorwp' ),
             'type' => 'text',
         );
 

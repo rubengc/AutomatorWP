@@ -53,7 +53,7 @@ function automatorwp_mailchimp_options_cb_lists( $field ) {
         // Setup vars
         $value = $field->escaped_value;
         $none_value = 'any';
-        $none_label = __( 'any list', 'automatorwp-mailchimp' );
+        $none_label = __( 'any list', 'automatorwp' );
         $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
         
         if( ! empty( $value ) ) {
@@ -149,7 +149,7 @@ function automatorwp_mailchimp_options_cb_tags( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any tag', 'automatorwp-mailchimp' );
+    $none_label = __( 'any tag', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     $list_id = ct_get_object_meta( $field->object_id, 'audience', true );
@@ -250,7 +250,7 @@ function automatorwp_mailchimp_options_cb_campaigns( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any campaign', 'automatorwp-mailchimp' );
+    $none_label = __( 'any campaign', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
  
     if( ! empty( $value ) ) {
@@ -343,7 +343,7 @@ function automatorwp_mailchimp_options_cb_templates( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any template', 'automatorwp-mailchimp' );
+    $none_label = __( 'any template', 'automatorwp' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
  
     if( ! empty( $value ) ) {

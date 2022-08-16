@@ -23,22 +23,22 @@ class AutomatorWP_Mailchimp_User_Add_Tag extends AutomatorWP_Integration_Action 
 
         automatorwp_register_action( $this->action, array(
             'integration'       => $this->integration,
-            'label'             => __( 'Add tag to user', 'automatorwp-mailchimp' ),
-            'select_option'     => __( 'Add <strong>tag</strong> to <strong>user</strong>', 'automatorwp-mailchimp' ),
+            'label'             => __( 'Add tag to user', 'automatorwp' ),
+            'select_option'     => __( 'Add <strong>tag</strong> to <strong>user</strong>', 'automatorwp' ),
             /* translators: %1$s: Tag. */
-            'edit_label'        => sprintf( __( 'Add %1$s to user', 'automatorwp-mailchimp' ), '{tag}' ),
+            'edit_label'        => sprintf( __( 'Add %1$s to user', 'automatorwp' ), '{tag}' ),
             /* translators: %1$s: Tag. */
-            'log_label'         => sprintf( __( 'Add %1$s to user', 'automatorwp-mailchimp' ), '{tag}' ),
+            'log_label'         => sprintf( __( 'Add %1$s to user', 'automatorwp' ), '{tag}' ),
             'options'           => array(
                 'tag' => array(
                     'from' => 'tags',
-                    'default' => __( 'tag', 'automatorwp-mailchimp' ),
+                    'default' => __( 'tag', 'automatorwp' ),
                     'fields' => array(
                         'audience' => automatorwp_utilities_ajax_selector_field( array(
                             'option_none' => false,
                             'option_custom' => false,
-                            'placeholder'       => __( 'Select an audience', 'automatorwp-mailchimp' ),
-                            'name'              => __( 'Audience:', 'automatorwp-mailchimp' ),
+                            'placeholder'       => __( 'Select an audience', 'automatorwp' ),
+                            'name'              => __( 'Audience:', 'automatorwp' ),
                             'action_cb'         => 'automatorwp_mailchimp_get_lists',
                             'options_cb'        => 'automatorwp_mailchimp_options_cb_lists',
                             'default'           => 'any'
@@ -46,8 +46,8 @@ class AutomatorWP_Mailchimp_User_Add_Tag extends AutomatorWP_Integration_Action 
                         'tags' => automatorwp_utilities_ajax_selector_field( array(
                             'option_none' => false,
                             'option_custom' => false,
-                            'placeholder'       => __( 'Select a tag', 'automatorwp-mailchimp' ),
-                            'name' => __( 'Tags:', 'automatorwp-mailchimp' ),
+                            'placeholder'       => __( 'Select a tag', 'automatorwp' ),
+                            'name' => __( 'Tags:', 'automatorwp' ),
                             'action_cb' => 'automatorwp_mailchimp_get_tags',
                             'options_cb' => 'automatorwp_mailchimp_options_cb_tags',
                             'default' => ''
@@ -95,7 +95,7 @@ class AutomatorWP_Mailchimp_User_Add_Tag extends AutomatorWP_Integration_Action 
                 "tags" => [["name" => $tag_name, "status" => "active"]],
             ]);
 
-            $this->result = __( 'Tag added', 'automatorwp-mailchimp' );
+            $this->result = __( 'Tag added', 'automatorwp' );
             
         } catch (\GuzzleHttp\Exception\ClientException $e) {
 
@@ -152,11 +152,11 @@ class AutomatorWP_Mailchimp_User_Add_Tag extends AutomatorWP_Integration_Action 
         if( ! automatorwp_mailchimp_get_authorization() ) : ?>
             <div class="automatorwp-notice-warning" style="margin-top: 10px; margin-bottom: 0;">
                 <?php echo sprintf(
-                    __( 'You need to configure the <a href="%s" target="_blank">Mailchimp settings</a> to get this action to work.', 'automatorwp-mailchimp' ),
+                    __( 'You need to configure the <a href="%s" target="_blank">Mailchimp settings</a> to get this action to work.', 'automatorwp' ),
                     get_admin_url() . 'admin.php?page=automatorwp_settings&tab=opt-tab-mailchimp'
                 ); ?>
                 <?php echo sprintf(
-                    __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp-mailchimp' ),
+                    __( '<a href="%s" target="_blank">Documentation</a>', 'automatorwp' ),
                     'https://automatorwp.com/docs/mailchimp/'
                 ); ?>
             </div>
@@ -214,7 +214,7 @@ class AutomatorWP_Mailchimp_User_Add_Tag extends AutomatorWP_Integration_Action 
         }
 
         $log_fields['result'] = array(
-            'name' => __( 'Result:', 'automatorwp-mailchimp' ),
+            'name' => __( 'Result:', 'automatorwp' ),
             'type' => 'text',
         );
 

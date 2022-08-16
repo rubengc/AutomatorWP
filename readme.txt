@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -98,6 +98,7 @@ AutomatorWP works with different WordPress plugins, including:
 
 * [ActiveMember360](https://automatorwp.com/add-ons/activemember360/)
 * [Advanced Ads](https://automatorwp.com/add-ons/advanced-ads/)
+* [Advanced Custom Fields (ACF)](https://automatorwp.com/add-ons/advanced-custom-fields/)
 * [AffiliateWP](https://automatorwp.com/add-ons/affiliatewp/)
 * [Amelia](https://automatorwp.com/add-ons/ameliabooking/)
 * [AnsPress](https://automatorwp.com/add-ons/anspress/)
@@ -168,12 +169,15 @@ AutomatorWP works with different WordPress plugins, including:
 AutomatorWP can also work with external platforms, furthermore WordPress plugins, like these below:
 
 * [ActiveCampaign](https://automatorwp.com/add-ons/activecampaign/)
+* [Airtable](https://automatorwp.com/add-ons/airtable/)
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [Google Sheets](https://automatorwp.com/add-ons/google-sheets/)
 * [IFTTT](https://automatorwp.com/add-ons/ifttt/)
 * [Integrately](https://automatorwp.com/add-ons/integrately/)
 * [Integromat](https://automatorwp.com/add-ons/integromat/)
+* [KonnectzIT](https://automatorwp.com/add-ons/konnectzit/)
 * [Mailchimp](https://automatorwp.com/add-ons/mailchimp/)
+* [Make](https://automatorwp.com/add-ons/make/)
 * [Notion](https://automatorwp.com/add-ons/notion/)
 * [Twilio](https://automatorwp.com/add-ons/twilio/)
 * [Twitter](https://automatorwp.com/add-ons/twitter/)
@@ -278,6 +282,15 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.2.6 =
+
+* **New Features**
+* New integration: Advanced Custom Fields (ACF).
+* Advanced Custom Fields: New trigger: User updates post field with a value.
+* Advanced Custom Fields: New action: Update post field with a value.
+* **Bug Fixes**
+* Fixed some incorrect text domain names.
 
 = 2.2.5 =
 

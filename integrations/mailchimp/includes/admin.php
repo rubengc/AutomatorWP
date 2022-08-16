@@ -36,7 +36,7 @@ function automatorwp_mailchimp_get_option( $option_name, $default = false ) {
 function automatorwp_mailchimp_settings_sections( $automatorwp_settings_sections ) {
 
     $automatorwp_settings_sections['mailchimp'] = array(
-        'title' => __( 'Mailchimp', 'automatorwp-mailchimp' ),
+        'title' => __( 'Mailchimp', 'automatorwp' ),
         'icon' => 'dashicons-mailchimp',
     );
 
@@ -57,16 +57,16 @@ function automatorwp_mailchimp_settings_meta_boxes( $meta_boxes )  {
     $prefix = 'automatorwp_mailchimp_';
 
     $meta_boxes['automatorwp-mailchimp-settings'] = array(
-        'title' => automatorwp_dashicon( 'mailchimp' ) . __( 'Mailchimp', 'automatorwp-mailchimp' ),
+        'title' => automatorwp_dashicon( 'mailchimp' ) . __( 'Mailchimp', 'automatorwp' ),
         'fields' => apply_filters( 'automatorwp_mailchimp_settings_fields', array(
             $prefix . 'api_key' => array(
-                'name' => __( 'API Key:', 'automatorwp-mailchimp' ),
-                'desc' => __( 'Your Mailchimp API key.', 'automatorwp-mailchimp' ),
+                'name' => __( 'API Key:', 'automatorwp' ),
+                'desc' => __( 'Your Mailchimp API key.', 'automatorwp' ),
                 'type' => 'text',
             ),
             $prefix . 'server_prefix' => array(
-                'name' => __( 'Server prefix:', 'automatorwp-mailchimp' ),
-                'desc' => __( 'Your Mailchimp server prefix.', 'automatorwp-mailchimp' ),
+                'name' => __( 'Server prefix:', 'automatorwp' ),
+                'desc' => __( 'Your Mailchimp server prefix.', 'automatorwp' ),
                 'type' => 'text',
             ),
             $prefix . 'mailchimp_authorize' => array(
@@ -97,7 +97,7 @@ function automatorwp_mailchimp_authorize_display_cb( $field_args, $field ) {
 
     <div class="cmb-row cmb-type-custom cmb2-id-automatorwp-mailchimp-authorize table-layout" data-fieldtype="custom">
         <div class="cmb-th">
-            <label><?php echo __( 'Connect with Mailchimp:', 'automatorwp-mailchimp' ); ?></label>
+            <label><?php echo __( 'Connect with Mailchimp:', 'automatorwp' ); ?></label>
         </div>
         <div class="cmb-td">
             <input type="hidden" name="awp-mailchimp-outh-ajax-nonce" id="awp-mailchimp-outh-ajax-nonce" value="<?php echo wp_create_nonce( 'awp-outh-ajax-nonce' ); ?>" />           

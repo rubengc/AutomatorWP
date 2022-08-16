@@ -24,12 +24,12 @@ class AutomatorWP_WS_Form_Anonymous_Submit_Form extends AutomatorWP_Integration_
         automatorwp_register_trigger( $this->trigger, array(
             'integration'       => $this->integration,
             'anonymous'         => true,
-            'label'             => __( 'Guest submits a form', 'automatorwp-ws-form' ),
-            'select_option'     => __( 'Guest submits <strong>a form</strong>', 'automatorwp-ws-form' ),
+            'label'             => __( 'Guest submits a form', 'automatorwp' ),
+            'select_option'     => __( 'Guest submits <strong>a form</strong>', 'automatorwp' ),
             /* translators: %1$s: Post title. */
-            'edit_label'        => sprintf( __( 'Guest submits %1$s', 'automatorwp-ws-form' ), '{post}' ),
+            'edit_label'        => sprintf( __( 'Guest submits %1$s', 'automatorwp' ), '{post}' ),
             /* translators: %1$s: Post title. */
-            'log_label'         => sprintf( __( 'Guest submits %1$s', 'automatorwp-ws-form' ), '{post}' ),
+            'log_label'         => sprintf( __( 'Guest submits %1$s', 'automatorwp' ), '{post}' ),
             'action'            => 'wsf_submit_post_complete',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
@@ -37,9 +37,9 @@ class AutomatorWP_WS_Form_Anonymous_Submit_Form extends AutomatorWP_Integration_
             'options'           => array(
                 'post' => automatorwp_utilities_ajax_selector_option( array(
                     'field'             => 'post',
-                    'name'              => __( 'Form:', 'automatorwp-ws-form' ),
+                    'name'              => __( 'Form:', 'automatorwp' ),
                     'option_none_value' => 'any',
-                    'option_none_label' => __( 'any form', 'automatorwp-ws-form' ),
+                    'option_none_label' => __( 'any form', 'automatorwp' ),
                     'action_cb'         => 'automatorwp_ws_form_get_forms',
                     'options_cb'        => 'automatorwp_ws_form_options_cb_form',
                     'default'           => 'any'
@@ -49,9 +49,9 @@ class AutomatorWP_WS_Form_Anonymous_Submit_Form extends AutomatorWP_Integration_
             'tags' => array_merge(
                 array(
                     'form_field:FIELD_ID' => array(
-                        'label'     => __( 'Form field value', 'automatorwp-ws-form' ),
+                        'label'     => __( 'Form field value', 'automatorwp' ),
                         'type'      => 'text',
-                        'preview'   => __( 'Form field value, replace "FIELD_ID" by the field ID', 'automatorwp-ws-form' ),
+                        'preview'   => __( 'Form field value, replace "FIELD_ID" by the field ID', 'automatorwp' ),
                     ),
                 ),
                 automatorwp_utilities_times_tag()
@@ -189,8 +189,8 @@ class AutomatorWP_WS_Form_Anonymous_Submit_Form extends AutomatorWP_Integration_
         }
 
         $log_fields['form_fields'] = array(
-            'name' => __( 'Fields Submitted', 'automatorwp-ws-form' ),
-            'desc' => __( 'Information about the fields values sent on this form submission.', 'automatorwp-ws-form' ),
+            'name' => __( 'Fields Submitted', 'automatorwp' ),
+            'desc' => __( 'Information about the fields values sent on this form submission.', 'automatorwp' ),
             'type' => 'text',
         );
 
