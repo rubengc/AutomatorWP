@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.2.6
+Stable tag: 2.2.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -105,6 +105,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Autonami](https://automatorwp.com/add-ons/autonami/)
 * [Awesome Support](https://automatorwp.com/add-ons/awesome-support/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
+* [Blockli](https://automatorwp.com/add-ons/blockli/)
 * [BuddyBoss](https://automatorwp.com/add-ons/buddyboss/)
 * [BuddyPress](https://automatorwp.com/add-ons/buddypress/)
 * [Caldera Forms](https://automatorwp.com/add-ons/caldera-forms/)
@@ -282,6 +283,11 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.2.7 =
+
+* **Bug Fixes**
+* Fixed incorrect function in the Advanced Custom Fields (ACF) integration.
 
 = 2.2.6 =
 

@@ -9,7 +9,7 @@
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_Advance_Custom_Fields_Post_Field_Updated extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_Advanced_Custom_Fields_Post_Field_Updated extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'advanced_custom_fields';
     public $trigger = 'advanced_custom_fields_post_field_updated';
@@ -149,9 +149,6 @@ class AutomatorWP_Advance_Custom_Fields_Post_Field_Updated extends AutomatorWP_I
      */
     public function hooks() {
 
-        // Tags replacement
-        add_filter( 'automatorwp_get_trigger_tag_replacement', array( $this, 'tags_replacement' ), 10, 6 );
-
         // Log meta data
         add_filter( 'automatorwp_user_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 6 );
 
@@ -229,4 +226,4 @@ class AutomatorWP_Advance_Custom_Fields_Post_Field_Updated extends AutomatorWP_I
     }
 }
 
-new AutomatorWP_Advance_Custom_Fields_Post_Field_Updated();
+new AutomatorWP_Advanced_Custom_Fields_Post_Field_Updated();

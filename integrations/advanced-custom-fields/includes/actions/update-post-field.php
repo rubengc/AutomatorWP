@@ -9,7 +9,7 @@
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_Advance_Custom_Fields_Update_Post_Field extends AutomatorWP_Integration_Action {
+class AutomatorWP_Advanced_Custom_Fields_Update_Post_Field extends AutomatorWP_Integration_Action {
 
     public $integration = 'advanced_custom_fields';
     public $action = 'advanced_custom_fields_update_post_field';
@@ -213,4 +213,4 @@ class AutomatorWP_Advance_Custom_Fields_Update_Post_Field extends AutomatorWP_In
 
 }
 
-new AutomatorWP_Advance_Custom_Fields_Update_Post_Field();
+new AutomatorWP_Advanced_Custom_Fields_Update_Post_Field();

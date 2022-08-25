@@ -98,6 +98,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Autonami](https://automatorwp.com/add-ons/autonami/)
 * [Awesome Support](https://automatorwp.com/add-ons/awesome-support/)
 * [bbPress](https://automatorwp.com/add-ons/bbpress/)
+* [Blockli](https://automatorwp.com/add-ons/blockli/)
 * [BuddyBoss](https://automatorwp.com/add-ons/buddyboss/)
 * [BuddyPress](https://automatorwp.com/add-ons/buddypress/)
 * [Caldera Forms](https://automatorwp.com/add-ons/caldera-forms/)
@@ -284,6 +285,11 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.2.7 ###
+
+* **Bug Fixes**
+* Fixed incorrect function in the Advanced Custom Fields (ACF) integration.
 
 ### 2.2.6 ###
 
