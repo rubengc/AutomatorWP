@@ -1021,6 +1021,17 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
  * @return bool        True/false whether to show the metabox
  */
 function automatorwp_automations_execution_options_box_show_cb( $cmb ) {
+
+    global $ct_table;
+
+    if( ! $ct_table ) {
+        return false;
+    }
+
+    if( $ct_table->name !== 'automatorwp_automations' ) {
+        return false;
+    }
+
     $object_id = $cmb->object_id();
 
     $object = ct_get_object( $object_id );

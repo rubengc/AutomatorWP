@@ -286,6 +286,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.2.8 ###
+
+* **Bug Fixes**
+* BuddyPress: Fixed the add user to group action to prevent to work with strings as group ID.
+* BuddyBoss: Fixed the add user to group action to prevent to work with strings as group ID.
+* Fixed a PHP notice in AutomatorWP settings screen.
+
 ### 2.2.7 ###
 
 * **Bug Fixes**

@@ -60,10 +60,10 @@ class AutomatorWP_BuddyBoss_Add_User_Group extends AutomatorWP_Integration_Actio
     public function execute( $action, $user_id, $action_options, $automation ) {
 
         // Shorthand
-        $group_id = $action_options['group'];
+        $group_id = absint( $action_options['group'] );
 
         // Bail if group not provided
-        if( absint( $group_id ) === 0 ) {
+        if( $group_id === 0 ) {
             return;
         }
 

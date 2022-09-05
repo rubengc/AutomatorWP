@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.2.7
+Stable tag: 2.2.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -283,6 +283,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.2.8 =
+
+* **Bug Fixes**
+* BuddyPress: Fixed the add user to group action to prevent to work with strings as group ID.
+* BuddyBoss: Fixed the add user to group action to prevent to work with strings as group ID.
+* Fixed a PHP notice in AutomatorWP settings screen.
 
 = 2.2.7 =
 
