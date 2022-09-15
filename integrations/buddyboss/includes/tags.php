@@ -200,3 +200,65 @@ function automatorwp_buddyboss_get_trigger_group_tag_replacement( $replacement, 
 
 }
 add_filter( 'automatorwp_get_trigger_tag_replacement', 'automatorwp_buddyboss_get_trigger_group_tag_replacement', 10, 6 );
+
+/**
+ * Invitation tags
+ *
+ * @since 1.0.0
+ *
+ * @return array
+ */
+function automatorwp_buddyboss_get_invitation_tags() {
+
+    return array(
+        'inviter_id' => array(
+            'label'     => __( 'Inviter ID', 'automatorwp' ),
+            'type'      => 'integer',
+            'preview'   => '1',
+        ),
+        'invited_id' => array(
+            'label'     => __( 'Invited ID', 'automatorwp' ),
+            'type'      => 'text',
+            'preview'   => '2',
+        ),
+    );
+
+}
+
+/**
+ * Custom trigger invitation tag replacement
+ *
+ * @since 1.0.0
+ *
+ * @param string    $replacement    The tag replacement
+ * @param string    $tag_name       The tag name (without "{}")
+ * @param stdClass  $trigger        The trigger object
+ * @param int       $user_id        The user ID
+ * @param string    $content        The content to parse
+ * @param stdClass  $log            The last trigger log object
+ *
+ * @return string
+ */
+function automatorwp_buddyboss_get_trigger_invitation_tag_replacement( $replacement, $tag_name, $trigger, $user_id, $content, $log ) {
+
+
+    $trigger_args = automatorwp_get_trigger( $trigger->type );
+
+    // Skip if trigger is not from this integration
+    if( $trigger_args['integration'] !== 'buddyboss' ) {
+        return $replacement;
+    }
+
+    switch( $tag_name ) {
+        case 'inviter_id':
+            $replacement = automatorwp_get_log_meta( $log->id, 'inviter_id', true );
+            break;
+        case 'invited_id':
+            $replacement = automatorwp_get_log_meta( $log->id, 'invited_id', true );
+            break;
+    }
+
+    return $replacement;
+
+}
+add_filter( 'automatorwp_get_trigger_tag_replacement', 'automatorwp_buddyboss_get_trigger_invitation_tag_replacement', 10, 6 );

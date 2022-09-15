@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.2.8
+Stable tag: 2.2.9
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -283,6 +283,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.2.9 =
+
+* **Bug Fixes**
+* MailPoet: Fixed variable type error in "Add subscriber to list" action due to MailPoet new version.
+* **New Features**
+* BuddyBoss: New tags: Invitation tags to get the inviter and invited IDs.
 
 = 2.2.8 =
 

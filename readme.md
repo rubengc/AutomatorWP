@@ -286,6 +286,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.2.9 ###
+
+* **Bug Fixes**
+* MailPoet: Fixed variable type error in "Add subscriber to list" action due to MailPoet new version.
+* **New Features**
+* BuddyBoss: New tags: Invitation tags to get the inviter and invited IDs.
+
 ### 2.2.8 ###
 
 * **Bug Fixes**
