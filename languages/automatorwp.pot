@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-08-25 18:09+0200\n"
+"POT-Creation-Date: 2022-09-19 23:43+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -570,7 +570,7 @@ msgstr ""
 
 #: includes/automation-ui.php:59 includes/automation-ui.php:120
 #: includes/automation-ui.php:470 includes/automation-ui.php:763
-#: includes/custom-tables/automations.php:1117
+#: includes/custom-tables/automations.php:1128
 msgid "Cancel"
 msgstr ""
 
@@ -693,7 +693,7 @@ msgstr ""
 #: includes/custom-tables/automations.php:838
 #: includes/custom-tables/automations.php:853
 #: includes/custom-tables/automations.php:866
-#: includes/custom-tables/automations.php:886 includes/scripts.php:203
+#: includes/custom-tables/automations.php:886 includes/scripts.php:202
 msgid "Save"
 msgstr ""
 
@@ -818,7 +818,7 @@ msgstr ""
 msgid "any category"
 msgstr ""
 
-#: includes/cmb2.php:115 includes/filters.php:310 includes/utilities.php:210
+#: includes/cmb2.php:115 includes/filters.php:325 includes/utilities.php:210
 #: includes/utilities.php:213
 msgid "any taxonomy"
 msgstr ""
@@ -1076,7 +1076,7 @@ msgid "Recurring execution:"
 msgstr ""
 
 #: includes/custom-tables/automations.php:750
-#: includes/custom-tables/automations.php:1037
+#: includes/custom-tables/automations.php:1048
 msgid "Execute this automation:"
 msgstr ""
 
@@ -1140,31 +1140,31 @@ msgstr ""
 msgid "Save &amp; Activate"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1046
+#: includes/custom-tables/automations.php:1057
 msgid "The day"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1086
+#: includes/custom-tables/automations.php:1097
 msgid "Next run:"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1103
+#: includes/custom-tables/automations.php:1114
 msgid "Run automation"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1106
+#: includes/custom-tables/automations.php:1117
 msgid "Running..."
 msgstr ""
 
-#: includes/custom-tables/automations.php:1109
+#: includes/custom-tables/automations.php:1120
 msgid "Done!"
 msgstr ""
 
-#: includes/custom-tables/automations.php:1120
+#: includes/custom-tables/automations.php:1131
 msgid "Cancelling..."
 msgstr ""
 
-#: includes/custom-tables/automations.php:1123
+#: includes/custom-tables/automations.php:1134
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:70
 msgid "Cancelled"
 msgstr ""
@@ -1338,33 +1338,33 @@ msgstr ""
 msgid "Filter not passed"
 msgstr ""
 
-#: includes/scripts.php:204
+#: includes/scripts.php:203
 msgid "Saving"
 msgstr ""
 
-#: includes/scripts.php:250
+#: includes/scripts.php:249
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:251 includes/utilities.php:51 includes/utilities.php:88
+#: includes/scripts.php:250 includes/utilities.php:51 includes/utilities.php:88
 #: integrations/wordpress/actions/update-post.php:72
 msgid "Select a post"
 msgstr ""
 
-#: includes/scripts.php:252
+#: includes/scripts.php:251
 msgid "Select a term"
 msgstr ""
 
-#: includes/scripts.php:254
+#: includes/scripts.php:253
 #, php-format
 msgid "Select a %s"
 msgstr ""
 
-#: includes/scripts.php:255
+#: includes/scripts.php:254
 msgid "Select a user"
 msgstr ""
 
-#: includes/scripts.php:256
+#: includes/scripts.php:255
 msgid "Select an item"
 msgstr ""
 
@@ -3703,6 +3703,14 @@ msgstr ""
 #: integrations/buddyboss/includes/tags.php:131
 #: integrations/buddypress/includes/tags.php:131
 msgid "Group link"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:215
+msgid "Inviter ID"
+msgstr ""
+
+#: integrations/buddyboss/includes/tags.php:220
+msgid "Invited ID"
 msgstr ""
 
 #: integrations/buddyboss/includes/triggers/account-activation.php:26

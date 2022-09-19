@@ -228,6 +228,21 @@ function automatorwp_get_filter_stored_options( $filter_id, $item_type, $single_
                 $value = $field['default'];
             }
 
+            /**
+             * Filters the option value for replacement on labels
+             *
+             * @since 1.0.0
+             *
+             * @param string    $value      The option value
+             * @param stdClass  $object     The trigger/action object
+             * @param string    $item_type  The item type (trigger|action)
+             * @param string    $option     The option name
+             * @param string    $context    The context this function is executed
+             *
+             * @return string
+             */
+            $value = apply_filters( 'automatorwp_get_automation_item_option_replacement', $value, $object, $item_type, $option, 'view' );
+
             if( $single_level ) {
                 $options[$field_id] = $value;
             } else {

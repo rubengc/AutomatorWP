@@ -286,79 +286,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
-### 2.2.9 ###
-
-* **Bug Fixes**
-* MailPoet: Fixed variable type error in "Add subscriber to list" action due to MailPoet new version.
-* **New Features**
-* BuddyBoss: New tags: Invitation tags to get the inviter and invited IDs.
-
-### 2.2.8 ###
-
-* **Bug Fixes**
-* BuddyPress: Fixed the add user to group action to prevent to work with strings as group ID.
-* BuddyBoss: Fixed the add user to group action to prevent to work with strings as group ID.
-* Fixed a PHP notice in AutomatorWP settings screen.
-
-### 2.2.7 ###
-
-* **Bug Fixes**
-* Fixed incorrect function in the Advanced Custom Fields (ACF) integration.
-
-### 2.2.6 ###
-
-* **New Features**
-* New integration: Advanced Custom Fields (ACF).
-* Advanced Custom Fields: New trigger: User updates post field with a value.
-* Advanced Custom Fields: New action: Update post field with a value.
-* **Bug Fixes**
-* Fixed some incorrect text domain names.
-
-### 2.2.5 ###
+### 2.3.0 ###
 
 * **Improvements**
-* ActiveMember360: All actions adapted to last version of ActiveMember360.
+* Ensure to load all required script files in the automation edit screen.
 * **Bug Fixes**
-* wpForo: Updated wpForo install check to meet wpForo main class change in 2.0.0.
-* Fixed parameters check when excluding URLs.
-
-### 2.2.4 ###
-
-* **Bug Fixes**
-* ActiveCampaign: Fixed a bug that causes contact is not detected in ActiveCampaign if email contains special characters.
-
-### 2.2.3 ###
-
-* **New Features**
-* Added the "All posts" automation, an automation to run actions on all or on a filtered group of posts manually, on a specific date or on a recurring basis (Ideal for automate maintenance tasks on your site posts like clean up the older posts or email administrators about pending ones).
-* **Improvements**
-* Improved the redirect URL Javascript checks.
-
-### 2.2.2 ###
-
-* **New Features**
-* Added the "All users" automation, an automation to run actions on all or on a filtered group of users manually, on a specific date or on a recurring basis.
-* **Improvements**
-* Improved the redirect URL action to work even when other plugins do a redirect.
-* Removed a non required check of a Javascript file exists in AutomatorWP > Settings screen.
-* Prevent PHP warnings during activation caused by CMB2 library.
-
-### 2.2.1 ###
-
-* **New Features**
-* New integration: Autonami.
-* Autonami: New trigger: User added to list.
-* Autonami: New trigger: Tag added to user.
-* Autonami: New anonymous trigger: Contact added to list.
-* Autonami: New anonymous trigger: Tag added to contact.
-* Autonami: New action: Add a tag to the user.
-* Autonami: New action: Add a tag to a contact.
-* **Improvements**
-* Style improvements to table fields display.
-
-### 2.2.0 ###
-
-* **Bug Fixes**
-* ActiveCampaign: Fixed a bug that causes tags are not getting loaded correctly.
+* Fixed custom options replacement on filters.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.

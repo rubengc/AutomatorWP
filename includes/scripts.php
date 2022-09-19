@@ -274,6 +274,37 @@ function automatorwp_enqueue_admin_bar_scripts() {
 add_action( 'admin_bar_init', 'automatorwp_enqueue_admin_bar_scripts' );
 
 /**
+ * CMB2 script dependencies
+ *
+ * @since       1.0.0
+ *
+ * @param string $hook
+ *
+ * @return      void
+ */
+function automatorwp_cmb2_script_dependencies( $dependencies ) {
+
+    // Bail if not is a custom page
+    if( ! isset( $_GET['page'] ) ) {
+        return $dependencies;
+    }
+
+    // Bail if not is the edit automation page
+    if( $_GET['page'] !== 'edit_automatorwp_automations' ) {
+        return $dependencies;
+    }
+
+    // Force to enqueue datetimepicker lib since triggers and actions forms are loaded through ajax
+    if ( ! isset( $dependencies['jquery-ui-datetimepicker'] ) ) {
+        $dependencies['jquery-ui-datetimepicker'] = 'jquery-ui-datetimepicker';
+    }
+
+    return $dependencies;
+
+}
+add_filter( 'cmb2_script_dependencies', 'automatorwp_cmb2_script_dependencies' );
+
+/**
  * Setup a global nonce for all frontend scripts
  *
  * @since       1.0.0
