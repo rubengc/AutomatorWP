@@ -165,6 +165,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 * [ActiveCampaign](https://automatorwp.com/add-ons/activecampaign/)
 * [Airtable](https://automatorwp.com/add-ons/airtable/)
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
+* [Google Calendar](https://automatorwp.com/add-ons/google-calendar/)
 * [Google Sheets](https://automatorwp.com/add-ons/google-sheets/)
 * [IFTTT](https://automatorwp.com/add-ons/ifttt/)
 * [Integrately](https://automatorwp.com/add-ons/integrately/)
@@ -285,6 +286,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.3.1 ###
+
+* **New Features**
+* New integration: Google Calendar.
+* **Developer Notes**
+* Fixed wrong options in number condition fields (thanks @alexstewartja).
+* Improved automatorwp_get_array_key_value() function bringing support to search by multiples keys (thanks @alexstewartja).
 
 ### 2.3.0 ###
 

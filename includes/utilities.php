@@ -835,7 +835,7 @@ function automatorwp_utilities_number_condition_option() {
     return array(
         'from' => 'condition',
         'fields' => array(
-            'condition' => automatorwp_utilities_condition_field()
+            'condition' => automatorwp_utilities_number_condition_field()
         )
     );
 }
@@ -1323,17 +1323,39 @@ function automatorwp_utilities_pull_array_values( $array = array(), $separator =
  *
  * @since 1.4.5
  *
- * @param string $key
- * @param array $haystack
+ * @param string|array  $key
+ * @param array         $haystack
  *
- * @return bool
+ * @return mixed
  */
 function automatorwp_get_array_key_value( $key = '', $haystack = array() ) {
 
+    // Support for $key as array
+    if( is_array( $key ) ) {
+        $results = array();
+
+        foreach( $key as $key_item ) {
+            $found = automatorwp_get_array_key_value( $key_item, $haystack );
+
+            if ( $found ) {
+                $results[] = $found;
+            }
+        }
+
+        // Return the entire list of results found
+        if( ! empty( $results ) ) {
+            return $results;
+        }
+
+        return false;
+    }
+
+    // Return if directly found the index in the array
     if( isset( $haystack[$key] ) ) {
         return $haystack[$key];
     }
 
+    // If $haystack is a multilevel array, search in all its levels
     foreach( $haystack as $value) {
 
         if ( is_array( $value ) ) {

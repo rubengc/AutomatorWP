@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-09-19 23:43+0200\n"
+"POT-Creation-Date: 2022-09-22 19:07+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -693,7 +693,7 @@ msgstr ""
 #: includes/custom-tables/automations.php:838
 #: includes/custom-tables/automations.php:853
 #: includes/custom-tables/automations.php:866
-#: includes/custom-tables/automations.php:886 includes/scripts.php:202
+#: includes/custom-tables/automations.php:886 includes/scripts.php:203
 msgid "Save"
 msgstr ""
 
@@ -1338,33 +1338,33 @@ msgstr ""
 msgid "Filter not passed"
 msgstr ""
 
-#: includes/scripts.php:203
+#: includes/scripts.php:204
 msgid "Saving"
 msgstr ""
 
-#: includes/scripts.php:249
+#: includes/scripts.php:250
 msgid "Select an option"
 msgstr ""
 
-#: includes/scripts.php:250 includes/utilities.php:51 includes/utilities.php:88
+#: includes/scripts.php:251 includes/utilities.php:51 includes/utilities.php:88
 #: integrations/wordpress/actions/update-post.php:72
 msgid "Select a post"
 msgstr ""
 
-#: includes/scripts.php:251
+#: includes/scripts.php:252
 msgid "Select a term"
 msgstr ""
 
-#: includes/scripts.php:253
+#: includes/scripts.php:254
 #, php-format
 msgid "Select a %s"
 msgstr ""
 
-#: includes/scripts.php:254
+#: includes/scripts.php:255
 msgid "Select a user"
 msgstr ""
 
-#: includes/scripts.php:255
+#: includes/scripts.php:256
 msgid "Select an item"
 msgstr ""
 
