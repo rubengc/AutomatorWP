@@ -72,7 +72,7 @@ class AutomatorWP_WordPress_Delete_User extends AutomatorWP_Integration_Action {
             $user_id_to_delete = $user_id;
         }
 
-        $user = get_userdata( $user_id );
+        $user = get_userdata( $user_id_to_delete );
 
         // Bail if user to delete does not exists
         if ( ! $user ) {

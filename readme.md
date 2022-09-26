@@ -287,6 +287,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.3.2 ###
+
+* **Bug Fixes**
+* Fixed user ID assigned on "Delete user" action.
+
 ### 2.3.1 ###
 
 * **New Features**
