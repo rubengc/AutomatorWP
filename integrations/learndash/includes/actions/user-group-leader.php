@@ -32,6 +32,7 @@ class AutomatorWP_LearnDash_User_Group_Leader extends AutomatorWP_Integration_Ac
             'options'           => array(
                 'group' => array(
                     'default' => __( 'group', 'automatorwp' ),
+                    'from' => 'post',
                     'fields' => array(
                         'post' => automatorwp_utilities_post_field( array(
                             'name'              => __( 'Group:', 'automatorwp' ),

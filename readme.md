@@ -105,6 +105,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Contact Form 7](https://automatorwp.com/add-ons/contact-form-7/)
 * [DigiMember](https://automatorwp.com/add-ons/digimember/)
 * [Divi](https://automatorwp.com/add-ons/divi/)
+* [Download Manager](https://automatorwp.com/add-ons/download-manager/)
 * [Easy Digital Downloads](https://automatorwp.com/add-ons/easy-digital-downloads/)
 * [Elementor](https://automatorwp.com/add-ons/elementor-forms/)
 * [Favorites](https://automatorwp.com/add-ons/favorites/)
@@ -120,6 +121,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [iMember360](https://automatorwp.com/add-ons/imember360/)
 * [Invite Anyone](https://automatorwp.com/add-ons/invite-anyone/)
 * [Jetpack CRM](https://automatorwp.com/add-ons/jetpack-crm/)
+* [JetFormBuilder](https://automatorwp.com/add-ons/jetformbuilder/)
 * [LearnDash](https://automatorwp.com/add-ons/learndash/)
 * [LearnPress](https://automatorwp.com/add-ons/learnpress/)
 * [LifterLMS](https://automatorwp.com/add-ons/lifterlms/)
@@ -136,6 +138,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Restrict Content Pro](https://automatorwp.com/add-ons/restrict-content-pro/)
 * [Sensei LMS](https://automatorwp.com/add-ons/sensei-lms/)
 * [SliceWP](https://automatorwp.com/add-ons/slicewp/)
+* [Studiocart](https://automatorwp.com/add-ons/studiocart/)
 * [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
 * [Thrive Apprentice](https://automatorwp.com/add-ons/thrive-apprentice/)
 * [Thrive Quiz Builder](https://automatorwp.com/add-ons/thrive-quiz-builder/)
@@ -286,6 +289,18 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.3.3 ###
+
+* **New Features**
+* New integration: Download Manager.
+* New integration: JetFormBuilder.
+* New integration: StudioCart.
+* JetFormBuilder: New trigger: User submits a form.
+* JetFormBuilder: New anonymous trigger: Guest submits a form.
+* StudioCart: New trigger: User purchases a product.
+* **Improvements**
+* LearnDash: Added name of groups in "Make user the leader of a group" action label.
 
 ### 2.3.2 ###
 
