@@ -59,6 +59,13 @@ class AutomatorWP_Amelia_Anonymous_Books_Appointment extends AutomatorWP_Integra
             return;
         }
 
+        $user_id = get_current_user_id( );
+
+        // Bail if user is logged
+        if ($user_id !== 0){
+            return;
+        }
+
         // Bail if the booking is not for an appointment
         if ( $args['type'] !== 'appointment' ){
             return;

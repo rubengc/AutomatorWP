@@ -84,6 +84,11 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
         // Setup URL
         $this->url = esc_url( $action_options['url'] );
 
+        // Restore replaced ampersands (&)
+        $this->url = str_replace('#038;', '&', $this->url);
+        $this->url = str_replace('&&', '&', $this->url);
+
+        // Validate last URL
         if ( ! filter_var( $this->url, FILTER_VALIDATE_URL ) ) {
             $this->result = sprintf( __( '%s is not a valid URL.', 'automatorwp' ), $this->url );
             $this->url = '';

@@ -1501,6 +1501,10 @@ function automatorwp_get_recommended_integrations() {
 
     foreach ( $integrations as $integration ) {
 
+        if( $integration === null ) {
+            continue;
+        }
+
         // Skip integration if can't determine its class
         if( empty( $integration->integration_class ) ) {
             continue;
@@ -1613,6 +1617,10 @@ function automatorwp_automation_ui_integration_pro_choice( $integration_name, $a
         }
     }
 
+    if( $integration === null ) {
+        return;
+    }
+
     // Bail if integration if already installed
     if( class_exists( $integration->integration_class ) ) {
         return;
@@ -1711,6 +1719,10 @@ function automatorwp_automation_ui_integration_triggers_pro_choices( $integratio
         }
     }
 
+    if( $integration === null ) {
+        return;
+    }
+
     // Bail if integration is already installed
     if( class_exists( $integration->integration_class ) ) {
         return;
@@ -1794,6 +1806,10 @@ function automatorwp_automation_ui_integration_actions_pro_choices( $integration
         }
     }
 
+    if( $integration === null ) {
+        return;
+    }
+
     // Bail if integration is already installed
     if( class_exists( $integration->integration_class ) ) {
         return;
@@ -1855,6 +1871,10 @@ add_action( 'automatorwp_automation_ui_after_integration_actions_choices', 'auto
  * @param stdClass $integration
  */
 function automatorwp_automation_ui_integration_plugin_installed( $integration ) {
+
+    if( $integration === null ) {
+        return false;
+    }
 
     if( $integration->code === 'automatorwp' || $integration->code === 'wordpress' ) {
         return true;

@@ -206,7 +206,7 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
             automatorwp_get_log_integration_icon( $log );
 
             $title = ! empty( $log->title ) ? $log->title : __( '(No title)', 'automatorwp' ); ?>
-            <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_logs', $log->id ); ?>"><?php echo $title; ?></a></strong>
+            <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_logs', $log->id ); ?>"><?php echo esc_html( $title ); ?></a></strong>
             <?php
 
             break;
@@ -215,7 +215,7 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
             $type = isset( $types[$log->type] ) ? $types[$log->type] : $log->type;
             ?>
 
-            <span class="automatorwp-log-type automatorwp-log-type-<?php echo esc_attr( $log->type ); ?>"><?php echo $type; ?></span>
+            <span class="automatorwp-log-type automatorwp-log-type-<?php echo esc_attr( $log->type ); ?>"><?php echo esc_html( $type ); ?></span>
 
             <?php
 
@@ -264,7 +264,7 @@ function automatorwp_manage_logs_custom_column(  $column_name, $object_id ) {
             if( $automation ) {
 
                 $title = ! empty( $automation->title ) ? $automation->title : __( '(No title)', 'automatorwp' ); ?>
-                <a href="<?php echo ct_get_edit_link( 'automatorwp_automations', $automation->id ); ?>"><?php echo $title; ?></a>
+                <a href="<?php echo ct_get_edit_link( 'automatorwp_automations', $automation->id ); ?>"><?php echo esc_html( $title ); ?></a>
                 <?php
 
             } else {
@@ -342,7 +342,7 @@ function automatorwp_logs_edit_form_top( $log ) {
     <div class="automatorwp-log-title-preview">
         <h1>
             <?php automatorwp_get_log_integration_icon( $log ); ?>
-            <?php echo ( ! empty( $log->title ) ? $log->title : __( '(No title)', 'automatorwp' ) ); ?>
+            <?php echo ( ! empty( $log->title ) ? esc_html( $log->title ) : __( '(No title)', 'automatorwp' ) ); ?>
         </h1>
     </div>
     <?php
@@ -383,7 +383,7 @@ function automatorwp_log_details_meta_box( $object = null ) {
             <div id="misc-publishing-actions">
 
                 <div class="misc-pub-section misc-pub-post-status">
-                    <?php echo __( 'Type:', 'automatorwp' ); ?> <span id="post-status-display"><?php echo isset( $log_types[$object->type] ) ? $log_types[$object->type] : $object->type ; ?></span>
+                    <?php echo __( 'Type:', 'automatorwp' ); ?> <span id="post-status-display"><?php echo isset( $log_types[$object->type] ) ? $log_types[$object->type] : esc_html( $object->type ) ; ?></span>
                 </div>
 
                 <div class="misc-pub-section misc-pub-post-user" id="user">
@@ -770,7 +770,7 @@ function automatorwp_log_object_id_field_display( $value, $field_args, $field, $
 
             if( $automation ) {
                 $title = ! empty( $automation->title ) ? $automation->title : __( '(No title)', 'automatorwp' );
-                $value = '<a href="' . ct_get_edit_link( 'automatorwp_automations', $automation->id ) . '">' . $title . '</a>';
+                $value = '<a href="' . ct_get_edit_link( 'automatorwp_automations', $automation->id ) . '">' . esc_html( $title ) . '</a>';
             }
             break;
     }
@@ -867,7 +867,7 @@ function automatorwp_log_automation_field_display( $value, $field_args, $field, 
     if( $automation ) {
 
         $title = ! empty( $automation->title ) ? $automation->title : __( '(No title)', 'automatorwp' );
-        $value = '<a href="' . ct_get_edit_link( 'automatorwp_automations', $automation_id ) . '">' . $title . '</a>';
+        $value = '<a href="' . ct_get_edit_link( 'automatorwp_automations', $automation_id ) . '">' . esc_html( $title ) . '</a>';
 
     }
 

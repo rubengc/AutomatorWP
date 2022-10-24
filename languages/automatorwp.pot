@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-10-06 15:19+0200\n"
+"POT-Creation-Date: 2022-10-24 17:49+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,7 +37,7 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:896
 #: integrations/automatorwp/actions/call-function.php:195
 #: integrations/automatorwp/actions/do-action.php:185
-#: integrations/automatorwp/actions/redirect-user.php:237
+#: integrations/automatorwp/actions/redirect-user.php:242
 #: integrations/autonami/includes/actions/add-contact-tag.php:175
 #: integrations/autonami/includes/actions/add-user-tag.php:164
 #: integrations/mailchimp/includes/actions/user-add-note.php:209
@@ -213,12 +213,12 @@ msgid "More Details"
 msgstr ""
 
 #: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
-#: includes/automation-ui.php:1561 includes/automation-ui.php:1573
+#: includes/automation-ui.php:1565 includes/automation-ui.php:1577
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1563
+#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1567
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -2019,7 +2019,7 @@ msgstr ""
 #: includes/integrations/automatorwp/actions/redirect-user.php:194
 #: integrations/activecampaign/includes/functions.php:128
 #: integrations/automatorwp/actions/redirect-user.php:56
-#: integrations/automatorwp/actions/redirect-user.php:231
+#: integrations/automatorwp/actions/redirect-user.php:236
 msgid "URL:"
 msgstr ""
 
@@ -2029,18 +2029,18 @@ msgid "The url to redirect."
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/redirect-user.php:79
-#: integrations/automatorwp/actions/redirect-user.php:88
+#: integrations/automatorwp/actions/redirect-user.php:93
 #, php-format
 msgid "%s is not a valid URL."
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/redirect-user.php:90
-#: integrations/automatorwp/actions/redirect-user.php:107
+#: integrations/automatorwp/actions/redirect-user.php:112
 msgid "User redirected successfully."
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/redirect-user.php:195
-#: integrations/automatorwp/actions/redirect-user.php:232
+#: integrations/automatorwp/actions/redirect-user.php:237
 msgid "The url where user has been redirected."
 msgstr ""
 
@@ -5857,7 +5857,7 @@ msgstr ""
 #: integrations/buddyboss/includes/triggers/join-group.php:39
 #: integrations/buddypress/includes/actions/add-user-group.php:36
 #: integrations/buddypress/includes/triggers/join-group.php:39
-#: integrations/learndash/includes/actions/user-group-leader.php:37
+#: integrations/learndash/includes/actions/user-group-leader.php:38
 #: integrations/learndash/includes/actions/user-group.php:34
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:34
 #: integrations/wp-user-manager/includes/triggers/join-group.php:38
@@ -5868,8 +5868,8 @@ msgstr ""
 #: integrations/buddyboss/includes/tags.php:111
 #: integrations/buddypress/includes/actions/add-user-group.php:39
 #: integrations/buddypress/includes/tags.php:111
-#: integrations/learndash/includes/actions/user-group-leader.php:40
-#: integrations/learndash/includes/actions/user-group-leader.php:46
+#: integrations/learndash/includes/actions/user-group-leader.php:41
+#: integrations/learndash/includes/actions/user-group-leader.php:47
 #: integrations/learndash/includes/actions/user-group.php:37
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:37
 msgid "Group ID"
@@ -5877,7 +5877,7 @@ msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:42
 #: integrations/buddypress/includes/actions/add-user-group.php:42
-#: integrations/learndash/includes/actions/user-group-leader.php:42
+#: integrations/learndash/includes/actions/user-group-leader.php:43
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:35
 msgid "Select a group"
 msgstr ""
@@ -6157,8 +6157,8 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:41
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/happyforms/includes/triggers/submit-form.php:39
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:40
-#: integrations/jetformbuilder/triggers/submit-form.php:39
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:40
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:39
 #: integrations/ninja-forms/includes/functions.php:25
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:42
 #: integrations/ninja-forms/includes/triggers/submit-form.php:41
@@ -6183,7 +6183,7 @@ msgstr ""
 #: integrations/forminator/includes/triggers/anonymous-submit-form.php:27
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:27
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:27
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:27
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/ws-form/includes/triggers/anonymous-submit-form.php:27
@@ -6199,7 +6199,7 @@ msgstr ""
 #: integrations/forminator/includes/triggers/anonymous-submit-form.php:28
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:28
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:28
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:28
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/ws-form/includes/triggers/anonymous-submit-form.php:28
@@ -6224,8 +6224,8 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:32
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:30
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:32
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:30
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:32
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:30
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:32
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:30
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:32
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:30
@@ -6250,8 +6250,8 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:39
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:39
 #: integrations/happyforms/includes/triggers/submit-form.php:38
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:39
-#: integrations/jetformbuilder/triggers/submit-form.php:38
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:39
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:38
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/ninja-forms/includes/triggers/submit-form.php:39
 #: integrations/wp-user-manager/includes/triggers/user-register.php:38
@@ -6280,8 +6280,8 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:51
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:48
 #: integrations/happyforms/includes/triggers/submit-form.php:47
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:48
-#: integrations/jetformbuilder/triggers/submit-form.php:47
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:48
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:47
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:52
 #: integrations/ninja-forms/includes/triggers/submit-form.php:51
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:48
@@ -6301,8 +6301,8 @@ msgstr ""
 #: integrations/forminator/includes/triggers/submit-form.php:49
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:50
 #: integrations/happyforms/includes/triggers/submit-form.php:49
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:50
-#: integrations/jetformbuilder/triggers/submit-form.php:49
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:50
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:49
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:54
 #: integrations/ninja-forms/includes/triggers/submit-form.php:53
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:50
@@ -6328,8 +6328,8 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:188
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:183
 #: integrations/happyforms/includes/triggers/submit-form.php:185
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:196
-#: integrations/jetformbuilder/triggers/submit-form.php:197
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:196
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:197
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:187
 #: integrations/ninja-forms/includes/triggers/submit-form.php:188
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:186
@@ -6357,8 +6357,8 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:189
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:184
 #: integrations/happyforms/includes/triggers/submit-form.php:186
-#: integrations/jetformbuilder/triggers/anonymous-submit-form.php:197
-#: integrations/jetformbuilder/triggers/submit-form.php:198
+#: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:197
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:198
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:188
 #: integrations/ninja-forms/includes/triggers/submit-form.php:189
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:187
@@ -6377,7 +6377,7 @@ msgstr ""
 #: integrations/forminator/includes/triggers/submit-form.php:26
 #: integrations/gravity-forms/includes/triggers/submit-form.php:26
 #: integrations/happyforms/includes/triggers/submit-form.php:26
-#: integrations/jetformbuilder/triggers/submit-form.php:26
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:26
 #: integrations/ninja-forms/includes/triggers/submit-form.php:26
 #: integrations/wpforms/includes/triggers/submit-form.php:26
 #: integrations/ws-form/includes/triggers/submit-form.php:26
@@ -6393,7 +6393,7 @@ msgstr ""
 #: integrations/forminator/includes/triggers/submit-form.php:27
 #: integrations/gravity-forms/includes/triggers/submit-form.php:27
 #: integrations/happyforms/includes/triggers/submit-form.php:27
-#: integrations/jetformbuilder/triggers/submit-form.php:27
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:27
 #: integrations/ninja-forms/includes/triggers/submit-form.php:27
 #: integrations/wpforms/includes/triggers/submit-form.php:27
 #: integrations/ws-form/includes/triggers/submit-form.php:27
@@ -6409,7 +6409,7 @@ msgstr ""
 #: integrations/forminator/includes/triggers/submit-form.php:29
 #: integrations/gravity-forms/includes/triggers/submit-form.php:29
 #: integrations/happyforms/includes/triggers/submit-form.php:29
-#: integrations/jetformbuilder/triggers/submit-form.php:29
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:29
 #: integrations/ninja-forms/includes/triggers/submit-form.php:29
 #: integrations/wpforms/includes/triggers/submit-form.php:29
 #: integrations/ws-form/includes/triggers/submit-form.php:29
@@ -6426,7 +6426,7 @@ msgstr ""
 #: integrations/forminator/includes/triggers/submit-form.php:31
 #: integrations/gravity-forms/includes/triggers/submit-form.php:31
 #: integrations/happyforms/includes/triggers/submit-form.php:31
-#: integrations/jetformbuilder/triggers/submit-form.php:31
+#: integrations/jetformbuilder/includes/triggers/submit-form.php:31
 #: integrations/ninja-forms/includes/triggers/submit-form.php:31
 #: integrations/wpforms/includes/triggers/submit-form.php:31
 #: integrations/ws-form/includes/triggers/submit-form.php:31
@@ -7048,22 +7048,22 @@ msgid "Select a course"
 msgstr ""
 
 #: integrations/learndash/includes/actions/create-group.php:53
-#: integrations/learndash/includes/actions/user-group-leader.php:49
+#: integrations/learndash/includes/actions/user-group-leader.php:50
 msgid "If user doesn't have the \"Group Leader\" role:"
 msgstr ""
 
 #: integrations/learndash/includes/actions/create-group.php:56
-#: integrations/learndash/includes/actions/user-group-leader.php:52
+#: integrations/learndash/includes/actions/user-group-leader.php:53
 msgid "Do nothing"
 msgstr ""
 
 #: integrations/learndash/includes/actions/create-group.php:57
-#: integrations/learndash/includes/actions/user-group-leader.php:53
+#: integrations/learndash/includes/actions/user-group-leader.php:54
 msgid "Add the role to their existing roles"
 msgstr ""
 
 #: integrations/learndash/includes/actions/create-group.php:58
-#: integrations/learndash/includes/actions/user-group-leader.php:54
+#: integrations/learndash/includes/actions/user-group-leader.php:55
 msgid "Replace their existing roles with the \"Group Leader\" role"
 msgstr ""
 

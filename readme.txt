@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.3.3
+Stable tag: 2.3.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -287,6 +287,33 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.3.8 =
+
+* **Improvements**
+* Added more sanitization and escaping checks (thanks Shahjahan Jewel).
+
+= 2.3.7 =
+
+* **Bug Fixes**
+* AmeliaBooking: Fixed anonymous triggers checking user logged.
+
+= 2.3.6 =
+
+* **Improvements**
+* Improved URL sanity checks to prevent duplicated ampersands in "Redirect user to URL" action.
+* **Bug Fixes**
+* Fixed incorrect check to meet if a plugin integration should be loaded.
+
+= 2.3.5 =
+
+* **Bug Fixes**
+* Fixed typo when including JetFormBuilder integration files.
+
+= 2.3.4 =
+
+* **Improvements**
+* Improved URL sanity checks to keep its parameters in "Redirect user to URL" action.
 
 = 2.3.3 =
 

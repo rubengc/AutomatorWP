@@ -198,7 +198,7 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
     switch( $column_name ) {
         case 'title':
             $title = ! empty( $automation->title ) ? $automation->title : __( '(No title)', 'automatorwp' ); ?>
-                <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_automations', $automation->id ); ?>"><?php echo $title; ?></a></strong>
+                <strong><a href="<?php echo ct_get_edit_link( 'automatorwp_automations', $automation->id ); ?>"><?php echo esc_html( $title ); ?></a></strong>
             <?php
 
             break;
@@ -207,7 +207,7 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
             $type = isset( $types[$automation->type] ) ? $types[$automation->type]['label'] : $automation->type;
             ?>
 
-            <span class="automatorwp-automation-type automatorwp-automation-type-<?php echo esc_attr( $automation->type ); ?>"><?php echo $type; ?></span>
+            <span class="automatorwp-automation-type automatorwp-automation-type-<?php echo esc_attr( $automation->type ); ?>"><?php echo esc_html( $type ); ?></span>
 
             <?php
 
@@ -319,7 +319,7 @@ function automatorwp_manage_automations_custom_column(  $column_name, $object_id
             break;
         case 'status':
             $statuses = automatorwp_get_automation_statuses();
-            $status = isset( $statuses[$automation->status] ) ? $statuses[$automation->status] : $automation->status;
+            $status = isset( $statuses[$automation->status] ) ? $statuses[$automation->status] : esc_html( $automation->status );
             ?>
 
             <span class="automatorwp-automation-status automatorwp-automation-status-<?php echo esc_attr( $automation->status ); ?>"><?php echo $status; ?></span>
@@ -490,7 +490,7 @@ function automatorwp_automations_admin_notices() {
 
     // Setup screen message
     if ( isset( $_GET['message'] ) && isset( $messages[$_GET['message']] ) ) {
-        echo '<div id="message" class="updated notice is-dismissible"><p>' . $messages[$_GET['message']] . '</p></div>';
+        echo '<div id="message" class="updated notice is-dismissible"><p>' . esc_html( $messages[$_GET['message']] ) . '</p></div>';
     }
 
 }
@@ -966,7 +966,7 @@ function automatorwp_automations_publishing_actions( $field_args, $field ) {
 
         <div id="automatorwp-automation-actions">
             <?php foreach( $actions as $action => $action_html ) : ?>
-                <div id="automatorwp-automation-action-<?php echo $action; ?>" class="automatorwp-automation-action"><?php echo $action_html; ?></div>
+                <div id="automatorwp-automation-action-<?php echo esc_attr( $action ); ?>" class="automatorwp-automation-action"><?php echo $action_html; ?></div>
             <?php endforeach; ?>
         </div>
 
