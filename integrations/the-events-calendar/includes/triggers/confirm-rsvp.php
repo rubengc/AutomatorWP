@@ -2,14 +2,14 @@
 /**
  * Confirm RSVP
  *
- * @package     AutomatorWP\Integrations\The_Events_Calendar\Triggers\Confirm_RVP
+ * @package     AutomatorWP\Integrations\The_Events_Calendar\Triggers\Confirm_RSVP
  * @author      AutomatorWP <contact@automatorwp.com>, Ruben Garcia <rubengcdev@gmail.com>
  * @since       1.0.0
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-class AutomatorWP_The_Events_Calendar_Confirm_RVP extends AutomatorWP_Integration_Trigger {
+class AutomatorWP_The_Events_Calendar_Confirm_RSVP extends AutomatorWP_Integration_Trigger {
 
     public $integration = 'the_events_calendar';
     public $trigger = 'the_events_calendar_confirm_rsvp';
@@ -36,7 +36,7 @@ class AutomatorWP_The_Events_Calendar_Confirm_RVP extends AutomatorWP_Integratio
             ),
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 4,
+            'accepted_args'     => 3,
             'options'           => array(
                 'post' => automatorwp_utilities_post_option( array(
                     'name' => __( 'Event:', 'automatorwp' ),
@@ -61,9 +61,8 @@ class AutomatorWP_The_Events_Calendar_Confirm_RVP extends AutomatorWP_Integratio
      * @param int    $product_id   RSVP ticket post ID
      * @param string $order_id     ID (hash) of the RSVP order
      * @param int    $qty          Quantity ordered
-     * @param array  $attendee_ids List of attendee IDs generated.
      */
-    public function listener( $product_id, $order_id, $qty, $attendee_ids ) {
+    public function listener( $product_id, $order_id, $qty ) {
 
         $attendees = tribe_tickets_get_attendees( $order_id, 'rsvp_order' );
 
@@ -124,4 +123,4 @@ class AutomatorWP_The_Events_Calendar_Confirm_RVP extends AutomatorWP_Integratio
 
 }
 
-new AutomatorWP_The_Events_Calendar_Confirm_RVP();
+new AutomatorWP_The_Events_Calendar_Confirm_RSVP();

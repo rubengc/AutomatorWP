@@ -290,6 +290,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.3.9 ###
+
+* **Bug Fixes**
+The Events Calendar: Fixed warning when confirming RSVP since Events Tickets has 2 different ways to launch the same hook with different parameters.
+
 ### 2.3.8 ###
 
 * **Improvements**
