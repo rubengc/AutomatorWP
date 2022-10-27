@@ -1,5 +1,71 @@
 == Changelog ==
 
+= 2.3.9 =
+
+* **Bug Fixes**
+The Events Calendar: Fixed warning when confirming RSVP since Events Tickets has 2 different ways to launch the same hook with different parameters.
+
+= 2.3.8 =
+
+* **Improvements**
+* Added more sanitization and escaping checks (thanks Shahjahan Jewel).
+
+= 2.3.7 =
+
+* **Bug Fixes**
+* AmeliaBooking: Fixed anonymous triggers checking user logged.
+
+= 2.3.6 =
+
+* **Improvements**
+* Improved URL sanity checks to prevent duplicated ampersands in "Redirect user to URL" action.
+* **Bug Fixes**
+* Fixed incorrect check to meet if a plugin integration should be loaded.
+
+= 2.3.5 =
+
+* **Bug Fixes**
+* Fixed typo when including JetFormBuilder integration files.
+
+= 2.3.4 =
+
+* **Improvements**
+* Improved URL sanity checks to keep its parameters in "Redirect user to URL" action.
+
+= 2.3.3 =
+
+* **New Features**
+* New integration: Download Manager.
+* New integration: JetFormBuilder.
+* New integration: StudioCart.
+* JetFormBuilder: New trigger: User submits a form.
+* JetFormBuilder: New anonymous trigger: Guest submits a form.
+* StudioCart: New trigger: User purchases a product.
+* **Improvements**
+* LearnDash: Added name of groups in "Make user the leader of a group" action label.
+
+= 2.3.2 =
+
+* **Bug Fixes**
+* Fixed user ID assigned on "Delete user" action.
+
+= 2.3.1 =
+
+* **New Features**
+* New integration: Google Calendar.
+* **Developer Notes**
+* Fixed wrong options in number condition fields (thanks @alexstewartja).
+* Improved automatorwp_get_array_key_value() function bringing support to search by multiples keys (thanks @alexstewartja).
+
+= 2.3.0 =
+
+* **Improvements**
+* Ensure to load all required script files in the automation edit screen.
+* **Bug Fixes**
+* Fixed custom options replacement on filters.
+* **Developer Notes**
+* Moved old changelog to changelog.txt.
+
 = 2.2.9 =
 
 * **New Features**

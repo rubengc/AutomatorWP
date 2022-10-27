@@ -30,7 +30,7 @@ function automatorwp_check_for_redirect() {
         success: function( response ) {
 
             // Sanitization check
-            if( response.data === undefined && response.data.redirect_url === undefined ) {
+            if( ! automatorwp_is_response_valid_for_redirect( response ) ) {
                 automatorwp_redirect_in_progress = false;
                 return;
             }
@@ -44,7 +44,7 @@ function automatorwp_check_for_redirect() {
         error: function( response ) {
 
             // Sanitization check
-            if( response.data === undefined && response.data.redirect_url === undefined ) {
+            if( ! automatorwp_is_response_valid_for_redirect( response ) ) {
                 automatorwp_redirect_in_progress = false;
                 return;
             }
@@ -56,6 +56,31 @@ function automatorwp_check_for_redirect() {
 
         }
     });
+
+}
+
+/**
+ * Check if the response object has all required properties
+ *
+ * @since 2.4.1
+ *
+ * @param {object} response
+ */
+function automatorwp_is_response_valid_for_redirect( response ) {
+
+    if( response === undefined ) {
+        return false;
+    }
+
+    if( response.data === undefined ) {
+        return false;
+    }
+
+    if( response.data.redirect_url === undefined ) {
+        return false;
+    }
+
+    return true;
 
 }
 
