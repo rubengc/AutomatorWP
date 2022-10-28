@@ -9,7 +9,9 @@ function automatorwp_check_for_redirect() {
 
     var $ = jQuery;
 
-    if( automatorwp_redirect.user_id === 0 ) {
+    var user_id = parseInt( automatorwp_redirect.user_id );
+
+    if( user_id === 0 || isNaN( user_id ) ) {
         return;
     }
 

@@ -290,6 +290,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.4.2 ###
+
+* **Improvements**
+* Prevent to check for redirects if user is not logged in.
+
 ### 2.4.1 ###
 
 * **Bug Fixes**
