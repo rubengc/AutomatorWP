@@ -769,7 +769,13 @@ function automatorwp_user_deserves_trigger( $trigger = null, $user_id = 0, $even
     }
 
     if( automatorwp_has_user_completed_trigger( $trigger->id, $user_id ) ) {
-        return false;
+
+        $automation_triggers = automatorwp_get_automation_triggers( $automation->id );
+
+        // Only pass this check if automation has more than 1 trigger
+        if( count( $automation_triggers ) > 1 ) {
+            return false;
+        }
     }
 
     $deserves_trigger = true;
@@ -831,7 +837,12 @@ function automatorwp_user_deserves_trigger_filters( $trigger = null, $user_id = 
     }
 
     if( automatorwp_has_user_completed_trigger( $trigger->id, $user_id ) ) {
-        return false;
+        $automation_triggers = automatorwp_get_automation_triggers( $automation->id );
+
+        // Only pass this check if automation has more than 1 trigger
+        if( count( $automation_triggers ) > 1 ) {
+            return false;
+        }
     }
 
     $deserves_trigger_filters = true;

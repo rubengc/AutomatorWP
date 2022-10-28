@@ -217,8 +217,13 @@ function automatorwp_get_time_format( $allowed_formats = array() ) {
  */
 function automatorwp_get_timestamp_from_value( $value, $format = 'Y-m-d' ) {
 
-    $timestamp = CMB2_Utils::get_timestamp_from_value( $value, $format );
+    // Create a new date object from the given format
+    $date_object = date_create_from_format( $format, $value );
 
+    // get the timestamp from the date object
+    $timestamp = ( $date_object ? $date_object->getTimeStamp() : strtotime( $value ) );
+
+    // Ensure to make a valid timestamp
     if ( empty( $timestamp ) && CMB2_Utils::is_valid_date( $value ) ) {
         $timestamp = CMB2_Utils::make_valid_time_stamp( $value );
     }

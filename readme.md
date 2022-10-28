@@ -290,6 +290,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.4.3 ###
+
+* **Improvements**
+* Skip some checks for automations with 1 trigger to allow run the automation even if there are invalid logs from previous tests.
+* **Bug Fixes**
+* Fixed date calculation for recurring automations.
+
 ### 2.4.2 ###
 
 * **Improvements**

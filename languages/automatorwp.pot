@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-10-27 10:00+0200\n"
+"POT-Creation-Date: 2022-10-28 21:59+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -380,8 +380,8 @@ msgstr ""
 msgid "Importing automation..."
 msgstr ""
 
-#: includes/admin/pages/import-automation.php:61 includes/events.php:1623
-#: includes/events.php:1879 includes/events.php:2098
+#: includes/admin/pages/import-automation.php:61 includes/events.php:1634
+#: includes/events.php:1890 includes/events.php:2109
 msgid "Invalid automation ID."
 msgstr ""
 
@@ -490,8 +490,8 @@ msgstr ""
 #: includes/automations.php:362 includes/automations.php:400
 #: includes/automations.php:457 includes/automations.php:508
 #: includes/automations.php:545 includes/automations.php:583
-#: includes/automations.php:640 includes/events.php:1721
-#: includes/events.php:1794 includes/events.php:1989 includes/events.php:2021
+#: includes/automations.php:640 includes/events.php:1732
+#: includes/events.php:1805 includes/events.php:2000 includes/events.php:2032
 msgid "Invalid automation."
 msgstr ""
 
@@ -538,18 +538,18 @@ msgid "Invalid option."
 msgstr ""
 
 #: includes/ajax-functions.php:440 includes/ajax-functions.php:517
-#: includes/events.php:1632 includes/events.php:1888 includes/events.php:2107
+#: includes/events.php:1643 includes/events.php:1899 includes/events.php:2118
 #, php-format
 msgid "Automation with ID %d not found."
 msgstr ""
 
 #: includes/ajax-functions.php:452 includes/automations.php:412
-#: includes/events.php:1730
+#: includes/events.php:1741
 msgid "Users per loop need to be higher than 0."
 msgstr ""
 
 #: includes/ajax-functions.php:465 includes/automations.php:595
-#: includes/events.php:1803
+#: includes/events.php:1814
 msgid "Posts per loop need to be higher than 0."
 msgstr ""
 
@@ -808,11 +808,11 @@ msgstr ""
 
 #: includes/automations.php:333 includes/automations.php:370
 #: includes/automations.php:516 includes/automations.php:553
-#: includes/events.php:1739 includes/events.php:1812
+#: includes/events.php:1750 includes/events.php:1823
 msgid "Trigger configuration not found."
 msgstr ""
 
-#: includes/automations.php:897
+#: includes/automations.php:903
 msgid "(Cloned)"
 msgstr ""
 
@@ -1332,27 +1332,27 @@ msgstr ""
 msgid "(No post assigned)"
 msgstr ""
 
-#: includes/events.php:1638
+#: includes/events.php:1649
 msgid "Invalid automation type."
 msgstr ""
 
-#: includes/events.php:1649
+#: includes/events.php:1660
 msgid "Automation has been run the number of times allowed. Change the \"Total times\" setting for this automation to allow run it again."
 msgstr ""
 
-#: includes/events.php:1893
+#: includes/events.php:1904
 msgid "Automation run has been cancelled."
 msgstr ""
 
-#: includes/events.php:1996
+#: includes/events.php:2007
 msgid "Can not retrieve run details."
 msgstr ""
 
-#: includes/events.php:2112
+#: includes/events.php:2123
 msgid "Can not cancel automation run because is not running."
 msgstr ""
 
-#: includes/events.php:2135
+#: includes/events.php:2146
 #, php-format
 msgid "%s run cancelled by the user"
 msgstr ""
