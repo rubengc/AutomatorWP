@@ -296,7 +296,7 @@ function automatorwp_plugins_api() {
         return $res;
     }
 
-    $url = $http_url = 'http://automatorwp.com/edd-api/products/?orderby=menu_order&order=ASC&number=999';
+    $url = $http_url = 'https://automatorwp.com/wp-json/api/add-ons';
 
     if ( $ssl = wp_http_supports( array( 'ssl' ) ) ) {
         $url = set_url_scheme( $url, 'https' );
