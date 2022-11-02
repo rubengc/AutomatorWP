@@ -130,7 +130,7 @@ class AutomatorWP_Presto_Player_Watch_Video extends AutomatorWP_Integration_Trig
     public function hooks() {
 
         // Log meta data
-        add_filter( 'automatorwp_anonymous_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 5 );
+        add_filter( 'automatorwp_user_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 6 );
 
         parent::hooks();
     }
@@ -142,13 +142,14 @@ class AutomatorWP_Presto_Player_Watch_Video extends AutomatorWP_Integration_Trig
      *
      * @param array     $log_meta           Log meta data
      * @param stdClass  $trigger            The trigger object
+     * @param int       $user_id            The user ID
      * @param array     $event              Event information
      * @param array     $trigger_options    The trigger's stored options
      * @param stdClass  $automation         The trigger's automation object
      *
      * @return array
      */
-    function log_meta( $log_meta, $trigger, $event, $trigger_options, $automation ) {
+    function log_meta( $log_meta, $trigger, $user_id, $event, $trigger_options, $automation ) {
 
         // Bail if action type don't match this action
         if( $trigger->type !== $this->trigger ) {

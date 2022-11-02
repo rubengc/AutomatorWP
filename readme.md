@@ -290,6 +290,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.4.4 ###
+
+* **Bug fixes**
+* Presto Player: Fixed tags to get data from logged automations.
+
 ### 2.4.3 ###
 
 * **Improvements**
