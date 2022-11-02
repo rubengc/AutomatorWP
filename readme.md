@@ -290,6 +290,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.4.5 ###
+
+* **Improvements**
+* Updated add-ons API.
+
 ### 2.4.4 ###
 
 * **Bug fixes**
