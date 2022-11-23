@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-11-23 10:31+0100\n"
+"POT-Creation-Date: 2022-11-23 16:39+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,6 +44,7 @@ msgstr ""
 #: integrations/mailchimp/includes/actions/user-add-note.php:209
 #: integrations/mailchimp/includes/actions/user-add-tag.php:217
 #: integrations/mailchimp/includes/actions/user-subscribe.php:202
+#: integrations/meta-box/includes/actions/update-post-field.php:222
 #: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:164
 #: integrations/wordpress/actions/create-post.php:457
 #: integrations/wordpress/actions/create-user.php:385
@@ -822,6 +823,8 @@ msgstr ""
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:50
 #: integrations/favorites/includes/triggers/favorite-post.php:39
 #: integrations/favorites/includes/triggers/get-favorite-post.php:39
+#: integrations/meta-box/includes/actions/update-post-field.php:43
+#: integrations/meta-box/includes/triggers/post-field-updated.php:61
 #: integrations/wordpress/actions/delete-post.php:35
 #: integrations/wordpress/triggers/post-field-updated.php:39
 #: integrations/wordpress/triggers/post-updated.php:39
@@ -857,6 +860,8 @@ msgstr ""
 #: includes/cmb2.php:347 includes/cmb2.php:406
 #: integrations/advanced-custom-fields/includes/functions.php:21
 #: integrations/advanced-custom-fields/includes/functions.php:57
+#: integrations/meta-box/includes/functions.php:23
+#: integrations/meta-box/includes/triggers/post-field-updated.php:44
 msgid "any field"
 msgstr ""
 
@@ -1324,6 +1329,7 @@ msgstr ""
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:47
 #: integrations/favorites/includes/triggers/favorite-post.php:38
 #: integrations/favorites/includes/triggers/get-favorite-post.php:38
+#: integrations/meta-box/includes/actions/update-post-field.php:47
 msgid "Post:"
 msgstr ""
 
@@ -2519,6 +2525,7 @@ msgstr ""
 #: includes/integrations/wordpress/actions/create-post.php:379
 #: includes/integrations/wordpress/actions/update-post.php:394
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:198
+#: integrations/meta-box/includes/actions/update-post-field.php:198
 #: integrations/wordpress/actions/create-post.php:379
 #: integrations/wordpress/actions/update-post.php:394
 msgid "Post Information"
@@ -2822,6 +2829,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/post-meta.php:73
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:204
+#: integrations/meta-box/includes/actions/update-post-field.php:204
 #: integrations/wordpress/actions/post-meta.php:73
 msgid "Post ID:"
 msgstr ""
@@ -2831,6 +2839,7 @@ msgstr ""
 #: includes/integrations/wordpress/filters/user-field.php:55
 #: includes/integrations/wordpress/filters/user-meta.php:47
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:75
+#: integrations/meta-box/includes/actions/update-post-field.php:70
 #: integrations/wordpress/actions/post-meta.php:81
 #: integrations/wordpress/actions/user-meta.php:61
 #: integrations/wordpress/filters/user-exists.php:50
@@ -3056,6 +3065,8 @@ msgstr ""
 #: includes/integrations/wordpress/actions/update-post.php:91
 #: includes/scripts.php:251 includes/utilities.php:51 includes/utilities.php:88
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:49
+#: integrations/meta-box/includes/actions/update-post-field.php:49
+#: integrations/meta-box/includes/actions/update-post-field.php:50
 #: integrations/wordpress/actions/update-post.php:72
 msgid "Select a post"
 msgstr ""
@@ -3066,6 +3077,8 @@ msgstr ""
 #: includes/utilities.php:457
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:52
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:55
+#: integrations/meta-box/includes/actions/update-post-field.php:52
+#: integrations/meta-box/includes/actions/update-post-field.php:55
 #: integrations/wordpress/actions/delete-post.php:37
 #: integrations/wordpress/actions/update-post.php:75
 #: integrations/wordpress/actions/update-post.php:78
@@ -3332,6 +3345,8 @@ msgstr ""
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:42
 #: integrations/automatorwp/triggers/all-posts.php:65
 #: integrations/automatorwp/triggers/all-users.php:65
+#: integrations/meta-box/includes/actions/update-post-field.php:62
+#: integrations/meta-box/includes/triggers/post-field-updated.php:42
 #: integrations/wordpress/actions/delete-multiple-posts.php:97
 #: integrations/wordpress/actions/update-multiple-posts.php:97
 #: integrations/wordpress/actions/update-posts.php:97
@@ -3359,6 +3374,8 @@ msgstr ""
 #: integrations/automatorwp/actions/do-action.php:63
 #: integrations/automatorwp/triggers/all-posts.php:75
 #: integrations/automatorwp/triggers/all-users.php:75
+#: integrations/meta-box/includes/actions/update-post-field.php:73
+#: integrations/meta-box/includes/triggers/post-field-updated.php:54
 #: integrations/wordpress/actions/delete-multiple-posts.php:107
 #: integrations/wordpress/actions/update-multiple-posts.php:107
 #: integrations/wordpress/actions/update-posts.php:119
@@ -3921,6 +3938,7 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/post-type-meta-update.php:65
 #: includes/integrations/wordpress/triggers/user-meta-update.php:51
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:52
+#: integrations/meta-box/includes/triggers/post-field-updated.php:51
 #: integrations/wordpress/triggers/post-meta-update.php:55
 #: integrations/wordpress/triggers/post-type-meta-update.php:65
 #: integrations/wordpress/triggers/user-meta-update.php:51
@@ -5091,67 +5109,85 @@ msgid "User ad gets unpublished %1$s time(s)"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:35
+#: integrations/meta-box/includes/actions/update-post-field.php:35
 msgid "Update post field with a value"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:36
+#: integrations/meta-box/includes/actions/update-post-field.php:36
 msgid "Update <strong>post field</strong> with a value"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:38
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:40
+#: integrations/meta-box/includes/actions/update-post-field.php:38
+#: integrations/meta-box/includes/actions/update-post-field.php:40
 #, php-format
 msgid "Update %1$s %2$s with %3$s"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:112
+#: integrations/meta-box/includes/actions/update-post-field.php:112
 #, php-format
 msgid "Post not found by the ID %1$s."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:119
+#: integrations/meta-box/includes/actions/update-post-field.php:119
 msgid "Post field updated successfully."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:199
+#: integrations/meta-box/includes/actions/update-post-field.php:199
 msgid "Information about the post updated."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:205
+#: integrations/meta-box/includes/actions/update-post-field.php:205
 msgid "The post's ID updated."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:210
+#: integrations/meta-box/includes/actions/update-post-field.php:210
 msgid "Post Field:"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:211
+#: integrations/meta-box/includes/actions/update-post-field.php:211
 msgid "The updated field."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:216
+#: integrations/meta-box/includes/actions/update-post-field.php:216
 msgid "Post Field Value:"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/actions/update-post-field.php:217
+#: integrations/meta-box/includes/actions/update-post-field.php:217
 msgid "The updated field value."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/tags.php:22
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:213
+#: integrations/meta-box/includes/tags.php:22
+#: integrations/meta-box/includes/triggers/post-field-updated.php:227
 msgid "Updated field"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/tags.php:24
+#: integrations/meta-box/includes/tags.php:24
 msgid "Key of the updated field"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/tags.php:27
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:219
+#: integrations/meta-box/includes/tags.php:27
+#: integrations/meta-box/includes/triggers/post-field-updated.php:233
 msgid "Updated value"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/tags.php:29
+#: integrations/meta-box/includes/tags.php:29
 msgid "Value of the updated field"
 msgstr ""
 
@@ -5174,10 +5210,12 @@ msgid "User updates post %1$s with %2$s"
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:214
+#: integrations/meta-box/includes/triggers/post-field-updated.php:228
 msgid "Key of the updated field."
 msgstr ""
 
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:220
+#: integrations/meta-box/includes/triggers/post-field-updated.php:234
 msgid "Value of the updated field."
 msgstr ""
 
@@ -7683,6 +7721,28 @@ msgstr ""
 #: integrations/memberpress/includes/triggers/purchase-membership.php:42
 #: integrations/woocommerce/includes/triggers/membership-created.php:42
 msgid "any membership"
+msgstr ""
+
+#: integrations/meta-box/includes/actions/update-post-field.php:61
+msgid "Select a field"
+msgstr ""
+
+#: integrations/meta-box/includes/triggers/post-field-updated.php:26
+msgid "User updates field on a post with a value"
+msgstr ""
+
+#: integrations/meta-box/includes/triggers/post-field-updated.php:27
+msgid "User updates <strong>field</strong> on a post with a value"
+msgstr ""
+
+#: integrations/meta-box/includes/triggers/post-field-updated.php:29
+#, php-format
+msgid "User updates field %1$s on %2$s with %3$s %4$s time(s)"
+msgstr ""
+
+#: integrations/meta-box/includes/triggers/post-field-updated.php:31
+#, php-format
+msgid "User updates field %1$s on %2$s with %3$s"
 msgstr ""
 
 #: integrations/modern-events-calendar/includes/tags.php:23
