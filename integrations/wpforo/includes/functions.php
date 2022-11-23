@@ -22,7 +22,7 @@ function automatorwp_wpforo_options_cb_forum( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any forum', 'automatorwp' );
+    $none_label = __( 'any forum', 'automatorwp-wpforo' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     if( ! empty( $value ) ) {
@@ -57,14 +57,21 @@ function automatorwp_wpforo_options_cb_forum( $field ) {
 function automatorwp_wpforo_get_forum_title( $forum_id ) {
 
     // Empty title if no ID provided
-    if( absint( $forum_id ) === 0 ) {
+    if( $forum_id === 0 ) {
         return '';
     }
 
     global $wpdb;
 
-    $table = WPF()->tables->forums;
+    if ( strpos( $forum_id, '-' ) ) {
+        $board = explode('-', $forum_id)[0];
+        $forum_id = explode('-', $forum_id)[1];
+        $table = $table = $wpdb->prefix . 'wpforo_' . $board . '_forums';
 
+    } else {
+        $table = WPF()->tables->forums;
+    }
+    
     return $wpdb->get_var( $wpdb->prepare(
         "SELECT f.title FROM {$table} AS f WHERE f.forumid = %d",
         $forum_id
@@ -86,7 +93,7 @@ function automatorwp_wpforo_options_cb_topic( $field ) {
     // Setup vars
     $value = $field->escaped_value;
     $none_value = 'any';
-    $none_label = __( 'any topic', 'automatorwp' );
+    $none_label = __( 'any topic', 'automatorwp-wpforo' );
     $options = automatorwp_options_cb_none_option( $field, $none_value, $none_label );
 
     if( ! empty( $value ) ) {
@@ -127,7 +134,14 @@ function automatorwp_wpforo_get_topic_title( $topic_id ) {
 
     global $wpdb;
 
-    $table = WPF()->tables->topics;
+    if ( strpos( $topic_id, '-' ) ) {
+        $board = explode('-', $topic_id)[0];
+        $topic_id = explode('-', $topic_id)[1];
+        $table = $table = $wpdb->prefix . 'wpforo_' . $board . '_topics';
+
+    } else {
+        $table = WPF()->tables->topics;
+    }
 
     return $wpdb->get_var( $wpdb->prepare(
         "SELECT f.title FROM {$table} AS f WHERE f.topicid = %d",

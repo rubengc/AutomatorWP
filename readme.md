@@ -290,6 +290,15 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.4.6 ###
+
+* **Improvements**
+* Advanced Custom Fields (ACF): Custom option on post selection for "Update post field with a value" action.
+* wpDiscuz: Improved checking to detect if it is configured the option "Use guest email to detect registered account".
+* wpForo: Updated forums and topic selections to adapt triggers to version 2.0.0.
+* **Bug Fixes**
+* BuddyPress: Fixed group ID type in action "Add user to group".
+
 ### 2.4.5 ###
 
 * **Improvements**

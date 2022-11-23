@@ -81,8 +81,17 @@ class AutomatorWP_wpForo_Create_Reply extends AutomatorWP_Integration_Trigger {
         }
 
         $reply_id = $post['postid'];
-        $topic_id = $topic['topicid'];
-        $forum_id = $post['forumid'];
+        $topic_id = strval( $topic['topicid'] );
+        $forum_id = strval( $post['forumid'] );
+
+        // Get the current Board
+        $board_id = WPF()->board->get_current( 'boardid' );
+
+        // Boards other than the main one (ID=0) take data from other additional tables in the database
+        if ( absint( $board_id ) !== 0 ){
+            $forum_id = $board_id . '-' . $post['forumid'];
+            $topic_id = $board_id . '-' . $topic['topicid'];
+        }
 
         // Trigger the create a reply
         automatorwp_trigger_event( array(
@@ -117,14 +126,14 @@ class AutomatorWP_wpForo_Create_Reply extends AutomatorWP_Integration_Trigger {
         }
 
         // Don't deserve if topic doesn't match with the trigger option
-        if( $trigger_options['topic'] !== 'any' && absint( $event['topic_id'] ) !== absint( $trigger_options['topic'] ) ) {
+        if( $trigger_options['topic'] !== 'any' && $event['topic_id']  !== $trigger_options['topic'] ) {
             return false;
         }
 
         // Don't deserve if forum doesn't match with the trigger option
-        if( $trigger_options['forum'] !== 'any' && absint( $event['forum_id'] ) !== absint( $trigger_options['forum'] ) ) {
+        if( $trigger_options['forum'] !== 'any' &&  $event['forum_id'] !==  $trigger_options['forum'] ) {
             return false;
-        }
+        }  
 
         return $deserves_trigger;
 

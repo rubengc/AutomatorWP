@@ -19,24 +19,24 @@ function automatorwp_wpforo_forum_tags() {
 
     $forum_tags = array(
         'wpforo_forum_id' => array(
-            'label'     => __( 'Forum ID', 'automatorwp' ),
+            'label'     => __( 'Forum ID', 'automatorwp-wpforo' ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'wpforo_forum_title' => array(
-            'label'     => __( 'Forum Title', 'automatorwp' ),
+            'label'     => __( 'Forum Title', 'automatorwp-wpforo' ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'wpforo_forum_url' => array(
-            'label'     => __( 'Forum URL', 'automatorwp' ),
+            'label'     => __( 'Forum URL', 'automatorwp-wpforo' ),
             'type'      => 'text',
             'preview'   => get_option( 'home' ) . '/sample-forum',
         ),
         'wpforo_forum_link' => array(
-            'label'     => __( 'Forum Link', 'automatorwp' ),
+            'label'     => __( 'Forum Link', 'automatorwp-wpforo' ),
             'type'      => 'text',
-            'preview'   => '<a href="' . get_option( 'home' ) . '/sample-forum">' . __( 'Forum Title', 'automatorwp' ) . '</a>',
+            'preview'   => '<a href="' . get_option( 'home' ) . '/sample-forum">' . __( 'Forum Title', 'automatorwp-wpforo' ) . '</a>',
         ),
     );
 
@@ -64,24 +64,24 @@ function automatorwp_wpforo_topic_tags() {
 
     $topic_tags = array(
         'wpforo_topic_id' => array(
-            'label'     => __( 'Topic ID', 'automatorwp' ),
+            'label'     => __( 'Topic ID', 'automatorwp-wpforo' ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'wpforo_topic_title' => array(
-            'label'     => __( 'Topic Title', 'automatorwp' ),
+            'label'     => __( 'Topic Title', 'automatorwp-wpforo' ),
             'type'      => 'integer',
             'preview'   => '123',
         ),
         'wpforo_topic_url' => array(
-            'label'     => __( 'Topic URL', 'automatorwp' ),
+            'label'     => __( 'Topic URL', 'automatorwp-wpforo' ),
             'type'      => 'text',
             'preview'   => get_option( 'home' ) . '/sample-topic',
         ),
         'wpforo_topic_link' => array(
-            'label'     => __( 'Topic Link', 'automatorwp' ),
+            'label'     => __( 'Topic Link', 'automatorwp-wpforo' ),
             'type'      => 'text',
-            'preview'   => '<a href="' . get_option( 'home' ) . '/sample-topic">' . __( 'Topic Title', 'automatorwp' ) . '</a>',
+            'preview'   => '<a href="' . get_option( 'home' ) . '/sample-topic">' . __( 'Topic Title', 'automatorwp-wpforo' ) . '</a>',
         ),
     );
 

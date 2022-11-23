@@ -21,7 +21,7 @@ function automatorwp_wpdiscuz_get_commment_user_id( $comment ) {
     $user_id = absint( $comment->user_id );
 
     // If comment has not assigned a user id and wpDiscuz is configured to use the user email, then need to search this user by email
-    if ( $user_id === 0 && wpDiscuz()->optionsSerialized->isUserByEmail ) {
+    if ( $user_id === 0 && wpDiscuz()->options->login["isUserByEmail"] ) {
 
         // Get the user by email
         $user = get_user_by( 'email', $comment->comment_author_email );

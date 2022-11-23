@@ -39,10 +39,23 @@ class AutomatorWP_Advanced_Custom_Fields_Update_Post_Field extends AutomatorWP_I
             /* translators: %1$s: User. */
             'log_label'         => sprintf( __( 'Update %1$s %2$s with %3$s', 'automatorwp' ), '{post}', '{field_name}', '{field_value}' ),
             'options'           => array(
-                'post' => automatorwp_utilities_post_option( array(
-                    'name' => __( 'Post:', 'automatorwp' ),
-                    'post_type' => 'post'
-                ) ),
+                'post' => array(
+                    'default' => __( 'any post', 'automatorwp' ),
+                    'from' => 'post_id',
+                    'fields' => array(
+                        'post_id' => automatorwp_utilities_post_field( array(
+                            'name' => __( 'Post:', 'automatorwp' ),
+                            'post_type' => 'post',
+                            'placeholder'           => __( 'Select a post', 'automatorwp' ),
+                            'option_none_label'     => __( 'any post', 'automatorwp' ),
+                            'option_custom'         => true,
+                            'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
+                        ) ),
+                        'post_id_custom' => automatorwp_utilities_custom_field( array(
+                            'option_custom_desc'    => __( 'Post ID', 'automatorwp' ),
+                        ) ),
+                    )),
+
                 'field_name' => array(
                     'from' => 'field_name',
                     'default' => __( 'field', 'automatorwp' ),
@@ -51,13 +64,15 @@ class AutomatorWP_Advanced_Custom_Fields_Update_Post_Field extends AutomatorWP_I
                             'name' => __( 'Field:', 'automatorwp' ),
                             'type' => 'select',
                             'classes' => 'automatorwp-selector',
-                            'options_cb' => 'automatorwp_advanced_custom_fields_options_cb_fields_posts'
+                            'options_cb' => 'automatorwp_advanced_custom_fields_options_cb_fields_posts',
+                            'default' => ''
                         )
                     )
                 ),
+
                 'field_value' => array(
                     'from' => 'field_value',
-                    'default' => __( 'any value', 'automatorwp' ),
+                    'default' => __( 'value', 'automatorwp' ),
                     'fields' => array(
                         'field_value' => array(
                             'name' => __( 'Value:', 'automatorwp' ),
@@ -88,19 +103,19 @@ class AutomatorWP_Advanced_Custom_Fields_Update_Post_Field extends AutomatorWP_I
         // Shorthand
         $field_name = $action_options['field_name'];
         $field_value = $action_options['field_value'];
-        $post_id = absint( $action_options['post'] );
+        $post_id = absint( $action_options['post_id'] );
 
         $this->result = array();
 
         // Bail if no post
-        if( empty( $action_options['post'] ) ) {
+        if( empty( $action_options['post_id'] ) ) {
             $this->result[] = sprintf( __( 'Post not found by the ID %1$s.', 'automatorwp' ), $post_id );
             return;
         }
 
         // Update post meta
         update_post_meta( $post_id, $field_name, $field_value );
-        
+
         $this->result[] = __( 'Post field updated successfully.', 'automatorwp' );
 
     }
@@ -142,7 +157,7 @@ class AutomatorWP_Advanced_Custom_Fields_Update_Post_Field extends AutomatorWP_I
         }
 
         // Store post ID
-        $log_meta['post_id'] = $action_options['post'];
+        $log_meta['post_id'] = $action_options['post_id'];
 
         // Store post field
         $log_meta['field_name'] = $action_options['field_name'];

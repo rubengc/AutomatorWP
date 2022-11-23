@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-10-28 21:59+0200\n"
+"POT-Creation-Date: 2022-11-23 10:31+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: integrations/activecampaign/includes/actions/add-user.php:184
 #: integrations/activecampaign/includes/triggers/user-added.php:174
 #: integrations/activecampaign/includes/triggers/user-tag-added.php:237
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:207
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:222
 #: integrations/automatorwp/actions/anonymous-user.php:870
 #: integrations/automatorwp/actions/anonymous-user.php:896
 #: integrations/automatorwp/actions/call-function.php:195
@@ -40,6 +40,7 @@ msgstr ""
 #: integrations/automatorwp/actions/redirect-user.php:242
 #: integrations/autonami/includes/actions/add-contact-tag.php:175
 #: integrations/autonami/includes/actions/add-user-tag.php:164
+#: integrations/buddypress/includes/actions/add-user-group.php:160
 #: integrations/mailchimp/includes/actions/user-add-note.php:209
 #: integrations/mailchimp/includes/actions/user-add-tag.php:217
 #: integrations/mailchimp/includes/actions/user-subscribe.php:202
@@ -812,11 +813,13 @@ msgstr ""
 msgid "Trigger configuration not found."
 msgstr ""
 
-#: includes/automations.php:903
+#: includes/automations.php:897
 msgid "(Cloned)"
 msgstr ""
 
 #: includes/cmb2.php:37 includes/utilities.php:52 includes/utilities.php:89
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:43
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:50
 #: integrations/favorites/includes/triggers/favorite-post.php:39
 #: integrations/favorites/includes/triggers/get-favorite-post.php:39
 #: integrations/wordpress/actions/delete-post.php:35
@@ -1318,7 +1321,7 @@ msgstr ""
 
 #: includes/custom-tables/logs.php:576 includes/utilities.php:48
 #: includes/utilities.php:85
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:43
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:47
 #: integrations/favorites/includes/triggers/favorite-post.php:38
 #: integrations/favorites/includes/triggers/get-favorite-post.php:38
 msgid "Post:"
@@ -2515,7 +2518,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/create-post.php:379
 #: includes/integrations/wordpress/actions/update-post.php:394
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:183
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:198
 #: integrations/wordpress/actions/create-post.php:379
 #: integrations/wordpress/actions/update-post.php:394
 msgid "Post Information"
@@ -2818,7 +2821,7 @@ msgid "(Post ID)"
 msgstr ""
 
 #: includes/integrations/wordpress/actions/post-meta.php:73
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:189
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:204
 #: integrations/wordpress/actions/post-meta.php:73
 msgid "Post ID:"
 msgstr ""
@@ -2827,6 +2830,7 @@ msgstr ""
 #: includes/integrations/wordpress/actions/user-meta.php:61
 #: includes/integrations/wordpress/filters/user-field.php:55
 #: includes/integrations/wordpress/filters/user-meta.php:47
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:75
 #: integrations/wordpress/actions/post-meta.php:81
 #: integrations/wordpress/actions/user-meta.php:61
 #: integrations/wordpress/filters/user-exists.php:50
@@ -3051,6 +3055,7 @@ msgstr ""
 
 #: includes/integrations/wordpress/actions/update-post.php:91
 #: includes/scripts.php:251 includes/utilities.php:51 includes/utilities.php:88
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:49
 #: integrations/wordpress/actions/update-post.php:72
 msgid "Select a post"
 msgstr ""
@@ -3058,7 +3063,10 @@ msgstr ""
 #: includes/integrations/wordpress/actions/update-post.php:94
 #: includes/integrations/wordpress/actions/update-post.php:97
 #: includes/utilities.php:53 includes/utilities.php:90
-#: includes/utilities.php:457 integrations/wordpress/actions/delete-post.php:37
+#: includes/utilities.php:457
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:52
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:55
+#: integrations/wordpress/actions/delete-post.php:37
 #: integrations/wordpress/actions/update-post.php:75
 #: integrations/wordpress/actions/update-post.php:78
 #: integrations/wordpress/triggers/post-field-updated.php:41
@@ -3312,7 +3320,7 @@ msgid "User <strong>field</strong>"
 msgstr ""
 
 #: includes/integrations/wordpress/filters/user-field.php:35
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:48
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:61
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:39
 #: integrations/wordpress/filters/user-exists.php:35
 #: integrations/wordpress/filters/user-field.php:35
@@ -3320,7 +3328,7 @@ msgid "field"
 msgstr ""
 
 #: includes/integrations/wordpress/filters/user-field.php:38
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:51
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:64
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:42
 #: integrations/automatorwp/triggers/all-posts.php:65
 #: integrations/automatorwp/triggers/all-users.php:65
@@ -3345,7 +3353,7 @@ msgid "Date registered"
 msgstr ""
 
 #: includes/integrations/wordpress/filters/user-field.php:58
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:63
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:78
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:55
 #: integrations/automatorwp/actions/call-function.php:63
 #: integrations/automatorwp/actions/do-action.php:63
@@ -3912,7 +3920,6 @@ msgstr ""
 #: includes/integrations/wordpress/triggers/post-meta-update.php:55
 #: includes/integrations/wordpress/triggers/post-type-meta-update.php:65
 #: includes/integrations/wordpress/triggers/user-meta-update.php:51
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:60
 #: integrations/advanced-custom-fields/includes/triggers/post-field-updated.php:52
 #: integrations/wordpress/triggers/post-meta-update.php:55
 #: integrations/wordpress/triggers/post-type-meta-update.php:65
@@ -5097,36 +5104,36 @@ msgstr ""
 msgid "Update %1$s %2$s with %3$s"
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:97
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:112
 #, php-format
 msgid "Post not found by the ID %1$s."
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:104
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:119
 msgid "Post field updated successfully."
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:184
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:199
 msgid "Information about the post updated."
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:190
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:205
 msgid "The post's ID updated."
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:195
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:210
 msgid "Post Field:"
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:196
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:211
 msgid "The updated field."
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:201
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:216
 msgid "Post Field Value:"
 msgstr ""
 
-#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:202
+#: integrations/advanced-custom-fields/includes/actions/update-post-field.php:217
 msgid "The updated field value."
 msgstr ""
 
@@ -5811,21 +5818,21 @@ msgid "Check this option to hide this activity from the sitewide activity stream
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:26
-#: integrations/buddypress/includes/actions/add-user-group.php:26
+#: integrations/buddypress/includes/actions/add-user-group.php:35
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:26
 msgid "Add user to group"
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:27
-#: integrations/buddypress/includes/actions/add-user-group.php:27
+#: integrations/buddypress/includes/actions/add-user-group.php:36
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:27
 msgid "Add user to <strong>group</strong>"
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:29
 #: integrations/buddyboss/includes/actions/add-user-group.php:31
-#: integrations/buddypress/includes/actions/add-user-group.php:29
-#: integrations/buddypress/includes/actions/add-user-group.php:31
+#: integrations/buddypress/includes/actions/add-user-group.php:38
+#: integrations/buddypress/includes/actions/add-user-group.php:40
 #: integrations/fluentcrm/includes/actions/user-list.php:30
 #: integrations/fluentcrm/includes/actions/user-list.php:32
 #: integrations/learndash/includes/actions/user-group.php:29
@@ -5847,7 +5854,7 @@ msgid "Add user to %1$s"
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:35
-#: integrations/buddypress/includes/actions/add-user-group.php:35
+#: integrations/buddypress/includes/actions/add-user-group.php:44
 #: integrations/learndash/includes/actions/create-group.php:34
 #: integrations/learndash/includes/actions/user-group-leader.php:34
 msgid "group"
@@ -5855,7 +5862,7 @@ msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:36
 #: integrations/buddyboss/includes/triggers/join-group.php:39
-#: integrations/buddypress/includes/actions/add-user-group.php:36
+#: integrations/buddypress/includes/actions/add-user-group.php:45
 #: integrations/buddypress/includes/triggers/join-group.php:39
 #: integrations/learndash/includes/actions/user-group-leader.php:38
 #: integrations/learndash/includes/actions/user-group.php:34
@@ -5866,7 +5873,7 @@ msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:39
 #: integrations/buddyboss/includes/tags.php:111
-#: integrations/buddypress/includes/actions/add-user-group.php:39
+#: integrations/buddypress/includes/actions/add-user-group.php:48
 #: integrations/buddypress/includes/tags.php:111
 #: integrations/learndash/includes/actions/user-group-leader.php:41
 #: integrations/learndash/includes/actions/user-group-leader.php:47
@@ -5876,7 +5883,7 @@ msgid "Group ID"
 msgstr ""
 
 #: integrations/buddyboss/includes/actions/add-user-group.php:42
-#: integrations/buddypress/includes/actions/add-user-group.php:42
+#: integrations/buddypress/includes/actions/add-user-group.php:51
 #: integrations/learndash/includes/actions/user-group-leader.php:43
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:35
 msgid "Select a group"
@@ -6133,6 +6140,14 @@ msgstr ""
 #: integrations/buddypress/includes/triggers/update-profile.php:29
 #, php-format
 msgid "User updates profile information %1$s time(s)"
+msgstr ""
+
+#: integrations/buddypress/includes/actions/add-user-group.php:75
+msgid "Groups component is not active."
+msgstr ""
+
+#: integrations/buddypress/includes/actions/add-user-group.php:89
+msgid "User added to group successfully."
 msgstr ""
 
 #: integrations/caldera-forms/includes/functions.php:25
@@ -7363,7 +7378,7 @@ msgstr ""
 
 #: integrations/learndash/includes/triggers/complete-topic.php:39
 #: integrations/learndash/includes/triggers/view-topic.php:39
-#: integrations/wpforo/includes/functions.php:89
+#: integrations/wpforo/includes/functions.php:96
 #: integrations/wpforo/includes/triggers/create-reply.php:41
 msgid "any topic"
 msgstr ""
