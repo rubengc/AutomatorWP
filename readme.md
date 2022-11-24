@@ -291,6 +291,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.4.8 ###
+
+* **New Features**
+* New tag: {date:FORMAT:VALUE} to place relative dates like {date:d/m/Y:+1 month}
+* New tag: {timestamp:VALUE} to place relative timestamps like {timestamp:+1 month}
+
 ### 2.4.7 ###
 
 * **New Features**

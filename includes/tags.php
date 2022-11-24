@@ -148,10 +148,22 @@ function automatorwp_get_tags() {
         'preview'   => __( 'The current date and time, replace "FORMAT" by the date format. Default format is "Y-m-d H:i:s".', 'automatorwp' ),
     );
 
+    $tags['date']['tags']['date:FORMAT:VALUE'] = array(
+        'label'     => __( 'Relative date and time', 'automatorwp' ),
+        'type'      => 'text',
+        'preview'   => __( 'The relative date and time, replace "FORMAT" by the date format and "VALUE" by the relative date. Default format is "Y-m-d H:i:s" and default value is "now".', 'automatorwp' ),
+    );
+
     $tags['date']['tags']['timestamp'] = array(
         'label'     => __( 'Timestamp', 'automatorwp' ),
         'type'      => 'int',
         'preview'   => __( 'The current timestamp.', 'automatorwp' ),
+    );
+
+    $tags['date']['tags']['timestamp:VALUE'] = array(
+        'label'     => __( 'Relative timestamp', 'automatorwp' ),
+        'type'      => 'int',
+        'preview'   => __( 'The relative timestamp, replace "VALUE" by the relative date. Default value is "now".', 'automatorwp' ),
     );
 
     /**
@@ -874,7 +886,58 @@ function automatorwp_parse_user_meta_tags( $user_id = 0, $content = '' ) {
 }
 
 /**
- * Get the user meta tags replacements
+ * Get the date tag format and value
+ *
+ * @since 2.0.0
+ *
+ * @param string $format The format and value provided in FORMAT:VALUE
+ *
+ * @return array
+ */
+function automatorwp_get_date_tag_format_and_value( $format ) {
+
+    // Default values
+    $args = array(
+        'format' => 'Y-m-d H:i:s',
+        'value' => 'now'
+    );
+
+    // Support for default cases
+    if( $format !== 'FORMAT' &&  $format !== 'FORMAT:VALUE' ) {
+
+        if( strpos( $format, ':' ) === false ) {
+            // FORMAT
+            $args['format'] = $format;
+        } else {
+            // FORMAT:VALUE
+
+            // Split the format by the last ":"
+            $parts = preg_split('~:(?=[^:]*$)~', $format);
+
+            if( strlen( $parts[1] ) >= 3 ) {
+                // Valid FORMAT:VALUE
+                if( $parts[0] !== 'FORMAT' ) {
+                    $args['format'] = $parts[0];
+                }
+
+                if( $parts[1] !== 'VALUE' ) {
+                    $args['value'] = $parts[1];
+                }
+            } else {
+                // Is a FORMAT with ":" inside like H:i:s
+                $args['format'] = $format;
+            }
+        }
+
+
+    }
+
+    return apply_filters( 'automatorwp_get_date_tag_format_and_value', $args, $format );
+
+}
+
+/**
+ * Get the date and timestamp tags replacements
  *
  * @since 2.0.0
  *
@@ -886,13 +949,27 @@ function automatorwp_get_date_tags_replacements( $content = '' ) {
 
     $replacements = array();
 
-    // Look for user meta tags
+    // Look for date tags
     preg_match_all( "/\{date:\s*(.*?)\s*\}/", $content, $matches );
 
     if( is_array( $matches ) && isset( $matches[1] ) ) {
 
         foreach( $matches[1] as $format ) {
-            $replacements['{date:' . $format . '}'] = date( ( $format === 'FORMAT' ? 'Y-m-d H:i:s' : $format ), current_time( 'timestamp' ) );
+
+            $args = automatorwp_get_date_tag_format_and_value( $format );
+
+            $replacements['{date:' . $format . '}'] = date( $args['format'], strtotime( $args['value'], current_time( 'timestamp' ) ) );
+        }
+
+    }
+
+    // Look for timestamp tags
+    preg_match_all( "/\{timestamp:\s*(.*?)\s*\}/", $content, $matches );
+
+    if( is_array( $matches ) && isset( $matches[1] ) ) {
+
+        foreach( $matches[1] as $value ) {
+            $replacements['{timestamp:' . $value . '}'] = strtotime( ( $value === 'VALUE' ? 'now' : $value ), current_time( 'timestamp' ) );
         }
 
     }

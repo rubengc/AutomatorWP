@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-11-23 16:39+0100\n"
+"POT-Creation-Date: 2022-11-24 12:29+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4467,7 +4467,7 @@ msgstr ""
 msgid "Reset password link"
 msgstr ""
 
-#: includes/tags.php:126 includes/tags.php:547
+#: includes/tags.php:126 includes/tags.php:559
 msgid "Click here to reset your password"
 msgstr ""
 
@@ -4488,11 +4488,27 @@ msgid "The current date and time, replace \"FORMAT\" by the date format. Default
 msgstr ""
 
 #: includes/tags.php:152
-msgid "Timestamp"
+msgid "Relative date and time"
 msgstr ""
 
 #: includes/tags.php:154
+msgid "The relative date and time, replace \"FORMAT\" by the date format and \"VALUE\" by the relative date. Default format is \"Y-m-d H:i:s\" and default value is \"now\"."
+msgstr ""
+
+#: includes/tags.php:158
+msgid "Timestamp"
+msgstr ""
+
+#: includes/tags.php:160
 msgid "The current timestamp."
+msgstr ""
+
+#: includes/tags.php:164
+msgid "Relative timestamp"
+msgstr ""
+
+#: includes/tags.php:166
+msgid "The relative timestamp, replace \"VALUE\" by the relative date. Default value is \"now\"."
 msgstr ""
 
 #: includes/triggers.php:54
