@@ -197,7 +197,13 @@ If you’re looking for something endorsed and maintained by the developers who 
 
 ## Included triggers, actions and filters ##
 
-AutomatorWP includes +200 triggers, actions and filters for free, all of them listed [here](https://automatorwp.com/all-triggers-and-actions/).
+AutomatorWP includes +300 triggers, actions and filters for free, all of them listed [here](https://automatorwp.com/all-triggers-and-actions/).
+
+## More plugins from the AutomatorWP team ##
+
+If you like AutomatorWP, you will love [GamiPress](https://wordpress.org/plugins/gamipress/)! The most powerful gamification plugin that lets you award your users with digital rewards (points, achievements, badges, ranks, etc) for interacting with your WordPress website.
+
+[More about GamiPress](https://wordpress.org/plugins/gamipress/)
 
 ## Installation ##
 
@@ -294,8 +300,8 @@ No, We're unable to provide custom development services, as our focus is develop
 ### 2.4.8 ###
 
 * **New Features**
-* New tag: {date:FORMAT:VALUE} to place relative dates like {date:d/m/Y:+1 month}
-* New tag: {timestamp:VALUE} to place relative timestamps like {timestamp:+1 month}
+* New tag: {date:FORMAT:VALUE} to place relative dates like {date:d/m/Y:+1 month}.
+* New tag: {timestamp:VALUE} to place relative timestamps like {timestamp:+1 month}.
 
 ### 2.4.7 ###
 
