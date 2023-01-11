@@ -71,7 +71,7 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
      * @param stdClass  $automation         The action's automation object
      */
     public function execute( $action, $user_id, $action_options, $automation ) {
-
+        
         // Setup user fields
         $url = esc_url( $action_options['url'] );
 
@@ -81,8 +81,10 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
         }
 
         if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+            
             // If doing an ajax or rest request, update an internal option for this user
             update_option( 'automatorwp_redirect_url_' . $user_id, $url, false );
+            
         } else { ?>
             <script type="text/javascript">document.location.href = '<?php echo $url ?>';</script>
         <?php }
@@ -116,7 +118,7 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
      * @since 1.0.0
      */
     public function ajax_check_for_redirect() {
-
+        
         // Security check, forces to die if not security passed
         check_ajax_referer( 'automatorwp', 'nonce' );
 

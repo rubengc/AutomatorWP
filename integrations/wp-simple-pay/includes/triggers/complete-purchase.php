@@ -37,10 +37,13 @@ class AutomatorWP_WP_Simple_Pay_Complete_Purchase extends AutomatorWP_Integratio
             'priority'          => 10,
             'accepted_args'     => 2,
             'options'           => array(
-                'post' => automatorwp_utilities_post_option( array(
-                    'name' => __( 'Payment Form:', 'automatorwp' ),
+                'post' => automatorwp_utilities_ajax_selector_option( array(
+                    'field'             => 'post',
+                    'name'              => __( 'Form:', 'automatorwp' ),
+                    'option_none_value' => 'any',
                     'option_none_label' => __( 'any form', 'automatorwp' ),
-                    'post_type' => 'simple-pay'
+                    'action_cb'         => 'automatorwp_simple_pay_get_forms',
+                    'options_cb'        => 'automatorwp_simple_pay_options_cb_form',
                 ) ),
                 'times' => automatorwp_utilities_times_option(),
             ),
@@ -62,7 +65,7 @@ class AutomatorWP_WP_Simple_Pay_Complete_Purchase extends AutomatorWP_Integratio
      */
     public function listener( $event, $object ) {
 
-        $user = get_user_by_email( $object->customer->email );
+        $user = get_user_by( 'email', $object->customer->email );
 
         // Bail if user can't be found
         if( ! $user ) {

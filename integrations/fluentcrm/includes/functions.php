@@ -53,7 +53,8 @@ function automatorwp_fluentcrm_get_subscriber_user_id( $subscriber ) {
         // Search by email
         $user = get_user_by_email( $subscriber->email );
 
-        $user_id = $user->ID;
+        // To avoid get null value for user_id
+        $user_id = ( ! empty( $user ) ? $user->ID : 0 );
     }
 
     return $user_id;

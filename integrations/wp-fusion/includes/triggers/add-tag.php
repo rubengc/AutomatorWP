@@ -124,7 +124,7 @@ class AutomatorWP_WP_Fusion_Add_Tag extends AutomatorWP_Integration_Trigger {
         }
 
         // Don't deserve if post doesn't match with the trigger option
-        if( $event['tag'] !== $trigger_options['tag'] ) {
+        if( $trigger_options['tag'] !== 'any' && $event['tag'] !== $trigger_options['tag'] ) {
             return false;
         }
 

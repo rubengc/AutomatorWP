@@ -168,6 +168,7 @@ AutomatorWP can also work with external platforms, furthermore WordPress plugins
 
 * [ActiveCampaign](https://automatorwp.com/add-ons/activecampaign/)
 * [Airtable](https://automatorwp.com/add-ons/airtable/)
+* [Facebook](https://automatorwp.com/add-ons/facebook/)
 * [HubSpot](https://automatorwp.com/add-ons/hubspot/)
 * [Google Calendar](https://automatorwp.com/add-ons/google-calendar/)
 * [Google Sheets](https://automatorwp.com/add-ons/google-sheets/)
@@ -297,58 +298,17 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
-### 2.4.8 ###
-
-* **New Features**
-* New tag: {date:FORMAT:VALUE} to place relative dates like {date:d/m/Y:+1 month}.
-* New tag: {timestamp:VALUE} to place relative timestamps like {timestamp:+1 month}.
-
-### 2.4.7 ###
-
-* **New Features**
-* New integration: Meta Box.
-* Meta Box: New trigger: User updates post field with a value.
-* Meta Box: New action: Update post field with a value.
-
-### 2.4.6 ###
+### 2.5.1 ###
 
 * **Improvements**
-* Advanced Custom Fields (ACF): Custom option on post selection for "Update post field with a value" action.
-* wpDiscuz: Improved checking to detect if it is configured the option "Use guest email to detect registered account".
-* wpForo: Updated forums and topic selections to adapt triggers to version 2.0.0.
+* Added more nonce checks to prevent CSRF attacks.
+
+### 2.5.0 ###
+
+* **Improvements**
+* Meta Box: Added support for custom types.
 * **Bug Fixes**
-* BuddyPress: Fixed group ID type in action "Add user to group".
-
-### 2.4.5 ###
-
-* **Improvements**
-* Updated add-ons API.
-
-### 2.4.4 ###
-
-* **Bug fixes**
-* Presto Player: Fixed tags to get data from logged automations.
-
-### 2.4.3 ###
-
-* **Improvements**
-* Skip some checks for automations with 1 trigger to allow run the automation even if there are invalid logs from previous tests.
-* **Bug Fixes**
-* Fixed date calculation for recurring automations.
-
-### 2.4.2 ###
-
-* **Improvements**
-* Prevent to check for redirects if user is not logged in.
-
-### 2.4.1 ###
-
-* **Bug Fixes**
-* Adding property checks to response object to prevent TypeError warnings in redirect Javascript.
-
-### 2.4.0 ###
-
-* **Improvements**
-* Tested with WordPress 6.1.
+* FluentCRM: Fixed function to get the WordPress user ID.
+* WP Fusion: Fixed triggers to handle "Any" tag.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.

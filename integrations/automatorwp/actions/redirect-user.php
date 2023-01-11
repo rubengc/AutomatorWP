@@ -98,9 +98,9 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
         // Override others wp_redirect() calls
         add_filter( 'wp_redirect', array( $this, 'wp_redirect' ), 10, 2 );
 
-        if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+        if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {           
             // If doing an ajax, cron or rest request, update an internal option for this user
-            update_option( 'automatorwp_redirect_url_' . $user_id, $this->url, false );
+            update_option( 'automatorwp_redirect_url_' . $user_id, $this->url, false );       
         } else { ?>
             <script type="text/javascript">
                 setTimeout( function () {
@@ -158,15 +158,15 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
      * @since 1.0.0
      */
     public function ajax_check_for_redirect() {
-
+        
         // Security check, forces to die if not security passed
         check_ajax_referer( 'automatorwp', 'nonce' );
 
         $user_id = absint( $_REQUEST['user_id'] );
-
+        
         // Get the redirect URL for this user
         $url = get_option( 'automatorwp_redirect_url_' . $user_id, '' );
-
+        
         $url = esc_url( $url );
 
         if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {

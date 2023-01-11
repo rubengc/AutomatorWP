@@ -1659,6 +1659,7 @@ function ct_get_delete_link( $name, $object_id = 0 ) {
     $url = $ct_registered_tables[$name]->views->list->get_link();
     $url = add_query_arg( array( $primary_key => $object_id ), $url );
     $url = add_query_arg( array( 'ct-action' => 'delete' ), $url );
+    $url = add_query_arg( '_wpnonce', wp_create_nonce( 'ct_delete_' . $object_id ), $url );
 
     return $url;
 }

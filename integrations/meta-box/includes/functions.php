@@ -51,13 +51,10 @@ function automatorwp_meta_box_options_cb_post_fields( $field ) {
  * @return array
  */
 function automatorwp_meta_box_get_post_fields( ) {
-    
-    if ( ! function_exists( 'rwmb_get_object_fields' ) ) {
-        return array();
-    }
 
     $options = array();
-    $post_fields = rwmb_get_object_fields( 'post' );
+    
+    $post_fields = automatorwp_meta_box_get_all_post_fields();
 
     foreach ( $post_fields as $post_field ) {
 
@@ -84,7 +81,7 @@ function automatorwp_meta_box_get_post_fields( ) {
  */
 function automatorwp_meta_box_get_field_name( $field_id ) {
 
-    $post_fields = rwmb_get_object_fields( 'post' );
+    $post_fields = automatorwp_meta_box_get_all_post_fields();
 
     foreach ( $post_fields as $post_field ) {
 
@@ -98,4 +95,37 @@ function automatorwp_meta_box_get_field_name( $field_id ) {
     }
 
     return $field_name;
+}
+
+/**
+ * Get meta box fields objects related to posts and custom types
+ *
+ * @since 1.0.0
+ *
+ * @return array
+ */
+function automatorwp_meta_box_get_all_post_fields() {
+
+    if ( ! function_exists( 'rwmb_get_object_fields' ) ) {
+        return array();
+    }
+
+    $post_fields = rwmb_get_object_fields( 'post' );
+
+    // Get custom types created on Meta Box
+    $custom_post_types = get_posts( [
+        'post_type' => 'mb-post-type',
+        'post_status' => 'publish',
+        'numberposts' => -1
+    ] );
+
+    if ( !empty ( $custom_post_types ) ) {
+        foreach ( $custom_post_types as $custom_type ) {
+            $custom_fields = rwmb_get_object_fields( $custom_type->post_name );
+            $post_fields = array_merge($post_fields, $custom_fields);
+        }
+    }
+
+    return $post_fields;
+
 }
