@@ -56,6 +56,19 @@ class AutomatorWP_BuddyBoss_Publish_Activity extends AutomatorWP_Integration_Tri
 
         $activity = new BP_Activity_Activity( $activity_id );
 
+        $media_types = array( 'document', 'video', 'media' );
+        
+        if ( in_array( $activity->privacy, $media_types )) {
+            return;
+        }
+
+        $activity_edited = bp_activity_get_meta( $activity_id, '_is_edited', true );
+
+        // Bail is a edited activity
+        if ( !empty ( $activity_edited ) ) {
+            return;
+        }
+
         // Trigger the publish an activity
         automatorwp_trigger_event( array(
             'trigger'           => $this->trigger,

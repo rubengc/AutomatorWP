@@ -66,9 +66,30 @@ function automatorwp_auto_logs_cleanup() {
     $logs = AutomatorWP()->db->logs;
     $logs_ids = array();
     $automations = array();
+    $triggers_per_loop = apply_filters( 'automatorwp_auto_logs_cleanup_triggers_per_loop', 200 );
 
     // Triggers logs
-    $results = $wpdb->get_results( "SELECT l.id, l.object_id, l.user_id, l.date FROM {$logs} AS l WHERE l.type = 'trigger' AND l.date < '{$date}'" );
+    $triggers_sql = "FROM {$logs} AS l WHERE l.type = 'trigger' AND l.date < '{$date}'";
+    $triggers_count = absint( $wpdb->get_var( "SELECT COUNT(*) {$triggers_sql}" ) );
+
+    // Prevent to query all trigger logs if there is a great number of them
+    if( $triggers_count > $triggers_per_loop ) {
+        // Get only a limited amount of triggers
+        $results = $wpdb->get_results( "SELECT l.id, l.object_id, l.user_id, l.date {$triggers_sql} LIMIT 0, {$triggers_per_loop}" );
+
+        // Schedule this function to run 5 minutes later again
+        $datetime_utc = strtotime( "+5 minutes", current_time( 'timestamp', true ) );
+
+        // Check if Action Scheduler is installed, if not then use WordPress functions
+        if( function_exists( 'as_schedule_single_action' ) && apply_filters( 'automatorwp_schedule_actions_force_wp_cron', false ) ) {
+            as_schedule_single_action( $datetime_utc, 'automatorwp_auto_logs_cleanup' );
+        } else {
+            wp_schedule_single_event( $datetime_utc, 'automatorwp_auto_logs_cleanup' );
+        }
+    } else {
+        // Get all triggers
+        $results = $wpdb->get_results( "SELECT l.id, l.object_id, l.user_id, l.date {$triggers_sql}" );
+    }
 
     foreach( $results as $log ) {
 

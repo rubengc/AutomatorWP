@@ -298,6 +298,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.5.3 ###
+
+* **Improvements**
+* Improved the auto logs cleanup to work even with large amounts of logs entries.
+
+### 2.5.2 ###
+
+* **Improvements**
+* BuddyBoss: Added check for updated activities to avoid send notifications.
+
 ### 2.5.1 ###
 
 * **Improvements**

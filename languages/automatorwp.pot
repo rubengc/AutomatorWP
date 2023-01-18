@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2022-11-24 12:29+0100\n"
+"POT-Creation-Date: 2023-01-18 22:01+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: classes/integration-filter.php:336
 #: includes/integrations/automatorwp/actions/anonymous-user.php:870
 #: includes/integrations/automatorwp/actions/anonymous-user.php:896
-#: includes/integrations/automatorwp/actions/redirect-user.php:200
+#: includes/integrations/automatorwp/actions/redirect-user.php:202
 #: includes/integrations/wordpress/actions/create-post.php:457
 #: includes/integrations/wordpress/actions/create-user.php:385
 #: includes/integrations/wordpress/actions/update-post.php:472
@@ -2025,7 +2025,7 @@ msgid "url"
 msgstr ""
 
 #: includes/integrations/automatorwp/actions/redirect-user.php:47
-#: includes/integrations/automatorwp/actions/redirect-user.php:194
+#: includes/integrations/automatorwp/actions/redirect-user.php:196
 #: integrations/activecampaign/includes/functions.php:128
 #: integrations/automatorwp/actions/redirect-user.php:56
 #: integrations/automatorwp/actions/redirect-user.php:236
@@ -2043,12 +2043,12 @@ msgstr ""
 msgid "%s is not a valid URL."
 msgstr ""
 
-#: includes/integrations/automatorwp/actions/redirect-user.php:90
+#: includes/integrations/automatorwp/actions/redirect-user.php:92
 #: integrations/automatorwp/actions/redirect-user.php:112
 msgid "User redirected successfully."
 msgstr ""
 
-#: includes/integrations/automatorwp/actions/redirect-user.php:195
+#: includes/integrations/automatorwp/actions/redirect-user.php:197
 #: integrations/automatorwp/actions/redirect-user.php:237
 msgid "The url where user has been redirected."
 msgstr ""
@@ -3821,7 +3821,7 @@ msgstr ""
 #: integrations/autonami/includes/functions.php:49
 #: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:42
 #: integrations/autonami/includes/triggers/user-tag-added.php:41
-#: integrations/fluentcrm/includes/functions.php:77
+#: integrations/fluentcrm/includes/functions.php:78
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:42
 #: integrations/fluentcrm/includes/triggers/tag-added.php:41
 #: integrations/groundhogg/includes/functions.php:25
@@ -5611,7 +5611,7 @@ msgstr ""
 #: integrations/autonami/includes/functions.php:140
 #: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:42
 #: integrations/autonami/includes/triggers/user-added-list.php:41
-#: integrations/fluentcrm/includes/functions.php:139
+#: integrations/fluentcrm/includes/functions.php:140
 #: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:42
 #: integrations/fluentcrm/includes/triggers/list-added.php:41
 #: integrations/mailchimp/includes/functions.php:56
@@ -6104,12 +6104,12 @@ msgstr ""
 msgid "User writes an activity stream message %1$s time(s)"
 msgstr ""
 
-#: integrations/buddyboss/includes/triggers/publish-activity.php:139
+#: integrations/buddyboss/includes/triggers/publish-activity.php:152
 #: integrations/buddypress/includes/triggers/publish-activity.php:136
 msgid "Activity Content"
 msgstr ""
 
-#: integrations/buddyboss/includes/triggers/publish-activity.php:140
+#: integrations/buddyboss/includes/triggers/publish-activity.php:153
 #: integrations/buddypress/includes/triggers/publish-activity.php:137
 msgid "The activity content."
 msgstr ""
@@ -6231,8 +6231,9 @@ msgstr ""
 #: integrations/ninja-forms/includes/functions.php:25
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:42
 #: integrations/ninja-forms/includes/triggers/submit-form.php:41
-#: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:39
-#: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:42
+#: integrations/wp-simple-pay/includes/functions.php:25
+#: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:41
+#: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:44
 #: integrations/wp-user-manager/includes/functions.php:25
 #: integrations/wp-user-manager/includes/triggers/user-register.php:40
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:40
@@ -6323,6 +6324,8 @@ msgstr ""
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:38
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/ninja-forms/includes/triggers/submit-form.php:39
+#: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:39
+#: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:42
 #: integrations/wp-user-manager/includes/triggers/user-register.php:38
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:39
 #: integrations/wpforms/includes/triggers/submit-form.php:38
@@ -9119,13 +9122,8 @@ msgstr ""
 msgid "User completes a purchase through %1$s"
 msgstr ""
 
-#: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:38
-#: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:41
-msgid "Payment Form:"
-msgstr ""
-
-#: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:45
-#: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:48
+#: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:48
+#: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:51
 msgid "Payment Form"
 msgstr ""
 
