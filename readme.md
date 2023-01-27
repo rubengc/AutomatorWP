@@ -298,6 +298,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.5.4 ###
+
+* **Developer Notes**
+* Added new hooks to extend the automation clone functionality.
+* **Bug Fixes**
+* ActiveCampaign: Fixed a PHP warning related to webhooks.
+
 ### 2.5.3 ###
 
 * **Improvements**

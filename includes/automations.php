@@ -1018,10 +1018,27 @@ function automatorwp_clone_automation_items( $automation_id, $new_automation_id 
                 $metas[] = $wpdb->prepare( '%d, %s, %s', array( $ids[$item->id], $meta_key, $meta_value ) );
             }
 
+            $item_title = str_replace( $tags, $replacements, $item->title );
+
+            /**
+             * Filter to parse the item title
+             * $item_type: trigger | action
+             * $item->type: The trigger or action type
+             *
+             * @since  1.0.0
+             *
+             * @param string    $item_title     The item title
+             * @param int       $old_item_id    The old item ID
+             * @param int       $new_item_id    The new item ID
+             *
+             * @return string
+             */
+            $item_title = apply_filters( "automatorwp_clone_{$item_type}_{$item->type}_title", $item_title, $item->id, $ids[$item->id] );
+
             // Update the new item title
             ct_update_object( array(
                 'id' => $ids[$item->id],
-                'title' => str_replace( $tags, $replacements, $item->title ),
+                'title' => $item_title,
             ) );
 
         }

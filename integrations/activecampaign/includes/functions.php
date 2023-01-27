@@ -43,10 +43,10 @@ function automatorwp_activecampaign_get_webhook_url() {
     $prefix = 'automatorwp_activecampaign_';
     $settings = get_option( 'automatorwp_settings' );
 
-    $webhook_url = $settings[$prefix . 'webhook'];
+    $webhook_url = ( isset( $settings[$prefix . 'webhook'] ) ) ? $settings[$prefix . 'webhook'] : '';
 
     // Check if webhook URL exists
-    if ( ! $webhook_url ){
+    if ( empty( $webhook_url ) ){
 
         $slug = strtolower( wp_generate_password( 8, false ) );
         $webhook_url = get_rest_url() . 'activecampaign/webhooks/' . $slug;
