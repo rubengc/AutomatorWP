@@ -3,7 +3,7 @@
  * Plugin Name:     	AutomatorWP
  * Plugin URI:      	https://automatorwp.com
  * Description:     	Connect your WordPress plugins together and create automated workflows with no code!
- * Version:         	2.5.4
+ * Version:         	2.5.5
  * Author:          	AutomatorWP
  * Author URI:      	https://automatorwp.com/
  * Text Domain:     	automatorwp
@@ -119,7 +119,7 @@ final class AutomatorWP {
     private function constants() {
 
         // Plugin version
-        define( 'AUTOMATORWP_VER', '2.5.4' );
+        define( 'AUTOMATORWP_VER', '2.5.5' );
 
         // Plugin file
         define( 'AUTOMATORWP_FILE', __FILE__ );
@@ -220,8 +220,26 @@ final class AutomatorWP {
         require_once AUTOMATORWP_DIR . 'integrations/automatorwp/automatorwp.php';
         require_once AUTOMATORWP_DIR . 'integrations/wordpress/wordpress.php';
 
+        // Setup active plugins
+        $active_plugins = array();
+
+        if( function_exists( 'get_option' ) ) {
+            $active_plugins = (array) get_option( 'active_plugins', array() );
+        }
+
+        // Setup active sitewide plugins
+        $active_sitewide_plugins = array();
+
+        if ( is_multisite() && function_exists( 'get_site_option' ) ) {
+            $active_sitewide_plugins = get_site_option( 'active_sitewide_plugins' );
+
+            if( ! is_array( $active_sitewide_plugins ) ) {
+                $active_sitewide_plugins = array();
+            }
+        }
+
         // Skip if integration is already active
-        if( $this->is_integration_active( 'pro' ) ) {
+        if( $this->is_integration_active( 'pro', $active_plugins, $active_sitewide_plugins ) ) {
             return;
         }
 
@@ -242,17 +260,19 @@ final class AutomatorWP {
              *
              * @since 1.0.0
              *
-             * @param bool $skip
-             * @param string integration The integration slug as named in automatorwp/includes/integrations
+             * @param bool      $skip
+             * @param string    $integration The integration slug as named in automatorwp/includes/integrations
+             * @param array     $active_plugins
+             * @param array     $active_sitewide_plugins
              *
              * @return bool
              */
-            if( apply_filters( 'automatorwp_skip_integration', false, $integration ) ) {
+            if( apply_filters( 'automatorwp_skip_integration', false, $integration, $active_plugins, $active_sitewide_plugins ) ) {
                 continue;
             }
 
             // Skip if integration is already active
-            if( $this->is_integration_active( $integration ) ) {
+            if( $this->is_integration_active( $integration, $active_plugins, $active_sitewide_plugins ) ) {
                 continue;
             }
 
@@ -276,57 +296,48 @@ final class AutomatorWP {
      *
      * @access      private
      * @since       1.0.0
-     * @param       string $integration
+     * @param       string  $integration
+     * @param       array   $active_plugins
+     * @param       array   $active_sitewide_plugins
      * @return      bool
      */
-    private function is_integration_active( $integration ) {
+    private function is_integration_active( $integration, $active_plugins, $active_sitewide_plugins ) {
 
         $plugins = array(
             "automatorwp-{$integration}/automatorwp-{$integration}.php",
-            "automatorwp-{$integration}-integration/automatorwp-{$integration}.php",
         );
+
+        if( $integration === 'elementor' ) {
+            $plugins = array(
+                "automatorwp-{$integration}-forms/automatorwp-{$integration}-forms.php",
+            );
+        }
 
         foreach( $plugins as $plugin ) {
 
-            // Check if is_plugin_active  exists
-            if( function_exists( 'is_plugin_active' ) ) {
-
-                // Bail if plugin is active
-                if( is_plugin_active( $plugin ) ) {
-                    return true;
-                }
-
-            } else if( function_exists( 'get_option' ) ) {
-                // Fallback to get_option
-
-                $active_plugins = (array) get_option( 'active_plugins', array() );
-
-                // Bail if plugin is active
-                if( in_array( $plugin, $active_plugins, true ) ) {
-                    return true;
-                }
-
-                // Check for multi sites
-                if( function_exists( 'is_plugin_active_for_network' ) ) {
-
-                    // Bail if plugin is network wide active
-                    if( is_plugin_active_for_network( $plugin ) ) {
-                        return true;
-                    }
-
-                } else if( function_exists( 'get_site_option' ) ) {
-
-                    $network_plugins = get_site_option( 'active_sitewide_plugins' );
-
-                    // Bail if plugin is network wide active
-                    if ( isset( $network_plugins[$plugin] ) ) {
-                        return true;
-                    }
-
-                }
-
-
+            // Bail if plugin is active
+            if( in_array( $plugin, $active_plugins, true ) ) {
+                return true;
             }
+
+            // Bail if plugin is network wide active
+            if ( isset( $active_sitewide_plugins[$plugin] ) ) {
+                return true;
+            }
+
+            // Consider integration active during it's activation
+            if( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'activate'
+                && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] === $plugin ) {
+                return true;
+            }
+
+            // Support for bulk activate
+            if( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'activate-selected'
+                && isset( $_REQUEST['checked'] ) && is_array( $_REQUEST['checked'] )
+                && in_array( $plugin, $_REQUEST['checked'] ) ) {
+                return true;
+            }
+
         }
 
         return false;

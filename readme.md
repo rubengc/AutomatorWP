@@ -298,6 +298,13 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.5.5 ###
+
+* **Improvements**
+* Performance improvements while loading integrations.
+* Added an extra check to prevent issues if an old integration is active.
+* Removed backward compatibility for free integrations since they have been removed 1 year ago.
+
 ### 2.5.4 ###
 
 * **Developer Notes**
