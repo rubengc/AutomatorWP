@@ -298,6 +298,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.5.6 ###
+
+* **Bug Fixes**
+* Fixed logs clean up recurring schedule when Action Scheduler is active.
+
 ### 2.5.5 ###
 
 * **Improvements**

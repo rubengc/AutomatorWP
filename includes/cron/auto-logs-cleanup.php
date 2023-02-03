@@ -81,7 +81,7 @@ function automatorwp_auto_logs_cleanup() {
         $datetime_utc = strtotime( "+5 minutes", current_time( 'timestamp', true ) );
 
         // Check if Action Scheduler is installed, if not then use WordPress functions
-        if( function_exists( 'as_schedule_single_action' ) && apply_filters( 'automatorwp_schedule_actions_force_wp_cron', false ) ) {
+        if( function_exists( 'as_schedule_single_action' ) && ! apply_filters( 'automatorwp_force_wp_cron', false ) ) {
             as_schedule_single_action( $datetime_utc, 'automatorwp_auto_logs_cleanup' );
         } else {
             wp_schedule_single_event( $datetime_utc, 'automatorwp_auto_logs_cleanup' );
