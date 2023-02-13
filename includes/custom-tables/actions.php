@@ -33,10 +33,10 @@ function automatorwp_actions_query_where( $where, $ct_query ) {
     $qv = $ct_query->query_vars;
 
     // Type
-    $where .= automatorwp_custom_table_where( $qv, 'type', 'string' );
+    $where .= automatorwp_custom_table_where( $qv, 'type', 'type', 'string' );
 
     // Automation ID
-    $where .= automatorwp_custom_table_where( $qv, 'automation_id', 'integer' );
+    $where .= automatorwp_custom_table_where( $qv, 'automation_id', 'automation_id', 'integer' );
 
     return $where;
 }

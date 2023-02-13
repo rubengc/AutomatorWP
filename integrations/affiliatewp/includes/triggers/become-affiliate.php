@@ -27,7 +27,7 @@ class AutomatorWP_AffiliateWP_Become_Affiliate extends AutomatorWP_Integration_T
             'select_option'     => __( 'User <strong>becomes</strong> an affiliate', 'automatorwp' ),
             'edit_label'        => __( 'User becomes an affiliate', 'automatorwp' ),
             'log_label'         => __( 'User becomes an affiliate', 'automatorwp' ),
-            'action'            => 'affwp_register_user',
+            'action'            => 'affwp_set_affiliate_status',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 3,
@@ -42,19 +42,19 @@ class AutomatorWP_AffiliateWP_Become_Affiliate extends AutomatorWP_Integration_T
      *
      * @since 1.0.0
      *
-     * @param int       $affiliate_id
-     * @param string    $status
-     * @param array     $args
+     * @param integer $affiliate  Affiliate ID
+     * @param  string $status     The new affiliate status. Optional.
+     * @param  string $old_status The old affiliate status.
      */
-    public function listener( $affiliate_id, $status, $args ) {
+    public function listener( $affiliate, $status, $old_status ) {
 
-        // Bail if status is pending
-        if ( $status == 'pending' ) {
+        // Bail if status is not active
+        if ( $status !== 'active' ) {
             return;
         }
 
         // Get user id from affiliate id
-        $user_id = affwp_get_affiliate_user_id( $affiliate_id );
+        $user_id = affwp_get_affiliate_user_id( $affiliate );
 
         // Trigger the become an affiliate
         automatorwp_trigger_event( array(

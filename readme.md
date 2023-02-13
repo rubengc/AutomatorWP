@@ -298,6 +298,22 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.5.9 ###
+
+* **Improvements**
+* Added more nonce checks to prevent CSRF attacks.
+* Added more sanitization checks to database queries.
+
+### 2.5.8 ###
+
+* **Improvements**
+* AffiliateWP: Updated "User becomes an affiliate" trigger to adapt to AffiliateWP new version.
+
+### 2.5.7 ###
+
+* **Improvements**
+* WordPress: New field to update Display Name on action "Update User".
+
 ### 2.5.6 ###
 
 * **Bug Fixes**

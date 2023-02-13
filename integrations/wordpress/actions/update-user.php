@@ -103,6 +103,13 @@ class AutomatorWP_WordPress_Update_User extends AutomatorWP_Integration_Action {
                             'type' => 'text',
                             'default' => ''
                         ),
+                        'display_name' => array(
+                            'name' => __( 'Display Name:', 'automatorwp' ),
+                            'desc' => __( 'The user\'s display name.', 'automatorwp' )
+                                . ' ' . __( 'Leave empty to no update this field.', 'automatorwp' ),
+                            'type' => 'text',
+                            'default' => ''
+                        ),
                         'user_url' => array(
                             'name' => __( 'Website:', 'automatorwp' ),
                             'desc' => __( 'The user\'s website URL.', 'automatorwp' )
@@ -230,6 +237,7 @@ class AutomatorWP_WordPress_Update_User extends AutomatorWP_Integration_Action {
             'last_name',
             'user_url',
             'user_pass',
+            'display_name',
         );
 
         foreach( $user_fields as $user_field ) {

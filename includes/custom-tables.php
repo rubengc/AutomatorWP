@@ -232,13 +232,16 @@ add_action( 'ct_init', 'automatorwp_register_custom_tables' );
  *
  * @since 1.0.0
  *
- * @param array     $query_vars The query vars
- * @param string    $field_id   The field id
- * @param string    $field_type The field type (string|integer)
+ * @param array     $query_vars         The query vars
+ * @param string    $field_id           The field id
+ * @param string    $table_field        The table field key
+ * @param string    $field_type         The field type (string|integer)
+ * @param string    $single_operator    The single operator (=|!=)
+ * @param string    $array_operator     The array operator (IN|NOT IN)
  *
  * @return string
  */
-function automatorwp_custom_table_where( $query_vars, $field_id, $field_type ) {
+function automatorwp_custom_table_where( $query_vars, $field_id, $table_field = '', $field_type = 'string', $single_operator = '=', $array_operator = 'IN' ) {
 
     global $ct_table;
 
@@ -246,44 +249,55 @@ function automatorwp_custom_table_where( $query_vars, $field_id, $field_type ) {
 
     $where = '';
 
+    // Backward compatibility for automatorwp_custom_table_where( $query_vars, $field_id, $field_type )
+    if( in_array( $table_field, array( 'string', 'integer', 'text', 'int' ) ) ) {
+        $table_field = $field_id;
+    }
+
     // Shorthand
     $qv = $query_vars;
 
     // Type
     if( isset( $qv[$field_id] ) && ! empty( $qv[$field_id] ) ) {
 
-        $value = $qv[$field_id];
-
-        if( is_array( $value ) ) {
+        if( is_array( $qv[$field_id] ) ) {
             // Multiples values
 
-            if( $field_type === 'string' ) {
+            if( $field_type === 'string' || $field_type === 'text' ) {
+
+                // Sanitize
+                $value = array_map( 'sanitize_text_field', $qv[$field_id] );
 
                 // Join values by a comma-separated list of strings
                 $value = "'" . implode( "', '", $value ) . "'";
 
-                $where .= " AND {$table_name}.{$field_id} IN ( {$value} )";
+                $where .= " AND {$table_name}.{$table_field} {$array_operator} ( {$value} )";
 
-            } else if( $field_type === 'integer' ) {
+            } else if( $field_type === 'integer' || $field_type === 'int' ) {
+
+                // Sanitize
+                $value = array_map( 'absint', $qv[$field_id] );
 
                 // Join values by a comma-separated list of integers
                 $value = "'" . implode( ", ", $value ) . "'";
 
-                $where .= " AND {$table_name}.{$field_id} IN ( {$value} )";
+                $where .= " AND {$table_name}.{$table_field} {$array_operator} ( {$value} )";
 
             }
         } else {
             // Single value
 
-            if( $field_type === 'string' ) {
+            if( $field_type === 'string' || $field_type === 'text' ) {
 
-                $where .= " AND {$table_name}.{$field_id} = '{$value}'";
+                $value = sanitize_text_field( $qv[$field_id] );
 
-            } else if( $field_type === 'integer' ) {
+                $where .= " AND {$table_name}.{$table_field} {$single_operator} '{$value}'";
 
-                $value = (int) $value;
+            } else if( $field_type === 'integer' || $field_type === 'int' ) {
 
-                $where .= " AND {$table_name}.{$field_id} = {$value}";
+                $value = absint( $qv[$field_id] );
+
+                $where .= " AND {$table_name}.{$table_field} {$single_operator} {$value}";
 
             }
         }

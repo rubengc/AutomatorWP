@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.1
-Stable tag: 2.5.6
+Stable tag: 2.5.9
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -289,6 +289,22 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.5.9 =
+
+* **Improvements**
+* Added more nonce checks to prevent CSRF attacks.
+* Added more sanitization checks to database queries.
+
+= 2.5.8 =
+
+* **Improvements**
+* AffiliateWP: Updated "User becomes an affiliate" trigger to adapt to AffiliateWP new version.
+
+= 2.5.7 =
+
+* **Improvements**
+* WordPress: New field to update Display Name on action "Update User".
 
 = 2.5.6 =
 

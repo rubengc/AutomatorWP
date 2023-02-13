@@ -33,16 +33,16 @@ function automatorwp_logs_query_where( $where, $ct_query ) {
     $qv = $ct_query->query_vars;
 
     // Type
-    $where .= automatorwp_custom_table_where( $qv, 'type', 'string' );
+    $where .= automatorwp_custom_table_where( $qv, 'type', 'type', 'string' );
 
     // Object ID
-    $where .= automatorwp_custom_table_where( $qv, 'object_id', 'integer' );
+    $where .= automatorwp_custom_table_where( $qv, 'object_id', 'object_id', 'integer' );
 
     // User ID
-    $where .= automatorwp_custom_table_where( $qv, 'user_id', 'integer' );
+    $where .= automatorwp_custom_table_where( $qv, 'user_id', 'user_id', 'integer' );
 
     // Post ID
-    $where .= automatorwp_custom_table_where( $qv, 'post_id', 'integer' );
+    $where .= automatorwp_custom_table_where( $qv, 'post_id', 'post_id', 'integer' );
 
     return $where;
 }
