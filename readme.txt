@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.1
-Stable tag: 2.5.9
+Stable tag: 2.5.9.1
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -289,6 +289,11 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.5.9.1 =
+
+* **Improvements**
+* Improved escaping of SQL queries.
 
 = 2.5.9 =
 

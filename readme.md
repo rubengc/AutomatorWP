@@ -298,6 +298,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.5.9.1 ###
+
+* **Improvements**
+* Improved escaping of SQL queries.
+
 ### 2.5.9 ###
 
 * **Improvements**
