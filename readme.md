@@ -140,6 +140,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [Sensei LMS](https://automatorwp.com/add-ons/sensei-lms/)
 * [SliceWP](https://automatorwp.com/add-ons/slicewp/)
 * [Studiocart](https://automatorwp.com/add-ons/studiocart/)
+* [SureCart](https://automatorwp.com/add-ons/surecart/)
 * [The Events Calendar](https://automatorwp.com/add-ons/the-events-calendar/)
 * [Thrive Apprentice](https://automatorwp.com/add-ons/thrive-apprentice/)
 * [Thrive Quiz Builder](https://automatorwp.com/add-ons/thrive-quiz-builder/)
@@ -298,67 +299,10 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
-### 2.5.9.1 ###
+### 2.6.0 ###
 
-* **Improvements**
-* Improved escaping of SQL queries.
-
-### 2.5.9 ###
-
-* **Improvements**
-* Added more nonce checks to prevent CSRF attacks.
-* Added more sanitization checks to database queries.
-
-### 2.5.8 ###
-
-* **Improvements**
-* AffiliateWP: Updated "User becomes an affiliate" trigger to adapt to AffiliateWP new version.
-
-### 2.5.7 ###
-
-* **Improvements**
-* WordPress: New field to update Display Name on action "Update User".
-
-### 2.5.6 ###
-
-* **Bug Fixes**
-* Fixed logs clean up recurring schedule when Action Scheduler is active.
-
-### 2.5.5 ###
-
-* **Improvements**
-* Performance improvements while loading integrations.
-* Added an extra check to prevent issues if an old integration is active.
-* Removed backward compatibility for free integrations since they have been removed 1 year ago.
-
-### 2.5.4 ###
-
-* **Developer Notes**
-* Added new hooks to extend the automation clone functionality.
-* **Bug Fixes**
-* ActiveCampaign: Fixed a PHP warning related to webhooks.
-
-### 2.5.3 ###
-
-* **Improvements**
-* Improved the auto logs cleanup to work even with large amounts of logs entries.
-
-### 2.5.2 ###
-
-* **Improvements**
-* BuddyBoss: Added check for updated activities to avoid send notifications.
-
-### 2.5.1 ###
-
-* **Improvements**
-* Added more nonce checks to prevent CSRF attacks.
-
-### 2.5.0 ###
-
-* **Improvements**
-* Meta Box: Added support for custom types.
-* **Bug Fixes**
-* FluentCRM: Fixed function to get the WordPress user ID.
-* WP Fusion: Fixed triggers to handle "Any" tag.
+* **New Features**
+* New integration: SureCart.
+* SureCart: New trigger: User makes a purchase.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.
