@@ -106,6 +106,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [DigiMember](https://automatorwp.com/add-ons/digimember/)
 * [Divi](https://automatorwp.com/add-ons/divi/)
 * [Download Manager](https://automatorwp.com/add-ons/download-manager/)
+* [Easy Affiliate](https://automatorwp.com/add-ons/easy-affiliate/)
 * [Easy Digital Downloads](https://automatorwp.com/add-ons/easy-digital-downloads/)
 * [Elementor](https://automatorwp.com/add-ons/elementor-forms/)
 * [Favorites](https://automatorwp.com/add-ons/favorites/)
@@ -298,6 +299,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 ## Changelog ##
+
+### 2.6.1 ###
+
+* **New Features**
+* New integration: Easy Affiliate.
+* Easy Affiliate: New trigger: User becomes an affiliate.
+* Easy Affiliate: New trigger: User earns a referral.
 
 ### 2.6.0 ###
 
