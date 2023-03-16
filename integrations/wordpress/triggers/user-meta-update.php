@@ -29,7 +29,10 @@ class AutomatorWP_WordPress_User_Meta_Update extends AutomatorWP_Integration_Tri
             'edit_label'        => sprintf( __( 'User meta %1$s gets updated with %2$s %3$s time(s)', 'automatorwp' ), '{meta_key}', '{meta_value}', '{times}' ),
             /* translators: %1$s: Key. %2$s: Value. */
             'log_label'         => sprintf( __( 'User meta %1$s gets updated with %2$s', 'automatorwp' ), '{meta_key}', '{meta_value}' ),
-            'action'            => 'updated_user_meta',
+            'action'            => array(
+                'added_user_meta',
+                'updated_user_meta'
+            ),
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 4,

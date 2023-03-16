@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.1
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -129,6 +129,7 @@ AutomatorWP works with different WordPress plugins, including:
 * [iMember360](https://automatorwp.com/add-ons/imember360/)
 * [Invite Anyone](https://automatorwp.com/add-ons/invite-anyone/)
 * [Jetpack CRM](https://automatorwp.com/add-ons/jetpack-crm/)
+* [JetEngine](https://automatorwp.com/add-ons/jetengine/)
 * [JetFormBuilder](https://automatorwp.com/add-ons/jetformbuilder/)
 * [LearnDash](https://automatorwp.com/add-ons/learndash/)
 * [LearnPress](https://automatorwp.com/add-ons/learnpress/)
@@ -291,6 +292,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.6.2 =
+
+* **New Features**
+* New integration: JetEngine.
+* JetEngine: New trigger: User publishes a post of a type.
+* **Improvements**
+* WordPress: Improved trigger "User meta gets updated with a value" to work when a value is added.
 
 = 2.6.1 =
 
