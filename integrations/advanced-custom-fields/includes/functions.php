@@ -18,24 +18,31 @@ if( !defined( 'ABSPATH' ) ) exit;
 function automatorwp_advanced_custom_fields_options_cb_fields_posts() {
 
     $options = array(
-        'any' => __( 'any field', 'automatorwp' ),
-    );
-
-    $args = array(
-        'post_type' => 'post',
+        'any' => __( 'any field', 'automatorwp-advanced-custom-fields' ),
     );
     
-    // Get groups related to posts
-    $all_post_groups = acf_get_field_groups( $args );
-    
-    foreach( $all_post_groups as $group ) {
-    
-        // Get fields from group
-        $all_acf_fields = acf_get_fields( $group['ID'] );
+    // Get all post types
+    $all_post_types = acf_get_post_types( );
 
-        foreach ( $all_acf_fields as $acf_fields ){
+    foreach ( $all_post_types as $post_type ) {
 
-            $options[$acf_fields['name']] = $acf_fields['label'];
+        $args_acf = array(
+            'post_type' => $post_type,
+        );
+
+        // Get groups related to posts
+        $all_post_groups = acf_get_field_groups( $args_acf );
+        
+        foreach( $all_post_groups as $group ) {
+        
+            // Get fields from group
+            $all_acf_fields = acf_get_fields( $group['ID'] );
+
+            foreach ( $all_acf_fields as $acf_fields ){
+
+                $options[$acf_fields['name']] = $acf_fields['label'];
+            }
+
         }
 
     }

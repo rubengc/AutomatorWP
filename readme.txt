@@ -2,8 +2,8 @@
 Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
-Tested up to: 6.1
-Stable tag: 2.6.2
+Tested up to: 6.2
+Stable tag: 2.6.3
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -292,6 +292,13 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.6.3 =
+
+* **Improvements**
+* Advanced Custom Fields: Improved the selection of fields for all types of posts.
+* Advanced Custom Fields: Improved trigger "User updates post field with a value" will be launched when the field value is added the first time.
+* JetEngine: Trigger works only with JetEngine types.
 
 = 2.6.2 =
 

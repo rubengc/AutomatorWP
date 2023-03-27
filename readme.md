@@ -301,6 +301,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.6.3 ###
+
+* **Improvements**
+* Advanced Custom Fields: Improved the selection of fields for all types of posts.
+* Advanced Custom Fields: Improved trigger "User updates post field with a value" will be launched when the field value is added the first time.
+* JetEngine: Trigger works only with JetEngine types.
+
+
 ### 2.6.2 ###
 
 * **New Features**

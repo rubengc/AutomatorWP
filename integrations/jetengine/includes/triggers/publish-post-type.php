@@ -77,6 +77,11 @@ class AutomatorWP_JetEngine_Publish_Post_Type extends AutomatorWP_Integration_Tr
         if( $new_status !== 'publish' ) {
             return;
         }
+
+        // Check if it is a JetEngine post type
+        if ( ! automatorwp_jetengine_check_type( $post ) ) {
+            return;
+        }
     
         automatorwp_trigger_event( array(
             'trigger' => $this->trigger,
