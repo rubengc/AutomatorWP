@@ -301,6 +301,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.6.4 ###
+
+* **Improvements**
+* BuddyBoss: Improved trigger "User updates profile information" to avoid launch it when information did not change.
+
 ### 2.6.3 ###
 
 * **Improvements**

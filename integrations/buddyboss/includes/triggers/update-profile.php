@@ -55,6 +55,11 @@ class AutomatorWP_BuddyBoss_Update_Profile extends AutomatorWP_Integration_Trigg
      */
     public function listener( $user_id, $posted_field_ids, $errors, $old_values, $new_values ) {
 
+        // Bail if profile information did not change
+        if ( $old_values === $new_values ) {
+            return;
+        }
+        
         // Trigger the update profile information
         automatorwp_trigger_event( array(
             'trigger'       => $this->trigger,
