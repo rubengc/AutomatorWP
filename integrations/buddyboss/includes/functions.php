@@ -61,6 +61,11 @@ function automatorwp_buddyboss_get_group_title( $group_id ) {
         return '';
     }
 
+    // Bail if BuddyBoss function does not exist
+    if ( ! function_exists( 'groups_get_group' ) ) {
+        return '';
+    }
+    
     $group = groups_get_group( $group_id );
 
     return $group->name;

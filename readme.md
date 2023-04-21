@@ -301,6 +301,16 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.6.5.1 ###
+
+* **Developer Notes**
+* Fixed PHP notices caused by add_submenu_page() function when passing null as first parameter.
+
+### 2.6.5 ###
+
+* **Improvements**
+* BuddyBoss: Improved checking to ensure BuddyBoss functions exist.
+
 ### 2.6.4 ###
 
 * **Improvements**

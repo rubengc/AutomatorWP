@@ -27,6 +27,11 @@ function automatorwp_buddyboss_ajax_get_groups() {
 
     if( bp_is_active( 'groups' ) ) {
 
+        // Bail if BuddyBoss function does not exist
+        if ( ! function_exists( 'groups_get_group' ) ) {
+            return $results;
+        }
+        
         // Get the groups
         $groups = groups_get_groups( array(
             'search_terms' => $search,
