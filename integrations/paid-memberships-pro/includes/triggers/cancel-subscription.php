@@ -29,10 +29,10 @@ class AutomatorWP_Paid_Memberships_Pro_Cancel_Subscription extends AutomatorWP_I
             'edit_label'        => sprintf( __( 'User cancels a subscription of %1$s %2$s time(s)', 'automatorwp' ), '{membership}', '{times}' ),
             /* translators: %1$s: Content title. */
             'log_label'         => sprintf( __( 'User cancels a subscription of %1$s', 'automatorwp' ), '{membership}' ),
-            'action'            => 'pmpro_subscription_cancelled',
+            'action'            => 'pmpro_before_change_membership_level',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
-            'accepted_args'     => 1,
+            'accepted_args'     => 4,
             'options'           => array(
                 'membership' => automatorwp_utilities_ajax_selector_option( array(
                     'field'             => 'membership',
@@ -57,19 +57,22 @@ class AutomatorWP_Paid_Memberships_Pro_Cancel_Subscription extends AutomatorWP_I
      *
      * @since 1.0.0
      *
-     * @param MemberOrder $morder
+     * @param int $level_id ID of the level changed to.
+	 * @param int $user_id ID of the user changed.
+	 * @param array $old_levels array of prior levels the user belonged to.
+	 * @param int $cancel_level ID of the level being cancelled if specified
      */
-    public function listener( $morder ) {
+    public function listener( $level_id, $user_id, $old_levels, $cancel_level ) {
 
-        $user                = $morder->getUser();
-        $membership          = $morder->getMembershipLevel();
-        $user_id             = $user->ID;
-        $membership_id       = $membership->id;
+        // Bail if empty cancel
+        if ( empty( $cancel_level ) ) {
+            return;
+        }
 
         automatorwp_trigger_event( array(
             'trigger'       => $this->trigger,
             'user_id'       => $user_id,
-            'membership_id' => $membership_id,
+            'membership_id' => $cancel_level,
         ) );
 
     }

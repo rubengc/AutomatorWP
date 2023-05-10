@@ -302,6 +302,12 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.6.7 ###
+
+* **Bug Fixes**
+* MailerLite: Fixed bug on MailerLite connection.
+* Paid Memberships Pro: Fixed trigger "User cancels a subscription of a membership level" to adapt to latest version of Paid Memberships Pro.
+
 ### 2.6.6 ###
 
 * **New Features**

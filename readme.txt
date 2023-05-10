@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 2.6.6
+Stable tag: 2.6.7
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -293,6 +293,12 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.6.7 =
+
+* **Bug Fixes**
+* MailerLite: Fixed bug on MailerLite connection.
+* Paid Memberships Pro: Fixed trigger "User cancels a subscription of a membership level" to adapt to latest version of Paid Memberships Pro.
 
 = 2.6.6 =
 

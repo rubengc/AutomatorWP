@@ -29,7 +29,7 @@ function automatorwp_mailerlite_ajax_authorize() {
     }
 
     // To get first answer and check the connection
-    $response = wp_remote_get( $url . 'api/subscribers', array(
+    $response = wp_remote_get( $url . '/api/subscribers', array(
         'headers' => array(
             'Authorization' => 'Bearer ' . $token,
             'Accept' => 'application/json',
@@ -53,7 +53,7 @@ function automatorwp_mailerlite_ajax_authorize() {
 
     // Update settings
     update_option( 'automatorwp_settings', $settings );
-    $admin_url = str_replace( 'http://', 'http://', get_admin_url() )  . 'admin.php?page=automatorwp_settings&tab=opt-tab-mailerlite';
+    $admin_url = str_replace( 'http://', 'https://', get_admin_url() )  . 'admin.php?page=automatorwp_settings&tab=opt-tab-mailerlite';
    
     wp_send_json_success( array(
         'message' => __( 'Correct data to connect with MailerLite', 'automatorwp-pro' ),
