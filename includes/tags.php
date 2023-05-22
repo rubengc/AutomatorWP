@@ -725,6 +725,18 @@ function automatorwp_get_trigger_tag_replacement( $tag_name, $trigger, $user_id,
             case 'post_status':
                 $replacement = (  $post ? $post->post_status : '' );
                 break;
+            case 'post_date':
+                $replacement = ( $post ? $post->post_date : '' );
+                break;
+            case 'post_date_gmt':
+                $replacement = ( $post ? $post->post_date_gmt : '' );
+                break;
+            case 'post_modified':
+                $replacement = ( $post ? $post->post_modified : '' );
+                break;
+            case 'post_modified_gmt':
+                $replacement = ( $post ? $post->post_modified_gmt : '' );
+                break;
             case 'post_parent':
                 $replacement = (  $post ? $post->post_parent : '' );
                 break;

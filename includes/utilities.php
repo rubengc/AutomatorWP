@@ -670,6 +670,30 @@ function automatorwp_utilities_post_tags( $post_label = '' ) {
             'type'      => 'text',
             'preview'   => 'publish',
         ),
+        'post_date'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Date', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => date( 'Y-m-d H:i:s' ),
+        ),
+        'post_date_gmt'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Date GMT', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => date( 'Y-m-d H:i:s' ),
+        ),
+        'post_modified'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Modified Date', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => date( 'Y-m-d H:i:s' ),
+        ),
+        'post_modified_gmt'  => array(
+            /* translators: %s: Post label (by default: Post). */
+            'label'     => sprintf( __( '%s Modified Date GMT', 'automatorwp' ), $post_label ),
+            'type'      => 'text',
+            'preview'   => date( 'Y-m-d H:i:s' ),
+        ),
         'post_parent' => array(
             /* translators: %s: Post label (by default: Post). */
             'label'     => sprintf( __( '%s Parent ID', 'automatorwp' ), $post_label ),

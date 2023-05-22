@@ -302,6 +302,14 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.6.8 ###
+
+* **New Features**
+* Added a clear all logs button on logs list view.
+* Added post date and modified date tags (GMT version too).
+* New action: Run an all users automation.
+* New action: Run an all posts automation.
+
 ### 2.6.7 ###
 
 * **Bug Fixes**

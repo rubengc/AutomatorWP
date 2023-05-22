@@ -1451,6 +1451,11 @@ body.edit-all-posts-automation #cmb-field-js-controls-users_per_loop-after{
     border-color: #dc3232;
 }
 
+.automatorwp-clear-all-logs-button {
+    float: right;
+    margin-left: 4px !important;
+}
+
 /* -------------------------------------------
     Field Required
    ------------------------------------------- */

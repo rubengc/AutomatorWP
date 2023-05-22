@@ -875,3 +875,78 @@ function automatorwp_log_automation_field_display( $value, $field_args, $field, 
 
 }
 add_filter( 'automatorwp_log_automation_field_value_display', 'automatorwp_log_automation_field_display', 10, 4 );
+
+/**
+ * Display the "Clear all logs" button
+ *
+ * @since 1.0.0
+ *
+ * @param array $views
+ *
+ * @return array
+ */
+function automatorwp_logs_clear_all_logs_button( $views ) {
+
+    global $ct_table;
+
+    if( $ct_table->name !== 'automatorwp_logs' ) {
+        return $views;
+    }
+
+    $url = $ct_table->views->list->get_link();
+    $url = add_query_arg( array( 'automatorwp-action' => 'delete_all_logs' ), $url );
+    $url = add_query_arg( '_wpnonce', wp_create_nonce( 'automatorwp_delete_all_logs' ), $url );
+
+    echo sprintf(
+        '<a href="%s" class="button automatorwp-button-danger automatorwp-clear-all-logs-button" onclick="%s" aria-label="%s">%s</a>',
+        $url,
+        "return confirm('" .
+        esc_attr( __( "Are you sure you want to delete all logs?\\n\\nClick \\'Cancel\\' to go back, \\'OK\\' to confirm the deletion.", 'automatorwp' ) ) .
+        "');",
+        esc_attr( __( 'Clear all logs', 'automatorwp' ) ),
+        __( 'Clear all logs', 'automatorwp' )
+    );
+
+    return $views;
+}
+add_filter( 'views_logs', 'automatorwp_logs_clear_all_logs_button' );
+
+/**
+ * Process the deletion of all logs
+ *
+ * @since 1.0.0
+ */
+function automatorwp_action_delete_all_logs() {
+
+    global $wpdb;
+
+    // Nonce check
+    if ( ! isset( $_REQUEST['_wpnonce'] ) ) {
+        wp_die( __( 'You are not allowed to perform this.', 'automatorwp' ) );
+    }
+
+    if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'automatorwp_delete_all_logs' ) ) {
+        wp_die( __( 'You are not allowed to perform this.', 'automatorwp' ) );
+    }
+
+    $ct_table = ct_setup_table( 'automatorwp_logs' );
+
+    // If user can not delete it, bail
+    if ( ! current_user_can( $ct_table->cap->delete_items ) ) {
+        wp_die( __( 'You are not allowed to perform this.', 'automatorwp' ) );
+    }
+
+    $logs       = AutomatorWP()->db->logs;
+    $logs_meta 	= AutomatorWP()->db->logs_meta;
+
+    // Delete all logs
+    $wpdb->query( "DELETE l FROM {$logs} AS l WHERE 1=1" );
+
+    // Delete orphaned log metas
+    $wpdb->query( "DELETE lm FROM {$logs_meta} lm LEFT JOIN {$logs} l ON l.id = lm.id WHERE l.id IS NULL" );
+
+    // Redirect to logs list view
+    wp_redirect( $ct_table->views->list->get_link() );
+    return;
+}
+add_action( 'automatorwp_action_delete_all_logs', 'automatorwp_action_delete_all_logs' );

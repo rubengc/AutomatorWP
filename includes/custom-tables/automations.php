@@ -35,6 +35,9 @@ function automatorwp_automations_query_where( $where, $ct_query ) {
     // Status
     $where .= automatorwp_custom_table_where( $qv, 'status', 'status', 'string' );
 
+    // Type
+    $where .= automatorwp_custom_table_where( $qv, 'type', 'type', 'string' );
+
     // User ID
     $where .= automatorwp_custom_table_where( $qv, 'user_id', 'user_id', 'integer' );
 

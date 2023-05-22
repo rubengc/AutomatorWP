@@ -3,7 +3,7 @@ Contributors: automatorwp, rubengc, eneribs, pacogon, dioni00, flabernardez
 Tags: automator, automation, zapier, webhook, marketing
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 2.6.7
+Stable tag: 2.6.8
 License: GNU AGPL v3.0
 License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -293,6 +293,14 @@ Yes, AutomatorWP is stored in the official WordPress plugins repository where yo
 No, We're unable to provide custom development services, as our focus is developing the core AutomatorWP plugin, and the official AutomatorWP add-ons.
 
 == Changelog ==
+
+= 2.6.8 =
+
+* **New Features**
+* Added a clear all logs button on logs list view.
+* Added post date and modified date tags (GMT version too).
+* New action: Run an all users automation.
+* New action: Run an all posts automation.
 
 = 2.6.7 =
 
