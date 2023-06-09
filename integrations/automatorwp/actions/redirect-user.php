@@ -166,8 +166,8 @@ class AutomatorWP_WordPress_Redirect_User extends AutomatorWP_Integration_Action
         
         // Get the redirect URL for this user
         $url = get_option( 'automatorwp_redirect_url_' . $user_id, '' );
-        
-        $url = esc_url( $url );
+
+        $url = esc_url( $url, null, 'edit' );
 
         if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
             $url = '';

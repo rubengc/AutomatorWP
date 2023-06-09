@@ -302,6 +302,11 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
+### 2.6.9 ###
+
+* **Bug Fixes**
+* Prevent incorrect formatting of the URL in the "Redirect user to URL" action.
+
 ### 2.6.8 ###
 
 * **New Features**
