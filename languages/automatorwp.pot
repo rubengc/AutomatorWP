@@ -3,17 +3,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutomatorWP\n"
 "Report-Msgid-Bugs-To: https://automatorwp.com/\n"
-"POT-Creation-Date: 2023-05-22 12:51+0200\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-10-09 13:32+0200\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AutomatorWP (https://automatorwp.com/)\n"
 "Language-Team: AutomatorWP <contact@automatorwp.com>\n"
-"X-Generator: Poedit 2.4.3\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c\n"
 "Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Textdomain-Support: yes\n"
@@ -36,6 +36,12 @@ msgstr ""
 #: integrations/autonami/includes/actions/add-contact-tag.php:175
 #: integrations/autonami/includes/actions/add-user-tag.php:164
 #: integrations/buddypress/includes/actions/add-user-group.php:160
+#: integrations/clickup/includes/actions/add-comment-task.php:238
+#: integrations/clickup/includes/actions/add-tag-task.php:238
+#: integrations/clickup/includes/actions/create-list.php:232
+#: integrations/clickup/includes/actions/create-task.php:239
+#: integrations/code-snippets/includes/actions/activate-snippet.php:148
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:148
 #: integrations/mailchimp/includes/actions/user-add-note.php:209
 #: integrations/mailchimp/includes/actions/user-add-tag.php:217
 #: integrations/mailchimp/includes/actions/user-subscribe.php:202
@@ -50,6 +56,8 @@ msgstr ""
 #: integrations/wordpress/actions/update-post.php:472
 #: integrations/wordpress/actions/update-posts.php:546
 #: integrations/wordpress/actions/update-user.php:438
+#: integrations/wpcode/includes/actions/activate-snippet.php:147
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:147
 #: integrations/zoom/includes/actions/add-user-meeting.php:387
 msgid "Result:"
 msgstr ""
@@ -133,91 +141,91 @@ msgstr ""
 msgid "Add-ons to extend and expand the functionality of AutomatorWP."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:125
+#: includes/admin/pages/add-ons.php:127
 #, php-format
 msgid "Install %s now"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:125
+#: includes/admin/pages/add-ons.php:127
 msgid "Install Now"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:131
+#: includes/admin/pages/add-ons.php:133
 #, php-format
 msgid "Update %s now"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:131
+#: includes/admin/pages/add-ons.php:133
 msgid "Update Now"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:138
+#: includes/admin/pages/add-ons.php:140
 msgctxt "plugin"
 msgid "Active"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:140 includes/admin/pages/add-ons.php:208
+#: includes/admin/pages/add-ons.php:142 includes/admin/pages/add-ons.php:210
 msgid "Activate"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:141 includes/admin/pages/add-ons.php:209
+#: includes/admin/pages/add-ons.php:143 includes/admin/pages/add-ons.php:211
 #, php-format
 msgctxt "plugin"
 msgid "Activate %s"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:149 includes/admin/pages/add-ons.php:217
+#: includes/admin/pages/add-ons.php:151 includes/admin/pages/add-ons.php:219
 msgid "Network Activate"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:150 includes/admin/pages/add-ons.php:218
+#: includes/admin/pages/add-ons.php:152 includes/admin/pages/add-ons.php:220
 #, php-format
 msgctxt "plugin"
 msgid "Network Activate %s"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:161
+#: includes/admin/pages/add-ons.php:163
 msgctxt "plugin"
 msgid "Installed"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:193
+#: includes/admin/pages/add-ons.php:195
 msgid "Activate License"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:196
+#: includes/admin/pages/add-ons.php:198
 msgid "Active and License Registered"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:202 includes/automations.php:22
+#: includes/admin/pages/add-ons.php:204 includes/automations.php:22
 #: integrations/restrict-content-pro/includes/actions/add-membership.php:67
 msgid "Active"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:233
+#: includes/admin/pages/add-ons.php:235
 msgid "Get this pass"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:238
+#: includes/admin/pages/add-ons.php:240
 msgid "Get this add-on"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:245
+#: includes/admin/pages/add-ons.php:247
 #, php-format
 msgid "More information about %s"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:245
+#: includes/admin/pages/add-ons.php:247
 msgid "More Details"
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:314 includes/admin/pages/add-ons.php:326
+#: includes/admin/pages/add-ons.php:316 includes/admin/pages/add-ons.php:328
 #: includes/automation-ui.php:1565 includes/automation-ui.php:1577
 #, php-format
 msgid "An unexpected error occurred. Something may be wrong with automatorwp.com or this server&#8217;s configuration. If you continue to have problems, please try to <a href=\"%s\">contact us</a>."
 msgstr ""
 
-#: includes/admin/pages/add-ons.php:316 includes/automation-ui.php:1567
+#: includes/admin/pages/add-ons.php:318 includes/automation-ui.php:1567
 msgid "(WordPress could not establish a secure connection to automatorwp.com. Please contact your server administrator.)"
 msgstr ""
 
@@ -729,8 +737,8 @@ msgid "Action disabled because plugin associated couldn't be found. Please, re-i
 msgstr ""
 
 #: includes/automation-ui.php:972 includes/automation-ui.php:982
-#: includes/custom-tables/automations.php:246 includes/logs.php:184
-#: includes/logs.php:271
+#: includes/custom-tables/automations.php:246 includes/logs.php:205
+#: includes/logs.php:292
 msgid "Missing plugin"
 msgstr ""
 
@@ -948,6 +956,7 @@ msgstr ""
 #: integrations/automatorwp/actions/anonymous-user.php:110
 #: integrations/automatorwp/actions/anonymous-user.php:224
 #: integrations/autonami/includes/tags.php:77
+#: integrations/woocommerce-shipstation/includes/functions.php:59
 #: integrations/woocommerce/includes/functions.php:59
 #: integrations/wordpress/filters/user-exists.php:41
 #: integrations/wordpress/filters/user-field.php:43
@@ -1371,7 +1380,7 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: includes/logs.php:263 includes/logs.php:273
+#: includes/logs.php:284 includes/logs.php:294
 msgid "Filter not passed"
 msgstr ""
 
@@ -1429,16 +1438,20 @@ msgid "AutomatorWP Plugin"
 msgstr ""
 
 #: includes/tags.php:88 integrations/activecampaign/includes/tags.php:42
+#: integrations/woocommerce-shipstation/includes/functions.php:49
 #: integrations/woocommerce/includes/functions.php:49
 msgid "First name"
 msgstr ""
 
 #: includes/tags.php:94 integrations/activecampaign/includes/tags.php:47
+#: integrations/woocommerce-shipstation/includes/functions.php:50
 #: integrations/woocommerce/includes/functions.php:50
 msgid "Last name"
 msgstr ""
 
-#: includes/tags.php:96 integrations/woocommerce/includes/functions.php:79
+#: includes/tags.php:96
+#: integrations/woocommerce-shipstation/includes/functions.php:79
+#: integrations/woocommerce/includes/functions.php:79
 msgid "Plugin"
 msgstr ""
 
@@ -1901,6 +1914,7 @@ msgstr ""
 #: integrations/autonami/includes/actions/add-user-tag.php:37
 #: integrations/autonami/includes/triggers/anonymous-contact-tag-added.php:40
 #: integrations/autonami/includes/triggers/user-tag-added.php:39
+#: integrations/clickup/includes/actions/add-tag-task.php:77
 #: integrations/fluentcrm/includes/actions/user-tag.php:37
 #: integrations/fluentcrm/includes/triggers/anonymous-tag-added.php:40
 #: integrations/fluentcrm/includes/triggers/tag-added.php:39
@@ -1942,6 +1956,10 @@ msgstr ""
 #: integrations/activecampaign/includes/actions/add-user-tag.php:145
 #: integrations/activecampaign/includes/actions/add-user.php:126
 #: integrations/activecampaign/includes/functions.php:117
+#: integrations/clickup/includes/actions/add-comment-task.php:180
+#: integrations/clickup/includes/actions/add-tag-task.php:180
+#: integrations/clickup/includes/actions/create-list.php:174
+#: integrations/clickup/includes/actions/create-task.php:181
 #: integrations/mailchimp/includes/actions/user-add-note.php:151
 #: integrations/mailchimp/includes/actions/user-add-tag.php:159
 #: integrations/mailchimp/includes/actions/user-subscribe.php:144
@@ -2012,6 +2030,7 @@ msgid "Connect with ActiveCampaign:"
 msgstr ""
 
 #: integrations/activecampaign/includes/admin.php:137
+#: integrations/clickup/includes/admin.php:100
 #: integrations/mailerlite/includes/admin.php:100
 msgid "Save credentials"
 msgstr ""
@@ -2029,6 +2048,7 @@ msgid "All fields are required to connect with ActiveCampaign"
 msgstr ""
 
 #: integrations/activecampaign/includes/ajax-functions.php:43
+#: integrations/clickup/includes/ajax-functions.php:42
 #: integrations/mailerlite/includes/ajax-functions.php:45
 msgid "Please, check your credentials"
 msgstr ""
@@ -2580,6 +2600,79 @@ msgstr ""
 
 #: integrations/anspress/includes/triggers/ask-question.php:39
 msgid "Question"
+msgstr ""
+
+#: integrations/armember/includes/actions/add-membership.php:26
+msgid "Add user to membership plan"
+msgstr ""
+
+#: integrations/armember/includes/actions/add-membership.php:27
+msgid "Add user to <strong>membership</strong> plan"
+msgstr ""
+
+#: integrations/armember/includes/actions/add-membership.php:29
+#: integrations/armember/includes/actions/add-membership.php:31
+#: integrations/buddyboss/includes/actions/add-user-group.php:29
+#: integrations/buddyboss/includes/actions/add-user-group.php:31
+#: integrations/buddypress/includes/actions/add-user-group.php:38
+#: integrations/buddypress/includes/actions/add-user-group.php:40
+#: integrations/fluentcrm/includes/actions/user-list.php:30
+#: integrations/fluentcrm/includes/actions/user-list.php:32
+#: integrations/learndash/includes/actions/user-group.php:29
+#: integrations/learndash/includes/actions/user-group.php:31
+#: integrations/mailerlite/includes/actions/add-user-group.php:29
+#: integrations/mailerlite/includes/actions/add-user-group.php:31
+#: integrations/mailpoet/includes/actions/add-user-to-list.php:29
+#: integrations/mailpoet/includes/actions/add-user-to-list.php:31
+#: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:38
+#: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:40
+#: integrations/woocommerce/includes/actions/add-membership.php:29
+#: integrations/woocommerce/includes/actions/add-membership.php:31
+#: integrations/woocommerce/includes/actions/add-user-to-coupon.php:29
+#: integrations/woocommerce/includes/actions/add-user-to-coupon.php:31
+#: integrations/wp-user-manager/includes/actions/add-user-group.php:29
+#: integrations/wp-user-manager/includes/actions/add-user-group.php:31
+#: integrations/zoom/includes/actions/add-user-meeting.php:101
+#: integrations/zoom/includes/actions/add-user-meeting.php:103
+#, php-format
+msgid "Add user to %1$s"
+msgstr ""
+
+#: integrations/armember/includes/actions/add-membership.php:35
+msgid "Plan"
+msgstr ""
+
+#: integrations/armember/includes/actions/add-membership.php:36
+#: integrations/armember/includes/triggers/user-add-membership.php:39
+msgid "Plan:"
+msgstr ""
+
+#: integrations/armember/includes/functions.php:25
+msgid "any membership plan"
+msgstr ""
+
+#: integrations/armember/includes/triggers/user-add-membership.php:26
+msgid "User added to a membership plan"
+msgstr ""
+
+#: integrations/armember/includes/triggers/user-add-membership.php:27
+msgid "User added to <strong>a membership</strong> plan"
+msgstr ""
+
+#: integrations/armember/includes/triggers/user-add-membership.php:29
+#: integrations/autonami/includes/triggers/user-added-list.php:29
+#, php-format
+msgid "User added to %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/armember/includes/triggers/user-add-membership.php:31
+#: integrations/autonami/includes/triggers/user-added-list.php:31
+#, php-format
+msgid "User added to %1$s"
+msgstr ""
+
+#: integrations/armember/includes/triggers/user-add-membership.php:41
+msgid "any plan"
 msgstr ""
 
 #: integrations/automatorwp/actions/anonymous-user.php:74
@@ -3458,6 +3551,7 @@ msgstr ""
 #: integrations/autonami/includes/functions.php:140
 #: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:42
 #: integrations/autonami/includes/triggers/user-added-list.php:41
+#: integrations/clickup/includes/functions.php:449
 #: integrations/fluentcrm/includes/functions.php:140
 #: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:42
 #: integrations/fluentcrm/includes/triggers/list-added.php:41
@@ -3497,6 +3591,9 @@ msgstr ""
 
 #: integrations/autonami/includes/triggers/anonymous-contact-added-list.php:40
 #: integrations/autonami/includes/triggers/user-added-list.php:39
+#: integrations/clickup/includes/actions/add-comment-task.php:61
+#: integrations/clickup/includes/actions/add-tag-task.php:61
+#: integrations/clickup/includes/actions/create-task.php:61
 #: integrations/fluentcrm/includes/actions/user-list.php:37
 #: integrations/fluentcrm/includes/triggers/anonymous-list-added.php:40
 #: integrations/fluentcrm/includes/triggers/list-added.php:39
@@ -3530,16 +3627,6 @@ msgstr ""
 
 #: integrations/autonami/includes/triggers/user-added-list.php:27
 msgid "User added to <strong>list</strong>"
-msgstr ""
-
-#: integrations/autonami/includes/triggers/user-added-list.php:29
-#, php-format
-msgid "User added to %1$s %2$s time(s)"
-msgstr ""
-
-#: integrations/autonami/includes/triggers/user-added-list.php:31
-#, php-format
-msgid "User added to %1$s"
 msgstr ""
 
 #: integrations/autonami/includes/triggers/user-tag-added.php:26
@@ -3747,32 +3834,6 @@ msgstr ""
 msgid "Add user to <strong>group</strong>"
 msgstr ""
 
-#: integrations/buddyboss/includes/actions/add-user-group.php:29
-#: integrations/buddyboss/includes/actions/add-user-group.php:31
-#: integrations/buddypress/includes/actions/add-user-group.php:38
-#: integrations/buddypress/includes/actions/add-user-group.php:40
-#: integrations/fluentcrm/includes/actions/user-list.php:30
-#: integrations/fluentcrm/includes/actions/user-list.php:32
-#: integrations/learndash/includes/actions/user-group.php:29
-#: integrations/learndash/includes/actions/user-group.php:31
-#: integrations/mailerlite/includes/actions/add-user-group.php:29
-#: integrations/mailerlite/includes/actions/add-user-group.php:31
-#: integrations/mailpoet/includes/actions/add-user-to-list.php:29
-#: integrations/mailpoet/includes/actions/add-user-to-list.php:31
-#: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:38
-#: integrations/paid-memberships-pro/includes/actions/add-user-membership.php:40
-#: integrations/woocommerce/includes/actions/add-membership.php:29
-#: integrations/woocommerce/includes/actions/add-membership.php:31
-#: integrations/woocommerce/includes/actions/add-user-to-coupon.php:29
-#: integrations/woocommerce/includes/actions/add-user-to-coupon.php:31
-#: integrations/wp-user-manager/includes/actions/add-user-group.php:29
-#: integrations/wp-user-manager/includes/actions/add-user-group.php:31
-#: integrations/zoom/includes/actions/add-user-meeting.php:101
-#: integrations/zoom/includes/actions/add-user-meeting.php:103
-#, php-format
-msgid "Add user to %1$s"
-msgstr ""
-
 #: integrations/buddyboss/includes/actions/add-user-group.php:35
 #: integrations/buddypress/includes/actions/add-user-group.php:44
 #: integrations/learndash/includes/actions/create-group.php:34
@@ -3800,6 +3861,7 @@ msgstr ""
 #: integrations/learndash/includes/actions/user-group-leader.php:41
 #: integrations/learndash/includes/actions/user-group-leader.php:47
 #: integrations/learndash/includes/actions/user-group.php:37
+#: integrations/thrive-leads/includes/tags.php:32
 #: integrations/wp-user-manager/includes/actions/add-user-group.php:37
 msgid "Group ID"
 msgstr ""
@@ -3877,6 +3939,7 @@ msgstr ""
 
 #: integrations/buddyboss/includes/tags.php:116
 #: integrations/buddypress/includes/tags.php:116
+#: integrations/thrive-leads/includes/tags.php:37
 msgid "Group name"
 msgstr ""
 
@@ -4093,13 +4156,22 @@ msgstr ""
 #: integrations/gravity-forms/includes/functions.php:25
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:42
 #: integrations/gravity-forms/includes/triggers/submit-form.php:41
+#: integrations/gravity-kit/includes/functions.php:25
+#: integrations/gravity-kit/includes/triggers/anonymous-entry-approved.php:42
+#: integrations/gravity-kit/includes/triggers/user-entry-approved.php:41
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/happyforms/includes/triggers/submit-form.php:39
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:40
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:39
+#: integrations/kadence-blocks/includes/functions.php:25
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:42
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:41
 #: integrations/ninja-forms/includes/functions.php:25
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:42
 #: integrations/ninja-forms/includes/triggers/submit-form.php:41
+#: integrations/thrive-leads/includes/functions.php:25
+#: integrations/thrive-leads/includes/triggers/anonymous-submit-form.php:42
+#: integrations/thrive-leads/includes/triggers/submit-form.php:41
 #: integrations/wp-simple-pay/includes/functions.php:25
 #: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:41
 #: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:44
@@ -4123,7 +4195,9 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:27
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:27
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:27
+#: integrations/thrive-leads/includes/triggers/anonymous-submit-form.php:27
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:27
 #: integrations/ws-form/includes/triggers/anonymous-submit-form.php:27
 msgid "Guest submits a form"
@@ -4139,7 +4213,9 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:28
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:28
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:28
+#: integrations/thrive-leads/includes/triggers/anonymous-submit-form.php:28
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:28
 #: integrations/ws-form/includes/triggers/anonymous-submit-form.php:28
 msgid "Guest submits <strong>a form</strong>"
@@ -4165,8 +4241,11 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:32
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:30
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:32
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:30
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:32
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:30
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:32
+#: integrations/thrive-leads/includes/triggers/anonymous-submit-form.php:32
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:30
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:32
 #: integrations/ws-form/includes/triggers/anonymous-submit-form.php:30
@@ -4187,12 +4266,18 @@ msgstr ""
 #: integrations/forminator/includes/triggers/submit-form.php:38
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/gravity-forms/includes/triggers/submit-form.php:39
+#: integrations/gravity-kit/includes/triggers/anonymous-entry-approved.php:40
+#: integrations/gravity-kit/includes/triggers/user-entry-approved.php:39
 #: integrations/happyforms/includes/triggers/anonymous-submit-form.php:39
 #: integrations/happyforms/includes/triggers/submit-form.php:38
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:39
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:38
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:40
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:39
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:40
 #: integrations/ninja-forms/includes/triggers/submit-form.php:39
+#: integrations/thrive-leads/includes/triggers/anonymous-submit-form.php:40
+#: integrations/thrive-leads/includes/triggers/submit-form.php:39
 #: integrations/wp-simple-pay/includes/triggers/complete-purchase-lite.php:39
 #: integrations/wp-simple-pay/includes/triggers/complete-purchase.php:42
 #: integrations/wp-user-manager/includes/triggers/user-register.php:38
@@ -4223,6 +4308,8 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:47
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:48
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:47
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:52
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:51
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:52
 #: integrations/ninja-forms/includes/triggers/submit-form.php:51
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:48
@@ -4271,6 +4358,8 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:185
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:196
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:197
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:188
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:191
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:187
 #: integrations/ninja-forms/includes/triggers/submit-form.php:188
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:186
@@ -4300,6 +4389,8 @@ msgstr ""
 #: integrations/happyforms/includes/triggers/submit-form.php:186
 #: integrations/jetformbuilder/includes/triggers/anonymous-submit-form.php:197
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:198
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:189
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:192
 #: integrations/ninja-forms/includes/triggers/anonymous-submit-form.php:188
 #: integrations/ninja-forms/includes/triggers/submit-form.php:189
 #: integrations/wpforms/includes/triggers/anonymous-submit-form.php:187
@@ -4319,7 +4410,9 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:26
 #: integrations/happyforms/includes/triggers/submit-form.php:26
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:26
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:26
 #: integrations/ninja-forms/includes/triggers/submit-form.php:26
+#: integrations/thrive-leads/includes/triggers/submit-form.php:26
 #: integrations/wpforms/includes/triggers/submit-form.php:26
 #: integrations/ws-form/includes/triggers/submit-form.php:26
 msgid "User submits a form"
@@ -4335,7 +4428,9 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:27
 #: integrations/happyforms/includes/triggers/submit-form.php:27
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:27
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:27
 #: integrations/ninja-forms/includes/triggers/submit-form.php:27
+#: integrations/thrive-leads/includes/triggers/submit-form.php:27
 #: integrations/wpforms/includes/triggers/submit-form.php:27
 #: integrations/ws-form/includes/triggers/submit-form.php:27
 msgid "User submits <strong>a form</strong>"
@@ -4351,7 +4446,9 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:29
 #: integrations/happyforms/includes/triggers/submit-form.php:29
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:29
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:29
 #: integrations/ninja-forms/includes/triggers/submit-form.php:29
+#: integrations/thrive-leads/includes/triggers/submit-form.php:29
 #: integrations/wpforms/includes/triggers/submit-form.php:29
 #: integrations/ws-form/includes/triggers/submit-form.php:29
 #, php-format
@@ -4368,11 +4465,433 @@ msgstr ""
 #: integrations/gravity-forms/includes/triggers/submit-form.php:31
 #: integrations/happyforms/includes/triggers/submit-form.php:31
 #: integrations/jetformbuilder/includes/triggers/submit-form.php:31
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:31
 #: integrations/ninja-forms/includes/triggers/submit-form.php:31
+#: integrations/thrive-leads/includes/triggers/submit-form.php:31
 #: integrations/wpforms/includes/triggers/submit-form.php:31
 #: integrations/ws-form/includes/triggers/submit-form.php:31
 #, php-format
 msgid "User submits %1$s"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:22
+msgid "Donation ID"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:27
+msgid "Donation title"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:32
+msgid "Donation Amount"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:37
+msgid "Donation status"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:42
+msgid "Donation payment method"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:47
+msgid "Donor ID"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:52
+msgid "Donor first name"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:57
+msgid "Donor last name"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:62
+msgid "Donor country code"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:67
+msgid "Donor phone"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:72
+msgid "Campaign ID"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:77
+msgid "Campaign title"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:82
+msgid "Campaign goal"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:87
+msgid "Campaign minimum donation"
+msgstr ""
+
+#: integrations/charitable/includes/tags.php:92
+msgid "Campaign end date"
+msgstr ""
+
+#: integrations/charitable/includes/triggers/anonymous-donation.php:27
+#: integrations/charitable/includes/triggers/anonymous-donation.php:31
+msgid "Guest makes a donation"
+msgstr ""
+
+#: integrations/charitable/includes/triggers/anonymous-donation.php:28
+msgid "Guest <strong>makes</strong> a donation"
+msgstr ""
+
+#: integrations/charitable/includes/triggers/anonymous-donation.php:30
+#, php-format
+msgid "Guest makes a donation %1$s time(s)"
+msgstr ""
+
+#: integrations/charitable/includes/triggers/user-donation.php:26
+#: integrations/charitable/includes/triggers/user-donation.php:30
+msgid "User makes a donation"
+msgstr ""
+
+#: integrations/charitable/includes/triggers/user-donation.php:27
+msgid "User <strong>makes</strong> a donation"
+msgstr ""
+
+#: integrations/charitable/includes/triggers/user-donation.php:29
+#, php-format
+msgid "User makes a donation %1$s time(s)"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:26
+msgid "Add comment to a task"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:27
+msgid "Add comment to a <strong>task</strong>"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:29
+#: integrations/clickup/includes/actions/add-comment-task.php:31
+#, php-format
+msgid "Add comment to a  %1$s"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:35
+#: integrations/clickup/includes/actions/add-tag-task.php:35
+msgid "task"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:38
+#: integrations/clickup/includes/actions/add-tag-task.php:38
+#: integrations/clickup/includes/actions/create-list.php:39
+#: integrations/clickup/includes/actions/create-task.php:38
+msgid "Team:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:45
+#: integrations/clickup/includes/actions/add-tag-task.php:45
+#: integrations/clickup/includes/actions/create-list.php:48
+#: integrations/clickup/includes/actions/create-task.php:45
+msgid "Space:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:53
+#: integrations/clickup/includes/actions/add-tag-task.php:53
+#: integrations/clickup/includes/actions/create-list.php:57
+#: integrations/clickup/includes/actions/create-task.php:53
+msgid "Folder:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:69
+#: integrations/clickup/includes/actions/add-tag-task.php:69
+msgid "Task:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:77
+msgid "Comment:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:78
+msgid "The comment to add to the task"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:118
+#: integrations/clickup/includes/actions/add-tag-task.php:118
+#: integrations/clickup/includes/actions/create-list.php:112
+#: integrations/clickup/includes/actions/create-task.php:119
+msgid "ClickUp integration not configured in AutomatorWP settings."
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:126
+msgid "Created comment in task "
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:128
+msgid "The comment could not be created"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-comment-task.php:176
+#: integrations/clickup/includes/actions/add-tag-task.php:176
+#: integrations/clickup/includes/actions/create-list.php:170
+#: integrations/clickup/includes/actions/create-task.php:177
+#, php-format
+msgid "You need to configure the <a href=\"%s\" target=\"_blank\">ClickUp settings</a> to get this action to work."
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-tag-task.php:26
+msgid "Add a tag to a task"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-tag-task.php:27
+msgid "Add a tag to a <strong>task</strong>"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-tag-task.php:29
+#: integrations/clickup/includes/actions/add-tag-task.php:31
+#, php-format
+msgid "Add a tag to a %1$s"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-tag-task.php:78
+msgid "The tag to add to the task"
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-tag-task.php:126
+msgid "Created tag in task "
+msgstr ""
+
+#: integrations/clickup/includes/actions/add-tag-task.php:128
+msgid "The tag could not be created"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:26
+msgid "Create a list"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:27
+msgid "Create a <strong>list</strong>"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:29
+#: integrations/clickup/includes/actions/create-list.php:31
+#, php-format
+msgid "Create %1$s"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:35
+#: integrations/clickup/includes/actions/create-task.php:35
+msgid "list"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:40
+msgid "team"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:49
+msgid "space"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:58
+msgid "folder"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:66
+msgid "list:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:67
+msgid "The list name"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:120
+#, php-format
+msgid "Created list %s"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-list.php:122
+#, php-format
+msgid "The list %s could not be created"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:26
+msgid "Create a new task in list"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:27
+msgid "Create a new task in <strong>list</strong>"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:29
+#: integrations/clickup/includes/actions/create-task.php:31
+#, php-format
+msgid "User creates a new task in %1$s"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:70
+msgid "Task name:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:71
+msgid "The task name"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:78
+msgid "Task description:"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:79
+msgid "The task description"
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:127
+msgid "Task created "
+msgstr ""
+
+#: integrations/clickup/includes/actions/create-task.php:129
+msgid "The task could not be created"
+msgstr ""
+
+#: integrations/clickup/includes/admin.php:39
+#: integrations/clickup/includes/admin.php:60
+msgid "ClickUp"
+msgstr ""
+
+#: integrations/clickup/includes/admin.php:63
+#: integrations/mailerlite/includes/admin.php:63
+msgid "API token:"
+msgstr ""
+
+#: integrations/clickup/includes/admin.php:64
+msgid "Your ClickUp API token."
+msgstr ""
+
+#: integrations/clickup/includes/admin.php:97
+msgid "Connect with ClickUp:"
+msgstr ""
+
+#: integrations/clickup/includes/admin.php:101
+msgid "Add you ClickUp API Token and click on \"Authorize\" to connect."
+msgstr ""
+
+#: integrations/clickup/includes/admin.php:103
+msgid "Site connected with ClickUp successfully."
+msgstr ""
+
+#: integrations/clickup/includes/ajax-functions.php:27
+msgid "API Token is required to connect with ClickUp"
+msgstr ""
+
+#: integrations/clickup/includes/ajax-functions.php:56
+msgid "Correct data to connect with ClickUp"
+msgstr ""
+
+#: integrations/clickup/includes/functions.php:101
+msgid "any team"
+msgstr ""
+
+#: integrations/clickup/includes/functions.php:211
+msgid "any space"
+msgstr ""
+
+#: integrations/clickup/includes/functions.php:281
+#: integrations/clickup/includes/functions.php:374
+msgid "Folderless lists"
+msgstr ""
+
+#: integrations/clickup/includes/functions.php:331
+msgid "any folder"
+msgstr ""
+
+#: integrations/clickup/includes/functions.php:563
+msgid "any task"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:26
+#: integrations/wpcode/includes/actions/activate-snippet.php:26
+msgid "Activate a snippet"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:27
+#: integrations/wpcode/includes/actions/activate-snippet.php:27
+msgid "<strong>Activate</strong> a snippet"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:29
+#: integrations/code-snippets/includes/actions/activate-snippet.php:31
+#: integrations/wpcode/includes/actions/activate-snippet.php:29
+#: integrations/wpcode/includes/actions/activate-snippet.php:31
+#, php-format
+msgid "Activate %1$s"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:35
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:35
+#: integrations/wpcode/includes/actions/activate-snippet.php:35
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:35
+msgid "Snippet"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:36
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:36
+#: integrations/wpcode/includes/actions/activate-snippet.php:36
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:36
+msgid "Snippet:"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:64
+#: integrations/wpcode/includes/actions/activate-snippet.php:64
+msgid "Please, seleact a snippet to activate"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:71
+#: integrations/wpcode/includes/actions/activate-snippet.php:71
+#, php-format
+msgid "The snippet %s is already active"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/activate-snippet.php:77
+#: integrations/wpcode/includes/actions/activate-snippet.php:76
+#, php-format
+msgid "The snippet %s has been activated"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:26
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:26
+msgid "Deactivate a snippet"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:27
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:27
+msgid "<strong>Deactivate</strong> a snippet"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:29
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:31
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:29
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:31
+#, php-format
+msgid "Deactivate %1$s"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:64
+msgid "Please, seleact a snippet to deactivate"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:71
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:71
+#, php-format
+msgid "The snippet %s is already inactive"
+msgstr ""
+
+#: integrations/code-snippets/includes/actions/deactivate-snippet.php:77
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:76
+#, php-format
+msgid "The snippet %s has been deactivated"
+msgstr ""
+
+#: integrations/code-snippets/includes/functions.php:26
+#: integrations/wpcode/includes/functions.php:26
+msgid "any snippet"
 msgstr ""
 
 #: integrations/digimember/includes/functions.php:25
@@ -4608,31 +5127,37 @@ msgid "Mr"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:94
+#: integrations/woocommerce-shipstation/includes/functions.php:81
 #: integrations/woocommerce/includes/functions.php:81
 msgid "False Street, 123"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:95
+#: integrations/woocommerce-shipstation/includes/functions.php:82
 #: integrations/woocommerce/includes/functions.php:82
 msgid "First floor, door 2"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:96
+#: integrations/woocommerce-shipstation/includes/functions.php:83
 #: integrations/woocommerce/includes/functions.php:83
 msgid "Brooklyn"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:97
+#: integrations/woocommerce-shipstation/includes/functions.php:86
 #: integrations/woocommerce/includes/functions.php:86
 msgid "New York"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:99
+#: integrations/woocommerce-shipstation/includes/functions.php:85
 #: integrations/woocommerce/includes/functions.php:85
 msgid "United States"
 msgstr ""
 
 #: integrations/fluentcrm/includes/tags.php:101
+#: integrations/woocommerce-shipstation/includes/functions.php:87
 #: integrations/woocommerce/includes/functions.php:87
 msgid "202-555-1234"
 msgstr ""
@@ -4985,9 +5510,47 @@ msgstr ""
 
 #: integrations/gravity-forms/includes/triggers/anonymous-submit-form.php:54
 #: integrations/gravity-forms/includes/triggers/submit-form.php:53
+#: integrations/kadence-blocks/includes/triggers/anonymous-submit-form.php:54
+#: integrations/kadence-blocks/includes/triggers/submit-form.php:53
 #: integrations/ws-form/includes/triggers/anonymous-submit-form.php:54
 #: integrations/ws-form/includes/triggers/submit-form.php:53
 msgid "Form field value, replace \"FIELD_ID\" by the field ID"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/anonymous-entry-approved.php:27
+msgid "Guest gets entry approved in form"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/anonymous-entry-approved.php:28
+msgid "Guest gets entry approved in <strong>form</strong>"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/anonymous-entry-approved.php:30
+#, php-format
+msgid "Guest gets entry approved in %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/anonymous-entry-approved.php:32
+#, php-format
+msgid "Guest gets entry approved in %1$s"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/user-entry-approved.php:26
+msgid "User gets entry approved in form"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/user-entry-approved.php:27
+msgid "User gets entry approved in <strong>form</strong>"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/user-entry-approved.php:29
+#, php-format
+msgid "User gets entry approved in %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/gravity-kit/includes/triggers/user-entry-approved.php:31
+#, php-format
+msgid "User gets entry approved in %1$s"
 msgstr ""
 
 #: integrations/h5p/includes/functions.php:25
@@ -5056,6 +5619,7 @@ msgstr ""
 #: integrations/wordpress/triggers/post-type-updated.php:41
 #: integrations/wordpress/triggers/publish-post-type.php:41
 #: integrations/wordpress/triggers/view-post-type.php:41
+#: integrations/wp-all-import/includes/triggers/import-post-type.php:40
 msgid "Post type:"
 msgstr ""
 
@@ -5775,10 +6339,6 @@ msgstr ""
 msgid "MailerLite"
 msgstr ""
 
-#: integrations/mailerlite/includes/admin.php:63
-msgid "API token:"
-msgstr ""
-
 #: integrations/mailerlite/includes/admin.php:64
 msgid "Your MailerLite API token."
 msgstr ""
@@ -5974,6 +6534,7 @@ msgid "User email"
 msgstr ""
 
 #: integrations/newsletter/includes/triggers/anonymous-subscribe-list.php:57
+#: integrations/woocommerce-shipstation/includes/functions.php:88
 #: integrations/woocommerce/includes/functions.php:88
 msgid "contact@automatorwp.com"
 msgstr ""
@@ -6258,6 +6819,7 @@ msgid "any free membership level"
 msgstr ""
 
 #: integrations/studiocart/includes/tags.php:22
+#: integrations/woocommerce-shipstation/includes/tags.php:158
 #: integrations/woocommerce/includes/tags.php:158
 msgid "Order ID"
 msgstr ""
@@ -6337,6 +6899,67 @@ msgstr ""
 
 #: integrations/thrive-apprentice/includes/tags.php:28
 msgid "Course name"
+msgstr ""
+
+#: integrations/thrive-leads/includes/tags.php:22
+msgid "Form ID"
+msgstr ""
+
+#: integrations/thrive-leads/includes/tags.php:27
+msgid "Form name"
+msgstr ""
+
+#: integrations/thrive-leads/includes/triggers/anonymous-submit-form.php:30
+#, php-format
+msgid "Guest submits %1$s %2$s time(s)"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/tags.php:23
+msgid "Testimonial ID"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/tags.php:28
+msgid "Testimonial content"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/tags.php:33
+msgid "Testimonial author email"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/tags.php:38
+msgid "Testimonial author role"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/tags.php:43
+msgid "Testimonial author website"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/triggers/anonymous-submit-testimonial.php:27
+#: integrations/thrive-ovation/includes/triggers/anonymous-submit-testimonial.php:31
+msgid "Guest submits a testimonial"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/triggers/anonymous-submit-testimonial.php:28
+msgid "Guest submits a <strong>testimonial</strong>"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/triggers/anonymous-submit-testimonial.php:30
+#, php-format
+msgid "Guest submits a testimonial %1$s time(s)"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/triggers/user-submit-testimonial.php:26
+#: integrations/thrive-ovation/includes/triggers/user-submit-testimonial.php:30
+msgid "User submits a testimonial"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/triggers/user-submit-testimonial.php:27
+msgid "User submits a <strong>testimonial</strong>"
+msgstr ""
+
+#: integrations/thrive-ovation/includes/triggers/user-submit-testimonial.php:29
+#, php-format
+msgid "User submits a testimonial %1$s time(s)"
 msgstr ""
 
 #: integrations/thrive-quiz-builder/includes/triggers/complete-quiz.php:26
@@ -6426,6 +7049,199 @@ msgstr ""
 msgid "User gets removed from %1$s"
 msgstr ""
 
+#: integrations/woocommerce-shipstation/includes/filters.php:64
+#: integrations/woocommerce/includes/filters.php:64
+#, php-format
+msgid "Order #%s"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:51
+#: integrations/woocommerce/includes/functions.php:51
+msgid "Company"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:52
+#: integrations/woocommerce/includes/functions.php:52
+msgid "Address line 1"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:53
+#: integrations/woocommerce/includes/functions.php:53
+msgid "Address line 2"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:54
+#: integrations/woocommerce/includes/functions.php:54
+msgid "City"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:55
+#: integrations/woocommerce/includes/functions.php:55
+msgid "Postcode / ZIP"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:56
+#: integrations/woocommerce/includes/functions.php:56
+msgid "Country / Region"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:57
+#: integrations/woocommerce/includes/functions.php:57
+msgid "State / County"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:58
+#: integrations/woocommerce/includes/functions.php:58
+msgid "Phone"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:78
+msgid "AutomatorWP"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:80
+#: integrations/woocommerce/includes/functions.php:80
+msgid "AutomatorWP Ltd."
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/functions.php:84
+#: integrations/woocommerce/includes/functions.php:84
+msgid "12345"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:25
+#: integrations/woocommerce/includes/tags.php:25
+msgid "Customer Billing Address"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:41
+#: integrations/woocommerce/includes/tags.php:41
+msgid "Customer Shipping Address"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:163
+#: integrations/woocommerce/includes/tags.php:163
+msgid "Order Number"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:168
+#: integrations/woocommerce/includes/tags.php:168
+msgid "Order Status"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:170
+#: integrations/woocommerce/includes/tags.php:170
+msgid "Completed"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:173
+#: integrations/woocommerce/includes/tags.php:173
+msgid "Order Date Created"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:178
+#: integrations/woocommerce/includes/tags.php:178
+msgid "Order Date Paid"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:183
+#: integrations/woocommerce/includes/tags.php:183
+msgid "Order Customer IP Address"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:188
+#: integrations/woocommerce/includes/tags.php:188
+msgid "Order Customer Note"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:190
+#: integrations/woocommerce/includes/tags.php:190
+msgid "The customer note entered at checkout"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:193
+#: integrations/woocommerce/includes/tags.php:193
+msgid "Order Coupon Codes"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:198
+#: integrations/woocommerce/includes/tags.php:198
+msgid "Order Currency"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:203
+#: integrations/woocommerce/includes/tags.php:203
+msgid "Order Currency Symbol"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:208
+#: integrations/woocommerce/includes/tags.php:208
+msgid "Order Subtotal"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:213
+#: integrations/woocommerce/includes/tags.php:213
+msgid "Order Discount"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:218
+#: integrations/woocommerce/includes/tags.php:218
+msgid "Order Tax"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:223
+#: integrations/woocommerce/includes/tags.php:223
+msgid "Order Total"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:228
+#: integrations/woocommerce/includes/tags.php:228
+msgid "Order Meta"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:230
+#: integrations/woocommerce/includes/tags.php:230
+msgid "Order meta value, replace \"META_KEY\" by the order meta key"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:237
+#: integrations/woocommerce/includes/tags.php:237
+#, php-format
+msgid "Billing %s"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:247
+#: integrations/woocommerce/includes/tags.php:247
+#, php-format
+msgid "Shipping %s"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:427
+msgid "Tracking Number"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:432
+msgid "Carrier"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/tags.php:437
+msgid "Shipping date"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/triggers/order-shipped.php:26
+#: integrations/woocommerce-shipstation/includes/triggers/order-shipped.php:31
+msgid "User's order gets shipped"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/triggers/order-shipped.php:27
+msgid "User's <strong>order</strong> gets shipped"
+msgstr ""
+
+#: integrations/woocommerce-shipstation/includes/triggers/order-shipped.php:29
+#, php-format
+msgid "User's order gets shipped %1$s time(s)"
+msgstr ""
+
 #: integrations/woocommerce/includes/actions/add-membership.php:26
 msgid "Add user to membership"
 msgstr ""
@@ -6460,137 +7276,6 @@ msgstr ""
 
 #: integrations/woocommerce/includes/actions/add-user-to-coupon.php:37
 msgid "Coupon ID"
-msgstr ""
-
-#: integrations/woocommerce/includes/filters.php:64
-#, php-format
-msgid "Order #%s"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:51
-msgid "Company"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:52
-msgid "Address line 1"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:53
-msgid "Address line 2"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:54
-msgid "City"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:55
-msgid "Postcode / ZIP"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:56
-msgid "Country / Region"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:57
-msgid "State / County"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:58
-msgid "Phone"
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:80
-msgid "AutomatorWP Ltd."
-msgstr ""
-
-#: integrations/woocommerce/includes/functions.php:84
-msgid "12345"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:25
-msgid "Customer Billing Address"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:41
-msgid "Customer Shipping Address"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:163
-msgid "Order Number"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:168
-msgid "Order Status"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:170
-msgid "Completed"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:173
-msgid "Order Date Created"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:178
-msgid "Order Date Paid"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:183
-msgid "Order Customer IP Address"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:188
-msgid "Order Customer Note"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:190
-msgid "The customer note entered at checkout"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:193
-msgid "Order Coupon Codes"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:198
-msgid "Order Currency"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:203
-msgid "Order Currency Symbol"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:208
-msgid "Order Subtotal"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:213
-msgid "Order Discount"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:218
-msgid "Order Tax"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:223
-msgid "Order Total"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:228
-msgid "Order Meta"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:230
-msgid "Order meta value, replace \"META_KEY\" by the order meta key"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:237
-#, php-format
-msgid "Billing %s"
-msgstr ""
-
-#: integrations/woocommerce/includes/tags.php:247
-#, php-format
-msgid "Shipping %s"
 msgstr ""
 
 #: integrations/woocommerce/includes/triggers/anonymous-complete-purchase.php:27
@@ -8496,6 +9181,62 @@ msgstr ""
 msgid "User daily visits the site %1$s time(s)"
 msgstr ""
 
+#: integrations/wp-all-import/includes/tags.php:22
+msgid "Import ID"
+msgstr ""
+
+#: integrations/wp-all-import/includes/tags.php:27
+msgid "History ID"
+msgstr ""
+
+#: integrations/wp-all-import/includes/tags.php:32
+msgid "Import type"
+msgstr ""
+
+#: integrations/wp-all-import/includes/tags.php:37
+msgid "Time run"
+msgstr ""
+
+#: integrations/wp-all-import/includes/tags.php:42
+msgid "Import date"
+msgstr ""
+
+#: integrations/wp-all-import/includes/tags.php:47
+msgid "Import summary"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-post-type.php:26
+msgid "User imports posts of a type"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-post-type.php:27
+msgid "User imports posts of a <strong>type</strong>"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-post-type.php:29
+#, php-format
+msgid "User imports posts of %1$s type %2$s time(s)"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-post-type.php:30
+#, php-format
+msgid "User imports posts of %1$s type"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-success.php:26
+#: integrations/wp-all-import/includes/triggers/import-success.php:30
+msgid "User completes an import"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-success.php:27
+msgid "User <strong>completes</strong> an import"
+msgstr ""
+
+#: integrations/wp-all-import/includes/triggers/import-success.php:29
+#, php-format
+msgid "User completes an import %1$s time(s)"
+msgstr ""
+
 #: integrations/wp-job-manager/includes/triggers/publish-job.php:26
 msgid "User publishes a job of a type"
 msgstr ""
@@ -8728,6 +9469,10 @@ msgstr ""
 
 #: integrations/wpadverts/includes/triggers/send-message.php:39
 msgid "any advert"
+msgstr ""
+
+#: integrations/wpcode/includes/actions/deactivate-snippet.php:64
+msgid "Please, select a snippet to deactivate"
 msgstr ""
 
 #: integrations/wpdiscuz/includes/triggers/get-vote.php:26

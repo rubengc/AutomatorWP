@@ -99,6 +99,7 @@ class AutomatorWP_Restrict_Content_Pro_Add_Membership extends AutomatorWP_Integr
         // Shorthand
         $level_id   = $action_options['membership'];
         $status     = $action_options['status'];
+        $expiration_date = $action_options['expiration'];
 
         // Bail if not membership level has been configured
         if( empty( $level_id ) || $level_id === 'any' ) {
@@ -136,6 +137,9 @@ class AutomatorWP_Restrict_Content_Pro_Add_Membership extends AutomatorWP_Integr
                 // Set the cancellation date if cancelled
                 $membership_args['cancellation_date'] = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
                 break;
+            case 'active' :
+                $membership_args['expiration_date'] = date( 'Y-m-d H:i:s', strtotime( $expiration_date ) );
+                break;                
         }
 
         $membership_id = rcp_add_membership( $membership_args );

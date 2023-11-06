@@ -325,6 +325,9 @@ function automatorwp_woocommerce_get_trigger_tag_replacement( $replacement, $tag
         case 'woocommerce_order_status':
             $replacement = wc_get_order_status_name( $replacement );
             break;
+        case 'woocommerce_order_number':
+            $replacement = $order->get_order_number();
+            break;
         case 'woocommerce_order_date_created':
         case 'woocommerce_order_date_paid':
             $replacement = ( $replacement ? $replacement->format( 'Y-m-d H:i:s' ) : '' );

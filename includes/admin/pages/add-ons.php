@@ -48,7 +48,9 @@ function automatorwp_add_ons_page() {
 
             foreach ( $plugins as $plugin ) {
 
-                automatorwp_render_plugin_card( $plugin );
+                if ( ! str_contains($plugin->info->slug, '-pass')) {
+                    automatorwp_render_plugin_card( $plugin );
+                }              
 
             }
 
@@ -108,7 +110,7 @@ function automatorwp_render_plugin_card( $plugin ) {
     // Available actions for this plugin
     $action_links = array();
 
-    $details_link = esc_url( network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $slug . '&TB_iframe=true&width=600&height=550' ) );
+    $details_link = esc_url( 'https://automatorwp.com/add-ons/' . $plugin->info->slug );
 
     if( property_exists( $plugin, 'wp_info' ) ) {
         // Free add-ons
@@ -242,7 +244,7 @@ function automatorwp_render_plugin_card( $plugin ) {
 
     if( ! empty( $details_link ) ) {
         // "More Details" action
-        $action_links[] = '<a href="' . esc_url( $details_link ) . '" class="more-details thickbox open-plugin-details-modal" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $name ) ) . '" data-title="' . esc_attr( $name ) . '">' . __( 'More Details' ) . '</a>';
+        $action_links[] = '<a href="' . esc_url( $details_link ) . '" class="more-details" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $name ) ) . '" data-title="' . esc_attr( $name ) . '" target="_blank">' . __( 'More Details' ) . '</a>';
     } ?>
 
     <div class="automatorwp-plugin-card plugin-card plugin-card-<?php echo sanitize_html_class( $slug ); ?> <?php echo $class; ?>">

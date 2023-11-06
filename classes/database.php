@@ -45,7 +45,7 @@ class AutomatorWP_Database {
      *
      * @var string $user
      */
-    public $user = '';
+    public $usermeta = '';
 
     /**
      * Automations table name

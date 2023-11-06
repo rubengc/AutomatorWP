@@ -276,57 +276,76 @@ function automatorwp_get_user_last_completion( $object_id, $user_id, $type ) {
 
     global $wpdb, $automatorwp_last_anonymous_trigger_log_id;
 
-    $object_id = absint( $object_id );
+    $log = false;
 
-    // Check the object ID
-    if( $object_id === 0 ) {
-        return false;
+    /**
+     * Filter available to override the log entry to get the tags from
+     *
+     * @since 2.7.3
+     *
+     * @param stdClass  $log        The log object
+     * @param stdClass  $object_id  The trigger object
+     * @param int       $user_id    The user ID
+     * @param string    $type       The content to parse
+     *
+     * @return stdClass|false
+     */
+    $log = apply_filters( 'automatorwp_get_user_last_completion', $log, $object_id, $user_id, $type );
+
+    if( ! $log ) {
+
+        $object_id = absint( $object_id );
+
+        // Check the object ID
+        if( $object_id === 0 ) {
+            return false;
+        }
+
+        $types = automatorwp_get_log_types();
+
+        // Check the type
+        if( ! isset( $types[$type] ) ) {
+            return false;
+        }
+
+        $user_id = absint( $user_id );
+
+        // For backward compatibility, check if is trying to get a last anonymous trigger log ID
+        if( $type === 'trigger' && $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
+
+            // Get the last anonymous trigger log if is parsing tags for an anonymous user
+            $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
+
+            return ( $log ? $log : false );
+        }
+
+        // Check the user ID
+        if( $user_id === 0 ) {
+            return false;
+        }
+
+        $cache = automatorwp_get_cache( 'user_last_completion', array(), false );
+
+        // If result already cached, return it
+        if( isset( $cache[$user_id] )
+            && isset( $cache[$user_id][$type] )
+            && isset( $cache[$user_id][$type][$object_id] ) ) {
+            return $cache[$user_id][$type][$object_id];
+        }
+
+        $ct_table = ct_setup_table( 'automatorwp_logs' );
+
+        $log = $wpdb->get_row(
+            "SELECT *
+            FROM {$ct_table->db->table_name} AS l
+            WHERE 1=1 
+            AND l.object_id = {$object_id}
+            AND l.user_id = {$user_id}
+            AND l.type = '{$type}'
+            ORDER BY l.date DESC
+            LIMIT 1"
+        );
     }
-
-    $types = automatorwp_get_log_types();
-
-    // Check the type
-    if( ! isset( $types[$type] ) ) {
-        return false;
-    }
-
-    $user_id = absint( $user_id );
-
-    // For backward compatibility, check if is trying to get a last anonymous trigger log ID
-    if( $type === 'trigger' && $user_id === 0 && absint( $automatorwp_last_anonymous_trigger_log_id ) !== 0 ) {
-
-        // Get the last anonymous trigger log if is parsing tags for an anonymous user
-        $log = automatorwp_get_log_object( $automatorwp_last_anonymous_trigger_log_id );
-
-        return ( $log ? $log : false );
-    }
-
-    // Check the user ID
-    if( $user_id === 0 ) {
-        return false;
-    }
-
-    $cache = automatorwp_get_cache( 'user_last_completion', array(), false );
-
-    // If result already cached, return it
-    if( isset( $cache[$user_id] )
-        && isset( $cache[$user_id][$type] )
-        && isset( $cache[$user_id][$type][$object_id] ) ) {
-        return $cache[$user_id][$type][$object_id];
-    }
-
-    $ct_table = ct_setup_table( 'automatorwp_logs' );
-
-    $log = $wpdb->get_row(
-        "SELECT *
-        FROM {$ct_table->db->table_name} AS l
-        WHERE 1=1 
-        AND l.object_id = {$object_id}
-        AND l.user_id = {$user_id}
-        AND l.type = '{$type}'
-        ORDER BY l.date DESC
-        LIMIT 1"
-    );
 
     ct_reset_setup_table();
 

@@ -3,13 +3,13 @@
  * Plugin Name:           AutomatorWP - WPLMS integration
  * Plugin URI:            https://automatorwp.com/add-ons/wplms/
  * Description:           Connect AutomatorWP with WPLMS.
- * Version:               1.0.2
+ * Version:               1.0.5
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
  * Text Domain:           automatorwp-wplms-integration
  * Domain Path:           /languages/
  * Requires at least:     4.4
- * Tested up to:          5.7
+ * Tested up to:          6.2
  * License:               GNU AGPL v3.0 (http://www.gnu.org/licenses/agpl.txt)
  *
  * @package               AutomatorWP\WPLMS
@@ -58,7 +58,7 @@ final class AutomatorWP_Integration_WPLMS {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_WPLMS_VER', '1.0.2' );
+        define( 'AUTOMATORWP_WPLMS_VER', '1.0.5' );
 
         // Plugin file
         define( 'AUTOMATORWP_WPLMS_FILE', __FILE__ );
@@ -130,7 +130,7 @@ final class AutomatorWP_Integration_WPLMS {
             return false;
         }
 
-        if ( ! class_exists( 'WPLMS_Init' ) ) {
+        if ( ! ( class_exists( 'WPLMS_Init' ) || class_exists( 'WPLMS_4_Init' ) ) ) {
             return false;
         }
 

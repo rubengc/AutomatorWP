@@ -9,7 +9,7 @@
  * Text Domain:           automatorwp-favorites-integration
  * Domain Path:           /languages/
  * Requires at least:     4.4
- * Tested up to:          5.7
+ * Tested up to:          6.2
  * License:               GNU AGPL v3.0 (http://www.gnu.org/licenses/agpl.txt)
  *
  * @package               AutomatorWP\Favorites_Integration

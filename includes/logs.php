@@ -59,9 +59,14 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
     // If log correctly inserted, insert all meta data received
     if( $log_id && ! empty( $log_meta ) ) {
 
+        $log_data['log_id'] = $log_id;
+
         $metas = array();
 
         foreach( $log_meta as $meta_key => $meta_value ) {
+            $original_meta_key = $meta_key; 
+            $original_meta_value = $meta_value; 
+
             // Sanitize vars
             $meta_key = sanitize_key( $meta_key );
             $meta_key = wp_unslash( $meta_key );
@@ -69,6 +74,22 @@ function automatorwp_insert_log( $log_data = array(), $log_meta = array() ) {
             $meta_value = esc_sql( $meta_value );
             $meta_value = sanitize_meta( $meta_key, $meta_value, $ct_table->name );
             $meta_value = maybe_serialize( $meta_value );
+
+            /**
+             * Filter to override the meta value
+             *
+             * @since 1.0.0
+             * 
+             * @param string    $meta_value             The parsed meta value
+             * @param string    $meta_key               The parsed meta key
+             * @param string    $original_meta_value    The original meta value
+             * @param string    $original_meta_key      The original meta key
+             * @param array     $log_data               The log data (includes the log_id key)
+             * @param array     $log_meta               The original log meta data
+             *
+             * @return mixed
+             */
+            $meta_value = apply_filters( 'automatorwp_insert_log_meta_value', $meta_value, $meta_key, $original_meta_value, $original_meta_key, $log_data, $log_meta );
 
             // Setup the insert value
             $metas[] = $wpdb->prepare( '%d, %s, %s', array( $log_id, $meta_key, $meta_value ) );

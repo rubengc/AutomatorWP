@@ -129,6 +129,10 @@ function automatorwp_redirect_is_url_excluded( url, data ) {
         data = url;
     }
 
+    if ( typeof data !== 'string' ) {
+        data = url;
+    }
+
     // Check for excluded urls
     var excluded_url = false;
 

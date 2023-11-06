@@ -29,7 +29,7 @@ class AutomatorWP_FluentForm_Submit_Form extends AutomatorWP_Integration_Trigger
             'edit_label'        => sprintf( __( 'User submits %1$s %2$s time(s)', 'automatorwp' ), '{post}', '{times}' ),
             /* translators: %1$s: Post title. */
             'log_label'         => sprintf( __( 'User submits %1$s', 'automatorwp' ), '{post}' ),
-            'action'            => 'fluenform_before_submission_confirmation',
+            'action'            => 'fluentform/before_submission_confirmation',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 3,

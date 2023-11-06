@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="wpcode.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#a52828"
+     borderopacity="1"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="128.17665"
+     inkscape:cy="200.20262"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     borderlayer="false"
+     inkscape:pagecheckerboard="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1002"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:measure-start="249.821,63.0357"
+     inkscape:measure-end="249.821,0">
+    <sodipodi:guide
+       position="9.5882942,66.182616"
+       orientation="0,1"
+       id="guide859"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="66.145833,14.717448"
+       orientation="1,0"
+       id="guide863"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="91.281245,132.29167"
+       orientation="0,1"
+       id="guide865"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="4.943e-007,86.758659"
+       orientation="1,0"
+       id="guide867"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-164.70832)">
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1.41420996;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 0,164.70832 V 296.99998 H 132.29167 V 164.70832 Z"
+       id="rect815"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="clip-rule:evenodd;fill:#0065ff;fill-rule:evenodd;stroke-width:0.26458335"
+       d="M 106.26158,281.23834 H 26.155543 c -5.798697,0 -10.334759,-4.53616 -10.334759,-10.28794 v -79.96578 c 0,-5.75188 4.536062,-10.28794 10.334759,-10.28794 h 80.106037 c 5.75198,0 10.33468,4.53606 10.33468,10.28794 v 79.96578 c 0,5.75178 -4.5827,10.28794 -10.33468,10.28794 z M 40.74577,262.53283 c -0.514425,0 -1.215848,-0.1406 -1.730245,-0.28025 -2.431725,-0.9348 -3.600796,-3.60059 -2.66553,-6.0325 l 21.043523,-53.87156 c 0.935275,-2.38498 3.600897,-3.60079 6.032497,-2.66551 2.43185,0.9348 3.60091,3.60078 2.665619,6.0325 l -20.950127,53.87147 c -0.65474,1.87064 -2.525101,2.94614 -4.395737,2.94614 z m 30.162564,-6.82727 c 0.93528,0.9348 2.15109,1.35603 3.36689,1.35603 1.215799,0 2.43185,-0.42085 3.36688,-1.35603 l 16.460939,-16.32073 c 2.94613,-2.94604 2.94613,-7.90276 0,-10.8489 L 77.642104,212.075 c -1.730061,-1.87055 -4.67618,-1.87055 -6.54676,0 -1.870579,1.73033 -1.870579,4.67647 0,6.54702 l 15.151379,15.24483 -15.291639,15.24495 c -1.96408,1.77707 -1.96408,4.72321 -0.0465,6.59376 z"
+       id="path14"
+       inkscape:export-xdpi="298.88666"
+       inkscape:export-ydpi="298.88666" />
+  </g>
+</svg>

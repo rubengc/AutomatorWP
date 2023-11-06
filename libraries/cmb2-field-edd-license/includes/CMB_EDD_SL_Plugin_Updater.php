@@ -11,13 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 class CMB_EDD_SL_Plugin_Updater {
 
-    private $api_url     = '';
-    private $api_data    = array();
-    private $name        = '';
-    private $slug        = '';
-    private $version     = '';
-    private $wp_override = false;
-    private $cache_key   = '';
+    private $api_url        = '';
+    private $api_data       = array();
+    private $name           = '';
+    private $slug           = '';
+    private $version        = '';
+    private $wp_override    = false;
+    private $cache_key      = '';
+    private $beta           = '';
 
     private $health_check_timeout = 5;
 

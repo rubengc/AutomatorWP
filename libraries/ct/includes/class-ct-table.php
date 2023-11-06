@@ -384,6 +384,63 @@ if ( ! class_exists( 'CT_Table' ) ) :
         public $rest_controller_class;
 
         /**
+         * @since 4.7.4
+         * @access public
+         */
+        public $group;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         */
+        public $schema;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         */
+        public $engine;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         */
+        public $global;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         * @var string $version
+         */
+        public $version;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         */
+        public $primary_key;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         */
+        public $hierarchical;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         * @var string|bool $public
+         */
+        public $public;
+
+        /**
+         * @since 4.7.4
+         * @access public
+         * @var string $description
+         */
+        public $description;
+
+        /**
          * Constructor.
          *
          * Will populate object properties from the provided arguments and assign other

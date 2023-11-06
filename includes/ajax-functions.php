@@ -302,10 +302,10 @@ function automatorwp_ajax_update_item_option() {
 
     // Get option sanitized values
     $sanitized_values = $cmb2->get_sanitized_values( $_POST );
-
+    
     // Fields not in sanitized values need to recover its default value
     foreach ( $type_args['options'][$option]['fields'] as $field_id => $field ) {
-
+        
         // Skip fields in sanitized values
         if( isset( $sanitized_values[$field_id] ) ) {
             continue;
@@ -317,7 +317,7 @@ function automatorwp_ajax_update_item_option() {
         }
 
     }
-
+    
     // Field groups requires a custom way to handle their values saving
     foreach ( $type_args['options'][$option]['fields'] as $field_id => $field ) {
 
@@ -348,7 +348,7 @@ function automatorwp_ajax_update_item_option() {
                 if( ! isset( $field['fields'][$field_group_id] ) ) {
                     continue;
                 }
-
+                
                 if( ! empty( $value ) ) {
                     // Add the value from $_POST
                     $values[$field_group_id] = sanitize_text_field( $value );
@@ -366,11 +366,11 @@ function automatorwp_ajax_update_item_option() {
 
     // Setup the table here to ensure to store meta data on the correct table
     ct_setup_table( "automatorwp_{$item_type}s" );
-
+    
     foreach( $sanitized_values as $field_id => $value ) {
         ct_update_object_meta( $object->id, $field_id, $value );
     }
-
+    
     // Flush cache to ensure that option replacement gets the newest value
     wp_cache_flush();
 

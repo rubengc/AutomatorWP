@@ -3,13 +3,13 @@
  * Plugin Name:           AutomatorWP - Restrict Content Pro integration
  * Plugin URI:            https://automatorwp.com/add-ons/restrict-content-pro/
  * Description:           Connect AutomatorWP with Restrict Content Pro.
- * Version:               1.0.4
+ * Version:               1.1.0
  * Author:                AutomatorWP
  * Author URI:            https://automatorwp.com/
  * Text Domain:           automatorwp-restrict-content-pro-integration
  * Domain Path:           /languages/
  * Requires at least:     4.4
- * Tested up to:          5.7
+ * Tested up to:          6.3
  * License:               GNU AGPL v3.0 (http://www.gnu.org/licenses/agpl.txt)
  *
  * @package               AutomatorWP\Restrict_Content_Pro
@@ -58,7 +58,7 @@ final class AutomatorWP_Integration_Restrict_Content_Pro {
      */
     private function constants() {
         // Plugin version
-        define( 'AUTOMATORWP_RESTRICT_CONTENT_PRO_VER', '1.0.4' );
+        define( 'AUTOMATORWP_RESTRICT_CONTENT_PRO_VER', '1.1.0' );
 
         // Plugin file
         define( 'AUTOMATORWP_RESTRICT_CONTENT_PRO_FILE', __FILE__ );
@@ -136,7 +136,7 @@ final class AutomatorWP_Integration_Restrict_Content_Pro {
             return false;
         }
 
-        if ( ! class_exists( 'RCP_Requirements_Check' ) ) {
+        if ( ! function_exists( 'rcp_get_membership_levels' ) ) {
             return false;
         }
 

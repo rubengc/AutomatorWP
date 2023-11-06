@@ -302,74 +302,50 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
-### 2.6.9 ###
+### 3.6.0 ###
+
+* **Improvements**
+* Ensure compatibility with PHP 8.2.
+
+### 3.5.0 ###
 
 * **Bug Fixes**
-* Prevent incorrect formatting of the URL in the "Redirect user to URL" action.
+* Fluent Forms: Fixed anonymous trigger.
+* Restrict Content Pro: Fixed expiration date in Add Membership action.
 
-### 2.6.8 ###
+### 3.4.0 ###
 
-* **New Features**
-* Added a clear all logs button on logs list view.
-* Added post date and modified date tags (GMT version too).
-* New action: Run an all users automation.
-* New action: Run an all posts automation.
+* **Improvements**
+* Added checks to avoid unnecessary ajax requests.
 
-### 2.6.7 ###
+### 3.3.0 ###
 
 * **Bug Fixes**
-* MailerLite: Fixed bug on MailerLite connection.
-* Paid Memberships Pro: Fixed trigger "User cancels a subscription of a membership level" to adapt to latest version of Paid Memberships Pro.
+* Check call to API to avoid warnings due to integrations.
 
-### 2.6.6 ###
-
-* **New Features**
-* New integration: MailerLite
-* MailerLite: New action: Add/Update user to MailerLite.
-* MailerLite: New action: Add user to group.
-
-### 2.6.5.1 ###
-
-* **Developer Notes**
-* Fixed PHP notices caused by add_submenu_page() function when passing null as first parameter.
-
-### 2.6.5 ###
-
-* **Improvements**
-* BuddyBoss: Improved checking to ensure BuddyBoss functions exist.
-
-### 2.6.4 ###
-
-* **Improvements**
-* BuddyBoss: Improved trigger "User updates profile information" to avoid launch it when information did not change.
-
-### 2.6.3 ###
-
-* **Improvements**
-* Advanced Custom Fields: Improved the selection of fields for all types of posts.
-* Advanced Custom Fields: Improved trigger "User updates post field with a value" will be launched when the field value is added the first time.
-* JetEngine: Trigger works only with JetEngine types.
-
-
-### 2.6.2 ###
+### 3.2.0 ###
 
 * **New Features**
-* New integration: JetEngine.
-* JetEngine: New trigger: User publishes a post of a type.
-* **Improvements**
-* WordPress: Improved trigger "User meta gets updated with a value" to work when a value is added.
+* New integration: ClickUp.
+* ClickUp: New action: Add comment to a task.
+* ClickUp: New action: Add tag to a task.
+* ClickUp: New action: Create a list.
+* ClickUp: New action: Create a new task in list.
+* New integration: Kadence Blocks.
+* Kadence Blocks: New trigger: User submits a form.
+* Kadence Blocks: New trigger: Guest submits a form.
+* New integration: WP All Import.
+* WP All Import: New trigger: User completes an import.
+* WP All Import: New trigger: User imports posts of a type.
 
-### 2.6.1 ###
+### 3.1.0 ###
 
-* **New Features**
-* New integration: Easy Affiliate.
-* Easy Affiliate: New trigger: User becomes an affiliate.
-* Easy Affiliate: New trigger: User earns a referral.
+* **Bug Fixes**
+* Check call to API to avoid warnings due to integrations.
 
-### 2.6.0 ###
+### 3.0.0 ###
 
-* **New Features**
-* New integration: SureCart.
-* SureCart: New trigger: User makes a purchase.
+* **Bug Fixes**
+* ARMember: Fixed compatibility with ARMember Complete Membership.
 * **Developer Notes**
 * Moved old changelog to changelog.txt.

@@ -67,7 +67,21 @@ function automatorwp_enqueue_scripts( $hook = null ) {
         $excluded_data = apply_filters( 'automatorwp_redirect_excluded_data', $excluded_data );
 
         $excluded_ajax_actions = array(
-            'automatorwp_check_for_redirect'
+            'automatorwp_check_for_redirect',
+            // GamiPress Notifications support
+            'gamipress_notifications_get_notices',
+            'gamipress_notifications_last_check',
+            // GamiPress Congratulations Popups support
+            'gamipress_congratulations_popups_get_popups',
+            'gamipress_congratulations_popups_popup_shown',
+            // WooCommerce support
+            'woocommerce_load_products',
+            // BuddyBoss support
+            'buddyboss_load_user_profile',
+            'buddyboss_theme_get_header_unread_messages',
+            'buddyboss_theme_get_header_notifications',
+            // WordPress support
+            'heartbeat',
         );
 
         /**

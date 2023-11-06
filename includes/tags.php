@@ -424,7 +424,7 @@ function automatorwp_parse_automation_tags( $automation_id = 0, $user_id = 0, $c
 
     // Finally, parse automation tags ensuring that all tags not parsed will be empty
     $parsed_content = str_replace( $tags, $replacements, $parsed_content );
-
+    
     return $parsed_content;
 
 }
@@ -600,7 +600,7 @@ function automatorwp_get_trigger_tags_replacements( $trigger, $user_id, $content
 
     // Get the last completion log for this trigger (where data for tags replacement is)
     $log = automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $content );
-
+    
     if( ! $log ) {
         return array();
     }
@@ -639,7 +639,7 @@ function automatorwp_get_trigger_tags_replacements( $trigger, $user_id, $content
     $replacements = apply_filters( 'automatorwp_trigger_tags_replacements', $replacements, $trigger, $user_id, $log );
 
     ct_reset_setup_table();
-
+    
     return $replacements;
 
 }
@@ -1106,7 +1106,7 @@ function automatorwp_parse_post_meta_tags( $automation_id = 0, $user_id = 0, $co
 
         // Get the last completion log for this trigger (where data for tags replacement is)
         $log = automatorwp_get_trigger_last_completion_log( $trigger, $user_id, $content );
-
+        
         if( ! $log ) {
             continue;
         }
@@ -1128,7 +1128,8 @@ function automatorwp_parse_post_meta_tags( $automation_id = 0, $user_id = 0, $co
         $parsed_content = str_replace( $tags, $replacements, $content );
 
     }
-
+    
+    
     /**
      * Filter to modify a content parsed with post metas
      *

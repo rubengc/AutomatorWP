@@ -30,7 +30,7 @@ class AutomatorWP_FluentForm_Anonymous_Submit_Form extends AutomatorWP_Integrati
             'edit_label'        => sprintf( __( 'Guest submits %1$s', 'automatorwp' ), '{post}' ),
             /* translators: %1$s: Post title. */
             'log_label'         => sprintf( __( 'Guest submits %1$s', 'automatorwp' ), '{post}' ),
-            'action'            => 'fluenform_before_submission_confirmation',
+            'action'            => 'fluentform/before_submission_confirmation',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 3,
@@ -127,7 +127,7 @@ class AutomatorWP_FluentForm_Anonymous_Submit_Form extends AutomatorWP_Integrati
     public function hooks() {
 
         // Log meta data
-        add_filter( 'automatorwp_user_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 6 );
+        add_filter( 'automatorwp_anonymous_completed_trigger_log_meta', array( $this, 'log_meta' ), 10, 5 );
 
         // Log fields
         add_filter( 'automatorwp_log_fields', array( $this, 'log_fields' ), 10, 5 );
@@ -142,14 +142,13 @@ class AutomatorWP_FluentForm_Anonymous_Submit_Form extends AutomatorWP_Integrati
      *
      * @param array     $log_meta           Log meta data
      * @param stdClass  $trigger            The trigger object
-     * @param int       $user_id            The user ID
      * @param array     $event              Event information
      * @param array     $trigger_options    The trigger's stored options
      * @param stdClass  $automation         The trigger's automation object
      *
      * @return array
      */
-    function log_meta( $log_meta, $trigger, $user_id, $event, $trigger_options, $automation ) {
+    function log_meta( $log_meta, $trigger, $event, $trigger_options, $automation ) {
 
         // Bail if action type don't match this action
         if( $trigger->type !== $this->trigger ) {
