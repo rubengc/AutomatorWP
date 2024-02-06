@@ -2,6 +2,12 @@
 
 Connect your WordPress plugins together and create automated workflows with no code!
 
+## About this repository ##
+
+This repository is a place for discussion between developers about the AutomatorWP development.
+
+The code can be found in the wordpress.org repository.
+
 ## Description ##
 
 [AutomatorWP](https://automatorwp.com "AutomatorWP") is a flexible and open-source plugin that let's you connect your WordPress plugins together and create automated workflows.
@@ -302,50 +308,4 @@ No, We're unable to provide custom development services, as our focus is develop
 
 ## Changelog ##
 
-### 3.6.0 ###
-
-* **Improvements**
-* Ensure compatibility with PHP 8.2.
-
-### 3.5.0 ###
-
-* **Bug Fixes**
-* Fluent Forms: Fixed anonymous trigger.
-* Restrict Content Pro: Fixed expiration date in Add Membership action.
-
-### 3.4.0 ###
-
-* **Improvements**
-* Added checks to avoid unnecessary ajax requests.
-
-### 3.3.0 ###
-
-* **Bug Fixes**
-* Check call to API to avoid warnings due to integrations.
-
-### 3.2.0 ###
-
-* **New Features**
-* New integration: ClickUp.
-* ClickUp: New action: Add comment to a task.
-* ClickUp: New action: Add tag to a task.
-* ClickUp: New action: Create a list.
-* ClickUp: New action: Create a new task in list.
-* New integration: Kadence Blocks.
-* Kadence Blocks: New trigger: User submits a form.
-* Kadence Blocks: New trigger: Guest submits a form.
-* New integration: WP All Import.
-* WP All Import: New trigger: User completes an import.
-* WP All Import: New trigger: User imports posts of a type.
-
-### 3.1.0 ###
-
-* **Bug Fixes**
-* Check call to API to avoid warnings due to integrations.
-
-### 3.0.0 ###
-
-* **Bug Fixes**
-* ARMember: Fixed compatibility with ARMember Complete Membership.
-* **Developer Notes**
-* Moved old changelog to changelog.txt.
+Can be found [here](https://wordpress.org/plugins/automatorwp/#developers).
